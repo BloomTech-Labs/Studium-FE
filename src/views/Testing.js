@@ -9,7 +9,7 @@ const Testing = () => {
   return ( <StyledTesting>
     <h1>Testing</h1>
     <Form>
-      <StyledInput bordered={ false } placeHolder={ "Email" }
+      <StyledInput bordered={ true } placeholder={ "Email" }
                    borderRadius={ 14 }
                    onChange={ ( e ) => {
                      setValue( e.target.value );

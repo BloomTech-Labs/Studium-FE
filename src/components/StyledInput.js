@@ -3,18 +3,18 @@ import styled from "styled-components";
 import { Input, Form } from "antd";
 import PropTypes from "prop-types";
 
-const StyledInput = ( { bordered = false, label, ...props } ) => {
+const StyledInput = ( { bordered = false, borderRadius, label, ...props } ) => {
   if( bordered ){
     return ( <StyledFormItem label={ label }>
-      <StyledAntdInput { ...props } />
+      <StyledAntdInput { ...props } borderRadius={ borderRadius }/>
     </StyledFormItem> );
   }else{
     return ( <StyledFormItem label={ label }>
-      <StyledNoBorder>
+      <StyledBorderBottom>
         <StyledNoBorderAntdInput { ...props }>
         
         </StyledNoBorderAntdInput>
-      </StyledNoBorder>
+      </StyledBorderBottom>
     </StyledFormItem> );
   }
 };
@@ -25,15 +25,13 @@ const StyledFormItem = styled( Form.Item )`
   }
 `;
 
-const StyledNoBorder = styled.div`
+const StyledBorderBottom = styled.div`
   border-bottom: 1px solid gray;
 `;
 
 const StyledNoBorderAntdInput = styled( Input )`
   &&{
     border: 0px;
-    border-radius: ${ props => props.borderRadius ? props.borderRadius + "px" :
-  +"6px" };
     :focus {
       box-shadow: none;
     }
@@ -55,7 +53,7 @@ StyledInput.propTypes = {
   bordered: PropTypes.bool,
   value: PropTypes.any.isRequired,
   label: PropTypes.string,
-  placeHolder: PropTypes.string,
+  placeholder: PropTypes.string,
   size: PropTypes.oneOf( [ "large", "default", "small" ] ),
   borderRadius: PropTypes.number
   
