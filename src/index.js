@@ -12,13 +12,12 @@ import { Provider } from "react-redux";
 import "antd/dist/antd.css";
 
 const theme = {
-  color: "blue", mainColor: "green"
+  color: "blue", mainColor: "red"
 };
 
 const store = createStore( rootReducer, applyMiddleware( thunk ) );
 
-ReactDOM.render( <ThemeProvider
-  theme={ theme }>
+ReactDOM.render( <ThemeProvider theme={ theme }>
   <Provider store={ store }>
     <Router>
       <App/>
