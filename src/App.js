@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import styled from "styled-components";
 import { Switch, Route } from "react-router";
@@ -7,19 +6,25 @@ import LandingPage from "./views/LandingPage";
 import { useSelector, useDispatch } from "react-redux";
 import StyledButton from "./components/StyledButton";
 import { fetchUser } from "./actions";
+import { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
 
 function App( props ){
   
   const user = useSelector( state => state.usersReducer );
   const dispatch = useDispatch();
+
+  const GlobalStyle = createGlobalStyle`
+    ${reset}
+  `
   
   const handleButtonClick = () => {
     fetchUser( dispatch );
   };
   
   return (
-    
     <StyledApp className="App">
+      <GlobalStyle />
       <h1>App</h1>
       <h2>Is: Fetching: { user.fetching ? "true" : "false" }</h2>
       <div
