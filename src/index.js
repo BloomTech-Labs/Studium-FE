@@ -18,8 +18,11 @@ ${reset}
 `;
 
 const theme = {
-  color: 'blue',
-  mainColor: 'green'
+  color: "blue",
+  mainColor: "red",
+  largeRadius: "14px",
+  smallRadius: "6px",
+  gray: "gray"
 };
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
