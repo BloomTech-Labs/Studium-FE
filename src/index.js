@@ -12,7 +12,11 @@ import { Provider } from "react-redux";
 import "antd/dist/antd.css";
 
 const theme = {
-  color: "blue", mainColor: "red", largeRadius: "14px", smallRadius: "6px"
+  color: "blue",
+  mainColor: "red",
+  largeRadius: "14px",
+  smallRadius: "6px",
+  gray: "gray"
 };
 
 const store = createStore( rootReducer, applyMiddleware( thunk ) );
