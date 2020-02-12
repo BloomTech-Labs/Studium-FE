@@ -44,6 +44,7 @@ const StyledSignIn = styled.div`
   justify-content: center;
   height: 90vh;
 `;
+
 const StyledH1 = styled.h1`
   font-size: 5.5rem;
   font-weight: 900;

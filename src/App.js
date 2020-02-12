@@ -34,8 +34,8 @@ function App(props) {
       <Switch>
         <Route exact path={'/'} render={props => <LandingPage {...props} />} />
         {/*  Router commented out waiting on other components completion    */}
-        {/* <Route path={'/signup'} render={props => <SignUp {...props} />} /> */}
-        <Route path={'/signin'} render={props => <SignIn {...props} />} />
+        <Route path={'/signup'} render={props => <SignUp {...props} />} />
+        {/* <Route path={'/signin'} render={props => <SignIn {...props} />} /> */}
       </Switch>
     </StyledApp>
   );
