@@ -33,6 +33,7 @@ const StyledInput = ({
     );
   }
 };
+
 const StyledFormItem = styled(Form.Item)`
   && {
     text-align: left;

@@ -59,8 +59,10 @@ const StyledH2 = styled.h2`
 `;
 
 const StyledBorder = styled.span`
+  width: 90%;
   border-bottom: 2px dashed red;
-`;
+  margin: 0 0 1.5em;
+  `;
 
 
 

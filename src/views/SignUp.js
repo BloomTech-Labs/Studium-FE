@@ -15,6 +15,7 @@ export default function SignUp() {
         shape={'round'}
         size={'large'}
       />
+
       <StyledBorder></StyledBorder>
 
       <StyledInput label={'Email Address'} bordered={false} />
@@ -41,11 +42,10 @@ const StyledH1 = styled.h1`
   font-size: 5.5em;
   font-weight: 900;
   margin: 0 0 0.5em;
-  // background: rgba(196, 196,196, 0.59)
 `;
 
 const StyledBorder = styled.span`
-  width: 80%;
-  border-bottom: 1px dashed #ccc;
-  margin: 0 auto;
+  width: 90%;
+  border-bottom: 2px dashed #ccc;
+  margin: 0 0 1.5em;
 `;
