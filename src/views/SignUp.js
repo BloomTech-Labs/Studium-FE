@@ -22,7 +22,6 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-
 `
 
 const StyledH1 = styled.h1`
