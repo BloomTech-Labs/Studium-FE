@@ -6,6 +6,7 @@ import LandingPage from './views/LandingPage';
 import { useSelector, useDispatch } from 'react-redux';
 import StyledButton from './components/StyledButton';
 import { fetchUser } from './actions';
+import Login from './views/SignUp';
 
 function App(props) {
   const user = useSelector(state => state.usersReducer);
@@ -31,6 +32,7 @@ function App(props) {
 
       <Switch>
         <Route exact path={'/'} render={props => <LandingPage {...props} />} />
+        <Route path={'/login'} render={props => <Login {...props} />} />
       </Switch>
     </StyledApp>
   );
