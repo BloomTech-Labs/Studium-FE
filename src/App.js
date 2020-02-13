@@ -8,7 +8,7 @@ import StyledButton from './components/StyledButton';
 import { fetchUser } from './actions';
 import SignUp from './views/SignUp';
 import SignIn from './views/SignIn';
-
+import card from './views/card';
 function App(props) {
   const user = useSelector(state => state.usersReducer);
   const dispatch = useDispatch();
