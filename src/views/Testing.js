@@ -2,18 +2,17 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import StyledInput from "../components/StyledInput";
 import { Form } from "antd";
+import StyledSearchBar from "../components/StyledSearchBar";
 
 const Testing = () => {
-  
+  const onSearch = e => {
+    debugger;
+  };
   const [ value, setValue ] = useState( "" );
   return ( <StyledTesting>
     <h1>Testing</h1>
     <Form>
-      <StyledInput bordered={ true } placeholder={ "Email" }
-                   borderRadius={ "large" }
-                   onChange={ ( e ) => {
-                     setValue( e.target.value );
-                   } } value={ value }/>
+      <StyledSearchBar onSearch={ onSearch }/>
     </Form>
   
   </StyledTesting> );
