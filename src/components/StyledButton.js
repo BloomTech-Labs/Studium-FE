@@ -11,6 +11,7 @@ const StyledButton = ({
   shape,
   loading,
   block,
+  color, 
   ...props
 }) => {
   return (
@@ -20,7 +21,7 @@ const StyledButton = ({
       icon={icon}
       shape={shape}
       loading={loading && 'loading'}
-      block={block && 'block'}
+      block={block && 'block'}      
       {...props}
     >
       {text}
@@ -30,7 +31,7 @@ const StyledButton = ({
 
 StyledButton.propTypes = {
   text: PropTypes.string,
-  type: PropTypes.oneOf(['primary', 'dashed', 'danger', 'link']),
+  type: PropTypes.oneOf(['primary', 'dashed', 'danger', 'link', 'darkgray']),
   size: PropTypes.oneOf(['large', 'default', 'small']),
   icon: PropTypes.string,
   shape: PropTypes.oneOf(['circle', 'round']),
@@ -40,9 +41,25 @@ StyledButton.propTypes = {
 
 const StyledAntdButton = styled(Button)`
   && {
-    background-color: ${props =>
-      props.type == 'danger' ? 'red' : props.theme.mainColor};
+    border: 0;
+    color: ${props => {
+      if(props.type === 'darkgray') {
+        return 'white'
+      } else {
+        return 'black'
+      }
+    }};
+    
+    background-color: ${props =>{
+     if( props.type === 'primary'){
+       return props.theme.mainColor
+     } else if (props.type === 'darkgray') {
+      return props.theme.darkergray
+     } else { 
+       return props.theme.mainColor
+     }
+  }}
   }
-`;
+`
 
 export default StyledButton;

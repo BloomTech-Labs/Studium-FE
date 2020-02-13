@@ -18,13 +18,16 @@ export default function SignUp() {
 
       <StyledBorder></StyledBorder>
 
-      <StyledInput label={'Email Address'} bordered={false} />
+      <div styles={{ width: '95%' }}>
+        <StyledInput block={true} label={'Email Address'} bordered={false} />
+      </div>
 
       <StyledButton
         style={{ padding: '0 2.5em 0' }}
         text={'Continue with Email'}
         shape={'round'}
         size={'large'}
+        type={'darkgray'}
       />
     </StyledSignUp>
   );

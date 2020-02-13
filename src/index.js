@@ -19,7 +19,8 @@ ${reset}
 
 const theme = {
   color: 'blue',
-  mainColor: 'green'
+  mainColor: '#c4c4c4',
+  darkergray: '#585858',
 };
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
