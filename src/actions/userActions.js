@@ -1,4 +1,5 @@
 import { action } from "./action";
+import firebase from './firebase/FirebaseConfig';
 
 export const FETCHING_USER = "FETCHING_USER";
 export const FETCHED_USER = "FETCHED_USER";
@@ -12,3 +13,5 @@ export const fetchUser = ( dispatch ) => {
   }, 1000 );
   
 };
+
+//sign in and sign out action

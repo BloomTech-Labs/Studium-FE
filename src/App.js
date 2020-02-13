@@ -8,10 +8,25 @@ import StyledButton from './components/StyledButton';
 import { fetchUser } from './actions';
 import SignUp from './views/SignUp';
 import SignIn from './views/SignIn';
+import firebase from './firebase/FirebaseConfig';
+
 
 function App(props) {
   const user = useSelector(state => state.usersReducer);
   const dispatch = useDispatch();
+
+  //Promises. This function gets called in for google sign in
+useEffect( () => {
+  firebase.auth().onAuthStateChanged(user => {
+    debugger;
+    if (user) {
+      signedIn(user, dispatch);
+    }else{
+      signedOut(dispatch);
+    }
+  });
+}, []); 
+
 
   const handleButtonClick = () => {
     fetchUser(dispatch);
