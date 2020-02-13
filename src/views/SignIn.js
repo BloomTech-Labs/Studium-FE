@@ -19,18 +19,20 @@ export default function SignIn() {
 
       <StyledBorder></StyledBorder>
 
+      <div styles={{width: '95%'}}>
       <StyledInput 
-      style={{width: '50%'}}
+      block={true}
       label={'Email Address'} 
       bordered={false} 
-      StyledFormItem={{width: '50%'}}
       />
+      </div>
 
       <StyledButton
         style={{padding: '0 2.5em 0'}}
         text={'Continue with Email'}
         shape={'round'}
         size={'large'}
+        type={'darkgray'}
       />
     </StyledSignIn>
   );
@@ -49,7 +51,6 @@ const StyledH1 = styled.h1`
   font-size: 5.5rem;
   font-weight: 900;
   margin: 0 0 0.2em;
-  // background: rgba(196, 196,196, 0.59)
 `;
 
 const StyledH2 = styled.h2`
@@ -60,7 +61,7 @@ const StyledH2 = styled.h2`
 
 const StyledBorder = styled.span`
   width: 90%;
-  border-bottom: 2px dashed red;
+  border-bottom: 2px dashed #ccc;
   margin: 0 0 1.5em;
   `;
 

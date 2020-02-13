@@ -19,23 +19,10 @@ function App(props) {
 
   return (
     <StyledApp className='App'>
-      {/* <h1>App</h1>
-      <h2>Is: Fetching: {user.fetching ? 'true' : 'false'}</h2>
-      <div style={{ width: '40%', display: 'flex', margin: '0 auto' }}>
-        <StyledButton
-          onClick={handleButtonClick}
-          icon={'download'}
-          text={'Fetching'}
-          shape={'round'}
-          block={true}
-        />
-      </div> */}
-
       <Switch>
         <Route exact path={'/'} render={props => <LandingPage {...props} />} />
-        {/*  Router commented out waiting on other components completion    */}
         <Route path={'/signup'} render={props => <SignUp {...props} />} />
-        {/* <Route path={'/signin'} render={props => <SignIn {...props} />} /> */}
+        <Route path={'/signin'} render={props => <SignIn {...props} />} />
       </Switch>
     </StyledApp>
   );

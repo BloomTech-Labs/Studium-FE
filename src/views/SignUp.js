@@ -19,7 +19,10 @@ export default function SignUp() {
       <StyledBorder></StyledBorder>
 
       <div styles={{ width: '95%' }}>
-        <StyledInput block={true} label={'Email Address'} bordered={false} />
+        <StyledInput
+        block={true} 
+        label={'Email Address'} 
+        bordered={false} />
       </div>
 
       <StyledButton
