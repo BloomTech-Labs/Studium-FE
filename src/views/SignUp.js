@@ -1,6 +1,6 @@
 import React from 'react';
-import StyledInput from '../components/StyledInput';
-import StyledButton from '../components/StyledButton';
+import StyledInput from '../components/Styled/StyledInput';
+import StyledButton from '../components/Styled/StyledButton';
 import styled from 'styled-components';
 
 export default function SignUp() {
