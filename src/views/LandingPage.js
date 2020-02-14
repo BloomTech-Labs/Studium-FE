@@ -3,22 +3,35 @@ import styled from "styled-components";
 import Logo from '../images/logo.jpg';
 
 const size = {
-  mobile: '375px',
+  mobile: '380px',
   desktop: '1440px'
 }
 
 export const device = {
   mobile: `(min-width: ${size.mobile})`,
-  desktop: `(min-width: ${size.desktop})`
+  desktop: `(max-width: ${size.desktop})`
 }
 
 const LandingPage = () => {
   return ( 
   <StyledLandingPage>
+    <Mobile>
+      <LogoHolder></LogoHolder>
+      <MobileLandingPage>
+        <MobileHeader>
+          <MobileHeaderName>synaps</MobileHeaderName>
+        </MobileHeader>
+      <SignInRect></SignInRect>
+      <SignIn>Sign In</SignIn>
+      <SignUpRec></SignUpRec>
+      <SignUp>Sign Up</SignUp>
+      </MobileLandingPage>
+      </Mobile>
+   <Desktop>
     <Menu1>Link 1</Menu1>
     <Menu2>Link 2</Menu2>
     <Menu3>Link 3</Menu3>
-    <h1>Synaps</h1>
+    <HeaderName><h1>Synaps</h1></HeaderName>
     <LogoImage></LogoImage>
     <Vector></Vector>
     <FlashCard></FlashCard>
@@ -35,14 +48,129 @@ const LandingPage = () => {
     <Group4></Group4>
     <Group4Text>Here is more about this amazing and super helpful app that will make you an amazing science student. Here’s how we do it</Group4Text>
     <Rectangle></Rectangle>
+    </Desktop> 
   </StyledLandingPage> );
 };
+
+const Mobile = styled.div`
+display:none;
+@media ${device.desktop}{
+  display:flex; 
+}
+`;
+
+const LogoHolder = styled.div`
+height: 250px;
+width: 250px;
+background-color: rgba(196, 196, 196, 0.59);
+border-radius: 50%;
+position:absolute;
+left: 16%;
+top: 43px;
+`;
+const MobileHeader = styled.div`
+position: absolute;
+left: 3.63%;
+right: 84%;
+top: 14.8%;
+bottom: 31.19%;
+
+`;
+
+const MobileHeaderName = styled.div`
+position: absolute;
+width: 600px;
+height: 100px;
+left: -105px;
+top: 539%;
+font-family: Source Sans Pro;
+font-style: normal;
+font-weight: bold;
+font-size: 85px;
+line-height: 104.9%;
+/* or 128px */
+color: #231F20;
+`;
+
+const SignInRect = styled.div`
+/* Rectangle 71 */
+position: absolute;
+width: 204px;
+height: 62px;
+left: 88px;
+top: 465%;
+background: #C4C4C4;
+border-radius: 15px;
+`;
+
+const SignIn = styled.div`
+position: absolute;
+width: 204px;
+height: 44px;
+left: 151px;
+top: 471%;
+font-family: Source Sans Pro;
+font-style: normal;
+font-weight: bold;
+font-size: 25px;
+line-height: 24px;
+/* or 96% */
+display: flex;
+align-items: center;
+text-align: center;
+color: #FFFFFF;
+`;
+
+const SignUpRec = styled.div`
+position: absolute;
+width: 204px;
+height: 62px;
+left: 88px;
+top: 559%;
+background: #888888;
+border-radius: 15px;
+`;
+
+const SignUp = styled.div`
+position: absolute;
+width: 204px;
+height: 44px;
+left: 151px;
+top: 566%;
+font-family: Source Sans Pro;
+font-style: normal;
+font-weight: bold;
+font-size: 25px;
+line-height: 24px;
+/* or 96% */
+display: flex;
+align-items: center;
+text-align: center;
+color: #FFFFFF;
+`;
+
+
+const Desktop = styled.div`
+display: none; 
+@media ${device.mobile}{
+display: flex; 
+}
+`;
+
+const HeaderName = styled.div`
+position: absolute;
+width: 252px;
+left: 213px;
+top: 42px;
+font-size:30px;
+`;
 
 const LogoImage= styled.div`
     image: url(${Logo});
 `;
 
 const Menu1 = styled.div`
+max-width:1400px; 
 position: absolute;
 width: 152px;
 height: 41px;
@@ -55,16 +183,7 @@ font-weight: normal;
 font-size: 25px;
 line-height: 31px;
 text-align: center;
-
 color: #000000;
-
-@media ${device.mobile}{
-  max-width: 375px; 
-}
-
-@media ${device.desktop} {
-  max-width:1400px; 
-}
 `;
 
 const Menu2 = styled.div`
@@ -73,22 +192,13 @@ width: 152px;
 height: 41px;
 left: 1033px;
 top: 65px;
-
 font-family: Source Sans Pro;
 font-style: normal;
 font-weight: normal;
 font-size: 25px;
 line-height: 31px;
 text-align: center;
-
 color: #000000;
-@media ${device.mobile}{
-  max-width: 375px; 
-}
-
-@media ${device.desktop} {
-  max-width:1400px; 
-}
 `;
 
 const Menu3 = styled.div`
@@ -97,37 +207,25 @@ width: 152px;
 height: 41px;
 left: 1185px;
 top: 65px;
-
 font-family: Source Sans Pro;
 font-style: normal;
 font-weight: normal;
 font-size: 25px;
 line-height: 31px;
 text-align: center;
-
 color: #000000;
-@media ${device.mobile}{
-  max-width: 375px; 
-}
-
-@media ${device.desktop} {
-  max-width:1400px; 
-}
 `;
 
 const StyledLandingPage = styled.div`
 position: relative;
-width: 1440px;
-height: 3079px;
-
+height: 579px;
 background: #FFFFFF;
-@media ${device.mobile}{
-max-width: 375px; 
-}
+`;
 
-@media ${device.desktop} {
-  max-width:1400px; 
-}
+const MobileLandingPage = styled.div`
+position: fixed;
+height: 100px;
+background: #FFFFFF;
 `;
 
 const Headline= styled.div`
@@ -135,23 +233,15 @@ position: absolute;
 width: 600px;
 height: 100px;
 left: 56px;
-top: 209px;
-
+top: 139px;
 font-family: Source Sans Pro;
 font-style: normal;
 font-weight: bold;
-font-size: 50px;
-line-height: 160.9%;
+font-size: 122px;
+line-height: 104.9%;
 /* or 128px */
-
 color: #000000;
-@media ${device.mobile}{
-  max-width: 375px; 
-}
 
-@media ${device.desktop} {
-  max-width:1400px; 
-}
 `;
 const FlashCard = styled.div`
 position: absolute;
@@ -159,53 +249,30 @@ width: 440px;
 height: 518px;
 left: 889px;
 top: 176px;
-
 background: #FFFFFF;
 border: 7px solid rgba(161, 161, 161, 0.25);
 box-sizing: border-box;
-@media ${device.mobile}{
-  max-width: 375px; 
-}
-
-@media ${device.desktop} {
-  max-width:1400px; 
-}
 `;
 
 const Vector = styled.div`
+max-width:1400px;
 position: absolute;
 width: 692px;
 height: 646px;
 left: 753px;
 top: 128px;
-
 background: rgba(11, 12, 12, 0.14);
-opacity: 0.24;
-@media ${device.mobile}{
-  max-width: 375px; 
-}
-
-@media ${device.desktop} {
-  max-width:1400px; 
-}
+opacity: 0.24; 
 `;
 
 
 const Rectangle = styled.div`
 position: absolute;
-width: 1440px;
+width: 100%;
 height: 279px;
 left: 0px;
 top: 2800px;
-
 background: #C4C4C4;
-@media ${device.mobile}{
-  max-width: 375px; 
-}
-
-@media ${device.desktop} {
-  max-width:1400px; 
-}
 `;
 
 const Paragraph = styled.div`
@@ -214,22 +281,13 @@ width: 621px;
 height: 141px;
 left: 59px;
 top: 399px;
-
 font-family: Source Sans Pro;
 font-style: normal;
 font-weight: normal;
 font-size: 35px;
 line-height: 119.9%;
 /* or 42px */
-
 color: #000000;
-@media ${device.mobile}{
-  max-width: 375px; 
-}
-
-@media ${device.desktop} {
-  max-width:1400px; 
-}
 `;
 
 const Paragraph2 = styled.div`
@@ -238,23 +296,13 @@ width: 1143px;
 height: 193px;
 left: 160px;
 top: 815px;
-
 font-family: Source Sans Pro;
 font-style: normal;
 font-weight: normal;
 font-size: 35px;
 line-height: 119.9%;
 /* or 42px */
-
 color: #000000;
-@media ${device.mobile}{
-  max-width: 375px; 
-}
-
-@media ${device.desktop} {
-  max-width:1400px; 
-}
-
 `;
 
 const CTAButton = styled.div`
@@ -263,16 +311,8 @@ width: 499px;
 height: 119px;
 left: 111px;
 top: 565px;
-
 background: #C4C4C4;
 border-radius: 6px;
-@media ${device.mobile}{
-  max-width: 375px; 
-}
-
-@media ${device.desktop} {
-  max-width:1400px; 
-}
 `;
 
 const Group1 = styled.div`
@@ -281,15 +321,7 @@ width: 476px;
 height: 400.27px;
 left: 160px;
 top: 1095px;
-
 background: #C4C4C4;
-@media ${device.mobile}{
-  max-width: 375px; 
-}
-
-@media ${device.desktop} {
-  max-width:1400px; 
-}
 `;
 
 const Group1Text = styled.div`
@@ -298,23 +330,13 @@ width: 456px;
 height: 168px;
 left: 180px;
 top: 1561px;
-
 font-family: Source Sans Pro;
 font-style: normal;
 font-weight: normal;
 font-size: 24px;
 line-height: 119.9%;
 /* or 29px */
-
 color: #000000;
-@media ${device.mobile}{
-  max-width: 375px; 
-}
-
-@media ${device.desktop} {
-  max-width:1400px; 
-}
-
 `;
 
 
@@ -325,13 +347,6 @@ height: 400.27px;
 left: 781px;
 top: 1095px;
 background: #C4C4C4;
-@media ${device.mobile}{
-  max-width: 375px; 
-}
-
-@media ${device.desktop} {
-  max-width:1400px; 
-}
 `;
 
 const Group2Text = styled.div`
@@ -340,22 +355,13 @@ width: 476px;
 height: 168px;
 left: 781px;
 top: 1561px;
-
 font-family: Source Sans Pro;
 font-style: normal;
 font-weight: normal;
 font-size: 24px;
 line-height: 119.9%;
 /* or 29px */
-
 color: #000000;
-@media ${device.mobile}{
-  max-width: 375px; 
-}
-
-@media ${device.desktop} {
-  max-width:1400px; 
-}
 `;
 
 const Group3 = styled.div`
@@ -365,13 +371,6 @@ height: 400.27px;
 left: 160px;
 top: 1700px;
 background: #C4C4C4;
-@media ${device.mobile}{
-  max-width: 375px; 
-}
-
-@media ${device.desktop} {
-  max-width:1400px; 
-}
 `;
 
 const Group3Text = styled.div`
@@ -380,23 +379,13 @@ width: 456px;
 height: 168px;
 left: 180px;
 top: 2224px;
-
 font-family: Source Sans Pro;
 font-style: normal;
 font-weight: normal;
 font-size: 24px;
 line-height: 119.9%;
 /* or 29px */
-
 color: #000000;
-@media ${device.mobile}{
-  max-width: 375px; 
-}
-
-@media ${device.desktop} {
-  max-width:1400px; 
-}
-
 `;
 
 const Group4 = styled.div`
@@ -406,13 +395,6 @@ height: 400.27px;
 left: 781px;
 top: 1700px;
 background: #C4C4C4;
-@media ${device.mobile}{
-  max-width: 375px; 
-}
-
-@media ${device.desktop} {
-  max-width:1400px; 
-}
 `;
 
 const Group4Text = styled.div`
@@ -421,22 +403,13 @@ width: 476px;
 height: 168px;
 left: 781px;
 top: 2224px;
-
 font-family: Source Sans Pro;
 font-style: normal;
 font-weight: normal;
 font-size: 24px;
 line-height: 119.9%;
 /* or 29px */
-
 color: #000000;
-@media ${device.mobile}{
-  max-width: 375px; 
-}
-
-@media ${device.desktop} {
-  max-width:1400px; 
-}
 `;
 
 export default LandingPage;
