@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Switch, Route } from 'react-router';
 import LandingPage from './views/LandingPage';
 import { useSelector, useDispatch } from 'react-redux';
-import StyledButton from './components/StyledButton';
+import StyledButton from './components/Styled/StyledButton';
 import { fetchUser } from './actions';
 import SignUp from './views/SignUp';
 import SignIn from './views/SignIn';
