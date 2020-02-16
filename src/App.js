@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
 import styled from 'styled-components';
 import { Switch, Route } from 'react-router';
@@ -9,20 +9,22 @@ import { fetchUser } from './actions';
 import SignUp from './views/SignUp';
 import SignIn from './views/SignIn';
 import firebase from './firebase/FirebaseConfig';
+import {signedIn, signout }from "./actions";
+
 
 
 function App(props) {
   const user = useSelector(state => state.usersReducer);
   const dispatch = useDispatch();
 
-  //Promises. This function gets called in for google sign in
+//Promises. This function gets called in for google sign in
 useEffect( () => {
   firebase.auth().onAuthStateChanged(user => {
     debugger;
     if (user) {
       signedIn(user, dispatch);
     }else{
-      signedOut(dispatch);
+      signout(dispatch);
     }
   });
 }, []); 
