@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import CardSide from '../components/CardSide';
 
+
 const CardWrapper = styled.div`
   position: relative;
   height: 100%;
