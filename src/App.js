@@ -8,7 +8,7 @@ import StyledButton from './components/Styled/StyledButton';
 import { fetchUser } from './actions';
 import SignUp from './views/SignUp';
 import SignIn from './views/SignIn';
-import card from './views/card';
+import Card from './views/Card';
 function App(props) {
   const user = useSelector(state => state.usersReducer);
   const dispatch = useDispatch();
@@ -23,6 +23,7 @@ function App(props) {
         <Route exact path={'/'} render={props => <LandingPage {...props} />} />
         <Route path={'/signup'} render={props => <SignUp {...props} />} />
         <Route path={'/signin'} render={props => <SignIn {...props} />} />
+        <Route path={'/Card'} render={props => <Card {...props} />} />
       </Switch>
     </StyledApp>
   );
