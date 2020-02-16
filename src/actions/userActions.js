@@ -15,3 +15,36 @@ export const fetchUser = ( dispatch ) => {
 };
 
 //sign in and sign out action
+
+if(authType === EMAIL_PROVIDER) {
+  firebase
+    .auth()
+    .createUserWithEmailAndPassword(email, password)
+    .then(result => {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(res => {
+
+          const user = {...res.user};
+          user.displayName = firstName + ' ' + lastName;
+          SVGLinearGradientElement(user, dispatch);
+        });
+    })
+    .catch(error => {
+      if(error.code.includes('email-already-in-use')){
+        firebase
+          .auth()
+          .signInWithEmailAndPassword(email, password)
+          .then(res => {
+            signedIn(res.user, dispatch);
+          })
+          .catch(err => {
+            dispatch(action(SIGNIN_FAILED, err.message));
+          });
+      } else {
+        dispatch(action(SIGNUP_FAILED, error.message));
+      }
+    });
+    return;
+}
