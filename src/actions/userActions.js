@@ -31,12 +31,17 @@ export const signedIn = (user, dispatch) => {
 };
 
 export const signout = (dispatch) => {
+  debugger;
   localStorage.setItem('loggedIn', 'false');
-  dispatch(action(SIGNOUT))
+  firebase.auth().signOut().then(() => {
+    dispatch(action(SIGNOUT))
+  });
+  
 }
 
 
 export const signin = (authType, dispatch, email, password) => {
+  debugger;
   dispatch(action(ATTEMPT_SIGNIN));
 
   if(authType === EMAIL_PROVIDER) {
@@ -77,11 +82,12 @@ export const signin = (authType, dispatch, email, password) => {
       .auth()
       .signInWithPopup(provider)
       .then(res => {
+        debugger;
         signedIn(res.user, dispatch);
       }).catch(err => {
         dispatch(action(SIGNIN_FAILED, err.message));
+        console.log(err);
       })
   }
-  
-
+  debugger;
 }
