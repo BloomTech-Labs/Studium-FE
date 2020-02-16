@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+
 const CardSideWrapper = styled.div`
   top: 0;
   bottom: 0;
