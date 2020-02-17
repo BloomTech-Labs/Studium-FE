@@ -7,6 +7,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import StyledButton from './components/StyledButton';
 import { fetchUser } from './actions';
 import Testing from './views/Testing';
+import SignUp from './views/SignUp';
+import SignIn from './views/SignIn';
 
 function App( props ){
   const user = useSelector( state => state.usersReducer );
@@ -17,14 +19,15 @@ function App( props ){
   };
   
   return ( <StyledApp className='App'>
-      
-      <Switch>
-        <Route exact path={ '/' }
-               render={ props => <LandingPage { ...props } /> }/>
-        <Route exact path={ '/testing' }
-               render={ props => <Testing { ...props } /> }/>
-      </Switch>
-    </StyledApp> );
+    <Switch>
+      <Route exact path={ '/' }
+             render={ props => <LandingPage { ...props } /> }/>
+      <Route path={ '/signup' } render={ props => <SignUp { ...props } /> }/>
+      <Route path={ '/signin' } render={ props => <SignIn { ...props } /> }/>
+      <Route exact path={ '/testing' }
+             render={ props => <Testing { ...props } /> }/>
+    </Switch>
+  </StyledApp> );
 }
 
 const StyledApp = styled.div`

@@ -11,9 +11,10 @@ const StyledAvatar = props => {
 
 const StyledAntAvatar = styled( Avatar )`
   && {
-    background-color: ${ props => props.theme.darkGray };
+    background-color: ${ props => props.theme.darkergray };
   }
 `;
+
 
 StyledAvatar.propTypes = {};
 

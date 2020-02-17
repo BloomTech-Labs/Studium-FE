@@ -18,8 +18,9 @@ ${reset}
 `;
 
 const theme = {
+  mainColor: '#c4c4c4',
+  darkergray: '#585858',
   color: "blue",
-  mainColor: "red",
   largeRadius: "14px",
   smallRadius: "6px",
   gray: "gray"
