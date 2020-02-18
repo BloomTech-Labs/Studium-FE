@@ -78,7 +78,7 @@ const LandingPage = ( props ) => {
 const Mobile = styled.div`
 display:flex;
 flex-direction: column;
-@media ${ devices.mobileM }{
+@media ${ devices.tablet }{
   display:none;
 }
 `;
@@ -88,7 +88,7 @@ const MobileHeader = styled.div`
 
 const Desktop = styled.div`
 display: none; 
-@media ${ devices.mobileM }{
+@media ${ devices.tablet }{
 display: flex;
 flex-direction: column;
 }
