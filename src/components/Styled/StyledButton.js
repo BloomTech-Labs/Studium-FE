@@ -22,7 +22,9 @@ const StyledButton = ({
       shape={shape}
       loading={loading && 'loading'}
       block={block && 'block'}      
+      
       {...props}
+      
     >
       {text}
     </StyledAntdButton>

@@ -1,60 +1,71 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 import Logo from '../images/logo.jpg';
+import { StyledButton } from '../components/Styled/StyledButton';
 
 const size = {
-  mobile: '380px',
-  desktop: '1440px'
-}
+  mobile: '380px', desktop: '1440px',
+};
 
 export const device = {
-  mobile: `(min-width: ${size.mobile})`,
-  desktop: `(max-width: ${size.desktop})`
-}
+  mobile: `(min-width: ${ size.mobile })`,
+  desktop: `(max-width: ${ size.desktop })`,
+};
 
 const LandingPage = () => {
-  return ( 
-  <StyledLandingPage>
+  return ( <StyledLandingPage>
     <Mobile>
       <LogoHolder></LogoHolder>
       <MobileLandingPage>
         <MobileHeader>
           <MobileHeaderName>synaps</MobileHeaderName>
         </MobileHeader>
-      <SignInRect></SignInRect>
-      <SignIn>Sign In</SignIn>
-      <SignUpRec></SignUpRec>
-      <SignUp>Sign Up</SignUp>
+        <SignInRect></SignInRect>
+        <StyledButton text={"Sign"}/>
+        <SignUpRec></SignUpRec>
+        <SignUp>Sign Up</SignUp>
       </MobileLandingPage>
-      </Mobile>
-   <Desktop>
-    <Menu1>Link 1</Menu1>
-    <Menu2>Link 2</Menu2>
-    <Menu3>Link 3</Menu3>
-    <HeaderName><h1>Synaps</h1></HeaderName>
-    <LogoImage></LogoImage>
-    <Vector></Vector>
-    <FlashCard></FlashCard>
-    <Headline><h1 class="headline">Big CTA Headline</h1></Headline>
-    <CTAButton></CTAButton>
-    <Paragraph><p>You get this app. You should really get this app. Something else about getting the app. Get it now</p></Paragraph>
-    <Paragraph2><p>Here is more about this amazing and super helpful app that will make you an amazing science student. Here’s how we do it. Here is more about this amazing and super helpful app that will make you an amazing science student. Here’s how we do it</p></Paragraph2>
-    <Group1></Group1>
-    <Group1Text>Here is more about this amazing and super helpful app that will make you an amazing science student. Here’s how we do it</Group1Text>
-    <Group2></Group2>
-    <Group2Text>Here is more about this amazing and super helpful app that will make you an amazing science student. Here’s how we do it</Group2Text>
-    <Group3></Group3>
-    <Group3Text>Here is more about this amazing and super helpful app that will make you an amazing science student. Here’s how we do it</Group3Text>
-    <Group4></Group4>
-    <Group4Text>Here is more about this amazing and super helpful app that will make you an amazing science student. Here’s how we do it</Group4Text>
-    <Rectangle></Rectangle>
-    </Desktop> 
+    </Mobile>
+    <Desktop>
+      <Menu1>Link 1</Menu1>
+      <Menu2>Link 2</Menu2>
+      <Menu3>Link 3</Menu3>
+      <HeaderName><h1>Synaps</h1></HeaderName>
+      <LogoImage></LogoImage>
+      <Vector></Vector>
+      <FlashCard></FlashCard>
+      <Headline><h1 class="headline">Big CTA Headline</h1></Headline>
+      <CTAButton></CTAButton>
+      <Paragraph><p>You get this app. You should really get this app. Something
+        else about getting the app. Get it now</p></Paragraph>
+      <Paragraph2><p>Here is more about this amazing and super helpful app that
+        will make you an amazing science student. Here’s how we do it. Here is
+        more about this amazing and super helpful app that will make you an
+        amazing science student. Here’s how we do it</p></Paragraph2>
+      <Group1></Group1>
+      <Group1Text>Here is more about this amazing and super helpful app that
+        will make you an amazing science student. Here’s how we do
+        it</Group1Text>
+      <Group2></Group2>
+      <Group2Text>Here is more about this amazing and super helpful app that
+        will make you an amazing science student. Here’s how we do
+        it</Group2Text>
+      <Group3></Group3>
+      <Group3Text>Here is more about this amazing and super helpful app that
+        will make you an amazing science student. Here’s how we do
+        it</Group3Text>
+      <Group4></Group4>
+      <Group4Text>Here is more about this amazing and super helpful app that
+        will make you an amazing science student. Here’s how we do
+        it</Group4Text>
+      <Rectangle></Rectangle>
+    </Desktop>
   </StyledLandingPage> );
 };
 
 const Mobile = styled.div`
 display:none;
-@media ${device.desktop}{
+@media ${ device.desktop }{
   display:flex; 
 }
 `;
@@ -149,10 +160,9 @@ text-align: center;
 color: #FFFFFF;
 `;
 
-
 const Desktop = styled.div`
 display: none; 
-@media ${device.mobile}{
+@media ${ device.mobile }{
 display: flex; 
 }
 `;
@@ -165,8 +175,8 @@ top: 42px;
 font-size:30px;
 `;
 
-const LogoImage= styled.div`
-    image: url(${Logo});
+const LogoImage = styled.div`
+    image: url(${ Logo });
 `;
 
 const Menu1 = styled.div`
@@ -228,7 +238,7 @@ height: 100px;
 background: #FFFFFF;
 `;
 
-const Headline= styled.div`
+const Headline = styled.div`
 position: absolute;
 width: 600px;
 height: 100px;
@@ -264,7 +274,6 @@ top: 128px;
 background: rgba(11, 12, 12, 0.14);
 opacity: 0.24; 
 `;
-
 
 const Rectangle = styled.div`
 position: absolute;
@@ -338,7 +347,6 @@ line-height: 119.9%;
 /* or 29px */
 color: #000000;
 `;
-
 
 const Group2 = styled.div`
 position: absolute;
