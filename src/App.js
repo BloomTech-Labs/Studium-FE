@@ -11,6 +11,8 @@ import SignIn from './views/SignIn';
 import firebase from './firebase/FirebaseConfig';
 import { signedIn, signout } from './actions';
 import LoginSignUpRoute from './routes/LoginSignUpRoute';
+import ProtectedRoute from './routes/ProtectedRoute';
+import LogoutView from './views/LogoutView';
 
 function App( props ){
   const user = useSelector( state => state.usersReducer );
@@ -46,6 +48,7 @@ function App( props ){
                         component={ SignUp } { ...props }/>
       <LoginSignUpRoute path={ '/signin' }
                         component={ SignIn } { ...props }/>
+      <ProtectedRoute path={ '/dashboard' } component={ LogoutView }/>
     </Switch>
   </StyledApp> );
 }
