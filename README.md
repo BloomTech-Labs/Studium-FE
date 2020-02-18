@@ -43,11 +43,11 @@ To create the best Life Science flashcard application, that has excellent UI, wh
 
 ### 4️⃣ Key Features
 
--    feature one
--    feature two
--    feature three
--    feature four
--    feature five
+-    The ability to create cards
+-    create decks 
+-    Take quizs 
+-    Spaced repatetions 
+-       
 
 ## 1️⃣ Tech Stack
 
