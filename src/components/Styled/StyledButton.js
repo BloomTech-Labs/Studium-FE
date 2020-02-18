@@ -31,7 +31,7 @@ const StyledButton = ({
 
 StyledButton.propTypes = {
   text: PropTypes.string,
-  type: PropTypes.oneOf(['primary', 'dashed', 'danger', 'link', 'darkgray']),
+  type: PropTypes.oneOf(['primary', 'dashed', 'danger', 'link', 'darkgray', 'white']),
   size: PropTypes.oneOf(['large', 'default', 'small']),
   icon: PropTypes.string,
   shape: PropTypes.oneOf(['circle', 'round']),
@@ -49,14 +49,25 @@ const StyledAntdButton = styled(Button)`
         return 'black'
       }
     }};
+
+    &&{
+      border: ${props => {
+        if(props.border === 'dashed'){
+          return '2px dashed red'
+        }
+      }}
+    }
     
     background-color: ${props =>{
      if( props.type === 'primary'){
        return props.theme.mainColor
      } else if (props.type === 'darkgray') {
       return props.theme.darkergray
-     } else { 
-       return props.theme.mainColor
+     } else if (props.type === 'white') { 
+       return props.theme.white
+    } else {
+      return props.theme.mainColor
+      
      }
   }}
   }

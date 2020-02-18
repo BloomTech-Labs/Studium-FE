@@ -1,12 +1,12 @@
-import React from "react";
-import styled from "styled-components";
-// import Footer from '../components/Footer/Footer';
+import React from 'react';
+import styled from 'styled-components';
 
 const LandingPage = () => {
-  return ( <StyledLandingPage>
-    <h1>Landing Page</h1>
-    {/* <Footer /> */}
-  </StyledLandingPage> );
+  return (
+    <StyledLandingPage>
+      <h1>Landing Page</h1>
+    </StyledLandingPage>
+  );
 };
 
 const StyledLandingPage = styled.div``;

@@ -19,6 +19,7 @@ ${reset}
 
 const theme = {
   mainColor: '#c4c4c4',
+  whiteColor: '#fff',
   darkergray: '#585858',
   color: "blue",
   largeRadius: "14px",
