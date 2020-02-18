@@ -14,7 +14,14 @@ export const device = {
   desktop: `(max-width: ${size.desktop})`
 }
 
-const LandingPage = () => {
+const LandingPage = (props) => {
+  const handleClick = (name) => {
+    if (name === "SignIn"){
+      props.history.push ("/signin")
+    }  else {
+    props.history.push ("/signup")
+  }
+}
   return ( 
   <StyledLandingPage>
     <Mobile>
@@ -23,8 +30,8 @@ const LandingPage = () => {
         <MobileHeader>
           <MobileHeaderName>synaps</MobileHeaderName>
         </MobileHeader>
-      <StyledButton text={"Sign In"} top={"471%"} left={"82px"} position={"absolute"} size={"large"}></StyledButton>
-      <StyledButton text={"Sign Up"} top={"566%"} left={"82px"} position={"absolute"} size={"large"}></StyledButton>
+      <StyledButton text={"Sign In"} top={"471%"} left={"82px"} position={"absolute"} size={"large"} onClick={() => handleClick ("SignIn")}></StyledButton>
+      <StyledButton text={"Sign Up"} top={"566%"} left={"82px"} position={"absolute"} size={"large"} onClick={() => handleClick ("SignUp")}></StyledButton>
       </MobileLandingPage>
       </Mobile>
    <Desktop>
