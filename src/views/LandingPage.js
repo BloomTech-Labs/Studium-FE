@@ -1,40 +1,41 @@
 import React from 'react';
 import styled from 'styled-components';
-import Logo from '../images/logo.jpg';
-import { StyledButton } from '../components/Styled/StyledButton';
+import SmallLogo from '../components/Styled/SmallLogo';
+import StyledButton from '../components/Styled/StyledButton';
+import logo from '../images/logo.jpg';
+import { devices } from '../util/breakpoints-device';
 
-const size = {
-  mobile: '380px', desktop: '1440px',
-};
-
-export const device = {
-  mobile: `(min-width: ${ size.mobile })`,
-  desktop: `(max-width: ${ size.desktop })`,
-};
-
-const LandingPage = () => {
+const LandingPage = ( props ) => {
+  
+  const handleClick = ( name ) => {
+    if( name === 'SignIn' ){
+      props.history.push( '/signin' );
+    }else{
+      props.history.push( '/signup' );
+    }
+  };
+  
   return ( <StyledLandingPage>
     <Mobile>
-      <LogoHolder></LogoHolder>
-      <MobileLandingPage>
-        <MobileHeader>
-          <MobileHeaderName>synaps</MobileHeaderName>
-        </MobileHeader>
-        <SignInRect></SignInRect>
-        <StyledButton text={"Sign"}/>
-        <SignUpRec></SignUpRec>
-        <SignUp>Sign Up</SignUp>
-      </MobileLandingPage>
+      <SmallLogo/>
+      <MobileHeader>
+        <MobileHeaderName>synaps</MobileHeaderName>
+      </MobileHeader>
+      <StyledButton text={ 'Sign In' } top={ '471%' } left={ '82px' }
+                    position={ 'absolute' } size={ 'large' }
+                    onClick={ () => handleClick( 'SignIn' ) }></StyledButton>
+      <StyledButton text={ 'Sign Up' } top={ '566%' } left={ '82px' }
+                    position={ 'absolute' } size={ 'large' }
+                    onClick={ () => handleClick( 'SignUp' ) }></StyledButton>
     </Mobile>
     <Desktop>
       <Menu1>Link 1</Menu1>
       <Menu2>Link 2</Menu2>
       <Menu3>Link 3</Menu3>
       <HeaderName><h1>Synaps</h1></HeaderName>
-      <LogoImage></LogoImage>
       <Vector></Vector>
       <FlashCard></FlashCard>
-      <Headline><h1 class="headline">Big CTA Headline</h1></Headline>
+      <Headline><h1 className="headline">Big CTA Headline</h1></Headline>
       <CTAButton></CTAButton>
       <Paragraph><p>You get this app. You should really get this app. Something
         else about getting the app. Get it now</p></Paragraph>
@@ -64,9 +65,9 @@ const LandingPage = () => {
 };
 
 const Mobile = styled.div`
-display:none;
-@media ${ device.desktop }{
-  display:flex; 
+display:flex;
+@media ${ devices.mobileM }{
+  display:none;
 }
 `;
 
@@ -103,66 +104,9 @@ line-height: 104.9%;
 color: #231F20;
 `;
 
-const SignInRect = styled.div`
-/* Rectangle 71 */
-position: absolute;
-width: 204px;
-height: 62px;
-left: 88px;
-top: 465%;
-background: #C4C4C4;
-border-radius: 15px;
-`;
-
-const SignIn = styled.div`
-position: absolute;
-width: 204px;
-height: 44px;
-left: 151px;
-top: 471%;
-font-family: Source Sans Pro;
-font-style: normal;
-font-weight: bold;
-font-size: 25px;
-line-height: 24px;
-/* or 96% */
-display: flex;
-align-items: center;
-text-align: center;
-color: #FFFFFF;
-`;
-
-const SignUpRec = styled.div`
-position: absolute;
-width: 204px;
-height: 62px;
-left: 88px;
-top: 559%;
-background: #888888;
-border-radius: 15px;
-`;
-
-const SignUp = styled.div`
-position: absolute;
-width: 204px;
-height: 44px;
-left: 151px;
-top: 566%;
-font-family: Source Sans Pro;
-font-style: normal;
-font-weight: bold;
-font-size: 25px;
-line-height: 24px;
-/* or 96% */
-display: flex;
-align-items: center;
-text-align: center;
-color: #FFFFFF;
-`;
-
 const Desktop = styled.div`
 display: none; 
-@media ${ device.mobile }{
+@media ${ devices.mobileM }{
 display: flex; 
 }
 `;
@@ -173,10 +117,6 @@ width: 252px;
 left: 213px;
 top: 42px;
 font-size:30px;
-`;
-
-const LogoImage = styled.div`
-    image: url(${ Logo });
 `;
 
 const Menu1 = styled.div`
@@ -227,15 +167,6 @@ color: #000000;
 `;
 
 const StyledLandingPage = styled.div`
-position: relative;
-height: 579px;
-background: #FFFFFF;
-`;
-
-const MobileLandingPage = styled.div`
-position: fixed;
-height: 100px;
-background: #FFFFFF;
 `;
 
 const Headline = styled.div`

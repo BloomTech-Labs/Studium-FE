@@ -12,6 +12,9 @@ const StyledButton = ({
   loading,
   block,
   color, 
+  position = "none",
+  top,
+  left,
   ...props
 }) => {
   return (
@@ -24,7 +27,9 @@ const StyledButton = ({
       block={block && 'block'}      
       
       {...props}
-      
+      position={position}
+      top = {top}
+      left={left}
     >
       {text}
     </StyledAntdButton>
@@ -44,6 +49,7 @@ StyledButton.propTypes = {
 const StyledAntdButton = styled(Button)`
   && {
     border: 0;
+    border-radius:15px;
     color: ${props => {
       if(props.type === 'darkgray') {
         return 'white'
@@ -56,12 +62,45 @@ const StyledAntdButton = styled(Button)`
      if( props.type === 'primary'){
        return props.theme.mainColor
      } else if (props.type === 'darkgray') {
-      return props.theme.darkergray
+      return props.theme.darkGray
      } else { 
        return props.theme.mainColor
      }
-  }}
-  }
+  }};
+  position: ${props => {
+    if(props.position !== "none"){
+      return props.position
+    }
+    return ""
+  }};
+  top: ${props => {
+    if(props.position !== "none"){
+      return props.top
+    }
+    return ""
+
+    }};
+    left: ${props => {
+      if(props.position !== "none"){
+        return props.left
+    }
+    return ""
+    }};
+
+    width: ${props => {
+      if(props.size === "large"){
+        return "204px"
+    }
+    return ""
+    }};
+
+    height: ${props => {
+      if(props.size === "large"){
+        return "62px"
+    }
+    return ""
+    }};
+}
 `
 
 export default StyledButton;

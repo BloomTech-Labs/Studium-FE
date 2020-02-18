@@ -4,32 +4,34 @@ import styled from 'styled-components';
 import { Switch, Route } from 'react-router';
 import LandingPage from './views/LandingPage';
 import { useSelector, useDispatch } from 'react-redux';
-import StyledButton from './components/StyledButton';
+import StyledButton from './components/Styled/StyledButton';
 import { fetchUser } from './actions';
 import SignUp from './views/SignUp';
 import SignIn from './views/SignIn';
 
-function App(props) {
-  const user = useSelector(state => state.usersReducer);
+function App( props ){
+  const user = useSelector( state => state.usersReducer );
   const dispatch = useDispatch();
-
+  
   const handleButtonClick = () => {
-    fetchUser(dispatch);
+    fetchUser( dispatch );
   };
-
-  return (
-    <StyledApp className='App'>
-      <Switch>
-        <Route exact path={'/'} render={props => <LandingPage {...props} />} />
-        <Route path={'/signup'} render={props => <SignUp {...props} />} />
-        <Route path={'/signin'} render={props => <SignIn {...props} />} />
-      </Switch>
-    </StyledApp>
-  );
+  
+  return ( <StyledApp>
+    <Switch>
+      <Route exact path={ '/' }
+             render={ props => <LandingPage { ...props } /> }/>
+      <Route path={ '/signup' } render={ props => <SignUp { ...props } /> }/>
+      <Route path={ '/signin' } render={ props => <SignIn { ...props } /> }/>
+    </Switch>
+  </StyledApp> );
 }
 
 const StyledApp = styled.div`
-  color: ${props => props.theme.color};
+  color: ${ props => props.theme.color };
+  width: 100%;
+  height: 100%;
+  text-align: center;
 `;
 
 export default App;

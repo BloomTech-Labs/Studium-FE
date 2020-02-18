@@ -14,31 +14,28 @@ import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 
 const GlobalStyle = createGlobalStyle`
-${reset}
+${ reset }
 `;
 
 const theme = {
   mainColor: '#c4c4c4',
-  darkergray: '#585858',
-  color: "blue",
-  largeRadius: "14px",
-  smallRadius: "6px",
-  gray: "gray"
+  darkGray: '#585858',
+  color: 'blue',
+  largeRadius: '14px',
+  smallRadius: '6px',
+  gray: 'gray',
 };
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore( rootReducer, applyMiddleware( thunk ) );
 
-ReactDOM.render(
-  <ThemeProvider theme={theme}>
-    <Provider store={store}>
-      <GlobalStyle />
-      <Router>
-        <App />
-      </Router>
-    </Provider>
-  </ThemeProvider>,
-  document.getElementById('root')
-);
+ReactDOM.render( <ThemeProvider theme={ theme }>
+  <Provider store={ store }>
+    <GlobalStyle/>
+    <Router>
+      <App/>
+    </Router>
+  </Provider>
+</ThemeProvider>, document.getElementById( 'root' ) );
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
