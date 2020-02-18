@@ -1,4 +1,4 @@
-import { FETCHING_USER, FETCHED_USER } from "../actions";
+import { FETCHING_USER, FETCHED_USER, SIGNED_IN, SIGNIN_FAILED, SIGNOUT, ATTEMPT_SIGNIN } from "../actions";
 
 const initialState = {
   user: {}, fetching: false, error: null,
@@ -6,10 +6,15 @@ const initialState = {
 export const usersReducer = ( state = initialState, action ) => {
   
   switch( action.type ){
-    case FETCHING_USER:
-      return { fetching: true };
-    case FETCHED_USER:
-      return { fetching: false, user: action.payload };
+    case ATTEMPT_SIGNIN: 
+      return { fetching: true};
+    case SIGNED_IN:
+      return { user: action.payload, fetching: false}
+    case SIGNIN_FAILED:
+      return { fetching: false, error: action.payload};
+    case SIGNOUT:
+      return {user: {}, error: null}
+
     default:
       return state;
   }

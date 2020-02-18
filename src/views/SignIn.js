@@ -2,8 +2,19 @@ import React from 'react';
 import StyledInput from '../components/Styled/StyledInput';
 import StyledButton from '../components/Styled/StyledButton';
 import styled from 'styled-components';
+import {signin, GOOGLE_PROVIDER, EMAIL_PROVIDER} from '../actions'
+import {useDispatch} from 'react-redux';
+
+
 
 export default function SignIn() {
+  const dispatch = useDispatch();
+  const handleClick = (e) => {
+    signin(GOOGLE_PROVIDER, dispatch)
+
+
+  }
+
   return (
     <StyledSignIn>
       <StyledH1>synaps</StyledH1>
@@ -15,6 +26,10 @@ export default function SignIn() {
           text={'Log In with Google'}
           shape={'round'}
           size={'large'}
+          onClick = { e =>{
+            handleClick(e)}}
+
+          
         />
 
       <StyledBorder></StyledBorder>
