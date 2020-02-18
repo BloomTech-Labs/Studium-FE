@@ -41,14 +41,15 @@ function App( props ){
   
   return ( <StyledApp className='App'>
     <Switch>
-      <LoginSignUpRoute exact path={ '/' }
-                        component={ LandingPage } { ...props }
-      />
+      
       <LoginSignUpRoute path={ '/signup' }
                         component={ SignUp } { ...props }/>
       <LoginSignUpRoute path={ '/signin' }
                         component={ SignIn } { ...props }/>
       <ProtectedRoute path={ '/dashboard' } component={ LogoutView }/>
+      <LoginSignUpRoute path={ '/' }
+                        component={ LandingPage } { ...props }
+      />
     </Switch>
   </StyledApp> );
 }
