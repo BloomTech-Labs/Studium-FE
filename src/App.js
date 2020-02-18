@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import styled from 'styled-components';
-import { Switch, Route } from 'react-router';
+import { Switch, Route, withRouter } from 'react-router';
 import LandingPage from './views/LandingPage';
 import { useSelector, useDispatch } from 'react-redux';
 import StyledButton from './components/Styled/StyledButton';
@@ -10,6 +10,7 @@ import SignUp from './views/SignUp';
 import SignIn from './views/SignIn';
 import firebase from './firebase/FirebaseConfig';
 import { signedIn, signout } from './actions';
+import LoginSignUpRoute from './routes/LoginSignUpRoute';
 
 function App( props ){
   const user = useSelector( state => state.usersReducer );
@@ -21,6 +22,11 @@ function App( props ){
       
       if( user ){
         signedIn( user, dispatch );
+        if( props.history.location.pathname == '/signin' ||
+          props.history.location.pathname == '/signup' ||
+          props.history.location.pathname == '/' ){
+          props.history.push( '/dashboard' );
+        }
       }else{
         signout( dispatch );
       }
@@ -32,13 +38,16 @@ function App( props ){
   };
   
   return ( <StyledApp className='App'>
-      <Switch>
-        <Route exact path={ '/' }
-               render={ props => <LandingPage { ...props } /> }/>
-        <Route path={ '/signup' } render={ props => <SignUp { ...props } /> }/>
-        <Route path={ '/signin' } render={ props => <SignIn { ...props } /> }/>
-      </Switch>
-    </StyledApp> );
+    <Switch>
+      <LoginSignUpRoute exact path={ '/' }
+                        component={ LandingPage } { ...props }
+      />
+      <LoginSignUpRoute path={ '/signup' }
+                        component={ SignUp } { ...props }/>
+      <LoginSignUpRoute path={ '/signin' }
+                        component={ SignIn } { ...props }/>
+    </Switch>
+  </StyledApp> );
 }
 
 const StyledApp = styled.div`
@@ -47,4 +56,4 @@ const StyledApp = styled.div`
   text-align: center;
 `;
 
-export default App;
+export default withRouter( App );
