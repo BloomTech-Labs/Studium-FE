@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import SmallLogo from '../components/Styled/SmallLogo';
 import StyledButton from '../components/Styled/StyledButton';
-import logo from '../images/logo.jpg';
 import { devices } from '../util/breakpoints-device';
+import StyledSynapsText from '../components/Styled/StyledSynapsText';
 
 const LandingPage = ( props ) => {
   
@@ -19,14 +19,25 @@ const LandingPage = ( props ) => {
     <Mobile>
       <SmallLogo/>
       <MobileHeader>
-        <MobileHeaderName>synaps</MobileHeaderName>
+        <StyledSynapsText/>
       </MobileHeader>
-      <StyledButton text={ 'Sign In' } top={ '471%' } left={ '82px' }
-                    position={ 'absolute' } size={ 'large' }
-                    onClick={ () => handleClick( 'SignIn' ) }></StyledButton>
-      <StyledButton text={ 'Sign Up' } top={ '566%' } left={ '82px' }
-                    position={ 'absolute' } size={ 'large' }
-                    onClick={ () => handleClick( 'SignUp' ) }></StyledButton>
+      <StyledButton text={ 'Sign In' } size={ 'large' }
+                    onClick={ () => handleClick( 'SignIn' ) }
+                    style={ {
+                      margin: '2rem auto',
+                      width: '204px',
+                      height: '62px',
+                      borderRadius: '15px',
+                    } }/>
+      <StyledButton text={ 'Sign Up' } size={ 'large' } type={ 'darkgray' }
+                    onClick={ () => handleClick( 'SignUp' ) }
+                    style={ {
+                      margin: '0 auto',
+                      width: '204px',
+                      height: '62px',
+                      borderRadius: '15px',
+                    } }
+      />
     </Mobile>
     <Desktop>
       <Menu1>Link 1</Menu1>
@@ -66,67 +77,28 @@ const LandingPage = ( props ) => {
 
 const Mobile = styled.div`
 display:flex;
+flex-direction: column;
 @media ${ devices.mobileM }{
   display:none;
 }
 `;
 
-const LogoHolder = styled.div`
-height: 250px;
-width: 250px;
-background-color: rgba(196, 196, 196, 0.59);
-border-radius: 50%;
-position:absolute;
-left: 16%;
-top: 43px;
-`;
 const MobileHeader = styled.div`
-position: absolute;
-left: 3.63%;
-right: 84%;
-top: 14.8%;
-bottom: 31.19%;
-
-`;
-
-const MobileHeaderName = styled.div`
-position: absolute;
-width: 600px;
-height: 100px;
-left: -105px;
-top: 539%;
-font-family: Source Sans Pro;
-font-style: normal;
-font-weight: bold;
-font-size: 85px;
-line-height: 104.9%;
-/* or 128px */
-color: #231F20;
 `;
 
 const Desktop = styled.div`
 display: none; 
 @media ${ devices.mobileM }{
-display: flex; 
+display: flex;
+flex-direction: column;
 }
 `;
 
 const HeaderName = styled.div`
-position: absolute;
-width: 252px;
-left: 213px;
-top: 42px;
 font-size:30px;
 `;
 
 const Menu1 = styled.div`
-max-width:1400px; 
-position: absolute;
-width: 152px;
-height: 41px;
-left: 881px;
-top: 65px;
-
 font-family: Source Sans Pro;
 font-style: normal;
 font-weight: normal;
@@ -137,11 +109,6 @@ color: #000000;
 `;
 
 const Menu2 = styled.div`
-position: absolute;
-width: 152px;
-height: 41px;
-left: 1033px;
-top: 65px;
 font-family: Source Sans Pro;
 font-style: normal;
 font-weight: normal;
@@ -152,11 +119,6 @@ color: #000000;
 `;
 
 const Menu3 = styled.div`
-position: absolute;
-width: 152px;
-height: 41px;
-left: 1185px;
-top: 65px;
 font-family: Source Sans Pro;
 font-style: normal;
 font-weight: normal;
@@ -170,11 +132,6 @@ const StyledLandingPage = styled.div`
 `;
 
 const Headline = styled.div`
-position: absolute;
-width: 600px;
-height: 100px;
-left: 56px;
-top: 139px;
 font-family: Source Sans Pro;
 font-style: normal;
 font-weight: bold;
@@ -185,42 +142,21 @@ color: #000000;
 
 `;
 const FlashCard = styled.div`
-position: absolute;
-width: 440px;
-height: 518px;
-left: 889px;
-top: 176px;
 background: #FFFFFF;
 border: 7px solid rgba(161, 161, 161, 0.25);
 box-sizing: border-box;
 `;
 
 const Vector = styled.div`
-max-width:1400px;
-position: absolute;
-width: 692px;
-height: 646px;
-left: 753px;
-top: 128px;
 background: rgba(11, 12, 12, 0.14);
 opacity: 0.24; 
 `;
 
 const Rectangle = styled.div`
-position: absolute;
-width: 100%;
-height: 279px;
-left: 0px;
-top: 2800px;
 background: #C4C4C4;
 `;
 
 const Paragraph = styled.div`
-position: absolute;
-width: 621px;
-height: 141px;
-left: 59px;
-top: 399px;
 font-family: Source Sans Pro;
 font-style: normal;
 font-weight: normal;
@@ -231,11 +167,6 @@ color: #000000;
 `;
 
 const Paragraph2 = styled.div`
-position: absolute;
-width: 1143px;
-height: 193px;
-left: 160px;
-top: 815px;
 font-family: Source Sans Pro;
 font-style: normal;
 font-weight: normal;
@@ -246,30 +177,15 @@ color: #000000;
 `;
 
 const CTAButton = styled.div`
-position: absolute;
-width: 499px;
-height: 119px;
-left: 111px;
-top: 565px;
 background: #C4C4C4;
 border-radius: 6px;
 `;
 
 const Group1 = styled.div`
-position: absolute;
-width: 476px;
-height: 400.27px;
-left: 160px;
-top: 1095px;
 background: #C4C4C4;
 `;
 
 const Group1Text = styled.div`
-position: absolute;
-width: 456px;
-height: 168px;
-left: 180px;
-top: 1561px;
 font-family: Source Sans Pro;
 font-style: normal;
 font-weight: normal;
@@ -280,20 +196,10 @@ color: #000000;
 `;
 
 const Group2 = styled.div`
-position: absolute;
-width: 476px;
-height: 400.27px;
-left: 781px;
-top: 1095px;
 background: #C4C4C4;
 `;
 
 const Group2Text = styled.div`
-position: absolute;
-width: 476px;
-height: 168px;
-left: 781px;
-top: 1561px;
 font-family: Source Sans Pro;
 font-style: normal;
 font-weight: normal;
@@ -304,44 +210,19 @@ color: #000000;
 `;
 
 const Group3 = styled.div`
-position: absolute;
-width: 476px;
-height: 400.27px;
-left: 160px;
-top: 1700px;
 background: #C4C4C4;
 `;
 
 const Group3Text = styled.div`
-position: absolute;
-width: 456px;
-height: 168px;
-left: 180px;
-top: 2224px;
-font-family: Source Sans Pro;
-font-style: normal;
-font-weight: normal;
-font-size: 24px;
-line-height: 119.9%;
 /* or 29px */
 color: #000000;
 `;
 
 const Group4 = styled.div`
-position: absolute;
-width: 476px;
-height: 400.27px;
-left: 781px;
-top: 1700px;
 background: #C4C4C4;
 `;
 
 const Group4Text = styled.div`
-position: absolute;
-width: 476px;
-height: 168px;
-left: 781px;
-top: 2224px;
 font-family: Source Sans Pro;
 font-style: normal;
 font-weight: normal;

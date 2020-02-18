@@ -6,7 +6,7 @@ import StyledSearchBar from "../components/Styled/StyledSearchBar";
 
 const Testing = () => {
   const onSearch = e => {
-    debugger;
+  
   };
   const [ value, setValue ] = useState( "" );
   return ( <StyledTesting>
