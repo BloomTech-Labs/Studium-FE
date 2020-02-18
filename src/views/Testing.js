@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import StyledInput from "../components/StyledInput";
+import StyledInput from "../components/Styled/StyledInput";
 import { Form } from "antd";
-import StyledSearchBar from "../components/StyledSearchBar";
+import StyledSearchBar from "../components/Styled/StyledSearchBar";
 
 const Testing = () => {
   const onSearch = e => {

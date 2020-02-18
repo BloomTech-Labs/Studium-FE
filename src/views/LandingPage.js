@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import Logo from '../images/logo.jpg';
+import SmallLogo from "../components/Styled/SmallLogo";
+import  StyledButton  from '../components/Styled/StyledButton';
+import logo from "../images/logo.jpg";
 
 const size = {
   mobile: '380px',
@@ -16,15 +18,13 @@ const LandingPage = () => {
   return ( 
   <StyledLandingPage>
     <Mobile>
-      <LogoHolder></LogoHolder>
+      <SmallLogo></SmallLogo>
       <MobileLandingPage>
         <MobileHeader>
           <MobileHeaderName>synaps</MobileHeaderName>
         </MobileHeader>
-      <SignInRect></SignInRect>
-      <SignIn>Sign In</SignIn>
-      <SignUpRec></SignUpRec>
-      <SignUp>Sign Up</SignUp>
+      <StyledButton text={"Sign In"} top={"471%"} left={"82px"} position={"absolute"} size={"large"}></StyledButton>
+      <StyledButton text={"Sign Up"} top={"566%"} left={"82px"} position={"absolute"} size={"large"}></StyledButton>
       </MobileLandingPage>
       </Mobile>
    <Desktop>
@@ -92,63 +92,6 @@ line-height: 104.9%;
 color: #231F20;
 `;
 
-const SignInRect = styled.div`
-/* Rectangle 71 */
-position: absolute;
-width: 204px;
-height: 62px;
-left: 88px;
-top: 465%;
-background: #C4C4C4;
-border-radius: 15px;
-`;
-
-const SignIn = styled.div`
-position: absolute;
-width: 204px;
-height: 44px;
-left: 151px;
-top: 471%;
-font-family: Source Sans Pro;
-font-style: normal;
-font-weight: bold;
-font-size: 25px;
-line-height: 24px;
-/* or 96% */
-display: flex;
-align-items: center;
-text-align: center;
-color: #FFFFFF;
-`;
-
-const SignUpRec = styled.div`
-position: absolute;
-width: 204px;
-height: 62px;
-left: 88px;
-top: 559%;
-background: #888888;
-border-radius: 15px;
-`;
-
-const SignUp = styled.div`
-position: absolute;
-width: 204px;
-height: 44px;
-left: 151px;
-top: 566%;
-font-family: Source Sans Pro;
-font-style: normal;
-font-weight: bold;
-font-size: 25px;
-line-height: 24px;
-/* or 96% */
-display: flex;
-align-items: center;
-text-align: center;
-color: #FFFFFF;
-`;
-
 
 const Desktop = styled.div`
 display: none; 
@@ -166,7 +109,7 @@ font-size:30px;
 `;
 
 const LogoImage= styled.div`
-    image: url(${Logo});
+    image: url(${logo});
 `;
 
 const Menu1 = styled.div`
