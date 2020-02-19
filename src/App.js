@@ -16,11 +16,29 @@ import StyledContainer from './components/Styled/StyledContainer';
 import CreateDeck from './views/CreateDeck';
 import PreviewDeck from './views/PreviewDeck';
 import FlashCard from './views/FlashCard';
+import {
+  BrowserView, MobileView, isBrowser, isMobile,
+} from 'react-device-detect';
+import Footer from './components/Footer/Footer';
 
 function App( props ){
   const user = useSelector( state => state.usersReducer );
   const dispatch = useDispatch();
   const [ navBarVisable, setVisable ] = useState( false );
+  const [ dimensions, setDimensions ] = useState( {
+    width: window.innerWidth, height: document.body.clientHeight,
+  } );
+  
+  useEffect( () => {
+    window.addEventListener( 'resize', updateDimensions );
+    updateDimensions();
+  }, [] );
+  
+  const updateDimensions = () => {
+    setDimensions( {
+      width: window.innerWidth, height: document.body.scrollHeight,
+    } );
+  };
   
   //Promises. This function gets called in for google sign in
   useEffect( () => {
@@ -40,9 +58,10 @@ function App( props ){
     } );
   }, [] );
   
-  return ( <StyledApp className="App">
-    <StyledNavBar visable={ navBarVisable } { ...props }/>
-    <StyledContainer style={ { marginTop: '75px' } }>
+  return ( <StyledApp className="App" width={ dimensions.width }
+                      height={ dimensions.width } mobile={ isMobile }>
+    <StyledNavBar navBarVis={ navBarVisable }/>
+    <StyledContainer navBarVis={ navBarVisable }>
       <Switch>
         <LoginSignUpRoute path={ '/signup' }
                           component={ SignUp } { ...props } />
@@ -56,15 +75,21 @@ function App( props ){
         <LoginSignUpRoute path={ '/' } component={ LandingPage } { ...props } />
       </Switch>
     </StyledContainer>
+    
+    <Footer navBarVis={ navBarVisable }/>
   </StyledApp> );
 }
 
 const StyledApp = styled.div`
+position: relative;
   color: ${ props => props.theme.color };
-  height: 100%;
   text-align: center;
+  flex-direction: column;
   display: flex;
   justify-content: center;
+  max-height: 100vh;
+  min-height: 100vh;
+  overflow-y: hidden;
 `;
 
 export default withRouter( App );

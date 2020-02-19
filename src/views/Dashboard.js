@@ -42,7 +42,6 @@ const Dashboard = () => {
       } ) }
       <StyledCardDeck border={ 'dashed' } icon={ 'plus' }/>
     </StyledDeckHolder>
-    <Footer/>
   </StyledDashboard> );
 };
 
