@@ -18,17 +18,15 @@ function App(props) {
   const user = useSelector(state => state.usersReducer);
   const dispatch = useDispatch();
 
-  //Promises. This function gets called in for google sign in
-  useEffect(() => {
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        signedIn(user, dispatch);
-        if (
-          props.history.location.pathname == '/signin' ||
-          props.history.location.pathname == '/signup' ||
-          props.history.location.pathname == '/'
-        ) {
-          props.history.push('/dashboard');
+//Promises. This function gets called in for google sign in
+  useEffect( () => {
+    firebase.auth().onAuthStateChanged( user => {
+      const pathName = props.history.location.pathname;
+      if( user ){
+        signedIn( user, dispatch );
+        if( pathName === '/signin' || pathName === '/signup' || pathName ===
+          '/' ){
+          props.history.push( '/dashboard' );
         }
       } else {
         signout(dispatch);

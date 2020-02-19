@@ -33,6 +33,9 @@ export const signedIn = (user, dispatch) => {
 export const signout = (dispatch) => {
   
   localStorage.setItem('loggedIn', 'false');
+  // GIDSignIn.sharedInstance().signOut().then(() => {
+  //   dispatch(action(SIGNOUT))
+  // });
   firebase.auth().signOut().then(() => {
     dispatch(action(SIGNOUT))
   });
