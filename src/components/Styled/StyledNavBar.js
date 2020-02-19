@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import StyledAvatar from './StyledAvatar';
@@ -12,20 +12,33 @@ const StyledNavBar = ( { visable, ...props } ) => {
   
   const user = useSelector( state => state.usersReducer );
   const [ menuOpen, setMenuOpen ] = useState( false );
+  const [ avatarUrl, setAvatarUrl ] = useState( false );
   const dispatch = useDispatch();
+  
+  useEffect( () => {
+    if( visable ){
+      if( user.user && user.user.photoURL ){
+        setAvatarUrl( user.user.photoURL );
+      }else{
+        setAvatarUrl( false );
+      }
+    }else{
+      setAvatarUrl( false );
+    }
+  }, [ visable, user ] );
   
   const onAvatarClick = () => {
     setMenuOpen( !menuOpen );
   };
   
   const logout = () => {
+    setMenuOpen( false );
     signout( dispatch );
   };
   
   const content = ( <div>
     <StyledLink onClick={ logout }>Logout</StyledLink>
   </div> );
-  const url = user.user.photoURL;
   
   return ( <StyledBar visable={ visable }>
     <SmallWhiteLogo style={ {
@@ -33,7 +46,7 @@ const StyledNavBar = ( { visable, ...props } ) => {
     } }/>
     <Popover content={ content } visible={ menuOpen }
              placement="bottomRight">
-      <StyledAvatar onClick={ onAvatarClick } avatarUrl={ url }
+      <StyledAvatar onClick={ onAvatarClick } avatarUrl={ avatarUrl }
                     className={ 'ant-dropdown-link' }/>
     </Popover>
   </StyledBar> );

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import styled from 'styled-components';
 import { Switch, Route, withRouter } from 'react-router';
@@ -18,11 +18,13 @@ import StyledNavBar from './components/Styled/StyledNavBar';
 function App( props ){
   const user = useSelector( state => state.usersReducer );
   const dispatch = useDispatch();
+  const [ navBarVisable, setVisable ] = useState( false );
   
   //Promises. This function gets called in for google sign in
   useEffect( () => {
     firebase.auth().onAuthStateChanged( user => {
       if( user ){
+        setVisable( true );
         signedIn( user, dispatch );
         if( props.history.location.pathname == '/signin' ||
           props.history.location.pathname == '/signup' ||
@@ -31,16 +33,13 @@ function App( props ){
         }
       }else{
         signout( dispatch );
+        setVisable( false );
       }
     } );
   }, [] );
   
-  const handleButtonClick = () => {
-    fetchUser( dispatch );
-  };
-  
   return ( <StyledApp className="App">
-    <StyledNavBar visable={ !!user.user.uid }/>
+    <StyledNavBar visable={ navBarVisable }/>
     <Switch>
       <LoginSignUpRoute path={ '/signup' }
                         component={ SignUp } { ...props } />
