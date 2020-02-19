@@ -13,6 +13,9 @@ import LoginSignUpRoute from './routes/LoginSignUpRoute';
 import ProtectedRoute from './routes/ProtectedRoute';
 import StyledNavBar from './components/Styled/StyledNavBar';
 import StyledContainer from './components/Styled/StyledContainer';
+import CreateDeck from './views/CreateDeck';
+import PreviewDeck from './views/PreviewDeck';
+import FlashCard from './views/FlashCard';
 
 function App( props ){
   const user = useSelector( state => state.usersReducer );
@@ -39,13 +42,17 @@ function App( props ){
   
   return ( <StyledApp className="App">
     <StyledNavBar visable={ navBarVisable }/>
-    <StyledContainer>
+    <StyledContainer style={ { marginTop: '75px' } }>
       <Switch>
         <LoginSignUpRoute path={ '/signup' }
                           component={ SignUp } { ...props } />
         <LoginSignUpRoute path={ '/signin' }
                           component={ SignIn } { ...props } />
         <ProtectedRoute path={ '/dashboard' } component={ MainDashboard }/>
+        <ProtectedRoute path={ '/create/deck' } component={ CreateDeck }/>
+        <ProtectedRoute path={ '/preview' } component={ PreviewDeck }/>
+        <ProtectedRoute path={ '/game' } component={ FlashCard }/>
+        
         <LoginSignUpRoute path={ '/' } component={ LandingPage } { ...props } />
       </Switch>
     </StyledContainer>
