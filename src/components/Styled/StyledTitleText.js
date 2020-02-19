@@ -11,7 +11,7 @@ const StyledTitle = styled.div`
 color: #888888;
 font-weight: bold;
 font-size: 45px;
-margin-left: 6%;
+margin-left: 10%;
 margin-top: 24px;
 text-align: left;
 margin-botom: 36px;
