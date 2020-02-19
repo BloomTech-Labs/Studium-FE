@@ -5,10 +5,10 @@ export const FETCHING_USER = "FETCHING_USER";
 export const FETCHED_USER = "FETCHED_USER";
 
 export const fetchUser = ( dispatch ) => {
-  debugger;
+  
   dispatch( action( FETCHING_USER ) );
   setTimeout( () => {
-    debugger;
+    
     dispatch( action( FETCHED_USER, { name: "Jeremiah" } ) );
   }, 1000 );
   
@@ -31,7 +31,7 @@ export const signedIn = (user, dispatch) => {
 };
 
 export const signout = (dispatch) => {
-  debugger;
+  
   localStorage.setItem('loggedIn', 'false');
   // GIDSignIn.sharedInstance().signOut().then(() => {
   //   dispatch(action(SIGNOUT))
@@ -44,7 +44,7 @@ export const signout = (dispatch) => {
 
 
 export const signin = (authType, dispatch, email, password) => {
-  debugger;
+  
   dispatch(action(ATTEMPT_SIGNIN));
 
   if(authType === EMAIL_PROVIDER) {
@@ -85,12 +85,12 @@ export const signin = (authType, dispatch, email, password) => {
       .auth()
       .signInWithPopup(provider)
       .then(res => {
-        debugger;
+        
         signedIn(res.user, dispatch);
       }).catch(err => {
         dispatch(action(SIGNIN_FAILED, err.message));
         console.log(err);
       })
   }
-  debugger;
+  
 }

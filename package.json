@@ -40,7 +40,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "jsdoc": "^3.6.3"
-  }
+  "devDependencies": {}
 }
