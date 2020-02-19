@@ -7,6 +7,7 @@ import { Popover } from 'antd';
 import { signout } from '../../actions';
 import SmallLogo from './SmallLogo';
 import { useDispatch, useSelector } from 'react-redux';
+import StyledContainer from './StyledContainer';
 
 const StyledNavBar = ( { visable, ...props } ) => {
   
@@ -41,25 +42,30 @@ const StyledNavBar = ( { visable, ...props } ) => {
   </div> );
   
   return ( <StyledBar visable={ visable }>
-    <SmallWhiteLogo style={ {
-      position: 'absolute', left: '6%', top: '45%',
-    } }/>
-    <Popover content={ content } visible={ menuOpen }
-             placement="bottomRight">
-      <StyledAvatar onClick={ onAvatarClick } avatarUrl={ avatarUrl }
-                    className={ 'ant-dropdown-link' }/>
-    </Popover>
+    <StyledContainer justifyContent={ 'space-between' }>
+      <SmallWhiteLogo style={ {
+        position: 'absolute', left: '6%', top: '45%',
+      } }/>
+      <Popover content={ content } visible={ menuOpen }
+               placement="bottomRight">
+        <StyledAvatar onClick={ onAvatarClick } avatarUrl={ avatarUrl }
+                      className={ 'ant-dropdown-link' }/>
+      </Popover>
+    </StyledContainer>
   </StyledBar> );
 };
 
 StyledNavBar.propTypes = {};
 
 const StyledBar = styled.div`
+background-color: #585858;
+display: flex;
+justify-content: center;
+z-index: 15;
 position: absolute;
 top: ${ props => props.visable ? '0' : '-74px' };
 width: 100%;
 height: 74px;
-background-color: #585858;
 transition: all 2s;
 
 `;
