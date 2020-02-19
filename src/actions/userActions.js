@@ -24,6 +24,8 @@ export const ATTEMPT_SIGNIN = "ATTEMPT_SIGNIN"
 export const EMAIL_PROVIDER = "EMAIL_PROVIDER"
 export const GOOGLE_PROVIDER = "GOOGLE_PROVIDER"
 
+
+
 export const signedIn = (user, dispatch) => {
   localStorage.setItem('loggedIn', 'true');
   dispatch(action(SIGNED_IN, user));//calls reducer
@@ -94,3 +96,11 @@ export const signin = (authType, dispatch, email, password) => {
   }
   
 }
+
+//Check User register
+
+export const CHECK_USER_REGISTERED = "CHECK_USER_REGISTERED"
+export const USER_ATTEMPT_REGISTER = "USER_ATTEMPT_REGISTER"
+export const USER_REGISTER_FAILED = "USER_REGISTER_FAILED"
+export const USER_REGISTER_COMPLETE = "USER_REGISTER_COMPLETE"
+
