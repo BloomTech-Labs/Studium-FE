@@ -8,18 +8,16 @@ const StyledContainer = ( props ) => {
 };
 
 const Container = styled.div`
-margin-top: ${ props => props.navBarVis ? '75px' : 0 }
-margin-bottom: ${ props => props.navBarVis ? '75px' : 0 }
+margin-top: ${ props => props.navBarVis ? '75px' : 0 };
+margin-bottom: ${ props => props.navBarVis ? '75px' : 0 };
 min-height: 100%;
-position: relative;
+position: absolute;
 width: 100%;
 max-height: 100vh;
 max-width: 700px;
 display: flex;
 justify-content: ${ props => props.justifyContent || 'center' };
-align-items: center;
-justify-self: center;
-overflow-y: scroll;
+overflow-y: auto;
 `;
 
 export default StyledContainer;

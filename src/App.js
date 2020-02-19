@@ -36,7 +36,7 @@ function App( props ){
   
   const updateDimensions = () => {
     setDimensions( {
-      width: window.innerWidth, height: document.body.scrollHeight,
+      width: window.innerWidth, height: document.documentElement.scrollHeight,
     } );
   };
   
@@ -60,8 +60,9 @@ function App( props ){
   
   return ( <StyledApp className="App" width={ dimensions.width }
                       height={ dimensions.width } mobile={ isMobile }>
-    <StyledNavBar navBarVis={ navBarVisable }/>
-    <StyledContainer navBarVis={ navBarVisable }>
+    <StyledNavBar navBarVis={ navBarVisable } { ...props } />
+    <StyledContainer navBarVis={ navBarVisable }
+                     style={ { paddingBottom: '150px' } }>
       <Switch>
         <LoginSignUpRoute path={ '/signup' }
                           component={ SignUp } { ...props } />

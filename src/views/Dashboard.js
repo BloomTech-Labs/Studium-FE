@@ -57,7 +57,7 @@ const StyledDashboard = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 100%;
-  min-height: 90%;
+  height: 100%;
 `;
 
 export default Dashboard;
