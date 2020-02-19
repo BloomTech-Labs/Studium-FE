@@ -37,9 +37,21 @@ const StyledNavBar = ( { visable, ...props } ) => {
     signout( dispatch );
   };
   
-  const content = ( <div>
+  const changeRoute = ( route ) => {
+    setMenuOpen( false );
+    props.history.push( route );
+  };
+  
+  const content = ( <StyledMenu>
     <StyledLink onClick={ logout }>Logout</StyledLink>
-  </div> );
+    <StyledLink
+      onClick={ () => changeRoute( '/dashboard' ) }>Dashboard</StyledLink>
+    <StyledLink onClick={ () => changeRoute( '/create/deck' ) }>Create
+      Deck</StyledLink>
+    <StyledLink onClick={ () => changeRoute( '/preview' ) }>Preview</StyledLink>
+    
+    <StyledLink onClick={ () => changeRoute( '/game' ) }>Game</StyledLink>
+  </StyledMenu> );
   
   return ( <StyledBar visable={ visable }>
     <StyledContainer justifyContent={ 'space-between' }>
@@ -57,6 +69,11 @@ const StyledNavBar = ( { visable, ...props } ) => {
 
 StyledNavBar.propTypes = {};
 
+const StyledMenu = styled.div`
+display: flex;
+flex-direction: column;
+`;
+
 const StyledBar = styled.div`
 background-color: #585858;
 display: flex;
@@ -72,6 +89,7 @@ transition: all 2s;
 
 const StyledLink = styled.a`
 font-weight: bold;
+color: #0925658c;
 `;
 
 export default StyledNavBar;

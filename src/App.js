@@ -41,7 +41,7 @@ function App( props ){
   }, [] );
   
   return ( <StyledApp className="App">
-    <StyledNavBar visable={ navBarVisable }/>
+    <StyledNavBar visable={ navBarVisable } { ...props }/>
     <StyledContainer style={ { marginTop: '75px' } }>
       <Switch>
         <LoginSignUpRoute path={ '/signup' }
