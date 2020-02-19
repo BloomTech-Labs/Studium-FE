@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Card } from 'antd';
+import { Card, Icon } from 'antd';
+
 
 const StyledCardDeck = ({
   text,
@@ -22,7 +23,8 @@ const StyledCardDeck = ({
       block={block && 'block'}
       {...props}
     >
-      {text}
+    {icon && <Icon type={icon} />}
+    {text}
     </StyledAntdCard>
   );
 };

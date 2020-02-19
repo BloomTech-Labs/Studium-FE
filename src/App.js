@@ -1,36 +1,63 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import styled from 'styled-components';
-import { Switch, Route } from 'react-router';
+import { Switch, Route, withRouter } from 'react-router';
 import LandingPage from './views/LandingPage';
 import MainDashboard from './views/Dashboard';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchUser } from './actions';
 import SignUp from './views/SignUp';
 import SignIn from './views/SignIn';
+import firebase from './firebase/FirebaseConfig';
+import { signedIn, signout } from './actions';
+import LoginSignUpRoute from './routes/LoginSignUpRoute';
+import ProtectedRoute from './routes/ProtectedRoute';
+import LogoutView from './views/LogoutView';
 
-function App(props) {
-  const user = useSelector(state => state.usersReducer);
+function App( props ){
+  const user = useSelector( state => state.usersReducer );
   const dispatch = useDispatch();
 
+//Promises. This function gets called in for google sign in
+  useEffect( () => {
+    firebase.auth().onAuthStateChanged( user => {
+      
+      if( user ){
+        signedIn( user, dispatch );
+        if( props.history.location.pathname == '/signin' ||
+          props.history.location.pathname == '/signup' ||
+          props.history.location.pathname == '/' ){
+          props.history.push( '/dashboard' );
+        }
+      }else{
+        signout( dispatch );
+      }
+    } );
+  }, [] );
+  
   const handleButtonClick = () => {
-    fetchUser(dispatch);
+    fetchUser( dispatch );
   };
-
-  return (
-    <StyledApp className='App'>
-      <Switch>
-        <Route exact path={'/'} render={props => <LandingPage {...props} />} />
-        <Route path={'/signup'} render={props => <SignUp {...props} />} />
-        <Route path={'/signin'} render={props => <SignIn {...props} />} />
-        <Route path={'/dashboard'} render={props => <MainDashboard {...props} />} />
-      </Switch>
-    </StyledApp>
-  );
+  
+  return ( <StyledApp className='App'>
+    <Switch>
+      
+      <LoginSignUpRoute path={ '/signup' }
+                        component={ SignUp } { ...props }/>
+      <LoginSignUpRoute path={ '/signin' }
+                        component={ SignIn } { ...props }/>
+      <ProtectedRoute path={ '/dashboard' } component={ LogoutView }/>
+      <LoginSignUpRoute path={ '/' }
+                        component={ LandingPage } { ...props }
+      />
+    </Switch>
+  </StyledApp> );
 }
 
 const StyledApp = styled.div`
-  color: ${props => props.theme.color};
+  color: ${ props => props.theme.color };
+  height: 100%;
+  text-align: center;
 `;
 
-export default App;
+export default withRouter( App );
