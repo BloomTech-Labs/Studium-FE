@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import styled from 'styled-components';
-import { Switch, Route, withRouter } from 'react-router';
+import { Switch, withRouter } from 'react-router';
 import LandingPage from './views/LandingPage';
+import MainDashboard from './views/Dashboard';
 import { useSelector, useDispatch } from 'react-redux';
-import StyledButton from './components/Styled/StyledButton';
-import { fetchUser } from './actions';
 import SignUp from './views/SignUp';
 import SignIn from './views/SignIn';
 import firebase from './firebase/FirebaseConfig';
@@ -14,28 +13,37 @@ import LoginSignUpRoute from './routes/LoginSignUpRoute';
 import ProtectedRoute from './routes/ProtectedRoute';
 import LogoutView from './views/LogoutView';
 import BigFlashCard from './components/Styled/BigFlashCard';
+import StyledNavBar from './components/Styled/StyledNavBar';
+import StyledContainer from './components/Styled/StyledContainer';
+import CreateDeck from './views/CreateDeck';
+import PreviewDeck from './views/PreviewDeck';
+import FlashCard from './views/FlashCard';
+
 
 function App( props ){
   const user = useSelector( state => state.usersReducer );
   const dispatch = useDispatch();
-
-//Promises. This function gets called in for google sign in
+  const [ navBarVisable, setVisable ] = useState( false );
+  
+  //Promises. This function gets called in for google sign in
   useEffect( () => {
     firebase.auth().onAuthStateChanged( user => {
-      
+      const pathName = props.history.location.pathname;
       if( user ){
+        setVisable( true );
         signedIn( user, dispatch );
-        if( props.history.location.pathname == '/signin' ||
-          props.history.location.pathname == '/signup' ||
-          props.history.location.pathname == '/' ){
+        if( pathName === '/signin' || pathName === '/signup' || pathName ===
+          '/' ){
           props.history.push( '/dashboard' );
         }
       }else{
         signout( dispatch );
+        setVisable( false );
       }
     } );
   }, [] );
   
+
   const handleButtonClick = () => {
     fetchUser( dispatch );
   };
@@ -45,19 +53,23 @@ function App( props ){
     question: "This is the question",
     answer: "This is the answer"
   }
-  return ( <StyledApp className='App'>
-    {/* <BigFlashCard flashCard = {card}></BigFlashCard> */}
-    <Switch>
-      
-      <LoginSignUpRoute path={ '/signup' }
-                        component={ SignUp } { ...props }/>
-      <LoginSignUpRoute path={ '/signin' }
-                        component={ SignIn } { ...props }/>
-      <ProtectedRoute path={ '/dashboard' } component={ LogoutView }/>
-      <LoginSignUpRoute path={ '/' }
-                        component={ LandingPage } { ...props }
-      />
-    </Switch>
+  return ( <StyledApp className="App">
+    <StyledNavBar visable={ navBarVisable } { ...props }/>
+    <StyledContainer style={ { marginTop: '75px' } }>
+      <Switch>
+        <LoginSignUpRoute path={ '/signup' }
+                          component={ SignUp } { ...props } />
+        <LoginSignUpRoute path={ '/signin' }
+                          component={ SignIn } { ...props } />
+        <ProtectedRoute path={ '/dashboard' } component={ MainDashboard }/>
+        <ProtectedRoute path={ '/create/deck' } component={ CreateDeck }/>
+        <ProtectedRoute path={ '/preview' } component={ PreviewDeck }/>
+        <ProtectedRoute path={ '/game' } component={ FlashCard }/>
+        
+        <LoginSignUpRoute path={ '/' } component={ LandingPage } { ...props } />
+      </Switch>
+    </StyledContainer>
+
   </StyledApp> );
 }
 
@@ -65,6 +77,8 @@ const StyledApp = styled.div`
   color: ${ props => props.theme.color };
   height: 100%;
   text-align: center;
+  display: flex;
+  justify-content: center;
 `;
 
 export default withRouter( App );

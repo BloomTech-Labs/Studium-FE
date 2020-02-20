@@ -51,6 +51,7 @@ export default function SignIn(){
 }
 
 const StyledSignIn = styled.div`
+  margin-top: 146px;
   display: flex;
   flex-direction: column;
   align-items: center;
