@@ -55,7 +55,6 @@ const StyledDeckHolder = styled.div`
 `;
 
 const StyledDashboard = styled.div`
-  margin-top: 74px;
   display: flex;
   flex-direction: column;
   max-width: 100%;
