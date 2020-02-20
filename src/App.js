@@ -41,11 +41,12 @@ function App( props ){
   };
   const card = {
     id: 5,
+    // image:"Picture",
     question: "This is the question",
     answer: "This is the answer"
   }
   return ( <StyledApp className='App'>
-    <BigFlashCard flashCard = {card}></BigFlashCard>
+    {/* <BigFlashCard flashCard = {card}></BigFlashCard> */}
     <Switch>
       
       <LoginSignUpRoute path={ '/signup' }

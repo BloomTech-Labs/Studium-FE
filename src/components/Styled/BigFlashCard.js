@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import logo from "../../images/smalllogo.png";
 import { Card } from 'antd';
 
-const BigFlashCard = ( {flashCard} ) => { 
+const BigFlashCard = ( {flashCard, flashImage} ) => { 
     const [position, setPosition] = useState("front"); 
     const flipCard = () => {
         const newPos = position === "front" ? "back" : "front";
@@ -13,7 +13,7 @@ const BigFlashCard = ( {flashCard} ) => {
     <div style = {{position: "relative"}}>
         <StyledCard position = {position} onClick = {flipCard} style = {{width:"285px", height:"421.56px"}}>
             <CardText>
-                {position === "front" ? flashCard.question : flashCard.answer}
+                { position === "front" ? flashCard.question : flashCard.answer}
            </CardText>
         </StyledCard>
         <StyledStackCard>
@@ -42,6 +42,10 @@ const StyledCard = styled (Card)`
 margin: 121px auto 0 auto; 
 background: ${props => props.position === "front" ? "#F7F7F7" : "#1b1414c9" };
 color: ${props => props.position === "front" ? "#1b1414c9" : "white" };
+
+-webkit-box-shadow: 13px 18px 25px 0px rgba(33,32,33,1);
+-moz-box-shadow: 13px 18px 25px 0px rgba(33,32,33,1);
+box-shadow: 13px 18px 25px 0px rgba(33,32,33,1);
 border-radius: 11px;
 > .ant-card-body {
     min-height: 100%;
