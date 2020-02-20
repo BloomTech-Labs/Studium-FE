@@ -41,10 +41,17 @@ StyledCreateCardBtn.propTypes = {
 }
 
 const StyledAntdButton = styled(Button)`
-
+    && {
+        position: absolute;
+        width: 99px;
+        height: 99px;
+        left: 139px;
+        top: 688px;
+        background: #d7d7d7;
+        border: 7px solid #fff;
+        box-sizing: border-box;
+        border-radius: 50%;
+        
+    }
 `
-
-
-
-
 export default StyledCreateCardBtn;

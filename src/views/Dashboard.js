@@ -4,6 +4,7 @@ import Footer from '../components/Footer/Footer';
 import StyledCardDeck from '../components/Styled/StyledCardDeck';
 import StyledTitleText from '../components/Styled/StyledTitleText';
 import StyledSearchBar from '../components/Styled/StyledSearchBar';
+import StyledCreateCardBtn from '../components/Styled/StyledCreateCardBtn';
 
 const decks = [
   { deck_name: 'Some Name' }, { deck_name: 'Another Name' },
@@ -42,6 +43,12 @@ const Dashboard = () => {
       } ) }
       <StyledCardDeck border={ 'dashed' } icon={ 'plus' }/>
     </StyledDeckHolder>
+    <StyledCreateCardBtn 
+    icon={'plus'}
+    size={'large'}
+    >
+
+    </StyledCreateCardBtn>
     <Footer/>
   </StyledDashboard> );
 };
