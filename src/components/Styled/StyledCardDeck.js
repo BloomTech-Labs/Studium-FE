@@ -15,7 +15,8 @@ const StyledCardDeck = ( {
     block={ block && 'block' }
     { ...props }
   >
-    { icon && <Icon type={ icon }/> }
+    { icon &&
+    <Icon type={ icon } style={ { fontSize: '32px', color: 'black' } }/> }
     { deck && <p className={ 'card-text' }>{ deck.deck_name }</p> }
   </StyledAntdCard> );
 };
