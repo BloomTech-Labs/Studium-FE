@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchUser } from './actions';
 import SignUp from './views/SignUp';
 import SignIn from './views/SignIn';
+import Card from './views/Card';
 import firebase from './firebase/FirebaseConfig';
 import { signedIn, signout } from './actions';
 import LoginSignUpRoute from './routes/LoginSignUpRoute';
@@ -44,6 +45,7 @@ function App(props) {
         <LoginSignUpRoute path={'/signup'} component={SignUp} {...props} />
         <LoginSignUpRoute path={'/signin'} component={SignIn} {...props} />
         <ProtectedRoute path={'/dashboard'} component={MainDashboard} />
+        <ProtectedRoute path={'/card'} component={Card} />
         <LoginSignUpRoute path={'/'} component={LandingPage} {...props} />
       </Switch>
     </StyledApp>
