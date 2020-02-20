@@ -13,6 +13,7 @@ import { signedIn, signout } from './actions';
 import LoginSignUpRoute from './routes/LoginSignUpRoute';
 import ProtectedRoute from './routes/ProtectedRoute';
 import LogoutView from './views/LogoutView';
+import BigFlashCard from './components/Styled/BigFlashCard';
 
 function App( props ){
   const user = useSelector( state => state.usersReducer );
@@ -38,8 +39,13 @@ function App( props ){
   const handleButtonClick = () => {
     fetchUser( dispatch );
   };
-  
+  const card = {
+    id: 5,
+    question: "This is the question",
+    answer: "This is the answer"
+  }
   return ( <StyledApp className='App'>
+    <BigFlashCard flashCard = {card}></BigFlashCard>
     <Switch>
       
       <LoginSignUpRoute path={ '/signup' }
