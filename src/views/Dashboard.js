@@ -40,6 +40,7 @@ const Dashboard = () => {
       { decks.map( deck => {
         return <StyledCardDeck deck={ deck } border={ 'solid' }/>;
       } ) }
+      <StyledCardDeck border={ 'dashed' } icon={ 'plus' }/>
     </StyledDeckHolder>
     <Footer/>
   </StyledDashboard> );
