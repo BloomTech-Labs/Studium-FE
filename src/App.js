@@ -88,6 +88,7 @@ position: relative;
   flex-direction: column;
   display: flex;
   justify-content: center;
+  align-items: center;
   max-height: 100vh;
   min-height: 100vh;
   overflow-y: hidden;

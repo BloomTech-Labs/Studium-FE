@@ -8,8 +8,7 @@ const StyledContainer = ( props ) => {
 };
 
 const Container = styled.div`
-margin-top: ${ props => props.navBarVis ? '75px' : 0 };
-margin-bottom: ${ props => props.navBarVis ? '75px' : 0 };
+margin: ${ props => props.navBarVis ? '75px auto' : ' 0 auto' };
 min-height: 100%;
 position: absolute;
 width: 100%;
