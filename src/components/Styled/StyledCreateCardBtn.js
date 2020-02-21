@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Button } from 'antd';
+import { Button, Icon } from 'antd';
 
 const StyledCreateCardBtn = ({
     text, 
@@ -18,12 +18,12 @@ const StyledCreateCardBtn = ({
         <StyledAntdButton
         type={type}
         size={size}
-        icon={icon}
         shape={shape}
         loading={loading && 'loading'}
         block={block && 'block'}
         {...props}
         >
+        {<Icon type={icon} style={{ fontSize: '50px'}}/>}
         {text}
         </StyledAntdButton>
     );
@@ -47,11 +47,10 @@ const StyledAntdButton = styled(Button)`
         height: 99px;
         left: 139px;
         top: 688px;
+        padding: 10px;
         background: #d7d7d7;
-        border: 7px solid #fff;
+        border-style: none;
         box-sizing: border-box;
-        border-radius: 50%;
-        
     }
 `
 export default StyledCreateCardBtn;

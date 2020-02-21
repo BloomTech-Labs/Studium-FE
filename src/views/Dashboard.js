@@ -43,10 +43,13 @@ const Dashboard = () => {
       } ) }
       <StyledCardDeck border={ 'dashed' } icon={ 'plus' }/>
     </StyledDeckHolder>
+
     <StyledCreateCardBtn 
     icon={'plus'}
     size={'large'}
+    shape={'circle'}
     >
+    icon={'plus'}
 
     </StyledCreateCardBtn>
     <Footer/>
