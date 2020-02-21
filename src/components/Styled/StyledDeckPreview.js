@@ -23,7 +23,7 @@ const StyledDeckPreview = ({
         block={block && 'block'}
         {...props}        
         >
-        {text}
+        {deck && <p className={'deck-text'}>{deck.card_name}</p>}
         </StyledAntdCard>
     );
 };
@@ -40,7 +40,6 @@ StyledDeckPreview.propTypes = {
 
 const StyledAntdCard = styled(Card)`
  && {
-    position: absolute;
     width: 97px;
     height: 153px;
     left: 22px;
@@ -48,6 +47,10 @@ const StyledAntdCard = styled(Card)`
     border-radius: 13px;
     border: 3px solid rgba(136, 136, 136, 0.75);
     box-sizing: border-box;
+
+    > .deck-text {        
+    }
+ 
  }
 `
 export default StyledDeckPreview;
