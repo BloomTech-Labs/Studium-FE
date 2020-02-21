@@ -28,7 +28,7 @@ const StyledDeckPreview = ({
     );
 };
 
-StyledCardPreview.propTypes = {
+StyledDeckPreview.propTypes = {
     text: PropTypes.string,
     types: PropTypes.oneOf(['inner']),
     size: PropTypes.oneOf(['default']),
@@ -38,7 +38,16 @@ StyledCardPreview.propTypes = {
     hoverable: PropTypes.bool,
 }
 
-const StyledDeckPreview = styled(Card)`
-
+const StyledAntdCard = styled(Card)`
+ && {
+    position: absolute;
+    width: 97px;
+    height: 153px;
+    left: 22px;
+    top: 194px;
+    border-radius: 13px;
+    border: 3px solid rgba(136, 136, 136, 0.75);
+    box-sizing: border-box;
+ }
 `
 export default StyledDeckPreview;
