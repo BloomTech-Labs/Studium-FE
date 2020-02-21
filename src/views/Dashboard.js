@@ -49,8 +49,6 @@ const Dashboard = () => {
     size={'large'}
     shape={'circle'}
     >
-    icon={'plus'}
-
     </StyledCreateCardBtn>
     <Footer/>
   </StyledDashboard> );
