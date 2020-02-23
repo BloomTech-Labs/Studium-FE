@@ -4,22 +4,13 @@
 
 🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
 
-# 1️⃣ Title of project goes here
+# 1️⃣ Synaps
 
-1️⃣ You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
+1️⃣( https://production-lambda-synaps-fe.herokuapp.com/.)
 
 ## 4️⃣ Contributors
 
-🚫Add contributor info below, make sure add images and edit the social links for each member. Add to or delete these place-holders as needed
-
  [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200"/>](https://github.com/austinbro5)[<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200"/>](https://github.com/ccurry20) [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200"/>](https://github.com/christopherc1331) [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200"/>](https://github.com/gmgower)[<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200"/>](https://github.com/Brimes7)[<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200"/>](https://github.com/jeremiahtenbrink)                                              
-                                        
-                                        
-                                          
-                     
-             
-
-🚫 4️⃣ Optional examples of using images with links for your tech stack, make sure to change these to fit your project
 
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
@@ -27,7 +18,6 @@
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-🚫 more info on using badges [here](https://github.com/badges/shields)
 
 ## Project Overview
 
@@ -52,27 +42,60 @@ To create the best Life Science flashcard application, that has excellent UI, wh
 ## 1️⃣ Tech Stack
 
 ### Front end built using:
+React and Styled componets 
 
 #### _Front end framework goes here_
+"@testing-library/jest-dom": "^4.2.4",
 
-🚫 Why did you choose this framework?
+    "@testing-library/react": "^9.3.2",
+    
+    "@testing-library/user-event": "^7.1.2",
+    
+    "antd": "^3.26.9",
+    
+    "cloudinary-react": "^1.3.0",
+    
+    "firebase": "^7.8.1",
+    
+    "prop-types": "^15.7.2",
+    
+    "react": "^16.12.0",
+    
+    "react-dom": "^16.12.0",
+    
+    "react-redux": "^7.1.3",
+    
+    "react-router-dom": "^5.1.2",
+    
+    "react-scripts": "3.3.1",
+    
+    "redux": "^4.0.5",
+    
+    "redux-thunk": "^2.3.0",
+    
+    "styled-components": "^5.0.1",
+    
+    "styled-reset": "^4.1.0".
+#### Front end deployed to  https://production-lambda-synaps-fe.herokuapp.com/
 
--    point one
--    point two
--    point three
--    point four
+#### [Back end](https://github.com/Lambda-School-Labs/pt-synaps-be) built using:Postgress
 
-🚫List the rest of the front end features and libraries in the same format as the framework above.
-
-#### Front end deployed to `🚫insert service here`
-
-#### [Back end](🚫link to back end repo here) built using:
-
-#### 🚫 back end framework goes here
-
--    point one
--    point two
--    point three
+####  back end framework 
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^3.21.2",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.20.4",
+    "knex-cleaner": "^1.3.0",
+    "pg": "^7.17.0",
+    "sqlite3": "^4.1.1"
+    "devDependencies": {
+    "cross-env": "^6.0.3",
+    "jest": "^24.9.0",
+    "nodemon": "^2.0.2",
+    "supertest": "^4.0.2"
 
 🚫 List the rest of the back end end features and libraries in the same format as the framework above
 
@@ -139,8 +162,12 @@ In order for the app to function correctly, the user must set up their own envir
 🚫Document what you used for testing and why
 
 # 4️⃣ Installation Instructions
-
-🚫explain how to install the required dependencies to get this project up and running with yarn and NPM
+  FrontEnd
+  Npm install should install all dependences 
+  npx create-react-app
+ 
+ BackEnd 
+  node install
 
 ## Other Scripts
 
@@ -154,6 +181,7 @@ In order for the app to function correctly, the user must set up their own envir
 # Contributing
 
 When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
+synaps.lambda@gmail.com
 
 Please note we have a [code of conduct](./CODE_OF_CONDUCT.md). Please follow it in all your interactions with the project.
 
@@ -168,6 +196,7 @@ Please note we have a [code of conduct](./CODE_OF_CONDUCT.md). Please follow it 
 ### Feature Requests
 
 We would love to hear from you about new features which would improve this app and further the aims of our project. Please provide as much detail and information as possible to show us why you think your new feature should be implemented.
+synaps.lambda@gmail.com
 
 ### Pull Requests
 
@@ -189,4 +218,4 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 
 ## Documentation
 
-See [Backend Documentation](🚫_link to your backend readme here_) for details on the backend of our project.
+See [Backend Documentation](https://github.com/Lambda-School-Labs/pt-synaps-be/blob/master/README.md) for details on the backend of our project.
