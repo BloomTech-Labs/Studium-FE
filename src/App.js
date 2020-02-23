@@ -7,7 +7,7 @@ import MainDashboard from './views/Dashboard';
 import { useSelector, useDispatch } from 'react-redux';
 import SignUp from './views/SignUp';
 import SignIn from './views/SignIn';
-import firebase from './firebase/FirebaseConfig';
+import firebase from './config/firebase/FirebaseConfig';
 import { signedIn, signout } from './actions';
 import LoginSignUpRoute from './routes/LoginSignUpRoute';
 import ProtectedRoute from './routes/ProtectedRoute';
@@ -20,6 +20,8 @@ import {
   BrowserView, MobileView, isBrowser, isMobile,
 } from 'react-device-detect';
 import Footer from './components/Footer/Footer';
+import PropTypes from 'prop-types';
+import Testing from './views/Testing';
 
 function App( props ){
   const user = useSelector( state => state.usersReducer );
@@ -46,9 +48,9 @@ function App( props ){
       if( user ){
         setVisable( true );
         signedIn( user, dispatch );
-        if( props.history.location.pathname == '/signin' ||
-          props.history.location.pathname == '/signup' ||
-          props.history.location.pathname == '/' ){
+        if( props.history.location.pathname === '/signin' ||
+          props.history.location.pathname === '/signup' ||
+          props.history.location.pathname === '/' ){
           props.history.push( '/dashboard' );
         }
       }else{
@@ -58,27 +60,31 @@ function App( props ){
     } );
   }, [] );
   
-  return ( <StyledApp className="App" width={ dimensions.width }
-                      height={ dimensions.width } mobile={ isMobile }>
-    <StyledNavBar navBarVis={ navBarVisable } { ...props } />
-    <StyledContainer navBarVis={ navBarVisable }
-                     style={ { paddingBottom: '150px' } }>
-      <Switch>
-        <LoginSignUpRoute path={ '/signup' }
-                          component={ SignUp } { ...props } />
-        <LoginSignUpRoute path={ '/signin' }
-                          component={ SignIn } { ...props } />
-        <ProtectedRoute path={ '/dashboard' } component={ MainDashboard }/>
-        <ProtectedRoute path={ '/create/deck' } component={ CreateDeck }/>
-        <ProtectedRoute path={ '/preview' } component={ PreviewDeck }/>
-        <ProtectedRoute path={ '/game' } component={ FlashCard }/>
-        
-        <LoginSignUpRoute path={ '/' } component={ LandingPage } { ...props } />
-      </Switch>
-    </StyledContainer>
+  return (
     
-    <Footer navBarVis={ navBarVisable }/>
-  </StyledApp> );
+    <StyledApp className="App" width={ dimensions.width }
+               height={ dimensions.width } mobile={ isMobile }>
+      <StyledNavBar navBarVis={ navBarVisable } { ...props } />
+      <StyledContainer navBarVis={ navBarVisable }
+                       style={ { paddingBottom: '150px' } }>
+        <Switch>
+          <LoginSignUpRoute path={ '/signup' }
+                            component={ SignUp } { ...props } />
+          <LoginSignUpRoute path={ '/signin' }
+                            component={ SignIn } { ...props } />
+          <ProtectedRoute path={ '/dashboard' } component={ MainDashboard }/>
+          <ProtectedRoute path={ '/create/deck' } component={ CreateDeck }/>
+          <ProtectedRoute path={ '/preview' } component={ PreviewDeck }/>
+          <ProtectedRoute path={ '/game' } component={ FlashCard }/>
+          <ProtectedRoute path={ '/test' } component={ Testing }/>
+          
+          <LoginSignUpRoute path={ '/' }
+                            component={ LandingPage } { ...props } />
+        </Switch>
+      </StyledContainer>
+      
+      <Footer navBarVis={ navBarVisable }/>
+    </StyledApp> );
 }
 
 const StyledApp = styled.div`
@@ -93,5 +99,15 @@ position: relative;
   min-height: 100vh;
   overflow-y: hidden;
 `;
+
+App.propTypes = {
+  cloudName: PropTypes.string,
+  uploadPreset: PropTypes.string,
+  onPhotosFetched: PropTypes.func,
+};
+
+App.contextTypes = {
+  cloudName: PropTypes.string, uploadPreset: PropTypes.string,
+};
 
 export default withRouter( App );
