@@ -16,7 +16,6 @@ import StyledContainer from './components/Styled/StyledContainer';
 import CreateDeck from './views/CreateDeck';
 import PreviewDeck from './views/PreviewDeck';
 import FlashCard from './views/FlashCard';
-import CardIcon from './components/Styled/CardIcon';
 
 function App( props ){
   const user = useSelector( state => state.usersReducer );
@@ -49,15 +48,8 @@ function App( props ){
   //   answer: "This is the answer"
   // }
   
-  //Card Preview Test
-  // const preview = {
-  //   number: "1",
-  // }
-
   return ( <StyledApp className="App">
-    {/* <CardIcon cardNumber = {preview}/> */}
     <StyledNavBar visable={ navBarVisable } { ...props }/>
-    
     <StyledContainer style={ { marginTop: '75px' } }>
       <Switch>
         <LoginSignUpRoute path={ '/signup' }
