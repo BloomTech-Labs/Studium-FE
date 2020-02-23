@@ -105,9 +105,9 @@ export const USER_REGISTER_FAILED = "USER_REGISTER_FAILED"
 export const USER_REGISTER_COMPLETE = "USER_REGISTER_COMPLETE"
 
 
-//functions for registering.
+//functions for registering. Need to use .then to check database.
 
 export const checkUser = (dispatch) => {
   dispatch (action(CHECK_USER_REGISTERED));
-  
+
 }
