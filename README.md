@@ -163,7 +163,7 @@ In order for the app to function correctly, the user must set up their own envir
 
 # 4️⃣ Installation Instructions
 
-🚫 Npm install
+  Npm install
 
 ## Other Scripts
 
