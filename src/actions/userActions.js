@@ -107,3 +107,7 @@ export const USER_REGISTER_COMPLETE = "USER_REGISTER_COMPLETE"
 
 //functions for registering.
 
+export const checkUser = (dispatch) => {
+  dispatch (action(CHECK_USER_REGISTERED));
+  
+}
