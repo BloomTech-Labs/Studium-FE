@@ -49,6 +49,7 @@ function App( props ){
   //   answer: "This is the answer"
   // }
   
+
   //Card Preview Test
   // const preview = {
   //   number: "1",
@@ -58,6 +59,10 @@ function App( props ){
     {/* <CardIcon cardNumber = {preview}/> */}
     <StyledNavBar visable={ navBarVisable } { ...props }/>
     
+
+  return ( <StyledApp className="App">
+    <StyledNavBar visable={ navBarVisable } { ...props }/>
+
     <StyledContainer style={ { marginTop: '75px' } }>
       <Switch>
         <LoginSignUpRoute path={ '/signup' }
