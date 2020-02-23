@@ -162,8 +162,12 @@ In order for the app to function correctly, the user must set up their own envir
 🚫Document what you used for testing and why
 
 # 4️⃣ Installation Instructions
-
-  Npm install
+  FrontEnd
+  Npm install should install all dependences 
+  npx create-react-app
+ 
+ BackEnd 
+  node install
 
 ## Other Scripts
 
