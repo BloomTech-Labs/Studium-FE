@@ -43,6 +43,7 @@ To create the best Life Science flashcard application, that has excellent UI, wh
 
 ### Front end built using:
 React and Styled componets 
+
 #### _Front end framework goes here_
 "@testing-library/jest-dom": "^4.2.4",
 
@@ -79,7 +80,7 @@ React and Styled componets
 
 #### [Back end](https://github.com/Lambda-School-Labs/pt-synaps-be) built using:Postgress
 
-#### 🚫 back end framework goes here
+####  back end framework 
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
