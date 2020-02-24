@@ -129,6 +129,7 @@ color: #000000;
 `;
 
 const StyledLandingPage = styled.div`
+margin-bottom: 75px;
 `;
 
 const Headline = styled.div`

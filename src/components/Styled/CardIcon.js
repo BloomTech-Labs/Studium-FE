@@ -1,62 +1,62 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { Card } from 'antd';
+import PropTypes from 'prop-types';
 
-const CardIcon = ({cardNumber}) => {
-    return (
-        <div style = {{position: "absolute"}}>
-    <StyledStackedCardIconTwo></StyledStackedCardIconTwo>
-        <StyledStackedCardIcon></StyledStackedCardIcon>
-            <StyledCardIcon style = {{width:"40px", height:"47px"}}>
-                <CardIconText>{cardNumber.number}</CardIconText>
-            </StyledCardIcon>
-            
-        </div>
-        )
-    }
+const CardIcon = ( { cardNumber, width, height, border } ) => {
+  
+  return ( <StyledCardIconContainer width={ width } height={ height }
+                                    border={ border }>
+    <StyledStackedCardIconTwo width={ width } height={ height }
+                              border={ border }/>
+    <StyledStackedCardIcon width={ width } height={ height }
+                           border={ border }/>
+    <StyledCardIcon width={ width } height={ height }
+                    border={ border }/>
+    <CardIconText>{ cardNumber && cardNumber }</CardIconText>
+  </StyledCardIconContainer> );
+};
 
-const StyledCardIcon = styled (Card)`
-&& {
-    display:flex;
-    width: 40px;
-    height: 52px;
-    left: 316px;
-    top: 110px;
-    background: #C4C4C4;
-    border: 1px solid #FFFFFF;
-    box-sizing: border-box;
-    }
-`
+CardIcon.propTypes = {
+  cardNumber: PropTypes.number,
+  width: PropTypes.string,
+  height: PropTypes.string,
+  white: PropTypes.number,
+};
 
-const StyledStackedCardIcon = styled (Card)`
-&& {
-    position: absolute;
-    width: 42px;
-    height: 53px;
-    left: 321px;
-    top: 102px;
-    background: #C4C4C4;
-    border: 1px solid #FFFFFF;
-    box-sizing: border-box;
-}
-`
-const StyledStackedCardIconTwo = styled (Card)`
-&& {
+const StyledCardIconContainer = styled.div`
+margin-top: 4rem;
+position: relative;
+width: ${ props => props.width ? props.width : '80px' };
+height: ${ props => props.height ? props.height : '108px' };
+`;
+
+const StyledCardIcon = styled.div`
 position: absolute;
-width: 42px;
-height: 56px;
-left: 328px;
-top: 94px;
+display:flex;
+width: ${ props => props.width ? props.width : '80px' };
+height: ${ props => props.height ? props.height : '108px' };
+left: 0;
+bottom: 0;
 background: #C4C4C4;
-border: 1px solid #FFFFFF;
-box-sizing: border-box;
-}
-`
+border: ${ props => props.border ? props.border : '3px solid white' };
+    
+`;
+
+const StyledStackedCardIcon = styled( StyledCardIcon )`
+  left: 20%;
+  bottom: 15%;
+`;
+const StyledStackedCardIconTwo = styled( StyledCardIcon )`
+    left: 40%;
+    bottom: 30%;
+
+`;
 
 const CardIconText = styled.div`
 position: absolute;
-top: 12px;
-left: 36%;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
 font-family: Fredoka One;
 font-style: normal;
 font-weight: 900;
@@ -64,5 +64,5 @@ font-size: 30px;
 line-height: 18px;
 text-align: center;
 color: #000000; 
-`
+`;
 export default CardIcon;
