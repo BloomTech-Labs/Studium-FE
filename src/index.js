@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
@@ -18,15 +18,29 @@ ${ reset }
 `;
 
 const theme = {
-  mainColor: '#c4c4c4',
-  lightGray: '#D7D7D7',
+  
+  lightLightGray: '#D7D7D7',
+  lightGray: '#c4c4c4',
   gray: '#C4C4C4',
   darkGray: '#585858',
   darkDarkGray: '#3a3a3a',
-  color: 'blue',
-  largeRadius: '14px',
-  smallRadius: '6px',
+  
+  largeRadius: 14,
+  smallRadius: 6,
+  
+  navBarTopHeight: 75,
+  footerHeight: 50,
+  
+  screenHeight: window.innerHeight,
+  screenWidth: window.outerWidth,
+  
 };
+const updateDimensions = () => {
+  theme.screenHeight = window.innerHeight;
+  theme.screenWidth = window.innerWidth;
+};
+
+window.addEventListener( 'resize', updateDimensions );
 
 const store = createStore( rootReducer, applyMiddleware( thunk ) );
 

@@ -6,17 +6,23 @@ import StyledContainer from '../Styled/StyledContainer';
 
 export default function Footer( props ){
   
-  return ( <StyledFooter { ...props } >
-    <StyledContainer
-      style={ {
-        alignItems: 'center',
-        justifyContent: 'space-around',
-        position: 'relative',
-      } } overFlowY={ 'visible' }>
+  const addDeck = () => {
+    debugger;
+    props.history.push( '/create/deck' );
+  };
+  
+  return ( <StyledFooter { ...props } className={ 'footer' }>
+    <StyledContainer className={ 'footer-container' } maxHeight={ '50px' }
+                     style={ {
+                       alignItems: 'center',
+                       justifyContent: 'space-around',
+                       position: 'relative',
+                     } } overFlowY={ 'visible' }>
       <StyledCreateCardBtn
         icon={ 'plus' }
         size={ 'large' }
         shape={ 'circle' }
+        onClick={ addDeck }
       />
       <StyledIcon type="home" theme={ 'filled' }
                   color={ props.theme ? props.theme.darkDarkGray : 'gray' }/>

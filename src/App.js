@@ -26,20 +26,6 @@ function App( props ){
   const user = useSelector( state => state.usersReducer );
   const dispatch = useDispatch();
   const [ navBarVisable, setVisable ] = useState( false );
-  const [ dimensions, setDimensions ] = useState( {
-    width: window.innerWidth, height: document.body.clientHeight,
-  } );
-  
-  useEffect( () => {
-    window.addEventListener( 'resize', updateDimensions );
-    updateDimensions();
-  }, [] );
-  
-  const updateDimensions = () => {
-    setDimensions( {
-      width: window.innerWidth, height: document.documentElement.scrollHeight,
-    } );
-  };
   
   //Promises. This function gets called in for google sign in
   useEffect( () => {
@@ -58,12 +44,30 @@ function App( props ){
       }
     } );
   }, [] );
+  
+  const calculateMaxHeight = () => {
+    debugger;
+    if( navBarVisable ){
+      let height = themeContext.screenHeight - 125;
+      height += 'px';
+      return height;
+    }else{
+      return '100vh';
+    }
+    
+  };
+  
   const themeContext = useContext( ThemeContext );
-  return ( <StyledApp className="App" width={ dimensions.width }
-                      height={ dimensions.width } mobile={ isMobile }>
+  return ( <StyledApp className="App" width={ themeContext.screenWidth }
+                      navBarVis={ navBarVisable }
+                      height={ themeContext.screenHeight } mobile={ isMobile }>
     <StyledNavBar navBarVis={ navBarVisable } { ...props } />
     <StyledContainer navBarVis={ navBarVisable }
-                     style={ { paddingBottom: '150px' } }>
+                     margin={ ( navBarVisable ? '75px 0 50px 0' : '0' ) }
+                     maxHeight={ calculateMaxHeight() }
+                     height={ calculateMaxHeight() }
+                     position={ 'fixed' } top={ '0' }
+                     className={ 'app-container' }>
       <Switch>
         <LoginSignUpRoute path={ '/signup' }
                           component={ SignUp } { ...props } />
@@ -85,16 +89,20 @@ function App( props ){
 }
 
 const StyledApp = styled.div`
+box-sizing: border-box;
 position: relative;
   color: ${ props => props.theme.color };
+  padding: ${ props => props.navBarVis ? '75px 0 50px 0' : 0 };
   text-align: center;
   flex-direction: column;
   display: flex;
   justify-content: center;
+  max-width: 100vw;
+  width: 100vw;
   align-items: center;
   max-height: 100vh;
   min-height: 100vh;
   overflow-y: hidden;
-`;
+  `;
 
 export default withRouter( App );

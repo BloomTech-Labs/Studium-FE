@@ -27,7 +27,7 @@ class StyledUploader extends React.Component{
     }
     if( info.file.status === 'done' ){
       // Get this url from response in real world.
-      debugger;
+      
       this.setState( { imageUrl: info.file.response.data.image } );
     }
   };

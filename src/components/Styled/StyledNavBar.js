@@ -53,10 +53,16 @@ const StyledNavBar = ( { navBarVis, ...props } ) => {
     <StyledLink onClick={ () => changeRoute( '/game' ) }>Game</StyledLink>
   </StyledMenu> );
   
-  return ( <StyledBar visable={ navBarVis }>
-    <StyledContainer justifyContent={ 'space-between' }>
+  return ( <StyledBar visable={ navBarVis } className={ 'nav-bar' }>
+    <StyledContainer justifyContent={ 'space-between' }
+                     className={ 'nav-bar-container' } height={ '75px' }
+                     position={ 'relative' }
+    >
       <SmallWhiteLogo style={ {
-        position: 'absolute', left: '6%', top: '45%',
+        position: 'absolute',
+        left: '6%',
+        top: '50%',
+        transform: 'transition(0, -53%)',
       } }/>
       <Popover content={ content } visible={ menuOpen }
                placement="bottomRight">
@@ -67,7 +73,9 @@ const StyledNavBar = ( { navBarVis, ...props } ) => {
   </StyledBar> );
 };
 
-StyledNavBar.propTypes = {};
+StyledNavBar.propTypes = {
+  visible: PropTypes.bool,
+};
 
 const StyledMenu = styled.div`
 display: flex;

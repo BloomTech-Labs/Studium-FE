@@ -8,7 +8,7 @@ const LogoutView = props => {
   const dispatch = useDispatch();
   return ( <div>
     <StyledButton text={ 'logout' } onClick={ () => {
-      debugger;
+      
       signout( dispatch );
     } }/>
   </div> );

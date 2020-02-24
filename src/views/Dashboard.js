@@ -32,11 +32,12 @@ const Dashboard = ( props ) => {
     debugger;
     if( !deck ){
       props.history.push( '/create/deck' );
+      return;
     }
     props.history.push( '/game', { ...deck } );
   };
   
-  return ( <StyledDashboard>
+  return ( <StyledDashboard className={ 'dashboard' }>
     <StyledTitleText text={ 'Dashboard' }/>
     <StyledSearchBar onSearch={ search }
                      style={ {

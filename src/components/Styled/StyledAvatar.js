@@ -9,9 +9,7 @@ const StyledAvatar = ( { avatarUrl, ...props } ) => {
     return ( <StyledAntAvatar src={ avatarUrl } { ...props } size={ 40 }/> );
   }
   return ( <AvatarIcon style={ {
-    position: 'absolute',
-    top: '20%',
-    right: '8%',
+    position: 'absolute', top: '15px', right: '8%',
   } } { ...props }/> );
 };
 
@@ -20,8 +18,9 @@ const StyledAntAvatar = styled( Avatar )`
     position: absolute;
     background-color: #585858;
     filter: contrast(0.5);
-    top: 20%;
+    top: 35px;
     right: 8%;
+    transform: translate(0, -50%);
   }
 `;
 

@@ -39,6 +39,7 @@ StyledCreateCardBtn.propTypes = {
   bottom: PropTypes.string,
   padding: PropTypes.string,
   border: PropTypes.string,
+  onClick: PropTypes.func.isRequired,
 };
 
 const StyledAntdButton = styled( Button )`
