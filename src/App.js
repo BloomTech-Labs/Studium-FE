@@ -8,14 +8,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import SignUp from './views/SignUp';
 import SignIn from './views/SignIn';
 import firebase from './firebase/FirebaseConfig';
-import { signedIn, signout } from './actions';
+import { signedIn, signout, fetchUser } from './actions';
 import LoginSignUpRoute from './routes/LoginSignUpRoute';
 import ProtectedRoute from './routes/ProtectedRoute';
+import BigFlashCard from './components/Styled/BigFlashCard';
 import StyledNavBar from './components/Styled/StyledNavBar';
 import StyledContainer from './components/Styled/StyledContainer';
 import CreateDeck from './views/CreateDeck';
 import PreviewDeck from './views/PreviewDeck';
 import FlashCard from './views/FlashCard';
+import Testing from './views/Testing';
 import {
   BrowserView, MobileView, isBrowser, isMobile,
 } from 'react-device-detect';
@@ -58,6 +60,13 @@ function App( props ){
     } );
   }, [] );
   
+  const handleButtonClick = () => {
+    fetchUser( dispatch );
+  };
+  const card = {
+    id: 5, // image:"Picture",
+    question: 'This is the question', answer: 'This is the answer',
+  };
   return ( <StyledApp className="App" width={ dimensions.width }
                       height={ dimensions.width } mobile={ isMobile }>
     <StyledNavBar navBarVis={ navBarVisable } { ...props } />
@@ -72,10 +81,12 @@ function App( props ){
         <ProtectedRoute path={ '/create/deck' } component={ CreateDeck }/>
         <ProtectedRoute path={ '/preview' } component={ PreviewDeck }/>
         <ProtectedRoute path={ '/game' } component={ FlashCard }/>
+        <ProtectedRoute path={ '/test' } component={ Testing }/>
         
         <LoginSignUpRoute path={ '/' } component={ LandingPage } { ...props } />
       </Switch>
     </StyledContainer>
+    
     
     <Footer navBarVis={ navBarVisable }/>
   </StyledApp> );
