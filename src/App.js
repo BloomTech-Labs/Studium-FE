@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './App.css';
-import styled from 'styled-components';
+import styled, { ThemeContext } from 'styled-components';
 import { Switch, withRouter } from 'react-router';
 import LandingPage from './views/LandingPage';
 import MainDashboard from './views/Dashboard';
@@ -58,7 +58,7 @@ function App( props ){
       }
     } );
   }, [] );
-  
+  const themeContext = useContext( ThemeContext );
   return ( <StyledApp className="App" width={ dimensions.width }
                       height={ dimensions.width } mobile={ isMobile }>
     <StyledNavBar navBarVis={ navBarVisable } { ...props } />
@@ -80,7 +80,7 @@ function App( props ){
     </StyledContainer>
     
     
-    <Footer navBarVis={ navBarVisable }/>
+    <Footer navBarVis={ navBarVisable } theme={ themeContext } { ...props }/>
   </StyledApp> );
 }
 

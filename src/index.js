@@ -19,11 +19,13 @@ ${ reset }
 
 const theme = {
   mainColor: '#c4c4c4',
+  lightGray: '#D7D7D7',
+  gray: '#C4C4C4',
   darkGray: '#585858',
+  darkDarkGray: '#3a3a3a',
   color: 'blue',
   largeRadius: '14px',
   smallRadius: '6px',
-  gray: 'gray',
 };
 
 const store = createStore( rootReducer, applyMiddleware( thunk ) );

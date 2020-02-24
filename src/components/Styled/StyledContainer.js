@@ -16,7 +16,7 @@ max-height: 100vh;
 max-width: 700px;
 display: flex;
 justify-content: ${ props => props.justifyContent || 'center' };
-overflow-y: scroll;
+overflow-y: ${ props => props.overFlowY || 'scroll' };
 
   ::-webkit-scrollbar {
   width: 0
