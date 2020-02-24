@@ -28,7 +28,6 @@
     "coverage": "npm run test CI=true --coverage || true"
   },
   "jest": {
-    "verbose": true,
     "collectCoverageFrom": [
       "**/*.{js,jsx}",
       "!**/node_modules/**",
