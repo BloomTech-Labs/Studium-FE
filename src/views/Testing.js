@@ -1,19 +1,18 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import StyledInput from "../components/Styled/StyledInput";
-import { Form } from "antd";
-import StyledSearchBar from "../components/Styled/StyledSearchBar";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import BigFlashCard from '../components/Styled/BigFlashCard';
 
 const Testing = () => {
   const onSearch = e => {
   
   };
-  const [ value, setValue ] = useState( "" );
+  
+  const card = {
+    question: 'This is a question. ', answer: 'This is the answer',
+  };
+  const [ value, setValue ] = useState( '' );
   return ( <StyledTesting>
-    <h1>Testing</h1>
-    <Form>
-      <StyledSearchBar onSearch={ onSearch }/>
-    </Form>
+    <BigFlashCard flashCard={ card } flashImage={ '' }/>
   
   </StyledTesting> );
 };
