@@ -1,18 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import BigFlashCard from '../components/Styled/BigFlashCard';
+import CardIcon from '../components/Styled/CardIcon';
 
 const Testing = () => {
-  const onSearch = e => {
   
-  };
-  
-  const card = {
-    question: 'This is a question. ', answer: 'This is the answer',
-  };
-  const [ value, setValue ] = useState( '' );
   return ( <StyledTesting>
-    <BigFlashCard flashCard={ card } flashImage={ '' }/>
+    <CardIcon cardNumber={ 4 } width={ '40px' } height={ '50px' }
+              whiteBorderWidth={ '1px solid white' }/>
   
   </StyledTesting> );
 };

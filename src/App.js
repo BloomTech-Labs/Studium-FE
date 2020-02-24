@@ -11,7 +11,6 @@ import firebase from './firebase/FirebaseConfig';
 import { signedIn, signout, fetchUser } from './actions';
 import LoginSignUpRoute from './routes/LoginSignUpRoute';
 import ProtectedRoute from './routes/ProtectedRoute';
-import BigFlashCard from './components/Styled/BigFlashCard';
 import StyledNavBar from './components/Styled/StyledNavBar';
 import StyledContainer from './components/Styled/StyledContainer';
 import CreateDeck from './views/CreateDeck';
@@ -60,13 +59,6 @@ function App( props ){
     } );
   }, [] );
   
-  const handleButtonClick = () => {
-    fetchUser( dispatch );
-  };
-  const card = {
-    id: 5, // image:"Picture",
-    question: 'This is the question', answer: 'This is the answer',
-  };
   return ( <StyledApp className="App" width={ dimensions.width }
                       height={ dimensions.width } mobile={ isMobile }>
     <StyledNavBar navBarVis={ navBarVisable } { ...props } />
