@@ -28,6 +28,7 @@
     "coverage": "npm run test CI=true --coverage || true"
   },
   "jest": {
+    "verbose": true,
     "collectCoverageFrom": [
       "**/*.{js,jsx}",
       "!**/node_modules/**",
@@ -50,5 +51,8 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "codeclimate-test-reporter": "^0.5.1",
+    "supertest": "^4.0.2"
+  }
 }
