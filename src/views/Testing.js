@@ -12,7 +12,10 @@ const Testing = ( props ) => {
   const [ value, setValue ] = useState( '' );
   
   return ( <StyledTesting>
-    <StyledUploader/>
+    
+    <StyledUploader id={ 1 }/>
+    <StyledUploader id={ 2 }/>
+    <StyledUploader id={ 3 }/>
   
   </StyledTesting> );
 };

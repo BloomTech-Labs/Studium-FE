@@ -1,7 +1,9 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import { Upload, Icon, message } from 'antd';
-import { uploadPhoto } from '../../actions/photo';
+import { uploadImage } from '../../actions/photo';
+import UploadIcon from './UploadIcon';
+import { useDispatch, useSelector } from 'react-redux';
 
 function beforeUpload( file ){
   const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
@@ -15,47 +17,60 @@ function beforeUpload( file ){
   return isJpgOrPng && isLt2M;
 }
 
-class StyledUploader extends React.Component{
-  state = {
-    loading: false, imageUrl: false,
+const StyledUploader = ( props ) => {
+  
+  const photoReducer = useSelector( state => state.photosReducer );
+  const dispatch = useDispatch();
+  const [ photoObject, setPhotoObject ] = useState( false );
+  
+  useEffect( () => {
+    debugger;
+    Object.values( photoReducer.photos ).forEach( photoObject => {
+      if( photoObject.id === props.id ){
+        setPhotoObject( photoObject );
+      }
+    } );
+  }, [ photoReducer ] );
+  
+  const customRequest = ( file ) => {
+    file.id = props.id;
+    dispatch( uploadImage( file ) );
   };
   
-  handleChange = info => {
-    if( info.file.status === 'uploading' ){
-      this.setState( { loading: true } );
-      return;
+  const getUrl = () => {
+    if( photoObject ){
+      if( photoObject.file.url ){
+        return photoObject.file.url;
+      }
     }
-    if( info.file.status === 'done' ){
-      // Get this url from response in real world.
-      debugger;
-      this.setState( { imageUrl: info.file.response.data.image } );
-    }
+    return undefined;
   };
+  const loadImage = photoObject && photoObject.file && photoObject.file.url;
+  return ( <StyledUpload
+    name="file"
+    listType="picture-card"
+    className="avatar-uploader"
+    showUploadList={ false }
+    beforeUpload={ beforeUpload }
+    customRequest={ customRequest }
+  >
+    { loadImage ?
+      <img src={ getUrl() } alt='avatar' style={ { width: '100%' } }/> :
+      <UploadIcon/> }
+  </StyledUpload> );
   
-  customRequest = ( stuff ) => {
-    uploadPhoto( stuff );
-  };
-  
-  render(){
-    const uploadButton = ( <div>
-      <Icon type={ this.state.loading ? 'loading' : 'plus' }/>
-      <div className="ant-upload-text">Upload</div>
-    </div> );
-    const { imageUrl } = this.state;
-    return ( <Upload
-      name="file"
-      action={ 'http://localhost:5000/api/photo/upload' }
-      listType="picture-card"
-      className="avatar-uploader"
-      showUploadList={ false }
-      beforeUpload={ beforeUpload }
-      onChange={ this.handleChange }
-    >
-      { imageUrl ?
-        <img src={ imageUrl } alt="avatar" style={ { width: '100%' } }/> :
-        uploadButton }
-    </Upload> );
+};
+
+const StyledUpload = styled( Upload )`
+  && {
+  > .ant-upload.ant-upload-select-picture-card{
+    
+    border: none;
+    background-color: transparent;
+    width: 67px;
+    height: 59px;
   }
-}
+  }
+`;
 
 export default StyledUploader;
