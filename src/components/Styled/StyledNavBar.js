@@ -9,7 +9,7 @@ import SmallLogo from './SmallLogo';
 import { useDispatch, useSelector } from 'react-redux';
 import StyledContainer from './StyledContainer';
 
-const StyledNavBar = ( { visable, ...props } ) => {
+const StyledNavBar = ( { navBarVis, ...props } ) => {
   
   const user = useSelector( state => state.usersReducer );
   const [ menuOpen, setMenuOpen ] = useState( false );
@@ -17,7 +17,7 @@ const StyledNavBar = ( { visable, ...props } ) => {
   const dispatch = useDispatch();
   
   useEffect( () => {
-    if( visable ){
+    if( navBarVis ){
       if( user.user && user.user.photoURL ){
         setAvatarUrl( user.user.photoURL );
       }else{
@@ -26,7 +26,7 @@ const StyledNavBar = ( { visable, ...props } ) => {
     }else{
       setAvatarUrl( false );
     }
-  }, [ visable, user ] );
+  }, [ navBarVis, user ] );
   
   const onAvatarClick = () => {
     setMenuOpen( !menuOpen );
@@ -53,7 +53,7 @@ const StyledNavBar = ( { visable, ...props } ) => {
     <StyledLink onClick={ () => changeRoute( '/game' ) }>Game</StyledLink>
   </StyledMenu> );
   
-  return ( <StyledBar visable={ visable }>
+  return ( <StyledBar visable={ navBarVis }>
     <StyledContainer justifyContent={ 'space-between' }>
       <SmallWhiteLogo style={ {
         position: 'absolute', left: '6%', top: '45%',
