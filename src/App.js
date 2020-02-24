@@ -45,12 +45,12 @@ function App( props ){
   //Promises. This function gets called in for google sign in
   useEffect( () => {
     firebase.auth().onAuthStateChanged( user => {
+      const pathName = props.history.location.pathname;
       if( user ){
         setVisable( true );
         signedIn( user, dispatch );
-        if( props.history.location.pathname === '/signin' ||
-          props.history.location.pathname === '/signup' ||
-          props.history.location.pathname === '/' ){
+        if( pathName === '/signin' || pathName === '/signup' || pathName ===
+          '/' ){
           props.history.push( '/dashboard' );
         }
       }else{
@@ -100,14 +100,6 @@ position: relative;
   overflow-y: hidden;
 `;
 
-App.propTypes = {
-  cloudName: PropTypes.string,
-  uploadPreset: PropTypes.string,
-  onPhotosFetched: PropTypes.func,
-};
 
-App.contextTypes = {
-  cloudName: PropTypes.string, uploadPreset: PropTypes.string,
-};
 
 export default withRouter( App );

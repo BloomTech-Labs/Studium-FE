@@ -16,7 +16,19 @@ max-height: 100vh;
 max-width: 700px;
 display: flex;
 justify-content: ${ props => props.justifyContent || 'center' };
-overflow-y: auto;
+overflow-y: scroll;
+
+  ::-webkit-scrollbar {
+  width: 0
+}
+
+::-webkit-scrollbar-track {
+
+}
+
+::-webkit-scrollbar-thumb {
+
+}
 `;
 
 export default StyledContainer;

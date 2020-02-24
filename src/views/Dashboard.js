@@ -4,6 +4,7 @@ import Footer from '../components/Footer/Footer';
 import StyledCardDeck from '../components/Styled/StyledCardDeck';
 import StyledTitleText from '../components/Styled/StyledTitleText';
 import StyledSearchBar from '../components/Styled/StyledSearchBar';
+import StyledCreateCardBtn from '../components/Styled/StyledCreateCardBtn';
 
 const decks = [
   { deck_name: 'Some Name' }, { deck_name: 'Another Name' },
@@ -46,13 +47,14 @@ const Dashboard = ( props ) => {
                      } }/>
     <StyledDeckHolder>
       <StyledCardDeck border={ 'dashed' } icon={ 'plus' }
-                      onClick={ deckClicked }/>
+                      onClick={ () => deckClicked() }/>
       { decks.map( deck => {
         return <StyledCardDeck deck={ deck } border={ 'solid' }
                                onClick={ e => deckClicked( deck ) }/>;
       } ) }
     
     </StyledDeckHolder>
+    <Footer/>
   </StyledDashboard> );
 };
 
@@ -69,6 +71,8 @@ const StyledDashboard = styled.div`
   flex-direction: column;
   max-width: 100%;
   height: 100%;
+  
+
 `;
 
 export default Dashboard;
