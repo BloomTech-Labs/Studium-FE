@@ -53,6 +53,6 @@
   },
   "devDependencies": {
     "codeclimate-test-reporter": "^0.5.1",
-    "supertest": "^4.0.2"
+    "jest-styled-components": "^7.0.0"
   }
 }
