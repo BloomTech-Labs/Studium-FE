@@ -22,12 +22,7 @@ const PreviewDeck = props => {
           console.log(decks)
           return <StyledDeckPreview deck={deck} />;
         })}
-        <StyledCreateCardBtn 
-    icon={'plus'}
-    size={'large'}
-    shape={'circle'}
-    >
-    </StyledCreateCardBtn>
+        
 
       </StyledPreviewDeckHolder>
       <Footer/>

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import StyledTitleText from '../components/Styled/StyledTitleText';
 
 const FlashCard = props => {
+  
   const deck = props.history.location.state;
   return ( <StyledFlashCard>
     <StyledTitleText text={ deck.deck_name }/>

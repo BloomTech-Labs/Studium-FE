@@ -25,6 +25,7 @@ const StyledUploader = ( props ) => {
   const customRequest = ( file ) => {
     file.id = props.id;
     dispatch( uploadImage( file ) );
+    
   };
   
   const getUrl = () => {

@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './App.css';
-import styled from 'styled-components';
+import styled, { ThemeContext } from 'styled-components';
 import { Switch, withRouter } from 'react-router';
 import LandingPage from './views/LandingPage';
 import MainDashboard from './views/Dashboard';
 import { useSelector, useDispatch } from 'react-redux';
 import SignUp from './views/SignUp';
 import SignIn from './views/SignIn';
+import { signedIn, signout, fetchUser } from './actions';
 import firebase from './config/firebase/FirebaseConfig';
-import { signedIn, signout } from './actions';
 import LoginSignUpRoute from './routes/LoginSignUpRoute';
 import ProtectedRoute from './routes/ProtectedRoute';
 import StyledNavBar from './components/Styled/StyledNavBar';
@@ -27,20 +27,6 @@ function App( props ){
   const user = useSelector( state => state.usersReducer );
   const dispatch = useDispatch();
   const [ navBarVisable, setVisable ] = useState( false );
-  const [ dimensions, setDimensions ] = useState( {
-    width: window.innerWidth, height: document.body.clientHeight,
-  } );
-  
-  useEffect( () => {
-    window.addEventListener( 'resize', updateDimensions );
-    updateDimensions();
-  }, [] );
-  
-  const updateDimensions = () => {
-    setDimensions( {
-      width: window.innerWidth, height: document.documentElement.scrollHeight,
-    } );
-  };
   
   //Promises. This function gets called in for google sign in
   useEffect( () => {
@@ -60,13 +46,28 @@ function App( props ){
     } );
   }, [] );
   
+  const calculateMaxHeight = () => {
+    debugger;
+    if( navBarVisable ){
+      let height = themeContext.screenHeight - 125;
+      height += 'px';
+      return height;
+    }else{
+      return '100vh';
+    }
+    
+  };
+  
+  const themeContext = useContext( ThemeContext );
   return (
     
-    <StyledApp className="App" width={ dimensions.width }
-               height={ dimensions.width } mobile={ isMobile }>
+    <StyledApp className="App" width={ themeContext.screenWidth }
+               height={ themeContext.screenWidth } mobile={ isMobile }>
       <StyledNavBar navBarVis={ navBarVisable } { ...props } />
-      <StyledContainer navBarVis={ navBarVisable }
-                       style={ { paddingBottom: '150px' } }>
+      <StyledContainer navBarVis={ navBarVisable } position={ 'fixed' }
+                       top={ '0' } height={ themeContext.screenHeight }
+                       maxHeight={ themeContext.screenHeight }
+                       margin={ ( navBarVisable ? '75px 0 50px 0' : '0' ) }>
         <Switch>
           <LoginSignUpRoute path={ '/signup' }
                             component={ SignUp } { ...props } />
@@ -88,18 +89,20 @@ function App( props ){
 }
 
 const StyledApp = styled.div`
+box-sizing: border-box;
 position: relative;
   color: ${ props => props.theme.color };
+  padding: ${ props => props.navBarVis ? '75px 0 50px 0' : 0 };
   text-align: center;
   flex-direction: column;
   display: flex;
   justify-content: center;
+  max-width: 100vw;
+  width: 100vw;
   align-items: center;
   max-height: 100vh;
   min-height: 100vh;
   overflow-y: hidden;
-`;
-
-
+  `;
 
 export default withRouter( App );

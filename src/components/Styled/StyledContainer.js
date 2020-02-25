@@ -1,22 +1,37 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledContainer = ( props ) => {
+  debugger;
   return ( <Container { ...props }>
     { props.children }
   </Container> );
 };
 
+StyledContainer.propTypes = {
+  navBarVis: PropTypes.bool,
+  justifyContent: PropTypes.string,
+  overFlowY: PropTypes.string,
+  position: PropTypes.string,
+  height: PropTypes.string,
+  maxHeight: PropTypes.string,
+  margin: PropTypes.string,
+  top: PropTypes.string,
+};
+
 const Container = styled.div`
-margin: ${ props => props.navBarVis ? '75px auto' : ' 0 auto' };
-min-height: 100%;
-position: absolute;
+box-sizing: border-box;
+top: ${ props => props.top || 0 };
+margin: ${ props => props.margin || '0' };
+position: ${ props => props.position || 'absolute' };
 width: 100%;
-max-height: 100vh;
+height: ${ props => props.height || '100%' };
+max-height: ${ props => props.maxHeight || '100%' };
 max-width: 700px;
 display: flex;
 justify-content: ${ props => props.justifyContent || 'center' };
-overflow-y: scroll;
+overflow-y: ${ props => props.overFlowY || 'scroll' };
 
   ::-webkit-scrollbar {
   width: 0
