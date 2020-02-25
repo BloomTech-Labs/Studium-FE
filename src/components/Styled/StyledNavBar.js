@@ -11,7 +11,7 @@ import StyledContainer from './StyledContainer';
 
 const StyledNavBar = ( { navBarVis, ...props } ) => {
   
-  const user = useSelector( state => state.usersReducer );
+  const user = useSelector( state => state.users );
   const [ menuOpen, setMenuOpen ] = useState( false );
   const [ avatarUrl, setAvatarUrl ] = useState( false );
   const dispatch = useDispatch();

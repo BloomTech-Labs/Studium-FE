@@ -11,7 +11,6 @@ const Testing = () => {
     <StyledUploader id={ 2 }/>
     <StyledUploader id={ 3 }/>
   
-  
   </StyledTesting> );
 };
 

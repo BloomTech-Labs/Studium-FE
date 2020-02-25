@@ -6,12 +6,15 @@ import { ThemeProvider } from 'styled-components';
 import { BrowserRouter as Router } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import { applyMiddleware, createStore } from 'redux';
-import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 import { Provider } from 'react-redux';
 import 'antd/dist/antd.css';
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
+import {
+  logger, crashReporter, rafScheduler, readyStatePromise, thunk,
+  timeoutScheduler, vanillaPromise,
+} from './util/customMiddleWare';
 
 const GlobalStyle = createGlobalStyle`
 ${ reset }
@@ -42,7 +45,16 @@ const updateDimensions = () => {
 
 window.addEventListener( 'resize', updateDimensions );
 
-const store = createStore( rootReducer, applyMiddleware( thunk ) );
+const store = createStore( rootReducer,
+  applyMiddleware( rafScheduler,
+    timeoutScheduler,
+    thunk,
+    vanillaPromise,
+    readyStatePromise,
+    logger,
+    crashReporter,
+  ),
+);
 
 ReactDOM.render( <ThemeProvider theme={ theme }>
   <Provider store={ store }>
