@@ -38,13 +38,14 @@ const StyledUploader = ( props ) => {
   
   const loadImage = photoObject && photoObject.file && photoObject.file.url;
   return ( <StyledUpload
-    data-testid="upload"
+    className={ 'styled-upload' }
+    testid="upload"
     name="file"
     listType="picture-card"
     showUploadList={ false }
     beforeUpload={ beforeUpload }
     customRequest={ customRequest }
-  >{ 'upload' }
+  >
     { loadImage ?
       <img src={ getUrl() } alt='avatar' style={ { width: '100%' } }/> :
       <UploadIcon/> }

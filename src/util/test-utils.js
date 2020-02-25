@@ -1,4 +1,5 @@
 // test-utils.js
+import '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
@@ -46,7 +47,7 @@ const customRender = ( ui, options ) => render( ui,
 );
 
 // re-export everything
-export * from '@testing-library/react';
+export * from '@testing-library/jest-dom';
 
 // override render method
 export { customRender as render };
