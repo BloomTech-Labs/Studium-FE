@@ -4,23 +4,15 @@
 
 🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
 
-# 1️⃣ Title of project goes here
-Synaps
 
-(https://production-lambda-synaps-fe.herokuapp.com/.
+
+# 1️⃣ Synaps
+
+
 
 ## 4️⃣ Contributors
 
-🚫Add contributor info below, make sure add images and edit the social links for each member. Add to or delete these place-holders as needed
-
- [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200"/>](https://github.com/austinbro5)[<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200"/>](https://github.com/ccurry20) [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200"/>](https://github.com/christopherc1331) [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200"/>](https://github.com/gmgower)[<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200"/>](https://github.com/Brimes7)[<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200"/>](https://github.com/jeremiahtenbrink)                                              
-                                        
-                                        
-                                          
-                     
-             
-
-🚫 4️⃣ Optional examples of using images with links for your tech stack, make sure to change these to fit your project
+ [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200"/>](https://github.com/austinbro5)[<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200"/>](https://github.com/ccurry20) [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200"/>](https://github.com/christopherc1331) [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200"/>](https://github.com/gmgower)[<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200"/>](https://github.com/Brimes7)[Jeremiah Tenbrink](https://github.com/jeremiahtenbrink)                                              
 
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
@@ -28,7 +20,6 @@ Synaps
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-🚫 more info on using badges [here](https://github.com/badges/shields)
 
 ## Project Overview
 
@@ -37,7 +28,7 @@ Synaps
 1️⃣ [Product Canvas](https://www.notion.so/5e4824078e4240d1bd94900ad1e3c212?v=fd4a5deca267478693c76de7410101e5)
 
 1️⃣ [UX Design files](https://www.figma.com/file/BuGRUaXhmqsSEEtSTTVl7f/PT-Flash-Cards-David-and-Natalie?node-id=545%3A92) 
-
+![Code Climate coverage](https://img.shields.io/codeclimate/coverage/Lambda-School-Labs/pt-synaps-fe?style=plastic)
 
 To create the best Life Science flashcard application, that has excellent UI, which has minimal distractions to make the learning process more efficient.  To be the best user friendly flashcard application for life sciences students.
 
@@ -53,6 +44,7 @@ To create the best Life Science flashcard application, that has excellent UI, wh
 ## 1️⃣ Tech Stack
 
 ### Front end built using:
+<
 React and Styled Componets 
 #### _Front end framework goes here_
      antd
@@ -93,6 +85,9 @@ built using: Postgress
     npm-run-all
     pg
     sqlite3
+
+
+
 
 🚫 List the rest of the back end end features and libraries in the same format as the framework above
 
@@ -159,10 +154,22 @@ In order for the app to function correctly, the user must set up their own envir
 🚫Document what you used for testing and why
 
 # 4️⃣ Installation Instructions
-FrontEnd 
-npm install 
-create-React-app
-Backend node install
+
+  FrontEnd
+  Npm install should install all dependences 
+  npx create-react-app
+ 
+ BackEnd 
+  node install
+
+## Other Scripts
+
+🚫replace these examples with your own
+
+    * typecheck - runs the TypeScript compiler
+    * build - creates a build of the application
+    * start - starts the production server after a build is created
+    * test - runs tests in **tests** directory \* eject - copy the configuration files and dependencies into the project so you have full control over them
 
 # Contributing
 
@@ -183,6 +190,7 @@ synaps.lambda@gmail.com
 
 We would love to hear from you about new features which would improve this app and further the aims of our project. Please provide as much detail and information as possible to show us why you think your new feature should be implemented.
 synaps.lambda@gmail.com
+
 ### Pull Requests
 
 If you have developed a patch, bug fix, or new feature that would improve this app, please submit a pull request. It is best to communicate your ideas with the developers first before investing a great deal of time into a pull request to ensure that it will mesh smoothly with the project.

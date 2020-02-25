@@ -8,13 +8,27 @@ const StyledContainer = ( props ) => {
 };
 
 const Container = styled.div`
-position: relative;
+margin: ${ props => props.navBarVis ? '75px auto' : ' 0 auto' };
+min-height: 100%;
+position: absolute;
 width: 100%;
+max-height: 100vh;
 max-width: 700px;
 display: flex;
 justify-content: ${ props => props.justifyContent || 'center' };
-align-items: center;
-justify-self: center;
+overflow-y: scroll;
+
+  ::-webkit-scrollbar {
+  width: 0
+}
+
+::-webkit-scrollbar-track {
+
+}
+
+::-webkit-scrollbar-thumb {
+
+}
 `;
 
 export default StyledContainer;
