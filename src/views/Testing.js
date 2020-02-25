@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import BigFlashCard from '../components/Styled/BigFlashCard';
 import CardIcon from '../components/Styled/CardIcon';
+import StyledUploader from '../components/Styled/StyledUploader';
 
 const Testing = () => {
   
   return ( <StyledTesting>
-    <CardIcon cardNumber={ 4 } width={ '40px' } height={ '50px' }
-              whiteBorderWidth={ '1px solid white' }/>
+    <StyledUploader id={ 1 }/>
+    <StyledUploader id={ 2 }/>
+    <StyledUploader id={ 3 }/>
+  
   
   </StyledTesting> );
 };
