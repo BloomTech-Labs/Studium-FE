@@ -18,7 +18,6 @@ StyledContainer.propTypes = {
   maxHeight: PropTypes.string,
   margin: PropTypes.string,
   top: PropTypes.string,
-  
 };
 
 const Container = styled.div`

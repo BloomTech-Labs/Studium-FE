@@ -7,10 +7,8 @@ import MainDashboard from './views/Dashboard';
 import { useSelector, useDispatch } from 'react-redux';
 import SignUp from './views/SignUp';
 import SignIn from './views/SignIn';
-import firebase from './firebase/FirebaseConfig';
 import { signedIn, signout, fetchUser } from './actions';
 import firebase from './config/firebase/FirebaseConfig';
-import { signedIn, signout } from './actions';
 import LoginSignUpRoute from './routes/LoginSignUpRoute';
 import ProtectedRoute from './routes/ProtectedRoute';
 import StyledNavBar from './components/Styled/StyledNavBar';
@@ -18,7 +16,6 @@ import StyledContainer from './components/Styled/StyledContainer';
 import CreateDeck from './views/CreateDeck';
 import PreviewDeck from './views/PreviewDeck';
 import FlashCard from './views/FlashCard';
-import Testing from './views/Testing';
 import {
   BrowserView, MobileView, isBrowser, isMobile,
 } from 'react-device-detect';
@@ -64,11 +61,13 @@ function App( props ){
   const themeContext = useContext( ThemeContext );
   return (
     
-    <StyledApp className="App" width={ dimensions.width }
-               height={ dimensions.width } mobile={ isMobile }>
+    <StyledApp className="App" width={ themeContext.screenWidth }
+               height={ themeContext.screenWidth } mobile={ isMobile }>
       <StyledNavBar navBarVis={ navBarVisable } { ...props } />
-      <StyledContainer navBarVis={ navBarVisable }
-                       style={ { paddingBottom: '150px' } }>
+      <StyledContainer navBarVis={ navBarVisable } position={ 'fixed' }
+                       top={ '0' } height={ themeContext.screenHeight }
+                       maxHeight={ themeContext.screenHeight }
+                       margin={ ( navBarVisable ? '75px 0 50px 0' : '0' ) }>
         <Switch>
           <LoginSignUpRoute path={ '/signup' }
                             component={ SignUp } { ...props } />

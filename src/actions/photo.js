@@ -30,7 +30,3 @@ export const uploadImage = ( file ) => dispatch => {
     dispatch( { type: UPLOADING_PHOTO_FAILED, payload: file } );
   } );
 };
-
-const removePhotoBeforeUpload = ( file ) = ( dispatch ) => {
-
-};
