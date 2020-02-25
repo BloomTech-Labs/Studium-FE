@@ -102,7 +102,6 @@ export const USER_REGISTER_COMPLETE = "USER_REGISTER_COMPLETE"
 
 
 //functions for registering. Need to use .then to check database.
-
 export const checkUser = (user, dispatch) => {
   dispatch (action(CHECK_USER_REGISTERED));
   debugger;
@@ -119,9 +118,8 @@ export const checkUser = (user, dispatch) => {
       console.log(err);
       register(user, dispatch);
     })
-
 }
-
+//registers user
 export const register = (user, dispatch) => {
   dispatch (action(USER_ATTEMPT_REGISTER));
   debugger;
@@ -144,10 +142,6 @@ export const register = (user, dispatch) => {
       console.log(err);
       signout(dispatch); 
     })
-
-
-
-
 }
 
 
