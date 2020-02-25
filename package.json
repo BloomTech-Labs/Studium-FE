@@ -27,7 +27,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "coverage": "npm run test CI=true --coverage --detectOpenHandles --forceExit || true"
+    "coverage": "react-scripts test CI=true --coverage --detectOpenHandles --forceExit || true"
   },
   "jest": {
     "collectCoverageFrom": [
