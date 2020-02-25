@@ -3,11 +3,15 @@ import {
   UPLOADING_PHOTO_FAILED, UPLOADING_PHOTO_PROGRESS, UPLOADING_PHOTO_SUCCESS,
   UPLOADING_PHOTO_INIT, UPLOAD_PHOTO,
 } from '../actions/photo';
+import { Store } from 'redux';
 
 /**
- * Logs all actions and states after they are dispatched.
+ *
+ * @returns {function(*): function(*=): *}
+ * @param {Store} store
  */
 export const logger = store => next => action => {
+  
   console.group( action.type );
   console.info( 'dispatching', action );
   let result = next( action );
@@ -17,7 +21,9 @@ export const logger = store => next => action => {
 };
 
 /**
- * Sends crash reports as state is updated and listeners are notified.
+ *@throws err
+ * @param {Store} store
+ * @returns {function(*): Function}
  */
 export const crashReporter = store => next => action => {
   try{
@@ -30,15 +36,18 @@ export const crashReporter = store => next => action => {
 };
 
 /**
- * Schedules actions with { meta: { raf: true } } to be dispatched inside a rAF
- * loop frame.  Makes `dispatch` return a function to remove the action from
- * the queue in this case.
+ *
+ * @param {Store} store
+ * @returns {function(*): Function}
  */
 export const rafScheduler = store => next => {
   let queuedActions = [];
   
   let frame = null;
   
+  /**
+   *
+   */
   function loop(){
     frame = null;
     try{
@@ -50,12 +59,18 @@ export const rafScheduler = store => next => {
     }
   }
   
+  /**
+   *
+   */
   function maybeRaf(){
     if( queuedActions.length && !frame ){
       frame = requestAnimationFrame( loop );
-    }
+    }/**/
   }
   
+  /**
+   *
+   */
   return action => {
     if( !action.meta || !action.meta.raf ){
       return next( action );
@@ -68,10 +83,13 @@ export const rafScheduler = store => next => {
   };
 };
 
+
 /**
  * Schedules actions with { meta: { delay: N } } to be delayed by N
  * milliseconds. Makes `dispatch` return a function to cancel the timeout in
  * this case.
+ * @param {Store} store
+ * @returns {function(*=): Function}
  */
 export const timeoutScheduler = store => next => action => {
   if( !action.meta || !action.meta.delay ){

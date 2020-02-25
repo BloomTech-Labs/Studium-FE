@@ -4,7 +4,7 @@ import StyledInput from '../components/Styled/StyledInput';
 import { Form } from 'antd';
 import StyledSearchBar from '../components/Styled/StyledSearchBar';
 import { uploadPhoto } from '../actions';
-import StyledUploader from '../components/Styled/StyledUploader';
+import StyledUploader from '../components/StyledUploader/StyledUploader';
 
 const Testing = ( props ) => {
   

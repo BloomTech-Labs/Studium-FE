@@ -4,6 +4,10 @@ import firebase from '../config/firebase/FirebaseConfig';
 export const FETCHING_USER = 'FETCHING_USER';
 export const FETCHED_USER = 'FETCHED_USER';
 
+/**
+ * 
+ * @param dispatch
+ */
 export const fetchUser = ( dispatch ) => {
   
   dispatch( action( FETCHING_USER ) );

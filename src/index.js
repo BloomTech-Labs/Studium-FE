@@ -28,7 +28,10 @@ const theme = {
   smallRadius: '6px',
   gray: 'gray',
 };
-
+/**
+ *
+ * @type {(Store<any, Action> & Store<S & StateExt, A> & Ext) | (Store<any, Action> & Store<S & {}, A> & {dispatch: Dispatch<A>})}
+ */
 const store = createStore( rootReducer,
   applyMiddleware( rafScheduler,
     timeoutScheduler,

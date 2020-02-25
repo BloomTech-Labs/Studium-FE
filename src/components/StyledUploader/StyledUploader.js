@@ -2,20 +2,10 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Upload, Icon, message } from 'antd';
 import { uploadImage } from '../../actions/photo';
-import UploadIcon from './UploadIcon';
+import UploadIcon from '../Styled/UploadIcon';
 import { useDispatch, useSelector } from 'react-redux';
+import * as PropTypes from 'prop-types';
 
-function beforeUpload( file ){
-  const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
-  if( !isJpgOrPng ){
-    message.error( 'You can only upload JPG/PNG file!' );
-  }
-  const isLt2M = file.size / 1024 / 1024 < 2;
-  if( !isLt2M ){
-    message.error( 'Image must smaller than 2MB!' );
-  }
-  return isJpgOrPng && isLt2M;
-}
 
 const StyledUploader = ( props ) => {
   
@@ -45,6 +35,7 @@ const StyledUploader = ( props ) => {
     }
     return undefined;
   };
+  
   const loadImage = photoObject && photoObject.file && photoObject.file.url;
   return ( <StyledUpload
     name="file"
@@ -61,6 +52,10 @@ const StyledUploader = ( props ) => {
   
 };
 
+StyledUploader.propTypes = {
+  id: PropTypes.number
+};
+
 const StyledUpload = styled( Upload )`
   && {
   > .ant-upload.ant-upload-select-picture-card{
@@ -72,5 +67,17 @@ const StyledUpload = styled( Upload )`
   }
   }
 `;
+
+function beforeUpload( file ){
+  const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+  if( !isJpgOrPng ){
+    message.error( 'You can only upload JPG/PNG file!' );
+  }
+  const isLt2M = file.size / 1024 / 1024 < 2;
+  if( !isLt2M ){
+    message.error( 'Image must smaller than 2MB!' );
+  }
+  return isJpgOrPng && isLt2M;
+}
 
 export default StyledUploader;
