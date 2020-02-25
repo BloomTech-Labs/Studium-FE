@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Styled Uploader snapshot renders 1`] = `
+<div>
+  <span
+    class="sc-AxirZ bzkcWz ant-upload-picture-card-wrapper"
+  >
+    <div
+      class="ant-upload ant-upload-select ant-upload-select-picture-card"
+    >
+      <span
+        class="ant-upload"
+        role="button"
+        tabindex="0"
+      >
+        <input
+          accept=""
+          style="display: none;"
+          type="file"
+        />
+        upload
+        <div
+          class="sc-AxjAm gnlBgk"
+        >
+          <img
+            src="Rectangle85.jpg"
+            style="height: 59px; width: 67px;"
+          />
+        </div>
+      </span>
+    </div>
+  </span>
+</div>
+`;
