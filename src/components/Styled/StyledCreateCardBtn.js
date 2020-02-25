@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Button } from 'antd';
-
-const StyledButton = ({
+import { Button, 
+Icon } from 'antd';
+const StyledCreateCardBtn = ({
   text,
   type = 'primary',
   size = 'default',
@@ -18,49 +18,44 @@ const StyledButton = ({
     <StyledAntdButton
       type={type}
       size={size}
-      icon={icon}
       shape={shape}
       loading={loading && 'loading'}
       block={block && 'block'}
       {...props}
     >
+      {
+        <Icon
+         type={icon}
+          style={{ fontSize: '70px', color: 'black', lineHeight: '10px' }}
+        />
+      }
       {text}
     </StyledAntdButton>
   );
 };
 
-StyledButton.propTypes = {
+StyledCreateCardBtn.propTypes = {
   text: PropTypes.string,
-  type: PropTypes.oneOf(['primary', 'dashed', 'danger', 'link', 'darkgray']),
+  type: PropTypes.oneOf(['primary']),
   size: PropTypes.oneOf(['large', 'default', 'small']),
   icon: PropTypes.string,
   shape: PropTypes.oneOf(['circle', 'round']),
+  spin: PropTypes.bool,
   loading: PropTypes.bool,
   block: PropTypes.bool,
 };
 
 const StyledAntdButton = styled(Button)`
   && {
-    border: 0;
-    color: ${props => {
-      if (props.type === 'darkgray') {
-        return 'white';
-      } else {
-        return 'black';
-      }
-    }};
-    
-    background-color: ${props => {
-      if (props.type === 'primary') {
-        return props.theme.mainColor;
-      } else if (props.type === 'darkgray') {
-        return props.theme.darkGray;
-      } else {
-        return props.theme.mainColor;
-      }
-    }};
-} ;
-
+    position: absolute;
+    width: 99px;
+    height: 99px;
+    left: 139px;
+    top: 688px;
+    padding: 10px;    
+    background: #d7d7d7;
+    border-style: none;
+    box-sizing: border-box;
+  }
 `;
-
-export default StyledButton;
+export default StyledCreateCardBtn;

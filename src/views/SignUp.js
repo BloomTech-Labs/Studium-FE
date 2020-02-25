@@ -6,8 +6,6 @@ import StyledSynapsText from '../components/Styled/StyledSynapsText';
 
 export default function SignUp(){
   
-  
-  
   return ( <StyledSignUp>
     <StyledSynapsText/>
     
@@ -39,11 +37,12 @@ export default function SignUp(){
 }
 
 const StyledSignUp = styled.div`
+  margin-top: 146px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 90vh;
+  height: 100%;
 `;
 
 const StyledH1 = styled.h1`
