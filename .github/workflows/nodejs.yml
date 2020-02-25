@@ -14,10 +14,6 @@ jobs:
     # A GitHub action for checking out the current branch
     - uses: actions/checkout@master
 
-      # A GitHub action to setup Node.js
-
-      # A GitHub action for checking out the current branch
-    - uses: actions/checkout@master
 
       # A GitHub action to setup Node.js
 
