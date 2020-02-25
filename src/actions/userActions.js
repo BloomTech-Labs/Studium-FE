@@ -111,4 +111,15 @@ export const USER_REGISTER_COMPLETE = "USER_REGISTER_COMPLETE"
 export const checkUser = (dispatch) => {
   dispatch (action(CHECK_USER_REGISTERED));
 
+  // .then(res => {
+    
+  // })
+
 }
+
+// export const registeredUser = () => {
+//   const request = createAxios();
+
+//   let info = new FormData();
+//   info.append{}
+// }
