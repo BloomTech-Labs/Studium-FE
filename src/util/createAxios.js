@@ -6,9 +6,10 @@ export const userAxios = () => {
         baseURL: process.env.REACT_APP_BASE_URL
     }) ;  
 }
-
+//connects to uid be
 export const connectAxiosAuth = (uid) => {
+    debugger;
     return axios.create({
-        baseURL: process.env.REACT_APP_BASE_URL, headers: {'Auth': uid},
+        baseURL: process.env.REACT_APP_BASE_URL, headers: {'auth': uid},
     })
 }

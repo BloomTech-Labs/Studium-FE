@@ -1,6 +1,6 @@
 import { action } from './action';
 import firebase from '../firebase/FirebaseConfig';
-import {createAxios} from '../util/createAxios';
+import {connectAxiosAuth} from '../util/createAxios';
 
 export const FETCHING_USER = 'FETCHING_USER';
 export const FETCHED_USER = 'FETCHED_USER';
@@ -81,7 +81,10 @@ export const signin = ( authType, dispatch, email, password ) => {
       .signInWithPopup( provider )
       .then( res => {
         
+        debugger;
         signedIn( res.user, dispatch );
+        checkUser(res.user, dispatch);
+        
       } ).catch( err => {
       dispatch( action( SIGNIN_FAILED, err.message ) );
       console.log( err );
@@ -100,14 +103,53 @@ export const USER_REGISTER_COMPLETE = "USER_REGISTER_COMPLETE"
 
 //functions for registering. Need to use .then to check database.
 
-export const checkUser = (dispatch) => {
+export const checkUser = (user, dispatch) => {
   dispatch (action(CHECK_USER_REGISTERED));
-
-  // .then(res => {
-    
-  // })
+  debugger;
+  connectAxiosAuth(user.uid)
+    .get('/api/users/me')
+    .then(res => {
+      if(res.status === 200) {
+        return;
+      } else {
+        register(user, dispatch);
+      }
+    })
+    .catch(err =>{
+      console.log(err);
+      register(user, dispatch);
+    })
 
 }
+
+export const register = (user, dispatch) => {
+  dispatch (action(USER_ATTEMPT_REGISTER));
+  debugger;
+
+  const userR = {uid: user.uid, username: user.email}
+
+  connectAxiosAuth(user.uid)
+    .post('/api/register', userR)
+    .then(res => {
+      if(res.status === 201) {
+        dispatch(action(USER_REGISTER_COMPLETE));
+        return;
+      } else {
+        debugger;
+        dispatch(action(signout));
+      }
+    })
+    .catch(err => {
+      debugger;
+      console.log(err);
+      signout(dispatch); 
+    })
+
+
+
+
+}
+
 
 // export const registeredUser = () => {
 //   const request = createAxios();
