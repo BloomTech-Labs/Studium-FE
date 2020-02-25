@@ -1,6 +1,5 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
 import StyledButton from '../components/Styled/StyledButton';
 import { signout } from '../actions';
 

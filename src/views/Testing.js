@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { uploadImage } from '../actions';
 import StyledUploader from '../components/StyledUploader/StyledUploader';

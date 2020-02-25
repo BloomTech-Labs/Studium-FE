@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import Rectangle from '../../images/uploadIcon/Rectangle85.jpg';
-import PropTypes from 'prop-types';
 
 const UploadIcon = props => {
   return ( <StyledUploadIcon>
-    <img src={ Rectangle } style={ { height: '59px', width: '67px' } }></img>
+    <img src={ Rectangle } style={ { height: '59px', width: '67px' } }/>
   </StyledUploadIcon> );
 };
 

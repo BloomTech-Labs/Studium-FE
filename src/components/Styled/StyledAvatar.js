@@ -1,6 +1,5 @@
 import React from 'react';
 import { Avatar } from 'antd';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { ReactComponent as AvatarIcon } from '../../images/ProfileIcons.svg';
 

@@ -43,3 +43,4 @@ jobs:
         with:
           # Run our `coverage` command from our `package.json`
           coverageCommand: npm run coverage
+          debug: true

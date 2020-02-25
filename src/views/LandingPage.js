@@ -44,7 +44,7 @@ const LandingPage = ( props ) => {
       <Menu2>Link 2</Menu2>
       <Menu3>Link 3</Menu3>
       <HeaderName><h1>Synaps</h1></HeaderName>
-      <Vector></Vector>
+      <Vector/>
       <FlashCard></FlashCard>
       <Headline><h1 className="headline">Big CTA Headline</h1></Headline>
       <CTAButton></CTAButton>

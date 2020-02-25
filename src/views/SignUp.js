@@ -17,7 +17,7 @@ export default function SignUp(){
       size={ 'large' }
     />
     
-    <StyledBorder></StyledBorder>
+    <StyledBorder/>
     
     <div styles={ { width: '95%' } }>
       <StyledInput

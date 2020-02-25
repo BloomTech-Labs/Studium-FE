@@ -5,7 +5,6 @@ import StyledAvatar from './StyledAvatar';
 import { ReactComponent as SmallWhiteLogo } from '../../images/SmallWhiteLogo.svg';
 import { Popover } from 'antd';
 import { signout } from '../../actions';
-import SmallLogo from './SmallLogo';
 import { useDispatch, useSelector } from 'react-redux';
 import StyledContainer from './StyledContainer';
 

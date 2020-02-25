@@ -7,7 +7,7 @@ import MainDashboard from './views/Dashboard';
 import { useSelector, useDispatch } from 'react-redux';
 import SignUp from './views/SignUp';
 import SignIn from './views/SignIn';
-import { signedIn, signout, fetchUser } from './actions';
+import { signedIn, signout} from './actions';
 import firebase from './config/firebase/FirebaseConfig';
 import LoginSignUpRoute from './routes/LoginSignUpRoute';
 import ProtectedRoute from './routes/ProtectedRoute';
@@ -17,10 +17,9 @@ import CreateDeck from './views/CreateDeck';
 import PreviewDeck from './views/PreviewDeck';
 import FlashCard from './views/FlashCard';
 import {
-  BrowserView, MobileView, isBrowser, isMobile,
+  isMobile,
 } from 'react-device-detect';
 import Footer from './components/Footer/Footer';
-import PropTypes from 'prop-types';
 import Testing from './views/Testing';
 
 function App( props ){

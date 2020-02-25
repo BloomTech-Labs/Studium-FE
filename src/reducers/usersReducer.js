@@ -1,5 +1,5 @@
 import {
-  FETCHING_USER, FETCHED_USER, SIGNED_IN, SIGNIN_FAILED, SIGNOUT,
+  FETCHED_USER, SIGNED_IN, SIGNIN_FAILED, SIGNOUT,
   ATTEMPT_SIGNIN,
 } from '../actions';
 import {User} from 'firebase'

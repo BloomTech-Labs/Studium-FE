@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { Upload, Icon, message } from 'antd';
+import { Upload, message } from 'antd';
 import { uploadImage } from '../../actions/photo';
 import UploadIcon from '../Styled/UploadIcon';
 import { useDispatch, useSelector } from 'react-redux';

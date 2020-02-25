@@ -10,7 +10,7 @@
  * @function
  * @param {String} type
  * @param {*} [payload]
- * @returns {Action} action - action for reducer
+ * @returns {{type: String}} action - action for reducer
  */
 export const action = ( type, payload ) => {
   if( payload ){

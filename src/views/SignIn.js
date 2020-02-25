@@ -2,7 +2,7 @@ import React from 'react';
 import StyledInput from '../components/Styled/StyledInput';
 import StyledButton from '../components/Styled/StyledButton';
 import styled from 'styled-components';
-import { signin, GOOGLE_PROVIDER, EMAIL_PROVIDER } from '../actions';
+import { signin, GOOGLE_PROVIDER} from '../actions';
 import { useDispatch } from 'react-redux';
 import StyledSynapsText from '../components/Styled/StyledSynapsText';
 

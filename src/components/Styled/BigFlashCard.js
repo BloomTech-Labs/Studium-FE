@@ -20,14 +20,14 @@ const BigFlashCard = ( { flashCard, flashImage } ) => {
       </CardText>
     </StyledCard>
     <img src={ card2 }
-         style={ {
-           position: 'absolute',
-           top: '14px',
-           height: '417px',
-           width: '276px',
-           zIndex: -1,
-           left: '5px',
-         } }></img>
+  style={ {
+    position: 'absolute',
+    top: '14px',
+    height: '417px',
+    width: '276px',
+    zIndex: -1,
+    left: '5px',
+  } }/>
     <img src={ card3 } style={ {
       position: 'absolute',
       top: '22px',

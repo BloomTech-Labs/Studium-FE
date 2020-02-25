@@ -4,7 +4,7 @@ import logo from '../../images/smalllogo.png';
 
 const SmallLogo = () => {
   return ( <StyledSmallLogo>
-      <img src={ logo } alt="Logo"></img>
+      <img src={ logo } alt="Logo"/>
     </StyledSmallLogo> );
 };
 
