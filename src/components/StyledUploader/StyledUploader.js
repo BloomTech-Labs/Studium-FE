@@ -6,7 +6,6 @@ import UploadIcon from '../Styled/UploadIcon';
 import { useDispatch, useSelector } from 'react-redux';
 import * as PropTypes from 'prop-types';
 
-
 const StyledUploader = ( props ) => {
   
   const photoReducer = useSelector( state => state.photosReducer );
@@ -14,7 +13,7 @@ const StyledUploader = ( props ) => {
   const [ photoObject, setPhotoObject ] = useState( false );
   
   useEffect( () => {
-    debugger;
+    
     Object.values( photoReducer.photos ).forEach( photoObject => {
       if( photoObject.id === props.id ){
         setPhotoObject( photoObject );
@@ -39,13 +38,13 @@ const StyledUploader = ( props ) => {
   
   const loadImage = photoObject && photoObject.file && photoObject.file.url;
   return ( <StyledUpload
+    data-testid="upload"
     name="file"
     listType="picture-card"
-    className="avatar-uploader"
     showUploadList={ false }
     beforeUpload={ beforeUpload }
     customRequest={ customRequest }
-  >
+  >{ 'upload' }
     { loadImage ?
       <img src={ getUrl() } alt='avatar' style={ { width: '100%' } }/> :
       <UploadIcon/> }
@@ -54,7 +53,7 @@ const StyledUploader = ( props ) => {
 };
 
 StyledUploader.propTypes = {
-  id: PropTypes.number
+  id: PropTypes.number,
 };
 
 const StyledUpload = styled( Upload )`

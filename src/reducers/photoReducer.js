@@ -7,7 +7,6 @@ const initialState = {
   photos: {},
 };
 export const photosReducer = ( state = initialState, action ) => {
-  debugger;
   switch( action.type ){
     case UPLOADING_PHOTO_INIT:
       state.photos[ action.payload.id ] = action.payload;

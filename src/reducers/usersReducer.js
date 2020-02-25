@@ -1,10 +1,25 @@
 import {
-  FETCHING_USER, FETCHED_USER, SIGNED_IN, SIGNIN_FAILED, SIGNOUT, ATTEMPT_SIGNIN,
+  FETCHING_USER, FETCHED_USER, SIGNED_IN, SIGNIN_FAILED, SIGNOUT,
+  ATTEMPT_SIGNIN,
 } from '../actions';
+import {User} from 'firebase'
 
+
+/**
+ * @typedef UsersReducerState
+ * @property {boolean} fetching - Fetching the user from the database.
+ * @property {Error | null} error - Fetching the user from the database.
+ * @property {User | {}} user - Fetching the user from the database.
+ */
 const initialState = {
   user: {}, fetching: false, error: null,
 };
+/**
+ *  @typedef UsersReducer
+ * @param {UsersReducerState} state
+ * @param {Action} action
+ * @returns {*}
+ */
 export const usersReducer = ( state = initialState, action ) => {
   
   switch( action.type ){

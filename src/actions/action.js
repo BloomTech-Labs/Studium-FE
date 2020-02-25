@@ -1,4 +1,10 @@
 /**
+ * @typedef Action
+ * @property {string} type  The type of action to be performed.
+ * @property {any} payload  Data to be sent to the reducer.
+ */
+
+/**
  * Create Action
  *
  * @function
@@ -12,3 +18,4 @@ export const action = ( type, payload ) => {
   }
   return { type };
 };
+

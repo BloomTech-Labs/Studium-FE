@@ -55,7 +55,6 @@ const Dashboard = ( props ) => {
       } ) }
     
     </StyledDeckHolder>
-    <Footer/>
   </StyledDashboard> );
 };
 

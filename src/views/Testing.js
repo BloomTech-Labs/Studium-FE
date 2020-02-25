@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import BigFlashCard from '../components/Styled/BigFlashCard';
-import CardIcon from '../components/Styled/CardIcon';
-import StyledUploader from '../components/Styled/StyledUploader';
-import StyledInput from '../components/Styled/StyledInput';
-import { Form } from 'antd';
-import StyledSearchBar from '../components/Styled/StyledSearchBar';
-import { uploadPhoto } from '../actions';
+import { uploadImage } from '../actions';
 import StyledUploader from '../components/StyledUploader/StyledUploader';
 
 const Testing = () => {

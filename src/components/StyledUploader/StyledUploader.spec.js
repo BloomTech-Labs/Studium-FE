@@ -1,12 +1,11 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import SyledUploadeer from './StyledUploader';
-
+import { render } from '../../util/test-utils';
+import StyledUpload from './StyledUploader';
 
 describe( 'Styled Uploader', () => {
   test( 'snapshot renders', () => {
-    const component = render( <SyledUploadeer id={ 1 }/> );
-    let tree = component.toJSON();
-    expect( tree ).toMatchSnapshot();
+    const all = render( <StyledUpload id={ 1 }/> );
+    const container = all.container;
+    expect( container ).toMatchSnapshot();
   } );
 } );
