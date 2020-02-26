@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StyledCreateCardBtn render correctly 1`] = `
+.c0.c0 {
+  position: absolute;
+  width: 99px;
+  height: 99px;
+  left: 139px;
+  top: 688px;
+  padding: 10px;
+  background: #d7d7d7;
+  border-style: none;
+  box-sizing: border-box;
+}
+
+<button
+  className="ant-btn c0 ant-btn-primary"
+  onClick={[Function]}
+  type="button"
+>
+  <i
+    className="anticon"
+    style={
+      Object {
+        "color": "black",
+        "fontSize": "70px",
+        "lineHeight": "10px",
+      }
+    }
+  />
+</button>
+`;

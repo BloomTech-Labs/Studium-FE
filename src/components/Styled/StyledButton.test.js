@@ -1,13 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
-import testRenderer from 'react-test-renderer';
-// import 'jest-styled-components';
+import renderer from 'react-test-renderer';
 
 import StyledButton from './StyledButton';
 
-
-test('Button renderer correctly', () => {
-    const tree = testRenderer.create(<StyledButton />).toJSON();
+test('StyledButton render correctly', () => {
+    const tree = renderer.create(<StyledButton />).toJSON();
     expect(tree).toMatchSnapshot();
 });
 

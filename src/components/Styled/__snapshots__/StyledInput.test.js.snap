@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StyledInput render correctly 1`] = `
+.c0.c0 {
+  text-align: left;
+  width: 90%;
+}
+
+.c1.c1:focus {
+  box-shadow: none;
+}
+
+<div
+  className="ant-row ant-form-item c0"
+  style={Object {}}
+>
+  <div
+    className="ant-col ant-form-item-control-wrapper"
+    style={Object {}}
+  >
+    <div
+      className="ant-form-item-control"
+    >
+      <span
+        className="ant-form-item-children"
+      >
+        <input
+          className="ant-input c1"
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          type="text"
+          value=""
+        />
+      </span>
+    </div>
+  </div>
+</div>
+`;

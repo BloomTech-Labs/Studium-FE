@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StyledDeckPreview render correctly 1`] = `
+.c0.c0 {
+  width: 97px;
+  height: 153px;
+  margin-top: 20px;
+  border-radius: 13px;
+  border: 3px solid rgba(136,136,136,0.75);
+  box-sizing: border-box;
+}
+
+<div
+  className="ant-card c0 ant-card-bordered ant-card-type-inner"
+>
+  <div
+    className="ant-card-body"
+    style={Object {}}
+  />
+</div>
+`;

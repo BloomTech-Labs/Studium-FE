@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button renderer correctly 1`] = `
+exports[`StyledButton render correctly 1`] = `
 .c0.c0 {
   border: 0;
   color: black;
