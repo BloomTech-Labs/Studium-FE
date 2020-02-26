@@ -6,4 +6,5 @@ import BigFlashCard from './BigFlashCard';
 test('BigFlashCard render correctly', () => {
     const tree = renderer.create(<BigFlashCard />).toJSON();
     expect(tree).toMatchSnapshot();
+    console.log(tree);
 });
