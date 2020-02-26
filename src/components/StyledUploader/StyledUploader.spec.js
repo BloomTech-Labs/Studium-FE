@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, findAllByTestId, findByTestId } from '../../util/test-utils';
+import { render, findByRole, findByTestId } from '../../util/test-utils';
 import StyledUpload from './StyledUploader';
 import '@testing-library/jest-dom';
 
@@ -29,7 +29,7 @@ describe('Styled Uploader', () => {
      *
      * @type {HTMLElement} button
      */
-    const button = await findByTestId(container.container, 'upload');
+    const button = await findByRole(container.container, 'button');
 
     print(button.getRootNode());
   });
