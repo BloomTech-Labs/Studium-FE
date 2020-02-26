@@ -5,6 +5,7 @@ import StyledTitleText from '../components/Styled/StyledTitleText';
 import StyledDeckPreview from '../components/Styled/StyledDeckPreview';
 import StyledCreateCardBtn from '../components/Styled/StyledCreateCardBtn';
 import Footer from '../components/Footer/Footer';
+import arrow from '../images/Arrow.jpg';
 
 const decks = [
   { card_name: 'Name this organ' },
@@ -30,6 +31,16 @@ const PreviewDeck = props => {
     </StyledCreateCardBtn>
 
       </StyledPreviewDeckHolder>
+      <img src={ arrow }
+         style={ {
+           position: 'absolute',
+           top: '485px',
+           height: '28px',
+           width: '34px',
+           zIndex: -1,
+           left: '40px',
+           boxSizing: "border-box",
+         } }></img>
       <Footer/>
     </StyledPreviewDeck>
   );
