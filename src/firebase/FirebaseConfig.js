@@ -1,13 +1,14 @@
 import * as firebase from 'firebase';
 
-const firebaseConfig = {
-  apiKey: process.env.REACT_APP_apiKey,
-  authDomain: process.env.REACT_APP_authDomain,
-  databaseURL: process.env.REACT_APP_databaseURL,
-  projectId: process.env.REACT_APP_projectId,
-  storageBucket: process.env.REACT_APP_storageBucket,
-  messagingSenderId: process.env.REACT_APP_messagingSenderId,
-  appId: process.env.REACT_APP_appId,
+var firebaseConfig = {
+  apiKey: "AIzaSyDSkG8RXbv5BMD3_oEK3SBB8hxdICiUVLY",
+  authDomain: "synaps-5ce5c.firebaseapp.com",
+  databaseURL: "https://synaps-5ce5c.firebaseio.com",
+  projectId: "synaps-5ce5c",
+  storageBucket: "synaps-5ce5c.appspot.com",
+  messagingSenderId: "484285835517",
+  appId: "1:484285835517:web:424a873200421e100c7694",
+  measurementId: "G-4WR8S8F7FH"
 };
 // Initialize Firebase
 firebase.initializeApp( firebaseConfig );
