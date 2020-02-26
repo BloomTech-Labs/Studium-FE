@@ -8,11 +8,11 @@
 
 # 1️⃣ Synaps
 
-
+1️⃣( https://production-lambda-synaps-fe.herokuapp.com/.)
 
 ## 4️⃣ Contributors
 
- [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200"/>](https://github.com/austinbro5)[<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200"/>](https://github.com/ccurry20) [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200"/>](https://github.com/christopherc1331) [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200"/>](https://github.com/gmgower)[<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200"/>](https://github.com/Brimes7)[Jeremiah Tenbrink](https://github.com/jeremiahtenbrink)                                              
+ [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200"/>](https://github.com/austinbro5)[<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200"/>](https://github.com/ccurry20) [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200"/>](https://github.com/christopherc1331) [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200"/>](https://github.com/gmgower)[<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200"/>](https://github.com/Brimes7)[<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200"/>](https://github.com/jeremiahtenbrink)                                              
 
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
@@ -23,12 +23,13 @@
 
 ## Project Overview
 
-[Trello Board](https://trello.com/b/wFoCS5VS/labspt7-pt-flards)
+1️⃣ [Trello Board](https://trello.com/b/wFoCS5VS/labspt7-pt-flards)
 
 1️⃣ [Product Canvas](https://www.notion.so/5e4824078e4240d1bd94900ad1e3c212?v=fd4a5deca267478693c76de7410101e5)
 
 1️⃣ [UX Design files](https://www.figma.com/file/BuGRUaXhmqsSEEtSTTVl7f/PT-Flash-Cards-David-and-Natalie?node-id=545%3A92) 
-![Code Climate coverage](https://img.shields.io/codeclimate/coverage/Lambda-School-Labs/pt-synaps-fe?style=plastic)
+
+
 
 To create the best Life Science flashcard application, that has excellent UI, which has minimal distractions to make the learning process more efficient.  To be the best user friendly flashcard application for life sciences students.
 
@@ -39,57 +40,59 @@ To create the best Life Science flashcard application, that has excellent UI, wh
 -    create decks 
 -    Take quizs 
 -    Spaced repatetions 
-      
+     
 
 ## 1️⃣ Tech Stack
 
 ### Front end built using:
-<
-React and Styled Componets 
-#### _Front end framework goes here_
-     antd
-    cloudinary-react
-    firebase
-    prop-types
-    react
-    react-device-detect
-    react-dom
-    react-redux
-    react-router-dom
-    react-scripts
-    redux
-    redux-thunk
-    styled-component
+React and Styled componets 
 
-🚫List the rest of the front end features and libraries in the same format as the framework above.
+#### _Front end framework goes here_ 
+    "antd": "^3.26.9",
+    
+    "cloudinary-react": "^1.3.0",
+    
+    "firebase": "^7.8.1",
+    
+    "prop-types": "^15.7.2",
+    
+    "react": "^16.12.0",
+    
+    "react-dom": "^16.12.0",
+    
+    "react-redux": "^7.1.3",
+    
+    "react-router-dom": "^5.1.2",
+    
+    "react-scripts": "3.3.1",
+    
+    "redux": "^4.0.5",
+    
+    "redux-thunk": "^2.3.0",
+    
+    "styled-components": "^5.0.1",
+    
+    "styled-reset": "^4.1.0".
+#### Front end deployed to  https://production-lambda-synaps-fe.herokuapp.com/
 
-#### Front end deployed to Heroku 
+#### [Back end](https://github.com/Lambda-School-Labs/pt-synaps-be) built using:Postgress
 
-#### [Back end](https://github.com/Lambda-School-Labs/pt-synaps-be)
-built using: Postgress 
-
-#### 🚫 back end framework goes here
-     apido
-    body-parser
-    chalk
-    cloudinary
-    cors
-    datauri
-    dotenv
-    express
-    helmet
-    jsonwebtoken
-    knex
-    knex-cleaner
-    multer
-    npm-run-all
-    pg
-    sqlite3
-
-
-
-
-🚫 List the rest of the back end end features and libraries in the same format as the framework above
+####  back end framework 
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^3.21.2",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.20.4",
+    "knex-cleaner": "^1.3.0",
+    "pg": "^7.17.0",
+    "sqlite3": "^4.1.1"
+    "devDependencies": {
+    "cross-env": "^6.0.3",
+    "jest": "^24.9.0",
+    "nodemon": "^2.0.2",
+    "supertest": "^4.0.2"
 
 # APIs
 
@@ -154,7 +157,6 @@ In order for the app to function correctly, the user must set up their own envir
 🚫Document what you used for testing and why
 
 # 4️⃣ Installation Instructions
-
   FrontEnd
   Npm install should install all dependences 
   npx create-react-app
@@ -185,7 +187,7 @@ Please note we have a [code of conduct](./CODE_OF_CONDUCT.md). Please follow it 
  - Check to see if the issue has recently been fixed by attempting to reproduce the issue using the latest master branch in the repository.
  - Create a live example of the problem.
  - Submit a detailed bug report including your environment & browser, steps to reproduce the issue, actual and expected outcomes,  where you believe the issue is originating from, and any potential solutions you have considered.
-synaps.lambda@gmail.com
+
 ### Feature Requests
 
 We would love to hear from you about new features which would improve this app and further the aims of our project. Please provide as much detail and information as possible to show us why you think your new feature should be implemented.
@@ -194,7 +196,7 @@ synaps.lambda@gmail.com
 ### Pull Requests
 
 If you have developed a patch, bug fix, or new feature that would improve this app, please submit a pull request. It is best to communicate your ideas with the developers first before investing a great deal of time into a pull request to ensure that it will mesh smoothly with the project.
-synaps.lambda@gmail.com
+
 Remember that this project is licensed under the MIT license, and by submitting a pull request, you agree that your work will be, too.
 
 #### Pull Request Guidelines
