@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import StyledCreateCardBtn from '../Styled/StyledCreateCardBtn';
 import { Icon } from 'antd';
+import { devices } from '../../util/breakpoints-device.js';
 import StyledContainer from '../Styled/StyledContainer';
 
 export default function Footer(props) {
@@ -27,6 +28,7 @@ export default function Footer(props) {
           size={'large'}
           shape={'circle'}
           onClick={addDeck}
+          visable={false}
         />
         <StyledIcon
           type="home"
@@ -53,6 +55,10 @@ const StyledFooter = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media screen and ${devices.tablet} {
+    bottom: -75px;
+  }
 `;
 
 const StyledIcon = styled(Icon)`

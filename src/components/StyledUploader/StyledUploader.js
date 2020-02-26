@@ -41,21 +41,21 @@ const StyledUploader = props => {
 
   const loadImage = photoObject && photoObject.file && photoObject.file.url;
   return (
-    <StyledUpload
-      className={'styled-upload'}
-      testid="upload"
-      name="file"
-      listType="picture-card"
-      showUploadList={false}
-      beforeUpload={beforeUpload}
-      customRequest={customRequest}
-    >
-      {loadImage ? (
-        <img src={getUrl()} alt="avatar" style={{ width: '100%' }} />
-      ) : (
-        <UploadIcon />
-      )}
-    </StyledUpload>
+    <div data-testid="upload">
+      <StyledUpload
+        name="file"
+        listType="picture-card"
+        showUploadList={false}
+        beforeUpload={beforeUpload}
+        customRequest={customRequest}
+      >
+        {loadImage ? (
+          <img src={getUrl()} alt="avatar" style={{ width: '100%' }} />
+        ) : (
+          <UploadIcon />
+        )}
+      </StyledUpload>
+    </div>
   );
 };
 

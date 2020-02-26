@@ -4,6 +4,7 @@ import StyledCardDeck from '../components/Styled/StyledCardDeck';
 import StyledTitleText from '../components/Styled/StyledTitleText';
 import StyledSearchBar from '../components/Styled/StyledSearchBar';
 import StyledCreateCardBtn from '../components/Styled/StyledCreateCardBtn';
+import { devices } from '../util/breakpoints-device.js';
 
 const decks = [
   { deck_name: 'Some Name' },
@@ -84,6 +85,13 @@ const StyledDashboard = styled.div`
   flex-direction: column;
   max-width: 100%;
   height: 100%;
+
+  @media screen and ${devices.tablet} {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    left: 400px;
+  }
 `;
 
 export default Dashboard;

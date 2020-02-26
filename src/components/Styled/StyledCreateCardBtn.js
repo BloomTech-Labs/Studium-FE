@@ -11,32 +11,36 @@ const StyledCreateCardBtn = ({
   shape,
   loading,
   block,
-  color,
+  visable,
   ...props
 }) => {
-  return (
-    <StyledAntdButton
-      type={type}
-      size={size}
-      shape={shape}
-      loading={loading && 'loading'}
-      block={block && 'block'}
-      {...props}
-    >
-      {
-        <Icon
-          type={icon}
-          style={{
-            fontSize: '59px',
-            color: 'black',
-            lineHeight: '10px',
-            fontWeight: 900,
-          }}
-        />
-      }
-      {text}
-    </StyledAntdButton>
-  );
+  if (visable) {
+    return (
+      <StyledAntdButton
+        type={type}
+        size={size}
+        shape={shape}
+        loading={loading && 'loading'}
+        block={block && 'block'}
+        {...props}
+      >
+        {
+          <Icon
+            type={icon}
+            style={{
+              fontSize: '59px',
+              color: 'black',
+              lineHeight: '10px',
+              fontWeight: 900,
+            }}
+          />
+        }
+        {text}
+      </StyledAntdButton>
+    );
+  } else {
+    return <></>;
+  }
 };
 
 StyledCreateCardBtn.propTypes = {

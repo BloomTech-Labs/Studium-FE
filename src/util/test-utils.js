@@ -1,5 +1,4 @@
 // test-utils.js
-
 import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
@@ -42,12 +41,17 @@ const AllTheProviders = ({ children }) => {
   );
 };
 
-const customRender = (ui, options) =>
-  render(ui, { wrapper: AllTheProviders, ...options });
+/**
+ *
+ * @param ui
+ * @param options
+ * @returns {RenderResult}
+ */
+const customRender = (ui, options) => {
+  return render(ui, { wrapper: AllTheProviders, ...options });
+};
 
 // re-export everything
 export * from '@testing-library/react';
-export * from '@testing-library/jest-dom';
 
-// override render method
 export { customRender as render };
