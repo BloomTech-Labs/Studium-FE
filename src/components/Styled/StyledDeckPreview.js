@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Card } from 'antd';
+import { Card, Icon } from 'antd';
 
 const StyledDeckPreview = ({
   text,
@@ -24,6 +24,8 @@ const StyledDeckPreview = ({
       {...props}
     >
       {deck && <p className={'deck-text'}>{deck.card_name}</p>}
+    <Icon type={'check-circle'}
+    style={{margin: '0 auto'}}/>
     </StyledAntdCard>
   );
 };

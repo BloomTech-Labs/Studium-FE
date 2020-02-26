@@ -17,20 +17,18 @@ const PreviewDeck = props => {
   return (
     <StyledPreviewDeck>
       <StyledTitleText text={'Preview'} />
-      <StyledPreviewDeckHolder>
+      <StyledPreviewDeckHolder icon={'check-circle'}>
         {decks.map(deck => {
-          console.log(decks)
-          return <StyledDeckPreview deck={deck} />;
+          console.log(decks);
+          return <StyledDeckPreview deck={deck}  />
         })}
-        <StyledCreateCardBtn 
-    icon={'plus'}
-    size={'large'}
-    shape={'circle'}
-    >
-    </StyledCreateCardBtn>
-
+        <StyledCreateCardBtn
+          icon={'plus'}
+          size={'large'}
+          shape={'circle'}
+        ></StyledCreateCardBtn>
       </StyledPreviewDeckHolder>
-      <Footer/>
+      <Footer />
     </StyledPreviewDeck>
   );
 };
@@ -40,10 +38,10 @@ PreviewDeck.propTypes = {};
 const StyledPreviewDeck = styled.div`
   display: flex;
   flex-direction: column;
-  
+
   max-width: 100%;
   min-height: 90%;
-  width:100%;
+  width: 100%;
 `;
 
 const StyledPreviewDeckHolder = styled.div`
