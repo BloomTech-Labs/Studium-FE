@@ -49,7 +49,7 @@ const StyledAntdButton = styled(Button)`
         return 'black';
       }
     }};
-    
+
     background-color: ${props => {
       if (props.type === 'primary') {
         return props.theme.mainColor;
@@ -59,8 +59,7 @@ const StyledAntdButton = styled(Button)`
         return props.theme.mainColor;
       }
     }};
-} ;
-
+  }
 `;
 
 export default StyledButton;

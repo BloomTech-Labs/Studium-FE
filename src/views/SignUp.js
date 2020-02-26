@@ -4,36 +4,34 @@ import StyledButton from '../components/Styled/StyledButton';
 import styled from 'styled-components';
 import StyledSynapsText from '../components/Styled/StyledSynapsText';
 
-export default function SignUp(){
-  
-  return ( <StyledSignUp>
-    <StyledSynapsText/>
-    
-    <StyledButton
-      style={ { margin: '1rem 0 1.5em', padding: '0 2em 0' } }
-      icon={ 'google' }
-      text={ 'Sign Up with Google!' }
-      shape={ 'round' }
-      size={ 'large' }
-    />
-    
-    <StyledBorder/>
-    
-    <div styles={ { width: '95%' } }>
-      <StyledInput
-        block={ true }
-        label={ 'Email Address' }
-        bordered={ false }/>
-    </div>
-    
-    <StyledButton
-      style={ { padding: '0 2.5em 0' } }
-      text={ 'Continue with Email' }
-      shape={ 'round' }
-      size={ 'large' }
-      type={ 'darkgray' }
-    />
-  </StyledSignUp> );
+export default function SignUp() {
+  return (
+    <StyledSignUp>
+      <StyledSynapsText />
+
+      <StyledButton
+        style={{ margin: '1rem 0 1.5em', padding: '0 2em 0' }}
+        icon={'google'}
+        text={'Sign Up with Google!'}
+        shape={'round'}
+        size={'large'}
+      />
+
+      <StyledBorder />
+
+      <div styles={{ width: '95%' }}>
+        <StyledInput block={true} label={'Email Address'} bordered={false} />
+      </div>
+
+      <StyledButton
+        style={{ padding: '0 2.5em 0' }}
+        text={'Continue with Email'}
+        shape={'round'}
+        size={'large'}
+        type={'darkgray'}
+      />
+    </StyledSignUp>
+  );
 }
 
 const StyledSignUp = styled.div`

@@ -47,9 +47,8 @@ const StyledAntdCard = styled(Card)`
     border: 3px solid rgba(136, 136, 136, 0.75);
     box-sizing: border-box;
 
-    
-       > .deck-text {
-      } 
+    > .deck-text {
+    }
   }
 `;
 export default StyledDeckPreview;

@@ -12,62 +12,70 @@ import 'antd/dist/antd.css';
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 import {
-  logger, crashReporter, rafScheduler, readyStatePromise, thunk,
-  timeoutScheduler, vanillaPromise,
+  logger,
+  crashReporter,
+  rafScheduler,
+  readyStatePromise,
+  thunk,
+  timeoutScheduler,
+  vanillaPromise,
 } from './util/customMiddleWare';
 
 const GlobalStyle = createGlobalStyle`
-${ reset }
+${reset}
 `;
 
 const theme = {
-  
   lightLightGray: '#D7D7D7',
   lightGray: '#c4c4c4',
   gray: '#C4C4C4',
   darkGray: '#585858',
   darkDarkGray: '#3a3a3a',
-  
+
   largeRadius: 14,
   smallRadius: 6,
-  
+
   navBarTopHeight: 75,
   footerHeight: 50,
-  
+
   screenHeight: window.innerHeight,
   screenWidth: window.outerWidth,
-  
 };
 const updateDimensions = () => {
   theme.screenHeight = window.innerHeight;
   theme.screenWidth = window.innerWidth;
 };
 
-window.addEventListener( 'resize', updateDimensions );
+window.addEventListener('resize', updateDimensions);
 
 /**
  *
  * @type {(Store<any, Action> & Store<S & StateExt, A> & Ext) | (Store<any, Action> & Store<S & {}, A> & {dispatch: Dispatch<A>})}
  */
-const store = createStore( rootReducer,
-  applyMiddleware( rafScheduler,
+const store = createStore(
+  rootReducer,
+  applyMiddleware(
+    rafScheduler,
     timeoutScheduler,
     thunk,
     vanillaPromise,
     readyStatePromise,
     logger,
-    crashReporter,
-  ),
+    crashReporter
+  )
 );
 
-ReactDOM.render( <ThemeProvider theme={ theme }>
-  <Provider store={ store }>
-    <GlobalStyle/>
-    <Router>
-      <App/>
-    </Router>
-  </Provider>
-</ThemeProvider>, document.getElementById( 'root' ) );
+ReactDOM.render(
+  <ThemeProvider theme={theme}>
+    <Provider store={store}>
+      <GlobalStyle />
+      <Router>
+        <App />
+      </Router>
+    </Provider>
+  </ThemeProvider>,
+  document.getElementById('root')
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -1,9 +1,11 @@
 import {
-  FETCHED_USER, SIGNED_IN, SIGNIN_FAILED, SIGNOUT,
+  FETCHED_USER,
+  SIGNED_IN,
+  SIGNIN_FAILED,
+  SIGNOUT,
   ATTEMPT_SIGNIN,
 } from '../actions';
-import {User} from 'firebase'
-
+import { User } from 'firebase';
 
 /**
  * @typedef UsersReducerState
@@ -12,7 +14,9 @@ import {User} from 'firebase'
  * @property {User | {}} user - Fetching the user from the database.
  */
 const initialState = {
-  user: {}, fetching: false, error: null,
+  user: {},
+  fetching: false,
+  error: null,
 };
 /**
  *  @typedef UsersReducer
@@ -20,9 +24,8 @@ const initialState = {
  * @param {Action} action
  * @returns {*}
  */
-export const usersReducer = ( state = initialState, action ) => {
-  
-  switch( action.type ){
+export const usersReducer = (state = initialState, action) => {
+  switch (action.type) {
     case ATTEMPT_SIGNIN:
       return { fetching: true };
     case SIGNED_IN:
@@ -31,7 +34,7 @@ export const usersReducer = ( state = initialState, action ) => {
       return { user: {}, fetching: false, error: action.payload };
     case SIGNOUT:
       return { user: {}, error: null };
-    
+
     default:
       return state;
   }

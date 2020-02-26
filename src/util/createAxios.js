@@ -1,14 +1,13 @@
 import axios from 'axios';
 
-
 /**
  *
  * @returns {AxiosInstance}
  */
 export const createAxios = () => {
-  return axios.create( {
+  return axios.create({
     baseURL: process.env.REACT_APP_BASE_URL,
-  } );
+  });
 };
 
 /**
@@ -16,10 +15,10 @@ export const createAxios = () => {
  * @param uid
  * @returns {AxiosInstance}
  */
-export const createAxiosAuth = ( uid ) => {
-  return axios.create( {
+export const createAxiosAuth = uid => {
+  return axios.create({
     baseURL: process.env.REACT_APP_BASE_URL,
     timeout: 1000,
-    headers: { 'Auth': uid },
-  } );
+    headers: { Auth: uid },
+  });
 };

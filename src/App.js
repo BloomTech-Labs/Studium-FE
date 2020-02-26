@@ -7,7 +7,7 @@ import MainDashboard from './views/Dashboard';
 import { useSelector, useDispatch } from 'react-redux';
 import SignUp from './views/SignUp';
 import SignIn from './views/SignIn';
-import { signedIn, signout} from './actions';
+import { signedIn, signout } from './actions';
 import firebase from './config/firebase/FirebaseConfig';
 import LoginSignUpRoute from './routes/LoginSignUpRoute';
 import ProtectedRoute from './routes/ProtectedRoute';
@@ -16,82 +16,98 @@ import StyledContainer from './components/Styled/StyledContainer';
 import CreateDeck from './views/CreateDeck';
 import PreviewDeck from './views/PreviewDeck';
 import FlashCard from './views/FlashCard';
-import {
-  isMobile,
-} from 'react-device-detect';
+import { isMobile } from 'react-device-detect';
 import Footer from './components/Footer/Footer';
 import Testing from './views/Testing';
 
-function App( props ){
-  const user = useSelector( state => state.usersReducer );
+/**
+ *
+ * App
+ *@component
+ * @param props
+ * @returns {*}
+ * @constructor
+ */
+function App(props) {
+  const user = useSelector(state => state.usersReducer);
   const dispatch = useDispatch();
-  const [ navBarVisable, setVisable ] = useState( false );
-  
+  const [navBarVisable, setVisable] = useState(false);
+
   //Promises. This function gets called in for google sign in
-  useEffect( () => {
-    firebase.auth().onAuthStateChanged( user => {
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(user => {
       const pathName = props.history.location.pathname;
-      if( user ){
-        setVisable( true );
-        signedIn( user, dispatch );
-        if( pathName === '/signin' || pathName === '/signup' || pathName ===
-          '/' ){
-          props.history.push( '/dashboard' );
+      if (user) {
+        setVisable(true);
+        signedIn(user, dispatch);
+        if (
+          pathName === '/signin' ||
+          pathName === '/signup' ||
+          pathName === '/'
+        ) {
+          props.history.push('/dashboard');
         }
-      }else{
-        signout( dispatch );
-        setVisable( false );
+      } else {
+        signout(dispatch);
+        setVisable(false);
       }
-    } );
-  }, [] );
-  
+    });
+  }, []);
+
+  /**
+   *
+   * @returns {string|number}
+   */
   const calculateMaxHeight = () => {
-    debugger;
-    if( navBarVisable ){
+    if (navBarVisable) {
       let height = themeContext.screenHeight - 125;
       height += 'px';
       return height;
-    }else{
+    } else {
       return '100vh';
     }
-    
   };
-  
-  const themeContext = useContext( ThemeContext );
+
+  const themeContext = useContext(ThemeContext);
   return (
-    
-    <StyledApp className="App" width={ themeContext.screenWidth }
-               height={ themeContext.screenWidth } mobile={ isMobile }>
-      <StyledNavBar navBarVis={ navBarVisable } { ...props } />
-      <StyledContainer navBarVis={ navBarVisable } position={ 'fixed' }
-                       top={ '0' } height={ themeContext.screenHeight }
-                       maxHeight={ themeContext.screenHeight }
-                       margin={ ( navBarVisable ? '75px 0 50px 0' : '0' ) }>
+    <StyledApp
+      className="App"
+      width={themeContext.screenWidth}
+      height={themeContext.screenWidth}
+      mobile={isMobile}
+    >
+      <StyledNavBar navBarVis={navBarVisable} {...props} />
+      <StyledContainer
+        navBarVis={navBarVisable}
+        position={'fixed'}
+        top={'0'}
+        height={themeContext.screenHeight}
+        maxHeight={themeContext.screenHeight}
+        margin={navBarVisable ? '75px 0 50px 0' : '0'}
+      >
         <Switch>
-          <LoginSignUpRoute path={ '/signup' }
-                            component={ SignUp } { ...props } />
-          <LoginSignUpRoute path={ '/signin' }
-                            component={ SignIn } { ...props } />
-          <ProtectedRoute path={ '/dashboard' } component={ MainDashboard }/>
-          <ProtectedRoute path={ '/create/deck' } component={ CreateDeck }/>
-          <ProtectedRoute path={ '/preview' } component={ PreviewDeck }/>
-          <ProtectedRoute path={ '/game' } component={ FlashCard }/>
-          <ProtectedRoute path={ '/test' } component={ Testing }/>
-          
-          <LoginSignUpRoute path={ '/' }
-                            component={ LandingPage } { ...props } />
+          <LoginSignUpRoute path={'/signup'} component={SignUp} {...props} />
+          <LoginSignUpRoute path={'/signin'} component={SignIn} {...props} />
+          <ProtectedRoute path={'/dashboard'} component={MainDashboard} />
+          <ProtectedRoute path={'/create/deck'} component={CreateDeck} />
+          <ProtectedRoute path={'/preview'} component={PreviewDeck} />
+          <ProtectedRoute path={'/game'} component={FlashCard} />
+          <ProtectedRoute path={'/test'} component={Testing} />
+
+          <LoginSignUpRoute path={'/'} component={LandingPage} {...props} />
         </Switch>
       </StyledContainer>
-      
-      <Footer navBarVis={ navBarVisable }/>
-    </StyledApp> );
+
+      <Footer navBarVis={navBarVisable} />
+    </StyledApp>
+  );
 }
 
 const StyledApp = styled.div`
-box-sizing: border-box;
-position: relative;
-  color: ${ props => props.theme.color };
-  padding: ${ props => props.navBarVis ? '75px 0 50px 0' : 0 };
+  box-sizing: border-box;
+  position: relative;
+  color: ${props => props.theme.color};
+  padding: ${props => (props.navBarVis ? '75px 0 50px 0' : 0)};
   text-align: center;
   flex-direction: column;
   display: flex;
@@ -102,6 +118,6 @@ position: relative;
   max-height: 100vh;
   min-height: 100vh;
   overflow-y: hidden;
-  `;
+`;
 
-export default withRouter( App );
+export default withRouter(App);

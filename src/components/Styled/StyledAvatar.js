@@ -3,16 +3,23 @@ import { Avatar } from 'antd';
 import styled from 'styled-components';
 import { ReactComponent as AvatarIcon } from '../../images/ProfileIcons.svg';
 
-const StyledAvatar = ( { avatarUrl, ...props } ) => {
-  if( avatarUrl ){
-    return ( <StyledAntAvatar src={ avatarUrl } { ...props } size={ 40 }/> );
+const StyledAvatar = ({ avatarUrl, ...props }) => {
+  if (avatarUrl) {
+    return <StyledAntAvatar src={avatarUrl} {...props} size={40} />;
   }
-  return ( <AvatarIcon style={ {
-    position: 'absolute', top: '15px', right: '8%',
-  } } { ...props }/> );
+  return (
+    <AvatarIcon
+      style={{
+        position: 'absolute',
+        top: '15px',
+        right: '8%',
+      }}
+      {...props}
+    />
+  );
 };
 
-const StyledAntAvatar = styled( Avatar )`
+const StyledAntAvatar = styled(Avatar)`
   && {
     position: absolute;
     background-color: #585858;

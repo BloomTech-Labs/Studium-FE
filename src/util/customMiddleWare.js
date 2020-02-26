@@ -1,7 +1,10 @@
 import { createAxios } from './createAxios';
 import {
-  UPLOADING_PHOTO_FAILED, UPLOADING_PHOTO_PROGRESS, UPLOADING_PHOTO_SUCCESS,
-  UPLOADING_PHOTO_INIT, UPLOAD_PHOTO,
+  UPLOADING_PHOTO_FAILED,
+  UPLOADING_PHOTO_PROGRESS,
+  UPLOADING_PHOTO_SUCCESS,
+  UPLOADING_PHOTO_INIT,
+  UPLOAD_PHOTO,
 } from '../actions/photo';
 import { Store } from 'redux';
 
@@ -11,11 +14,10 @@ import { Store } from 'redux';
  * @param {Store} store
  */
 export const logger = store => next => action => {
-  
-  console.group( action.type );
-  console.info( 'dispatching', action );
-  let result = next( action );
-  console.log( 'next state', store.getState() );
+  console.group(action.type);
+  console.info('dispatching', action);
+  let result = next(action);
+  console.log('next state', store.getState());
   console.groupEnd();
   return result;
 };
@@ -26,11 +28,11 @@ export const logger = store => next => action => {
  * @returns {function(*): Function}
  */
 export const crashReporter = store => next => action => {
-  try{
-    return next( action );
-  }catch( err ){
-    console.error( 'Caught an exception!', err );
-    
+  try {
+    return next(action);
+  } catch (err) {
+    console.error('Caught an exception!', err);
+
     throw err;
   }
 };
@@ -42,47 +44,46 @@ export const crashReporter = store => next => action => {
  */
 export const rafScheduler = store => next => {
   let queuedActions = [];
-  
+
   let frame = null;
-  
+
   /**
    *
    */
-  function loop(){
+  function loop() {
     frame = null;
-    try{
-      if( queuedActions.length ){
-        next( queuedActions.shift() );
+    try {
+      if (queuedActions.length) {
+        next(queuedActions.shift());
       }
-    }finally{
+    } finally {
       maybeRaf();
     }
   }
-  
+
   /**
    *
    */
-  function maybeRaf(){
-    if( queuedActions.length && !frame ){
-      frame = requestAnimationFrame( loop );
-    }/**/
+  function maybeRaf() {
+    if (queuedActions.length && !frame) {
+      frame = requestAnimationFrame(loop);
+    } /**/
   }
-  
+
   /**
    *
    */
   return action => {
-    if( !action.meta || !action.meta.raf ){
-      return next( action );
+    if (!action.meta || !action.meta.raf) {
+      return next(action);
     }
-    queuedActions.push( action );
+    queuedActions.push(action);
     maybeRaf();
-    return function cancel(){
-      queuedActions = queuedActions.filter( a => a !== action );
+    return function cancel() {
+      queuedActions = queuedActions.filter(a => a !== action);
     };
   };
 };
-
 
 /**
  * Schedules actions with { meta: { delay: N } } to be delayed by N
@@ -92,49 +93,49 @@ export const rafScheduler = store => next => {
  * @returns {function(*=): Function}
  */
 export const timeoutScheduler = store => next => action => {
-  if( !action.meta || !action.meta.delay ){
-    return next( action );
+  if (!action.meta || !action.meta.delay) {
+    return next(action);
   }
-  const timeoutId = setTimeout( () => next( action ), action.meta.delay );
-  return function cancel(){
-    clearTimeout( timeoutId );
+  const timeoutId = setTimeout(() => next(action), action.meta.delay);
+  return function cancel() {
+    clearTimeout(timeoutId);
   };
 };
 
 export const vanillaPromise = store => next => action => {
-  if( typeof action.then !== 'function' ){
-    return next( action );
+  if (typeof action.then !== 'function') {
+    return next(action);
   }
-  return Promise.resolve( action ).then( store.dispatch );
+  return Promise.resolve(action).then(store.dispatch);
 };
 
 export const readyStatePromise = store => next => action => {
-  if( !action.promise ){
-    return next( action );
+  if (!action.promise) {
+    return next(action);
   }
-  
-  function makeAction( ready, data ){
-    const newAction = Object.assign( {}, action, { ready }, data );
+
+  function makeAction(ready, data) {
+    const newAction = Object.assign({}, action, { ready }, data);
     delete newAction.promise;
     return newAction;
   }
-  
-  next( makeAction( false ) );
-  
-  return action.promise.then( result => {
-    next( makeAction( true, { result } ) );
-  }, error => {
-    next( makeAction( true, { error } ) );
-  } );
+
+  next(makeAction(false));
+
+  return action.promise.then(
+    result => {
+      next(makeAction(true, { result }));
+    },
+    error => {
+      next(makeAction(true, { error }));
+    }
+  );
 };
 
 export const thunk = store => next => action => {
-  
-  if( typeof action === 'function' ){
-    return action( store.dispatch, store.getState );
-  }else{
-    next( action );
+  if (typeof action === 'function') {
+    return action(store.dispatch, store.getState);
+  } else {
+    next(action);
   }
 };
-
-
