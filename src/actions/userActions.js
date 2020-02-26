@@ -102,23 +102,7 @@ export const USER_REGISTER_COMPLETE = "USER_REGISTER_COMPLETE"
 
 
 //functions for registering. Need to use .then to check database.
-export const checkUser = (user, dispatch) => {
-  dispatch (action(CHECK_USER_REGISTERED));
-  debugger;
-  connectAxiosAuth(user.uid)
-    .get('/api/users/me')
-    .then(res => {
-      if(res.status === 200) {
-        return;
-      } else {
-        register(user, dispatch);
-      }
-    })
-    .catch(err =>{
-      console.log(err);
-      register(user, dispatch);
-    })
-}
+
 //registers user
 export const register = (user, dispatch) => {
   dispatch (action(USER_ATTEMPT_REGISTER));
@@ -144,6 +128,23 @@ export const register = (user, dispatch) => {
     })
 }
 
+export const checkUser = (user, dispatch) => {
+  dispatch (action(CHECK_USER_REGISTERED));
+  debugger;
+  connectAxiosAuth(user.uid)
+    .get('/api/users/me')
+    .then(res => {
+      if(res.status === 200) {
+        return;
+      } else {
+        register(user, dispatch);
+      }
+    })
+    .catch(err =>{
+      console.log(err);
+      register(user, dispatch);
+    })
+}
 
 // export const registeredUser = () => {
 //   const request = createAxios();
