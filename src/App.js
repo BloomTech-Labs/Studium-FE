@@ -57,7 +57,7 @@ function App( props ){
         setVisable( false );
       }
     } );
-  }, [] );
+  }, [dispatch, props.history] );
   
   return ( <StyledApp className="App" width={ dimensions.width }
                       height={ dimensions.width } mobile={ isMobile }>
