@@ -10,7 +10,7 @@
 
 ## 4️⃣ Contributors
 
- [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200"/>](https://github.com/austinbro5)[<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200"/>](https://github.com/ccurry20) [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200"/>](https://github.com/christopherc1331) [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200"/>](https://github.com/gmgower)[<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200"/>](https://github.com/Brimes7)[Jeremiah Tenbrink](https://github.com/jeremiahtenbrink)                                              
+ [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200"/>](https://github.com/austinbro5)[<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200"/>](https://github.com/ccurry20) [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200"/>](https://github.com/christopherc1331) [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200"/>](https://github.com/gmgower)[<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200"/>](https://github.com/Brimes7)[<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200"/>](https://github.com/jeremiahtenbrink)                                              
 
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
@@ -21,12 +21,13 @@
 
 ## Project Overview
 
-[Trello Board](https://trello.com/b/wFoCS5VS/labspt7-pt-flards)
+1️⃣ [Trello Board](https://trello.com/b/wFoCS5VS/labspt7-pt-flards)
 
 1️⃣ [Product Canvas](https://www.notion.so/5e4824078e4240d1bd94900ad1e3c212?v=fd4a5deca267478693c76de7410101e5)
 
 1️⃣ [UX Design files](https://www.figma.com/file/BuGRUaXhmqsSEEtSTTVl7f/PT-Flash-Cards-David-and-Natalie?node-id=545%3A92) 
-![Code Climate coverage](https://img.shields.io/codeclimate/coverage/Lambda-School-Labs/pt-synaps-fe?style=plastic)
+
+
 
 To create the best Life Science flashcard application, that has excellent UI, which has minimal distractions to make the learning process more efficient.  To be the best user friendly flashcard application for life sciences students.
 
@@ -37,20 +38,14 @@ To create the best Life Science flashcard application, that has excellent UI, wh
 -    create decks 
 -    Take quizs 
 -    Spaced repatetions 
--       
+     
 
 ## 1️⃣ Tech Stack
 
 ### Front end built using:
 React and Styled componets 
 
-#### _Front end framework goes here_
-"@testing-library/jest-dom": "^4.2.4",
-
-    "@testing-library/react": "^9.3.2",
-    
-    "@testing-library/user-event": "^7.1.2",
-    
+#### _Front end framework goes here_ 
     "antd": "^3.26.9",
     
     "cloudinary-react": "^1.3.0",
@@ -96,8 +91,6 @@ React and Styled componets
     "jest": "^24.9.0",
     "nodemon": "^2.0.2",
     "supertest": "^4.0.2"
-
-🚫 List the rest of the back end end features and libraries in the same format as the framework above
 
 # APIs
 
