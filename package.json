@@ -29,6 +29,7 @@
     "coverage": "react-scripts test CI=true --coverage || true"
   },
   "jest": {
+    "testMatch": [".*?(?=.spec|test).*?.js"],
     "collectCoverageFrom": [
       "**/*.{js,jsx}",
       "**/*.spec.{js,jsx}",
