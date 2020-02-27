@@ -7,6 +7,8 @@ module.exports = {
   // options ...
   testEnvironment: 'node',
   rootDir: './src',
+  testMatch: [__dirname + '/src/*.{spec,test}.js'],
+  cache: false,
   collectCoverageFrom: [
     '*.spec.js',
     '!**/node_modules/**',
