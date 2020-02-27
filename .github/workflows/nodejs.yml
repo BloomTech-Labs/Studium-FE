@@ -17,10 +17,10 @@ jobs:
     # The steps for the job, executed in sequence
     steps:
       # A GitHub action for checking out the current branch
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@master
 
       # A GitHub action to setup Node.js
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@master
         with:
           node-version: '12'
 
