@@ -29,7 +29,6 @@
     "coverage": "react-scripts test CI=true --coverage || true"
   },
   "jest": {
-    "rootDir": "./src",
     "collectCoverageFrom": [
       "**/*.{js,jsx}",
       "!**/node_modules/**",
