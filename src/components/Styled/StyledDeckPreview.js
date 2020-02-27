@@ -4,13 +4,17 @@ import PropTypes from 'prop-types';
 import { Card } from 'antd';
 
 const StyledDeckPreview = ({
+/*eslint no-unused-vars:0*/
   text,
+/*eslint react/prop-types:0*/
   type = 'inner',
   size = 'default',
   icon,
   loading,
   block,
+/*eslint no-unused-vars:0*/
   hoverable,
+/*eslint react/prop-types:0*/
   deck,
   ...props
 }) => {
@@ -23,6 +27,7 @@ const StyledDeckPreview = ({
       block={block && 'block'}
       {...props}
     >
+/*eslint react/prop-types:0*/
       {deck && <p className={'deck-text'}>{deck.card_name}</p>}
     </StyledAntdCard>
   );

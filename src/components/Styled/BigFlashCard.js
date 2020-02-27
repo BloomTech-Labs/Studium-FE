@@ -1,20 +1,23 @@
+/*eslint react/prop-types:0*/
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import card2 from '../../images/Card2.jpg';
 import card3 from '../../images/Card3.jpg';
 import { Card } from 'antd';
+import PropTypes from 'prop-types';
 
 /**
- * @component
- * @param flashCard
- * @param flashImage
+ * Big Flash Card Component
+ * @param {FlashCard} flashCard
  * @returns {*}
  * @constructor
  */
-const BigFlashCard = ({ flashCard, flashImage }) => {
+const BigFlashCard = ({ flashCard }) => {
   const [position, setPosition] = useState('front');
 
+/*eslint react/prop-types:0*/
   const flipCard = () => {
+/*eslint react/prop-types:0*/
     const newPos = position === 'front' ? 'back' : 'front';
     setPosition(newPos);
   };
@@ -54,6 +57,13 @@ const BigFlashCard = ({ flashCard, flashImage }) => {
       />
     </StyledCardContainer>
   );
+};
+
+BigFlashCard.prototypes = {
+  flashCard: PropTypes.objectOf({
+    question: PropTypes.string.isRequired,
+    answer: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 const StyledCardContainer = styled.div`

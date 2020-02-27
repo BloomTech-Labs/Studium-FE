@@ -11,6 +11,8 @@ const StyledButton = ({
   shape,
   loading,
   block,
+/*eslint no-unused-vars:0*/
+/*eslint react/prop-types:0*/
   color,
   ...props
 }) => {

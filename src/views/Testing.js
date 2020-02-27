@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+/*eslint no-unused-vars:0*/
 import { uploadImage } from '../actions';
 import StyledUploader from '../components/StyledUploader/StyledUploader';
 

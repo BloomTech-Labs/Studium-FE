@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import StyledTitleText from '../components/Styled/StyledTitleText';
 
+/*eslint no-unused-vars:0*/
 const CreateDeck = props => {
   return (
     <StyledCreateDeck>

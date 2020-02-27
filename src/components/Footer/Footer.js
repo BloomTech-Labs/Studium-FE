@@ -1,3 +1,8 @@
+/*eslint react/prop-types:0*/
+/*eslint react/prop-types:0*/
+/*eslint react/prop-types:0*/
+/*eslint react/prop-types:0*/
+/*eslint react/prop-types:0*/
 import React from 'react';
 import styled from 'styled-components';
 import StyledCreateCardBtn from '../Styled/StyledCreateCardBtn';
@@ -7,7 +12,10 @@ import StyledContainer from '../Styled/StyledContainer';
 
 export default function Footer(props) {
   const addDeck = () => {
+/*eslint no-debugger:0*/
     debugger;
+/*eslint react/prop-types:0*/
+/*eslint react/prop-types:0*/
     props.history.push('/create/deck');
   };
 
@@ -38,6 +46,7 @@ export default function Footer(props) {
         <StyledIcon
           type="folder-open"
           theme={'filled'}
+/*eslint react/prop-types:0*/
           color={props.theme ? props.theme.darkDarkGray : 'gray'}
         />
       </StyledContainer>

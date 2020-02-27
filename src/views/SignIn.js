@@ -8,6 +8,7 @@ import StyledSynapsText from '../components/Styled/StyledSynapsText';
 
 export default function SignIn() {
   const dispatch = useDispatch();
+/*eslint no-unused-vars:0*/
   const handleClick = e => {
     signin(GOOGLE_PROVIDER, dispatch);
   };

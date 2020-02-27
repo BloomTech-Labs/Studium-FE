@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const StyledContainer = props => {
+/*eslint no-debugger:0*/
   debugger;
+/*eslint react/prop-types:0*/
   return <Container {...props}>{props.children}</Container>;
 };
 

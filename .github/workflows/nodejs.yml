@@ -1,7 +1,6 @@
 # The name of the workflow
 name: build
 
-
 #  What conditions trigger the workflow
 #  In this case, all pushes and pull requests
 on: [push]
@@ -10,10 +9,6 @@ on: [push]
 jobs:
   # A job to generate and publish code coverage
   coverage:
-
-
-
-
     name: Test and publish test coverage
 
     # The OS on which the job will run
@@ -21,26 +16,20 @@ jobs:
 
     # The steps for the job, executed in sequence
     steps:
-
       # A GitHub action for checking out the current branch
       - uses: actions/checkout@master
-
 
       # A GitHub action to setup Node.js
 
       - uses: actions/setup-node@master
         with:
-          node-version: "12"
-
+          node-version: '12'
 
       # Run the NPM install command before proceeding
       - run: npm install
-
-
         # A GitHub action for running tests and publishing coverage
       - uses: paambaati/codeclimate-action@v2.4.0
         env:
-
           # An environment variable, the value is a GitHub repo secret
           CC_TEST_REPORTER_ID: ${{ secrets.CodeClimateReporterId }}
         with:

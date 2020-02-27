@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import StyledTitleText from '../components/Styled/StyledTitleText';
 import StyledDeckPreview from '../components/Styled/StyledDeckPreview';
+/*eslint no-unused-vars:0*/
 import StyledCreateCardBtn from '../components/Styled/StyledCreateCardBtn';
 import Footer from '../components/Footer/Footer';
 
@@ -19,6 +20,7 @@ const PreviewDeck = props => {
       <StyledPreviewDeckHolder>
         {decks.map(deck => {
           console.log(decks);
+/*eslint react/jsx-key:0*/
           return <StyledDeckPreview deck={deck} />;
         })}
       </StyledPreviewDeckHolder>

@@ -1,4 +1,5 @@
 import React from 'react';
+import './types';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
@@ -25,6 +26,26 @@ const GlobalStyle = createGlobalStyle`
 ${reset}
 `;
 
+/**
+ * @typedef ThemeProvider
+ * @property {String} lightLightGray
+ * @property {String} lightGray
+ * @property {String} gray
+ * @property {String} darkGray
+ * @property {String} darkDarkGray
+ *
+ *
+ * @property {Number} navBarTopHeight
+ * @property {Number} screenWidth
+ * @property {Number} screenHeight
+ * @property {Number} footerHeight
+ * @property {Number} largeRadius
+ * @property {Number} smallRadius
+ */
+
+/**
+ * @type {ThemeProvider} theme
+ */
 const theme = {
   lightLightGray: '#D7D7D7',
   lightGray: '#c4c4c4',
@@ -41,6 +62,7 @@ const theme = {
   screenHeight: window.innerHeight,
   screenWidth: window.outerWidth,
 };
+
 const updateDimensions = () => {
   theme.screenHeight = window.innerHeight;
   theme.screenWidth = window.innerWidth;
@@ -48,10 +70,6 @@ const updateDimensions = () => {
 
 window.addEventListener('resize', updateDimensions);
 
-/**
- *
- * @type {(Store<any, Action> & Store<S & StateExt, A> & Ext) | (Store<any, Action> & Store<S & {}, A> & {dispatch: Dispatch<A>})}
- */
 const store = createStore(
   rootReducer,
   applyMiddleware(

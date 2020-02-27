@@ -23,19 +23,22 @@ export const uploadImage = file => dispatch => {
   return request
     .post('/photo/upload', data, {
       onUploadProgress: ProgressEvent => {
+        console.log(ProgressEvent);
         file.progress = ProgressEvent.loaded / ProgressEvent.total;
         dispatch({ type: UPLOADING_PHOTO_PROGRESS, payload: file });
       },
     })
     .then(res => {
+      console.log(res);
       file.progress = 0;
       file.uploading = false;
+      file.file = {};
       file.file.public_id = res.data.photo.public_id;
-      debugger;
       file.file.url = res.data.photo.photo_url;
       dispatch({ type: UPLOADING_PHOTO_SUCCESS, payload: file });
     })
     .catch(err => {
+      console.log(err);
       file.error = err;
       dispatch({ type: UPLOADING_PHOTO_FAILED, payload: file });
     });

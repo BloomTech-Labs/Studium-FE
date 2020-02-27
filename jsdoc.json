@@ -1,6 +1,6 @@
 {
   "tags": {
-    "allowUnknownTags":  ["component"],
+    "allowUnknownTags":  true,
     "dictionaries": ["jsdoc","closure"]
   },
   "source": {
@@ -9,18 +9,10 @@
     "excludePattern": "(^|\\/|\\\\)_"
   },
   "plugins": [
-    "plugins/markdown",
-    "better-docs/component"
   ],
-  "templates": {
-    "better-docs": {
-      "name": "My React components"
-    }
-  },
+  "templates":  {},
   "opts": {
     "destination": "docs",
-    "recurse": true,
-    "template": "node_modules/better-docs",
-    "readme": "README.md"
+    "recurse": true
   }
 }

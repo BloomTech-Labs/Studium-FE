@@ -5,9 +5,30 @@ import {
   UPLOADING_PHOTO_INIT,
 } from '../actions';
 
+/**
+ * @typedef PhotoReducerState
+ * @property {} photos
+ */
+/*eslint prettier/prettier:0*/
 const initialState = {
-  photos: {},
+  photos: {}
 };
+
+/**
+ * @typedef Photo photo
+ * @property {String} public_id
+ * @property {String} url
+ * @property {Error | undefined} error
+ * @property {Number} progress
+ *
+ */
+
+/**
+ * @typedef PhotosReducer
+ * @param state
+ * @param action
+ * @returns {PhotoReducerState} state
+ */
 export const photosReducer = (state = initialState, action) => {
   switch (action.type) {
     case UPLOADING_PHOTO_INIT:

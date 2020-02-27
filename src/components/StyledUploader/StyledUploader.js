@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
+
 import styled from 'styled-components';
 import { Upload, message } from 'antd';
 import { uploadImage } from '../../actions/photo';
-import UploadIcon from '../Styled/UploadIcon';
+import UploadIcon from './UploadIcon.js';
 import { useDispatch, useSelector } from 'react-redux';
 import * as PropTypes from 'prop-types';
 
 /**
- *
- * @param props
- * @returns {*}
+ * Styled Upload Button
  * @constructor
  */
 const StyledUploader = props => {
@@ -50,7 +49,12 @@ const StyledUploader = props => {
         customRequest={customRequest}
       >
         {loadImage ? (
-          <img src={getUrl()} alt="avatar" style={{ width: '100%' }} />
+          <img
+            src={getUrl()}
+            alt="avatar"
+            style={{ width: '100%' }}
+            data-testid="upload-image"
+          />
         ) : (
           <UploadIcon />
         )}

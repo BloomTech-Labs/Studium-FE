@@ -2,9 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import Rectangle from '../../images/uploadIcon/Rectangle85.jpg';
 
+/*eslint no-unused-vars:0*/
 const UploadIcon = props => {
   return (
-    <StyledUploadIcon>
+    <StyledUploadIcon data-testid="upload-icon">
       <img src={Rectangle} style={{ height: '59px', width: '67px' }} />
     </StyledUploadIcon>
   );

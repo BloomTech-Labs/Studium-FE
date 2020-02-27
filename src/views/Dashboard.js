@@ -3,20 +3,21 @@ import styled from 'styled-components';
 import StyledCardDeck from '../components/Styled/StyledCardDeck';
 import StyledTitleText from '../components/Styled/StyledTitleText';
 import StyledSearchBar from '../components/Styled/StyledSearchBar';
-import StyledCreateCardBtn from '../components/Styled/StyledCreateCardBtn';
 import { devices } from '../util/breakpoints-device.js';
 
 const decks = [
-  { deck_name: 'Some Name' },
-  { deck_name: 'Another Name' },
-  { deck_name: 'Anatomy' },
-  { deck_name: 'Some Name' },
+  { deck_name: 'Some Name', deck_id: 1 },
+  { deck_name: 'Another Name', deck_id: 1 },
+  { deck_name: 'Anatomy', deck_id: 1 },
+  { deck_name: 'Some Name', deck_id: 1 },
   {
     deck_name: 'Another' + ' Name',
+    deck_id: 1,
   },
   {
     deck_name:
       'Anatomy this is a really long deck name lets just keep' + ' this name',
+    deck_id: 1,
   },
 ];
 
@@ -32,7 +33,6 @@ const Dashboard = props => {
   };
 
   const deckClicked = (deck = undefined) => {
-    debugger;
     if (!deck) {
       props.history.push('/create/deck');
       return;
@@ -61,6 +61,7 @@ const Dashboard = props => {
         {decks.map(deck => {
           return (
             <StyledCardDeck
+              id={deck.deck_id}
               deck={deck}
               border={'solid'}
               onClick={e => deckClicked(deck)}
@@ -70,6 +71,10 @@ const Dashboard = props => {
       </StyledDeckHolder>
     </StyledDashboard>
   );
+};
+
+Dashboard.propTypes = {
+  history: PropTypes.object,
 };
 
 const StyledDeckHolder = styled.div`

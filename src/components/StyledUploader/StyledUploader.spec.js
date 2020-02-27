@@ -1,52 +1,68 @@
 import React from 'react';
-import { render, findByRole, findByTestId } from '../../util/test-utils';
+import {
+  customRender,
+  getNodesByType,
+  getByTestId,
+  fireEvent,
+  store,
+  getByRole,
+} from '../../util/test-utils.js';
 import StyledUpload from './StyledUploader';
-import '@testing-library/jest-dom';
+import moxios from 'moxios';
 
 describe('Styled Uploader', () => {
   test('snapshot renders', async () => {
-    /**
-     * @type {RenderResult} rencerResults
-     */
-    const rencerResults = render(<StyledUpload id={1} />);
-
-    /**
-     *
-     * @type {HTMLElement} button
-     */
-    const button = await findByTestId(rencerResults.container, 'upload');
+    const { container, debug } = customRender(<StyledUpload id={1} />);
+    debug();
+    const button = await getByTestId(container, 'upload');
 
     expect(button).toMatchSnapshot();
   });
 
-  test('To have a click button.', async () => {
-    /**
-     * @type {RenderResult} container
-     */
-    const container = render(<StyledUpload id={1} />);
+/*eslint jest/no-test-callback:0*/
+  test('To have a click button.', async done => {
+    const file = new File(['(⌐□_□)'], 'chucknorris.png', {
+      type: 'image/png',
+    });
+    moxios.install();
+    moxios.withMock(() => {
+/*eslint no-unused-vars:0*/
+      const { container, debug } = customRender(<StyledUpload id={1} />);
+      const { photosReducer } = store.getState();
+      let button = getByRole(container, 'button');
+      let uploadIcon = getByTestId(container, 'upload-icon');
+      let inputNode = getNodesByType(container, 'input')[0];
+      expect(photosReducer.photos).toEqual({});
+      fireEvent.change(inputNode, { target: { files: [file] } });
+      fireEvent.click(button);
 
-    /**
-     *
-     * @type {HTMLElement} button
-     */
-    const button = await findByRole(container.container, 'button');
+      moxios.wait(() => {
+        try {
+          let request = moxios.requests.mostRecent();
+          request
+            .respondWith({
+              status: 201,
+              response: {
+                photo: { public_id: file.name, photo_url: file.name },
+              },
+            })
+            .then(() => {
+              const avatar = getByTestId(container, 'upload-image');
+              expect(avatar).toBeInTheDocument();
+              expect(uploadIcon).not.toBeInTheDocument();
+              expect(photosReducer.photos[1].file).toEqual({
+                url: file.name,
+                public_id: file.name,
+              });
+            });
+        } catch (e) {
+          done('We never re rendered the dom.');
+        }
+      });
+    });
+  });
 
-    print(button.getRootNode());
+  afterEach(() => {
+    moxios.uninstall();
   });
 });
-
-/**
- *
- * @param {HTMLElement} element
- */
-const print = element => {
-  if (element.hasChildNodes()) {
-    element.childNodes.forEach(node => {
-      /**
-       * @type {DocumentType} node
-       */
-      console.log(node);
-    });
-  }
-  print(element.toString());
-};

@@ -8,8 +8,12 @@ import StyledSynapsText from '../components/Styled/StyledSynapsText';
 const LandingPage = props => {
   const handleClick = name => {
     if (name === 'SignIn') {
+/*eslint react/prop-types:0*/
+/*eslint react/prop-types:0*/
       props.history.push('/signin');
     } else {
+/*eslint react/prop-types:0*/
+/*eslint react/prop-types:0*/
       props.history.push('/signup');
     }
   };

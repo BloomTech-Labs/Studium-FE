@@ -4,11 +4,16 @@ import styled, { ThemeContext } from 'styled-components';
 import { Switch, withRouter } from 'react-router';
 import LandingPage from './views/LandingPage';
 import MainDashboard from './views/Dashboard';
+/*eslint react/prop-types:0*/
+/*eslint react/prop-types:0*/
+/*eslint react/prop-types:0*/
 import { useSelector, useDispatch } from 'react-redux';
 import SignUp from './views/SignUp';
 import SignIn from './views/SignIn';
 import { signedIn, signout } from './actions';
 import firebase from './config/firebase/FirebaseConfig';
+/*eslint react/prop-types:0*/
+/*eslint react/prop-types:0*/
 import LoginSignUpRoute from './routes/LoginSignUpRoute';
 import ProtectedRoute from './routes/ProtectedRoute';
 import StyledNavBar from './components/Styled/StyledNavBar';
@@ -19,17 +24,18 @@ import FlashCard from './views/FlashCard';
 import { isMobile } from 'react-device-detect';
 import Footer from './components/Footer/Footer';
 import Testing from './views/Testing';
+import PropTypes from 'prop-types'
+
+/** @module Views */
 
 /**
  *
  * App
- *@component
  * @param props
  * @returns {*}
  * @constructor
  */
 function App(props) {
-  const user = useSelector(state => state.usersReducer);
   const dispatch = useDispatch();
   const [navBarVisable, setVisable] = useState(false);
 
@@ -53,20 +59,6 @@ function App(props) {
       }
     });
   }, []);
-
-  /**
-   *
-   * @returns {string|number}
-   */
-  const calculateMaxHeight = () => {
-    if (navBarVisable) {
-      let height = themeContext.screenHeight - 125;
-      height += 'px';
-      return height;
-    } else {
-      return '100vh';
-    }
-  };
 
   const themeContext = useContext(ThemeContext);
   return (
@@ -101,6 +93,11 @@ function App(props) {
       <Footer navBarVis={navBarVisable} />
     </StyledApp>
   );
+}
+
+App.propTypes = {
+  theme: PropTypes.object
+  history: PropTypes.object
 }
 
 const StyledApp = styled.div`

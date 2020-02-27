@@ -1,10 +1,12 @@
 import {
+/*eslint no-unused-vars:0*/
   FETCHED_USER,
   SIGNED_IN,
   SIGNIN_FAILED,
   SIGNOUT,
   ATTEMPT_SIGNIN,
 } from '../actions';
+/*eslint no-unused-vars:0*/
 import { User } from 'firebase';
 
 /**
@@ -19,10 +21,10 @@ const initialState = {
   error: null,
 };
 /**
- *  @typedef UsersReducer
+ *  @typedef UsersReducer usersReducer
  * @param {UsersReducerState} state
  * @param {Action} action
- * @returns {*}
+ * @returns {UsersReducerState} state
  */
 export const usersReducer = (state = initialState, action) => {
   switch (action.type) {
