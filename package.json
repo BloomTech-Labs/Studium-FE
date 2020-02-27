@@ -26,7 +26,7 @@
     "test": "react-scripts test ",
     "eject": "react-scripts eject",
     "docs": "jsdoc -c jsdoc.json --debug --verbose",
-    "coverage": "react-scripts test CI=true --coverage || true"
+    "coverage": "react-scripts test CI=true --no-cache --coverage || true"
   },
   "jest": {
     "collectCoverageFrom": [
