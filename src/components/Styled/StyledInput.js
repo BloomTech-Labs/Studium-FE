@@ -10,7 +10,7 @@ const StyledInput = ({
   ...props
 }) => {
   if (bordered) {
-    if (borderRadius == 'large') {
+    if (borderRadius === 'large') {
       return (
         <StyledFormItem label={label}>
           <StyledAntdInputLargeRadius {...props} />
