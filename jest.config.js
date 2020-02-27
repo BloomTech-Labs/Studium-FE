@@ -6,5 +6,4 @@ module.exports = {
   moduleDirectories: ['node_modules'], // ... other
   // options ...
   testEnvironment: 'node',
-  testMatch: ['.*?(?=.spec|test).*?.js'],
 };

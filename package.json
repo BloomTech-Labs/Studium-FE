@@ -26,10 +26,9 @@
     "test": "react-scripts test ",
     "eject": "react-scripts eject",
     "docs": "jsdoc -c jsdoc.json --debug --verbose",
-    "coverage": "react-scripts test CI=true --coverage || true"
+    "coverage": "react-scripts test --testMatch .*?(?=.spec|test).*?.js CI=true --coverage || true"
   },
   "jest": {
-    "testMatch": [".*?(?=.spec|test).*?.js"],
     "collectCoverageFrom": [
       "**/*.{js,jsx}",
       "**/*.spec.{js,jsx}",
