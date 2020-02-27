@@ -26,20 +26,19 @@
     "test": "react-scripts test ",
     "eject": "react-scripts eject",
     "docs": "jsdoc -c jsdoc.json --debug --verbose",
-    "coverage": "react-scripts test --testMatch '**/*.spec.js' CI=true --coverage || true"
+    "coverage": "react-scripts test CI=true --coverage || true"
   },
   "jest": {
+    "rootDir": "./src",
     "collectCoverageFrom": [
       "**/*.{js,jsx}",
-      "**/*.spec.{js,jsx}",
-      "**/*.test.{js,jsx}",
       "!**/node_modules/**",
       "!**/vendor/**",
       "!**/__tests__/**"
     ],
     "coveragePathIgnorePatterns": [
       "/node_modules/",
-      "/api-docs/",
+      "/apidoc/",
       "/.github/",
       "/coverage/",
       "/src/types/"
