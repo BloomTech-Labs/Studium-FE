@@ -21,12 +21,12 @@
     "styled-reset": "^4.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start CI=true --coverage --detectOpenHandles --forceExit || true",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "docs": "jsdoc -c jsdoc.json --debug --verbose",
-    "coverage": "react-scripts test CI=true --coverage --detectOpenHandles --forceExit || true"
+    "coverage": "react-scripts test"
   },
   "jest": {
     "collectCoverageFrom": [
