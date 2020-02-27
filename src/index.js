@@ -9,6 +9,7 @@ import * as serviceWorker from './serviceWorker';
 import { applyMiddleware, createStore } from 'redux';
 import rootReducer from './reducers';
 import { Provider } from 'react-redux';
+import { theme } from './util/theme.js';
 import 'antd/dist/antd.css';
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
@@ -25,43 +26,6 @@ import {
 const GlobalStyle = createGlobalStyle`
 ${reset}
 `;
-
-/**
- * @typedef ThemeProvider
- * @property {String} lightLightGray
- * @property {String} lightGray
- * @property {String} gray
- * @property {String} darkGray
- * @property {String} darkDarkGray
- *
- *
- * @property {Number} navBarTopHeight
- * @property {Number} screenWidth
- * @property {Number} screenHeight
- * @property {Number} footerHeight
- * @property {Number} largeRadius
- * @property {Number} smallRadius
- */
-
-/**
- * @type {ThemeProvider} theme
- */
-const theme = {
-  lightLightGray: '#D7D7D7',
-  lightGray: '#c4c4c4',
-  gray: '#C4C4C4',
-  darkGray: '#585858',
-  darkDarkGray: '#3a3a3a',
-
-  largeRadius: 14,
-  smallRadius: 6,
-
-  navBarTopHeight: 75,
-  footerHeight: 50,
-
-  screenHeight: window.innerHeight,
-  screenWidth: window.outerWidth,
-};
 
 const updateDimensions = () => {
   theme.screenHeight = window.innerHeight;
