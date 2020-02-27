@@ -73,6 +73,9 @@ const addFunctionFile = (filePath, name) => {
 };
 
 const writeFile = (toWrite, filePath, name) => {
+  if (fs.existsSync(filePath)) {
+    fs.unlinkSync(filePath);
+  }
   let file = fs.openSync(filePath, 'w');
   fs.writeFileSync(file, toWrite.join('\n'));
   fs.closeSync(file);

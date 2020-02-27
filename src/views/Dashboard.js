@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import StyledCardDeck from '../components/Styled/StyledCardDeck';
 import StyledTitleText from '../components/Styled/StyledTitleText';
 import StyledSearchBar from '../components/Styled/StyledSearchBar';
+import PropTypes from 'prop-types';
 import { devices } from '../util/breakpoints-device.js';
 
 const decks = [
