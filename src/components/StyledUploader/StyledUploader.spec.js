@@ -19,14 +19,12 @@ describe('Styled Uploader', () => {
     expect(button).toMatchSnapshot();
   });
 
-/*eslint jest/no-test-callback:0*/
   test('To have a click button.', async done => {
     const file = new File(['(⌐□_□)'], 'chucknorris.png', {
       type: 'image/png',
     });
     moxios.install();
     moxios.withMock(() => {
-/*eslint no-unused-vars:0*/
       const { container, debug } = customRender(<StyledUpload id={1} />);
       const { photosReducer } = store.getState();
       let button = getByRole(container, 'button');
@@ -54,9 +52,10 @@ describe('Styled Uploader', () => {
                 url: file.name,
                 public_id: file.name,
               });
+              done();
             });
         } catch (e) {
-          done('We never re rendered the dom.');
+          done.fail();
         }
       });
     });
