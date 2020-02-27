@@ -30,6 +30,7 @@
     "coverage": "CI=true npm run test --coverage || true"
   },
   "jest": {
+    "testMatch": [".*?(?=.spec|test).*?.js"],
     "collectCoverageFrom": [
       "**/*.{js,jsx}",
       "!**/node_modules/**",
