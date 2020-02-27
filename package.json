@@ -31,6 +31,8 @@
   "jest": {
     "collectCoverageFrom": [
       "**/*.{js,jsx}",
+      "**/*.spec.{js,jsx}",
+      "**/*.test.{js,jsx}",
       "!**/node_modules/**",
       "!**/vendor/**",
       "!**/__tests__/**"
