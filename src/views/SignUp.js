@@ -43,7 +43,7 @@ const StyledSignUp = styled.div`
   height: 100%;
 `;
 
-/*eslint no-unused-vars:0*/
+
 const StyledH1 = styled.h1`
   font-size: 5.5em;
   font-weight: 900;

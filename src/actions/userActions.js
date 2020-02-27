@@ -63,7 +63,6 @@ export const signin = (authType, dispatch, email, password) => {
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
-/*eslint no-unused-vars:0*/
       .then(result => {
         firebase
           .auth()

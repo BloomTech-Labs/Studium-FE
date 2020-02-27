@@ -9,7 +9,8 @@ import * as PropTypes from 'prop-types';
 
 /**
  * Styled Upload Button
- * @constructor
+ * @param props
+ * @return <StyleUploader />
  */
 const StyledUploader = props => {
   const photoReducer = useSelector(state => state.photosReducer);

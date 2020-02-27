@@ -1,12 +1,12 @@
 import {
-/*eslint no-unused-vars:0*/
+
   FETCHED_USER,
   SIGNED_IN,
   SIGNIN_FAILED,
   SIGNOUT,
   ATTEMPT_SIGNIN,
 } from '../actions';
-/*eslint no-unused-vars:0*/
+
 import { User } from 'firebase';
 
 /**

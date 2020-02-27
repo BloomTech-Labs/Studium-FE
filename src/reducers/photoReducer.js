@@ -9,13 +9,12 @@ import {
  * @typedef PhotoReducerState
  * @property {} photos
  */
-/*eslint prettier/prettier:0*/
 const initialState = {
-  photos: {}
+  photos: {},
 };
 
 /**
- * @typedef Photo photo
+ * @typedef Photo
  * @property {String} public_id
  * @property {String} url
  * @property {Error | undefined} error

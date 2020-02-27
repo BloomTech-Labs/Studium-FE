@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-/*eslint react/prop-types:0*/
+
 const CardIcon = ({ cardNumber, width, height, border }) => {
   return (
     <StyledCardIconContainer width={width} height={height} border={border}>

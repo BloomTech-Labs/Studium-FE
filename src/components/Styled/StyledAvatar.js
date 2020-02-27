@@ -3,7 +3,6 @@ import { Avatar } from 'antd';
 import styled from 'styled-components';
 import { ReactComponent as AvatarIcon } from '../../images/ProfileIcons.svg';
 
-/*eslint react/prop-types:0*/
 const StyledAvatar = ({ avatarUrl, ...props }) => {
   if (avatarUrl) {
     return <StyledAntAvatar src={avatarUrl} {...props} size={40} />;

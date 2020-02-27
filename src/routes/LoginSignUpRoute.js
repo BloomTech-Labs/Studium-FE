@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 
-/*eslint react/prop-types:0*/
+
 export const LoginSignUpRoute = ({ component: Component, ...rest }) => {
   return (
     <Route

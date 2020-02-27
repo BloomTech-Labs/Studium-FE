@@ -1,4 +1,3 @@
-/*eslint react/prop-types:0*/
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import card2 from '../../images/Card2.jpg';
@@ -15,9 +14,9 @@ import PropTypes from 'prop-types';
 const BigFlashCard = ({ flashCard }) => {
   const [position, setPosition] = useState('front');
 
-/*eslint react/prop-types:0*/
+
   const flipCard = () => {
-/*eslint react/prop-types:0*/
+
     const newPos = position === 'front' ? 'back' : 'front';
     setPosition(newPos);
   };

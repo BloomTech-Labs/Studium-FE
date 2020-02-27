@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Text from '../../images/synapsText.png';
 
-/*eslint no-unused-vars:0*/
+
 const StyledSynapsText = props => {
   return (
     <SynapsText>

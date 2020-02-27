@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-/*eslint react/prop-types:0*/
+
 const StyledTitleText = ({ text }) => {
   return <StyledTitle>{text}</StyledTitle>;
 };

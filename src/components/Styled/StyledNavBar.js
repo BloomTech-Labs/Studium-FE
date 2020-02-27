@@ -8,11 +8,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import StyledContainer from './StyledContainer';
 import { devices } from '../../util/breakpoints-device.js';
 
-/*eslint no-unused-vars:0*/
-/*eslint react/prop-types:0*/
 const StyledNavBar = ({ navBarVis, ...props }) => {
   const user = useSelector(state => state.users);
-/*eslint no-unused-vars:0*/
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [avatarUrl, setAvatarUrl] = useState(false);
   const dispatch = useDispatch();

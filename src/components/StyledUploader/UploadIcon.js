@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Rectangle from '../../images/uploadIcon/Rectangle85.jpg';
 
-/*eslint no-unused-vars:0*/
+
 const UploadIcon = props => {
   return (
     <StyledUploadIcon data-testid="upload-icon">
