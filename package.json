@@ -29,7 +29,7 @@
     "clear": "react-scripts test --clearCache",
     "coverage": "react-scripts test  --showConfig || true",
     "coverage:run": "react-scripts test --coverage || true",
-    "clear:run": "npm-run-all clear coverage:run"
+    "clear:run": "CI=true npm-run-all clear coverage:run"
   },
   "jest": {
     "collectCoverageFrom": [
