@@ -6,6 +6,7 @@ import {
   fireEvent,
   store,
   getByRole,
+  logOut,
 } from '../../util/test-utils.js';
 import StyledUpload from './StyledUploader';
 import moxios from 'moxios';
@@ -13,6 +14,7 @@ import moxios from 'moxios';
 describe('Styled Uploader', () => {
   test('snapshot renders', async () => {
     const { container, debug } = customRender(<StyledUpload id={1} />);
+    logOut({ debug });
     debug();
     const button = await getByTestId(container, 'upload');
 
@@ -26,6 +28,7 @@ describe('Styled Uploader', () => {
     moxios.install();
     moxios.withMock(() => {
       const { container, debug } = customRender(<StyledUpload id={1} />);
+      logOut({ debug });
       const { photosReducer } = store.getState();
       let button = getByRole(container, 'button');
       let uploadIcon = getByTestId(container, 'upload-icon');

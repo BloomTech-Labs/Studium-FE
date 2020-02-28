@@ -3,7 +3,7 @@ import {
   UPLOADING_PHOTO_SUCCESS,
   UPLOADING_PHOTO_PROGRESS,
   UPLOADING_PHOTO_INIT,
-} from '../actions';
+} from '../actions/photo.js';
 
 /**
  * @typedef PhotoReducerState

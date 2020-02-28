@@ -114,6 +114,22 @@ export const getNodesByType = (c, type) => {
   return toReturn;
 };
 
+/**
+ * Logs out a message or calls debug if env variable is set true.
+ * @param message
+ * @param debug
+ */
+export const logOut = ({ message, debug }) => {
+  if (process.env.SHOW_LOGS === 'true') {
+    if (debg !== false) {
+      debug();
+    }
+    if (message !== undefined) {
+      console.log(message);
+    }
+  }
+};
+
 export * from '@testing-library/react';
 
 export { customRender, theme, store };
