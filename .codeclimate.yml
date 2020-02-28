@@ -1,7 +1,6 @@
 exclude_patterns:
-  - "tests/"
-  - "spec/"
-  - "**/vendor/"
-  - "**/node_modules/"
-  - "*.md"
-  - "coverage/"
+  - 'tests/'
+  - 'spec/'
+  - '**/node_modules/'
+  - '*.md'
+  - 'coverage/'

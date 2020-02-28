@@ -27,7 +27,7 @@
     "eject": "react-scripts eject",
     "docs": "jsdoc -c jsdoc.json --debug --verbose",
     "clear": "react-scripts test --clearCache",
-    "coverage": "react-scripts test  --showConfig || true",
+    "coverage": "react-scripts test --coverage || true",
     "coverage:run": "react-scripts test --coverage || true",
     "clear:run": "CI=true npm-run-all clear coverage:run"
   },
@@ -35,7 +35,7 @@
     "collectCoverageFrom": [
       "**/*.{js,jsx}",
       "!**/node_modules/**",
-      "!**/vendor/**"
+      "!**/*.{test, spec}.{js, jsx}"
     ]
   },
   "eslintConfig": {

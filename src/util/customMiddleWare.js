@@ -14,11 +14,14 @@ import { Store } from 'redux';
  * @param {Store} store
  */
 export const logger = store => next => action => {
-  console.group(action.type);
-  console.info('dispatching', action);
+  if (process.env.SHOW_LOGS == 'true') {
+    console.group(action.type);
+    console.info('dispatching', action);
+
+    console.log('next state', store.getState());
+    console.groupEnd();
+  }
   let result = next(action);
-  console.log('next state', store.getState());
-  console.groupEnd();
   return result;
 };
 

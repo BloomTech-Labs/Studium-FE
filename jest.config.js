@@ -6,8 +6,7 @@ module.exports = {
   moduleDirectories: ['node_modules'], // ... other
   // options ...
   testEnvironment: 'node',
-  rootDir: './src',
-  testMatch: ['*.spec.js'],
+  testMatch: ['<rootDir>/**/*.{test, spec}.{js,jsx}'],
   coverageThreshold: {
     global: {
       branches: 80,
