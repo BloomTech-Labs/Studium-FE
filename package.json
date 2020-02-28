@@ -32,6 +32,7 @@
     "clear:run": "CI=true npm-run-all clear coverage:run"
   },
   "jest": {
+    "testMatch": [".*?(?=.spec|test).*?.js"],
     "collectCoverageFrom": [
       "**/*.{js,jsx}",
       "!**/node_modules/**",

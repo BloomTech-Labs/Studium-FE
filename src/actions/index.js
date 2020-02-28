@@ -1,2 +1,1 @@
-export * from './userActions';
-export * from './photo';
+export * from "./userActions";
