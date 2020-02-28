@@ -72,7 +72,6 @@ const StyledBar = styled.div`
   top: ${props => (props.visable ? '0' : '-74px')};
   width: 100%;
   height: 74px;
-  transition: all 2s;
 
   @media screen and ${devices.tablet} {
     width: 400px;

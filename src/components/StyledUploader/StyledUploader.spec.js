@@ -44,6 +44,10 @@ describe('Styled Uploader', () => {
                 photo: { public_id: file.name, photo_url: file.name },
               },
             })
+            
+            
+            
+            
             .then(() => {
               const avatar = getByTestId(container, 'upload-image');
               expect(avatar).toBeInTheDocument();

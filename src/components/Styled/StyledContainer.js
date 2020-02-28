@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const StyledContainer = props => {
 
-  debugger;
+  
 
   return <Container {...props}>{props.children}</Container>;
 };

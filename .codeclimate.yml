@@ -3,5 +3,5 @@ exclude_patterns:
   - "spec/"
   - "**/vendor/"
   - "**/node_modules/"
-  - "package.json"
   - "*.md"
+  - "coverage/"

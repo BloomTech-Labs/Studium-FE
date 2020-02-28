@@ -8,12 +8,8 @@ import StyledSynapsText from '../components/Styled/StyledSynapsText';
 const LandingPage = props => {
   const handleClick = name => {
     if (name === 'SignIn') {
-
-
       props.history.push('/signin');
     } else {
-
-
       props.history.push('/signup');
     }
   };
@@ -57,11 +53,11 @@ const LandingPage = props => {
           <h1>Synaps</h1>
         </HeaderName>
         <Vector />
-        <FlashCard></FlashCard>
+        <FlashCard />
         <Headline>
           <h1 className="headline">Big CTA Headline</h1>
         </Headline>
-        <CTAButton></CTAButton>
+        <CTAButton />
         <Paragraph>
           <p>
             You get this app. You should really get this app. Something else
@@ -76,27 +72,27 @@ const LandingPage = props => {
             amazing science student. Here’s how we do it
           </p>
         </Paragraph2>
-        <Group1></Group1>
+        <Group1 />
         <Group1Text>
           Here is more about this amazing and super helpful app that will make
           you an amazing science student. Here’s how we do it
         </Group1Text>
-        <Group2></Group2>
+        <Group2 />
         <Group2Text>
           Here is more about this amazing and super helpful app that will make
           you an amazing science student. Here’s how we do it
         </Group2Text>
-        <Group3></Group3>
+        <Group3 />
         <Group3Text>
           Here is more about this amazing and super helpful app that will make
           you an amazing science student. Here’s how we do it
         </Group3Text>
-        <Group4></Group4>
+        <Group4 />
         <Group4Text>
           Here is more about this amazing and super helpful app that will make
           you an amazing science student. Here’s how we do it
         </Group4Text>
-        <Rectangle></Rectangle>
+        <Rectangle />
       </Desktop>
     </StyledLandingPage>
   );
@@ -115,8 +111,6 @@ const MobileHeader = styled.div``;
 const Desktop = styled.div`
   display: none;
   @media ${devices.tablet} {
-    display: flex;
-    flex-direction: column;
   }
 `;
 

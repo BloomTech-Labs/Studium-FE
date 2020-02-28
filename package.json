@@ -26,21 +26,16 @@
     "test": "react-scripts test ",
     "eject": "react-scripts eject",
     "docs": "jsdoc -c jsdoc.json --debug --verbose",
-    "coverage": "react-scripts test --showConfig"
+    "clear": "react-scripts test --clearCache",
+    "coverage": "react-scripts test  --showConfig || true",
+    "coverage:run": "react-scripts test --coverage || true",
+    "clear:run": "npm-run-all clear coverage:run"
   },
   "jest": {
     "collectCoverageFrom": [
       "**/*.{js,jsx}",
       "!**/node_modules/**",
-      "!**/vendor/**",
-      "!**/__tests__/**"
-    ],
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "/apidoc/",
-      "/.github/",
-      "/coverage/",
-      "/src/types/"
+      "!**/vendor/**"
     ]
   },
   "eslintConfig": {
@@ -73,6 +68,7 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.18.3",
     "moxios": "^0.4.0",
+    "npm-run-all": "^4.1.5",
     "prettier": "1.19.1",
     "supertest": "^4.0.2"
   }

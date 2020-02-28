@@ -52,11 +52,11 @@ const StyledAntdButton = styled(Button)`
 
     background-color: ${props => {
       if (props.type === 'primary') {
-        return props.theme.mainColor;
+        return props.theme.lightGray;
       } else if (props.type === 'darkgray') {
         return props.theme.darkGray;
       } else {
-        return props.theme.mainColor;
+        return props.theme.lightGray;
       }
     }};
   }
