@@ -17,7 +17,9 @@
 ![Typescript](https://img.shields.io/npm/types/typescript.svg?style=flat)
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-
+![Code Climet Test Coverage](https://github.com/Lambda-School-Labs/pt-synaps-fe/workflows/Code%20Climet%20Test%20Coverage/badge.svg)
+[![Maintainability](https://api.codeclimate.com/v1/badges/26cd86e13210109747d9/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/pt-synaps-fe/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/26cd86e13210109747d9/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/pt-synaps-fe/test_coverage)
 
 ## Project Overview
 
