@@ -24,8 +24,13 @@ const StyledDeckPreview = ({
       {...props}
     >
       {deck && <p className={'deck-text'}>{deck.card_name}</p>}
-    <Icon type={'check-circle'}
-    style={{margin: '0 auto'}}/>
+     <Icon type={'check-circle'} 
+    style={{
+    position: 'absolute',
+    bottom: '5px', 
+    right: '5px',
+    }}  
+    />
     </StyledAntdCard>
   );
 };
@@ -42,6 +47,7 @@ StyledDeckPreview.propTypes = {
 
 const StyledAntdCard = styled(Card)`
   && {
+    position: relative;
     width: 97px;
     height: 153px;
     margin-top: 20px;
@@ -52,6 +58,7 @@ const StyledAntdCard = styled(Card)`
     
        > .deck-text {
       } 
+     
   }
 `;
 export default StyledDeckPreview;
