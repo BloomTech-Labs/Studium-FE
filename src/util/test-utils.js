@@ -49,7 +49,7 @@ const store = createStore(
  * }
  *
  */
-const customRender = (ui, options) =>
+export const customRender = (ui, options) =>
   render(ui, {
     wrapper: AllTheProviders,
     ...options,
@@ -132,4 +132,4 @@ export const logOutMessageOrDebug = ({ message, debug }) => {
 
 export * from '@testing-library/react';
 
-export { customRender, theme, store };
+export { theme, store };
