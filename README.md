@@ -1,6 +1,6 @@
 🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your portfolio. This is intended to be a guideline, feel free to add your own flare to it.
 
-🚫 The numbers 1️⃣ through 5️⃣ next to each item represent the week that part of the docs needs to be comepleted by.  Make sure to delete the numbers by the end of Labs.
+🚫 The numbers 1️⃣ through 5️⃣ next to each item represent the week that part of the docs needs to be comepleted by. Make sure to delete the numbers by the end of Labs.
 
 🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
 
@@ -10,32 +10,13 @@
 
 ## 4️⃣ Contributors
 
-[<img src="https://avatars3.githubusercontent.com/u/4095?v=4" width = "100" />](https://github.com/tinomen) 
-[<img src="https://avatars2.githubusercontent.com/u/27258?v=4" width = "100" />](https://github.com/jessmartin) 
-[<img src="https://avatars3.githubusercontent.com/u/947888?v=4" width = "100" />](https://github.com/amcgee) 
-[<img src="https://avatars3.githubusercontent.com/u/6180274?v=4" width = "100" />](https://github.com/berniedurfee) 
-[<img src="https://avatars0.githubusercontent.com/u/7180772?v=4" width = "100" />](https://github.com/LeTanque) 
-[<img src="https://avatars0.githubusercontent.com/u/7843803?v=4" width = "100" />](https://github.com/mcgowent) 
-[<img src="https://avatars2.githubusercontent.com/u/8798259?v=4" width = "100" />](https://github.com/ryan-hamblin) 
-[<img src="https://avatars3.githubusercontent.com/u/17443353?v=4" width = "100" />](https://github.com/jeremiahtenbrink) 
-[<img src="https://avatars1.githubusercontent.com/u/19153270?v=4" width = "100" />](https://github.com/ccurry20) 
-[<img src="https://avatars2.githubusercontent.com/u/20153709?v=4" width = "100" />](https://github.com/gmgower) 
-[<img src="https://avatars0.githubusercontent.com/u/23627772?v=4" width = "100" />](https://github.com/1ouie) 
-[<img src="https://avatars3.githubusercontent.com/u/25253905?v=4" width = "100" />](https://github.com/partyshah) 
-[<img src="https://avatars0.githubusercontent.com/u/33911508?v=4" width = "100" />](https://github.com/meganfontenot) 
-[<img src="https://avatars2.githubusercontent.com/u/41247530?v=4" width = "100" />](https://github.com/droneal11015) 
-[<img src="https://avatars0.githubusercontent.com/u/41757264?v=4" width = "100" />](https://github.com/Trip4077) 
-[<img src="https://avatars0.githubusercontent.com/u/42827064?v=4" width = "100" />](https://github.com/MAmaya1) 
-[<img src="https://avatars1.githubusercontent.com/u/43801393?v=4" width = "100" />](https://github.com/Levi-Huynh) 
-[<img src="https://avatars1.githubusercontent.com/u/45113320?v=4" width = "100" />](https://github.com/RonnySAlvarado) 
-[<img src="https://avatars0.githubusercontent.com/u/45896739?v=4" width = "100" />](https://github.com/dswhitely1) 
-[<img src="https://avatars3.githubusercontent.com/u/47146701?v=4" width = "100" />](https://github.com/austinbro5) 
-[<img src="https://avatars2.githubusercontent.com/u/47366310?v=4" width = "100" />](https://github.com/AlyssaSaez) 
-[<img src="https://avatars0.githubusercontent.com/u/48000565?v=4" width = "100" />](https://github.com/Brimes7) 
-[<img src="https://avatars2.githubusercontent.com/u/48426713?v=4" width = "100" />](https://github.com/PWalis) 
-[<img src="https://avatars3.githubusercontent.com/u/49910197?v=4" width = "100" />](https://github.com/DKFerebee) 
-[<img src="https://avatars3.githubusercontent.com/u/49927848?v=4" width = "100" />](https://github.com/christopherc1331) 
-[<img src="https://avatars0.githubusercontent.com/u/55850377?v=4" width = "100" />](https://github.com/derekjpeters) 
+[<img src="https://avatars3.githubusercontent.com/u/17443353?v=4" width = "100" />](https://github.com/jeremiahtenbrink)
+[<img src="https://avatars1.githubusercontent.com/u/19153270?v=4" width = "100" />](https://github.com/ccurry20)
+[<img src="https://avatars2.githubusercontent.com/u/20153709?v=4" width = "100" />](https://github.com/gmgower)
+[<img src="https://avatars3.githubusercontent.com/u/47146701?v=4" width = "100" />](https://github.com/austinbro5)
+[<img src="https://avatars0.githubusercontent.com/u/48000565?v=4" width = "100" />](https://github.com/Brimes7)
+[<img src="https://avatars3.githubusercontent.com/u/49910197?v=4" width = "100" />](https://github.com/DKFerebee)
+[<img src="https://avatars3.githubusercontent.com/u/49927848?v=4" width = "100" />](https://github.com/christopherc1331)
 
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
@@ -52,57 +33,57 @@
 
 1️⃣ [Product Canvas](https://www.notion.so/5e4824078e4240d1bd94900ad1e3c212?v=fd4a5deca267478693c76de7410101e5)
 
-1️⃣ [UX Design files](https://www.figma.com/file/BuGRUaXhmqsSEEtSTTVl7f/PT-Flash-Cards-David-and-Natalie?node-id=545%3A92) 
+1️⃣ [UX Design files](https://www.figma.com/file/BuGRUaXhmqsSEEtSTTVl7f/PT-Flash-Cards-David-and-Natalie?node-id=545%3A92)
 
-
-
-To create the best Life Science flashcard application, that has excellent UI, which has minimal distractions to make the learning process more efficient.  To be the best user friendly flashcard application for life sciences students.
-
+To create the best Life Science flashcard application, that has excellent UI, which has minimal distractions to make the learning process more efficient. To be the best user friendly flashcard application for life sciences students.
 
 ### 4️⃣ Key Features
 
--    The ability to create cards
--    create decks 
--    Take quizs 
--    Spaced repatetions 
-     
+- The ability to create cards
+- create decks
+- Take quizs
+- Spaced repatetions
 
 ## 1️⃣ Tech Stack
 
 ### Front end built using:
-React and Styled componets 
 
-#### _Front end framework goes here_ 
+React and Styled componets
+
+#### _Front end framework goes here_
+
     "antd": "^3.26.9",
-    
+
     "cloudinary-react": "^1.3.0",
-    
+
     "firebase": "^7.8.1",
-    
+
     "prop-types": "^15.7.2",
-    
+
     "react": "^16.12.0",
-    
+
     "react-dom": "^16.12.0",
-    
+
     "react-redux": "^7.1.3",
-    
+
     "react-router-dom": "^5.1.2",
-    
+
     "react-scripts": "3.3.1",
-    
+
     "redux": "^4.0.5",
-    
+
     "redux-thunk": "^2.3.0",
-    
+
     "styled-components": "^5.0.1",
-    
+
     "styled-reset": "^4.1.0".
-#### Front end deployed to  https://production-lambda-synaps-fe.herokuapp.com/
+
+#### Front end deployed to https://production-lambda-synaps-fe.herokuapp.com/
 
 #### [Back end](https://github.com/Lambda-School-Labs/pt-synaps-be) built using:Postgress
 
-####  back end framework 
+#### back end framework
+
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
@@ -182,12 +163,13 @@ In order for the app to function correctly, the user must set up their own envir
 🚫Document what you used for testing and why
 
 # 4️⃣ Installation Instructions
-  FrontEnd
-  Npm install should install all dependences 
-  npx create-react-app
- 
- BackEnd 
-  node install
+
+FrontEnd
+Npm install should install all dependences
+npx create-react-app
+
+BackEnd
+node install
 
 ## Other Scripts
 
@@ -206,12 +188,13 @@ synaps.lambda@gmail.com
 Please note we have a [code of conduct](./CODE_OF_CONDUCT.md). Please follow it in all your interactions with the project.
 
 ## Issue/Bug Request
-   
- **If you are having an issue with the existing project code, please submit a bug report under the following guidelines:**
- - Check first to see if your issue has already been reported.
- - Check to see if the issue has recently been fixed by attempting to reproduce the issue using the latest master branch in the repository.
- - Create a live example of the problem.
- - Submit a detailed bug report including your environment & browser, steps to reproduce the issue, actual and expected outcomes,  where you believe the issue is originating from, and any potential solutions you have considered.
+
+**If you are having an issue with the existing project code, please submit a bug report under the following guidelines:**
+
+- Check first to see if your issue has already been reported.
+- Check to see if the issue has recently been fixed by attempting to reproduce the issue using the latest master branch in the repository.
+- Create a live example of the problem.
+- Submit a detailed bug report including your environment & browser, steps to reproduce the issue, actual and expected outcomes, where you believe the issue is originating from, and any potential solutions you have considered.
 
 ### Feature Requests
 
