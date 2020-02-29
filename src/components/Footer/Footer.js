@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 
 /**
  * @typedef FooterProps
- * @param {ThemeProvider} theme
+ * @param {Theme} theme
  * @param {History} history
  * @return {*}
  */
@@ -16,6 +16,7 @@ import PropTypes from 'prop-types';
 /**
  * Footer component.
  * @param {FooterProps} props
+ * @return {*}
  */
 export const Footer = props => {
   const addDeck = () => {

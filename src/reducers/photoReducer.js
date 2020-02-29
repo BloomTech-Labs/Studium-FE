@@ -7,7 +7,7 @@ import {
 
 /**
  * @typedef PhotoReducerState
- * @property {} photos
+ * @property Object.<Number, {Photo}> photos
  */
 const initialState = {
   photos: {},
@@ -30,16 +30,10 @@ const initialState = {
  */
 export const photosReducer = (state = initialState, action) => {
   switch (action.type) {
-    case UPLOADING_PHOTO_INIT:
-      state.photos[action.payload.id] = action.payload;
-      return { photos: { ...state.photos } };
-    case UPLOADING_PHOTO_PROGRESS:
-      state.photos[action.payload.id] = action.payload;
-      return { photos: { ...state.photos } };
-    case UPLOADING_PHOTO_SUCCESS:
-      state.photos[action.payload.id] = action.payload;
-      return { photos: { ...state.photos } };
-    case UPLOADING_PHOTO_FAILED:
+    case UPLOADING_PHOTO_FAILED ||
+      UPLOADING_PHOTO_INIT ||
+      UPLOADING_PHOTO_SUCCESS ||
+      UPLOADING_PHOTO_PROGRESS:
       state.photos[action.payload.id] = action.payload;
       return { photos: { ...state.photos } };
 

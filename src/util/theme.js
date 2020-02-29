@@ -1,5 +1,5 @@
 /**
- *
+ * @typedef Theme
  * @type {{lightLightGray: string, lightGray: string, navBarTopHeight: number,
  *   screenWidth: unknown, gray: string, footerHeight: number, largeRadius:
  *   number, screenHeight: unknown, darkGray: string, darkDarkGray: string,
@@ -17,4 +17,4 @@ export const theme = {
   footerHeight: 50,
   screenHeight: window.innerHeight,
   screenWidth: window.outerWidth,
-}
+};
