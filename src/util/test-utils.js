@@ -119,7 +119,7 @@ export const getNodesByType = (c, type) => {
  * @param message
  * @param debug
  */
-export const logOut = ({ message, debug }) => {
+export const logOutMessageOrDebug = ({ message, debug }) => {
   if (process.env.SHOW_LOGS === 'true') {
     if (debg !== false) {
       debug();

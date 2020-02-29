@@ -1,4 +1,5 @@
 import { createAxios } from '../util/createAxios';
+import { logOutMessageOrDebug } from '../util/test-utils.js';
 
 /**
  *
@@ -11,7 +12,6 @@ export const UPLOADING_PHOTO_FAILED = 'UPLOADING_PHOTO_FAILED';
 export const UPLOAD_PHOTO = 'UPLOAD_PHOTO';
 
 /**
- *
  * @param file
  * @returns {function(*): *}
  */
@@ -23,7 +23,10 @@ export const uploadImage = file => dispatch => {
   return request
     .post('/photo/upload', data, {
       onUploadProgress: ProgressEvent => {
-        console.log(ProgressEvent);
+        logOutMessageOrDebug({
+          message: `Upload progress at ${ProgressEvent.loaded /
+            ProgressEvent.total}`,
+        });
         file.progress = ProgressEvent.loaded / ProgressEvent.total;
         dispatch({ type: UPLOADING_PHOTO_PROGRESS, payload: file });
       },
@@ -32,9 +35,10 @@ export const uploadImage = file => dispatch => {
       console.log(res);
       file.progress = 0;
       file.uploading = false;
-      file.file = {};
-      file.file.public_id = res.data.photo.public_id;
-      file.file.url = res.data.photo.photo_url;
+      file.file = {
+        public_id: res.data.photo.public_id,
+        url: res.data.photo.photo_url,
+      };
       dispatch({ type: UPLOADING_PHOTO_SUCCESS, payload: file });
     })
     .catch(err => {

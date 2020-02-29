@@ -4,8 +4,20 @@ import StyledCreateCardBtn from '../Styled/StyledCreateCardBtn';
 import { Icon } from 'antd';
 import { devices } from '../../util/breakpoints-device.js';
 import StyledContainer from '../Styled/StyledContainer';
+import PropTypes from 'prop-types';
 
-export default function Footer(props) {
+/**
+ * @typedef FooterProps
+ * @param {ThemeProvider} theme
+ * @param {History} history
+ * @return {*}
+ */
+
+/**
+ * Footer component.
+ * @param {FooterProps} props
+ */
+export const Footer = props => {
   const addDeck = () => {
     props.history.push('/create/deck');
   };
@@ -42,7 +54,12 @@ export default function Footer(props) {
       </StyledContainer>
     </StyledFooter>
   );
-}
+};
+
+Footer.prototypes = {
+  theme: PropTypes.object,
+  history: PropTypes.object,
+};
 
 const StyledFooter = styled.div`
   position: absolute;

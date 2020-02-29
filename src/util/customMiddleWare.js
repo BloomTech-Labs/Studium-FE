@@ -1,4 +1,5 @@
 import { createAxios } from './createAxios';
+import {re} from 'lib'
 import {
   UPLOADING_PHOTO_FAILED,
   UPLOADING_PHOTO_PROGRESS,
@@ -50,9 +51,6 @@ export const rafScheduler = store => next => {
 
   let frame = null;
 
-  /**
-   *
-   */
   function loop() {
     frame = null;
     try {
@@ -63,19 +61,13 @@ export const rafScheduler = store => next => {
       maybeRaf();
     }
   }
-
-  /**
-   *
-   */
+  
   function maybeRaf() {
     if (queuedActions.length && !frame) {
       frame = requestAnimationFrame(loop);
-    } /**/
+    }
   }
-
-  /**
-   *
-   */
+  
   return action => {
     if (!action.meta || !action.meta.raf) {
       return next(action);

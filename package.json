@@ -28,8 +28,7 @@
     "docs": "jsdoc -c jsdoc.json --debug --verbose",
     "clear": "react-scripts test --clearCache",
     "coverage": "react-scripts test --coverage || true",
-    "coverage:run": "react-scripts test --coverage || true",
-    "clear:run": "CI=true npm-run-all clear coverage:run"
+    "clear:run": "CI=true npm-run-all clear coverage || true"
   },
   "jest": {
     "testMatch": [".*?(?=.spec|test).*?.js"],
