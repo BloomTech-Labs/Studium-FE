@@ -3,9 +3,6 @@ import styled from 'styled-components';
 import StyledTitleText from '../components/Styled/StyledTitleText';
 import StyledDeckPreview from '../components/Styled/StyledDeckPreview';
 
-import StyledCreateCardBtn from '../components/Styled/StyledCreateCardBtn';
-import Footer from '../components/Footer/Footer';
-
 const decks = [
   { card_name: 'Name this organ' },
   { card_name: 'Define Proximal.' },
@@ -24,7 +21,6 @@ const PreviewDeck = props => {
           return <StyledDeckPreview deck={deck} />;
         })}
       </StyledPreviewDeckHolder>
-      <Footer />
     </StyledPreviewDeck>
   );
 };

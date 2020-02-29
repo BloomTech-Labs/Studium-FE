@@ -1,10 +1,5 @@
 import { createAxios } from '../util/createAxios';
-import { logOutMessageOrDebug } from '../util/test-utils.js';
 
-/**
- *
- * @type {string}
- */
 export const UPLOADING_PHOTO_INIT = 'UPLOADING_PHOTO_INIT';
 export const UPLOADING_PHOTO_PROGRESS = 'UPLOADING_PHOTO_PROGRESS';
 export const UPLOADING_PHOTO_SUCCESS = 'UPLOADING_PHOTO_SUCCESS';
@@ -23,10 +18,6 @@ export const uploadImage = file => dispatch => {
   return request
     .post('/photo/upload', data, {
       onUploadProgress: ProgressEvent => {
-        logOutMessageOrDebug({
-          message: `Upload progress at ${ProgressEvent.loaded /
-            ProgressEvent.total}`,
-        });
         file.progress = ProgressEvent.loaded / ProgressEvent.total;
         dispatch({ type: UPLOADING_PHOTO_PROGRESS, payload: file });
       },

@@ -5,7 +5,7 @@ import { photosReducer } from './photoReducer';
 /**
  * @typedef rootReducer
  * @property {UsersReducerState} user
- * @property {PhotosReducerState} user
+ * @property {} user
  *
  *
  */

@@ -17,7 +17,7 @@ import CreateDeck from './views/CreateDeck';
 import PreviewDeck from './views/PreviewDeck';
 import FlashCard from './views/FlashCard';
 import { isMobile } from 'react-device-detect';
-import Footer from './components/Footer/Footer';
+import { Footer } from './components/Footer/Footer';
 import Testing from './views/Testing';
 import PropTypes from 'prop-types';
 
