@@ -1,5 +1,5 @@
 import { action } from './action';
-import { createAxios } from '../util/createAxios.js';
+import { createAxios } from '../utilities/createAxios.js';
 import firebase from '../config/firebase/FirebaseConfig.js';
 
 export const FETCHING_USER = 'FETCHING_USER';

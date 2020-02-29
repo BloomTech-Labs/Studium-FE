@@ -6,7 +6,7 @@ import { ReactComponent as SmallWhiteLogo } from '../../images/SmallWhiteLogo.sv
 import { signout } from '../../actions';
 import { useDispatch, useSelector } from 'react-redux';
 import StyledContainer from './StyledContainer';
-import { devices } from '../../util/breakpoints-device.js';
+import { devices } from '../../utilities/breakpoints-device.js';
 
 const StyledNavBar = ({ navBarVis, ...props }) => {
   const user = useSelector(state => state.users);

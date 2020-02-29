@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import StyledCreateCardBtn from '../Styled/StyledCreateCardBtn';
 import { Icon } from 'antd';
-import { devices } from '../../util/breakpoints-device.js';
+import { devices } from '../../utilities/breakpoints-device.js';
 import StyledContainer from '../Styled/StyledContainer';
 import PropTypes from 'prop-types';
 

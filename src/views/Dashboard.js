@@ -4,7 +4,7 @@ import StyledCardDeck from '../components/Styled/StyledCardDeck';
 import StyledTitleText from '../components/Styled/StyledTitleText';
 import StyledSearchBar from '../components/Styled/StyledSearchBar';
 import PropTypes from 'prop-types';
-import { devices } from '../util/breakpoints-device.js';
+import { devices } from '../utilities/breakpoints-device.js';
 
 const decks = [
   { deck_name: 'Some Name', deck_id: 1 },

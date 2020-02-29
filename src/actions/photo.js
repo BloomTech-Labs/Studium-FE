@@ -1,4 +1,4 @@
-import { createAxios } from '../util/createAxios';
+import { createAxios } from '../utilities/createAxios';
 
 export const UPLOADING_PHOTO_INIT = 'UPLOADING_PHOTO_INIT';
 export const UPLOADING_PHOTO_PROGRESS = 'UPLOADING_PHOTO_PROGRESS';

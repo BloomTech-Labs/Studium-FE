@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import SmallLogo from '../components/Styled/SmallLogo';
 import StyledButton from '../components/Styled/StyledButton';
-import { devices } from '../util/breakpoints-device';
+import { devices } from '../utilities/breakpoints-device';
 import StyledSynapsText from '../components/Styled/StyledSynapsText';
 
 const LandingPage = props => {

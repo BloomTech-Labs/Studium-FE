@@ -8,7 +8,7 @@ import * as serviceWorker from './serviceWorker';
 import { applyMiddleware, createStore } from 'redux';
 import rootReducer from './reducers';
 import { Provider } from 'react-redux';
-import { theme } from './util/theme.js';
+import { theme } from './utilities/theme.js';
 import 'antd/dist/antd.css';
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
@@ -20,7 +20,7 @@ import {
   thunk,
   timeoutScheduler,
   vanillaPromise,
-} from './util/customMiddleWare';
+} from './utilities/customMiddleWare';
 
 const GlobalStyle = createGlobalStyle`
 ${reset}

@@ -7,7 +7,7 @@ import {
   store,
   getByRole,
   logOutMessageOrDebug,
-} from '../../util/test-utils.js';
+} from '../../utilities/test-utils.js';
 import StyledUpload from './StyledUploader';
 import moxios from 'moxios';
 
