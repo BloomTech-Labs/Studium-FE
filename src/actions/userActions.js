@@ -121,6 +121,7 @@ export const register = (user, dispatch) => {
   dispatch(action(USER_ATTEMPT_REGISTER));
 
   const userR = { uid: user.uid, username: user.email };
+  
 
   createAxios(user.uid)
     .post('/api/register', userR)
@@ -128,16 +129,19 @@ export const register = (user, dispatch) => {
       if (res.status === 201) {
         dispatch(action(USER_REGISTER_COMPLETE));
       } else {
-        dispatch(action(signout));
+        dispatch(action(USER_REGISTER_FAILED));
       }
     })
     .catch(err => {
       console.log(err);
+      dispatch(action(USER_REGISTER_FAILED, err.message));
       signout(dispatch);
     });
 };
 
 export const checkUser = (user, dispatch) => {
+  
+
   dispatch(action(CHECK_USER_REGISTERED));
   createAxios(user.uid)
     .get('/api/users/me')

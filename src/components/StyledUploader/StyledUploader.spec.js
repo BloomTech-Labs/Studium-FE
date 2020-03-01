@@ -23,30 +23,48 @@ describe('Styled Uploader', () => {
     // log out the component to the console when debug is turned on in env
     logOutMessageOrDebug({ debug });
 
+    // get the button from the container.
     const button = await getByTestId(container, 'upload');
-
+    
+    // test button against snapshot
     expect(button).toMatchSnapshot();
   });
 
   test('To have a click button.', async done => {
+    
+    // create fake file.
     const file = new File(['(⌐□_□)'], 'chucknorris.png', {
       type: 'image/png',
     });
+    
+    // install moxios to catch the axios request going out.
     moxios.install();
     moxios.withMock(() => {
+      
+      // render the component
       const { container, debug } = customRender(<StyledUpload id={1} />);
       logOutMessageOrDebug({ debug });
+      
+      // get state from the store
       const { photosReducer } = store.getState();
+      
+      // get all the html elements needed to upload the file
       let button = getByRole(container, 'button');
       let uploadIcon = getByTestId(container, 'upload-icon');
       let inputNode = getNodesByType(container, 'input')[0];
+      
+      // check to make sure state is empty
       expect(photosReducer.photos).toEqual({});
+      // add the file to the input
       fireEvent.change(inputNode, { target: { files: [file] } });
+      // fire the upload event
       fireEvent.click(button);
 
       moxios.wait(() => {
         try {
+          // check the axios request
           let request = moxios.requests.mostRecent();
+          // respond with fake message from server
           request
             .respondWith({
               status: 201,
@@ -55,8 +73,10 @@ describe('Styled Uploader', () => {
               },
             })
             .then(() => {
+              
               logOutMessageOrDebug({ debug });
               logOutMessageOrDebug({ message: photosReducer.toString() });
+              // get the image from the dom
               const avatar = getByTestId(container, 'upload-image');
               expect(avatar).toBeInTheDocument();
               expect(uploadIcon).not.toBeInTheDocument();
@@ -64,6 +84,7 @@ describe('Styled Uploader', () => {
                 url: file.name,
                 public_id: file.name,
               });
+              // call done for async events.
               done();
             });
         } catch (e) {

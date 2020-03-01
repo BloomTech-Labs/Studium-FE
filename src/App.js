@@ -20,8 +20,7 @@ import { isMobile } from 'react-device-detect';
 import { Footer } from './components/Footer/Footer';
 import Testing from './views/Testing';
 import PropTypes from 'prop-types';
-
-/** @module Views */
+import { Alert } from 'antd';
 
 /**
  *
@@ -32,7 +31,17 @@ import PropTypes from 'prop-types';
  */
 function App(props) {
   const dispatch = useDispatch();
+  const [alertMessage, setAlert] = useState(false);
+  const users = useSelector(state => {
+    return state.users;
+  });
   const [navBarVisable, setVisable] = useState(false);
+
+  useEffect(() => {
+    if (users.registerError && !alertMessage) {
+      setAlert('Error logging in. Please try again later.');
+    }
+  }, [users]);
 
   //Promises. This function gets called in for google sign in
   useEffect(() => {
@@ -63,6 +72,19 @@ function App(props) {
       height={themeContext.screenWidth}
       mobile={isMobile}
     >
+      {alertMessage && (
+        <Alert
+          type={'error'}
+          onClose={() => setAlert(false)}
+          message={alertMessage}
+          closable
+          style={{
+            position: 'absolute',
+            top: '20px',
+            zIndex: '15',
+          }}
+        />
+      )}
       <StyledNavBar navBarVis={navBarVisable} {...props} />
       <StyledContainer
         navBarVis={navBarVisable}
