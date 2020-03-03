@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+
 const CardIcon = ({ cardNumber, width, height, border }) => {
   return (
     <StyledCardIconContainer width={width} height={height} border={border}>
@@ -18,6 +19,7 @@ CardIcon.propTypes = {
   width: PropTypes.string,
   height: PropTypes.string,
   white: PropTypes.number,
+  border: PropTypes.string,
 };
 
 const StyledCardIconContainer = styled.div`

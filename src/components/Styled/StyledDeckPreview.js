@@ -23,13 +23,14 @@ const StyledDeckPreview = ({
       block={block && 'block'}
       {...props}
     >
+
       {deck && <p className={'deck-text'}>{deck.card_name}</p>}
-     <Icon type={'check-circle'} 
+     <Icon type={'check-circle'}
     style={{
     position: 'absolute',
-    bottom: '5px', 
+    bottom: '5px',
     right: '5px',
-    }}  
+    }}
     />
     </StyledAntdCard>
   );
@@ -54,11 +55,8 @@ const StyledAntdCard = styled(Card)`
     border-radius: 13px;
     border: 3px solid rgba(136, 136, 136, 0.75);
     box-sizing: border-box;
-
-    
-       > .deck-text {
-      } 
-     
+    > .deck-text {
+    }
   }
 `;
 export default StyledDeckPreview;

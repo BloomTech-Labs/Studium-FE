@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import StyledTitleText from '../components/Styled/StyledTitleText';
 import StyledDeckPreview from '../components/Styled/StyledDeckPreview';
-import StyledCreateCardBtn from '../components/Styled/StyledCreateCardBtn';
-import Footer from '../components/Footer/Footer';
 
 const decks = [
   { card_name: 'Name this organ' },
@@ -22,14 +20,8 @@ const PreviewDeck = props => {
           console.log(decks);
           return <StyledDeckPreview deck={deck} />
         })}
-        <StyledCreateCardBtn
-          icon={'plus'}
-          size={'large'}
-          shape={'circle'}
-        >
-        </StyledCreateCardBtn>
+        
       </StyledPreviewDeckHolder>
-      <Footer />
     </StyledPreviewDeck>
   );
 };

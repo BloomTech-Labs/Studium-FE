@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Footer from '../components/Footer/Footer';
 import StyledCardDeck from '../components/Styled/StyledCardDeck';
 import StyledTitleText from '../components/Styled/StyledTitleText';
 import StyledSearchBar from '../components/Styled/StyledSearchBar';
-import StyledCreateCardBtn from '../components/Styled/StyledCreateCardBtn';
+import PropTypes from 'prop-types';
+import { devices } from '../utilities/breakpoints-device.js';
 
 const decks = [
-  { deck_name: 'Some Name' },
-  { deck_name: 'Another Name' },
-  { deck_name: 'Anatomy' },
-  { deck_name: 'Some Name' },
+  { deck_name: 'Some Name', deck_id: 1 },
+  { deck_name: 'Another Name', deck_id: 1 },
+  { deck_name: 'Anatomy', deck_id: 1 },
+  { deck_name: 'Some Name', deck_id: 1 },
   {
     deck_name: 'Another' + ' Name',
+    deck_id: 1,
   },
   {
     deck_name:
       'Anatomy this is a really long deck name lets just keep' + ' this name',
+    deck_id: 1,
   },
 ];
 
@@ -32,15 +34,15 @@ const Dashboard = props => {
   };
 
   const deckClicked = (deck = undefined) => {
-    debugger;
     if (!deck) {
       props.history.push('/create/deck');
+      return;
     }
     props.history.push('/game', { ...deck });
   };
 
   return (
-    <StyledDashboard>
+    <StyledDashboard className={'dashboard'}>
       <StyledTitleText text={'Dashboard'} />
       <StyledSearchBar
         onSearch={search}
@@ -60,6 +62,7 @@ const Dashboard = props => {
         {decks.map(deck => {
           return (
             <StyledCardDeck
+              id={deck.deck_id}
               deck={deck}
               border={'solid'}
               onClick={e => deckClicked(deck)}
@@ -67,9 +70,12 @@ const Dashboard = props => {
           );
         })}
       </StyledDeckHolder>
-      <Footer />
     </StyledDashboard>
   );
+};
+
+Dashboard.propTypes = {
+  history: PropTypes.object,
 };
 
 const StyledDeckHolder = styled.div`
@@ -85,6 +91,13 @@ const StyledDashboard = styled.div`
   flex-direction: column;
   max-width: 100%;
   height: 100%;
+
+  @media screen and ${devices.tablet} {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    left: 400px;
+  }
 `;
 
 export default Dashboard;
