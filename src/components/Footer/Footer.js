@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import StyledCreateCardBtn from '../Styled/StyledCreateCardBtn';
 import { Icon } from 'antd';
 import { devices } from '../../utilities/breakpoints-device.js';
 import StyledContainer from '../Styled/StyledContainer';
@@ -35,13 +34,6 @@ export const Footer = props => {
         }}
         overFlowY={'visible'}
       >
-        <StyledCreateCardBtn
-          icon={'plus'}
-          size={'large'}
-          shape={'circle'}
-          onClick={addDeck}
-          visable={false}
-        />
         <StyledIcon
           type="home"
           theme={'filled'}
