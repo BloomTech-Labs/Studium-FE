@@ -1,6 +1,16 @@
-import { combineReducers } from "redux";
-import { usersReducer } from "./usersReducer";
+import { combineReducers } from 'redux';
+import { usersReducer } from './usersReducer';
+import { photosReducer } from './photoReducer';
 
-export default combineReducers( {
-  usersReducer
-} );
+/**
+ * @typedef rootReducer
+ * @property {UsersReducerState} user
+ * @property {} user
+ *
+ *
+ */
+
+export default combineReducers({
+  users: usersReducer,
+  photosReducer: photosReducer,
+});

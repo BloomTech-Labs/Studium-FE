@@ -1,0 +1,6 @@
+exclude_patterns:
+  - 'tests/'
+  - 'spec/'
+  - '**/node_modules/'
+  - '*.md'
+  - 'coverage/'

@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Card, Icon } from 'antd';
 
 const StyledCardDeck = ({
+
   text,
   type = 'inner',
   size = 'default',
   icon,
   loading,
   block,
+
   hoverable,
+
   deck,
   ...props
 }) => {
@@ -26,6 +29,7 @@ const StyledCardDeck = ({
       {icon && (
         <Icon type={icon} style={{ fontSize: '32px', color: 'black' }} />
       )}
+
       {deck && <p className={'card-text'}>{deck.deck_name}</p>}
     </StyledAntdCard>
   );

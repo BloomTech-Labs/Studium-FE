@@ -4,13 +4,17 @@ import PropTypes from 'prop-types';
 import { Card } from 'antd';
 
 const StyledDeckPreview = ({
+
   text,
+
   type = 'inner',
   size = 'default',
   icon,
   loading,
   block,
+
   hoverable,
+
   deck,
   ...props
 }) => {
@@ -23,6 +27,7 @@ const StyledDeckPreview = ({
       block={block && 'block'}
       {...props}
     >
+
       {deck && <p className={'deck-text'}>{deck.card_name}</p>}
     </StyledAntdCard>
   );
@@ -47,9 +52,8 @@ const StyledAntdCard = styled(Card)`
     border: 3px solid rgba(136, 136, 136, 0.75);
     box-sizing: border-box;
 
-    
-       > .deck-text {
-      } 
+    > .deck-text {
+    }
   }
 `;
 export default StyledDeckPreview;
