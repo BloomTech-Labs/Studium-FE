@@ -18,7 +18,7 @@ exports[`CardIcon render correctly 1`] = `
   height: 108px;
   left: 0;
   bottom: 0;
-  background: #C4C4C4;
+  background: #c4c4c4;
   border: 3px solid white;
 }
 
@@ -32,7 +32,7 @@ exports[`CardIcon render correctly 1`] = `
   height: 108px;
   left: 0;
   bottom: 0;
-  background: #C4C4C4;
+  background: #c4c4c4;
   border: 3px solid white;
   left: 20%;
   bottom: 15%;
@@ -48,7 +48,7 @@ exports[`CardIcon render correctly 1`] = `
   height: 108px;
   left: 0;
   bottom: 0;
-  background: #C4C4C4;
+  background: #c4c4c4;
   border: 3px solid white;
   left: 40%;
   bottom: 30%;

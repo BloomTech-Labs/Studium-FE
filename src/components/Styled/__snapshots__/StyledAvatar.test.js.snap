@@ -6,7 +6,7 @@ exports[`StyledAvatar render correctly 1`] = `
     Object {
       "position": "absolute",
       "right": "8%",
-      "top": "20%",
+      "top": "15px",
     }
   }
 >
