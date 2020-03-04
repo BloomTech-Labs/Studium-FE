@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import BigFlashCard from '../components/Styled/BigFlashCard';
-import CardIcon from '../components/Styled/CardIcon';
+
+import { uploadImage } from '../actions';
+import StyledUploader from '../components/StyledUploader/StyledUploader';
 
 const Testing = () => {
-  
-  return ( <StyledTesting>
-    <CardIcon cardNumber={ 4 } width={ '40px' } height={ '50px' }
-              whiteBorderWidth={ '1px solid white' }/>
-  
-  </StyledTesting> );
+  return (
+    <StyledTesting>
+      <StyledUploader id={1} />
+      <StyledUploader id={2} />
+      <StyledUploader id={3} />
+    </StyledTesting>
+  );
 };
 
 const StyledTesting = styled.div`

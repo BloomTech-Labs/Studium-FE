@@ -1,22 +1,69 @@
 import {
-  FETCHING_USER, FETCHED_USER, SIGNED_IN, SIGNIN_FAILED, SIGNOUT, ATTEMPT_SIGNIN,
+  SIGNED_IN,
+  SIGNIN_FAILED,
+  SIGNOUT,
+  ATTEMPT_SIGNIN,
+  USER_REGISTER_FAILED,
+  USER_ATTEMPT_REGISTER,
+  USER_REGISTER_COMPLETE,
+  CHECK_USER_REGISTERED,
 } from '../actions';
 
+import { User } from 'firebase';
+
+/**
+ * @typedef UsersReducerState
+ * @property {boolean} fetching - Fetching the user from the database.
+ * @property {Error | null} error - Fetching the user from the database.
+ * @property {User | {}} user - Fetching the user from the database.
+ * @property {boolean} checkingRegistered - Fetching the user from the database.
+ * @property {boolean} userRegistered - Fetching the user from the database.
+ * @property {Error | null} registerError - Fetching the user from the
+ * database.
+ */
+
+/**
+ * @type {UsersReducerState} initialState
+ */
 const initialState = {
-  user: {}, fetching: false, error: null,
+  user: {},
+  fetching: false,
+  checkingRegistered: false,
+  registering: false,
+  userRegistered: false,
+  registerError: null,
+  error: null,
 };
-export const usersReducer = ( state = initialState, action ) => {
-  
-  switch( action.type ){
+/**
+ *  @typedef UsersReducer usersReducer
+ * @param {UsersReducerState} state
+ * @param {Action} action
+ * @returns {UsersReducerState} state
+ */
+export const usersReducer = (state = initialState, action) => {
+  switch (action.type) {
     case ATTEMPT_SIGNIN:
-      return { fetching: true };
+      return { ...state, fetching: true };
     case SIGNED_IN:
-      return { user: action.payload, fetching: false };
+      return { ...state, user: action.payload, fetching: false };
     case SIGNIN_FAILED:
-      return { user: {}, fetching: false, error: action.payload };
+      return { ...state, user: {}, fetching: false, error: action.payload };
     case SIGNOUT:
-      return { user: {}, error: null };
-    
+      return { ...state, user: {}, error: null };
+    case CHECK_USER_REGISTERED:
+      return { ...state, checkingRegistered: true };
+    case USER_ATTEMPT_REGISTER:
+      return { ...state, checkingRegistered: false, registering: true };
+    case USER_REGISTER_COMPLETE:
+      return { ...state, registering: false, userRegistered: true };
+    case USER_REGISTER_FAILED:
+      return {
+        ...state,
+        registering: false,
+        userRegistered: false,
+        registerError: action.payload,
+      };
+
     default:
       return state;
   }
