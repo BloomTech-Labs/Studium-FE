@@ -1,15 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-
-import { uploadImage } from '../actions';
-import StyledUploader from '../components/StyledUploader/StyledUploader';
+import StyledCardDeck from '../components/Styled/StyledCardDeck.js';
+import CardIcon from '../components/Styled/CardIcon.js';
 
 const Testing = () => {
   return (
     <StyledTesting>
-      <StyledUploader id={1} />
-      <StyledUploader id={2} />
-      <StyledUploader id={3} />
+      <CardIcon />
     </StyledTesting>
   );
 };
