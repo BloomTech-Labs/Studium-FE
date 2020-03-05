@@ -1,9 +1,9 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import {customRender} from '../../utilities/test-utils.js';
 
 import StyledNavBar from './StyledNavBar';
 
 test('StyledNavBar render correctly', () => {
-    const tree = renderer.create(<StyledNavBar />).toJSON();
-    expect(tree).toMatchSnapshot();
+  const {container} = customRender(<StyledNavBar />);
+  expect(container).toMatchSnapshot()
 });

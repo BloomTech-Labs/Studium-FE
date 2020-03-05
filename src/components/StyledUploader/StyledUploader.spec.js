@@ -20,6 +20,8 @@ describe('Styled Uploader', () => {
     //Call custom render to wrap the component in fake providers.
     const { container, debug } = customRender(<StyledUpload id={1} />);
 
+    
+    
     // log out the component to the console when debug is turned on in env
     logOutMessageOrDebug({ debug });
 

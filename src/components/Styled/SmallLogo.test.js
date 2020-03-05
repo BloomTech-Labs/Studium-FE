@@ -3,6 +3,8 @@ import { render } from '@testing-library/react';
 import SmallLogo from './SmallLogo';
 import renderer from 'react-test-renderer';
 
+
+
 // check logo in alt
 test('check logo is in alt', () => {
   const { getByAltText } = render(<SmallLogo />);
