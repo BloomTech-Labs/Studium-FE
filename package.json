@@ -32,7 +32,10 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "**/*.js"
+      "**/*.js",
+      "!**/node_modules/**",
+      "!**/vendor/**",
+      "!**/config/firebase/**"
     ]
   },
   "prettier": {
