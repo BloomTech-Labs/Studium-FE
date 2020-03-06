@@ -4,3 +4,5 @@ exclude_patterns:
   - '**/node_modules/'
   - '*.md'
   - 'coverage/'
+  - '*.test.js'
+  - '*.spec.js'

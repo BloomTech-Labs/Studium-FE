@@ -27,12 +27,15 @@
     "eject": "react-scripts eject",
     "docs": "jsdoc -c jsdoc.json --debug --verbose",
     "clear": "react-scripts test --clearCache",
-    "coverage": "react-scripts test --coverage || true",
+    "coverage": "react-scripts test --coverage --watchAll=false || true",
     "clear:run": "CI=true npm-run-all clear coverage || true"
   },
   "jest": {
     "collectCoverageFrom": [
-      "*/*.js"
+      "**/*.js",
+      "!**/node_modules/**",
+      "!**/vendor/**",
+      "!**/config/firebase/**"
     ]
   },
   "prettier": {
