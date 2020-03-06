@@ -1,20 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Card } from 'antd';
+import { Card, Icon } from 'antd';
 
 const StyledDeckPreview = ({
-
   text,
-
   type = 'inner',
   size = 'default',
   icon,
   loading,
   block,
-
   hoverable,
-
   deck,
   ...props
 }) => {
@@ -29,6 +25,13 @@ const StyledDeckPreview = ({
     >
 
       {deck && <p className={'deck-text'}>{deck.card_name}</p>}
+     <Icon type={'check-circle'}
+    style={{
+    position: 'absolute',
+    bottom: '5px',
+    right: '5px',
+    }}
+    />
     </StyledAntdCard>
   );
 };
@@ -45,13 +48,13 @@ StyledDeckPreview.propTypes = {
 
 const StyledAntdCard = styled(Card)`
   && {
+    position: relative;
     width: 97px;
     height: 153px;
     margin-top: 20px;
     border-radius: 13px;
     border: 3px solid rgba(136, 136, 136, 0.75);
     box-sizing: border-box;
-
     > .deck-text {
     }
   }
