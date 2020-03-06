@@ -1,23 +1,23 @@
 import {createAxiosAuth} from '../utilities/createAxios';
 
 // Retrieves all public decks
-export const GETTING_DECKS = 'GETTING_DECKS';
-export const RECEIVE_DECKS = 'RECEIVE_DECKS';
-export const RECEIVE_DECKS_FAIL = 'RECEIVE_DECKS_FAIL';
+export const RETRIEVE_DECKS_START = 'RETRIEVE_DECKS_START';
+export const RETRIEVE_DECKS_SUCCESS = 'RETRIEVE_USER_DECKS_SUCCESS';
+export const RECEIVE_DECKS_FAILURE = 'RECEIVE_DECKS_FAILURE';
 
 export const getDecks = (uid, dispatch) => {
-  dispatch({type: GETTING_DECKS});
+  dispatch({type: RETRIEVE_DECKS_START});
   createAxiosAuth(uid)
     .get('/api/decks')
     .then(res => {
       debugger;
       console.log('getDecks -> res', res);
-      dispatch({type: RECEIVE_DECKS, payload: res.data});
+      dispatch({type: RETRIEVE_DECKS_SUCCESS, payload: res.data});
     })
     .catch(error => {
       debugger;
       dispatch({
-        type: RECEIVE_DECKS_FAIL,
+        type: RECEIVE_DECKS_FAILURE,
         error: 'Failed to receive your decks.',
       });
     });
@@ -51,7 +51,7 @@ export const DELETING_DECK_FAILURE = 'DELETING_DECK_FAILURE';
 export const deleteDeck = (uid, dispatch) => {
   dispatch({type: DELETING_DECK_START});
   createAxiosAuth(uid)
-    .get('/api/dicks/:id')
+    .get('/api/decks/:id')
     .then(res => {
       dispatch({type: DELETING_DECK_SUCCESS, payload: res.data});
     })
@@ -70,8 +70,8 @@ export const UPDATING_DECK_FAILURE = 'UPDATING_DECK_FAILURE';
 
 export const updateDeck = (uid, dispatch) => {
   dispatch({type: UPDATING_DECK_START});
-  createAxiosAuth(uid);
-  get('/api/decks/:deck_id')
+  createAxiosAuth(uid)
+  .get('/api/decks/:deck_id')
     .then(res => {
       dispatch({type: UPDATING_DECK_SUCCESS, payload: res.data});
     })
@@ -88,7 +88,6 @@ export const RETRIEVE_USER_DECKS_START = 'RETRIEVE_USER_DECKS_START';
 export const RETRIEVE_USER_DECKS_SUCCESS = 'RETRIEVE_USER_DECKS_SUCCESS';
 export const RETRIEVE_USER_DECKS_FAILURE = 'RETRIEVE_USER_DECKS_FAILURE';
 
-
 export const getUserDecks = (uid, dispatch) => {
   dispatch({type: RETRIEVE_USER_DECKS_START});
   createAxiosAuth(uid)
@@ -99,7 +98,27 @@ export const getUserDecks = (uid, dispatch) => {
     .catch(error => {
       dispatch({
         type: RETRIEVE_USER_DECKS_FAILURE,
-        error: 'Failed to retrieve all your decks.'
+        error: 'Failed to retrieve all your decks.',
+      });
+    });
+};
+
+//Retrieve single deck
+export const RETRIEVE_DECK_START = 'RETRIEVE_DECK_START';
+export const RETRIEVE_DECK_SUCCESS = 'RETRIEVE_DECK_SUCCESS';
+export const RETRIEVE_DECK_FAILURE = 'RETRIEVE_DECK_FAILURE';
+
+export const getDeck = (uid, dispatch) => {
+  dispatch({type: RETRIEVE_DECK_START});
+  createAxiosAuth(uid)
+    .get('/api/decks/:id')
+    .then(res => {
+      dispatch({type: RETRIEVE_DECK_SUCCESS, payload: res.data});
+    })
+    .catch(error => {
+      dispatch({
+        type: RETRIEVE_DECK_FAILURE,
+        error: 'Failed to retrieve you deck.',
       });
     });
 };

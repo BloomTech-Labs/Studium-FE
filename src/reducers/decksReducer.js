@@ -1,7 +1,7 @@
 import {
-  GETTING_DECKS,
-  RECEIVE_DECKS,
-  RECEIVE_DECKS_FAIL,
+  RETRIEVE_DECKS_START,
+  RETRIEVE_DECKS_SUCCESS,
+  RECEIVE_DECKS_FAILURE,
   POSTING_DECK_START,
   POSTING_DECK_SUCCESS,
   POSTING_DECK_FAILURE,
@@ -14,6 +14,9 @@ import {
   RETRIEVE_USER_DECKS_START,
   RETRIEVE_USER_DECKS_SUCCESS,
   RETRIEVE_USER_DECKS_FAILURE,
+  RETRIEVE_DECK_START,
+  RETRIEVE_DECK_SUCCESS,
+  RETRIEVE_DECK_FAILURE
 } from '../actions';
 
 const initialState = {
@@ -24,20 +27,20 @@ const initialState = {
 
 export const deckReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GETTING_DECKS:
+    case RETRIEVE_DECKS_START:
       return {
         ...state,
         fetchingDecks: true,
         errorDecksMessage: undefined,
       };
-    case RECEIVE_DECKS:
+    case RETRIEVE_DECKS_SUCCESS:
       return {
         ...state,
         fetchingDecks: false,
         decks: action.payload,
         errorDecksMessage: undefined,
       };
-    case RECEIVE_DECKS_FAIL:
+    case RECEIVE_DECKS_FAILURE:
       return {
         ...state,
         fetchingDecks: false,
@@ -132,6 +135,27 @@ export const deckReducer = (state = initialState, action) => {
         decks: action.payload,
         errorDecksMessage: undefined,
       };
+
+      //Retrieve single deck
+    case RETRIEVE_DECK_START:
+      return {
+        ...state,
+        fetchingDecks: true,
+        errorDecksMessage: undefined,
+      };
+    case RETRIEVE_DECK_SUCCESS:
+      return {
+        ...state,
+        fetchingDecks: false,
+        errorDecksMessage: undefined,
+      };
+      case RETRIEVE_DECK_FAILURE:
+      return {
+          ...state,
+          fetchingDecks: false,
+          decks: [],
+          errorDecksMessage: action.error,
+      }
     default:
       return state;
   }
