@@ -11,6 +11,9 @@ import {
   UPDATING_DECK_START,
   UPDATING_DECK_SUCCESS,
   UPDATING_DECK_FAILURE,
+  RETRIEVE_USER_DECKS_START,
+  RETRIEVE_USER_DECKS_SUCCESS,
+  RETRIEVE_USER_DECKS_FAILURE,
 } from '../actions';
 
 const initialState = {
@@ -108,6 +111,27 @@ export const deckReducer = (state = initialState, action) => {
         errorDecksMessage: action.error,
       };
 
+    // Retrieves all current User's decks
+    case RETRIEVE_USER_DECKS_START:
+      return {
+        ...state,
+        fetchingDecks: true,
+        errorDecksMessage: undefined,
+      };
+    case RETRIEVE_USER_DECKS_SUCCESS:
+      return {
+        ...state,
+        fetchingDecks: false,
+        decks: action.payload,
+        errorDecksMessage: undefined,
+      };
+    case RETRIEVE_USER_DECKS_FAILURE:
+      return {
+        ...state,
+        fetchingDecks: false,
+        decks: action.payload,
+        errorDecksMessage: undefined,
+      };
     default:
       return state;
   }

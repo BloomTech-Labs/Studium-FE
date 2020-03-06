@@ -83,4 +83,23 @@ export const updateDeck = (uid, dispatch) => {
     });
 };
 
+//Retrieves all current User's decks
+export const RETRIEVE_USER_DECKS_START = 'RETRIEVE_USER_DECKS_START';
+export const RETRIEVE_USER_DECKS_SUCCESS = 'RETRIEVE_USER_DECKS_SUCCESS';
+export const RETRIEVE_USER_DECKS_FAILURE = 'RETRIEVE_USER_DECKS_FAILURE';
 
+
+export const getUserDecks = (uid, dispatch) => {
+  dispatch({type: RETRIEVE_USER_DECKS_START});
+  createAxiosAuth(uid)
+    .get('/api/decks/user')
+    .then(res => {
+      dispatch({type: RETRIEVE_USER_DECKS_SUCCESS, payload: res.data});
+    })
+    .catch(error => {
+      dispatch({
+        type: RETRIEVE_USER_DECKS_FAILURE,
+        error: 'Failed to retrieve all your decks.'
+      });
+    });
+};
