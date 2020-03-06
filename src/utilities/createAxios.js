@@ -2,7 +2,9 @@ import axios from 'axios';
 
 /**
  * Create axios request
- * @returns {AxiosInstance}
+ * @function
+ * @name createAxios
+ * @returns AxiosInstance
  */
 export const createAxios = () => {
   return axios.create({
@@ -12,8 +14,10 @@ export const createAxios = () => {
 
 /**
  * Create Axious with auth header attached.
- * @param uid
- * @returns {AxiosInstance}
+ * @function
+ * @name createAxiosAuth
+ * @param {string} uid
+ * @returns AxiosInstance
  */
 export const createAxiosAuth = uid => {
   return axios.create({
@@ -22,3 +26,11 @@ export const createAxiosAuth = uid => {
     headers: { auth: uid },
   });
 };
+
+/**
+ * @typedef {object} AxiosInstance
+ * @property {function} get
+ * @property {function} delete
+ * @property {function} post
+ * @property {function} update
+ */

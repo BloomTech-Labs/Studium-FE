@@ -7,6 +7,7 @@ const StyledInput = ({
   bordered = 'false',
   borderRadius = 'small',
   label,
+  error,
   ...props
 }) => {
   if (bordered) {

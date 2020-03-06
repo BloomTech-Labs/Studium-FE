@@ -9,7 +9,10 @@ import StyledContainer from './StyledContainer';
 import { devices } from '../../utilities/breakpoints-device.js';
 
 const StyledNavBar = ({ navBarVis, ...props }) => {
-  const user = useSelector(state => state.users);
+  /**
+   * @type {}
+   */
+  const user = useSelector(state => state.usersReducer);
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [avatarUrl, setAvatarUrl] = useState(false);

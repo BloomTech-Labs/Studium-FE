@@ -6,7 +6,7 @@ import {
 } from '../actions/photo.js';
 
 /**
- * @typedef PhotoReducerState
+ * @typedef {object} PhotoReducerState
  * @property Object.<Number, {Photo}> photos
  */
 const initialState = {

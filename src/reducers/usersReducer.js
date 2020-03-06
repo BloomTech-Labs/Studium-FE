@@ -12,14 +12,13 @@ import {
 import { User } from 'firebase';
 
 /**
- * @typedef UsersReducerState
+ * @typedef {object} UsersReducerState
  * @property {boolean} fetching - Fetching the user from the database.
  * @property {Error | null} error - Fetching the user from the database.
  * @property {User | {}} user - Fetching the user from the database.
  * @property {boolean} checkingRegistered - Fetching the user from the database.
  * @property {boolean} userRegistered - Fetching the user from the database.
- * @property {Error | null} registerError - Fetching the user from the
- * database.
+ * @property {Error | null} registerError - Fetching the user from the database.
  */
 
 /**
@@ -35,7 +34,9 @@ const initialState = {
   error: null,
 };
 /**
- *  @typedef UsersReducer usersReducer
+ *
+ * @function
+ * @name usersReducer
  * @param {UsersReducerState} state
  * @param {Action} action
  * @returns {UsersReducerState} state
