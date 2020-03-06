@@ -16,7 +16,7 @@ export const uploadImage = file => dispatch => {
   const data = new FormData();
   data.append('file', file.file);
   return request
-    .post('/photo/upload', data, {
+    .post('api/photo/upload', data, {
       onUploadProgress: ProgressEvent => {
         file.progress = ProgressEvent.loaded / ProgressEvent.total;
         dispatch({ type: UPLOADING_PHOTO_PROGRESS, payload: file });

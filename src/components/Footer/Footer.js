@@ -55,8 +55,8 @@ Footer.prototypes = {
 };
 
 const StyledFooter = styled.div`
-  position: absolute;
-  bottom: ${props => (props.navBarVis ? 0 : '-75px')};
+position: absolute;
+bottom: ${ props => props.navBarVis ? 0 : '-75px' };
   margin-top: auto;
   min-width: 100vw;
   height: 50px;
