@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Icon } from 'antd';
 import { devices } from '../../utilities/breakpoints-device.js';
-import StyledContainer from '../Styled/StyledContainer';
+import {ContainerDiv} from '../Container/ContainerDiv.js';
 import PropTypes from 'prop-types';
 
 /**
@@ -24,7 +24,7 @@ export const Footer = props => {
 
   return (
     <StyledFooter {...props} className={'footer'}>
-      <StyledContainer
+      <ContainerDiv
         className={'footer-container'}
         maxHeight={'50px'}
         style={{
@@ -44,7 +44,7 @@ export const Footer = props => {
           theme={'filled'}
           color={props.theme ? props.theme.darkDarkGray : 'gray'}
         />
-      </StyledContainer>
+      </ContainerDiv>
     </StyledFooter>
   );
 };

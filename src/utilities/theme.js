@@ -5,6 +5,7 @@
  *   number, screenHeight: unknown, darkGray: string, darkDarkGray: string,
  *   smallRadius: number}}
  */
+
 export const theme = {
   lightLightGray: '#D7D7D7',
   lightGray: '#c4c4c4',

@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
-import StyledInput from '../components/Styled/StyledInput';
-import StyledButton from '../components/Styled/StyledButton';
+import { FormInput, SynapsButton, SynapsText } from '../components';
 import styled from 'styled-components';
-import { signin, GOOGLE_PROVIDER, EMAIL_PROVIDER } from '../actions';
+import { signIn, GOOGLE_PROVIDER, EMAIL_PROVIDER } from '../actions';
 import { useDispatch } from 'react-redux';
-import StyledSynapsText from '../components/Styled/StyledSynapsText';
 
-export default function SignIn(){
-  /**
-   * @type {Dispatch} dispatch
-   */
+export function SignIn(){
+  
   const dispatch = useDispatch();
   const [ info, setInfo ] = useState( { email: '', password: '', error: {} } );
   
@@ -18,12 +14,12 @@ export default function SignIn(){
   };
   
   const handleGoogleClick = e => {
-    signin( GOOGLE_PROVIDER, dispatch );
+    dispatch( signIn( GOOGLE_PROVIDER ) );
   };
   
   const handleEmailClick = e => {
     if( info.email !== '' && info.password !== '' ){
-      signin( EMAIL_PROVIDER, dispatch, info.email, info.password );
+      dispatch( signIn( EMAIL_PROVIDER, info.email, info.password ) );
     }else{
       if( info.email === '' ){
         setInfo( {
@@ -41,10 +37,10 @@ export default function SignIn(){
   };
   
   return ( <StyledSignIn data-testid={ 'sign-in-container' }>
-    <StyledSynapsText/>
+    <SynapsText/>
     <StyledH2>Hey! Welcome Back.</StyledH2>
     
-    <StyledButton
+    <SynapsButton
       style={ { margin: '0 0 1.5em', padding: '0 2em 0' } }
       icon={ 'google' }
       text={ 'Log In with Google' }
@@ -56,7 +52,7 @@ export default function SignIn(){
     <StyledBorder/>
     
     <div>
-      <StyledInput
+      <FormInput
         name={ 'email' }
         value={ info.email }
         onChange={ handleChange }
@@ -64,7 +60,7 @@ export default function SignIn(){
         label={ 'Email Address' }
         bordered={ false }
       />
-      <StyledInput
+      <FormInput
         name={ 'password' }
         value={ info.password }
         onChange={ handleChange }
@@ -74,7 +70,7 @@ export default function SignIn(){
       />
     </div>
     
-    <StyledButton
+    <SynapsButton
       style={ { padding: '0 2.5em 0' } }
       text={ 'Continue with Email' }
       shape={ 'round' }

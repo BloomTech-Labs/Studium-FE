@@ -4,12 +4,10 @@ import { photosReducer } from './photoReducer';
 
 /**
  * @typedef RootState
- * @property {UsersReducerState} usersReducer
- * @property {PhotosReducerState} photosReducer
- *
+ * @property {UsersReducerState} usersState
+ * @property {PhotoReducerState} photosState
  *
  */
-export default combineReducers({
- usersReducer,
-  photosReducer,
-});
+export default combineReducers( {
+  usersState: usersReducer, photosState: photosReducer,
+} );

@@ -1,14 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import StyledCardDeck from '../components/Styled/StyledCardDeck.js';
-import CardIcon from '../components/Styled/CardIcon.js';
+import { CardIcon } from '../components';
 
-const Testing = () => {
-  return (
-    <StyledTesting>
-      <CardIcon />
-    </StyledTesting>
-  );
+export const Testing = () => {
+  return ( <StyledTesting>
+    <CardIcon/>
+  </StyledTesting> );
 };
 
 const StyledTesting = styled.div`
@@ -16,4 +13,3 @@ const StyledTesting = styled.div`
   width: 400px;
 `;
 
-export default Testing;

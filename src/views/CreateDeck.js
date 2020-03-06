@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import StyledTitleText from '../components/Styled/StyledTitleText';
+import {TitleText} from '../components/TitleText/TitleText.js';
 
 
-const CreateDeck = props => {
+export const CreateDeck = props => {
   return (
     <StyledCreateDeck>
-      <StyledTitleText text={'Create Deck'} />
+      <TitleText text={'Create Deck'} />
     </StyledCreateDeck>
   );
 };
@@ -17,4 +17,3 @@ const StyledCreateDeck = styled.div`
   width: 100%;
 `;
 
-export default CreateDeck;

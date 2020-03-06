@@ -11,9 +11,9 @@ export const ATTEMPT_SIGNIN = 'ATTEMPT_SIGNIN';
  * @function
  * @name signedIn
  * @param {User} user
- * @param {Dispatch} dispatch
+ * @returns {function}
  */
-export const signedIn = ( user, dispatch ) => {
+export const signedIn = ( user ) => dispatch => {
   localStorage.setItem( 'loggedIn', 'true' );
   dispatch( action( SIGNED_IN, user ) ); //calls reducer
   //checkUserRegistered(user.uid, dispatch);
@@ -21,10 +21,10 @@ export const signedIn = ( user, dispatch ) => {
 
 /**
  * @function
- * @name signout
- * @param {Dispatch} dispatch
+ * @name signOut
+ * returns {function}
  */
-export const signout = dispatch => {
+export const signOut = () => dispatch => {
   localStorage.setItem( 'loggedIn', 'false' );
   firebase
     .auth()
@@ -42,37 +42,37 @@ export const GOOGLE_PROVIDER = 'GOOGLE_PROVIDER';
  */
 
 /**
- *
+ * @function
+ * @name signIn
  * @param {AuthType} authType
- * @param {Dispatch} dispatch
  * @param {string} [email]
  * @param {string} [password]
+ * @returns {function}
  */
-export const signin = ( authType, dispatch, email, password ) => {
-  
+export const signIn = ( authType, email, password ) => dispatch => {
+  debugger;
   dispatch( action( ATTEMPT_SIGNIN ) );
   
   if( authType === EMAIL_PROVIDER ){
-    signInEmailProvider( dispatch, email, password );
+    dispatch( signInEmailProvider( email, password ) );
   }else if( authType === GOOGLE_PROVIDER ){
-    signInWithGoogleAuthProvider( dispatch );
+    dispatch( signInWithGoogleAuthProvider() );
   }
-  
 };
 
 /**
  * @function
  * @name signInEmailProvider
- * @param {Dispatch} dispatch
+ * @returns {function}
  */
-const signInWithGoogleAuthProvider = ( dispatch ) => {
+const signInWithGoogleAuthProvider = () => dispatch => {
   
   firebase
     .auth()
     .signInWithPopup( new firebase.auth.GoogleAuthProvider() )
     .then( res => {
-      signedIn( res.user, dispatch );
-      checkUser( res.user, dispatch );
+      dispatch( signedIn( res.user ) );
+      dispatch( checkUser( res.user ) );
     } )
     .catch( err => {
       dispatch( action( SIGNIN_FAILED, err.message ) );
@@ -84,11 +84,11 @@ const signInWithGoogleAuthProvider = ( dispatch ) => {
 /**
  * @function
  * @name signInEmailProvider
- * @property {Dispatch} dispatch
  * @property {string} email
  * @property {string} password
+ * @returns {function}
  */
-const signInEmailProvider = ( dispatch, email, password ) => {
+const signInEmailProvider = ( email, password ) => dispatch => {
   
   firebase
     .auth()
@@ -99,7 +99,7 @@ const signInEmailProvider = ( dispatch, email, password ) => {
         .signInWithEmailAndPassword( email, password )
         .then( res => {
           const user = { ...res.user };
-          signedIn( user, dispatch );
+          dispatch( signedIn( user ) );
           // user.displayName = firstName + ' ' + lastName;
         } );
     } )
@@ -109,7 +109,7 @@ const signInEmailProvider = ( dispatch, email, password ) => {
           .auth()
           .signInWithEmailAndPassword( email, password )
           .then( res => {
-            signedIn( res.user, dispatch );
+            dispatch( signedIn( res.user ) );
           } )
           .catch( err => {
             dispatch( action( SIGNIN_FAILED, err.message ) );
@@ -128,11 +128,11 @@ export const USER_REGISTER_COMPLETE = 'USER_REGISTER_COMPLETE';
 //functions for registering. Need to use .then to check database.
 
 //registers user
-export const register = ( user, dispatch ) => {
+export const register = ( user ) => dispatch => {
   dispatch( action( USER_ATTEMPT_REGISTER ) );
   
   const userR = { uid: user.uid, username: user.email };
-  createAxios( user.uid )
+  createAxios()
     .post( '/api/register', userR )
     .then( res => {
       if( res.status === 201 ){
@@ -144,23 +144,23 @@ export const register = ( user, dispatch ) => {
     .catch( err => {
       console.log( err );
       dispatch( action( USER_REGISTER_FAILED, err.message ) );
-      signout( dispatch );
+      dispatch( signOut( dispatch ) );
     } );
 };
 
-export const checkUser = ( user, dispatch ) => {
+export const checkUser = ( user ) => dispatch => {
   dispatch( action( CHECK_USER_REGISTERED ) );
   createAxiosAuth( user.uid )
     .get( '/api/users/me' )
     .then( res => {
       if( res.status === 200 ){
       }else{
-        register( user, dispatch );
+        dispatch( register( user ) );
       }
     } )
     .catch( err => {
       console.log( err );
-      register( user, dispatch );
+      dispatch( register( user, dispatch ) );
     } );
 };
 

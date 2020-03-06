@@ -8,7 +8,7 @@ export const UPLOAD_PHOTO = 'UPLOAD_PHOTO';
 
 /**
  * @param file
- * @returns {function(*): *}
+ * @returns {function}
  */
 export const uploadImage = file => dispatch => {
   dispatch({ type: UPLOADING_PHOTO_INIT, payload: file });
