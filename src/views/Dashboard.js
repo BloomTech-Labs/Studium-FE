@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import StyledCardDeck from '../components/Styled/StyledCardDeck';
 import StyledTitleText from '../components/Styled/StyledTitleText';
 import StyledSearchBar from '../components/Styled/StyledSearchBar';
 import PropTypes from 'prop-types';
-import { devices } from '../utilities/breakpoints-device.js';
+import {devices} from '../utilities/breakpoints-device.js';
+import {useDispatch, useSelector} from 'react-redux';
+import {getDecks} from '../actions/decksActions';
 
 const decks = [
-  { deck_name: 'Some Name', deck_id: 1 },
-  { deck_name: 'Another Name', deck_id: 1 },
-  { deck_name: 'Anatomy', deck_id: 1 },
-  { deck_name: 'Some Name', deck_id: 1 },
+  {deck_name: 'Some Name', deck_id: 1},
+  {deck_name: 'Another Name', deck_id: 1},
+  {deck_name: 'Anatomy', deck_id: 1},
+  {deck_name: 'Some Name', deck_id: 1},
   {
     deck_name: 'Another' + ' Name',
     deck_id: 1,
@@ -24,6 +26,14 @@ const decks = [
 
 const Dashboard = props => {
   const [selected, setSelected] = useState(0);
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.usersReducer.user);
+
+  useEffect(() => {
+    if (user.uid) {
+      getDecks(user.uid, dispatch);
+    }
+  }, [user]);
 
   const search = e => {
     console.log(e.target.value);
@@ -38,7 +48,7 @@ const Dashboard = props => {
       props.history.push('/create/deck');
       return;
     }
-    props.history.push('/game', { ...deck });
+    props.history.push('/game', {...deck});
   };
 
   return (

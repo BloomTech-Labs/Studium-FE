@@ -12,7 +12,7 @@ import { deckReducer } from './decksReducer';
  */
 
 export default combineReducers({
-  users: usersReducer,
+  usersReducer: usersReducer,
   photosReducer: photosReducer,
   deckReducer: deckReducer
 });

@@ -33,7 +33,7 @@ function App(props) {
   const dispatch = useDispatch();
   const [alertMessage, setAlert] = useState(false);
   const users = useSelector(state => {
-    return state.users;
+    return state.usersReducer;
   });
   const [navBarVisable, setVisable] = useState(false);
 
