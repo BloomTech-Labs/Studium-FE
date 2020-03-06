@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BigFlashCard renders 1`] = `
+<div
+  className="sc-AxjAm fqUJNL"
+  style={
+    Object {
+      "position": "relative",
+    }
+  }
+>
+  <div
+    className="ant-card sc-AxirZ eRsMyF ant-card-bordered"
+    onClick={[Function]}
+    position="front"
+    style={
+      Object {
+        "height": "421.56px",
+        "width": "285px",
+      }
+    }
+  >
+    <div
+      className="ant-card-body"
+      style={Object {}}
+    >
+      <div
+        className="sc-AxiKw cGOXds"
+      >
+        question
+      </div>
+    </div>
+  </div>
+  <img
+    src="Card2.jpg"
+    style={
+      Object {
+        "height": "417px",
+        "left": "5px",
+        "position": "absolute",
+        "top": "14px",
+        "width": "276px",
+        "zIndex": -1,
+      }
+    }
+  />
+  <img
+    src="Card3.jpg"
+    style={
+      Object {
+        "height": "417px",
+        "left": "7px",
+        "position": "absolute",
+        "top": "22px",
+        "width": "260px",
+        "zIndex": -3,
+      }
+    }
+  />
+</div>
+`;
