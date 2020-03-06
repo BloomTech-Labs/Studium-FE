@@ -1,5 +1,5 @@
 import { action } from './action';
-import { createAxios } from '../utilities/createAxios.js';
+import { createAxios , createAxiosAuth} from '../utilities/createAxios.js';
 import firebase from '../config/firebase/FirebaseConfig.js';
 
 export const FETCHING_USER = 'FETCHING_USER';
@@ -119,6 +119,7 @@ export const USER_REGISTER_COMPLETE = 'USER_REGISTER_COMPLETE';
 //registers user
 export const register = (user, dispatch) => {
   dispatch(action(USER_ATTEMPT_REGISTER));
+  debugger;
 
   const userR = { uid: user.uid, username: user.email };
   
@@ -141,9 +142,9 @@ export const register = (user, dispatch) => {
 
 export const checkUser = (user, dispatch) => {
   
-
+debugger;
   dispatch(action(CHECK_USER_REGISTERED));
-  createAxios(user.uid)
+  createAxiosAuth(user.uid)
     .get('/api/users/me')
     .then(res => {
       if (res.status === 200) {
