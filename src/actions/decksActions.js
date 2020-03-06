@@ -51,15 +51,36 @@ export const DELETING_DECK_FAILURE = 'DELETING_DECK_FAILURE';
 export const deleteDeck = (uid, dispatch) => {
   dispatch({type: DELETING_DECK_START});
   createAxiosAuth(uid)
-  .get('/api/dicks/:id')
-  .then(res => {
-    dispatch({type: DELETING_DECK_SUCCESS, payload: res.data});
-  })
-  .catch(error => {
-    dispatch({
-      type: DELETING_DECK_FAILURE, 
-      error: 'Failed to delete you deck.'
+    .get('/api/dicks/:id')
+    .then(res => {
+      dispatch({type: DELETING_DECK_SUCCESS, payload: res.data});
     })
-  })
-  
-}
+    .catch(error => {
+      dispatch({
+        type: DELETING_DECK_FAILURE,
+        error: 'Failed to delete you deck.',
+      });
+    });
+};
+
+//Edits single deck
+export const UPDATING_DECK_START = 'UPDATING_DECK_START';
+export const UPDATING_DECK_SUCCESS = 'UPDATING_DECK_SUCCESS';
+export const UPDATING_DECK_FAILURE = 'UPDATING_DECK_FAILURE';
+
+export const updateDeck = (uid, dispatch) => {
+  dispatch({type: UPDATING_DECK_START});
+  createAxiosAuth(uid);
+  get('/api/decks/:deck_id')
+    .then(res => {
+      dispatch({type: UPDATING_DECK_SUCCESS, payload: res.data});
+    })
+    .catch(error => {
+      dispatch({
+        type: UPDATING_DECK_FAILURE,
+        error: 'Failed to update you decks',
+      });
+    });
+};
+
+

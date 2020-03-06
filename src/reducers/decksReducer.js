@@ -8,6 +8,9 @@ import {
   DELETING_DECK_START,
   DELETING_DECK_SUCCESS,
   DELETING_DECK_FAILURE,
+  UPDATING_DECK_START,
+  UPDATING_DECK_SUCCESS,
+  UPDATING_DECK_FAILURE,
 } from '../actions';
 
 const initialState = {
@@ -19,7 +22,11 @@ const initialState = {
 export const deckReducer = (state = initialState, action) => {
   switch (action.type) {
     case GETTING_DECKS:
-      return {...state, fetchingDecks: true, errorDecksMessage: undefined};
+      return {
+        ...state,
+        fetchingDecks: true,
+        errorDecksMessage: undefined,
+      };
     case RECEIVE_DECKS:
       return {
         ...state,
@@ -37,7 +44,11 @@ export const deckReducer = (state = initialState, action) => {
 
     // Creates a new deck
     case POSTING_DECK_START:
-      return {...state, fetchingDecks: true, errorDecksMessage: undefined};
+      return {
+        ...state,
+        fetchingDecks: true,
+        errorDecksMessage: undefined,
+      };
     case POSTING_DECK_SUCCESS:
       return {
         ...state,
@@ -55,7 +66,11 @@ export const deckReducer = (state = initialState, action) => {
 
     // Deletes a single deck
     case DELETING_DECK_START:
-      return {...state, fetchingDecks: true, errorDecksMessage: undefined};
+      return {
+        ...state,
+        fetchingDecks: true,
+        errorDecksMessage: undefined,
+      };
     case DELETING_DECK_SUCCESS:
       return {
         state,
@@ -70,6 +85,29 @@ export const deckReducer = (state = initialState, action) => {
         decks: [],
         errorDecksMessage: action.error,
       };
+
+    //Edits single deck
+    case UPDATING_DECK_START:
+      return {
+        ...state,
+        fetchingDecks: true,
+        errorDecksMessage: undefined,
+      };
+    case UPDATING_DECK_SUCCESS:
+      return {
+        ...state,
+        fetchingDecks: false,
+        decks: action.payload,
+        errorDecksMessage: undefined,
+      };
+    case UPDATING_DECK_FAILURE:
+      return {
+        ...state,
+        fetchingDecks: false,
+        decks: [],
+        errorDecksMessage: action.error,
+      };
+
     default:
       return state;
   }
