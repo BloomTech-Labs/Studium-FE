@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { signIn, GOOGLE_PROVIDER, EMAIL_PROVIDER } from '../actions';
 import { useDispatch } from 'react-redux';
 
-export function SignIn(){
+export function SignIn(props){
   
   const dispatch = useDispatch();
   const [ info, setInfo ] = useState( { email: '', password: '', error: {} } );

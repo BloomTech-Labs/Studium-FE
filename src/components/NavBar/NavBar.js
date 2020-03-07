@@ -16,8 +16,9 @@ import { devices } from '../../utilities/breakpoints-device.js';
  * @name NavBar
  * @returns React.Component
  */
-export const NavBar = ( { navBarVis, ...props } ) => {
-  
+export const NavBar = ( props ) => {
+  const pathName = props.history.location.pathname;
+  const { theme } = props;
   const usersState = useSelector( state => state.usersState );
   
   const [ menuOpen, setMenuOpen ] = useState( false );
@@ -25,23 +26,20 @@ export const NavBar = ( { navBarVis, ...props } ) => {
   const dispatch = useDispatch();
   
   useEffect( () => {
-    if( navBarVis ){
-      if( usersState.user && usersState.user.photoURL ){
-        setAvatarUrl( usersState.user.photoURL );
-      }else{
-        setAvatarUrl( '' );
-      }
+    if( usersState.user && usersState.user.photoURL ){
+      setAvatarUrl( usersState.user.photoURL );
     }else{
       setAvatarUrl( '' );
     }
-  }, [ navBarVis, usersState ] );
+    
+  }, [ pathName ] );
   
   const logout = () => {
     setMenuOpen( false );
     dispatch( signOut() );
   };
   
-  return ( <StyledBar visable={ navBarVis } className={ 'nav-bar' }>
+  return ( <StyledBar className={ 'nav-bar' } { ...props }>
     <ContainerDiv
       justifyContent={ 'space-between' }
       className={ 'nav-bar-container' }
@@ -56,7 +54,6 @@ export const NavBar = ( { navBarVis, ...props } ) => {
           transform: 'transition(0, -53%)',
         } }
       />
-      
       <NavBarAvatar
         onClick={ logout }
         avatarUrl={ avatarUrl }
@@ -67,24 +64,32 @@ export const NavBar = ( { navBarVis, ...props } ) => {
 };
 
 NavBar.propTypes = {
-  visible: PropTypes.bool,
+  theme: PropTypes.object,
 };
 
 const StyledBar = styled.div`
-  background-color: #585858;
+  background-color: ${ props => props.theme.primaryColor };
   display: flex;
   justify-content: center;
   z-index: 15;
   position: absolute;
-  top: ${ props => ( props.visable ? '0' : '-74px' ) };
+  top: 0;
   width: 100%;
   height: 74px;
 
   @media screen and ${ devices.tablet } {
-    width: 400px;
-    height: 100vh;
-    left: 0;
-    top: 0;
+  
   }
+`;
+
+const StyledHeader = styled.h2`
+  color: white;
+  position: absolute;
+  right: 10%;
+  top: 38px;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 24px;
+  font-family: Source Sans Pro;
 `;
 

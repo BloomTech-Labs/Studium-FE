@@ -18,12 +18,6 @@ const GlobalStyle = createGlobalStyle`
 ${ reset }
 `;
 
-const updateDimensions = () => {
-  theme.screenHeight = window.innerHeight;
-  theme.screenWidth = window.innerWidth;
-};
-
-window.addEventListener( 'resize', updateDimensions );
 
 const store = createStore( rootReducer, applyMiddleware( Thunk ) );
 
