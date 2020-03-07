@@ -3,7 +3,7 @@ import {
   customRender, getNodesByType, getByTestId, fireEvent, store, getByRole,
 } from '../../utilities/test-utils.js';
 import { logOutMessageOrDebug } from '../../utilities/debugLogger.js';
-import StyledUpload from './Uploader.js';
+import { Uploader } from './Uploader.js';
 import moxios from 'moxios';
 
 /**
@@ -13,7 +13,7 @@ describe( 'Styled Uploader', () => {
   //Test that styled uploaded hasn't changed sience last snapshot.
   test( 'snapshot renders', async() => {
     //Call custom render to wrap the component in fake providers.
-    const { container, debug } = customRender( <StyledUpload id={ 1 }/> );
+    const { container, debug } = customRender( <Uploader id={ 1 }/> );
     
     // log out the component to the console when debug is turned on in env
     logOutMessageOrDebug( { debug } );
@@ -35,11 +35,11 @@ describe( 'Styled Uploader', () => {
     moxios.install();
     moxios.withMock( () => {
       // render the component
-      const { container, debug } = customRender( <StyledUpload id={ 1 }/> );
+      const { container, debug } = customRender( <Uploader id={ 1 }/> );
       logOutMessageOrDebug( { debug } );
       
       // get state from the store
-      const { photosReducer } = store.getState();
+      const { photosState } = store.getState();
       
       // get all the html elements needed to upload the file
       let button = getByRole( container, 'button' );
@@ -47,7 +47,7 @@ describe( 'Styled Uploader', () => {
       let inputNode = getNodesByType( container, 'input' )[ 0 ];
       
       // check to make sure state is empty
-      expect( photosReducer.photos ).toEqual( {} );
+      expect( photosState.photos ).toEqual( {} );
       // add the file to the input
       fireEvent.change( inputNode, { target: { files: [ file ] } } );
       // fire the upload event
@@ -66,12 +66,12 @@ describe( 'Styled Uploader', () => {
             } )
             .then( () => {
               logOutMessageOrDebug( { debug } );
-              logOutMessageOrDebug( { message: photosReducer.toString() } );
+              logOutMessageOrDebug( { message: photosState.toString() } );
               // get the image from the dom
               const avatar = getByTestId( container, 'upload-image' );
               expect( avatar ).toBeInTheDocument();
               expect( uploadIcon ).not.toBeInTheDocument();
-              expect( photosReducer.photos[ 1 ].file ).toEqual( {
+              expect( photosState.photos[ 1 ].file ).toEqual( {
                 url: file.name, public_id: file.name,
               } );
               // call done for async events.

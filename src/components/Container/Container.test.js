@@ -1,11 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Container from './ContainerDiv.js';
+import {ContainerDiv} from './ContainerDiv.js';
 
 
 
 test('StyledContainer render correctly', () => {
-    const tree = renderer.create(<Container />).toJSON();
+    const tree = renderer.create(<ContainerDiv />).toJSON();
     expect(tree).toMatchSnapshot();
 });

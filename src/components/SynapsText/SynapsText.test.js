@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import SynapsText from './SynapsText.js';
+import {SynapsText} from './SynapsText.js';
 
 
 

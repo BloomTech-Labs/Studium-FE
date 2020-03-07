@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import SearchBar from './SearchBar.js';
+import {SearchBar} from './SearchBar.js';
 
 
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import SynapsButton from './SynapsButton.js';
+import {SynapsButton} from './SynapsButton.js';
 
 
 

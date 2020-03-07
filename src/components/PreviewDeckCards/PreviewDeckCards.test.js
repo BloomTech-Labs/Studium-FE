@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import PreviewDeckCards from './PreviewDeckCards.js';
+import {PreviewDeckCards} from './PreviewDeckCards.js';
 
 
 

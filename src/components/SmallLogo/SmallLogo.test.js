@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import SmallLogo from './SmallLogo.js';
+import {SmallLogo} from './SmallLogo.js';
 import renderer from 'react-test-renderer';
 
 
