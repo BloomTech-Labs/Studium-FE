@@ -7,8 +7,10 @@ export const UPLOADING_PHOTO_FAILED = 'UPLOADING_PHOTO_FAILED';
 export const UPLOAD_PHOTO = 'UPLOAD_PHOTO';
 
 /**
+ * Upload Image
+ * @category Actions
  * @param file
- * @returns {function(*): *}
+ * @returns {function}
  */
 export const uploadImage = file => dispatch => {
   dispatch({ type: UPLOADING_PHOTO_INIT, payload: file });
@@ -16,7 +18,7 @@ export const uploadImage = file => dispatch => {
   const data = new FormData();
   data.append('file', file.file);
   return request
-    .post('/photo/upload', data, {
+    .post('api/photo/upload', data, {
       onUploadProgress: ProgressEvent => {
         file.progress = ProgressEvent.loaded / ProgressEvent.total;
         dispatch({ type: UPLOADING_PHOTO_PROGRESS, payload: file });

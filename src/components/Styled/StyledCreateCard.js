@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import UploadIcon from '../StyledUploader/UploadIcon.js';
+import {UploadIcon} from '../Uploader/UploadIcon.js';
 import StyledTextArea from './StyledTextArea.js';
 import StyledCardText from '../Styled/StyledCardText.js';
 import {Icon} from 'antd';

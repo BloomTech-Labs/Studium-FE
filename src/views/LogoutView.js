@@ -1,18 +1,23 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import StyledButton from '../components/Styled/StyledButton';
-import { signout } from '../actions';
+import { SynapsButton } from '../components/Button/SynapsButton.js';
+import { signOut } from '../actions';
 
-
-const LogoutView = props => {
+/**
+ * Logout
+ * @category Views
+ * @component
+ * @example return (<Logout />);
+ */
+export const LogoutView = props => {
   const dispatch = useDispatch();
   return (
     <div>
-      <StyledButton
-        text={'logout'}
-        onClick={() => {
-          signout(dispatch);
-        }}
+      <SynapsButton
+        text={ 'logout' }
+        onClick={ () => {
+          dispatch( signOut() );
+        } }
       />
     </div>
   );
@@ -20,4 +25,3 @@ const LogoutView = props => {
 
 LogoutView.propTypes = {};
 
-export default LogoutView;

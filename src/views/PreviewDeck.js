@@ -1,27 +1,37 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import StyledTitleText from '../components/Styled/StyledTitleText';
-import StyledDeckPreview from '../components/Styled/StyledDeckPreview';
+import { TitleText, PreviewDeckCards } from '../components';
+
+
+
 
 const decks = [
-  { card_name: 'Name this organ' },
-  { card_name: 'Define Proximal.' },
+  { card_name: 'Name this organ' }, { card_name: 'Define Proximal.' },
   { card_name: '---- means towards the front' },
 ];
 
-const PreviewDeck = props => {
-  console.log('props', props);
+/**
+ * Preview Deck
+ * @category Views
+ * @component
+ * @example return (<PreviewDeck />);
+ */
+export const PreviewDeck = props => {
+  console.log( 'props', props );
   return (
+    
     <StyledPreviewDeck>
-      <StyledTitleText text={'Preview'} />
+      <TitleText text={ 'Preview' }/>
       <StyledPreviewDeckHolder>
-        {decks.map(deck => {
-          console.log(decks);
-
-          return <StyledDeckPreview deck={deck} />;
-        })}
+        { decks.map( deck => {
+          console.log( decks );
+          return <PreviewDeckCards deck={ deck }/>;
+        } ) }
+      
       </StyledPreviewDeckHolder>
     </StyledPreviewDeck>
+  
   );
 };
 
@@ -30,10 +40,10 @@ PreviewDeck.propTypes = {};
 const StyledPreviewDeck = styled.div`
   display: flex;
   flex-direction: column;
-
   max-width: 100%;
   min-height: 90%;
   width: 100%;
+
 `;
 
 const StyledPreviewDeckHolder = styled.div`
@@ -41,4 +51,3 @@ const StyledPreviewDeckHolder = styled.div`
   justify-content: space-evenly;
 `;
 
-export default PreviewDeck;

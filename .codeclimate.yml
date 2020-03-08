@@ -3,4 +3,7 @@ exclude_patterns:
   - 'spec/'
   - '**/node_modules/'
   - '*.md'
+  - '**/docs/'
   - 'coverage/'
+  - '*.test.js'
+  - '*.spec.js'

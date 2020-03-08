@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StyledCardDeck render correctly 1`] = `
+.c0 {
+  position: block;
+  left: 0;
+  top: 0;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+}
+
+.c1 {
+  position: relative;
+}
+
+.c2 {
+  z-index: 5;
+}
+
+.c2 > *::before,
+.c2 *::after,
+.c2 * {
+  z-index: 5;
+  opacity: 1;
+}
+
+.c2 > g {
+  z-index: 5;
+  stroke-width: 1px;
+}
+
+<div
+  className="c0"
+  data-testId="positional-container"
+>
+  <div
+    className="c1"
+    data-testId="relative-container"
+  >
+    <svg
+      className="c2"
+      data-testid="synaps-brain"
+    >
+      Frame.svg
+    </svg>
+  </div>
+</div>
+`;
