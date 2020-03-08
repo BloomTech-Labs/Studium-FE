@@ -17,7 +17,7 @@ import { deckReducer } from './decksReducer';
  */
 
 export default combineReducers({
-  usersReducer: usersReducer,
-  photosReducer: photosReducer,
+  usersState: usersReducer,
+  photosState: photosReducer,
   deckReducer: deckReducer
 });

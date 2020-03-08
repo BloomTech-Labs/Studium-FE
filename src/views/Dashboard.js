@@ -31,10 +31,10 @@ const decks = [
  * @example return (<Dashboard />);
  */
 
-const Dashboard = props => {
+export const Dashboard = props => {
   const [selected, setSelected] = useState(0);
   const dispatch = useDispatch();
-  const user = useSelector(state => state.usersReducer.user);
+  const user = useSelector(state => state.usersState.user);
 
   useEffect(() => {
     if (user.uid) {
@@ -55,11 +55,7 @@ const Dashboard = props => {
       props.history.push( '/create/deck' );
       return;
     }
-<<<<<<< HEAD
-    props.history.push('/game', {...deck});
-=======
     props.history.push( '/game', { ...deck } );
->>>>>>> origin
   };
   
   return ( <StyledDashboard className={ 'dashboard' }>
