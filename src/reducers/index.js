@@ -3,14 +3,17 @@ import { usersReducer } from './usersReducer';
 import { photosReducer } from './photoReducer';
 
 /**
- * @typedef rootReducer
- * @property {UsersReducerState} user
- * @property {} user
- *
- *
+ * @typedef {object} RootState
+ * @property {UsersReducerState} usersState
+ * @property {PhotoReducerState} photosState
  */
 
-export default combineReducers({
-  users: usersReducer,
-  photosReducer: photosReducer,
-});
+/**
+ * Combine Reducers
+ *
+ * @category Reducers
+ * @returns RootState
+ */
+export default combineReducers( {
+  usersState: usersReducer, photosState: photosReducer,
+} );
