@@ -13,7 +13,7 @@ describe( 'Styled Uploader', () => {
   //Test that styled uploaded hasn't changed sience last snapshot.
   test( 'snapshot renders', async() => {
     //Call custom render to wrap the component in fake providers.
-    const { container, debug } = customRender( <Uploader id={ 1 }/> );
+    const { debug, container } = customRender( <Uploader id={ 1 }/> );
     
     // log out the component to the console when debug is turned on in env
     logOutMessageOrDebug( { debug } );

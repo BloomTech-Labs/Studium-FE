@@ -3,6 +3,15 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Card, Icon } from 'antd';
 
+/**
+ * Small Flash Card
+ *
+ * @component
+ * @example
+ * return (
+ *  <SmallFlashCard />
+ *  )
+ */
 export const SmallFlashCard = ( {
   text, type = 'inner', size = 'default', icon, loading, block, hoverable, deck, ...props
 } ) => {

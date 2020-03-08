@@ -33,7 +33,8 @@
  */
 
 /**
- * @type {Theme} theme
+ *  @category Utilities
+ * @type {Theme}
  */
 export let theme = {
   primaryColor: '#0d2545',

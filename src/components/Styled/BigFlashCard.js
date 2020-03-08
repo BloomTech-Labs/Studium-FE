@@ -6,9 +6,14 @@ import { Card } from 'antd';
 import PropTypes from 'prop-types';
 
 /**
- * Big Flash Card Component
- * @param {FlashCard} flashCard
- * @returns React.Component
+ * Big Flash Card
+ *
+ * @component
+ * @example
+ * const flashCard = {question: "Question?", answer: "Answer"}
+ * return (
+ *  <BigFlashCard flashCard={flashCard} />
+ *  )
  */
 const BigFlashCard = ( { flashCard } ) => {
   const [ position, setPosition ] = useState( 'front' );

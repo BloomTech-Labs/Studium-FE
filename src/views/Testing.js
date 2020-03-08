@@ -1,10 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import { CardIcon } from '../components';
+import { SynapsBrain } from '../components/SynapsBrain/SynapsBrain.js';
 
+/**
+ * Testing
+ * @category Views
+ * @component
+ * @example return (<Testing />);
+ */
 export const Testing = () => {
   return ( <StyledTesting>
-    <CardIcon/>
+    <SynapsBrain/>
   </StyledTesting> );
 };
 

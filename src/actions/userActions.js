@@ -8,6 +8,12 @@ export const SIGNOUT = 'SIGNOUT';
 export const ATTEMPT_SIGNIN = 'ATTEMPT_SIGNIN';
 
 /**
+ * Signed In
+ *
+ * @description Call this function when the user is already signed in but the
+ *   app just loads or when the user first signs in.
+ *
+ * @category Actions
  * @function
  * @name signedIn
  * @param {User} user
@@ -20,6 +26,9 @@ export const signedIn = ( user ) => dispatch => {
 };
 
 /**
+ * Sign out
+ *
+ * @category Actions
  * @function
  * @name signOut
  * returns {function}
@@ -42,6 +51,9 @@ export const GOOGLE_PROVIDER = 'GOOGLE_PROVIDER';
  */
 
 /**
+ * Sign In
+ *
+ * @category Actions
  * @function
  * @name signIn
  * @param {AuthType} authType
@@ -61,6 +73,8 @@ export const signIn = ( authType, email, password ) => dispatch => {
 };
 
 /**
+ * Sign In With Google Auth
+ * @category Actions
  * @function
  * @name signInEmailProvider
  * @returns {function}
@@ -82,6 +96,9 @@ const signInWithGoogleAuthProvider = () => dispatch => {
 };
 
 /**
+ * Sign In With Email Provider
+ *
+ * @category Actions
  * @function
  * @name signInEmailProvider
  * @property {string} email

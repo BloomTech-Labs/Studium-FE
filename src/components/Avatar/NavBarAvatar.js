@@ -1,25 +1,30 @@
 import React from 'react';
 import { Avatar } from 'antd';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { ReactComponent as AvatarIcon } from '../../images/ProfileIcons.svg';
 
-export const NavBarAvatar = ({ avatarUrl, ...props }) => {
-  if (avatarUrl) {
-    return <StyledAntAvatar src={avatarUrl} {...props} size={40} />;
+/**
+ * Nav Bar Avatar
+ * @component
+ * @example
+ * return (
+ *  <NavBarAvatar />
+ *  )
+ */
+export const NavBarAvatar = ( { avatarUrl, ...props } ) => {
+  if( avatarUrl ){
+    return <StyledAntAvatar src={ avatarUrl } { ...props } size={ 40 }/>;
   }
-  return (
-    <AvatarIcon
-      style={{
-        position: 'absolute',
-        top: '15px',
-        right: '8%',
-      }}
-      {...props}
-    />
-  );
+  return ( <AvatarIcon
+    style={ {
+      position: 'absolute', top: '15px', right: '8%',
+    } }
+    { ...props }
+  /> );
 };
 
-const StyledAntAvatar = styled(Avatar)`
+const StyledAntAvatar = styled( Avatar )`
   && {
     position: absolute;
     background-color: #585858;
@@ -30,5 +35,6 @@ const StyledAntAvatar = styled(Avatar)`
   }
 `;
 
-NavBarAvatar.propTypes = {};
-
+NavBarAvatar.propTypes = {
+  avatarUrl: PropTypes.string,
+};

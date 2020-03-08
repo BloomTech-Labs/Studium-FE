@@ -1,14 +1,14 @@
 /**
  * Create Action
- *
+ * @category Actions
  * @function
  * @name action
  * @param {String} type
  * @param {*} [payload]
  * @returns {Action} - action for reducer
  */
-export const action = (type, payload) => {
-  if (payload) {
+export const action = ( type, payload ) => {
+  if( payload ){
     
     return { type, payload };
   }

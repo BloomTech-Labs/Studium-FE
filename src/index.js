@@ -5,24 +5,19 @@ import App from './App';
 import { ThemeProvider } from 'styled-components';
 import { BrowserRouter as Router } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
-import { applyMiddleware, createStore } from 'redux';
-import Thunk from 'redux-thunk';
-import rootReducer from './reducers';
 import { Provider } from 'react-redux';
 import { theme } from './utilities/theme.js';
 import 'antd/dist/antd.css';
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
+import { getStore } from './utilities/getStore.js';
 
 const GlobalStyle = createGlobalStyle`
 ${ reset }
 `;
 
-
-const store = createStore( rootReducer, applyMiddleware( Thunk ) );
-
 ReactDOM.render( <ThemeProvider theme={ theme }>
-  <Provider store={ store }>
+  <Provider store={ getStore() }>
     <GlobalStyle/>
     <Router>
       <App/>

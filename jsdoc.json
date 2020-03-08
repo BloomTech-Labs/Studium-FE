@@ -1,18 +1,43 @@
 {
   "tags": {
-    "allowUnknownTags":  true,
-    "dictionaries": ["jsdoc","closure"]
+    "allowUnknownTags": true
   },
   "source": {
-    "include": ["src"],
-    "includePattern": ".+\\.js(doc|x)?$",
-    "excludePattern": "(^|\\/|\\\\)_"
+    "include": [
+      "./src"
+    ],
+    "includePattern": ".js$",
+    "excludePattern": "(node_modules/|docs/|coverage/|.{test|spec}.js)"
   },
   "plugins": [
+    "better-docs/category",
+    "better-docs/component"
   ],
-  "templates":  {},
   "opts": {
-    "destination": "docs",
-    "recurse": true
+    "encoding": "utf8",
+    "destination": "docs/",
+    "recurse": true,
+    "verbose": true,
+    "template": "better-docs"
+  },
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false,
+    "better-docs": {
+      "name": "Synaps Documentation",
+      "hideGenerator": false,
+      "component": {
+        "entry": [
+          "import 'antd/dist/antd.css';"
+        ],
+        "wrapper": "./WrapperComponentDocs.js"
+      },
+      "navigation": [
+        {
+          "label": "Github",
+          "href": "https://github.com/Lambda-School-Labs/pt-synaps-fe"
+        }
+      ]
+    }
   }
 }

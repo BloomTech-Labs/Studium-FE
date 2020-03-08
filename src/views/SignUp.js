@@ -5,14 +5,15 @@ import { EMAIL_PROVIDER, GOOGLE_PROVIDER, signIn } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 /**
- * SignUp View
- * @function
- * @returns React.Component
+ * Sign Up
+ * @category Views
+ * @component
+ * @example return (<SignUp />);
  */
 export function SignUp(){
   
   /**
-   * @type {Dispatch} dispatch
+   * @type {Dispatch}
    */
   const dispatch = useDispatch();
   

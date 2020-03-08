@@ -4,6 +4,7 @@ import { SmallFlashCard, TitleText, SearchBar } from '../components';
 import PropTypes from 'prop-types';
 import { devices } from '../utilities/breakpoints-device.js';
 
+
 const decks = [
   { deck_name: 'Some Name', deck_id: 1 },
   { deck_name: 'Another Name', deck_id: 1 },
@@ -16,6 +17,12 @@ const decks = [
   },
 ];
 
+/**
+ * Dashboard
+ * @category Views
+ * @component
+ * @example return (<Dashboard />);
+ */
 export const Dashboard = props => {
   const [ selected, setSelected ] = useState( 0 );
   
@@ -36,32 +43,32 @@ export const Dashboard = props => {
   };
   
   return ( <StyledDashboard className={ 'dashboard' }>
-      <TitleText text={ 'Dashboard' }/>
-      <SearchBar
-        onSearch={ search }
-        style={ {
-          marginTop: '8px',
-          marginBottom: '33px',
-          width: '80%',
-          marginLeft: '10%',
-        } }
+    <TitleText text={ 'Dashboard' }/>
+    <SearchBar
+      onSearch={ search }
+      style={ {
+        marginTop: '8px',
+        marginBottom: '33px',
+        width: '80%',
+        marginLeft: '10%',
+      } }
+    />
+    <StyledDeckHolder>
+      <SmallFlashCard
+        border={ 'dashed' }
+        icon={ 'plus' }
+        onClick={ () => deckClicked() }
       />
-      <StyledDeckHolder>
-        <SmallFlashCard
-          border={ 'dashed' }
-          icon={ 'plus' }
-          onClick={ () => deckClicked() }
-        />
-        { decks.map( deck => {
-          return ( <SmallFlashCard
-              id={ deck.deck_id }
-              deck={ deck }
-              border={ 'solid' }
-              onClick={ e => deckClicked( deck ) }
-            /> );
-        } ) }
-      </StyledDeckHolder>
-    </StyledDashboard> );
+      { decks.map( deck => {
+        return ( <SmallFlashCard
+          id={ deck.deck_id }
+          deck={ deck }
+          border={ 'solid' }
+          onClick={ e => deckClicked( deck ) }
+        /> );
+      } ) }
+    </StyledDeckHolder>
+  </StyledDashboard> );
 };
 
 Dashboard.propTypes = {

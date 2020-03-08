@@ -2,14 +2,28 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-
-export const CardIcon = ({ cardNumber, width, height, border }) => {
+/**
+ * Card Icon
+ *
+ * @description Card icon that tells the users how many cards they have
+ * created or how many cards are in the deck.
+ *
+ * @component
+ * @example
+ *  return (
+ *  <CardIcon />
+ *  )
+ */
+export const CardIcon = ( { cardNumber, width, height, border } ) => {
   return (
-    <StyledCardIconContainer width={width} height={height} border={border}>
-      <StyledStackedCardIconTwo width={width} height={height} border={border} />
-      <StyledStackedCardIcon width={width} height={height} border={border} />
-      <StyledCardIcon width={width} height={height} border={border} />
-      <CardIconText>{cardNumber && cardNumber}</CardIconText>
+    <StyledCardIconContainer width={ width } height={ height }
+                             border={ border }>
+      <StyledStackedCardIconTwo width={ width } height={ height }
+                                border={ border }/>
+      <StyledStackedCardIcon width={ width } height={ height }
+                             border={ border }/>
+      <StyledCardIcon width={ width } height={ height } border={ border }/>
+      <CardIconText>{ cardNumber && cardNumber }</CardIconText>
     </StyledCardIconContainer>
   );
 };
@@ -25,26 +39,26 @@ CardIcon.propTypes = {
 const StyledCardIconContainer = styled.div`
   margin-top: 4rem;
   position: relative;
-  width: ${props => (props.width ? props.width : '80px')};
-  height: ${props => (props.height ? props.height : '108px')};
+  width: ${ props => ( props.width ? props.width : '80px' ) };
+  height: ${ props => ( props.height ? props.height : '108px' ) };
 `;
 
 const StyledCardIcon = styled.div`
   position: absolute;
   display: flex;
-  width: ${props => (props.width ? props.width : '80px')};
-  height: ${props => (props.height ? props.height : '108px')};
+  width: ${ props => ( props.width ? props.width : '80px' ) };
+  height: ${ props => ( props.height ? props.height : '108px' ) };
   left: 0;
   bottom: 0;
   background: #c4c4c4;
-  border: ${props => (props.border ? props.border : '3px solid white')};
+  border: ${ props => ( props.border ? props.border : '3px solid white' ) };
 `;
 
-const StyledStackedCardIcon = styled(StyledCardIcon)`
+const StyledStackedCardIcon = styled( StyledCardIcon )`
   left: 20%;
   bottom: 15%;
 `;
-const StyledStackedCardIconTwo = styled(StyledCardIcon)`
+const StyledStackedCardIconTwo = styled( StyledCardIcon )`
   left: 40%;
   bottom: 30%;
 `;

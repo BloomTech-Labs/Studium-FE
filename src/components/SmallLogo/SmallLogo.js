@@ -2,10 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import logo from '../../images/smalllogo.png';
 
+/**
+ * Small Logo
+ * @component
+ * @example
+ * return (
+ *  <SmallLogo />
+ *  )
+ */
 export const SmallLogo = () => {
   return (
     <StyledSmallLogo>
-      <img src={logo} alt="Logo" />
+      <img src={ logo } alt="Logo"/>
     </StyledSmallLogo>
   );
 };

@@ -2,9 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 import Text from '../../images/synapsText.png';
 
-export const SynapsText = props => {
+/**
+ * Synaps Text
+ * @component
+ * @example
+ * return (
+ *  <StynapsText />
+ * )
+ */
+export const SynapsText = () => {
   return ( <TextDiv>
-    <img src={ Text } alt={"synaps"}/>
+    <img src={ Text } alt={ 'synaps' }/>
   </TextDiv> );
 };
 

@@ -3,6 +3,15 @@ import styled from 'styled-components';
 import { Input } from 'antd';
 import PropTypes from 'prop-types';
 
+/**
+ * Search Bar
+ * @component
+ * @example
+ * const search = () => {};
+ * return (
+ *  <SearchBar onSearch={search} />
+ * )
+ */
 export const SearchBar = props => {
   return <StyledAntdSearch { ...props }/>;
 };

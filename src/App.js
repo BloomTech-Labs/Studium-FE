@@ -14,25 +14,23 @@ import { isMobile } from 'react-device-detect';
 import PropTypes from 'prop-types';
 import { Alert } from 'antd';
 import { devices } from './utilities/breakpoints-device.js';
-import { theme } from './utilities/theme.js';
-
-/**
- *
- * App
- * @param props
- * @returns React.Component
- */
 
 let timer = null;
 
+/**
+ * App
+ * @category Views
+ * @component
+ * @example return (<App />);
+ */
 function App( props ){
   /**
-   * @type {Dispatch} dispatch
+   * @type {Dispatch}
    */
   const dispatch = useDispatch();
   const [ alertMessage, setAlert ] = useState( '' );
   /**
-   * @type {Theme} theme
+   * @type {Theme}
    */
   const [ theme, setTheme ] = useState( useTheme( ThemeContext ) );
   const users = useSelector( state => {
@@ -67,7 +65,7 @@ function App( props ){
     firebase.auth().onAuthStateChanged( user => {
       const pathName = props.history.location.pathname;
       /**
-       * @type {User} user
+       * @type {User}
        */
       if( user ){
         dispatch( signedIn( user ) );

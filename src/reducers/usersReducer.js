@@ -9,8 +9,6 @@ import {
   CHECK_USER_REGISTERED,
 } from '../actions';
 
-import { User } from 'firebase';
-
 /**
  * @typedef {object} UsersReducerState
  * @property {boolean} fetching - Fetching the user from the database.
@@ -22,7 +20,7 @@ import { User } from 'firebase';
  */
 
 /**
- * @type {UsersReducerState} initialState
+ * @type {UsersReducerState}
  */
 const initialState = {
   user: {},
@@ -33,16 +31,18 @@ const initialState = {
   registerError: null,
   error: null,
 };
+
 /**
- *
+ * Users Reducer
+ * @category Reducers
  * @function
  * @name usersReducer
  * @param {UsersReducerState} state
  * @param {Action} action
  * @returns {UsersReducerState} state
  */
-export const usersReducer = (state = initialState, action) => {
-  switch (action.type) {
+export const usersReducer = ( state = initialState, action ) => {
+  switch( action.type ){
     case ATTEMPT_SIGNIN:
       return { ...state, fetching: true };
     case SIGNED_IN:
@@ -64,7 +64,7 @@ export const usersReducer = (state = initialState, action) => {
         userRegistered: false,
         registerError: action.payload,
       };
-
+    
     default:
       return state;
   }

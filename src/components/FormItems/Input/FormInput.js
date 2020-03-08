@@ -3,6 +3,21 @@ import styled from 'styled-components';
 import { Input, Form } from 'antd';
 import PropTypes from 'prop-types';
 
+/**
+ * Form Input
+ *
+ * @component
+ * @example
+ *
+ * import React, {useState} from 'react';
+ *
+ * const [inputValue, setValue] = useState('');
+ * const handleChange = (e) => {
+ *   setValue(e.target.value);
+ * };
+ *  return ( <FormInput onChange={handleChange} value={inputValue} /> );
+ *
+ */
 export const FormInput = ( {
   bordered = 'false', borderRadius = 'small', label, error, ...props
 } ) => {
@@ -80,8 +95,8 @@ const StyledAntdInputSmallRadius = styled( Input )`
 
 FormInput.propTypes = {
   onChange: PropTypes.func.isRequired,
-  bordered: PropTypes.bool,
   value: PropTypes.any.isRequired,
+  bordered: PropTypes.bool,
   label: PropTypes.string,
   placeholder: PropTypes.string,
   size: PropTypes.oneOf( [ 'large', 'default', 'small' ] ),

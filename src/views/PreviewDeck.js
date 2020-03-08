@@ -3,15 +3,19 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { TitleText, PreviewDeckCards } from '../components';
 
+
+
+
 const decks = [
   { card_name: 'Name this organ' }, { card_name: 'Define Proximal.' },
   { card_name: '---- means towards the front' },
 ];
 
 /**
- * @function
- * @name PreviewDeck
- * @returns React.Component
+ * Preview Deck
+ * @category Views
+ * @component
+ * @example return (<PreviewDeck />);
  */
 export const PreviewDeck = props => {
   console.log( 'props', props );

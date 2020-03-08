@@ -3,6 +3,12 @@ import styled from 'styled-components';
 import { SmallLogo, SynapsButton, SynapsText } from '../components';
 import { devices } from '../utilities/breakpoints-device';
 
+/**
+ * Landing Page
+ * @category Views
+ * @component
+ * @example return (<LandingPage />);
+ */
 export const LandingPage = props => {
   const handleClick = name => {
     if( name === 'SignIn' ){
@@ -23,6 +29,7 @@ export const LandingPage = props => {
         <SynapsButton
           text={ 'Sign In' }
           size={ 'large' }
+          type={ 'primary' }
           onClick={ () => handleClick( 'SignIn' ) }
           style={ {
             margin: '2rem auto',

@@ -3,9 +3,20 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Button } from 'antd';
 
+/**
+ * Button Component
+ *
+ * @component
+ *
+ * @example
+ * return (
+ *    <SynapsButton  />
+ *    )
+ */
 export const SynapsButton = ( {
   text, type = 'primary', size = 'default', icon, shape, loading, block, color, ...props
 } ) => {
+  
   return ( <StyledAntdButton
     type={ type }
     size={ size }
@@ -44,7 +55,7 @@ const StyledAntdButton = styled( Button )`
 
     background-color: ${ props => {
   if( props.type === 'primary' ){
-    return props.theme.lightGray;
+    return props.theme.primary;
   }else if( props.type === 'darkgray' ){
     return props.theme.darkGray;
   }else{
@@ -53,4 +64,3 @@ const StyledAntdButton = styled( Button )`
 } };
   }
 `;
-

@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StyledNavBar render correctly 1`] = `
+.c1 {
+  box-sizing: border-box;
+  top: 0;
+  margin: 0;
+  position: relative;
+  width: 100vw;
+  height: 75px;
+  max-height: 100%;
+  max-width: 100vw;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  overflow-y: hidden;
+}
+
+.c1::-webkit-scrollbar {
+  width: 0;
+}
+
+.c0 {
+  background-color: #0d2545;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 15;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 74px;
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+<div>
+  <div
+    class="c0 nav-bar"
+  >
+    <div
+      class="c1 nav-bar-container"
+      height="75px"
+    >
+      <svg
+        style="position: absolute; left: 6%; top: 50%; transform: transition(0, -53%);"
+      >
+        SmallWhiteLogo.svg
+      </svg>
+      <svg
+        class="ant-dropdown-link"
+        style="position: absolute; top: 15px; right: 8%;"
+      >
+        ProfileIcons.svg
+      </svg>
+    </div>
+  </div>
+</div>
+`;

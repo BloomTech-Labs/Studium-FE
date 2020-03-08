@@ -2,19 +2,21 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Upload, message } from 'antd';
 import { uploadImage } from '../../actions/photo';
-import {UploadIcon} from './UploadIcon.js';
+import { UploadIcon } from './UploadIcon.js';
 import { useDispatch, useSelector } from 'react-redux';
 import * as PropTypes from 'prop-types';
 
 /**
- * Styled Upload SynapsButton
- * @function
- * @param props
- * @return {React.Component}
+ * Image Uploader
+ * @component
+ * @example
+ * return (
+ *  <Uploader id={"1"} />
+ * )
  */
 export const Uploader = props => {
   /**
-   * @type PhotoReducerState photosState
+   * @type PhotoReducerState
    */
   const photosState = useSelector( state => state.photosState );
   const dispatch = useDispatch();

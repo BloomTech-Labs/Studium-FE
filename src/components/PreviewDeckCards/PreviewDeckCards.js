@@ -4,47 +4,39 @@ import PropTypes from 'prop-types';
 import { Card, Icon } from 'antd';
 
 /**
- * Styled Deck Preview
+ * Preview Deck Cards
  *
- * Preview card of the deck name with styles and select effects.
- * @function
- * @name PreviewDeckCards
- * @returns React.Component
+ * @description This component shows the users all the different cards in
+ * the deck.
+ *
+ * @component
+ *
+ * @example
+ * return (
+ *  <PreviewDeckCards text={"Card Title"} />
+ * )
  */
 export const PreviewDeckCards = ( {
-  text, type = 'inner', size = 'default', icon, loading, block, hoverable, deck, ...props
-} ) => {
-  return (
+  text, icon, loading, block, hoverEffect, deck, type = 'inner', size = 'default', ...props
+} ) => (
+  <StyledAntdCard
+    type={ type }
+    size={ size }
+    icon={ icon }
+    loading={ loading && 'loading' }
+    block={ block && 'block' }
+    { ...props }
+  >
     
-    <StyledAntdCard
-      type={ type }
-      size={ size }
-      icon={ icon }
-      loading={ loading && 'loading' }
-      block={ block && 'block' }
-      { ...props }
-    >
-      
-      { deck && <p className={ 'deck-text' }>{ deck.card_name }</p> }
-      <Icon type={ 'check-circle' }
-            style={ {
-              position: 'absolute', bottom: '5px', right: '5px',
-            } }
-      />
-    </StyledAntdCard>
-  
-  );
-};
+    { deck && <p className={ 'deck-text' }>{ deck.card_name }</p> }
+    <Icon type={ 'check-circle' }
+          style={ {
+            position: 'absolute', bottom: '5px', right: '5px',
+          } }
+    />
+  </StyledAntdCard>
 
-PreviewDeckCards.propTypes = {
-  text: PropTypes.string,
-  types: PropTypes.oneOf( [ 'inner' ] ),
-  size: PropTypes.oneOf( [ 'default' ] ),
-  icon: PropTypes.string,
-  loading: PropTypes.bool,
-  block: PropTypes.bool,
-  hoverable: PropTypes.bool,
-};
+);
 
 const StyledAntdCard = styled( Card )`
   && {
@@ -59,3 +51,14 @@ const StyledAntdCard = styled( Card )`
     }
   }
 `;
+
+PreviewDeckCards.propTypes = {
+  text: PropTypes.string,
+  icon: PropTypes.string,
+  loading: PropTypes.bool,
+  block: PropTypes.bool,
+  hoverEffect: PropTypes.bool,
+  deck: PropTypes.object,
+  type: PropTypes.oneOf( [ 'inner' ] ),
+  size: PropTypes.oneOf( [ 'default' ] ),
+};

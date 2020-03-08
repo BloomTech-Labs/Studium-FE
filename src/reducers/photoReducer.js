@@ -5,6 +5,7 @@ import {
 
 /**
  * @typedef {object} PhotoReducerState
+ * @category Reducers
  * @property {Object.<Number, {Photo}>} photos
  */
 const initialState = {
@@ -21,6 +22,9 @@ const initialState = {
  */
 
 /**
+ * Photos Reducer
+ * @category Reducers
+ *
  * @function
  * @name photosReducer
  * @param {PhotoReducerState} state

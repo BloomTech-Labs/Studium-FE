@@ -1,9 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-
-export const TitleText = ({ text }) => {
-  return <StyledTitle>{text}</StyledTitle>;
+/**
+ * Title Text
+ *
+ * @component
+ * @example
+ *  <TitleText text={"Create Deck"} />
+ *
+ */
+export const TitleText = ( { text } ) => {
+  return <StyledTitle>{ text }</StyledTitle>;
 };
 
 const StyledTitle = styled.div`
@@ -16,3 +24,6 @@ const StyledTitle = styled.div`
   margin-botom: 36px;
 `;
 
+TitleText.propTypes = {
+  text: PropTypes.string.isRequired,
+};
