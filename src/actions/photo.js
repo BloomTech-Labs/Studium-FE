@@ -7,8 +7,10 @@ export const UPLOADING_PHOTO_FAILED = 'UPLOADING_PHOTO_FAILED';
 export const UPLOAD_PHOTO = 'UPLOAD_PHOTO';
 
 /**
+ * Upload Image
+ * @category Actions
  * @param file
- * @returns {function(*): *}
+ * @returns {function}
  */
 export const uploadImage = file => dispatch => {
   dispatch({ type: UPLOADING_PHOTO_INIT, payload: file });

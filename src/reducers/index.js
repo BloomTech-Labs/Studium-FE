@@ -4,11 +4,16 @@ import { photosReducer } from './photoReducer';
 import { deckReducer } from './decksReducer';
 
 /**
- * @typedef rootReducer
- * @property {UsersReducerState} user
- * @property {} user
+ * @typedef {object} RootState
+ * @property {UsersReducerState} usersState
+ * @property {PhotoReducerState} photosState
+ */
+
+ /**
+ * Combine Reducers
  *
- *
+ * @category Reducers
+ * @returns RootState
  */
 
 export default combineReducers({

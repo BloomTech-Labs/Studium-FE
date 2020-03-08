@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
-import StyledCardDeck from '../components/Styled/StyledCardDeck';
-import StyledTitleText from '../components/Styled/StyledTitleText';
-import StyledSearchBar from '../components/Styled/StyledSearchBar';
+import { SmallFlashCard, TitleText, SearchBar } from '../components';
 import PropTypes from 'prop-types';
 import {devices} from '../utilities/breakpoints-device.js';
 import {useDispatch, useSelector} from 'react-redux';
 import {getDecks} from '../actions/decksActions';
+
 
 const decks = [
   {deck_name: 'Some Name', deck_id: 1},
@@ -18,11 +17,19 @@ const decks = [
     deck_id: 1,
   },
   {
-    deck_name:
-      'Anatomy this is a really long deck name lets just keep' + ' this name',
-    deck_id: 1,
+    deck_name: 'Another' + ' Name', deck_id: 1,
+  }, {
+    deck_name: 'Anatomy this is a really long deck name lets just keep' +
+      ' this name', deck_id: 1,
   },
 ];
+
+/**
+ * Dashboard
+ * @category Views
+ * @component
+ * @example return (<Dashboard />);
+ */
 
 const Dashboard = props => {
   const [selected, setSelected] = useState(0);
@@ -36,52 +43,52 @@ const Dashboard = props => {
   }, [user]);
 
   const search = e => {
-    console.log(e.target.value);
+    console.log( e.target.value );
   };
-
+  
   const changeDeckSelected = deck => {
-    setSelected(deck);
+    setSelected( deck );
   };
-
-  const deckClicked = (deck = undefined) => {
-    if (!deck) {
-      props.history.push('/create/deck');
+  
+  const deckClicked = ( deck = undefined ) => {
+    if( !deck ){
+      props.history.push( '/create/deck' );
       return;
     }
+<<<<<<< HEAD
     props.history.push('/game', {...deck});
+=======
+    props.history.push( '/game', { ...deck } );
+>>>>>>> origin
   };
-
-  return (
-    <StyledDashboard className={'dashboard'}>
-      <StyledTitleText text={'Dashboard'} />
-      <StyledSearchBar
-        onSearch={search}
-        style={{
-          marginTop: '8px',
-          marginBottom: '33px',
-          width: '80%',
-          marginLeft: '10%',
-        }}
+  
+  return ( <StyledDashboard className={ 'dashboard' }>
+    <TitleText text={ 'Dashboard' }/>
+    <SearchBar
+      onSearch={ search }
+      style={ {
+        marginTop: '8px',
+        marginBottom: '33px',
+        width: '80%',
+        marginLeft: '10%',
+      } }
+    />
+    <StyledDeckHolder>
+      <SmallFlashCard
+        border={ 'dashed' }
+        icon={ 'plus' }
+        onClick={ () => deckClicked() }
       />
-      <StyledDeckHolder>
-        <StyledCardDeck
-          border={'dashed'}
-          icon={'plus'}
-          onClick={() => deckClicked()}
-        />
-        {decks.map(deck => {
-          return (
-            <StyledCardDeck
-              id={deck.deck_id}
-              deck={deck}
-              border={'solid'}
-              onClick={e => deckClicked(deck)}
-            />
-          );
-        })}
-      </StyledDeckHolder>
-    </StyledDashboard>
-  );
+      { decks.map( deck => {
+        return ( <SmallFlashCard
+          id={ deck.deck_id }
+          deck={ deck }
+          border={ 'solid' }
+          onClick={ e => deckClicked( deck ) }
+        /> );
+      } ) }
+    </StyledDeckHolder>
+  </StyledDashboard> );
 };
 
 Dashboard.propTypes = {
@@ -102,7 +109,7 @@ const StyledDashboard = styled.div`
   max-width: 100%;
   height: 100%;
 
-  @media screen and ${devices.tablet} {
+  @media screen and ${ devices.tablet } {
     width: 100%;
     height: 100vh;
     position: absolute;
@@ -110,4 +117,3 @@ const StyledDashboard = styled.div`
   }
 `;
 
-export default Dashboard;

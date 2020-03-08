@@ -1,14 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
-import StyledCardDeck from '../components/Styled/StyledCardDeck.js';
-import CardIcon from '../components/Styled/CardIcon.js';
+import { SynapsBrain } from '../components/SynapsBrain/SynapsBrain.js';
 
-const Testing = () => {
-  return (
-    <StyledTesting>
-      <CardIcon />
-    </StyledTesting>
-  );
+/**
+ * Testing
+ * @category Views
+ * @component
+ * @example return (<Testing />);
+ */
+export const Testing = () => {
+  return ( <StyledTesting>
+    <SynapsBrain/>
+  </StyledTesting> );
 };
 
 const StyledTesting = styled.div`
@@ -16,4 +19,3 @@ const StyledTesting = styled.div`
   width: 400px;
 `;
 
-export default Testing;
