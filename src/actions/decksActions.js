@@ -3,7 +3,7 @@ import {createAxiosAuth} from '../utilities/createAxios';
 // Retrieves all public decks
 export const RETRIEVE_DECKS_START = 'RETRIEVE_DECKS_START';
 export const RETRIEVE_DECKS_SUCCESS = 'RETRIEVE_USER_DECKS_SUCCESS';
-export const RECEIVE_DECKS_FAILURE = 'RECEIVE_DECKS_FAILURE';
+export const RETRIEVE_DECKS_FAILURE = 'RETRIEVE_DECKS_FAILURE';
 
 export const getDecks = (uid, dispatch) => {
   dispatch({type: RETRIEVE_DECKS_START});
@@ -17,7 +17,7 @@ export const getDecks = (uid, dispatch) => {
     .catch(error => {
       debugger;
       dispatch({
-        type: RECEIVE_DECKS_FAILURE,
+        type: RETRIEVE_DECKS_FAILURE,
         error: 'Failed to receive your decks.',
       });
     });
@@ -33,9 +33,11 @@ export const postDeck = (uid, dispatch) => {
   createAxiosAuth(uid)
     .get('/api/decks')
     .then(res => {
+      debugger;
       dispatch({type: POSTING_DECK_SUCCESS, payload: res.data});
     })
     .catch(error => {
+      debugger;
       dispatch({
         type: POSTING_DECK_FAILURE,
         error: 'Failed to post your deck',
@@ -71,7 +73,7 @@ export const UPDATING_DECK_FAILURE = 'UPDATING_DECK_FAILURE';
 export const updateDeck = (uid, dispatch) => {
   dispatch({type: UPDATING_DECK_START});
   createAxiosAuth(uid)
-  .get('/api/decks/:deck_id')
+    .get('/api/decks/:deck_id')
     .then(res => {
       dispatch({type: UPDATING_DECK_SUCCESS, payload: res.data});
     })
