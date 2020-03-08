@@ -1,17 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
-import StyledTitleText from '../components/Styled/StyledTitleText';
-
-const FlashCard = props => {
-
-
-
+import { TitleText } from '../components/TitleText/TitleText.js';
+/**
+ * FlashCard
+ * @category Views
+ * @component
+ * @example return (<FlashCard />);
+ */
+export const FlashCard = props => {
   const deck = props.history.location.state;
   return (
+    
     <StyledFlashCard>
-
-      <StyledTitleText text={deck.deck_name} />
+      <TitleText text={ deck.deck_name }/>
     </StyledFlashCard>
+  
   );
 };
 
@@ -21,4 +24,3 @@ const StyledFlashCard = styled.div`
   width: 100%;
 `;
 
-export default FlashCard;
