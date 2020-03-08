@@ -1,83 +1,36 @@
-🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your portfolio. This is intended to be a guideline, feel free to add your own flare to it.
+# [Synaps](https://production-lambda-synaps-fe.herokuapp.com/)
 
-🚫 The numbers 1️⃣ through 5️⃣ next to each item represent the week that part of the docs needs to be comepleted by. Make sure to delete the numbers by the end of Labs.
+## UI/UX 
+[<img src="https://avatars0.githubusercontent.com/u/48630065?s=460&v=4" width = "100" />](https://github.com/nataliepeterson)
+[<img src="https://avatars3.githubusercontent.com/u/49910197?v=4" width = "100" />](https://github.com/DKFerebee)
 
-🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
-
-
-
-# 1️⃣ Synaps
-
-1️⃣( https://production-lambda-synaps-fe.herokuapp.com/.)
-
-## 4️⃣ Contributors
-
+## Web Developers
 [<img src="https://avatars3.githubusercontent.com/u/17443353?v=4" width = "100" />](https://github.com/jeremiahtenbrink)
 [<img src="https://avatars1.githubusercontent.com/u/19153270?v=4" width = "100" />](https://github.com/ccurry20)
 [<img src="https://avatars2.githubusercontent.com/u/20153709?v=4" width = "100" />](https://github.com/gmgower)
 [<img src="https://avatars3.githubusercontent.com/u/47146701?v=4" width = "100" />](https://github.com/austinbro5)
 [<img src="https://avatars0.githubusercontent.com/u/48000565?v=4" width = "100" />](https://github.com/Brimes7)
-[<img src="https://avatars3.githubusercontent.com/u/49910197?v=4" width = "100" />](https://github.com/DKFerebee)
 [<img src="https://avatars3.githubusercontent.com/u/49927848?v=4" width = "100" />](https://github.com/christopherc1331)
-
-![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
-![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
-
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-![Code Climet Test Coverage](https://github.com/Lambda-School-Labs/pt-synaps-fe/workflows/Code%20Climet%20Test%20Coverage/badge.svg)
-[![Maintainability](https://api.codeclimate.com/v1/badges/26cd86e13210109747d9/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/pt-synaps-fe/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/26cd86e13210109747d9/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/pt-synaps-fe/test_coverage)
 
 ## Project Overview
 
-1️⃣ [Trello Board](https://trello.com/b/wFoCS5VS/labspt7-pt-flards)
-
-1️⃣ [Product Canvas](https://www.notion.so/5e4824078e4240d1bd94900ad1e3c212?v=fd4a5deca267478693c76de7410101e5)
-
-1️⃣ [UX Design files](https://www.figma.com/file/BuGRUaXhmqsSEEtSTTVl7f/PT-Flash-Cards-David-and-Natalie?node-id=545%3A92)
-
 To create the best Life Science flashcard application, that has excellent UI, which has minimal distractions to make the learning process more efficient. To be the best user friendly flashcard application for life sciences students.
 
-### 4️⃣ Key Features
+### Key Features
 
-- The ability to create cards
-- create decks
-- Take quizs
-- Spaced repatetions
+- Mobile First Design
+- Share Decks With Friends
+- Take Quizzes 
+- Spaced Repetition 
 
-## 1️⃣ Tech Stack
+## Tech Stack
 
-### Front end built using:
+![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-React and Styled componets
 
-#### _Front end framework goes here_
-
-    "antd": "^3.26.9",
-
-    "cloudinary-react": "^1.3.0",
-
-    "firebase": "^7.8.1",
-
-    "prop-types": "^15.7.2",
-
-    "react": "^16.12.0",
-
-    "react-dom": "^16.12.0",
-
-    "react-redux": "^7.1.3",
-
-    "react-router-dom": "^5.1.2",
-
-    "react-scripts": "3.3.1",
-
-    "redux": "^4.0.5",
-
-    "redux-thunk": "^2.3.0",
-
-    "styled-components": "^5.0.1",
-
-    "styled-reset": "^4.1.0".
+# React <br> Styled Components <br> Ant Design <br> Cloudinary(picture storage) <br> Redux <br> 
+".
 
 #### Front end deployed to https://production-lambda-synaps-fe.herokuapp.com/
 

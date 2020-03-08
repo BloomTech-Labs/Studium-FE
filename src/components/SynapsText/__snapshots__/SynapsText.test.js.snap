@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StyledSynapsText render correctly 1`] = `
+.c0 {
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 85px;
+  line-height: 104.9%;
+  color: #231f20;
+}
+
+<div
+  className="c0"
+>
+  <img
+    alt="synaps"
+    src="synapsText.png"
+  />
+</div>
+`;

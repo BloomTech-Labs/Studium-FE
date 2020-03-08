@@ -9,21 +9,18 @@ import {
   CHECK_USER_REGISTERED,
 } from '../actions';
 
-import { User } from 'firebase';
-
 /**
- * @typedef UsersReducerState
+ * @typedef {object} UsersReducerState
  * @property {boolean} fetching - Fetching the user from the database.
  * @property {Error | null} error - Fetching the user from the database.
  * @property {User | {}} user - Fetching the user from the database.
  * @property {boolean} checkingRegistered - Fetching the user from the database.
  * @property {boolean} userRegistered - Fetching the user from the database.
- * @property {Error | null} registerError - Fetching the user from the
- * database.
+ * @property {Error | null} registerError - Fetching the user from the database.
  */
 
 /**
- * @type {UsersReducerState} initialState
+ * @type {UsersReducerState}
  */
 const initialState = {
   user: {},
@@ -34,14 +31,18 @@ const initialState = {
   registerError: null,
   error: null,
 };
+
 /**
- *  @typedef UsersReducer usersReducer
+ * Users Reducer
+ * @category Reducers
+ * @function
+ * @name usersReducer
  * @param {UsersReducerState} state
  * @param {Action} action
  * @returns {UsersReducerState} state
  */
-export const usersReducer = (state = initialState, action) => {
-  switch (action.type) {
+export const usersReducer = ( state = initialState, action ) => {
+  switch( action.type ){
     case ATTEMPT_SIGNIN:
       return { ...state, fetching: true };
     case SIGNED_IN:
@@ -63,7 +64,7 @@ export const usersReducer = (state = initialState, action) => {
         userRegistered: false,
         registerError: action.payload,
       };
-
+    
     default:
       return state;
   }
