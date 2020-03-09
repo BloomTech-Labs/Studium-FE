@@ -35,7 +35,7 @@ exports[`StyledCardDeck render correctly 1`] = `
 
 <div
   className="c0"
-  data-testId="positional-container"
+  data-testid="positional-container"
 >
   <div
     className="c1"
