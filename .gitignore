@@ -7,9 +7,8 @@
 .idea
 
 #docs
-/docs
 /src/types
-
+./better-docs
 # testing
 /coverage
 .cache
