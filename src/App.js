@@ -98,7 +98,7 @@ function App( props ){
         className={ 'app-container' }
         position={ 'fixed' }
         top={ '0' }
-        maxHeight={ theme.screenHeight }
+        maxHeight={ theme.screenHeight + 'px' }
         margin={ '75px 0 50px 0' }
       >
         <Switch>

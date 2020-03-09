@@ -1,0 +1,269 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>JSDoc: utilities/test-utils.js</title>
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="./build/entry.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="https://fonts.googleapis.com/css?family=Muli:100,400,700|Oswald:300|Inconsolata,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+</head>
+
+<body>
+    <div id="stickyNavbarOverlay"></div>
+    <div class="top-navbar">
+        <div class="container">
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand">
+                    
+                     
+                        <h1 class="navbar-item">Synaps Documentation</h1>
+                    
+                    <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+                 
+                <div class="navbar-menu">
+                    <div class="navbar-end">
+                    
+                        <div class="navbar-item">
+                            <a href="https://github.com/Lambda-School-Labs/pt-synaps-fe" target="_blank">
+                                Github
+                            </a>
+                        </div>
+                    
+                    </div>
+                </div>
+                
+            </nav>
+        </div>
+    </div>
+    <div class="container">
+        <div class="columns">
+            <div class="column is-3" id="sidebarNav">
+                <div class="sidebar">
+                    <nav>
+                        <h2><a href="index.html">Home</a></h2><div class="category"><h3>Components</h3><ul><li><a href="BigFlashCard.html">BigFlashCard</a></li><li><a href="CardIcon.html">CardIcon</a></li><li><a href="ContainerDiv.html">ContainerDiv</a></li><li><a href="Footer.html">Footer</a></li><li><a href="FormInput.html">FormInput</a></li><li><a href="NavBar.html">NavBar</a></li><li><a href="NavBarAvatar.html">NavBarAvatar</a></li><li><a href="PreviewDeckCards.html">PreviewDeckCards</a></li><li><a href="SearchBar.html">SearchBar</a></li><li><a href="SmallFlashCard.html">SmallFlashCard</a></li><li><a href="SmallLogo.html">SmallLogo</a></li><li><a href="SvgContainer.html">SvgContainer</a></li><li><a href="SynapsBrain.html">SynapsBrain</a></li><li><a href="SynapsButton.html">SynapsButton</a></li><li><a href="SynapsText.html">SynapsText</a></li><li><a href="TitleText.html">TitleText</a></li><li><a href="Uploader.html">Uploader</a></li><li><a href="UploadIcon.html">UploadIcon</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addDeck">addDeck</a></li><li><a href="global.html#initialState">initialState</a></li><li><a href="global.html#useDispatchreturnsDispatch">useDispatchreturns Dispatch</a></li><li><a href="global.html#UseSelector">UseSelector</a></li></ul></div><div class="category"><h2>Actions</h2><h3>Global</h3><ul><li><a href="global.html#action">action</a></li><li><a href="global.html#signedIn">signedIn</a></li><li><a href="global.html#signIn">signIn</a></li><li><a href="global.html#signInEmailProvider">signInEmailProvider</a></li><li><a href="global.html#signOutreturns%257Bfunction%257D">signOutreturns {function}</a></li><li><a href="global.html#uploadImage">uploadImage</a></li></ul></div><div class="category"><h2>Reducers</h2><h3>Global</h3><ul><li><a href="global.html#photosReducer">photosReducer</a></li><li><a href="global.html#usersReducer">usersReducer</a></li></ul></div><div class="category"><h2>Routes</h2><h3>Components</h3><ul><li><a href="LoginSignUpRoute.html">LoginSignUpRoute</a></li><li><a href="ProtectedRoute.html">ProtectedRoute</a></li></ul></div><div class="category"><h2>Utilities</h2><h3>Classes</h3><ul><li><a href="module.html#.exports">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#createAxios">createAxios</a></li><li><a href="global.html#createAxiosAuth">createAxiosAuth</a></li><li><a href="global.html#customRender">customRender</a></li><li><a href="global.html#devices">devices</a></li><li><a href="global.html#getChildNodes">getChildNodes</a></li><li><a href="global.html#getNodesByType">getNodesByType</a></li><li><a href="global.html#getStore">getStore</a></li><li><a href="global.html#logOutMessageOrDebug">logOutMessageOrDebug</a></li><li><a href="global.html#store">store</a></li><li><a href="global.html#theme">theme</a></li></ul></div><div class="category"><h2>Views</h2><h3>Components</h3><ul><li><a href="CreateDeck.html">CreateDeck</a></li><li><a href="Dashboard.html">Dashboard</a></li><li><a href="FlashCard.html">FlashCard</a></li><li><a href="LandingPage.html">LandingPage</a></li><li><a href="LogoutView.html">LogoutView</a></li><li><a href="PreviewDeck.html">PreviewDeck</a></li><li><a href="SignIn.html">SignIn</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="Testing.html">Testing</a></li></ul><h3>Global</h3><ul><li><a href="global.html#App">App</a></li></ul></div>
+                    </nav>
+                </div>
+            </div>
+            <div class="column is-9-desktop">
+                <div class="content" id="main-content-wrapper">
+                    <header class="page-title">
+                        <p>Source</p>
+                        <h1>utilities/test-utils.js</h1>
+                    </header>
+                    
+                    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import { render } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import reset from 'styled-reset';
+import { theme } from './theme.js';
+import { getStore } from './getStore.js';
+
+const GlobalStyle = createGlobalStyle`
+${ reset }
+`;
+
+/**
+ * Custom Render
+ * @category Utilities
+ *
+ * @description Custom render function to wrap our components with provides
+ * they need for testing purposes.
+ *
+ * @param ui
+ * @param options
+ * @return {CustomRenderResults}
+ *
+ */
+export const customRender = ( ui, options ) => render( ui, {
+  wrapper: AllTheProviders, ...options,
+} );
+
+/**
+ * AllTheProviders
+ * @category Utilities
+ *
+ * @description  Wraps a component in the provides and then returns the wrapped
+ *   component.
+ *
+ * @param children Reach child components
+ * @returns {*}
+ */
+
+const store = getStore();
+
+const AllTheProviders = ( { children } ) => {
+  return ( &lt;ThemeProvider theme={ theme }>
+    &lt;Provider store={ store }>
+      &lt;GlobalStyle/>
+      { children }
+    &lt;/Provider>
+  &lt;/ThemeProvider> );
+};
+
+/**
+ * Get Child Nodes
+ * @category Utilities
+ *
+ * @description Gets all the child nodes from a HtmlElment for react testing
+ * library.
+ *
+ * @param {HTMLElement} c
+ * @return {HTMLElement[]}
+ */
+export const getChildNodes = c => {
+  console.log( 'inside of get next node.' );
+  const childNodes = [];
+  if( c.hasChildNodes() ){
+    c.childNodes.forEach( child => {
+      childNodes.push( child );
+    } );
+  }
+  return childNodes;
+};
+
+/**
+ * Get Nodes By Node Type
+ * @category Utilities
+ *
+ * @description Returns all the child HtmlElements that are of the requested
+ * type.
+ *
+ * @param {HTMLElement} c
+ * @param {string} type
+ * @return {HTMLElement[]}
+ */
+export const getNodesByType = ( c, type ) => {
+  const stack = [];
+  const toReturn = [];
+  stack.push( c );
+  while( stack.length > 0 ){
+    let node = stack.pop();
+    if( node.hasChildNodes() ){
+      node.childNodes.forEach( child => {
+        stack.push( child );
+      } );
+    }
+    if( node.nodeName === type.toUpperCase() ){
+      toReturn.push( node );
+    }
+  }
+  
+  return toReturn;
+};
+
+export * from '@testing-library/react';
+
+export { theme, store };
+
+/**
+ * @typedef {object} CustomRenderResults
+ * @property {HTMLDivElement} container
+ * @property {HTMLBodyElement} baseElement
+ * @property {function} debug
+ * @property {function} unmount
+ * @property {function} rerender
+ * @property {function} asFragment
+ * @property {function} queryAllByLabelText
+ * @property {function} getAllByLabelText
+ * @property {function} queryByLabelText
+ * @property {function} getAllByLabelText
+ * @property {function} queryByLabelText
+ * @property {function} getByLabelText
+ * @property {function} findAllByLabelText
+ * @property {function} findByLabelText
+ * @property {function} queryByPlaceholderText
+ * @property {function} queryAllByPlaceholderText
+ * @property {function} getByPlaceholderText
+ * @property {function} getAllByPlaceholderText
+ * @property {function} findAllByPlaceholderText
+ * @property {function} findByPlaceholderText
+ * @property {function} queryAllByText
+ * @property {function} queryByText
+ * @property {function} getByText
+ * @property {function} getAllByText
+ * @property {function} findAllByText
+ * @property {function} findByText
+ * @property {function} queryAllByDisplayValue
+ * @property {function} queryByDisplayValue
+ * @property {function} getByDisplayValue
+ * @property {function} getAllByDisplayValue
+ * @property {function} findAllByDisplayValue
+ * @property {function} findByDisplayValue
+ * @property {function} queryAllByAltText
+ * @property {function} queryByAltText
+ * @property {function} getByAltText
+ * @property {function} getAllByAltText
+ * @property {function} findAllByAltText
+ * @property {function} findByAltText
+ * @property {function} queryAllByTitle
+ * @property {function} queryByTitle
+ * @property {function} getByTitle
+ * @property {function} getAllByTitle
+ * @property {function} findAllByTitle
+ * @property {function} findByTitle
+ * @property {function} queryAllByRole
+ * @property {function} queryByRole
+ * @property {function} getAllByRole
+ * @property {function} getByRole
+ * @property {function} findAllByRole
+ * @property {function} findByRole
+ * @property {function} queryByTestId
+ * @property {function} queryAllByTestId
+ * @property {function} getByTestId
+ * @property {function} getAllByTestId
+ * @property {function} findAllByTestId
+ * @property {function} findByTestId
+ */</code></pre>
+        </article>
+    </section>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Mon Mar 09 2020 12:28:39 GMT-0600 (Mountain Daylight Time)</p>
+        <p class="sidebar-created-by">
+            <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+            <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+        </p>
+    </div>
+</footer>
+
+
+<script src="scripts/app.min.js"></script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

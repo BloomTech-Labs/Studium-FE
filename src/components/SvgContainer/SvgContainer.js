@@ -49,7 +49,7 @@ export const SvgContainer = ( {
       position={ position }
       left={ left }
       top={ top }
-      data-testId={ 'positional-container' }
+      data-testid={ 'positional-container' }
     >
       <StyledDiv data-testId={ 'relative-container' }>
         <StyledSvg

@@ -15,7 +15,7 @@
   ],
   "opts": {
     "encoding": "utf8",
-    "destination": "docs1/",
+    "destination": "docs/",
     "recurse": true,
     "verbose": true,
     "template": "better-docs"
@@ -28,7 +28,7 @@
       "hideGenerator": false,
       "component": {
         "entry": [],
-        "wrapper": "./WrapperComponentDocs.js"
+        "wrapper": "./src/utilities/WrapperComponentDocs.js"
       },
       "navigation": [
         {

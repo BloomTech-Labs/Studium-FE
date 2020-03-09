@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Big Flash Card BigFlashCard render correctly 1`] = `
+.c0 {
+  height: 390px;
+  width: 283px;
+  position: relative;
+}
+
+.c1 {
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.c1.c1 {
+  margin: 121px auto 0 auto;
+  background: #F7F7F7;
+  color: #1b1414c9;
+  border-radius: 11px;
+}
+
+.c1.c1 > .ant-card-body {
+  min-height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c2 {
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  justifycontent: center;
+  font-size: 20px;
+  font-weight: 900;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+<div
+  className="c0"
+  data-testid="StyledCardContainer"
+  onClick={[Function]}
+  style={
+    Object {
+      "position": "relative",
+    }
+  }
+>
+  <div
+    className="ant-card c1 ant-card-bordered"
+    position="front"
+    style={
+      Object {
+        "height": "421.56px",
+        "width": "285px",
+      }
+    }
+  >
+    <div
+      className="ant-card-body"
+      style={Object {}}
+    >
+      <div
+        className="c2"
+      >
+        This is a question
+      </div>
+    </div>
+  </div>
+  <img
+    alt="card"
+    src="Card2.jpg"
+    style={
+      Object {
+        "height": "417px",
+        "left": "5px",
+        "position": "absolute",
+        "top": "14px",
+        "width": "276px",
+        "zIndex": -1,
+      }
+    }
+  />
+  <img
+    alt="card"
+    src="Card3.jpg"
+    style={
+      Object {
+        "height": "417px",
+        "left": "7px",
+        "position": "absolute",
+        "top": "22px",
+        "width": "260px",
+        "zIndex": -3,
+      }
+    }
+  />
+</div>
+`;
