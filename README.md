@@ -1,8 +1,42 @@
-# [Synaps](https://production-lambda-synaps-fe.herokuapp.com/)
+<h1 align="center">
+    <a href="https://production-lambda-synaps-fe.herokuapp.com/">Synaps</a>
+</h1>
+<h3 align="center">Up you testing game with the best flash card app.</h3>
+<h3 align="center">Average testing score increase 20%.</h3>
 
-## UI/UX 
-[<img src="https://avatars0.githubusercontent.com/u/48630065?s=460&v=4" width = "100" />](https://github.com/nataliepeterson)
-[<img src="https://avatars3.githubusercontent.com/u/49910197?v=4" width = "100" />](https://github.com/DKFerebee)
+
+
+<br/>
+<br/>
+<h1>
+    Project Overview
+</h1>
+
+To create the best Life Science flashcard application, that has excellent UI, which has minimal distractions to make the learning process more efficient. To be the best user friendly flashcard application for life sciences students.
+
+
+<h1>
+    Key Features
+</h1>
+
+
+<h3 align="center"> Mobile First Design </h3>
+<h3 align="center"> Share Decks With Friends </h3>
+<h3 align="center"> Take Quizzes </h3>
+<h3 align="center"> Spaced Repetition </h3>
+
+<br/>
+<br/>
+<br/>
+
+   <h1 align="center">UI/UX</h1> 
+   <div width="100%">
+        <img src="https://avatars0.githubusercontent.com/u/48630065?s=460&v=4" width = "100" text-align="center" /> 
+        <img src="https://avatars3.githubusercontent.com/u/49910197?v=4" width = "100" text-align="center" />
+   </div>
+
+(https://github.com/nataliepeterson)
+(https://github.com/DKFerebee)
 
 ## Web Developers
 [<img src="https://avatars3.githubusercontent.com/u/17443353?v=4" width = "100" />](https://github.com/jeremiahtenbrink)
