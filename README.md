@@ -1,9 +1,6 @@
 # [Synaps](https://production-lambda-synaps-fe.herokuapp.com/)
 
-<div style="margin: 0 auto">
 ## UI/UX 
-</div>
-
 [<img src="https://avatars0.githubusercontent.com/u/48630065?s=460&v=4" width = "100" />](https://github.com/nataliepeterson)
 [<img src="https://avatars3.githubusercontent.com/u/49910197?v=4" width = "100" />](https://github.com/DKFerebee)
 
