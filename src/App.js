@@ -20,7 +20,6 @@ let timer = null;
 /**
  * App
  * @category Views
- * @component
  * @example return (<App />);
  */
 function App( props ){

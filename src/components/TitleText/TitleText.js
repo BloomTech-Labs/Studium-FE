@@ -7,7 +7,9 @@ import styled from 'styled-components';
  *
  * @component
  * @example
+ * return (
  *  <TitleText text={"Create Deck"} />
+ *  )
  *
  */
 export const TitleText = ( { text } ) => {

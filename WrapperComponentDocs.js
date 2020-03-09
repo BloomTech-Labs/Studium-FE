@@ -9,17 +9,13 @@ import { getStore } from './src/utilities/getStore.js';
 const WrapperComponentDocs = ( props ) => {
   const { frameContext } = props;
   return (
-    <div>
-      <head></head>
+    <StyleSheetManager target={ frameContext.document.head }>
       <ThemeProvider theme={ theme }>
-        <StyleSheetManager target={ frameContext.document.head }>
-          <Provider store={ getStore() }>
-            { props.children }
-          </Provider>
-        </StyleSheetManager>
+        <Provider store={ getStore() }>
+          { props.children }
+        </Provider>
       </ThemeProvider>
-    </div>
-  
+    </StyleSheetManager>
   );
 };
 
