@@ -25,6 +25,7 @@ export const SmallFlashCard = ( {
       block={ block && 'block' }
       { ...props }
     >
+      
       { icon &&
       ( <Icon type={ icon } style={ { fontSize: '32px', color: 'black' } }/> ) }
       
