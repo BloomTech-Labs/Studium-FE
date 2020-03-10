@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled, { useTheme, ThemeContext } from 'styled-components';
+import styled from 'styled-components';
 import { SmallFlashCard, TitleText, SearchBar } from '../components';
 import PropTypes from 'prop-types';
 import { devices } from '../utilities/breakpoints-device.js';
