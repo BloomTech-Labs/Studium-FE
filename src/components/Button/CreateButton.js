@@ -5,10 +5,10 @@ import { Button } from 'antd';
 import {ReactComponent as Svg } from '../../images/Union.svg';
 
 export const CreateButton = ({
-    text, type = 'primary', size = 'default', icon, shape, loading, block, color, ...props
+     height = "69px",width = "69px",onClick,...props
 }) => {
     return (
-        <Styled > 
+        <Styled width = {width} height = {height} onClick = {onClick} {...props}> 
             <Svg /> 
         </Styled>
     )
@@ -21,8 +21,8 @@ const Styled = styled(Button)`
     position: relative;
     background: #4CB69F;
     border-radius: 100%;
-    height: 69px;
-    width: 69px;
+    height: ${props => props.height};
+    width: ${props => props.width};
     border: 7px solid white;
     justify-content: center;
     align-items: center;
