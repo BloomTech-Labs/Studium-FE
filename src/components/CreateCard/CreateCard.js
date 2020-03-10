@@ -4,6 +4,8 @@ import {Uploader} from '../Uploader/Uploader.js';
 import TextArea from '../FormItems/Input/TextArea.js';
 import CreateCardText from '../Text/CreateCardText.js';
 import {CardEditDeleteIcons} from '../Icon/CardEditDeleteIcons.js';
+import propTypes from 'prop-types';
+
 export const CreateCard = ({frontCardText, backCardText, ...props}) => {
   return (
     <StyledCreateCardContainer>
@@ -23,7 +25,10 @@ export const CreateCard = ({frontCardText, backCardText, ...props}) => {
   );
 };
 
-CreateCard.propTypes = {};
+CreateCard.propTypes = {
+  frontCardText: propTypes.string,
+  backCardText: propTypes.string,
+};
 
 const StyledCreateCard = styled.div`
   width: 314px;
@@ -53,10 +58,4 @@ const StyledCreateCardHeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`;
-
-const StyledIonContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 55px;
 `;
