@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import {CreateCardTitleText} from '../components/Text/TitleText/CreateCardTitleText.js';
 import {CreateCard} from '../components/CreateCard/CreateCard.js';
-import {FormInput} from '../components/FormItems/Input/FormInput.js';
+import {DeckName} from '../components/CreateDeck/DeckName.js';
+import {SvgContainer} from '../components/SvgContainer/SvgContainer.js';
+import {ReactComponent as CardNumZeroSvg} from '../images/CardNumZero.svg';
 /**
  * Create Deck View
  * @category Views
@@ -15,13 +17,17 @@ export const CreateDeck = props => {
 
   return (
     <StyledCreateDeck>
-      <CreateCardTitleText text={'Create Deck'} />
-      <DeckNameContainer>
-        <DeckTitlePrompt>Title of Deck</DeckTitlePrompt>
-        <FormInput />
-      </DeckNameContainer>
-      <CreateCard frontCardText={`Card ${frontCardNum} - Front`} />
-      <CreateCard backCardText={`Card ${backCardNum} - Back`} />
+      <CardNameContainer>
+        <CardHeaderContainer>
+          <CreateCardTitleText text={'Create Deck'} />
+          <SvgContainer svg={CardNumZeroSvg} />
+        </CardHeaderContainer>
+        <DeckName />
+      </CardNameContainer>
+      <CreateCardContainer>
+        <CreateCard frontCardText={`Card ${frontCardNum} - Front`} />
+        <CreateCard backCardText={`Card ${backCardNum} - Back`} />
+      </CreateCardContainer>
     </StyledCreateDeck>
   );
 };
@@ -30,23 +36,28 @@ CreateDeck.propTypes = {};
 
 const StyledCreateDeck = styled.div`
   width: 315px;
-  border: red 1px solid;
+  height: 812px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: flex-start;
 `;
 
-const DeckNameContainer = styled.div`
-  width: 100%;
+const CreateCardContainer = styled.div`
+  height: 400px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
 `;
 
-const DeckTitlePrompt = styled.h1`
-  color: #888888;
-  font-weight: bold;
-  font-size: 26px;
-  text-align: left;
+const CardHeaderContainer = styled.div`
+  width: 100%;
+  padding: 0 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const CardNameContainer = styled.div`
+  width: 100%;
+  margin-bottom: 13px;
 `;

@@ -19,6 +19,9 @@ const StyledTitle = styled.div`
   font-weight: bold;
   font-size: 45px;
   text-align: left;
+  padding: 0 5px;
+  margin-bottom: 18px;
+  margin-top: 10px;
 `;
 
 CreateCardTitleText.propTypes = {
