@@ -1,9 +1,9 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { customRender } from '../../utilities/test-utils.js';
 
 import { SynapsBrain } from './SynapsBrain.js';
 
-test( 'StyledCardDeck render correctly', () => {
-  const tree = renderer.create( <SynapsBrain/> ).toJSON();
-  expect( tree ).toMatchSnapshot();
+test( 'Synaps Brain renders correctly', () => {
+  const { container } = customRender( <SynapsBrain/> );
+  expect( container ).toMatchSnapshot();
 } );

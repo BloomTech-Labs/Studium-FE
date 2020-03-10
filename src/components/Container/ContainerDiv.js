@@ -27,7 +27,7 @@ ContainerDiv.propTypes = {
   overFlowY: PropTypes.string,
   position: PropTypes.string,
   height: PropTypes.string,
-  maxHeight: PropTypes.string,
+  heightMax: PropTypes.string,
   margin: PropTypes.string,
   top: PropTypes.string,
   alignItems: PropTypes.string,

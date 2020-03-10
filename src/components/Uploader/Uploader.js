@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { Upload, message } from 'antd';
 import { uploadImage } from '../../actions/photo';
 import { UploadIcon } from './UploadIcon.js';
-import { useDispatch, useSelector } from 'react-redux';
 import * as PropTypes from 'prop-types';
+import { useAppHooks } from '../../customHooks/useAppHooks.js';
 
 /**
  * Image Uploader
@@ -18,8 +18,7 @@ export const Uploader = props => {
   /**
    * @type PhotoReducerState
    */
-  const photosState = useSelector( state => state.photosState );
-  const dispatch = useDispatch();
+  const { photosState, dispatch } = useAppHooks();
   const [ photoObject, setPhotoObject ] = useState( false );
   
   useEffect( () => {

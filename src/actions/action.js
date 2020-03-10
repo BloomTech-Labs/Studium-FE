@@ -20,6 +20,6 @@ export const action = ( type, payload ) => {
  * Action for dispatch, goes to reducer.
  * @typedef {object} Action
  * @property {string} type  The type of action to be performed.
- * @property [any] payload  Data to be sent to the reducer.
+ * @property {any} [payload]  Data to be sent to the reducer.
  *
  */

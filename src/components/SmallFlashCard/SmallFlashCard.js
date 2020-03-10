@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Card, Icon } from 'antd';
 
+
 /**
  * Small Flash Card
  *
@@ -25,6 +26,7 @@ export const SmallFlashCard = ( {
       block={ block && 'block' }
       { ...props }
     >
+      
       { icon &&
       ( <Icon type={ icon } style={ { fontSize: '32px', color: 'black' } }/> ) }
       

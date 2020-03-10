@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FormInput, SynapsText, SynapsButton } from '../components';
 import styled from 'styled-components';
 import { EMAIL_PROVIDER, GOOGLE_PROVIDER, signIn } from '../actions';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppHooks } from '../customHooks/useAppHooks.js';
 
 /**
  * Sign Up
@@ -11,11 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
  * @example return (<SignUp />);
  */
 export function SignUp(){
-  
-  /**
-   * @type {Dispatch}
-   */
-  const dispatch = useDispatch();
+  const { dispatch } = useAppHooks();
   
   const [ info, setInfo ] = useState( { email: '', password: '', error: {} } );
   
