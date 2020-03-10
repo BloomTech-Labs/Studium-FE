@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import card2 from '../../images/Card2.jpg';
-import card3 from '../../images/Card3.jpg';
+import card2 from '../../../images/Card2.jpg';
+import card3 from '../../../images/Card3.jpg';
 import { Card } from 'antd';
 import PropTypes from 'prop-types';
 
@@ -25,12 +25,11 @@ const BigFlashCard = ( { flashCard } ) => {
   };
   
   return (
-    
-    <StyledCardContainer style={ { position: 'relative' } }>
+    <StyledCardContainer data-testid = "StyledCardContainer" style={{ position: 'relative' }} onClick={flipCard}>
       <StyledCard
-        position={ position }
-        onClick={ flipCard }
-        style={ { width: '285px', height: '421.56px' } }
+        position={position}
+      
+        style={{ width: '285px', height: '421.56px' }}
       >
         <CardText>
           { position === 'front' ? flashCard.question : flashCard.answer }
