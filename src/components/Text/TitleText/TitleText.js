@@ -10,8 +10,8 @@ import styled from 'styled-components';
  *  <TitleText text={"Create Deck"} />
  *
  */
-export const TitleText = ( { text } ) => {
-  return <StyledTitle>{ text }</StyledTitle>;
+export const TitleText = ({text}) => {
+  return <StyledTitle>{text}</StyledTitle>;
 };
 
 const StyledTitle = styled.div`
@@ -21,7 +21,7 @@ const StyledTitle = styled.div`
   margin-left: 10%;
   margin-top: 24px;
   text-align: left;
-  margin-botom: 36px;
+  margin-bottom: 36px;
 `;
 
 TitleText.propTypes = {

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { TitleText } from '../components/TitleText/TitleText.js';
+import {TitleText} from '../components/Text/TitleText/TitleText.js';
 
 /**
  * Create Deck View
@@ -9,9 +9,11 @@ import { TitleText } from '../components/TitleText/TitleText.js';
  * @example return (<CreateDeck />);
  */
 export const CreateDeck = props => {
-  return ( <StyledCreateDeck>
-    <TitleText text={ 'Create Deck' }/>
-  </StyledCreateDeck> );
+  return (
+    <StyledCreateDeck>
+      <TitleText text={'Create Deck'} />
+    </StyledCreateDeck>
+  );
 };
 
 CreateDeck.propTypes = {};
@@ -19,4 +21,3 @@ CreateDeck.propTypes = {};
 const StyledCreateDeck = styled.div`
   width: 100%;
 `;
-

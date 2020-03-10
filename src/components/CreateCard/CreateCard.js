@@ -1,27 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
-import {UploadIcon} from '../Uploader/UploadIcon.js';
-import StyledTextArea from './StyledTextArea.js';
-import StyledCardText from '../Styled/StyledCardText.js';
+import {Uploader} from '../Uploader/Uploader.js';
+import TextArea from '../FormItems/Input/TextArea.js';
+import CreateCardText from '../Text/CreateCardText.js';
 import {Icon} from 'antd';
 
 const CreateCard = props => {
   return (
     <StyledCreateCardContainer>
       <StyledCreateCardHeaderContainer>
-        <StyledCardText text={'Card 1 Front'} />
+        <CreateCardText text={'Card 1 Front'} />
         <StyledIonContainer>
           <Icon type="edit" />
           <Icon type="delete" />
         </StyledIonContainer>
       </StyledCreateCardHeaderContainer>
       <StyledCreateCard>
-        <StyledTextArea
+        <TextArea
           onChange={props.onChange}
           value={props.value || ''}
           placeholder={'Start typing...'}
         />
-        <UploadIcon />
+        <Uploader />
       </StyledCreateCard>
     </StyledCreateCardContainer>
   );
