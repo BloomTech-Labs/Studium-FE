@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { SmallLogo, SynapsButton, SynapsText } from '../components';
 import { devices } from '../utilities/breakpoints-device';
+import { useAppHooks } from '../customHooks/useAppHooks.js';
 
 /**
  * Landing Page
@@ -10,11 +11,12 @@ import { devices } from '../utilities/breakpoints-device';
  * @example return (<LandingPage />);
  */
 export const LandingPage = props => {
+  const { history } = useAppHooks();
   const handleClick = name => {
     if( name === 'SignIn' ){
-      props.history.push( '/signIn' );
+      history.push( '/signIn' );
     }else{
-      props.history.push( '/signup' );
+      history.push( '/signup' );
     }
   };
   

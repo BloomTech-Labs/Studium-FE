@@ -1,3 +1,7 @@
+import React, { useState, useEffect } from 'react';
+import { useDimensions } from './useDimensions.js';
+import { devices, sizes } from '../utilities/breakpoints-device.js';
+
 /**
  * @typedef {Object} Theme
  * @property {Color} primaryColor
@@ -30,13 +34,16 @@
  * @property {number} footerHeight
  * @property {number} screenHeight
  * @property {number} screenWidth
+ *
+ * @property {Devices} devices
+ * @property {Sizes} sizes
+ *
  */
 
 /**
- *  @category Utilities
  * @type {Theme}
  */
-export let theme = {
+export let themeState = {
   primaryColor: '#0d2545',
   primaryColorB98C4: '#b9b8c4',
   primaryColor86869A: '#86869a',
@@ -68,8 +75,29 @@ export let theme = {
   screenHeight: window.innerHeight,
   screenWidth: window.outerWidth,
   
+  devices,
+  sizes,
+  
 };
 
 /**
  * @typedef {string} Color
  */
+
+/**
+ * Use Theme Context
+ *
+ * @description Custom hook to keep the theme context updated.
+ * @category Custom Hooks
+ */
+export const useThemeContext = () => {
+  const [ theme, setTheme ] = useState( themeState );
+  const [ width, height ] = useDimensions();
+  
+  useEffect( () => {
+    setTheme( { ...theme, screenHeight: height, screenWidth: width } );
+  }, [ width, height ] );
+  
+  return theme;
+  
+};

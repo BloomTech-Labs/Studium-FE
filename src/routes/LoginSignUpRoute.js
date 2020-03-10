@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
+import { useAppHooks } from '../customHooks/useAppHooks.js';
 
 /**
  * Login Sing up Route
@@ -16,15 +17,20 @@ import { Redirect, Route } from 'react-router-dom';
  *  )
  */
 export const LoginSignUpRoute = ( { component: Component, ...rest } ) => {
+  const { usersState } = useAppHooks();
   return (
     <Route
       { ...rest }
       render={ props => {
-        return localStorage.getItem( 'loggedIn' ) === 'true' ? (
-          <Redirect to={ '/dashboard' } { ...props } />
-        ) : (
-          <Component { ...props } />
-        );
+        try{
+          if( usersState.user.uid ){
+            return <Redirect to={ '/dashboard' } { ...props } />;
+          }else{
+            return <Component { ...props } />;
+          }
+        }catch( e ){
+          return <Component { ...props } />;
+        }
       } }
     />
   );

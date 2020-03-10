@@ -1,5 +1,8 @@
+import React, { useState } from 'react';
+
 import { createStore, applyMiddleware } from 'redux';
 import Thunk from 'redux-thunk';
+import { cookiesRedux, logger } from '../middleWare/reduxMiddware.js';
 import rootReducer from '../reducers';
 
 /**
@@ -12,7 +15,7 @@ import rootReducer from '../reducers';
  *
  */
 export const getStore = () => createStore( rootReducer,
-  applyMiddleware( Thunk ),
+  applyMiddleware( cookiesRedux, logger, Thunk ),
 );
 
 /**

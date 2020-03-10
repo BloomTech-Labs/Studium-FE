@@ -43,6 +43,12 @@ const initialState = {
  */
 export const usersReducer = ( state = initialState, action ) => {
   switch( action.type ){
+    case 'SET_INIT_STATE':
+      if( action.payload && action.payload.name &&
+        action.payload.name.includes( 'users' ) ){
+        return action.payload.value;
+      }
+      return state;
     case ATTEMPT_SIGNIN:
       return { ...state, fetching: true };
     case SIGNED_IN:
@@ -60,6 +66,7 @@ export const usersReducer = ( state = initialState, action ) => {
     case USER_REGISTER_FAILED:
       return {
         ...state,
+        user: {},
         registering: false,
         userRegistered: false,
         registerError: action.payload,

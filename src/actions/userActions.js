@@ -20,7 +20,6 @@ export const ATTEMPT_SIGNIN = 'ATTEMPT_SIGNIN';
  * @returns {function}
  */
 export const signedIn = ( user ) => dispatch => {
-  localStorage.setItem( 'loggedIn', 'true' );
   dispatch( action( SIGNED_IN, user ) ); //calls reducer
   //checkUserRegistered(user.uid, dispatch);
 };
@@ -34,7 +33,6 @@ export const signedIn = ( user ) => dispatch => {
  * returns {function}
  */
 export const signOut = () => dispatch => {
-  localStorage.setItem( 'loggedIn', 'false' );
   firebase
     .auth()
     .signOut()

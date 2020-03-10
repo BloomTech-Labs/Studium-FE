@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { TitleText } from '../components/TitleText/TitleText.js';
+import { useAppHooks } from '../customHooks/useAppHooks.js';
+
 /**
  * FlashCard
  * @category Views
@@ -8,7 +10,10 @@ import { TitleText } from '../components/TitleText/TitleText.js';
  * @example return (<FlashCard />);
  */
 export const FlashCard = props => {
-  const deck = props.history.location.state;
+  const { pathPushedState } = useAppHooks();
+  // @type {Deck}
+  const { deck } = pathPushedState;
+  
   return (
     
     <StyledFlashCard>

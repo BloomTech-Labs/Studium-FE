@@ -1,14 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
-import reset from 'styled-reset';
-import { theme } from './theme.js';
-import { getStore } from './getStore.js';
-
-const GlobalStyle = createGlobalStyle`
-${ reset }
-`;
+import AppProvider, { store } from './AppProviders.js';
 
 /**
  * Custom Render
@@ -23,30 +15,8 @@ ${ reset }
  *
  */
 export const customRender = ( ui, options ) => render( ui, {
-  wrapper: AllTheProviders, ...options,
+  wrapper: AppProvider, ...options,
 } );
-
-/**
- * AllTheProviders
- * @category Utilities
- *
- * @description  Wraps a component in the provides and then returns the wrapped
- *   component.
- *
- * @param children Reach child components
- * @returns {*}
- */
-
-const store = getStore();
-
-const AllTheProviders = ( { children } ) => {
-  return ( <ThemeProvider theme={ theme }>
-    <Provider store={ store }>
-      <GlobalStyle/>
-      { children }
-    </Provider>
-  </ThemeProvider> );
-};
 
 /**
  * Get Child Nodes
@@ -101,7 +71,7 @@ export const getNodesByType = ( c, type ) => {
 
 export * from '@testing-library/react';
 
-export { theme, store };
+export { store };
 
 /**
  * @typedef {object} CustomRenderResults
