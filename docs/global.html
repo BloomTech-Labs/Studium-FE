@@ -1,0 +1,10181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>JSDoc: Global</title>
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="./build/entry.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="https://fonts.googleapis.com/css?family=Muli:100,400,700|Oswald:300|Inconsolata,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+</head>
+
+<body>
+    <div id="stickyNavbarOverlay"></div>
+    <div class="top-navbar">
+        <div class="container">
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand">
+                    
+                     
+                        <h1 class="navbar-item">Synaps Documentation</h1>
+                    
+                    <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+                 
+                <div class="navbar-menu">
+                    <div class="navbar-end">
+                    
+                        <div class="navbar-item">
+                            <a href="https://github.com/Lambda-School-Labs/pt-synaps-fe" target="_blank">
+                                Github
+                            </a>
+                        </div>
+                    
+                    </div>
+                </div>
+                
+            </nav>
+        </div>
+    </div>
+    <div class="container">
+        <div class="columns">
+            <div class="column is-3" id="sidebarNav">
+                <div class="sidebar">
+                    <nav>
+                        <h2><a href="index.html">Home</a></h2><div class="category"><h3>Components</h3><ul><li><a href="BigFlashCard.html">BigFlashCard</a></li><li><a href="CardIcon.html">CardIcon</a></li><li><a href="ContainerDiv.html">ContainerDiv</a></li><li><a href="Footer.html">Footer</a></li><li><a href="FormInput.html">FormInput</a></li><li><a href="NavBar.html">NavBar</a></li><li><a href="NavBarAvatar.html">NavBarAvatar</a></li><li><a href="PreviewDeckCards.html">PreviewDeckCards</a></li><li><a href="RouteContainer.html">RouteContainer</a></li><li><a href="SearchBar.html">SearchBar</a></li><li><a href="SmallFlashCard.html">SmallFlashCard</a></li><li><a href="SmallLogo.html">SmallLogo</a></li><li><a href="SvgContainer.html">SvgContainer</a></li><li><a href="SynapsBrain.html">SynapsBrain</a></li><li><a href="SynapsButton.html">SynapsButton</a></li><li><a href="SynapsText.html">SynapsText</a></li><li><a href="TitleText.html">TitleText</a></li><li><a href="Uploader.html">Uploader</a></li><li><a href="UploadIcon.html">UploadIcon</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addDeck">addDeck</a></li><li><a href="global.html#initialState">initialState</a></li><li><a href="global.html#RemoveCookie">RemoveCookie</a></li><li><a href="global.html#SetCookie">SetCookie</a></li><li><a href="global.html#signInWithEmailAndPassword">signInWithEmailAndPassword</a></li><li><a href="global.html#sizes">sizes</a></li><li><a href="global.html#themeState">themeState</a></li></ul></div><div class="category"><h2>Actions</h2><h3>Global</h3><ul><li><a href="global.html#action">action</a></li><li><a href="global.html#createCard">createCard</a></li><li><a href="global.html#deleteCard">deleteCard</a></li><li><a href="global.html#getAllCardsForDeck">getAllCardsForDeck</a></li><li><a href="global.html#RegisterWithGoogleEmailAndPassword">RegisterWithGoogleEmailAndPassword</a></li><li><a href="global.html#signedIn">signedIn</a></li><li><a href="global.html#signIn">signIn</a></li><li><a href="global.html#signOutreturns%257Bfunction%257D">signOutreturns {function}</a></li><li><a href="global.html#updateCard">updateCard</a></li><li><a href="global.html#uploadImage">uploadImage</a></li></ul></div><div class="category"><h2>Custom Hooks</h2><h3>Global</h3><ul><li><a href="global.html#useAppHooks">useAppHooks</a></li><li><a href="global.html#useAuthStateChange">useAuthStateChange</a></li><li><a href="global.html#useDimensions">useDimensions</a></li><li><a href="global.html#useHistoryAndPath">useHistoryAndPath</a></li><li><a href="global.html#useThemeContext">useThemeContext</a></li></ul></div><div class="category"><h2>Reducers</h2><h3>Global</h3><ul><li><a href="global.html#cardsReducer">cardsReducer</a></li><li><a href="global.html#photosReducer">photosReducer</a></li><li><a href="global.html#usersReducer">usersReducer</a></li></ul></div><div class="category"><h2>ReduxMiddleware</h2><h3>Global</h3><ul><li><a href="global.html#cookiesRedux">cookiesRedux</a></li><li><a href="global.html#logger">logger</a></li></ul></div><div class="category"><h2>Routes</h2><h3>Components</h3><ul><li><a href="LoginSignUpRoute.html">LoginSignUpRoute</a></li><li><a href="ProtectedRoute.html">ProtectedRoute</a></li></ul></div><div class="category"><h2>Utilities</h2><h3>Global</h3><ul><li><a href="global.html#AppProvider">AppProvider</a></li><li><a href="global.html#createAxios">createAxios</a></li><li><a href="global.html#createAxiosAuth">createAxiosAuth</a></li><li><a href="global.html#customRender">customRender</a></li><li><a href="global.html#devices">devices</a></li><li><a href="global.html#getChildNodes">getChildNodes</a></li><li><a href="global.html#getNodesByType">getNodesByType</a></li><li><a href="global.html#getStore">getStore</a></li><li><a href="global.html#logOutMessageOrDebug">logOutMessageOrDebug</a></li></ul></div><div class="category"><h2>Views</h2><h3>Components</h3><ul><li><a href="App.html">App</a></li><li><a href="CreateDeck.html">CreateDeck</a></li><li><a href="Dashboard.html">Dashboard</a></li><li><a href="FlashCard.html">FlashCard</a></li><li><a href="LandingPage.html">LandingPage</a></li><li><a href="LogoutView.html">LogoutView</a></li><li><a href="PreviewDeck.html">PreviewDeck</a></li><li><a href="SignIn.html">SignIn</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="Testing.html">Testing</a></li></ul></div>
+                    </nav>
+                </div>
+            </div>
+            <div class="column is-9-desktop">
+                <div class="content" id="main-content-wrapper">
+                    <header class="page-title">
+                        <p>Title</p>
+                        <h1>Global</h1>
+                    </header>
+                    
+                    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2></h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class='vertical-section'>
+            <h3 class="title"><span>Members</span></h3>
+            <div class="members">
+            
+                <div class="member">
+
+<h4 class="name" id="cookiesRedux">
+    <a class="href-link" href="#cookiesRedux">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        cookiesRedux
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Saves the new state for each reducer to a cookie on statechange.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="middleWare_reduxMiddware.js.html" class="button">View Source</a>
+            <span>
+                <a href="middleWare_reduxMiddware.js.html">middleWare/reduxMiddware.js</a>, <a href="middleWare_reduxMiddware.js.html#line26">line 26</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="createCard">
+    <a class="href-link" href="#createCard">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        createCard
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Create Card
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="actions_cardActions.js.html" class="button">View Source</a>
+            <span>
+                <a href="actions_cardActions.js.html">actions/cardActions.js</a>, <a href="actions_cardActions.js.html#line39">line 39</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="customRender">
+    <a class="href-link" href="#customRender">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        customRender
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Custom render function to wrap our components with providesthey need for testing purposes.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="utilities_test-utils.js.html" class="button">View Source</a>
+            <span>
+                <a href="utilities_test-utils.js.html">utilities/test-utils.js</a>, <a href="utilities_test-utils.js.html#line17">line 17</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="deleteCard">
+    <a class="href-link" href="#deleteCard">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        deleteCard
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Delete Card
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="actions_cardActions.js.html" class="button">View Source</a>
+            <span>
+                <a href="actions_cardActions.js.html">actions/cardActions.js</a>, <a href="actions_cardActions.js.html#line86">line 86</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type"><a href="global.html#Devices">Devices</a></span>
+
+
+    </span>
+
+<h4 class="name" id="devices">
+    <a class="href-link" href="#devices">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        devices
+    </span>
+    
+</h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="utilities_breakpoints-device.js.html" class="button">View Source</a>
+            <span>
+                <a href="utilities_breakpoints-device.js.html">utilities/breakpoints-device.js</a>, <a href="utilities_breakpoints-device.js.html#line19">line 19</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="getAllCardsForDeck">
+    <a class="href-link" href="#getAllCardsForDeck">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        getAllCardsForDeck
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Get all cards for a deck.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="actions_cardActions.js.html" class="button">View Source</a>
+            <span>
+                <a href="actions_cardActions.js.html">actions/cardActions.js</a>, <a href="actions_cardActions.js.html#line15">line 15</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="getChildNodes">
+    <a class="href-link" href="#getChildNodes">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        getChildNodes
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Gets all the child nodes from a HtmlElment for react testinglibrary.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="utilities_test-utils.js.html" class="button">View Source</a>
+            <span>
+                <a href="utilities_test-utils.js.html">utilities/test-utils.js</a>, <a href="utilities_test-utils.js.html#line31">line 31</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="getNodesByType">
+    <a class="href-link" href="#getNodesByType">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        getNodesByType
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Returns all the child HtmlElements that are of the requestedtype.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="utilities_test-utils.js.html" class="button">View Source</a>
+            <span>
+                <a href="utilities_test-utils.js.html">utilities/test-utils.js</a>, <a href="utilities_test-utils.js.html#line53">line 53</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type"><a href="global.html#UsersReducerState">UsersReducerState</a></span>
+
+
+    </span>
+
+<h4 class="name" id="initialState">
+    <a class="href-link" href="#initialState">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        initialState
+    </span>
+    
+</h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="reducers_usersReducer.js.html" class="button">View Source</a>
+            <span>
+                <a href="reducers_usersReducer.js.html">reducers/usersReducer.js</a>, <a href="reducers_usersReducer.js.html#line25">line 25</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="logger">
+    <a class="href-link" href="#logger">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        logger
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Logs all actions and states after they are dispatched.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="middleWare_reduxMiddware.js.html" class="button">View Source</a>
+            <span>
+                <a href="middleWare_reduxMiddware.js.html">middleWare/reduxMiddware.js</a>, <a href="middleWare_reduxMiddware.js.html#line8">line 8</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="logOutMessageOrDebug">
+    <a class="href-link" href="#logOutMessageOrDebug">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        logOutMessageOrDebug
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Logs out a message or calls debug if env variable is set true.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="utilities_debugLogger.js.html" class="button">View Source</a>
+            <span>
+                <a href="utilities_debugLogger.js.html">utilities/debugLogger.js</a>, <a href="utilities_debugLogger.js.html#line8">line 8</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type"><a href="global.html#Sizes">Sizes</a></span>
+
+
+    </span>
+
+<h4 class="name" id="sizes">
+    <a class="href-link" href="#sizes">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        sizes
+    </span>
+    
+</h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="utilities_breakpoints-device.js.html" class="button">View Source</a>
+            <span>
+                <a href="utilities_breakpoints-device.js.html">utilities/breakpoints-device.js</a>, <a href="utilities_breakpoints-device.js.html#line5">line 5</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type"><a href="global.html#Theme">Theme</a></span>
+
+
+    </span>
+
+<h4 class="name" id="themeState">
+    <a class="href-link" href="#themeState">#</a>
+    
+    <span class="code-name">
+        themeState
+    </span>
+    
+</h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="customHooks_useThemeContext.js.html" class="button">View Source</a>
+            <span>
+                <a href="customHooks_useThemeContext.js.html">customHooks/useThemeContext.js</a>, <a href="customHooks_useThemeContext.js.html#line46">line 46</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="updateCard">
+    <a class="href-link" href="#updateCard">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        updateCard
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Update Card
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="actions_cardActions.js.html" class="button">View Source</a>
+            <span>
+                <a href="actions_cardActions.js.html">actions/cardActions.js</a>, <a href="actions_cardActions.js.html#line61">line 61</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="uploadImage">
+    <a class="href-link" href="#uploadImage">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        uploadImage
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Upload Image
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="actions_photo.js.html" class="button">View Source</a>
+            <span>
+                <a href="actions_photo.js.html">actions/photo.js</a>, <a href="actions_photo.js.html#line15">line 15</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="useAuthStateChange">
+    <a class="href-link" href="#useAuthStateChange">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        useAuthStateChange
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Calls actions to log user in or out depending on theirgoogle auth state change.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="customHooks_useAuthStateChange.js.html" class="button">View Source</a>
+            <span>
+                <a href="customHooks_useAuthStateChange.js.html">customHooks/useAuthStateChange.js</a>, <a href="customHooks_useAuthStateChange.js.html#line14">line 14</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="useDimensions">
+    <a class="href-link" href="#useDimensions">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        useDimensions
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Updates the screen width and screen height on window resizethen saves it to the theme.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="customHooks_useDimensions.js.html" class="button">View Source</a>
+            <span>
+                <a href="customHooks_useDimensions.js.html">customHooks/useDimensions.js</a>, <a href="customHooks_useDimensions.js.html#line13">line 13</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="useThemeContext">
+    <a class="href-link" href="#useThemeContext">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        useThemeContext
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Custom hook to keep the theme context updated.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="customHooks_useThemeContext.js.html" class="button">View Source</a>
+            <span>
+                <a href="customHooks_useThemeContext.js.html">customHooks/useThemeContext.js</a>, <a href="customHooks_useThemeContext.js.html#line93">line 93</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+        <div class='vertical-section'>
+            <h3 class="title"><span>Methods</span></h3>
+            <div class="members">
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="action">
+        <a class="href-link" href="#action">#</a>
+        
+        <span class="code-name">
+            
+                action<span class="signature">(type, payload<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="global.html#Action">Action</a>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Create Action
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>type</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">String</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>payload</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">*</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="actions_action.js.html" class="button">View Source</a>
+            <span>
+                <a href="actions_action.js.html">actions/action.js</a>, <a href="actions_action.js.html#line1">line 1</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>- action for reducer</div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type"><a href="global.html#Action">Action</a></span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="addDeck">
+        <a class="href-link" href="#addDeck">#</a>
+        
+        <span class="code-name">
+            
+                addDeck<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Function called to add a deck to the users decks.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="components_Footer_Footer.js.html" class="button">View Source</a>
+            <span>
+                <a href="components_Footer_Footer.js.html">components/Footer/Footer.js</a>, <a href="components_Footer_Footer.js.html#line19">line 19</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="AppProvider">
+        <a class="href-link" href="#AppProvider">#</a>
+        
+        <span class="code-name">
+            
+                AppProvider<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Store and theme provider setup for our application.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="utilities_AppProviders.js.html" class="button">View Source</a>
+            <span>
+                <a href="utilities_AppProviders.js.html">utilities/AppProviders.js</a>, <a href="utilities_AppProviders.js.html#line20">line 20</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="cardsReducer">
+        <a class="href-link" href="#cardsReducer">#</a>
+        
+        <span class="code-name">
+            
+                cardsReducer<span class="signature">(state, action)</span><span class="type-signature"> &rarr; {<a href="global.html#CardsState">CardsState</a>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Cards Reducer
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>state</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type"><a href="global.html#CardsState">CardsState</a></span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>action</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type"><a href="global.html#Action">Action</a></span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="reducers_cardsReducer.js.html" class="button">View Source</a>
+            <span>
+                <a href="reducers_cardsReducer.js.html">reducers/cardsReducer.js</a>, <a href="reducers_cardsReducer.js.html#line41">line 41</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>state</div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type"><a href="global.html#CardsState">CardsState</a></span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="createAxios">
+        <a class="href-link" href="#createAxios">#</a>
+        
+        <span class="code-name">
+            
+                createAxios<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Create axios request
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="utilities_createAxios.js.html" class="button">View Source</a>
+            <span>
+                <a href="utilities_createAxios.js.html">utilities/createAxios.js</a>, <a href="utilities_createAxios.js.html#line3">line 3</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>AxiosInstance</div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="createAxiosAuth">
+        <a class="href-link" href="#createAxiosAuth">#</a>
+        
+        <span class="code-name">
+            
+                createAxiosAuth<span class="signature">(uid)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Create Axious with auth header attached.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>uid</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="utilities_createAxios.js.html" class="button">View Source</a>
+            <span>
+                <a href="utilities_createAxios.js.html">utilities/createAxios.js</a>, <a href="utilities_createAxios.js.html#line17">line 17</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>AxiosInstance</div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getStore">
+        <a class="href-link" href="#getStore">#</a>
+        
+        <span class="code-name">
+            
+                getStore<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Get Store
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="utilities_getStore.js.html" class="button">View Source</a>
+            <span>
+                <a href="utilities_getStore.js.html">utilities/getStore.js</a>, <a href="utilities_getStore.js.html#line8">line 8</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>Store</div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="photosReducer">
+        <a class="href-link" href="#photosReducer">#</a>
+        
+        <span class="code-name">
+            
+                photosReducer<span class="signature">(state, action)</span><span class="type-signature"> &rarr; {<a href="global.html#PhotoReducerState">PhotoReducerState</a>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Photos Reducer
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>state</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type"><a href="global.html#PhotoReducerState">PhotoReducerState</a></span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>action</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type"><a href="global.html#Action">Action</a></span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="reducers_photoReducer.js.html" class="button">View Source</a>
+            <span>
+                <a href="reducers_photoReducer.js.html">reducers/photoReducer.js</a>, <a href="reducers_photoReducer.js.html#line24">line 24</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>state</div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type"><a href="global.html#PhotoReducerState">PhotoReducerState</a></span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="RegisterWithGoogleEmailAndPassword">
+        <a class="href-link" href="#RegisterWithGoogleEmailAndPassword">#</a>
+        
+        <span class="code-name">
+            
+                RegisterWithGoogleEmailAndPassword<span class="signature">()</span><span class="type-signature"> &rarr; {function}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Sign In With Google Auth
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="actions_userActions.js.html" class="button">View Source</a>
+            <span>
+                <a href="actions_userActions.js.html">actions/userActions.js</a>, <a href="actions_userActions.js.html#line73">line 73</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">function</span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="RegisterWithGoogleEmailAndPassword">
+        <a class="href-link" href="#RegisterWithGoogleEmailAndPassword">#</a>
+        
+        <span class="code-name">
+            
+                RegisterWithGoogleEmailAndPassword<span class="signature">(email, password)</span><span class="type-signature"> &rarr; {function}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Register with google email and password.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>email</code></td>
+  
+
+  <td class="type">
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>password</code></td>
+  
+
+  <td class="type">
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>email</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>password</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="actions_userActions.js.html" class="button">View Source</a>
+            <span>
+                <a href="actions_userActions.js.html">actions/userActions.js</a>, <a href="actions_userActions.js.html#line96">line 96</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">function</span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="RemoveCookie">
+        <a class="href-link" href="#RemoveCookie">#</a>
+        
+        <span class="code-name">
+            
+                RemoveCookie<span class="signature">(key)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>key</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="customHooks_useAppHooks.js.html" class="button">View Source</a>
+            <span>
+                <a href="customHooks_useAppHooks.js.html">customHooks/useAppHooks.js</a>, <a href="customHooks_useAppHooks.js.html#line63">line 63</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="SetCookie">
+        <a class="href-link" href="#SetCookie">#</a>
+        
+        <span class="code-name">
+            
+                SetCookie<span class="signature">(key, value)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>key</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>value</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">any</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="customHooks_useAppHooks.js.html" class="button">View Source</a>
+            <span>
+                <a href="customHooks_useAppHooks.js.html">customHooks/useAppHooks.js</a>, <a href="customHooks_useAppHooks.js.html#line56">line 56</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="signedIn">
+        <a class="href-link" href="#signedIn">#</a>
+        
+        <span class="code-name">
+            
+                signedIn<span class="signature">(user)</span><span class="type-signature"> &rarr; {function}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Call this function when the user is already signed in but the  app just loads or when the user first signs in.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>user</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type"><a href="global.html#User">User</a></span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="actions_userActions.js.html" class="button">View Source</a>
+            <span>
+                <a href="actions_userActions.js.html">actions/userActions.js</a>, <a href="actions_userActions.js.html#line10">line 10</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">function</span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="signIn">
+        <a class="href-link" href="#signIn">#</a>
+        
+        <span class="code-name">
+            
+                signIn<span class="signature">(authType, email<span class="signature-attributes">opt</span>, password<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {function}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Sign In
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>authType</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type"><a href="global.html#AuthType">AuthType</a></span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>email</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>password</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="actions_userActions.js.html" class="button">View Source</a>
+            <span>
+                <a href="actions_userActions.js.html">actions/userActions.js</a>, <a href="actions_userActions.js.html#line51">line 51</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">function</span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="signInWithEmailAndPassword">
+        <a class="href-link" href="#signInWithEmailAndPassword">#</a>
+        
+        <span class="code-name">
+            
+                signInWithEmailAndPassword<span class="signature">(email, password)</span><span class="type-signature"> &rarr; {function}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Sign in with email and password.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>email</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>password</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="actions_userActions.js.html" class="button">View Source</a>
+            <span>
+                <a href="actions_userActions.js.html">actions/userActions.js</a>, <a href="actions_userActions.js.html#line132">line 132</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">function</span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="signOutreturns%7Bfunction%7D">
+        <a class="href-link" href="#signOutreturns%7Bfunction%7D">#</a>
+        
+        <span class="code-name">
+            
+                signOutreturns {function}<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Sign out
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="actions_userActions.js.html" class="button">View Source</a>
+            <span>
+                <a href="actions_userActions.js.html">actions/userActions.js</a>, <a href="actions_userActions.js.html#line27">line 27</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="useAppHooks">
+        <a class="href-link" href="#useAppHooks">#</a>
+        
+        <span class="code-name">
+            
+                useAppHooks<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="global.html#UseAppHooksReturn">UseAppHooksReturn</a>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        This custom hook combines most of the hooks we have beenusing in this application.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="customHooks_useAppHooks.js.html" class="button">View Source</a>
+            <span>
+                <a href="customHooks_useAppHooks.js.html">customHooks/useAppHooks.js</a>, <a href="customHooks_useAppHooks.js.html#line6">line 6</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type"><a href="global.html#UseAppHooksReturn">UseAppHooksReturn</a></span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="useHistoryAndPath">
+        <a class="href-link" href="#useHistoryAndPath">#</a>
+        
+        <span class="code-name">
+            
+                useHistoryAndPath<span class="signature">()</span><span class="type-signature"> &rarr; {Object}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Use History and Path
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="customHooks_useHistoryAndPath.js.html" class="button">View Source</a>
+            <span>
+                <a href="customHooks_useHistoryAndPath.js.html">customHooks/useHistoryAndPath.js</a>, <a href="customHooks_useHistoryAndPath.js.html#line10">line 10</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">Object</span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="usersReducer">
+        <a class="href-link" href="#usersReducer">#</a>
+        
+        <span class="code-name">
+            
+                usersReducer<span class="signature">(state, action)</span><span class="type-signature"> &rarr; {<a href="global.html#UsersReducerState">UsersReducerState</a>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Users Reducer
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>state</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type"><a href="global.html#UsersReducerState">UsersReducerState</a></span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>action</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type"><a href="global.html#Action">Action</a></span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="reducers_usersReducer.js.html" class="button">View Source</a>
+            <span>
+                <a href="reducers_usersReducer.js.html">reducers/usersReducer.js</a>, <a href="reducers_usersReducer.js.html#line35">line 35</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>state</div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type"><a href="global.html#UsersReducerState">UsersReducerState</a></span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+        <div class='vertical-section'>
+            <h3 class="title"><span>Type Definitions</span></h3>
+            <div class="members">
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">object</span>
+
+
+    </span>
+
+<h4 class="name" id="Action">
+    <a class="href-link" href="#Action">#</a>
+    
+    <span class="code-name">
+        Action
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Action for dispatch, goes to reducer.
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>type</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last">The type of action to be performed.</td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>payload</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">any</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last">Data to be sent to the reducer.</td>
+</tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="actions_action.js.html" class="button">View Source</a>
+            <span>
+                <a href="actions_action.js.html">actions/action.js</a>, <a href="actions_action.js.html#line19">line 19</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">Object</span>
+
+
+    </span>
+
+<h4 class="name" id="AppCookies">
+    <a class="href-link" href="#AppCookies">#</a>
+    
+    <span class="code-name">
+        AppCookies
+    </span>
+    
+</h4>
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>usersState</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#UsersReducerState">UsersReducerState</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>photosState</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#PhotoReducerState">PhotoReducerState</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>cardsState</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#CardsState">CardsState</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="customHooks_useAppHooks.js.html" class="button">View Source</a>
+            <span>
+                <a href="customHooks_useAppHooks.js.html">customHooks/useAppHooks.js</a>, <a href="customHooks_useAppHooks.js.html#line69">line 69</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">"GOOGLE_PROVIDER"</span>
+|
+
+<span class="param-type">"EMAIL_PROVIDER"</span>
+
+
+    </span>
+
+<h4 class="name" id="AuthType">
+    <a class="href-link" href="#AuthType">#</a>
+    
+    <span class="code-name">
+        AuthType
+    </span>
+    
+</h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="actions_userActions.js.html" class="button">View Source</a>
+            <span>
+                <a href="actions_userActions.js.html">actions/userActions.js</a>, <a href="actions_userActions.js.html#line47">line 47</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">object</span>
+
+
+    </span>
+
+<h4 class="name" id="Card">
+    <a class="href-link" href="#Card">#</a>
+    
+    <span class="code-name">
+        Card
+    </span>
+    
+</h4>
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>card_id</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>deck_id</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>question</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>answer</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>tags</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>background</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>text</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>image_front</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>image_back</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="reducers_cardsReducer.js.html" class="button">View Source</a>
+            <span>
+                <a href="reducers_cardsReducer.js.html">reducers/cardsReducer.js</a>, <a href="reducers_cardsReducer.js.html#line27">line 27</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">object</span>
+
+
+    </span>
+
+<h4 class="name" id="CardsState">
+    <a class="href-link" href="#CardsState">#</a>
+    
+    <span class="code-name">
+        CardsState
+    </span>
+    
+</h4>
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>cards</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;<a href="global.html#Card">Card</a>></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>isLoading</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>error</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Error</span>
+|
+
+<span class="param-type">null</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>creatingCard</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>updatingCard</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>deletingCard</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="reducers_cardsReducer.js.html" class="button">View Source</a>
+            <span>
+                <a href="reducers_cardsReducer.js.html">reducers/cardsReducer.js</a>, <a href="reducers_cardsReducer.js.html#line8">line 8</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="ChangePath">
+    <a class="href-link" href="#ChangePath">#</a>
+    
+    <span class="code-name">
+        ChangePath
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Changes the current url path
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="customHooks_useHistoryAndPath.js.html" class="button">View Source</a>
+            <span>
+                <a href="customHooks_useHistoryAndPath.js.html">customHooks/useHistoryAndPath.js</a>, <a href="customHooks_useHistoryAndPath.js.html#line27">line 27</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">string</span>
+
+
+    </span>
+
+<h4 class="name" id="Color">
+    <a class="href-link" href="#Color">#</a>
+    
+    <span class="code-name">
+        Color
+    </span>
+    
+</h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="customHooks_useThemeContext.js.html" class="button">View Source</a>
+            <span>
+                <a href="customHooks_useThemeContext.js.html">customHooks/useThemeContext.js</a>, <a href="customHooks_useThemeContext.js.html#line83">line 83</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">object</span>
+
+
+    </span>
+
+<h4 class="name" id="CustomRenderResults">
+    <a class="href-link" href="#CustomRenderResults">#</a>
+    
+    <span class="code-name">
+        CustomRenderResults
+    </span>
+    
+</h4>
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>container</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">HTMLDivElement</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>baseElement</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">HTMLBodyElement</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>debug</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>unmount</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>rerender</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>asFragment</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>queryAllByLabelText</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>getAllByLabelText</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>queryByLabelText</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>getAllByLabelText</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>queryByLabelText</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>getByLabelText</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>findAllByLabelText</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>findByLabelText</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>queryByPlaceholderText</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>queryAllByPlaceholderText</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>getByPlaceholderText</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>getAllByPlaceholderText</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>findAllByPlaceholderText</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>findByPlaceholderText</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>queryAllByText</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>queryByText</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>getByText</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>getAllByText</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>findAllByText</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>findByText</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>queryAllByDisplayValue</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>queryByDisplayValue</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>getByDisplayValue</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>getAllByDisplayValue</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>findAllByDisplayValue</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>findByDisplayValue</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>queryAllByAltText</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>queryByAltText</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>getByAltText</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>getAllByAltText</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>findAllByAltText</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>findByAltText</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>queryAllByTitle</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>queryByTitle</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>getByTitle</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>getAllByTitle</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>findAllByTitle</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>findByTitle</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>queryAllByRole</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>queryByRole</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>getAllByRole</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>getByRole</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>findAllByRole</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>findByRole</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>queryByTestId</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>queryAllByTestId</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>getByTestId</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>getAllByTestId</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>findAllByTestId</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>findByTestId</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="utilities_test-utils.js.html" class="button">View Source</a>
+            <span>
+                <a href="utilities_test-utils.js.html">utilities/test-utils.js</a>, <a href="utilities_test-utils.js.html#line76">line 76</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">object</span>
+
+
+    </span>
+
+<h4 class="name" id="Devices">
+    <a class="href-link" href="#Devices">#</a>
+    
+    <span class="code-name">
+        Devices
+    </span>
+    
+</h4>
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>mobileS</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#MediaQuery">MediaQuery</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">320px</td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>mobileM</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#MediaQuery">MediaQuery</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">375px</td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>mobileL</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#MediaQuery">MediaQuery</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">425px</td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>tablet</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#MediaQuery">MediaQuery</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">768px</td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>laptop</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#MediaQuery">MediaQuery</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">1024px</td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>laptopL</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#MediaQuery">MediaQuery</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">1440px</td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>desktop</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#MediaQuery">MediaQuery</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">2560px</td>
+</tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="utilities_breakpoints-device.js.html" class="button">View Source</a>
+            <span>
+                <a href="utilities_breakpoints-device.js.html">utilities/breakpoints-device.js</a>, <a href="utilities_breakpoints-device.js.html#line44">line 44</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="Dispatch">
+        <a class="href-link" href="#Dispatch">#</a>
+        
+        <span class="code-name">
+            
+                Dispatch<span class="signature">(function)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>function</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">function</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="App.js.html" class="button">View Source</a>
+            <span>
+                <a href="App.js.html">App.js</a>, <a href="App.js.html#line73">line 73</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>none</div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">string</span>
+
+
+    </span>
+
+<h4 class="name" id="MediaQuery">
+    <a class="href-link" href="#MediaQuery">#</a>
+    
+    <span class="code-name">
+        MediaQuery
+    </span>
+    
+</h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="utilities_breakpoints-device.js.html" class="button">View Source</a>
+            <span>
+                <a href="utilities_breakpoints-device.js.html">utilities/breakpoints-device.js</a>, <a href="utilities_breakpoints-device.js.html#line40">line 40</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="Photo">
+    <a class="href-link" href="#Photo">#</a>
+    
+    <span class="code-name">
+        Photo
+    </span>
+    
+</h4>
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>public_id</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">String</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>url</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">String</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>error</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Error</span>
+|
+
+<span class="param-type">undefined</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>progress</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="reducers_photoReducer.js.html" class="button">View Source</a>
+            <span>
+                <a href="reducers_photoReducer.js.html">reducers/photoReducer.js</a>, <a href="reducers_photoReducer.js.html#line15">line 15</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">object</span>
+
+
+    </span>
+
+<h4 class="name" id="PhotoReducerState">
+    <a class="href-link" href="#PhotoReducerState">#</a>
+    
+    <span class="code-name">
+        PhotoReducerState
+    </span>
+    
+</h4>
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>photos</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Object.&lt;Number, {<a href="global.html#Photo">Photo</a>}></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="reducers_photoReducer.js.html" class="button">View Source</a>
+            <span>
+                <a href="reducers_photoReducer.js.html">reducers/photoReducer.js</a>, <a href="reducers_photoReducer.js.html#line6">line 6</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">object</span>
+
+
+    </span>
+
+<h4 class="name" id="RootState">
+    <a class="href-link" href="#RootState">#</a>
+    
+    <span class="code-name">
+        RootState
+    </span>
+    
+</h4>
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>usersState</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#UsersReducerState">UsersReducerState</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>photosState</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#PhotoReducerState">PhotoReducerState</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>cardsState</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#CardsState">CardsState</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="reducers_index.js.html" class="button">View Source</a>
+            <span>
+                <a href="reducers_index.js.html">reducers/index.js</a>, <a href="reducers_index.js.html#line6">line 6</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">object</span>
+
+
+    </span>
+
+<h4 class="name" id="Sizes">
+    <a class="href-link" href="#Sizes">#</a>
+    
+    <span class="code-name">
+        Sizes
+    </span>
+    
+</h4>
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>mobileS</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">'320px',</td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>mobileM</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">'375px',</td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>mobileL</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">'425px',</td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>tablet</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">'768px',</td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>laptop</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">'1024px',</td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>laptopL</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">'1440px',</td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>desktop</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">'2560px',</td>
+</tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="utilities_breakpoints-device.js.html" class="button">View Source</a>
+            <span>
+                <a href="utilities_breakpoints-device.js.html">utilities/breakpoints-device.js</a>, <a href="utilities_breakpoints-device.js.html#line29">line 29</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">object</span>
+
+
+    </span>
+
+<h4 class="name" id="Store">
+    <a class="href-link" href="#Store">#</a>
+    
+    <span class="code-name">
+        Store
+    </span>
+    
+</h4>
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>dispatch</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>subscribe</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>getState</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>replaceReducer</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="utilities_getStore.js.html" class="button">View Source</a>
+            <span>
+                <a href="utilities_getStore.js.html">utilities/getStore.js</a>, <a href="utilities_getStore.js.html#line21">line 21</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">object</span>
+
+
+    </span>
+
+<h4 class="name" id="SvgProps">
+    <a class="href-link" href="#SvgProps">#</a>
+    
+    <span class="code-name">
+        SvgProps
+    </span>
+    
+</h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="components_SvgContainer_SvgContainer.js.html" class="button">View Source</a>
+            <span>
+                <a href="components_SvgContainer_SvgContainer.js.html">components/SvgContainer/SvgContainer.js</a>, <a href="components_SvgContainer_SvgContainer.js.html#line116">line 116</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">Object</span>
+
+
+    </span>
+
+<h4 class="name" id="Theme">
+    <a class="href-link" href="#Theme">#</a>
+    
+    <span class="code-name">
+        Theme
+    </span>
+    
+</h4>
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>primaryColor</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#Color">Color</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>primaryColorB98C4</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#Color">Color</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>primaryColor86869A</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#Color">Color</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>primaryColor5C5F78</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#Color">Color</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>primaryColor36405C</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#Color">Color</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>primaryColor293046</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#Color">Color</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>primaryColor353544</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#Color">Color</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>secondaryColor</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#Color">Color</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>secondaryColorEAF5F1</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#Color">Color</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>secondaryColorD8EEE6</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#Color">Color</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>secondaryColorC6E6DB</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#Color">Color</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>secondaryColorB5DFD1</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#Color">Color</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>secondaryColor92B2AA</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#Color">Color</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>secondaryColor798A87</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#Color">Color</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>white</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#Color">Color</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>grayF1F2F2</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#Color">Color</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>grayE6E7E8</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#Color">Color</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>grayD1D3D4</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#Color">Color</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>grayBCBEC0</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#Color">Color</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>grayA7A9AC</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#Color">Color</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>gray939598</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#Color">Color</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>largeRadius</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>smallRadius</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>navBarTopHeight</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>footerHeight</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>screenHeight</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>screenWidth</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>devices</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#Devices">Devices</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>sizes</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#Sizes">Sizes</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="customHooks_useThemeContext.js.html" class="button">View Source</a>
+            <span>
+                <a href="customHooks_useThemeContext.js.html">customHooks/useThemeContext.js</a>, <a href="customHooks_useThemeContext.js.html#line5">line 5</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">object</span>
+
+
+    </span>
+
+<h4 class="name" id="UseAppHooksReturn">
+    <a class="href-link" href="#UseAppHooksReturn">#</a>
+    
+    <span class="code-name">
+        UseAppHooksReturn
+    </span>
+    
+</h4>
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>dispatch</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#Dispatch">Dispatch</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>theme</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#Dispatch">Dispatch</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>usersState</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#UsersReducerState">UsersReducerState</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>cardsState</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#CardsState">CardsState</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>photosState</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#PhotoReducerState">PhotoReducerState</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>history</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">History</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>cookies</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#AppCookies">AppCookies</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>setCookie</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#SetCookie">SetCookie</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>removeCookie</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#RemoveCookie">RemoveCookie</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>pathname</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>changePath</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#ChangePath">ChangePath</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>pathPushedState</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">any</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="customHooks_useAppHooks.js.html" class="button">View Source</a>
+            <span>
+                <a href="customHooks_useAppHooks.js.html">customHooks/useAppHooks.js</a>, <a href="customHooks_useAppHooks.js.html#line39">line 39</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">object</span>
+
+
+    </span>
+
+<h4 class="name" id="User">
+    <a class="href-link" href="#User">#</a>
+    
+    <span class="code-name">
+        User
+    </span>
+    
+</h4>
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>uid</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>photoURL</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="App.js.html" class="button">View Source</a>
+            <span>
+                <a href="App.js.html">App.js</a>, <a href="App.js.html#line80">line 80</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">object</span>
+
+
+    </span>
+
+<h4 class="name" id="UsersReducerState">
+    <a class="href-link" href="#UsersReducerState">#</a>
+    
+    <span class="code-name">
+        UsersReducerState
+    </span>
+    
+</h4>
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>fetching</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Fetching the user from the database.</td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>error</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Error</span>
+|
+
+<span class="param-type">null</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Fetching the user from the database.</td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>user</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#User">User</a></span>
+|
+
+<span class="param-type">Object</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Fetching the user from the database.</td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>checkingRegistered</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Fetching the user from the database.</td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>userRegistered</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Fetching the user from the database.</td>
+</tr>
+
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>registerError</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Error</span>
+|
+
+<span class="param-type">null</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Fetching the user from the database.</td>
+</tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="reducers_usersReducer.js.html" class="button">View Source</a>
+            <span>
+                <a href="reducers_usersReducer.js.html">reducers/usersReducer.js</a>, <a href="reducers_usersReducer.js.html#line12">line 12</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Tue Mar 10 2020 17:21:03 GMT-0600 (Mountain Daylight Time)</p>
+        <p class="sidebar-created-by">
+            <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+            <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+        </p>
+    </div>
+</footer>
+
+
+<script src="scripts/app.min.js"></script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

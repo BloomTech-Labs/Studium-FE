@@ -1,10 +1,10 @@
 import React from 'react';
-import styled, { useTheme, ThemeContext } from 'styled-components';
+import styled from 'styled-components';
 import { Icon } from 'antd';
-import { useHistory } from 'react-router';
 import { devices } from '../../utilities/breakpoints-device.js';
 import { ContainerDiv } from '../Container/ContainerDiv.js';
 import PropTypes from 'prop-types';
+import { useAppHooks } from '../../customHooks/useAppHooks.js';
 
 /**
  * Footer
@@ -14,8 +14,7 @@ import PropTypes from 'prop-types';
  */
 export const Footer = ( props ) => {
   
-  const history = useHistory();
-  const theme = useTheme( ThemeContext );
+  const { history, theme } = useAppHooks();
   
   /**
    * Add Deck
@@ -25,6 +24,7 @@ export const Footer = ( props ) => {
    */
   const addDeck = () => {
     history.push( '/create/deck' );
+    
   };
   
   return ( <StyledFooter { ...props } theme={ theme } className={ 'footer' }>

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useTheme, ThemeContext } from 'styled-components';
 import PropTypes from 'prop-types';
+import { useAppHooks } from '../../customHooks/useAppHooks.js';
 
 /**
  *  Svg Container Component
@@ -40,7 +41,7 @@ export const SvgContainer = ( {
   ...props
 } ) => {
   
-  const theme = useTheme( ThemeContext );
+  const { theme } = useAppHooks();
   const StyledSvg = withStyles( Svg );
   
   return (

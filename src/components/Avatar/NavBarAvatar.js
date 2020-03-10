@@ -13,6 +13,7 @@ import { ReactComponent as AvatarIcon } from '../../images/ProfileIcons.svg';
  *  )
  */
 export const NavBarAvatar = ( { avatarUrl, ...props } ) => {
+  
   if( avatarUrl ){
     return <StyledAntAvatar src={ avatarUrl } { ...props } size={ 40 }/>;
   }

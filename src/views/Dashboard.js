@@ -3,22 +3,17 @@ import styled from 'styled-components';
 import { SmallFlashCard, TitleText, SearchBar } from '../components';
 import PropTypes from 'prop-types';
 import { devices } from '../utilities/breakpoints-device.js';
-import {useDispatch, useEffect} from 'react-redux'; 
-
-//import {} from '../actions/...'
-
-//make sure to import actions
-
+import { useAppHooks } from '../customHooks/useAppHooks.js';
 
 const decks = [
   { deck_name: 'Some Name', deck_id: 1 },
-  { deck_name: 'Another Name', deck_id: 1 },
-  { deck_name: 'Anatomy', deck_id: 1 }, { deck_name: 'Some Name', deck_id: 1 },
+  { deck_name: 'Another Name', deck_id: 2 },
+  { deck_name: 'Anatomy', deck_id: 3 }, { deck_name: 'Some Name', deck_id: 4 },
   {
-    deck_name: 'Another' + ' Name', deck_id: 1,
+    deck_name: 'Another' + ' Name', deck_id: 5,
   }, {
     deck_name: 'Anatomy this is a really long deck name lets just keep' +
-      ' this name', deck_id: 1,
+      ' this name', deck_id: 6,
   },
 ];
 
@@ -30,7 +25,7 @@ const decks = [
  */
 export const Dashboard = props => {
   const [ selected, setSelected ] = useState( 0 );
-  
+  const { pathname, changePath } = useAppHooks();
   const search = e => {
     console.log( e.target.value );
   };
@@ -41,10 +36,10 @@ export const Dashboard = props => {
   
   const deckClicked = ( deck = undefined ) => {
     if( !deck ){
-      props.history.push( '/create/deck' );
+      changePath( '/create/deck' );
       return;
     }
-    props.history.push( '/game', { ...deck } );
+    changePath( '/preview', { ...deck } );
   };
   
   return ( <StyledDashboard className={ 'dashboard' }>
@@ -66,7 +61,7 @@ export const Dashboard = props => {
       />
       { decks.map( deck => {
         return ( <SmallFlashCard
-          id={ deck.deck_id }
+          key={ deck.deck_id }
           deck={ deck }
           border={ 'solid' }
           onClick={ e => deckClicked( deck ) }

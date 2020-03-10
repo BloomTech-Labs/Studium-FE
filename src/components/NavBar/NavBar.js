@@ -7,6 +7,8 @@ import { signOut } from '../../actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { devices } from '../../utilities/breakpoints-device.js';
 import { SynapsBrain } from '../index.js';
+import { useHistory } from 'react-router';
+import { useAppHooks } from '../../customHooks/useAppHooks.js';
 
 /**
  * Nav Bar
@@ -16,11 +18,9 @@ import { SynapsBrain } from '../index.js';
  *  return (<NavBar />)
  */
 export const NavBar = () => {
-  const usersState = useSelector( state => state.usersState );
-  const theme = useTheme( ThemeContext );
+  const { usersState, theme, dispatch, changePath } = useAppHooks();
   const [ menuOpen, setMenuOpen ] = useState( false );
   const [ avatarUrl, setAvatarUrl ] = useState( '' );
-  const dispatch = useDispatch();
   
   useEffect( () => {
     if( usersState.user && usersState.user.photoURL ){
@@ -32,8 +32,8 @@ export const NavBar = () => {
   }, [ usersState ] );
   
   const logout = () => {
-    setMenuOpen( false );
-    signOut( dispatch );
+    dispatch( signOut() );
+    changePath( '/' );
   };
   
   return (
