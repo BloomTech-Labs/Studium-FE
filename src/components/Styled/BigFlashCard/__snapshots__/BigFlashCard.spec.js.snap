@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BigFlashCard render correctly 1`] = `
+exports[`Big Flash Card BigFlashCard render correctly 1`] = `
 .c0 {
   height: 390px;
   width: 283px;
@@ -50,6 +50,8 @@ exports[`BigFlashCard render correctly 1`] = `
 
 <div
   className="c0"
+  data-testid="StyledCardContainer"
+  onClick={[Function]}
   style={
     Object {
       "position": "relative",
@@ -58,7 +60,6 @@ exports[`BigFlashCard render correctly 1`] = `
 >
   <div
     className="ant-card c1 ant-card-bordered"
-    onClick={[Function]}
     position="front"
     style={
       Object {
