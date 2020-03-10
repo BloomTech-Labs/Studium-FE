@@ -94,7 +94,7 @@ function App( props ){
           position: 'absolute', top: '20px', zIndex: '15',
         } }
       /> ) }
-      <NavBar { ...newProps } />
+      <NavBar { ...newProps } /> 
       <ContainerDiv
         className={ 'app-container' }
         position={ 'fixed' }
