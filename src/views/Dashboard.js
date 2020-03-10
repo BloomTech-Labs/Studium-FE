@@ -3,6 +3,11 @@ import styled from 'styled-components';
 import { SmallFlashCard, TitleText, SearchBar } from '../components';
 import PropTypes from 'prop-types';
 import { devices } from '../utilities/breakpoints-device.js';
+import {useDispatch, useEffect} from 'react-redux'; 
+
+//import {} from '../actions/...'
+
+//make sure to import actions
 
 
 const decks = [

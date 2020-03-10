@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { SynapsBrain } from '../components/SynapsBrain/SynapsBrain.js';
+import { CreateButton } from '../components/Button/CreateButton.js';
 
 /**
  * Testing
@@ -10,7 +11,7 @@ import { SynapsBrain } from '../components/SynapsBrain/SynapsBrain.js';
  */
 export const Testing = () => {
   return ( <StyledTesting>
-    <SynapsBrain/>
+    <CreateButton/>
   </StyledTesting> );
 };
 
