@@ -64,7 +64,7 @@ export const signIn = ( authType, email, password ) => dispatch => {
   dispatch( action( ATTEMPT_SIGNIN ) );
   
   if( authType === EMAIL_PROVIDER ){
-    dispatch( signInEmailProvider( email, password ) );
+    dispatch( RegisterWithGoogleEmailAndPassword( email, password ) );
   }else if( authType === GOOGLE_PROVIDER ){
     dispatch( signInWithGoogleAuthProvider() );
   }
@@ -74,7 +74,7 @@ export const signIn = ( authType, email, password ) => dispatch => {
  * Sign In With Google Auth
  * @category Actions
  * @function
- * @name signInEmailProvider
+ * @name RegisterWithGoogleEmailAndPassword
  * @returns {function}
  */
 const signInWithGoogleAuthProvider = () => dispatch => {
@@ -94,42 +94,50 @@ const signInWithGoogleAuthProvider = () => dispatch => {
 };
 
 /**
- * Sign In With Email Provider
+ *
+ * Register with google email and password.
  *
  * @category Actions
  * @function
- * @name signInEmailProvider
+ * @name RegisterWithGoogleEmailAndPassword
  * @property {string} email
  * @property {string} password
- * @returns {function}
+ * @returns {function(*): Promise<firebase.auth.UserCredential>}
+ * @param email
+ * @param password
  */
-const signInEmailProvider = ( email, password ) => dispatch => {
-  
-  firebase
+const RegisterWithGoogleEmailAndPassword = ( email, password ) => dispatch => {
+  return firebase
     .auth()
     .createUserWithEmailAndPassword( email, password )
     .then( () => {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword( email, password )
-        .then( res => {
-          dispatch( signedIn( res.user ) );
-        } );
+      dispatch( signInWithEmailAndPassword( email, password ) );
     } )
     .catch( error => {
       if( error.code.includes( 'email-already-in-use' ) ){
-        firebase
-          .auth()
-          .signInWithEmailAndPassword( email, password )
-          .then( res => {
-            dispatch( signedIn( res.user ) );
-          } )
-          .catch( err => {
-            dispatch( action( SIGNIN_FAILED, err.message ) );
-          } );
+        dispatch( signInWithEmailAndPassword( email, password ) );
       }else{
         dispatch( action( SIGNIN_FAILED, error.message ) );
       }
+    } );
+};
+
+/**
+ * Sign in with email and password.
+ *
+ * @param {string} email
+ * @param {string} password
+ * @returns {function(*): Promise<firebase.auth.UserCredential>}
+ */
+const signInWithEmailAndPassword = ( email, password ) => dispatch => {
+  return firebase
+    .auth()
+    .signInWithEmailAndPassword( email, password )
+    .then( res => {
+      dispatch( signedIn( res.user ) );
+    } )
+    .catch( err => {
+      dispatch( action( SIGNIN_FAILED, err.message ) );
     } );
 };
 
