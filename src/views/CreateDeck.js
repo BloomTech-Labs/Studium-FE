@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import {TitleText} from '../components/Text/TitleText/TitleText.js';
-
+import {CreateCardTitleText} from '../components/Text/TitleText/CreateCardTitleText.js';
+import {CreateCard} from '../components/CreateCard/CreateCard.js';
 /**
  * Create Deck View
  * @category Views
@@ -9,9 +9,14 @@ import {TitleText} from '../components/Text/TitleText/TitleText.js';
  * @example return (<CreateDeck />);
  */
 export const CreateDeck = props => {
+  let frontCardNum = 1;
+  let backCardNum = 1;
+
   return (
     <StyledCreateDeck>
-      <TitleText text={'Create Deck'} />
+      <CreateCardTitleText text={'Create Deck'} />
+      <CreateCard frontCardText={`Card ${frontCardNum} - Front`} />
+      <CreateCard backCardText={`Card ${backCardNum} - Back`} />
     </StyledCreateDeck>
   );
 };
@@ -19,5 +24,10 @@ export const CreateDeck = props => {
 CreateDeck.propTypes = {};
 
 const StyledCreateDeck = styled.div`
-  width: 100%;
+  width: 315px;
+  border: red 1px solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
 `;

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import CreateCard from '../components/CreateCard/CreateCard.js';
+import {CreateCard} from '../components/CreateCard/CreateCard.js';
 
 export const Testing = () => {
   return (

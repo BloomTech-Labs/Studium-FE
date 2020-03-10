@@ -3,17 +3,13 @@ import styled from 'styled-components';
 import {Uploader} from '../Uploader/Uploader.js';
 import TextArea from '../FormItems/Input/TextArea.js';
 import CreateCardText from '../Text/CreateCardText.js';
-import {Icon} from 'antd';
-
-const CreateCard = props => {
+import {CardEditDeleteIcons} from '../Icon/CardEditDeleteIcons.js';
+export const CreateCard = ({frontCardText, backCardText, ...props}) => {
   return (
     <StyledCreateCardContainer>
       <StyledCreateCardHeaderContainer>
-        <CreateCardText text={'Card 1 Front'} />
-        <StyledIonContainer>
-          <Icon type="edit" />
-          <Icon type="delete" />
-        </StyledIonContainer>
+        <CreateCardText text={frontCardText ? frontCardText : backCardText} />
+        <CardEditDeleteIcons />
       </StyledCreateCardHeaderContainer>
       <StyledCreateCard>
         <TextArea
@@ -64,5 +60,3 @@ const StyledIonContainer = styled.div`
   justify-content: space-between;
   width: 55px;
 `;
-
-export default CreateCard;
