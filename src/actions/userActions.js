@@ -113,9 +113,7 @@ const signInEmailProvider = ( email, password ) => dispatch => {
         .auth()
         .signInWithEmailAndPassword( email, password )
         .then( res => {
-          const user = { ...res.user };
-          dispatch( signedIn( user ) );
-          // user.displayName = firstName + ' ' + lastName;
+          dispatch( signedIn( res.user ) );
         } );
     } )
     .catch( error => {
@@ -130,7 +128,7 @@ const signInEmailProvider = ( email, password ) => dispatch => {
             dispatch( action( SIGNIN_FAILED, err.message ) );
           } );
       }else{
-        //dispatch(action(SIGNUP_FAILED, error.message));
+        dispatch( action( SIGNIN_FAILED, error.message ) );
       }
     } );
 };
