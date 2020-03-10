@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { SynapsBrain } from '../components/SynapsBrain/SynapsBrain.js';
-import { CreateButton } from '..components/Button/CreateButton.js';
+import { CreateButton } from '../components/Button/CreateButton.js';
 
 /**
  * Testing
