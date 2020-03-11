@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import {CreateCardTitleText} from '../components/Text/TitleText/CreateCardTitleText.js';
 import {CreateCard} from '../components/CreateCard/CreateCard.js';
@@ -11,8 +11,10 @@ import {SmallDeckSvg} from '../components/SmallDeckSvg/SmallDeckSvg.js';
  * @example return (<CreateDeck />);
  */
 export const CreateDeck = props => {
-  let frontCardNum = 1;
-  let backCardNum = 1;
+  const [frontCardNum, setFrontCardNum] = useState(1);
+  const [backCardNum, setBackCardNum] = useState(1);
+  const [frontVisible, setFrontVisible] = useState(false);
+  const [backVisible, setBackVisible] = useState(false);
 
   return (
     <StyledCreateDeck>
@@ -25,11 +27,11 @@ export const CreateDeck = props => {
       </CardNameContainer>
       <CreateCardContainer>
         <CreateCard
-          visible={true}
+          visible={frontVisible}
           frontCardText={`Card ${frontCardNum} - Front`}
         />
         <CreateCard
-          visible={false}
+          visible={backVisible}
           backCardText={`Card ${backCardNum} - Back`}
         />
       </CreateCardContainer>
@@ -48,10 +50,9 @@ const StyledCreateDeck = styled.div`
 `;
 
 const CreateCardContainer = styled.div`
-  height: 400px;
+  height: 450px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
 `;
 
 const CardHeaderContainer = styled.div`
@@ -64,5 +65,5 @@ const CardHeaderContainer = styled.div`
 
 const CardNameContainer = styled.div`
   width: 100%;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 `;
