@@ -13,8 +13,9 @@ import {SmallDeckSvg} from '../components/SmallDeckSvg/SmallDeckSvg.js';
 export const CreateDeck = props => {
   const [frontCardNum, setFrontCardNum] = useState(1);
   const [backCardNum, setBackCardNum] = useState(1);
-  const [frontVisible, setFrontVisible] = useState(false);
-  const [backVisible, setBackVisible] = useState(false);
+  const [frontVisible, setFrontVisible] = useState(true);
+  const [backVisible, setBackVisible] = useState(true);
+  const [highlighted, setHighlighted] = useState(false);
 
   return (
     <StyledCreateDeck>
@@ -23,7 +24,7 @@ export const CreateDeck = props => {
           <CreateCardTitleText text={'Create Deck'} />
           <SmallDeckSvg />
         </CardHeaderContainer>
-        <DeckName />
+        <DeckName highlighted={highlighted} />
       </CardNameContainer>
       <CreateCardContainer>
         <CreateCard

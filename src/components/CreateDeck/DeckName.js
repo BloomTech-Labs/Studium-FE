@@ -4,14 +4,21 @@ import {FormInput} from '../FormItems/Input/FormInput.js';
 import styled from 'styled-components';
 import {CardEditDeleteIcons} from '../Icon/CardEditDeleteIcons.js';
 
-export const DeckName = props => {
+export const DeckName = ({highlighted, ...props}) => {
+  console.log('highlighted from props', highlighted);
   return (
     <DeckNameContainer>
       <DeckNameIconContainer>
-        <DeckTitlePrompt>Title of Deck</DeckTitlePrompt>
+        <DeckTitlePrompt highlighted={highlighted}>
+          Title of Deck
+        </DeckTitlePrompt>
         <CardEditDeleteIcons />
       </DeckNameIconContainer>
-      <FormInput inputWidth={'100%'} />
+      <FormInput
+        borderStyle={highlighted ? '1px solid #4CB69F' : '2px solid #908A7D'}
+        inputWidth={'100%'}
+        bordered={true}
+      />
     </DeckNameContainer>
   );
 };
@@ -26,7 +33,7 @@ const DeckNameContainer = styled.div`
 `;
 
 const DeckTitlePrompt = styled.h1`
-  color: #888888;
+  color: ${props => (props.highlighted ? '#4CB69F' : '#888888')};
   font-weight: bold;
   font-size: 26px;
   text-align: left;
