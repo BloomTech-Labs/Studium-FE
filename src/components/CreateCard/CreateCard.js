@@ -7,6 +7,7 @@ import {CardEditDeleteIcons} from '../Icon/CardEditDeleteIcons.js';
 import propTypes from 'prop-types';
 
 export const CreateCard = ({
+  highlighted,
   visible,
   frontCardText,
   backCardText,
@@ -15,10 +16,13 @@ export const CreateCard = ({
   return (
     <StyledCreateCardContainer visible={visible}>
       <StyledCreateCardHeaderContainer>
-        <CreateCardText text={frontCardText ? frontCardText : backCardText} />
+        <CreateCardText
+          highlighted={highlighted}
+          text={frontCardText ? frontCardText : backCardText}
+        />
         <CardEditDeleteIcons />
       </StyledCreateCardHeaderContainer>
-      <StyledCreateCard>
+      <StyledCreateCard highlighted={highlighted}>
         <TextArea
           onChange={props.onChange}
           value={props.value || ''}
@@ -38,7 +42,8 @@ CreateCard.propTypes = {
 const StyledCreateCard = styled.div`
   width: 314px;
   height: 149px;
-  border: 2px solid #908a7d;
+  border: ${props =>
+    props.highlighted ? '2px solid #4CB69F' : '2px solid #908a7d'};
   border-radius: 4px;
   display: flex;
   justify-content: space-between;

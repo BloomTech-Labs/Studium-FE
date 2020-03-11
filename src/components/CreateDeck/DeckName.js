@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import {CardEditDeleteIcons} from '../Icon/CardEditDeleteIcons.js';
 
 export const DeckName = ({highlighted, ...props}) => {
-  console.log('highlighted from props', highlighted);
   return (
     <DeckNameContainer>
       <DeckNameIconContainer>
