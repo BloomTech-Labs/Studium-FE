@@ -6,9 +6,14 @@ import CreateCardText from '../Text/CreateCardText.js';
 import {CardEditDeleteIcons} from '../Icon/CardEditDeleteIcons.js';
 import propTypes from 'prop-types';
 
-export const CreateCard = ({frontCardText, backCardText, ...props}) => {
+export const CreateCard = ({
+  visible,
+  frontCardText,
+  backCardText,
+  ...props
+}) => {
   return (
-    <StyledCreateCardContainer>
+    <StyledCreateCardContainer visible={visible}>
       <StyledCreateCardHeaderContainer>
         <CreateCardText text={frontCardText ? frontCardText : backCardText} />
         <CardEditDeleteIcons />
@@ -50,6 +55,8 @@ const StyledCreateCardContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-bottom: 30px;
+  display: ${props => (props.visible ? 'block' : 'none')};
 `;
 
 const StyledCreateCardHeaderContainer = styled.div`

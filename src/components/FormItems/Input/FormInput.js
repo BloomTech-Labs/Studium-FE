@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Input, Form } from 'antd';
+import {Input, Form} from 'antd';
 import PropTypes from 'prop-types';
 
 /**
@@ -18,47 +18,46 @@ import PropTypes from 'prop-types';
  *  return ( <FormInput onChange={handleChange} value={inputValue} /> );
  *
  */
-export const FormInput = ( {
-  bordered = 'false', borderRadius = 'small', label, error, ...props
-} ) => {
-  if( bordered ){
-    if( borderRadius === 'large' ){
+export const FormInput = ({
+  inputWidth = '90%',
+  bordered = 'false',
+  borderRadius = 'small',
+  label,
+  error,
+  ...props
+}) => {
+  if (bordered) {
+    if (borderRadius === 'large') {
       // bordered input with large radius
       return (
-        
-        <StyledFormItem label={ label }>
-          <StyledAntdInputLargeRadius { ...props } />
+        <StyledFormItem label={label}>
+          <StyledAntdInputLargeRadius {...props} />
         </StyledFormItem>
-      
       );
-    }else{
+    } else {
       // bordered input with regular radius
       return (
-        
-        <StyledFormItem label={ label }>
-          <StyledAntdInputSmallRadius { ...props } />
+        <StyledFormItem label={label}>
+          <StyledAntdInputSmallRadius {...props} />
         </StyledFormItem>
-      
       );
     }
-  }else{
+  } else {
     // no border input
     return (
-      
-      <StyledFormItem label={ label }>
+      <StyledFormItem label={label}>
         <StyledBorderBottom>
-          <StyledNoBorderAntdInput { ...props } />
+          <StyledNoBorderAntdInput {...props} />
         </StyledBorderBottom>
       </StyledFormItem>
-    
     );
   }
 };
 
-const StyledFormItem = styled( Form.Item )`
+const StyledFormItem = styled(Form.Item)`
   && {
     text-align: left;
-    width: 90%;
+    width: ${props => props.inputWidth};
   }
 `;
 
@@ -66,7 +65,7 @@ const StyledBorderBottom = styled.div`
   border-bottom: 1px solid gray;
 `;
 
-const StyledNoBorderAntdInput = styled( Input )`
+const StyledNoBorderAntdInput = styled(Input)`
   && {
     border: 0px;
     :focus {
@@ -75,18 +74,18 @@ const StyledNoBorderAntdInput = styled( Input )`
   }
 `;
 
-const StyledAntdInputLargeRadius = styled( Input )`
+const StyledAntdInputLargeRadius = styled(Input)`
   && {
-    border-radius: ${ props => props.theme.largeRadius };
+    border-radius: ${props => props.theme.largeRadius};
     :focus {
       box-shadow: none;
     }
   }
 `;
 
-const StyledAntdInputSmallRadius = styled( Input )`
+const StyledAntdInputSmallRadius = styled(Input)`
   && {
-    border-radius: ${ props => props.theme.smallRadius };
+    border-radius: ${props => props.theme.smallRadius};
     :focus {
       box-shadow: none;
     }
@@ -99,7 +98,7 @@ FormInput.propTypes = {
   bordered: PropTypes.bool,
   label: PropTypes.string,
   placeholder: PropTypes.string,
-  size: PropTypes.oneOf( [ 'large', 'default', 'small' ] ),
-  borderRadius: PropTypes.oneOf( [ 'large', 'small' ] ),
+  size: PropTypes.oneOf(['large', 'default', 'small']),
+  borderRadius: PropTypes.oneOf(['large', 'small']),
+  inputWidth: PropTypes.string,
 };
-

@@ -11,7 +11,7 @@ export const DeckName = props => {
         <DeckTitlePrompt>Title of Deck</DeckTitlePrompt>
         <CardEditDeleteIcons />
       </DeckNameIconContainer>
-      <FormInput />
+      <FormInput inputWidth={'100%'} />
     </DeckNameContainer>
   );
 };
@@ -33,6 +33,7 @@ const DeckTitlePrompt = styled.h1`
 `;
 
 const DeckNameIconContainer = styled.div`
+  width: 100%;
   display: flex;
   justify-content: space-between;
 `;

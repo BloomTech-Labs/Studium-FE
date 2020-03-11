@@ -15,13 +15,16 @@ export const CreateCardTitleText = ({text}) => {
 };
 
 const StyledTitle = styled.div`
-  color: #888888;
-  font-weight: bold;
+  color: #2a685b;
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: 900;
   font-size: 45px;
+  line-height: 24px;
+  font-weight: bold;
   text-align: left;
-  padding: 0 5px;
-  margin-bottom: 18px;
-  margin-top: 10px;
+  margin-bottom: 30px;
+  margin-top: 30px;
 `;
 
 CreateCardTitleText.propTypes = {

@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import {CreateCardTitleText} from '../components/Text/TitleText/CreateCardTitleText.js';
 import {CreateCard} from '../components/CreateCard/CreateCard.js';
 import {DeckName} from '../components/CreateDeck/DeckName.js';
-import {SvgContainer} from '../components/SvgContainer/SvgContainer.js';
-import {ReactComponent as CardNumZeroSvg} from '../images/CardNumZero.svg';
+import {SmallDeckSvg} from '../components/SmallDeckSvg/SmallDeckSvg.js';
 /**
  * Create Deck View
  * @category Views
@@ -20,13 +19,19 @@ export const CreateDeck = props => {
       <CardNameContainer>
         <CardHeaderContainer>
           <CreateCardTitleText text={'Create Deck'} />
-          <SvgContainer svg={CardNumZeroSvg} />
+          <SmallDeckSvg />
         </CardHeaderContainer>
         <DeckName />
       </CardNameContainer>
       <CreateCardContainer>
-        <CreateCard frontCardText={`Card ${frontCardNum} - Front`} />
-        <CreateCard backCardText={`Card ${backCardNum} - Back`} />
+        <CreateCard
+          visible={true}
+          frontCardText={`Card ${frontCardNum} - Front`}
+        />
+        <CreateCard
+          visible={false}
+          backCardText={`Card ${backCardNum} - Back`}
+        />
       </CreateCardContainer>
     </StyledCreateDeck>
   );
@@ -51,7 +56,7 @@ const CreateCardContainer = styled.div`
 
 const CardHeaderContainer = styled.div`
   width: 100%;
-  padding: 0 5px;
+  padding: 0 2px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -59,5 +64,5 @@ const CardHeaderContainer = styled.div`
 
 const CardNameContainer = styled.div`
   width: 100%;
-  margin-bottom: 13px;
+  margin-bottom: 25px;
 `;
