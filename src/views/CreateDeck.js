@@ -11,11 +11,16 @@ import {SmallDeckSvg} from '../components/SmallDeckSvg/SmallDeckSvg.js';
  * @example return (<CreateDeck />);
  */
 export const CreateDeck = props => {
-  const [frontCardNum, setFrontCardNum] = useState(1);
-  const [backCardNum, setBackCardNum] = useState(1);
-  const [frontVisible, setFrontVisible] = useState(true);
-  const [backVisible, setBackVisible] = useState(true);
-  const [highlighted, setHighlighted] = useState(false);
+  const [cardNum, setCardNum] = useState(1);
+  const [visible, setVisible] = useState({
+    front: true,
+    back: true,
+  });
+  const [highlighted, setHighlighted] = useState({
+    title: true,
+    front: true,
+    back: true,
+  });
 
   return (
     <StyledCreateDeck>
@@ -24,16 +29,18 @@ export const CreateDeck = props => {
           <CreateCardTitleText text={'Create Deck'} />
           <SmallDeckSvg />
         </CardHeaderContainer>
-        <DeckName highlighted={highlighted} />
+        <DeckName highlighted={highlighted.title} />
       </CardNameContainer>
       <CreateCardContainer>
         <CreateCard
-          visible={frontVisible}
-          frontCardText={`Card ${frontCardNum} - Front`}
+          highlighted={highlighted.front}
+          visible={visible.front}
+          frontCardText={`Card ${cardNum} - Front`}
         />
         <CreateCard
-          visible={backVisible}
-          backCardText={`Card ${backCardNum} - Back`}
+          highlighted={highlighted.back}
+          visible={visible.back}
+          backCardText={`Card ${cardNum} - Back`}
         />
       </CreateCardContainer>
     </StyledCreateDeck>
