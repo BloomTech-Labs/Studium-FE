@@ -6,7 +6,14 @@ import CreateCardText from '../Text/CreateCardText.js';
 import {CardEditDeleteIcons} from '../Icon/CardEditDeleteIcons.js';
 import propTypes from 'prop-types';
 
-export const CreateCard = ({highlighted, visible, text, ...props}) => {
+export const CreateCard = ({
+  highlighted,
+  visible,
+  text,
+  drillName,
+  clickHandler,
+  ...props
+}) => {
   return (
     <StyledCreateCardContainer visible={visible}>
       <StyledCreateCardHeaderContainer>
@@ -15,6 +22,8 @@ export const CreateCard = ({highlighted, visible, text, ...props}) => {
       </StyledCreateCardHeaderContainer>
       <StyledCreateCard highlighted={highlighted}>
         <TextArea
+          clickHandler={clickHandler}
+          drillName={drillName}
           onChange={props.onChange}
           value={props.value || ''}
           placeholder={'Start typing...'}

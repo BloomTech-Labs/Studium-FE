@@ -4,8 +4,14 @@ import styled from 'styled-components';
 import {Input} from 'antd';
 const {TextArea} = Input;
 
-const StyledTextArea = ({value, autoSize, ...props}) => {
-  return <STextArea value={value} />;
+const StyledTextArea = ({
+  value,
+  autoSize,
+  clickHandler,
+  drillName,
+  ...props
+}) => {
+  return <STextArea name={drillName} onClick={clickHandler} value={value} />;
 };
 
 StyledTextArea.propTypes = {

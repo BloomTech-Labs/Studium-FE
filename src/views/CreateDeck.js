@@ -18,9 +18,15 @@ export const CreateDeck = props => {
   });
   const [highlighted, setHighlighted] = useState({
     title: true,
-    front: true,
-    back: true,
+    front: false,
+    back: false,
   });
+
+  const clickHandler = e => {
+    e.preventDefault();
+    console.log('A click was had');
+    console.log('clicked on ==>', e.target.name);
+  };
 
   return (
     <StyledCreateDeck>
@@ -29,15 +35,19 @@ export const CreateDeck = props => {
           <CreateCardTitleText text={'Create Deck'} />
           <SmallDeckSvg />
         </CardHeaderContainer>
-        <DeckName highlighted={highlighted.title} />
+        <DeckName clickHandler={clickHandler} highlighted={highlighted.title} />
       </CardNameContainer>
       <CreateCardContainer>
         <CreateCard
+          drillName={'front'}
+          clickHandler={clickHandler}
           highlighted={highlighted.front}
           visible={visible.front}
           text={`Card ${cardNum} - Front`}
         />
         <CreateCard
+          drillName={'back'}
+          clickHandler={clickHandler}
           highlighted={highlighted.back}
           visible={visible.back}
           text={`Card ${cardNum} - Back`}
