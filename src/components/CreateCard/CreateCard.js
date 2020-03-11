@@ -6,20 +6,11 @@ import CreateCardText from '../Text/CreateCardText.js';
 import {CardEditDeleteIcons} from '../Icon/CardEditDeleteIcons.js';
 import propTypes from 'prop-types';
 
-export const CreateCard = ({
-  highlighted,
-  visible,
-  frontCardText,
-  backCardText,
-  ...props
-}) => {
+export const CreateCard = ({highlighted, visible, text, ...props}) => {
   return (
     <StyledCreateCardContainer visible={visible}>
       <StyledCreateCardHeaderContainer>
-        <CreateCardText
-          highlighted={highlighted}
-          text={frontCardText ? frontCardText : backCardText}
-        />
+        <CreateCardText highlighted={highlighted} text={text} />
         <CardEditDeleteIcons />
       </StyledCreateCardHeaderContainer>
       <StyledCreateCard highlighted={highlighted}>

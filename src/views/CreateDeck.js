@@ -35,12 +35,12 @@ export const CreateDeck = props => {
         <CreateCard
           highlighted={highlighted.front}
           visible={visible.front}
-          frontCardText={`Card ${cardNum} - Front`}
+          text={`Card ${cardNum} - Front`}
         />
         <CreateCard
           highlighted={highlighted.back}
           visible={visible.back}
-          backCardText={`Card ${cardNum} - Back`}
+          text={`Card ${cardNum} - Back`}
         />
       </CreateCardContainer>
     </StyledCreateDeck>
