@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {useTheme, ThemeContext} from 'styled-components';
 import PropTypes from 'prop-types';
-import { useAppHooks } from '../../customHooks/useAppHooks.js';
+import {useAppHooks} from '../../customHooks/useAppHooks.js';
 
 /**
  *  Svg Container Component
@@ -41,11 +41,10 @@ export const SvgContainer = ({
   height,
   testId = 'synaps-brain',
   ...props
-} ) => {
-  
-  const { theme } = useAppHooks();
-  const StyledSvg = withStyles( Svg );
-  
+}) => {
+  const {theme} = useAppHooks();
+  const StyledSvg = withStyles(Svg);
+
   return (
     <StyledContainer
       height={height}
@@ -78,7 +77,8 @@ export const SvgContainer = ({
 const withStyles = Component => styled(Component)`
   z-index: ${props => props.zIndex || 5};
   background: ${({backgroundColor, theme}) => backgroundColor || theme.white};
-
+  width: 100%;
+    height: 100%;
   > *::before,
   *::after,
   * {
@@ -87,6 +87,7 @@ const withStyles = Component => styled(Component)`
     fill: ${props => props.color || props.theme.primaryColor};
   }
   > g {
+ 
     z-index: ${props => props.zIndex || 5};
     stroke: ${props => props.strokeColor || props.theme.white};
     stroke-width: ${props => props.strokeWidth || ' 1px'};
@@ -102,9 +103,9 @@ const StyledContainer = styled.div`
 `;
 
 const StyledDiv = styled.div`
+  width: 100%;
+  height: 100%;
   position: relative;
-  width: ${props => props.width || 'min-content'};
-  height: ${props => props.height || 'min-content'};
 `;
 
 SvgContainer.propTypes = {

@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
 import { usersReducer } from './usersReducer';
 import { photosReducer } from './photoReducer';
-import { cardsReducer } from './cardsReducer.js';
+import { cardsReducer } from './cardsReducer';
+import { decksReducer } from './decksReducer';
 
 /**
  * @typedef {object} RootState
@@ -20,6 +21,6 @@ import { cardsReducer } from './cardsReducer.js';
 export default combineReducers({
   usersState: usersReducer,
   photosState: photosReducer,
-  deckReducer: deckReducer,
+  decksReducer: decksReducer,
   cardsState: cardsReducer
 });

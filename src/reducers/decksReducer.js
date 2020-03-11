@@ -25,7 +25,7 @@ const initialState = {
   errorDecksMessage: undefined,
 };
 
-export const deckReducer = (state = initialState, action) => {
+export const decksReducer = (state = initialState, action) => {
   switch (action.type) {
     case RETRIEVE_DECKS_START:
       return {

@@ -17,7 +17,7 @@ import { useThemeContext } from './useThemeContext.js';
  */
 export const useAppHooks = () => {
   
-  const dispatch = useDispatch();
+  const dispatch = useDispatch();  
   const usersState = useSelector( state => state.usersState );
   const cardsState = useSelector( state => state.cardsState );
   const photosState = useSelector( state => state.photosState );
@@ -26,7 +26,7 @@ export const useAppHooks = () => {
   
   return {
     dispatch,
-    theme,
+    theme,  
     usersState,
     cardsState,
     photosState,

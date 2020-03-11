@@ -7,7 +7,6 @@ import { signOut } from '../../actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { devices } from '../../utilities/breakpoints-device.js';
 import { SynapsBrain } from '../index.js';
-import { useHistory } from 'react-router';
 import { useAppHooks } from '../../customHooks/useAppHooks.js';
 
 /**
@@ -18,7 +17,7 @@ import { useAppHooks } from '../../customHooks/useAppHooks.js';
  *  return (<NavBar />)
  */
 export const NavBar = () => {
-  const { usersState, theme, dispatch, changePath } = useAppHooks();
+  const { usersState, theme, dispatch, changePath, pathname } = useAppHooks();
   const [ menuOpen, setMenuOpen ] = useState( false );
   const [ avatarUrl, setAvatarUrl ] = useState( '' );
   
@@ -40,8 +39,8 @@ export const NavBar = () => {
       return true;
     } else {
       if (
-        history.location.pathname === '/signup' ||
-        history.location.pathname === '/signin'
+        pathname === '/signup' ||
+        pathname === '/signin'
       ) {
         return false;
       } else {
@@ -52,9 +51,9 @@ export const NavBar = () => {
 
   const getSignUpText = () => {
     if (theme.screenWidth > 768) {
-      if (history.location.pathname === '/signup') {
+      if (pathname === '/signup') {
         return <Styledh2>SignIn</Styledh2>;
-      } else if (history.location.pathname === '/signin') {
+      } else if (pathname === '/signin') {
         return <Styledh2>SignUp</Styledh2>;
       }
     } else {
