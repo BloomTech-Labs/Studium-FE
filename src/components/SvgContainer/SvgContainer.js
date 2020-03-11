@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {useTheme, ThemeContext} from 'styled-components';
 import PropTypes from 'prop-types';
+import { useAppHooks } from '../../customHooks/useAppHooks.js';
 
 /**
  *  Svg Container Component
@@ -40,10 +41,11 @@ export const SvgContainer = ({
   height,
   testId = 'synaps-brain',
   ...props
-}) => {
-  const theme = useTheme(ThemeContext);
-  const StyledSvg = withStyles(Svg);
-
+} ) => {
+  
+  const { theme } = useAppHooks();
+  const StyledSvg = withStyles( Svg );
+  
   return (
     <StyledContainer
       height={height}

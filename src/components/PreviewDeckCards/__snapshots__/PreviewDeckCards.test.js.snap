@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`StyledDeckPreview render correctly 1`] = `
+exports[`Preview Deck Cards render correctly 1`] = `
 .c0.c0 {
   position: relative;
   width: 97px;

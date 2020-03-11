@@ -1,11 +1,8 @@
-import React, {useState} from 'react';
-import {FormInput, SynapsButton, SynapsText, SmallLogo} from '../components';
-import styled, {useTheme, ThemeContext} from 'styled-components';
-import {signIn, GOOGLE_PROVIDER, EMAIL_PROVIDER} from '../actions';
-import {useDispatch} from 'react-redux';
-import {SvgContainer} from '../components/SvgContainer/SvgContainer';
-import { ReactComponent as svg} from '../images/SmallWhiteLogo.svg';
-
+import React, { useState } from 'react';
+import { FormInput, SynapsButton, SynapsText, SvgContainer } from '../components';
+import styled from 'styled-components';
+import { signIn, GOOGLE_PROVIDER, EMAIL_PROVIDER } from '../actions';
+import { useAppHooks } from '../customHooks/useAppHooks.js';
 
 /**
  * Sign In
@@ -13,17 +10,18 @@ import { ReactComponent as svg} from '../images/SmallWhiteLogo.svg';
  * @component
  * @example return (<SignIn />);
  */
-export function SignIn(props) {
-  const dispatch = useDispatch();
-  const [info, setInfo] = useState({email: '', password: '', error: {}});
-  const theme = useTheme(ThemeContext);
-
-  const handleChange = e => {
-    setInfo({...info, [e.target.name]: e.target.value});
+export function SignIn( props ){
+  
+  const { dispatch } = useAppHooks();
+  const [ info, setInfo ] = useState( { email: '', password: '', error: {} } );
+  
+  const handleChange = ( e ) => {
+    setInfo( { ...info, [ e.target.name ]: e.target.value } );
   };
 
   const handleGoogleClick = e => {
-    dispatch(signIn(GOOGLE_PROVIDER));
+    debugger;
+    dispatch( signIn( GOOGLE_PROVIDER ) );
   };
 
   const handleEmailClick = e => {

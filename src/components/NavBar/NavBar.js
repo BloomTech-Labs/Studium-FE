@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import styled, {useTheme, ThemeContext} from 'styled-components';
-import {ContainerDiv, NavBarAvatar} from '../index.js';
-import {ReactComponent as SmallWhiteLogo} from '../../images/SmallWhiteLogo.svg';
-import {signOut} from '../../actions';
-import {useDispatch, useSelector} from 'react-redux';
-import {devices} from '../../utilities/breakpoints-device.js';
-import {SynapsBrain} from '../index.js';
-import {useHistory} from 'react-router';
+import styled, { useTheme, ThemeContext } from 'styled-components';
+import { ContainerDiv, NavBarAvatar } from '../index.js';
+import { ReactComponent as SmallWhiteLogo } from '../../images/SmallWhiteLogo.svg';
+import { signOut } from '../../actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { devices } from '../../utilities/breakpoints-device.js';
+import { SynapsBrain } from '../index.js';
+import { useHistory } from 'react-router';
+import { useAppHooks } from '../../customHooks/useAppHooks.js';
 
 /**
  * Nav Bar
@@ -17,18 +18,15 @@ import {useHistory} from 'react-router';
  *  return (<NavBar />)
  */
 export const NavBar = () => {
-  const usersState = useSelector(state => state.usersState);
-  const theme = useTheme(ThemeContext);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [avatarUrl, setAvatarUrl] = useState('');
-  const dispatch = useDispatch();
-  const history = useHistory();
-
-  useEffect(() => {
-    if (usersState.user && usersState.user.photoURL) {
-      setAvatarUrl(usersState.user.photoURL);
-    } else {
-      setAvatarUrl('');
+  const { usersState, theme, dispatch, changePath } = useAppHooks();
+  const [ menuOpen, setMenuOpen ] = useState( false );
+  const [ avatarUrl, setAvatarUrl ] = useState( '' );
+  
+  useEffect( () => {
+    if( usersState.user && usersState.user.photoURL ){
+      setAvatarUrl( usersState.user.photoURL );
+    }else{
+      setAvatarUrl( '' );
     }
   }, [usersState]);
 
@@ -119,7 +117,7 @@ const StyledBar = styled.div`
   width: 100%;
   height: 74px;
 
-  @media screen and ${devices.tablet} {
+  @media screen and ${props => props.theme.devices.tablet} {
   }
 `;
 

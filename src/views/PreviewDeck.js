@@ -1,15 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import styled from 'styled-components';
 import { TitleText, PreviewDeckCards } from '../components';
-
-
-
-
-const decks = [
-  { card_name: 'Name this organ' }, { card_name: 'Define Proximal.' },
-  { card_name: '---- means towards the front' },
-];
+import { useAppHooks } from '../customHooks/useAppHooks.js';
 
 /**
  * Preview Deck
@@ -18,16 +12,22 @@ const decks = [
  * @example return (<PreviewDeck />);
  */
 export const PreviewDeck = props => {
-  console.log( 'props', props );
+  // @type CardState
+  const { cardsState, pathPushedState } = useAppHooks();
+  
   return (
     
     <StyledPreviewDeck>
-      <TitleText text={ 'Preview' }/>
+      <TitleText
+        text={ ( pathPushedState && pathPushedState.deck_name ) || 'Preview' }/>
       <StyledPreviewDeckHolder>
-        { decks.map( deck => {
-          console.log( decks );
-          return <PreviewDeckCards deck={ deck }/>;
-        } ) }
+        { cardsState.cards.length > 0 &&
+        cardsState.cards.filter(
+          card => card.deck_id === pathPushedState.deck_id ).map(
+          card => {
+            console.log( card );
+            return <PreviewDeckCards key={ card.card_id } card={ card }/>;
+          } ) }
       
       </StyledPreviewDeckHolder>
     </StyledPreviewDeck>
@@ -43,7 +43,6 @@ const StyledPreviewDeck = styled.div`
   max-width: 100%;
   min-height: 90%;
   width: 100%;
-
 `;
 
 const StyledPreviewDeckHolder = styled.div`

@@ -1,21 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import styled, { ThemeContext, useTheme } from 'styled-components';
-import { Switch, withRouter } from 'react-router';
-import {
-  LandingPage, Dashboard, SignUp, SignIn, CreateDeck, PreviewDeck, FlashCard,
-  Testing,
-} from './views';
-import { useSelector, useDispatch } from 'react-redux';
-import { signedIn, signOut } from './actions';
-import firebase from './config/firebase/FirebaseConfig';
-import { LoginSignUpRoute, ProtectedRoute } from './routes';
-import { NavBar, ContainerDiv, Footer } from './components';
-import { isMobile } from 'react-device-detect';
+import styled from 'styled-components';
+import { NavBar, Footer, RouteContainer } from './components';
 import PropTypes from 'prop-types';
 import { Alert } from 'antd';
 import { devices } from './utilities/breakpoints-device.js';
-
-let timer = null;
+import { useAppHooks } from './customHooks/useAppHooks.js';
+import { useAuthStateChange } from './customHooks/useAuthStateChange.js';
 
 /**
  * App
@@ -24,64 +14,18 @@ let timer = null;
  * @example return (<App />);
  */
 function App( props ){
-  /**
-   * @type {Dispatch}
-   */
-  const dispatch = useDispatch();
   const [ alertMessage, setAlert ] = useState( '' );
-  /**
-   * @type {Theme}
-   */
-  const [ theme, setTheme ] = useState( useTheme( ThemeContext ) );
-  const users = useSelector( state => {
-    return state.usersState;
-  } );
+  const { theme, usersState, dispatch } = useAppHooks();
   
-  const updateDimensions = () => {
-    if( timer ){
-      window.clearTimeout( timer );
-    }
-    timer = window.setTimeout( () => {
-      setTheme( {
-        ...theme,
-        screenHeight: window.innerHeight,
-        screenWidth: window.innerWidth,
-      } );
-      timer = null;
-    }, 200 );    
-  };
-  
-  window.addEventListener( 'resize', updateDimensions );
-  
+  useAuthStateChange();
   useEffect( () => {
-    if( users.registerError && !alertMessage ){
+    if( usersState.registerError && !alertMessage ){
       setAlert( 'Error logging in. Please try again later.' );
     }
-  }, [ users ] );
+  }, [ usersState ] );
   
-  //Promises. This function gets called in for google sign in
-  useEffect( () => {
-    firebase.auth().onAuthStateChanged( user => {
-      const pathName = props.history.location.pathname;
-      /**
-       * @type {User}
-       */
-      if( user ){
-        dispatch( signedIn( user ) );
-        if( pathName === '/signIn' || pathName === '/signup' || pathName ===
-          '/' ){
-          props.history.push( '/dashboard' );
-        }
-      }else{
-        dispatch( signOut() );
-      }
-    } );
-  }, [] );
-  
-  let newProps = { ...props, theme };
   return ( <StyledApp
       className="App"
-      mobile={ isMobile }
       theme={ theme }
     >
       { alertMessage && ( <Alert
@@ -93,33 +37,10 @@ function App( props ){
           position: 'absolute', top: '20px', zIndex: '15',
         } }
       /> ) }
-      <NavBar { ...newProps } /> 
-      <ContainerDiv
-        className={ 'app-container' }
-        position={ 'fixed' }
-        top={ '0' }
-        maxHeight={ theme.screenHeight }
-        margin={ '75px 0 50px 0' }
-      >
-        <Switch>
-          <LoginSignUpRoute path={ '/signup' }
-                            component={ SignUp } { ...props } />
-          <LoginSignUpRoute path={ '/signIn' }
-                            component={ SignIn } { ...props } />
-          <ProtectedRoute path={ '/dashboard' } component={ Dashboard }/>
-          <ProtectedRoute path={ '/create/deck' } component={ CreateDeck }/>
-          <ProtectedRoute path={ '/preview' } component={ PreviewDeck }/>
-          <ProtectedRoute path={ '/game' } component={ FlashCard }/>
-          <ProtectedRoute path={ '/test' } component={ Testing }/>
-          
-          <LoginSignUpRoute path={ '/' }
-                            component={ LandingPage } { ...props } />
-        </Switch>
-      </ContainerDiv>
-      
+      <NavBar/>
+      <RouteContainer/>
       <Footer/>
     </StyledApp>
-  
   );
 }
 
@@ -147,32 +68,13 @@ const StyledApp = styled.div`
    }
 `;
 
-export default withRouter( App );
+export default App;
 
 /**
  * @typedef {function} Dispatch
  * @param {function} function
  * @returns none
  *
- */
-
-/**
- * @function
- * @name UseSelector
- * @param {SelectorCallback} cb
- * returns cb
- */
-
-/**
- * @callback SelectorCallback
- * @param {RootState} state
- * @returns {*}
- */
-
-/**
- * @function
- * @name useDispatch
- * returns Dispatch
  */
 
 /**
