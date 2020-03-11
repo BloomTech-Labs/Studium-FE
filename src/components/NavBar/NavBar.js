@@ -52,18 +52,17 @@ export const NavBar = () => {
     }
   };
 
-  const getSignUpText = () => {  
-      if(theme.screenWidth > 768) {
-        if(history.location.pathname === '/signup') {
-          return <Styledh2>SignIn</Styledh2>
-        } else if (history.location.pathname === '/signin'){
-        
-          return <Styledh2>SignUp</Styledh2>
-        } 
-      } else {
-        return false
+  const getSignUpText = () => {
+    if (theme.screenWidth > 768) {
+      if (history.location.pathname === '/signup') {
+        return <Styledh2>SignIn</Styledh2>;
+      } else if (history.location.pathname === '/signin') {
+        return <Styledh2>SignUp</Styledh2>;
       }
-  }
+    } else {
+      return false;
+    }
+  };
 
   return (
     <StyledBar className={'nav-bar'}>
@@ -121,7 +120,7 @@ const StyledBar = styled.div`
   height: 74px;
 
   @media screen and ${devices.tablet} {
-  }  
+  }
 `;
 
 const Styledh2 = styled.h2`
@@ -133,4 +132,4 @@ const Styledh2 = styled.h2`
   height: 24px;
   left: 1197px;
   top: 38px;
-`
+`;

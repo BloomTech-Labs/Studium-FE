@@ -48,8 +48,7 @@ function App( props ){
         screenWidth: window.innerWidth,
       } );
       timer = null;
-    }, 200 );
-    
+    }, 200 );    
   };
   
   window.addEventListener( 'resize', updateDimensions );

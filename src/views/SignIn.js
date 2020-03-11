@@ -1,8 +1,11 @@
 import React, {useState} from 'react';
-import {FormInput, SynapsButton, SynapsText} from '../components';
-import styled from 'styled-components';
+import {FormInput, SynapsButton, SynapsText, SmallLogo} from '../components';
+import styled, {useTheme, ThemeContext} from 'styled-components';
 import {signIn, GOOGLE_PROVIDER, EMAIL_PROVIDER} from '../actions';
 import {useDispatch} from 'react-redux';
+import {SvgContainer} from '../components/SvgContainer/SvgContainer';
+import { ReactComponent as svg} from '../images/SmallWhiteLogo.svg';
+
 
 /**
  * Sign In
@@ -13,6 +16,7 @@ import {useDispatch} from 'react-redux';
 export function SignIn(props) {
   const dispatch = useDispatch();
   const [info, setInfo] = useState({email: '', password: '', error: {}});
+  const theme = useTheme(ThemeContext);
 
   const handleChange = e => {
     setInfo({...info, [e.target.name]: e.target.value});
@@ -44,7 +48,20 @@ export function SignIn(props) {
 
   return (
     <StyledSignIn data-testid={'sign-in-container'}>
-      <SynapsText />
+      <div styled={{height: '600px', width: '400px'}}>
+      <SvgContainer
+        width={'400px'}
+        height={'100px'}
+        svg={svg}
+        zIndex={1}
+        position={'block'}
+        backgroundColor={theme.primaryColor}
+        color={'#fff'}
+        opacity={1}
+        strokeColor={theme.primaryColor}  
+        viewBox={'0 0 0 0'}
+      />
+      </div>
       <StyledH2>Hey! Welcome Back.</StyledH2>
 
       <SynapsButton
@@ -97,9 +114,12 @@ const StyledSignIn = styled.div`
 `;
 
 const StyledH2 = styled.h2`
-  font-size: 1.5em;
-  font-weight: 900;
+  font-family: Source Sans Pro;
+  font-size: 36px;
+  line-height: 24px;
+  font-weight: bold;
   margin: 1rem 0 1em;
+  color: #b7bfbc;
 `;
 
 const StyledBorder = styled.span`

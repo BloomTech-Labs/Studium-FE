@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useTheme, ThemeContext } from 'styled-components';
+import {useTheme, ThemeContext} from 'styled-components';
 import PropTypes from 'prop-types';
 
 /**
@@ -24,7 +24,7 @@ import PropTypes from 'prop-types';
  *  />
  *  )
  */
-export const SvgContainer = ( {
+export const SvgContainer = ({
   svg: Svg, // I want to wrap this component in the styled tag below.
   position,
   opacity,
@@ -36,65 +36,73 @@ export const SvgContainer = ( {
   color,
   top,
   viewBox,
+  width,
+  height,
   testId = 'synaps-brain',
   ...props
-} ) => {
-  
-  const theme = useTheme( ThemeContext );
-  const StyledSvg = withStyles( Svg );
-  
+}) => {
+  const theme = useTheme(ThemeContext);
+  const StyledSvg = withStyles(Svg);
+
   return (
-    
     <StyledContainer
-      position={ position }
-      left={ left }
-      top={ top }
-      data-testId={ 'positional-container' }
+      height={height}
+      width={width}
+      position={position}
+      left={left}
+      top={top}
+      data-testId={'positional-container'}
     >
-      <StyledDiv data-testId={ 'relative-container' }>
+      <StyledDiv
+        height={height}
+        width={width}
+        data-testId={'relative-container'}
+      >
         <StyledSvg
-          data-testid={ testId }
-          backgroundColor={ backgroundColor }
-          color={ color }
-          theme={ theme }
-          viewBox={ viewBox }
-          zIndex={ zIndex }
-          strokeColor={ strokeColor }
-          strokeWidth={ strokeWidth }
+          data-testid={testId}
+          backgroundColor={backgroundColor}
+          color={color}
+          theme={theme}
+          viewBox={viewBox}
+          zIndex={zIndex}
+          strokeColor={strokeColor}
+          strokeWidth={strokeWidth}
         />
       </StyledDiv>
     </StyledContainer>
-  
   );
 };
 
-const withStyles = ( Component ) => styled( Component )`
-z-index: ${ props => props.zIndex || 5 };
-background: ${ ( { backgroundColor, theme } ) => backgroundColor ||
-  theme.white };
+const withStyles = Component => styled(Component)`
+  z-index: ${props => props.zIndex || 5};
+  background: ${({backgroundColor, theme}) => backgroundColor || theme.white};
 
-> *::before, *::after, * {
-    z-index: ${ props => props.zIndex || 5 };
-    opacity: ${ props => props.opacity || 1 };
-    fill: ${ props => props.color || props.theme.primaryColor };
-    }
-> g {
-    z-index: ${ props => props.zIndex || 5 };
-    stroke: ${ props => props.strokeColor || props.theme.white };
-    stroke-width: ${ props => props.strokeWidth || ' 1px' };
+  > *::before,
+  *::after,
+  * {
+    z-index: ${props => props.zIndex || 5};
+    opacity: ${props => props.opacity || 1};
+    fill: ${props => props.color || props.theme.primaryColor};
+  }
+  > g {
+    z-index: ${props => props.zIndex || 5};
+    stroke: ${props => props.strokeColor || props.theme.white};
+    stroke-width: ${props => props.strokeWidth || ' 1px'};
   }
 `;
 
 const StyledContainer = styled.div`
-position: ${ props => props.position || 'block' };
-left: ${ props => props.left || 0 };
-top: ${ props => props.top || 0 };
-width: min-content;
-height: min-content;
+  position: ${props => props.position || 'block'};
+  left: ${props => props.left || 0};
+  top: ${props => props.top || 0};
+  width: ${props => props.width || 'min-content'};
+  height: ${props => props.height || 'min-content'};
 `;
 
 const StyledDiv = styled.div`
-position: relative;
+  position: relative;
+  width: ${props => props.width || 'min-content'};
+  height: ${props => props.height || 'min-content'};
 `;
 
 SvgContainer.propTypes = {
