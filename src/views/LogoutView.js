@@ -1,7 +1,7 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import { SynapsButton } from '../components/Button/SynapsButton.js';
 import { signOut } from '../actions';
+import { useAppHooks } from '../customHooks/useAppHooks.js';
 
 /**
  * Logout
@@ -10,7 +10,7 @@ import { signOut } from '../actions';
  * @example return (<Logout />);
  */
 export const LogoutView = props => {
-  const dispatch = useDispatch();
+  const { dispatch } = useAppHooks();
   return (
     <div>
       <SynapsButton

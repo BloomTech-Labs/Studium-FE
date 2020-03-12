@@ -33,6 +33,12 @@ const initialState = {
  */
 export const photosReducer = ( state = initialState, action ) => {
   switch( action.type ){
+    case 'SET_INIT_STATE':
+      if( action.payload && action.payload.name &&
+        action.payload.name.includes( 'photos' ) ){
+        return action.payload.value;
+      }
+      return state;
     case UPLOADING_PHOTO_INIT:
     case UPLOADING_PHOTO_FAILED:
     case UPLOADING_PHOTO_SUCCESS:

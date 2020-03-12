@@ -5,7 +5,7 @@ import {PreviewDeckCards} from './PreviewDeckCards.js';
 
 
 
-test('StyledDeckPreview render correctly', () => {
+test('Preview Deck Cards render correctly', () => {
     const tree = renderer.create(<PreviewDeckCards />).toJSON();
     expect(tree).toMatchSnapshot();
 });

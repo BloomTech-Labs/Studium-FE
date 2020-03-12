@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FormInput, SynapsButton, SynapsText } from '../components';
 import styled from 'styled-components';
 import { signIn, GOOGLE_PROVIDER, EMAIL_PROVIDER } from '../actions';
-import { useDispatch } from 'react-redux';
+import { useAppHooks } from '../customHooks/useAppHooks.js';
 
 /**
  * Sign In
@@ -12,7 +12,7 @@ import { useDispatch } from 'react-redux';
  */
 export function SignIn( props ){
   
-  const dispatch = useDispatch();
+  const { dispatch } = useAppHooks();
   const [ info, setInfo ] = useState( { email: '', password: '', error: {} } );
   
   const handleChange = ( e ) => {
@@ -20,6 +20,7 @@ export function SignIn( props ){
   };
   
   const handleGoogleClick = e => {
+    debugger;
     dispatch( signIn( GOOGLE_PROVIDER ) );
   };
   

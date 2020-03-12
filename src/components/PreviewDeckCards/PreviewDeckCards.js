@@ -17,7 +17,7 @@ import { Card, Icon } from 'antd';
  * )
  */
 export const PreviewDeckCards = ( {
-  text, icon, loading, block, hoverEffect, deck, type = 'inner', size = 'default', ...props
+  text, icon, loading, block, hoverEffect, card, type = 'inner', size = 'default', ...props
 } ) => (
   <StyledAntdCard
     type={ type }
@@ -28,7 +28,7 @@ export const PreviewDeckCards = ( {
     { ...props }
   >
     
-    { deck && <p className={ 'deck-text' }>{ deck.card_name }</p> }
+    { card && <p className={ 'deck-text' }>{ card.question }</p> }
     <Icon type={ 'check-circle' }
           style={ {
             position: 'absolute', bottom: '5px', right: '5px',
@@ -58,7 +58,7 @@ PreviewDeckCards.propTypes = {
   loading: PropTypes.bool,
   block: PropTypes.bool,
   hoverEffect: PropTypes.bool,
-  deck: PropTypes.object,
+  card: PropTypes.object,
   type: PropTypes.oneOf( [ 'inner' ] ),
   size: PropTypes.oneOf( [ 'default' ] ),
 };

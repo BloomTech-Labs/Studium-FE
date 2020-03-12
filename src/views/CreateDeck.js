@@ -4,6 +4,8 @@ import {CreateCardTitleText} from '../components/Text/TitleText/CreateCardTitleT
 import {CreateCard} from '../components/CreateCard/CreateCard.js';
 import {DeckName} from '../components/CreateDeck/DeckName.js';
 import {SmallDeckSvg} from '../components/SmallDeckSvg/SmallDeckSvg.js';
+import {SynapsButton} from '../components/Button/SynapsButton.js';
+
 /**
  * Create Deck View
  * @category Views
@@ -79,6 +81,10 @@ export const CreateDeck = props => {
           text={`Card ${cardNum} - Back`}
         />
       </CreateCardContainer>
+      <Bottom>
+        <SynapsButton text={'Add Another Card'} type={'primary'} />
+        <SynapsButton text={'Done'} type={'default'} />
+      </Bottom>
     </StyledCreateDeck>
   );
 };
@@ -110,4 +116,11 @@ const CardHeaderContainer = styled.div`
 const CardNameContainer = styled.div`
   width: 100%;
   margin-bottom: 15px;
+`;
+
+const Bottom = styled.div`
+  width: 100%;
+  justify-self: flex-end;
+  display: flex;
+  justify-content: space-around;
 `;

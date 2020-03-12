@@ -3,21 +3,22 @@ import styled from 'styled-components';
 import {SmallFlashCard, SearchBar} from '../components';
 import {TitleText} from '../components/Text/TitleText/TitleText.js';
 import PropTypes from 'prop-types';
+import {useAppHooks} from '../customHooks/useAppHooks.js';
 import {devices} from '../utilities/breakpoints-device.js';
 
 const decks = [
   {deck_name: 'Some Name', deck_id: 1},
-  {deck_name: 'Another Name', deck_id: 1},
-  {deck_name: 'Anatomy', deck_id: 1},
-  {deck_name: 'Some Name', deck_id: 1},
+  {deck_name: 'Another Name', deck_id: 2},
+  {deck_name: 'Anatomy', deck_id: 3},
+  {deck_name: 'Some Name', deck_id: 4},
   {
     deck_name: 'Another' + ' Name',
-    deck_id: 1,
+    deck_id: 5,
   },
   {
     deck_name:
       'Anatomy this is a really long deck name lets just keep' + ' this name',
-    deck_id: 1,
+    deck_id: 6,
   },
 ];
 
@@ -29,7 +30,7 @@ const decks = [
  */
 export const Dashboard = props => {
   const [selected, setSelected] = useState(0);
-
+  const {pathname, changePath, theme} = useAppHooks();
   const search = e => {
     console.log(e.target.value);
   };
@@ -40,10 +41,10 @@ export const Dashboard = props => {
 
   const deckClicked = (deck = undefined) => {
     if (!deck) {
-      props.history.push('/create/deck');
+      changePath('/create/deck');
       return;
     }
-    props.history.push('/game', {...deck});
+    changePath('/preview', {...deck});
   };
 
   return (
@@ -58,16 +59,12 @@ export const Dashboard = props => {
           marginLeft: '10%',
         }}
       />
+
       <StyledDeckHolder>
-        <SmallFlashCard
-          border={'dashed'}
-          icon={'plus'}
-          onClick={() => deckClicked()}
-        />
         {decks.map(deck => {
           return (
             <SmallFlashCard
-              id={deck.deck_id}
+              key={deck.deck_id}
               deck={deck}
               border={'solid'}
               onClick={e => deckClicked(deck)}
@@ -96,7 +93,6 @@ const StyledDashboard = styled.div`
   flex-direction: column;
   max-width: 100%;
   height: 100%;
-
   @media screen and ${devices.tablet} {
     width: 100%;
     height: 100vh;

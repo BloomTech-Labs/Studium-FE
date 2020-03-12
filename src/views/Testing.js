@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import {CreateCard} from '../components/CreateCard/CreateCard.js';
+import {SynapsBrain} from '../components/SynapsBrain/SynapsBrain.js';
+import {CreateButton} from '../components/Button/CreateButton.js';
 
 export const Testing = () => {
   return (
     <StyledTesting>
-      <CreateCard />
+      <CreateButton />
     </StyledTesting>
   );
 };

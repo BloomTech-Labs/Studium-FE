@@ -2,7 +2,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
-import { theme } from './src/utilities/theme.js';
+import { useThemeContext } from './src/customHooks/useThemeContext.js';
 import { StyleSheetManager } from 'styled-components';
 import { getStore } from './src/utilities/getStore.js';
 
@@ -11,7 +11,7 @@ const WrapperComponentDocs = ( props ) => {
   return (
     <div>
       <head></head>
-      <ThemeProvider theme={ theme }>
+      <ThemeProvider theme={ useThemeContext }>
         <StyleSheetManager target={ frameContext.document.head }>
           <Provider store={ getStore() }>
             { props.children }

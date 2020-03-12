@@ -8,7 +8,7 @@ const StyledTextArea = ({
   value,
   autoSize,
   clickHandler,
-  drillName,
+  drillName = 'defaultName',
   ...props
 }) => {
   return <STextArea name={drillName} onClick={clickHandler} {...props} />;

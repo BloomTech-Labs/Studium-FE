@@ -14,3 +14,4 @@ export * from './Text/TitleText/TitleText.js';
 export * from './CardIcon/CardIcon.js';
 export * from './Footer/Footer.js';
 export * from './SynapsBrain/SynapsBrain.js';
+export * from './RouteContainer/RouteContainer.js';
