@@ -11,7 +11,7 @@ const StyledTextArea = ({
   drillName,
   ...props
 }) => {
-  return <STextArea name={drillName} onClick={clickHandler} value={value} />;
+  return <STextArea name={drillName} onClick={clickHandler} {...props} />;
 };
 
 StyledTextArea.propTypes = {
