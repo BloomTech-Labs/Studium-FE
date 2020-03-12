@@ -4,10 +4,17 @@ import {Icon} from 'antd';
 import styled from 'styled-components';
 
 export const CardEditDeleteIcons = props => {
+  const editClickHandler = e => {
+    console.log('edit button was clicked');
+  };
+  const clearClickHandler = e => {
+    console.log('clear button was clicked');
+  };
+
   return (
     <StyledIonContainer>
-      <Icon type="edit" />
-      <Icon type="delete" />
+      <Icon onClick={editClickHandler} type="edit" />
+      <Icon onClick={clearClickHandler} type="delete" />
     </StyledIonContainer>
   );
 };
