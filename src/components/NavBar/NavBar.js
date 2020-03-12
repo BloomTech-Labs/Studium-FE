@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import styled, { useTheme, ThemeContext } from 'styled-components';
-import { ContainerDiv, NavBarAvatar } from '../index.js';
-import { ReactComponent as SmallWhiteLogo } from '../../images/SmallWhiteLogo.svg';
-import { signOut } from '../../actions';
-import { useDispatch, useSelector } from 'react-redux';
-import { devices } from '../../utilities/breakpoints-device.js';
-import { SynapsBrain } from '../index.js';
-import { useAppHooks } from '../../customHooks/useAppHooks.js';
+import styled, {useTheme, ThemeContext} from 'styled-components';
+import {ContainerDiv, NavBarAvatar} from '../index.js';
+import {ReactComponent as SmallWhiteLogo} from '../../images/SmallWhiteLogo.svg';
+import {signOut} from '../../actions';
+import {useDispatch, useSelector} from 'react-redux';
+import {devices} from '../../utilities/breakpoints-device.js';
+import {SynapsBrain} from '../index.js';
+import {useAppHooks} from '../../customHooks/useAppHooks.js';
 
 /**
  * Nav Bar
@@ -17,15 +17,15 @@ import { useAppHooks } from '../../customHooks/useAppHooks.js';
  *  return (<NavBar />)
  */
 export const NavBar = () => {
-  const { usersState, theme, dispatch, changePath, pathname } = useAppHooks();
-  const [ menuOpen, setMenuOpen ] = useState( false );
-  const [ avatarUrl, setAvatarUrl ] = useState( '' );
-  
-  useEffect( () => {
-    if( usersState.user && usersState.user.photoURL ){
-      setAvatarUrl( usersState.user.photoURL );
-    }else{
-      setAvatarUrl( '' );
+  const {usersState, theme, dispatch, changePath, pathname} = useAppHooks();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [avatarUrl, setAvatarUrl] = useState('');
+
+  useEffect(() => {
+    if (usersState.user && usersState.user.photoURL) {
+      setAvatarUrl(usersState.user.photoURL);
+    } else {
+      setAvatarUrl('');
     }
   }, [usersState]);
 
@@ -38,10 +38,7 @@ export const NavBar = () => {
     if (theme.screenWidth < 768) {
       return true;
     } else {
-      if (
-        pathname === '/signup' ||
-        pathname === '/signin'
-      ) {
+      if (pathname === '/signup' || pathname === '/signin') {
         return false;
       } else {
         return true;
@@ -129,4 +126,9 @@ const Styledh2 = styled.h2`
   height: 24px;
   left: 1197px;
   top: 38px;
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 24px;
 `;

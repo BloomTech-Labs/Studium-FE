@@ -48,13 +48,14 @@ export function SignIn( props ){
 
   const logoText = () => {
     if(theme.screenWidth < 768) {
-     return 
+     return <SynapsText /> 
     }
   }
 
   return (
     <StyledSignIn data-testid={'sign-in-container'}>
-      <div styled={{height: '600px', width: '400px', position: 'relative'}}>
+     
+     {logoText() || <div styled={{height: '600px', width: '400px', position: 'relative'}}>
       {theme.screenWidth < 768 || (
       <SvgContainer    
         width={'614px'}
@@ -70,7 +71,8 @@ export function SignIn( props ){
         overflow={'visible'}
       />
       )}
-      </div>
+      </div>}
+      
       <StyledH2>Hey! Welcome Back.</StyledH2>
 
       <SynapsButton
