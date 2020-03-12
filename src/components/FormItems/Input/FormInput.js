@@ -27,7 +27,7 @@ export const FormInput = ( {
       return (
         
         <StyledFormItem label={ label }>
-          <StyledAntdInputLargeRadius { ...props } />
+          {/* <StyledAntdInputLargeRadius { ...props } /> */}
         </StyledFormItem>
       
       );
@@ -36,7 +36,7 @@ export const FormInput = ( {
       return (
         
         <StyledFormItem label={ label }>
-          <StyledAntdInputSmallRadius { ...props } />
+          {/* <StyledAntdInputSmallRadius { ...props } /> */}
         </StyledFormItem>
       
       );
