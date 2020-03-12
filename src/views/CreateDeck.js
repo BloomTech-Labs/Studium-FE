@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import {CreateCardTitleText} from '../components/Text/TitleText/CreateCardTitleText.js';
 import {CreateCard} from '../components/CreateCard/CreateCard.js';
@@ -13,8 +13,8 @@ import {SmallDeckSvg} from '../components/SmallDeckSvg/SmallDeckSvg.js';
 export const CreateDeck = props => {
   const [cardNum, setCardNum] = useState(1);
   const [visible, setVisible] = useState({
-    front: true,
-    back: true,
+    front: false,
+    back: false,
   });
   const [highlighted, setHighlighted] = useState({
     title: true,
@@ -24,8 +24,34 @@ export const CreateDeck = props => {
 
   const clickHandler = e => {
     e.preventDefault();
-    console.log('A click was had');
-    console.log('clicked on ==>', e.target.name);
+    let clickedOn = e.target.name;
+
+    if (clickedOn == 'title' && highlighted.title == true) {
+      setHighlighted({
+        ...highlighted,
+        title: false,
+        front: true,
+      });
+      setVisible({
+        ...visible,
+        front: true,
+      });
+    } else if (clickedOn == 'front' && highlighted.front == true) {
+      setHighlighted({
+        ...highlighted,
+        front: false,
+        back: true,
+      });
+      setVisible({
+        ...visible,
+        back: true,
+      });
+    } else {
+      setHighlighted({
+        ...highlighted,
+        back: false,
+      });
+    }
   };
 
   return (
