@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { SmallLogo, SynapsButton, SynapsText } from '../components';
-import { devices } from '../utilities/breakpoints-device';
-import { useAppHooks } from '../customHooks/useAppHooks.js';
+import {SmallLogo, SynapsButton, SynapsText} from '../components';
+import {devices} from '../utilities/breakpoints-device';
+import {useAppHooks} from '../customHooks/useAppHooks.js';
 
 /**
  * Landing Page
@@ -11,46 +11,46 @@ import { useAppHooks } from '../customHooks/useAppHooks.js';
  * @example return (<LandingPage />);
  */
 export const LandingPage = props => {
-  const { history } = useAppHooks();
+  const {changePath} = useAppHooks();
+
   const handleClick = name => {
-    if( name === 'SignIn' ){
-      history.push( '/signIn' );
-    }else{
-      history.push( '/signup' );
+    if (name === 'SignIn') {
+      changePath('/signIn');
+    } else {
+      changePath('/signup');
     }
   };
-  
+
   return (
-    
     <StyledLandingPage>
       <Mobile>
-        <SmallLogo/>
+        <SmallLogo />
         <MobileHeader>
-          <SynapsText/>
+          <SynapsText />
         </MobileHeader>
         <SynapsButton
-          text={ 'Sign In' }
-          size={ 'large' }
-          type={ 'primary' }
-          onClick={ () => handleClick( 'SignIn' ) }
-          style={ {
+          text={'Sign In'}
+          size={'large'}
+          type={'primary'}
+          onClick={() => handleClick('SignIn')}
+          style={{
             margin: '2rem auto',
             width: '204px',
             height: '62px',
             borderRadius: '15px',
-          } }
+          }}
         />
         <SynapsButton
-          text={ 'Sign Up' }
-          size={ 'large' }
-          type={ 'darkgray' }
-          onClick={ () => handleClick( 'SignUp' ) }
-          style={ {
+          text={'Sign Up'}
+          size={'large'}
+          type={'darkgray'}
+          onClick={() => handleClick('SignUp')}
+          style={{
             margin: '0 auto',
             width: '204px',
             height: '62px',
             borderRadius: '15px',
-          } }
+          }}
         />
       </Mobile>
       <Desktop>
@@ -60,12 +60,12 @@ export const LandingPage = props => {
         <HeaderName>
           <h1>Synaps</h1>
         </HeaderName>
-        <Vector/>
-        <FlashCard/>
+        <Vector />
+        <FlashCard />
         <Headline>
           <h1 className="headline">Big CTA Headline</h1>
         </Headline>
-        <CTAButton/>
+        <CTAButton />
         <Paragraph>
           <p>
             You get this app. You should really get this app. Something else
@@ -80,30 +80,29 @@ export const LandingPage = props => {
             amazing science student. Here’s how we do it
           </p>
         </Paragraph2>
-        <Group1/>
+        <Group1 />
         <Group1Text>
           Here is more about this amazing and super helpful app that will make
           you an amazing science student. Here’s how we do it
         </Group1Text>
-        <Group2/>
+        <Group2 />
         <Group2Text>
           Here is more about this amazing and super helpful app that will make
           you an amazing science student. Here’s how we do it
         </Group2Text>
-        <Group3/>
+        <Group3 />
         <Group3Text>
           Here is more about this amazing and super helpful app that will make
           you an amazing science student. Here’s how we do it
         </Group3Text>
-        <Group4/>
+        <Group4 />
         <Group4Text>
           Here is more about this amazing and super helpful app that will make
           you an amazing science student. Here’s how we do it
         </Group4Text>
-        <Rectangle/>
+        <Rectangle />
       </Desktop>
     </StyledLandingPage>
-  
   );
 };
 
@@ -111,7 +110,7 @@ const Mobile = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 146px;
-  @media ${ devices.tablet } {
+  @media ${devices.tablet} {
     display: none;
   }
 `;
@@ -120,7 +119,7 @@ const MobileHeader = styled.div``;
 
 const Desktop = styled.div`
   display: none;
-  @media ${ devices.tablet } {
+  @media ${devices.tablet} {
   }
 `;
 
@@ -261,4 +260,3 @@ const Group4Text = styled.div`
   /* or 29px */
   color: #000000;
 `;
-
