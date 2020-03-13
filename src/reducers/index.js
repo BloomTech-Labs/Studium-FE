@@ -11,16 +11,16 @@ import { cardsReducer } from './cardsReducer.js';
  * @property {CardsState} cardsState
  */
 
- /**
+/**
  * Combine Reducers
  *
  * @category Reducers
  * @returns RootState
  */
 
-export default combineReducers({
+export default combineReducers( {
   usersState: usersReducer,
   photosState: photosReducer,
-  decksReducer: decksReducer,
-   cardsState: cardsReducer,
-});
+  decksState: decksReducer,
+  cardsState: cardsReducer,
+} );

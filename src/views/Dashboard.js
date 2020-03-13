@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { SmallFlashCard, TitleText, SearchBar } from '../components';
 import PropTypes from 'prop-types';
-import { useAppHooks } from '../customHooks/useAppHooks.js';
+import {
+  useAppHooks, mediaQueries, sizes,
+} from '../customHooks/useAppHooks.js';
 import { getUserDecks } from '../actions';
 import { Alert } from 'antd';
-import BrainPic from '../svgs/BrainPic.js';
 
 /**
  * Dashboard
@@ -48,7 +49,7 @@ export const Dashboard = props => {
   };
   
   return ( <StyledDashboard className={ 'dashboard' }>
-    { theme.screenWidth <= theme.sizes.tablet &&
+    { theme.screenWidth <= sizes.tablet &&
     <>
       <TitleText text={ 'Dashboard' }/>
       <SearchBar
@@ -67,7 +68,7 @@ export const Dashboard = props => {
     { getAlert() }
     <StyledDeckHolder className={ 'deck-container' }>
       
-      { theme.screenWidth > theme.sizes.tablet &&
+      { theme.screenWidth > sizes.tablet &&
       <DesktopTopDash className={ 'dash-top' }>
         <DashboardTopLeft className={ 'dash-top-left' }>
           <TitleText color={ '#36405C' } text={ 'My Flash Cards' }/>
@@ -99,34 +100,6 @@ export const Dashboard = props => {
       </FlashCards>
     </StyledDeckHolder>
   </StyledDashboard> );
-
-  return (
-    <StyledDashboard className={'dashboard'}>
-      <TitleText text={'Dashboard'} />
-      <SearchBar
-        onSearch={search}
-        style={{
-          marginTop: '8px',
-          marginBottom: '33px',
-          width: '80%',
-          marginLeft: '10%',
-        }}
-      />
-
-      <StyledDeckHolder>
-        {decks.map(deck => {
-          return (
-            <SmallFlashCard
-              key={deck.deck_id}
-              deck={deck}
-              border={'solid'}
-              onClick={e => deckClicked(deck)}
-            />
-          );
-        })}
-      </StyledDeckHolder>
-    </StyledDashboard>
-  );
 };
 
 Dashboard.propTypes = {
@@ -170,12 +143,11 @@ const DashboardTopRight = styled.div`
     width: 300px;
     margin-top: 2rem;
     > .ant-input {
-        @media screen and ${ props => props.theme.devices.tablet } {
+        @media screen and ${ mediaQueries.tablet } {
           border: 2px solid #36405C;
           border-radius: 14px;
           height: 30px;
         }
-    
   }
   }
 `;
@@ -187,7 +159,7 @@ const StyledDeckHolder = styled.div`
   margin: 0 auto;
   justify-content: space-around;
   
-  @media screen and ${ props => props.theme.devices.tablet } {
+  @media screen and ${ mediaQueries.tablet } {
     width: 100%;
     max-width: 1140px;
     height: 100%;
@@ -207,15 +179,7 @@ const StyledDashboard = styled.div`
   max-width: 100%;
   height: 100%;
 
-@media screen and ${ props => props.theme.devices.tablet } {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  
-}
-  @media screen and ${devices.tablet} {
+  @media screen and ${ mediaQueries.tablet } {
     width: 100%;
     height: 100vh;
     position: absolute;

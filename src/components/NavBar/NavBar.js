@@ -6,7 +6,7 @@ import { ReactComponent as SmallWhiteLogo } from '../../images/SmallWhiteLogo.sv
 import { SvgContainer } from '../SvgContainer/SvgContainer.js';
 import { signOut } from '../../actions';
 import { SynapsBrain } from '../index.js';
-import { useAppHooks } from '../../customHooks/useAppHooks.js';
+import { mediaQueries, useAppHooks } from '../../customHooks/useAppHooks.js';
 import NavBarLogo from './NavBarLogo.js';
 
 /**
@@ -81,7 +81,7 @@ const StyledBar = styled.div`
   `2px solid ${ props.backgroundColor }` : '20px solid inherit' };
   overflow: visible;
 
-  @media screen and ${ props => props.theme.devices.tablet } {
+  @media screen and ${ mediaQueries.tablet } {
     background-color: ${ props => props.backgroundColor };
   }
 `;

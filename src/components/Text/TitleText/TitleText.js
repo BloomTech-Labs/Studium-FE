@@ -19,23 +19,7 @@ export const TitleText = ( { text, color = '#2A685B' } ) => {
       <StyledTitle color={ color }>{ text }</StyledTitle>
     </StyledTitleContainer>
   );
-  
-export const TitleText = ({text}) => {
-  return <StyledTitle>{text}</StyledTitle>;
 };
-
-/**
- *
- * @type {Keyframes}
- */
-const animation = keyframes`
-  0% {
-  opacity: 0;
-  }
-100%{
-  opacity: 1;
-}
-`;
 
 const StyledTitleContainer = styled.div`
 width: 100%;
@@ -56,3 +40,16 @@ TitleText.propTypes = {
   text: PropTypes.string.isRequired,
   color: PropTypes.string,
 };
+
+/**
+ *
+ * @type {Keyframes}
+ */
+const animation = keyframes`
+  0% {
+  opacity: 0;
+  }
+100%{
+  opacity: 1;
+}
+`;

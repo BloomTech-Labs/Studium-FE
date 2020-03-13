@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { NavBar, Footer, RouteContainer } from './components';
 import PropTypes from 'prop-types';
 import { Alert } from 'antd';
-import { useAppHooks } from './customHooks/useAppHooks.js';
+import { useAppHooks, mediaQueries, sizes } from './customHooks/useAppHooks.js';
 import { useAuthStateChange } from './customHooks/useAuthStateChange.js';
 import { SynapsBrain } from './components';
 
@@ -26,7 +26,7 @@ function App( props ){
   
   const getNavBarColor = () => {
     if( pathname === '/dashboard' ){
-      if( theme.screenWidth <= theme.sizes.tablet ){
+      if( theme.screenWidth <= sizes.tablet ){
         return theme.primaryColor;
       }
       
@@ -38,7 +38,7 @@ function App( props ){
       className="App"
       theme={ theme }
     >
-      { theme.screenWidth > theme.sizes.tablet &&
+      { theme.screenWidth > sizes.tablet &&
       <SynapsBrain
         zIndex={ 15 }
         width={ '100vw' }
@@ -86,9 +86,8 @@ const StyledApp = styled.div`
   min-height: 100vh;
   overflow-y: hidden;
   
-  @media ${ props => props.theme.devices.tablet } {
-  
-    background: ${ props => {
+  @media ${ mediaQueries.tablet } {
+  background: ${ props => {
   if( props.pathname === '/preview' ){
     return props.theme.primaryColor;
   }else{

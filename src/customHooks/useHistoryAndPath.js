@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {useHistory} from 'react-router';
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router';
 
 /**
  * Use History and Path
@@ -9,36 +9,37 @@ import {useHistory} from 'react-router';
  */
 export const useHistoryAndPath = () => {
   const history = useHistory();
-  const [path, setPath] = useState(history.location.pathname);
-  const [pushedState, setPushedState] = useState(null);
-  console.log('history from useHistory', history);
-  useEffect(() => {
-    if (history.location.pathname !== path) {
-      setPath(history.location.pathname);
+  const [ path, setPath ] = useState( history.location.pathname );
+  const [ pushedState, setPushedState ] = useState( null );
+  
+  useEffect( () => {
+    if( history.location.pathname !== path ){
+      setPath( history.location.pathname );
     }
-
-    if (history.location.state !== pushedState) {
-      setPushedState(history.location.state);
+    
+    if( history.location.state !== pushedState ){
+      setPushedState( history.location.state );
     }
     
   }, [ history.location.pathname ] );
   
-  }, [history]);
-
   /**
-   * Changes the current url path
+   * Change Path
    * @typedef ChangePath
+   *
    * @function
-   * @param path
+   * @name changePath
+   * @param {string} path
    * @param {{} | Any} [stateToPush]
+   * @returns void
    */
-  const changePath = (path, stateToPush = null) => {
-    if (stateToPush) {
-      history.push(path, stateToPush);
-    } else {
-      history.push(path);
+  const changePath = ( path, stateToPush = null ) => {
+    if( stateToPush ){
+      history.push( path, stateToPush );
+    }else{
+      history.push( path );
     }
   };
-
-  return {changePath, path, pushedState};
+  
+  return { changePath, path, pushedState };
 };

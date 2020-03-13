@@ -8,7 +8,7 @@ import {
 } from '../views';
 import { Switch, Route } from 'react-router';
 import { ContainerDiv } from '../components';
-import { useAppHooks } from '../customHooks/useAppHooks.js';
+import { useAppHooks, sizes } from '../customHooks/useAppHooks.js';
 
 /**
  *   RouteContainer
@@ -29,7 +29,7 @@ export const RouteContainer = ( props ) => {
       backgroundColor={ 'white' }
       top={ '0' }
       overFlowY={ 'hidden' }
-      margin={ theme.screenWidth < theme.sizes.tablet ? '75px auto 50px auto' :
+      margin={ theme.screenWidth < sizes.tablet ? '75px auto 50px auto' :
         '75px auto 0 auto' }
       heightMax={ ( theme.screenHeight - 125 ) + 'px' }
     >

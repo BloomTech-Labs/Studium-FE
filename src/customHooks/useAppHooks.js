@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistoryAndPath } from './useHistoryAndPath.js';
 import { useThemeContext } from './useThemeContext.js';
-import { decksReducer } from '../reducers/decksReducer.js';
 
 /**
  * Use App Hooks
@@ -11,34 +10,63 @@ import { decksReducer } from '../reducers/decksReducer.js';
  * using in this application.
  *
  * @category Custom Hooks
- *  @function
+ * @function
  * @name useAppHooks
  * @returns {UseAppHooksReturn}
  *
  */
 export const useAppHooks = () => {
+  
   const dispatch = useDispatch();
-  const usersState = useSelector( state => state.usersState );
-  const cardsState = useSelector( state => state.cardsState );
-  const decksState = useSelector( state => state.decksReducer );
-  const photosState = useSelector( state => state.photosState );
+  const state = useSelector( reducerState => reducerState );
   let { path, pushedState, changePath } = useHistoryAndPath();
-  //@type Theme
+  
   const theme = useThemeContext();
-
+  
   return {
     dispatch,
     theme,
-    usersState,
-    cardsState,
-    photosState,
-    decksState,
+    usersState: state.usersState,
+    cardsState: state.cardsState,
+    photosState: state.photosState,
+    decksState: state.decksState,
     pathname: path,
     changePath: changePath,
     pathPushedState: pushedState,
-    
   };
 };
+
+/**
+ * @type Sizes
+ *
+ */
+export const sizes = {
+  mobileS: 320,
+  mobileM: 375,
+  mobileL: 425,
+  tablet: 768,
+  laptop: 1024,
+  laptopL: 1440,
+  desktop: 2560,
+};
+
+/**
+ * @category Utilities
+ * @type {Devices}
+ */
+export const mediaQueries = {
+  mobileS: `(min-width: ${ sizes.mobileS }px)`,
+  mobileM: `(min-width: ${ sizes.mobileM }px)`,
+  mobileL: `(min-width: ${ sizes.mobileL }px)`,
+  tablet: `(min-width: ${ sizes.tablet }px)`,
+  laptop: `(min-width: ${ sizes.laptop }px)`,
+  laptopL: `(min-width: ${ sizes.laptopL }px)`,
+  desktop: `(min-width: ${ sizes.desktop }px)`,
+};
+
+/**
+ * @typedef {string} Color
+ */
 
 /**
  * @typedef {object} UseAppHooksReturn
@@ -53,5 +81,31 @@ export const useAppHooks = () => {
  * @property {string} pathname
  * @property {ChangePath} changePath
  * @property {any} pathPushedState
+ */
+
+/**
+ * @typedef {object} Sizes
+ * @property {number} mobileS '320px',
+ * @property {number} mobileM '375px',
+ * @property {number} mobileL '425px',
+ * @property {number} tablet '768px',
+ * @property {number} laptop '1024px',
+ * @property {number} laptopL '1440px',
+ * @property {number} desktop '2560px',
+ */
+
+/**
+ * @typedef {string} MediaQuery
+ */
+
+/**
+ * @typedef {object} Devices
+ * @property {MediaQuery} mobileS   320px
+ * @property {MediaQuery} mobileM   375px
+ * @property {MediaQuery} mobileL   425px
+ * @property {MediaQuery} tablet    768px
+ * @property {MediaQuery} laptop    1024px
+ * @property {MediaQuery} laptopL   1440px
+ * @property {MediaQuery} desktop   2560px
  */
 
