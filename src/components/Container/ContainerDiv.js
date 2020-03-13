@@ -31,6 +31,8 @@ ContainerDiv.propTypes = {
   margin: PropTypes.string,
   top: PropTypes.string,
   alignItems: PropTypes.string,
+  backgroundColor: PropTypes.string,
+  zIndex: PropTypes.number,
 };
 
 const Div = styled.div`
@@ -47,6 +49,8 @@ const Div = styled.div`
   flex-direction: ${ props => props.flexDirection || 'column' };
   justify-content: ${ props => props.justifyContent || 'center' };
   overflow-y: ${ props => props.overFlowY || 'scroll' };
+  background: ${ props => props.backgroundColor || 'white' };
+  z-index: ${ props => props.zIndex || 20 };
 
   ::-webkit-scrollbar {
     width: 0;

@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import styled, { useTheme, ThemeContext } from 'styled-components';
+import styled from 'styled-components';
 import { ContainerDiv, NavBarAvatar } from '../index.js';
 import { ReactComponent as SmallWhiteLogo } from '../../images/SmallWhiteLogo.svg';
+import { SvgContainer } from '../SvgContainer/SvgContainer.js';
 import { signOut } from '../../actions';
-import { useDispatch, useSelector } from 'react-redux';
-import { devices } from '../../utilities/breakpoints-device.js';
 import { SynapsBrain } from '../index.js';
-import { useHistory } from 'react-router';
 import { useAppHooks } from '../../customHooks/useAppHooks.js';
+import NavBarLogo from './NavBarLogo.js';
 
 /**
  * Nav Bar
@@ -17,8 +16,8 @@ import { useAppHooks } from '../../customHooks/useAppHooks.js';
  * @example
  *  return (<NavBar />)
  */
-export const NavBar = () => {
-  const { usersState, theme, dispatch, changePath } = useAppHooks();
+export const NavBar = ( { backgroundColor = 'inherit' } ) => {
+  const { usersState, theme, dispatch, changePath, pathname } = useAppHooks();
   const [ menuOpen, setMenuOpen ] = useState( false );
   const [ avatarUrl, setAvatarUrl ] = useState( '' );
   
@@ -37,32 +36,18 @@ export const NavBar = () => {
   };
   
   return (
-    <StyledBar className={ 'nav-bar' }>
+    <StyledBar className={ 'nav-bar' } backgroundColor={ backgroundColor }>
+      <WhiteLogo id={ 'svg' } fill={ 'blue' }/>
       <ContainerDiv
         justifyContent={ 'space-between' }
         className={ 'nav-bar-container' }
         height={ '75px' }
         position={ 'relative' }
-        overFlowY={ 'hidden' }
+        overFlowY={ 'visible' }
+        backgroundColor={ backgroundColor }
       >
-        { theme.screenWidth < 704 &&
-        <SynapsBrain
-          zIndex={ 1 }
-          position={ 'absolute' }
-          backgroundColor={ theme.primaryColor }
-          color={ '#164172' } opacity={ 1 }
-          strokeColor={ theme.primaryColor }
-          viewBox={ '225 25 400 400' }
-        /> }
+        <NavBarLogo/>
         
-        <SmallWhiteLogo
-          style={ {
-            position: 'absolute',
-            left: '6%',
-            top: '50%',
-            transform: 'transition(0, -53%)',
-          } }
-        />
         <NavBarAvatar
           onClick={ logout }
           avatarUrl={ avatarUrl }
@@ -73,10 +58,18 @@ export const NavBar = () => {
   );
 };
 
-NavBar.propTypes = {};
+NavBar.propTypes = {
+  backgroundColor: PropTypes.string,
+};
+
+const WhiteLogo = styled( SmallWhiteLogo )`
+:
+
+`;
 
 const StyledBar = styled.div`
   background-color: ${ props => props.theme.primaryColor };
+  box-sizing: content-box;
   display: flex;
   justify-content: center;
   z-index: 15;
@@ -84,9 +77,12 @@ const StyledBar = styled.div`
   top: 0;
   width: 100%;
   height: 74px;
+  border: ${ props => props.backgroundColor ?
+  `2px solid ${ props.backgroundColor }` : '20px solid inherit' };
+  overflow: visible;
 
-  @media screen and ${ devices.tablet } {
-  
+  @media screen and ${ props => props.theme.devices.tablet } {
+    background-color: ${ props => props.backgroundColor };
   }
 `;
 

@@ -18,6 +18,7 @@ import { useAppHooks } from '../customHooks/useAppHooks.js';
  */
 export const ProtectedRoute = ( { component: Component, ...rest } ) => {
   const { usersState } = useAppHooks();
+  
   return (
     <Route
       { ...rest }

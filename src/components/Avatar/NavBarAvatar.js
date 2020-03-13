@@ -2,7 +2,6 @@ import React from 'react';
 import { Avatar } from 'antd';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { ReactComponent as AvatarIcon } from '../../images/ProfileIcons.svg';
 
 /**
  * Nav Bar Avatar
@@ -26,6 +25,17 @@ export const NavBarAvatar = ( { avatarUrl, ...props } ) => {
 };
 
 const StyledAntAvatar = styled( Avatar )`
+  && {
+    position: absolute;
+    background-color: #585858;
+    filter: contrast(0.5);
+    top: 35px;
+    right: 8%;
+    transform: translate(0, -50%);
+  }
+`;
+
+const AvatarIcon = styled( Avatar )`
   && {
     position: absolute;
     background-color: #585858;

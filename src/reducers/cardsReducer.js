@@ -16,7 +16,7 @@ import {
  * @property {boolean} deletingCard
  */
 const initialState = {
-  cards: {},
+  cards: [],
   isLoading: false,
   error: null,
   creatingCard: false,
@@ -59,6 +59,7 @@ export const cardsReducer = ( state = initialState, action ) => {
     case GET_ALL_CARDS_FOR_DECK_INIT:
       return { ...state, isLoading: true, error: null };
     case GET_ALL_CARDS_FOR_DECK_SUCCESS:
+      
       return {
         ...state,
         cards: [ ...state.cards, ...action.payload ],

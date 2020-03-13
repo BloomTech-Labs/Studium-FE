@@ -1,0 +1,19 @@
+{
+  "presets": [
+    "@babel/preset-env"
+  ],
+  "plugins": [
+    [
+      "babel-plugin-styled-components",
+      {
+        "pure": true
+      },
+      {
+        "transpileTemplateLiterals": false
+      },
+      {
+        "pure": true
+      }
+    ]
+  ]
+}

@@ -20,7 +20,7 @@ export function SignIn( props ){
   };
   
   const handleGoogleClick = e => {
-    debugger;
+    
     dispatch( signIn( GOOGLE_PROVIDER ) );
   };
   

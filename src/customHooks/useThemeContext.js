@@ -1,44 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import { useDimensions } from './useDimensions.js';
-import { devices, sizes } from '../utilities/breakpoints-device.js';
 
 /**
- * @typedef {Object} Theme
- * @property {Color} primaryColor
- * @property {Color} primaryColorB98C4
- * @property {Color} primaryColor86869A
- * @property {Color} primaryColor5C5F78
- * @property {Color} primaryColor36405C
- * @property {Color} primaryColor293046
- * @property {Color} primaryColor353544
- *
- * @property {Color} secondaryColor
- * @property {Color} secondaryColorEAF5F1
- * @property {Color} secondaryColorD8EEE6
- * @property {Color} secondaryColorC6E6DB
- * @property {Color} secondaryColorB5DFD1
- * @property {Color} secondaryColor92B2AA
- * @property {Color} secondaryColor798A87
- *
- * @property {Color} white
- * @property {Color} grayF1F2F2
- * @property {Color} grayE6E7E8
- * @property {Color} grayD1D3D4
- * @property {Color} grayBCBEC0
- * @property {Color} grayA7A9AC
- * @property {Color} gray939598
- *
- * @property {number} largeRadius
- * @property {number} smallRadius
- * @property {number} navBarTopHeight
- * @property {number} footerHeight
- * @property {number} screenHeight
- * @property {number} screenWidth
- *
- * @property {Devices} devices
- * @property {Sizes} sizes
+ * @type Sizes
  *
  */
+const sizes = {
+  mobileS: 320,
+  mobileM: 375,
+  mobileL: 425,
+  tablet: 768,
+  laptop: 1024,
+  laptopL: 1440,
+  desktop: 2560,
+};
+
+/**
+ * @category Utilities
+ * @type {Devices}
+ */
+const devices = {
+  mobileS: `(min-width: ${ sizes.mobileS }px)`,
+  mobileM: `(min-width: ${ sizes.mobileM }px)`,
+  mobileL: `(min-width: ${ sizes.mobileL }px)`,
+  tablet: `(min-width: ${ sizes.tablet }px)`,
+  laptop: `(min-width: ${ sizes.laptop }px)`,
+  laptopL: `(min-width: ${ sizes.laptopL }px)`,
+  desktop: `(min-width: ${ sizes.desktop }px)`,
+};
 
 /**
  * @type {Theme}
@@ -101,3 +90,67 @@ export const useThemeContext = () => {
   return theme;
   
 };
+
+/**
+ * @typedef {object} Sizes
+ * @property {number} mobileS '320px',
+ * @property {number} mobileM '375px',
+ * @property {number} mobileL '425px',
+ * @property {number} tablet '768px',
+ * @property {number} laptop '1024px',
+ * @property {number} laptopL '1440px',
+ * @property {number} desktop '2560px',
+ */
+
+/**
+ * @typedef {string} MediaQuery
+ */
+
+/**
+ * @typedef {object} Devices
+ * @property {MediaQuery} mobileS   320px
+ * @property {MediaQuery} mobileM   375px
+ * @property {MediaQuery} mobileL   425px
+ * @property {MediaQuery} tablet    768px
+ * @property {MediaQuery} laptop    1024px
+ * @property {MediaQuery} laptopL   1440px
+ * @property {MediaQuery} desktop   2560px
+ */
+
+/**
+ * @typedef {Object} Theme
+ * @property {Color} primaryColor
+ * @property {Color} primaryColorB98C4
+ * @property {Color} primaryColor86869A
+ * @property {Color} primaryColor5C5F78
+ * @property {Color} primaryColor36405C
+ * @property {Color} primaryColor293046
+ * @property {Color} primaryColor353544
+ *
+ * @property {Color} secondaryColor
+ * @property {Color} secondaryColorEAF5F1
+ * @property {Color} secondaryColorD8EEE6
+ * @property {Color} secondaryColorC6E6DB
+ * @property {Color} secondaryColorB5DFD1
+ * @property {Color} secondaryColor92B2AA
+ * @property {Color} secondaryColor798A87
+ *
+ * @property {Color} white
+ * @property {Color} grayF1F2F2
+ * @property {Color} grayE6E7E8
+ * @property {Color} grayD1D3D4
+ * @property {Color} grayBCBEC0
+ * @property {Color} grayA7A9AC
+ * @property {Color} gray939598
+ *
+ * @property {number} largeRadius
+ * @property {number} smallRadius
+ * @property {number} navBarTopHeight
+ * @property {number} footerHeight
+ * @property {number} screenHeight
+ * @property {number} screenWidth
+ *
+ * @property {Devices} devices
+ * @property {Sizes} sizes
+ *
+ */

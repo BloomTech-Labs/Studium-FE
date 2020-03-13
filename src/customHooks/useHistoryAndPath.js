@@ -22,11 +22,12 @@ export const useHistoryAndPath = () => {
       setPushedState( history.location.state );
     }
     
-  }, [ history ] );
+  }, [ history.location.pathname ] );
   
   /**
    * Changes the current url path
    * @typedef ChangePath
+   * @function
    * @param path
    * @param {{} | Any} [stateToPush]
    */

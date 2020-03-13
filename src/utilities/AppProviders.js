@@ -2,13 +2,14 @@ import React, { useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
 import { getStore } from './getStore.js';
-import { getCookies } from './getCookies.js';
 import { getGlobalStyles } from './getGlobalStyles.js';
 import { useThemeContext } from '../customHooks/useThemeContext.js';
 import { BrowserRouter as Router } from 'react-router-dom';
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
 
 export const store = getStore();
-export const cookies = getCookies();
 const GlobalStyles = getGlobalStyles();
 
 /**
@@ -20,7 +21,7 @@ const GlobalStyles = getGlobalStyles();
 const AppProvider = ( props ) => {
   
   useEffect( () => {
-    if( Object.keys( cookies ).length > 0 ){
+    if( Object.keys( cookies.getAll() ).length > 0 ){
       Object.keys( cookies ).forEach( key => {
         store.dispatch( {
           type: 'SET_INIT_STATE',

@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
-import { TitleText, PreviewDeckCards } from '../components';
+import { getAllCardsForDeck } from '../actions/cardActions.js';
+import { TitleText, PreviewDeckCards, SearchBar } from '../components';
 import { useAppHooks } from '../customHooks/useAppHooks.js';
+import { Alert, Icon } from 'antd';
 
 /**
  * Preview Deck
@@ -13,16 +15,48 @@ import { useAppHooks } from '../customHooks/useAppHooks.js';
  */
 export const PreviewDeck = props => {
   // @type CardState
-  const { cardsState, pathPushedState } = useAppHooks();
+  const { cardsState, pathPushedState, dispatch, usersState } = useAppHooks();
+  console.log( pathPushedState );
+  
+  useEffect( () => {
+    
+    if( pathPushedState === null ){
+      
+    }else{
+      dispatch(
+        getAllCardsForDeck( pathPushedState.deck_id, usersState.user.uid ) );
+    }
+    
+  }, [ pathPushedState ] );
+  
+  const getAlert = () => {
+    if( cardsState.error ){
+      return <Alert
+        message={ cardsState.error.message }
+        type="warning"
+        closable
+      />;
+    }
+  };
   
   return (
-    
     <StyledPreviewDeck>
+      { getAlert() }
+      <TopContainer>
+        <StyledIconLeft type="left"/>
+        <p>Back</p>
+        <SearchContainer>
+          <SearchBar height={ '23px' } borderRadius={ '14px' }
+                     onSearch={ () => {
+                     } }/>
+        </SearchContainer>
+        <p style={ { marginRight: '9%' } }>Select</p>
+      </TopContainer>
       <TitleText
         text={ ( pathPushedState && pathPushedState.deck_name ) || 'Preview' }/>
       <StyledPreviewDeckHolder>
-        { cardsState.cards.length > 0 &&
-        cardsState.cards.filter(
+        <PreviewDeckCards key={ 0 }/>
+        { Object.values( cardsState.cards ).filter(
           card => card.deck_id === pathPushedState.deck_id ).map(
           card => {
             console.log( card );
@@ -33,13 +67,32 @@ export const PreviewDeck = props => {
     </StyledPreviewDeck>
   
   );
+  
 };
 
 PreviewDeck.propTypes = {};
 
+const TopContainer = styled.div`
+display: flex;
+flex-direction: row;
+font-size: 12px;
+widthL 100vw;
+
+`;
+
+const StyledIconLeft = styled( Icon )`
+margin-right: %9;
+`;
+
+const SearchContainer = styled.div`
+max-width: 50%;
+margin: 0 auto;
+`;
+
 const StyledPreviewDeck = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 16px 1rem;
   max-width: 100%;
   min-height: 90%;
   width: 100%;
@@ -47,6 +100,9 @@ const StyledPreviewDeck = styled.div`
 
 const StyledPreviewDeckHolder = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  overflow: scroll;
+  padding-bottom: 150px;
 `;
 

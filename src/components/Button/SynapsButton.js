@@ -18,6 +18,7 @@ export const SynapsButton = ( {
 } ) => {
   
   return ( <StyledAntdButton
+    onC
     type={ type }
     size={ size }
     icon={ icon }

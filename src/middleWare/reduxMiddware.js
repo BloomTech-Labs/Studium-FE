@@ -1,5 +1,6 @@
 import React from 'react';
-import { cookies } from '../utilities/AppProviders.js';
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
 /**
  * Logs all actions and states after they are dispatched.

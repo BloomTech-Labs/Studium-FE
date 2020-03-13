@@ -37,6 +37,8 @@ export const SvgContainer = ( {
   color,
   top,
   viewBox,
+  width,
+  height,
   testId = 'synaps-brain',
   ...props
 } ) => {
@@ -47,14 +49,17 @@ export const SvgContainer = ( {
   return (
     
     <StyledContainer
+      id={ 'positional-container' }
       position={ position }
       left={ left }
       top={ top }
-      data-testId={ 'positional-container' }
+      width={ width }
+      height={ height }
+      { ...props }
     >
-      <StyledDiv data-testId={ 'relative-container' }>
+      <StyledDiv id={ 'relative-container' }>
         <StyledSvg
-          data-testid={ testId }
+          id={ 'styled-svg' }
           backgroundColor={ backgroundColor }
           color={ color }
           theme={ theme }
@@ -73,29 +78,41 @@ const withStyles = ( Component ) => styled( Component )`
 z-index: ${ props => props.zIndex || 5 };
 background: ${ ( { backgroundColor, theme } ) => backgroundColor ||
   theme.white };
+  overflow: visible;
+  
+&& {
+  #testing {
+    overflow: visible;
+    background: pink;
+}
+}
 
 > *::before, *::after, * {
     z-index: ${ props => props.zIndex || 5 };
     opacity: ${ props => props.opacity || 1 };
-    fill: ${ props => props.color || props.theme.primaryColor };
+    fill: ${ props => props.color };
     }
 > g {
     z-index: ${ props => props.zIndex || 5 };
-    stroke: ${ props => props.strokeColor || props.theme.white };
+    stroke: ${ props => props.strokeColor };
     stroke-width: ${ props => props.strokeWidth || ' 1px' };
+    fill: black;
   }
+  
 `;
 
 const StyledContainer = styled.div`
 position: ${ props => props.position || 'block' };
 left: ${ props => props.left || 0 };
 top: ${ props => props.top || 0 };
-width: min-content;
-height: min-content;
+width: ${ props => props.width || 'min-content' };
+height: ${ props => props.height || 'min-content' };
 `;
 
 const StyledDiv = styled.div`
 position: relative;
+width: 100%;
+height: 100%;
 `;
 
 SvgContainer.propTypes = {
@@ -111,6 +128,8 @@ SvgContainer.propTypes = {
   viewBox: PropTypes.string,
   zIndex: PropTypes.number,
   testId: PropTypes.string,
+  width: PropTypes.string,
+  height: PropTypes.string,
 };
 
 /**

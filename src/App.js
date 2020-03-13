@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import { NavBar, Footer, RouteContainer } from './components';
 import PropTypes from 'prop-types';
 import { Alert } from 'antd';
-import { devices } from './utilities/breakpoints-device.js';
 import { useAppHooks } from './customHooks/useAppHooks.js';
 import { useAuthStateChange } from './customHooks/useAuthStateChange.js';
+import { SynapsBrain } from './components';
 
 /**
  * App
@@ -15,7 +15,7 @@ import { useAuthStateChange } from './customHooks/useAuthStateChange.js';
  */
 function App( props ){
   const [ alertMessage, setAlert ] = useState( '' );
-  const { theme, usersState, dispatch } = useAppHooks();
+  const { theme, usersState, pathname } = useAppHooks();
   
   useAuthStateChange();
   useEffect( () => {
@@ -24,10 +24,33 @@ function App( props ){
     }
   }, [ usersState ] );
   
+  const getNavBarColor = () => {
+    if( pathname === '/dashboard' ){
+      if( theme.screenWidth <= theme.sizes.tablet ){
+        return theme.primaryColor;
+      }
+      
+    }
+    
+  };
+  
   return ( <StyledApp
       className="App"
       theme={ theme }
     >
+      { theme.screenWidth > theme.sizes.tablet &&
+      <SynapsBrain
+        zIndex={ 15 }
+        width={ '100vw' }
+        height={ '100vh' }
+        position={ 'absolute' }
+        backgroundColor={ pathname === '/preview' ? theme.primaryColor :
+          'transparent' }
+        color={ pathname === '/preview' ? '#153F6E' : '#EEECE8' } opacity={ 1 }
+        strokeColor={ 'transparent' }
+        viewBox={ '-20 -20 400 400' }
+      /> }
+      
       { alertMessage && ( <Alert
         type={ 'error' }
         onClose={ () => setAlert( false ) }
@@ -37,7 +60,7 @@ function App( props ){
           position: 'absolute', top: '20px', zIndex: '15',
         } }
       /> ) }
-      <NavBar/>
+      <NavBar backgroundColor={ getNavBarColor() }/>
       <RouteContainer/>
       <Footer/>
     </StyledApp>
@@ -63,9 +86,17 @@ const StyledApp = styled.div`
   min-height: 100vh;
   overflow-y: hidden;
   
-  @media ${ devices.tablet } {
-    background: ${ props => props.theme.primaryColor };
+  @media ${ props => props.theme.devices.tablet } {
+  
+    background: ${ props => {
+  if( props.pathname === '/preview' ){
+    return props.theme.primaryColor;
+  }else{
+    return '#F6F5F3';
+  }
+} };
    }
+  
 `;
 
 export default App;

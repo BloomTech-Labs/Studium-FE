@@ -13,6 +13,7 @@ export const GET_ALL_CARDS_FOR_DECK_FAIL = 'GET_ALL_CARDS_FOR_DECK_FAIL';
  * @returns {function(*): Promise<T>}
  */
 export const getAllCardsForDeck = ( deckId, userUid ) => dispatch => {
+  
   dispatch( action( GET_ALL_CARDS_FOR_DECK_INIT ) );
   return createAxiosAuth( userUid )
     .get( `/api/cards/from/deck/${ deckId }` )

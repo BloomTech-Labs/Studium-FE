@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { SmallLogo, SynapsButton, SynapsText } from '../components';
-import { devices } from '../utilities/breakpoints-device';
 import { useAppHooks } from '../customHooks/useAppHooks.js';
 
 /**
@@ -111,7 +110,7 @@ const Mobile = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 146px;
-  @media ${ devices.tablet } {
+  @media ${ props => props.theme.devices.tablet } {
     display: none;
   }
 `;
@@ -120,7 +119,7 @@ const MobileHeader = styled.div``;
 
 const Desktop = styled.div`
   display: none;
-  @media ${ devices.tablet } {
+  @media ${ props => props.theme.devices.tablet } {
   }
 `;
 

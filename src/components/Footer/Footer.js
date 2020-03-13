@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Icon } from 'antd';
-import { devices } from '../../utilities/breakpoints-device.js';
 import { ContainerDiv } from '../Container/ContainerDiv.js';
 import PropTypes from 'prop-types';
 import { useAppHooks } from '../../customHooks/useAppHooks.js';
@@ -14,7 +13,7 @@ import { useAppHooks } from '../../customHooks/useAppHooks.js';
  */
 export const Footer = ( props ) => {
   
-  const { history, theme } = useAppHooks();
+  const { changePath, theme, pathname } = useAppHooks();
   
   /**
    * Add Deck
@@ -23,29 +22,31 @@ export const Footer = ( props ) => {
    * @name addDeck
    */
   const addDeck = () => {
-    history.push( '/create/deck' );
+    changePath( '/create/deck' );
     
   };
   
-  return ( <StyledFooter { ...props } theme={ theme } className={ 'footer' }>
+  return ( <StyledFooter { ...props } theme={ theme } className={ 'footer' }
+                         pathname={ pathname }>
+    { pathname === './preview' && <Blur/> }
     <ContainerDiv
       className={ 'footer-container' }
       maxHeight={ '50px' }
       style={ {
         alignItems: 'center',
-        justifyContent: 'space-around',
+        justifyContent: 'space-between',
         position: 'relative',
       } }
       overFlowY={ 'visible' }
+      flexDirection={ 'row' }
     >
+      
       <StyledIcon
-        type="home"
-        theme={ 'filled' }
+        type="edit"
         color={ props.theme ? props.theme.gray939598 : 'gray' }
       />
       <StyledIcon
-        type="folder-open"
-        theme={ 'filled' }
+        type="delete"
         color={ props.theme ? props.theme.grayD1D3D4 : 'gray' }
       />
     </ContainerDiv>
@@ -56,24 +57,39 @@ Footer.prototypes = {
   navBarVis: PropTypes.bool,
 };
 
-const StyledFooter = styled.div`
+const Blur = styled.div`
 position: absolute;
-bottom: ${ props => props.navBarVis ? 0 : '-75px' };
+top: -80px;
+min-width: 100vw;
+height: 80px;
+position: absolute;
+background-image: linear-gradient(transparent, #ffffff8c);
+`;
+
+const StyledFooter = styled.div`
+  position: absolute;
+  bottom: ${ props => {
+  if( props.pathname === '/preview' || props.pathname === '/dashboard' ){
+    return '0';
+  }else if( props.pathname === '/create/deck' ){
+    return '-75px';
+  }
+  return '-75px';
+}
+};
   margin-top: auto;
   min-width: 100vw;
   height: 50px;
-  background-color: "##ECE2D2";
-  display: flex;
-  justify-content: center;
+  background: #E1DED7;
   align-items: center;
-
-  @media screen and ${ devices.tablet } {
-    bottom: -75px;
-  }
+  @media screen and ${ props => props.theme.devices.tablet } {
+  display: none;
+    };
 `;
 
 const StyledIcon = styled( Icon )`
   && {
+    margin: 0 10%;
     color: ${ props => props.color };
     font-size: 31px;
   }

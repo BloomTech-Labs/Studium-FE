@@ -21,8 +21,9 @@ export const useAuthStateChange = () => {
        * @type {User}
        */
       if( user ){
+        debugger;
         dispatch( signedIn( user ) );
-        if( pathname === '/signIn' || pathname === '/signup' || pathname ===
+        if( pathname === '/signin' || pathname === '/signup' || pathname ===
           '/' ){
           changePath( '/dashboard' );
         }

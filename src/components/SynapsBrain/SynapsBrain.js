@@ -1,7 +1,7 @@
 import React from 'react';
-import { ReactComponent as SynapsBrainImage } from '../../images/Frame.svg';
 import PropTypes from 'prop-types';
-import { SvgContainer} from '../SvgContainer/SvgContainer.js';
+import BrainPic from '../../svgs/BrainPic.js';
+import { SvgContainer } from '../SvgContainer/SvgContainer.js';
 
 /**
  *  Synaps Brain SVG
@@ -25,7 +25,7 @@ import { SvgContainer} from '../SvgContainer/SvgContainer.js';
  */
 export const SynapsBrain = ( props ) => {
   
-  return <SvgContainer svg={ SynapsBrainImage } { ...props }/>;
+  return <BrainPic/>;
 };
 
 SynapsBrain.propTypes = {
@@ -39,4 +39,6 @@ SynapsBrain.propTypes = {
   stokeWidth: PropTypes.string,
   viewBox: PropTypes.string,
   zIndex: PropTypes.number,
+  width: PropTypes.string,
+  height: PropTypes.string,
 };
