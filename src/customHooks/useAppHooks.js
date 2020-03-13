@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistoryAndPath } from './useHistoryAndPath.js';
 import { useThemeContext } from './useThemeContext.js';
@@ -20,8 +20,11 @@ export const useAppHooks = () => {
   const dispatch = useDispatch();
   const state = useSelector( reducerState => reducerState );
   let { path, pushedState, changePath } = useHistoryAndPath();
+  const {theme, setVariable} = useThemeContext();
   
-  const theme = useThemeContext();
+  useEffect(() => {
+  
+  }, [theme.screenWidth, path]);
   
   return {
     dispatch,

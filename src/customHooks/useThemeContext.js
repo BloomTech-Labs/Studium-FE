@@ -1,34 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import { useDimensions } from './useDimensions.js';
-import { medaQuieries } from './useAppHooks.js';
+import React, { useState, useEffect } from "react";
+import { useDimensions } from "./useDimensions.js";
 
 /**
  * @type {Theme}
  */
 export let themeState = {
-  primaryColor: '#0d2545',
-  primaryColorB98C4: '#b9b8c4',
-  primaryColor86869A: '#86869a',
-  primaryColor5C5F78: '#5C5F78',
-  primaryColor36405C: '#36405c',
-  primaryColor293046: '#293046',
-  primaryColor353544: '#353544',
+  primaryColor: "#0d2545",
+  primaryColorB98C4: "#b9b8c4",
+  primaryColor86869A: "#86869a",
+  primaryColor5C5F78: "#5C5F78",
+  primaryColor36405C: "#36405c",
+  primaryColor293046: "#293046",
+  primaryColor353544: "#353544",
   
-  secondaryColor: '#A2D8C7',
-  secondaryColorEAF5F1: '#EAF5F1',
-  secondaryColorD8EEE6: '#D8EEE6',
-  secondaryColorC6E6DB: '#C6E6DB',
-  secondaryColorB5DFD1: '#B5DFD1',
-  secondaryColor92B2AA: '#92B2AA',
-  secondaryColor798A87: '#798A87',
+  secondaryColor: "#A2D8C7",
+  secondaryColorEAF5F1: "#EAF5F1",
+  secondaryColorD8EEE6: "#D8EEE6",
+  secondaryColorC6E6DB: "#C6E6DB",
+  secondaryColorB5DFD1: "#B5DFD1",
+  secondaryColor92B2AA: "#92B2AA",
+  secondaryColor798A87: "#798A87",
   
-  white: '#FFFFFF',
-  grayF1F2F2: '#F1F2F2',
-  grayE6E7E8: '#E6E7E8',
-  grayD1D3D4: '#D1D3D4',
-  grayBCBEC0: '#BEBEC0',
-  grayA7A9AC: '#A7A9AC',
-  gray939598: '#939598',
+  white: "#FFFFFF",
+  grayF1F2F2: "#F1F2F2",
+  grayE6E7E8: "#E6E7E8",
+  grayD1D3D4: "#D1D3D4",
+  grayBCBEC0: "#BEBEC0",
+  grayA7A9AC: "#A7A9AC",
+  gray939598: "#939598",
+  
+  lightNavBarColor: "#E5E5E5",
   
   largeRadius: 14,
   smallRadius: 6,
@@ -36,6 +37,11 @@ export let themeState = {
   footerHeight: 50,
   screenHeight: window.innerHeight,
   screenWidth: window.outerWidth,
+  
+  navBarDark: "#0C2545",
+  navBarLight: "#F6F5F3",
+  
+  navStyle: "dark",
   
 };
 
@@ -72,6 +78,10 @@ export let themeState = {
  * @property {number} screenHeight
  * @property {number} screenWidth
  *
+ * @property {string} navBarLight
+ * @property {string} navBarDark
+ *
+ * @property {("light" | "dark")} navStyle
  *
  */
 
@@ -86,9 +96,21 @@ export const useThemeContext = () => {
   const [ theme, setTheme ] = useState( themeState );
   const [ width, height ] = useDimensions();
   
+  /**
+   * @typedef Set Theme Variable
+   * @function
+   * @name {string}setVariables
+   * @param {string | number} name
+   * @param value
+   * @return void
+   */
+  const setVariables = ( name, value ) => {
+    setTheme( { ...theme, [ name ]: value } );
+  };
+  
   useEffect( () => {
     setTheme( { ...theme, screenHeight: height, screenWidth: width } );
   }, [ width, height ] );
   
-  return theme;
+  return { theme, setVariables };
 };

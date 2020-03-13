@@ -1,0 +1,28 @@
+{
+  "plugins": [
+    {
+      "removeTitle": false
+    },
+    {
+      "removeViewBox": false
+    },
+    {
+      "removeDoctype": false
+    },
+    {
+      "removeDimensions": true
+    },
+    {
+      "cleanupAttrs": false
+    },
+    {
+      "removeEmptyAttrs": false
+    },
+    {
+      "convertStyleToAttrs": true
+    },
+    {
+      "moveElemsAttrsToGroup": true
+    }
+  ]
+}

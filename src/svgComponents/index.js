@@ -1,0 +1,5 @@
+export { default as Avatar } from './Avatar'
+export { default as BrainPic } from './BrainPic'
+export { default as BrainSynaps } from './BrainSynaps'
+export { default as SynapsFavicon } from './SynapsFavicon'
+export { default as SynapsLogoText } from './SynapsLogoText'

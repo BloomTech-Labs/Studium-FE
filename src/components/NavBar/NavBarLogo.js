@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { SvgContainer } from '../SvgContainer/SvgContainer.js';
 import { ReactComponent as SmallWhiteLogo } from '../../images/SmallWhiteLogo.svg';
-import { ReactComponent as GreenCircle } from '../../images/SYNAPS-Favicon.svg';
+import { ReactComponent as GreenCircle } from '../../svgs/SynapsFavicon.svg';
 import { ReactComponent as Brain } from '../../images/brainpic.svg';
 import Logo from '../../images/brainpic.svg';
 import {

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { SmallFlashCard, TitleText, SearchBar } from '../components';
+import {
+  SmallFlashCard, TitleText, SearchBar, PreviewDeckCards,
+} from '../components';
 import PropTypes from 'prop-types';
 import {
   useAppHooks, mediaQueries, sizes,
@@ -68,22 +70,7 @@ export const Dashboard = props => {
     { getAlert() }
     <StyledDeckHolder className={ 'deck-container' }>
       
-      { theme.screenWidth > sizes.tablet &&
-      <DesktopTopDash className={ 'dash-top' }>
-        <DashboardTopLeft className={ 'dash-top-left' }>
-          <TitleText color={ '#36405C' } text={ 'My Flash Cards' }/>
-        </DashboardTopLeft>
-        
-        
-        <DashboardTopRight>
-          <SearchBar onSearch={ () => {
-          } }/>
-        </DashboardTopRight>
-      
-      
-      </DesktopTopDash>
-      }
-      <FlashCards>
+      <PreviewDeckCards>
         <SmallFlashCard
           border={ 'dashed' }
           icon={ 'plus' }
@@ -97,7 +84,7 @@ export const Dashboard = props => {
             onClick={ e => deckClicked( deck ) }
           /> );
         } ) }
-      </FlashCards>
+      </PreviewDeckCards>
     </StyledDeckHolder>
   </StyledDashboard> );
 };

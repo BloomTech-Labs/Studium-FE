@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@svgr/babel-plugin-add-jsx-attribute": "^5.0.1",
+    "@svgr/core": "^5.2.0",
     "antd": "^3.26.9",
     "axios": "^0.19.2",
     "babel-plugin-macros": "^2.8.0",
@@ -19,6 +21,7 @@
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.0.1",
     "styled-reset": "^4.1.0",
+    "styled-theming": "^2.2.0",
     "universal-cookie": "^4.0.3"
   },
   "scripts": {
@@ -30,8 +33,8 @@
     "clear": "react-scripts test --clearCache",
     "coverage": "react-scripts test --coverage --watchAll=false || true",
     "clear:run": "CI=true npm-run-all clear coverage || true",
-    "svg": "npx @svgr/cli --config-file ./SvgConfig < ./src/images/SmallWhiteLogo.svg > ./src/svgs/SmallLogo.js",
-    "lint:css": "stylelint ./src/**/*.js"
+    "lint:css": "stylelint ./src/**/*.js",
+    "svg": "svgr -d ./src/svgComponents/ ./src/svgs/"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -73,6 +76,9 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.8.7",
+    "@svgr/babel-plugin-svg-dynamic-title": "^5.0.1",
+    "@svgr/cli": "^5.2.0",
+    "@svgr/plugin-jsx": "^5.2.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/user-event": "^7.1.2",
     "@types/jest": "^25.1.3",
@@ -89,7 +95,6 @@
     "eslint-plugin-jest": "^23.8.0",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.18.3",
-    "gulp-stylelint": "^13.0.0",
     "jest-styled-components": "^7.0.0",
     "jsdoc": "^3.6.3",
     "moxios": "^0.4.0",
@@ -106,7 +111,6 @@
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-custom-processor-loader": "^0.6.0",
     "stylelint-processor-styled-components": "^1.10.0",
-    "stylelint-webpack-plugin": "^1.2.3",
     "supertest": "^4.0.2",
     "svg-parser": "^2.0.4",
     "svgo": "^1.3.2"

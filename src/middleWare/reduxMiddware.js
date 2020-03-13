@@ -26,7 +26,7 @@ export const logger = store => next => action => {
  */
 export const cookiesRedux = store => next => action => {
   const result = next(action);
-  debugger;
+  
   if (action.type !== 'SET_INIT_STATE') {
     const newState = store.getState();
     Object.keys(newState).forEach(key => {

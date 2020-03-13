@@ -33,16 +33,15 @@ const initialState = {
  * @param {Action} action
  * @returns {PhotoReducerState} state
  */
-export const photosReducer = (state = initialState, action) => {
-  debugger;
-  switch (action.type) {
+export const photosReducer = ( state = initialState, action ) => {
+  switch( action.type ){
     case 'SET_INIT_STATE':
-      if (
+      if(
         action.payload &&
         action.payload.name &&
-        action.payload.name.includes('photos') &&
+        action.payload.name.includes( 'photos' ) &&
         action.payload.value
-      ) {
+      ){
         return action.payload.value;
       }
       return state;
@@ -50,9 +49,9 @@ export const photosReducer = (state = initialState, action) => {
     case UPLOADING_PHOTO_FAILED:
     case UPLOADING_PHOTO_SUCCESS:
     case UPLOADING_PHOTO_PROGRESS:
-      state.photos[action.payload.id] = action.payload;
-      return {photos: {...state.photos}};
-
+      state.photos[ action.payload.id ] = action.payload;
+      return { photos: { ...state.photos } };
+    
     default:
       return state;
   }

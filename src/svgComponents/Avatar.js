@@ -1,8 +1,14 @@
-import * as React from "react"
+import * as React from 'react';
 
-function SvgComponent(props) {
+function SvgAvatar(props) {
   return (
-    <svg width={37} height={37} viewBox="0 0 37 37" fill="none" {...props}>
+    <svg
+      viewBox="0 0 37 37"
+      fill="none"
+      width={props.width}
+      height={props.height}
+      {...props}
+    >
       <circle cx={18.5} cy={18.5} r={18.5} fill="#595959" fillOpacity={0.44} />
       <path
         fillRule="evenodd"
@@ -18,7 +24,7 @@ function SvgComponent(props) {
         strokeWidth={3}
       />
     </svg>
-  )
+  );
 }
 
-export default SvgComponent
+export default SvgAvatar;

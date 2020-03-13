@@ -1,7 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import BrainPic from '../../svgs/BrainPic.js';
-import { SvgContainer } from '../SvgContainer/SvgContainer.js';
+import React from "react";
+import PropTypes from "prop-types";
+import { SvgContainer } from "../SvgContainer/SvgContainer.js";
 
 /**
  *  Synaps Brain SVG
@@ -25,7 +24,7 @@ import { SvgContainer } from '../SvgContainer/SvgContainer.js';
  */
 export const SynapsBrain = ( props ) => {
   
-  return <BrainPic/>;
+  return <h1>Synaps Brain</h1>;
 };
 
 SynapsBrain.propTypes = {
