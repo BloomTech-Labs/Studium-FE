@@ -20,6 +20,8 @@ export const TitleText = ( { text, color = '#2A685B' } ) => {
     </StyledTitleContainer>
   );
   
+export const TitleText = ({text}) => {
+  return <StyledTitle>{text}</StyledTitle>;
 };
 
 /**

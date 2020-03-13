@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { TitleText } from '../components/TitleText/TitleText.js';
-import { useAppHooks } from '../customHooks/useAppHooks.js';
+import {TitleText} from '../components';
+import {useAppHooks} from '../customHooks/useAppHooks.js';
 
 /**
  * FlashCard
@@ -10,16 +10,14 @@ import { useAppHooks } from '../customHooks/useAppHooks.js';
  * @example return (<FlashCard />);
  */
 export const FlashCard = props => {
-  const { pathPushedState } = useAppHooks();
+  const {pathPushedState} = useAppHooks();
   // @type {Deck}
-  const { deck } = pathPushedState;
-  
+  const {deck} = pathPushedState;
+
   return (
-    
     <StyledFlashCard>
-      <TitleText text={ deck.deck_name }/>
+      <TitleText text={deck.deck_name} />
     </StyledFlashCard>
-  
   );
 };
 
@@ -28,4 +26,3 @@ FlashCard.propTypes = {};
 const StyledFlashCard = styled.div`
   width: 100%;
 `;
-

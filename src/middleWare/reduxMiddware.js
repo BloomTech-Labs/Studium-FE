@@ -7,10 +7,10 @@ const cookies = new Cookies();
  * @category ReduxMiddleware
  */
 export const logger = store => next => action => {
-  console.group( action.type );
-  console.info( 'dispatching', action );
-  let result = next( action );
-  console.log( 'next state', store.getState() );
+  console.group(action.type);
+  console.info('dispatching', action);
+  let result = next(action);
+  console.log('next state', store.getState());
   console.groupEnd();
   return result;
 };
@@ -25,15 +25,13 @@ export const logger = store => next => action => {
  * @returns {function(*): function(*=): *}
  */
 export const cookiesRedux = store => next => action => {
-  
-  const result = next( action );
-  
-  if( action.type !== 'SET_INIT_STATE' ){
+  const result = next(action);
+  debugger;
+  if (action.type !== 'SET_INIT_STATE') {
     const newState = store.getState();
-    Object.keys( newState ).forEach( key => {
-      cookies.set( key, newState[ key ] );
-    } );
+    Object.keys(newState).forEach(key => {
+      cookies.set(key, newState[key]);
+    });
   }
   return result;
-  
 };

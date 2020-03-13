@@ -99,6 +99,34 @@ export const Dashboard = props => {
       </FlashCards>
     </StyledDeckHolder>
   </StyledDashboard> );
+
+  return (
+    <StyledDashboard className={'dashboard'}>
+      <TitleText text={'Dashboard'} />
+      <SearchBar
+        onSearch={search}
+        style={{
+          marginTop: '8px',
+          marginBottom: '33px',
+          width: '80%',
+          marginLeft: '10%',
+        }}
+      />
+
+      <StyledDeckHolder>
+        {decks.map(deck => {
+          return (
+            <SmallFlashCard
+              key={deck.deck_id}
+              deck={deck}
+              border={'solid'}
+              onClick={e => deckClicked(deck)}
+            />
+          );
+        })}
+      </StyledDeckHolder>
+    </StyledDashboard>
+  );
 };
 
 Dashboard.propTypes = {
@@ -187,5 +215,11 @@ const StyledDashboard = styled.div`
   justify-content: flex-start;
   
 }
+  @media screen and ${devices.tablet} {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    left: 400px;
+  }
 `;
 

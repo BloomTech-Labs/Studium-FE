@@ -17,7 +17,6 @@ import { decksReducer } from '../reducers/decksReducer.js';
  *
  */
 export const useAppHooks = () => {
-  
   const dispatch = useDispatch();
   const usersState = useSelector( state => state.usersState );
   const cardsState = useSelector( state => state.cardsState );
@@ -26,6 +25,7 @@ export const useAppHooks = () => {
   let { path, pushedState, changePath } = useHistoryAndPath();
   //@type Theme
   const theme = useThemeContext();
+
   return {
     dispatch,
     theme,

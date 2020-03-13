@@ -40,7 +40,7 @@ export let themeState = {
   primaryColor36405C: '#36405c',
   primaryColor293046: '#293046',
   primaryColor353544: '#353544',
-  
+
   secondaryColor: '#A2D8C7',
   secondaryColorEAF5F1: '#EAF5F1',
   secondaryColorD8EEE6: '#D8EEE6',
@@ -48,7 +48,7 @@ export let themeState = {
   secondaryColorB5DFD1: '#B5DFD1',
   secondaryColor92B2AA: '#92B2AA',
   secondaryColor798A87: '#798A87',
-  
+
   white: '#FFFFFF',
   grayF1F2F2: '#F1F2F2',
   grayE6E7E8: '#E6E7E8',
@@ -56,14 +56,14 @@ export let themeState = {
   grayBCBEC0: '#BEBEC0',
   grayA7A9AC: '#A7A9AC',
   gray939598: '#939598',
-  
+
   largeRadius: 14,
   smallRadius: 6,
   navBarTopHeight: 75,
   footerHeight: 50,
   screenHeight: window.innerHeight,
   screenWidth: window.outerWidth,
-  
+
   devices,
   sizes,
   
@@ -80,15 +80,14 @@ export let themeState = {
  * @category Custom Hooks
  */
 export const useThemeContext = () => {
-  const [ theme, setTheme ] = useState( themeState );
-  const [ width, height ] = useDimensions();
-  
-  useEffect( () => {
-    setTheme( { ...theme, screenHeight: height, screenWidth: width } );
-  }, [ width, height ] );
-  
+  const [theme, setTheme] = useState(themeState);
+  const [width, height] = useDimensions();
+
+  useEffect(() => {
+    setTheme({...theme, screenHeight: height, screenWidth: width});
+  }, [width, height]);
+
   return theme;
-  
 };
 
 /**

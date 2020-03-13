@@ -21,7 +21,7 @@ export const PreviewDeck = props => {
   useEffect( () => {
     
     if( pathPushedState === null ){
-      
+    
     }else{
       dispatch(
         getAllCardsForDeck( pathPushedState.deck_id, usersState.user.uid ) );
@@ -53,7 +53,8 @@ export const PreviewDeck = props => {
         <p style={ { marginRight: '9%' } }>Select</p>
       </TopContainer>
       <TitleText
-        text={ ( pathPushedState && pathPushedState.deck_name ) || 'Preview' }/>
+        text={(pathPushedState && pathPushedState.deck_name) || 'Preview'}
+      />
       <StyledPreviewDeckHolder>
         <PreviewDeckCards key={ 0 }/>
         { Object.values( cardsState.cards ).filter(
@@ -65,7 +66,6 @@ export const PreviewDeck = props => {
       
       </StyledPreviewDeckHolder>
     </StyledPreviewDeck>
-  
   );
   
 };
@@ -105,4 +105,3 @@ const StyledPreviewDeckHolder = styled.div`
   overflow: scroll;
   padding-bottom: 150px;
 `;
-

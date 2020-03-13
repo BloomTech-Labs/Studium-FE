@@ -10,7 +10,7 @@ export * from './FormItems/Input/FormInput.js';
 export * from './NavBar/NavBar.js';
 export * from './SearchBar/SearchBar.js';
 export * from './SynapsText/SynapsText.js';
-export * from './TitleText/TitleText.js';
+export * from './Text/TitleText/TitleText.js';
 export * from './CardIcon/CardIcon.js';
 export * from './Footer/Footer.js';
 export * from './SynapsBrain/SynapsBrain.js';
