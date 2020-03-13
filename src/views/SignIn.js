@@ -76,8 +76,10 @@ export function SignIn(props) {
 
       <StyledH2>Hey! Welcome Back.</StyledH2>
       <div>
-        <SynapsButton
+        <StyledBtn
           style={{
+            color: '#fff',
+            backgroundColor: '#36405C',
             margin: '0 0 1.5em',
             padding: '0 2em 0',
             width: '352px',
@@ -93,7 +95,7 @@ export function SignIn(props) {
 
       <StyledBorder />
 
-      <div>
+      <StyledFormInput>
         <FormInput
           name={'email'}
           value={info.email}
@@ -110,10 +112,17 @@ export function SignIn(props) {
           label={'Password'}
           bordered={false}
         />
-      </div>
+      </StyledFormInput>
 
-      <SynapsButton
-        style={{padding: '0 2.5em 0'}}
+      <StyledBtn2
+        style={{
+          width: '352px',
+          height: '72px',
+          backgroundColor: '#0C2545',
+          margin: '0 0 1.5em',
+          padding: '0 2em 0',
+          border: '2px solid #fff',
+        }}
         text={'Continue with Email'}
         shape={'round'}
         size={'large'}
@@ -123,6 +132,55 @@ export function SignIn(props) {
     </StyledSignIn>
   );
 }
+
+const StyledBtn2 = styled(SynapsButton)`
+  && {
+    span {
+      font-family: Source Sans Pro;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 24px;
+    }
+  }
+`;
+
+const StyledBtn = styled(SynapsButton)`
+  && {
+    display: flex;
+    justify-content: space-evenly;
+    .anticon.anticon-google {
+      margin-top: 17px;
+      font-size: 32px;
+    }
+    span {
+      font-family: Source Sans Pro;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 24px;
+      margin-top: 21px;
+    }
+  }
+`;
+const StyledFormInput = styled.div`
+  width: 345px;
+  margin: 0px 0px 0px 45px;
+  @media ${devices.tablet} {
+    & label {
+      color: #fff;
+      font-family: Source Sans Pro;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 21px;
+      line-height: 24px;
+    }
+
+    & input {
+      background-color: #0d2545;
+    }
+  }
+`;
 
 const StyledSignIn = styled.div`
   display: flex;
