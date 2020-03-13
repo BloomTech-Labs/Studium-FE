@@ -106,71 +106,12 @@ Dashboard.propTypes = {
   history: PropTypes.object,
 };
 
-const FlashCards = styled.div`
-margin-top: 4rem;
-display: flex;
-width: 100%;
-height: 100%;
-justify-content: space-around;
-align-self: flex-start;
-`;
-
-const DesktopTopDash = styled.div`
-  height: 100px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-`;
-
-const DashboardTopLeft = styled.div`
-  margin-top: 2%;
-  margin-left: 6%;
-  display: flex;
-  width: 60%;
-`;
-
-const DashboardTopRight = styled.div`
-  margin-top: 2%;
-  margin-right: 6%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
-  width: 40%;
-  height: 175px;
-  padding: 10px;
-  
-  > .ant-input-search {
-    width: 300px;
-    margin-top: 2rem;
-    > .ant-input {
-        @media screen and ${ mediaQueries.tablet } {
-          border: 2px solid #36405C;
-          border-radius: 14px;
-          height: 30px;
-        }
-  }
-  }
-`;
-
 const StyledDeckHolder = styled.div`
   max-width: 90%;
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
   justify-content: space-around;
-  
-  @media screen and ${ mediaQueries.tablet } {
-    width: 100%;
-    max-width: 1140px;
-    height: 100%;
-    max-height: 1063px;
-    margin: 0 auto 0 auto;
-    background: white;
-    border-radius: 10px;
-    display: flex;
-    align-items: flex-start;
-    
-  }
 `;
 
 const StyledDashboard = styled.div`

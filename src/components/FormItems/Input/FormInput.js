@@ -19,8 +19,6 @@ import PropTypes from 'prop-types';
  *
  */
 export const FormInput = ({
-  borderStyle = '1px solid #d9d9d9',
-  inputWidth = '90%',
   bordered = 'false',
   borderRadius = 'small',
   label,
@@ -32,14 +30,15 @@ export const FormInput = ({
       // bordered input with large radius
       return (
         <StyledFormItem label={label}>
-          <StyledAntdInputLargeRadius borderStyle={borderStyle} {...props} />
+          <StyledAntdInputLargeRadius {...props} />
         </StyledFormItem>
+      
       );
     } else {
       // bordered input with regular radius
       return (
         <StyledFormItem label={label}>
-          <StyledAntdInputSmallRadius borderStyle={borderStyle} {...props} />
+          <StyledAntdInputSmallRadius {...props} />
         </StyledFormItem>
       );
     }
@@ -58,7 +57,7 @@ export const FormInput = ({
 const StyledFormItem = styled(Form.Item)`
   && {
     text-align: left;
-    width: ${props => props.inputWidth};
+    width: 90%;
   }
 `;
 
@@ -77,7 +76,6 @@ const StyledNoBorderAntdInput = styled(Input)`
 
 const StyledAntdInputLargeRadius = styled(Input)`
   && {
-    border: ${props => props.borderStyle};
     border-radius: ${props => props.theme.largeRadius};
     :focus {
       box-shadow: none;
@@ -87,7 +85,6 @@ const StyledAntdInputLargeRadius = styled(Input)`
 
 const StyledAntdInputSmallRadius = styled(Input)`
   && {
-    border: ${props => props.borderStyle};
     border-radius: ${props => props.theme.smallRadius};
     :focus {
       box-shadow: none;
@@ -103,6 +100,4 @@ FormInput.propTypes = {
   placeholder: PropTypes.string,
   size: PropTypes.oneOf(['large', 'default', 'small']),
   borderRadius: PropTypes.oneOf(['large', 'small']),
-  inputWidth: PropTypes.string,
-  borderStyle: PropTypes.string,
 };

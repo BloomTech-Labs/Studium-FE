@@ -17,7 +17,6 @@ import { cardsReducer } from './cardsReducer.js';
  * @category Reducers
  * @returns RootState
  */
-
 export default combineReducers( {
   usersState: usersReducer,
   photosState: photosReducer,

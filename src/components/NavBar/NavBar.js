@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { ContainerDiv, NavBarAvatar } from '../index.js';
-import { ReactComponent as SmallWhiteLogo } from '../../images/SmallWhiteLogo.svg';
-import { SvgContainer } from '../SvgContainer/SvgContainer.js';
-import { signOut } from '../../actions';
-import { SynapsBrain } from '../index.js';
-import { mediaQueries, useAppHooks } from '../../customHooks/useAppHooks.js';
-import NavBarLogo from './NavBarLogo.js';
+import styled, {useTheme, ThemeContext} from 'styled-components';
+import {ContainerDiv, NavBarAvatar} from '../index.js';
+import {ReactComponent as SmallWhiteLogo} from '../../images/SmallWhiteLogo.svg';
+import {signOut} from '../../actions';
+import {SynapsBrain} from '../index.js';
+import {useAppHooks, mediaQueries, sizes} from '../../customHooks/useAppHooks.js';
 
 /**
  * Nav Bar
@@ -16,43 +14,86 @@ import NavBarLogo from './NavBarLogo.js';
  * @example
  *  return (<NavBar />)
  */
-export const NavBar = ( { backgroundColor = 'inherit' } ) => {
-  const { usersState, theme, dispatch, changePath, pathname } = useAppHooks();
-  const [ menuOpen, setMenuOpen ] = useState( false );
-  const [ avatarUrl, setAvatarUrl ] = useState( '' );
-  
-  useEffect( () => {
-    if( usersState.user && usersState.user.photoURL ){
-      setAvatarUrl( usersState.user.photoURL );
-    }else{
-      setAvatarUrl( '' );
+export const NavBar = () => {
+  const {usersState, theme, dispatch, changePath, pathname} = useAppHooks();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [avatarUrl, setAvatarUrl] = useState('');
+
+  useEffect(() => {
+    if (usersState.user && usersState.user.photoURL) {
+      setAvatarUrl(usersState.user.photoURL);
+    } else {
+      setAvatarUrl('');
     }
-    
-  }, [ usersState ] );
-  
+  }, [usersState]);
+
   const logout = () => {
-    dispatch( signOut() );
-    changePath( '/' );
+    setMenuOpen(false);
+    signOut(dispatch);
   };
-  
+
+  const showAvatar = () => {
+    if (theme.screenWidth < 768) {
+      return true;
+    } else {
+      if (pathname === '/signup' || pathname === '/signin') {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  };
+
+  const getSignUpText = () => {
+    if (theme.screenWidth > 768) {
+      if (pathname === '/signup') {
+        return <Styledh2>SignIn</Styledh2>;
+      } else if (pathname === '/signin') {
+        return <Styledh2>SignUp</Styledh2>;
+      }
+    } else {
+      return false;
+    }
+  };
+
   return (
-    <StyledBar className={ 'nav-bar' } backgroundColor={ backgroundColor }>
-      <WhiteLogo id={ 'svg' } fill={ 'blue' }/>
+    <StyledBar className={'nav-bar'}>
       <ContainerDiv
-        justifyContent={ 'space-between' }
-        className={ 'nav-bar-container' }
-        height={ '75px' }
-        position={ 'relative' }
-        overFlowY={ 'visible' }
-        backgroundColor={ backgroundColor }
+        justifyContent={'space-between'}
+        className={'nav-bar-container'}
+        height={'75px'}
+        position={'relative'}
+        overFlowY={'hidden'}
       >
-        <NavBarLogo/>
-        
-        <NavBarAvatar
-          onClick={ logout }
-          avatarUrl={ avatarUrl }
-          className={ 'ant-dropdown-link' }
+        {theme.screenWidth < 704 && (
+          <SynapsBrain
+            zIndex={1}
+            position={'absolute'}
+            backgroundColor={theme.primaryColor}
+            color={'#164172'}
+            opacity={1}
+            strokeColor={theme.primaryColor}
+            viewBox={'225 25 400 400'}
+          />
+        )}
+
+        <SmallWhiteLogo
+          style={{
+            position: 'absolute',
+            left: '6%',
+            top: '50%',
+            transform: 'transition(0, -53%)',
+          }}
         />
+        {showAvatar() && (
+          <NavBarAvatar
+            onClick={logout}
+            avatarUrl={avatarUrl}
+            className={'ant-dropdown-link'}
+          />
+        )}
+
+        {getSignUpText()}
       </ContainerDiv>
     </StyledBar>
   );
@@ -68,8 +109,7 @@ const WhiteLogo = styled( SmallWhiteLogo )`
 `;
 
 const StyledBar = styled.div`
-  background-color: ${ props => props.theme.primaryColor };
-  box-sizing: content-box;
+  background-color: ${props => props.theme.primaryColor};
   display: flex;
   justify-content: center;
   z-index: 15;
@@ -77,13 +117,23 @@ const StyledBar = styled.div`
   top: 0;
   width: 100%;
   height: 74px;
-  border: ${ props => props.backgroundColor ?
-  `2px solid ${ props.backgroundColor }` : '20px solid inherit' };
-  overflow: visible;
 
-  @media screen and ${ mediaQueries.tablet } {
-    background-color: ${ props => props.backgroundColor };
+  @media screen and ${props => props.theme.devices.tablet} {
   }
 `;
 
-
+const Styledh2 = styled.h2`
+  display: flex;
+  align-items: center;
+  color: #fff;
+  position: absolute;
+  width: 95px;
+  height: 24px;
+  left: 1197px;
+  top: 38px;
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 24px;
+`;
