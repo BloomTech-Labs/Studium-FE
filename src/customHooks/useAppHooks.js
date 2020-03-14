@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistoryAndPath } from './useHistoryAndPath.js';
-import { useThemeContext } from './useThemeContext.js';
+import { useDispatch, useSelector } from "react-redux";
+import { useHistoryAndPath } from "./useHistoryAndPath.js";
+import { useThemeContext } from "./useThemeContext.js";
 
 /**
  * Use App Hooks
@@ -20,11 +20,7 @@ export const useAppHooks = () => {
   const dispatch = useDispatch();
   const state = useSelector( reducerState => reducerState );
   let { path, pushedState, changePath } = useHistoryAndPath();
-  const {theme, setVariable} = useThemeContext();
-  
-  useEffect(() => {
-  
-  }, [theme.screenWidth, path]);
+  const { theme } = useThemeContext( path );
   
   return {
     dispatch,
@@ -66,6 +62,8 @@ export const mediaQueries = {
   laptopL: `(min-width: ${ sizes.laptopL }px)`,
   desktop: `(min-width: ${ sizes.desktop }px)`,
 };
+
+export * from "./useLogger.js";
 
 /**
  * @typedef {string} Color

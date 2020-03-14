@@ -3,11 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@svgr/babel-plugin-add-jsx-attribute": "^5.0.1",
-    "@svgr/core": "^5.2.0",
     "antd": "^3.26.9",
     "axios": "^0.19.2",
     "babel-plugin-macros": "^2.8.0",
+    "chalk": "^3.0.0",
     "firebase": "^7.8.1",
     "pretty-format": "^25.1.0",
     "prop-types": "^15.7.2",
@@ -34,7 +33,9 @@
     "coverage": "react-scripts test --coverage --watchAll=false || true",
     "clear:run": "CI=true npm-run-all clear coverage || true",
     "lint:css": "stylelint ./src/**/*.js",
-    "svg": "svgr -d ./src/svgComponents/ ./src/svgs/"
+    "svg": "svgr -d ./src/svgs/ ./src/svgs/",
+    "svgo": "svgo --config=./.svgorc.js -f ./src/svgs/ -o ./src/svgComponents/"
+
   },
   "jest": {
     "collectCoverageFrom": [
@@ -75,8 +76,8 @@
     ]
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.8.7",
     "@svgr/babel-plugin-svg-dynamic-title": "^5.0.1",
+    "@svgr/babel-plugin-add-jsx-attribute": "^5.0.1",
     "@svgr/cli": "^5.2.0",
     "@svgr/plugin-jsx": "^5.2.0",
     "@testing-library/jest-dom": "^4.2.4",
@@ -86,9 +87,6 @@
     "@types/react-redux": "^7.1.7",
     "@types/testing-library__jest-dom": "^5.0.1",
     "@types/testing-library__react": "^9.1.2",
-    "babel-cli": "^6.26.0",
-    "babel-plugin-styled-components": "^1.10.7",
-    "codeclimate-test-reporter": "^0.5.1",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-loader": "^3.0.3",

@@ -48,10 +48,12 @@ export const NavBar = () => {
   };
   
   return (
-    <StyledBar className={ "nav-bar" }>
+    <StyledBar className={ "nav-bar" } theme={ theme }>
       <ContainerDiv
         justifyContent={ "space-between" }
         className={ "nav-bar-container" }
+        flexDirection={ "row" }
+        width={ "100%" }
         height={ "75px" }
         position={ "relative" }
         overFlowY={ "hidden" }
@@ -83,6 +85,7 @@ const WhiteLogo = styled( SmallWhiteLogo )`
 const backgroundColor = theming( "navStyle", {
   light: props => props.theme.navBarLight,
   dark: props => props.theme.navBarDark,
+  hidden: "transparent",
 } );
 
 const StyledBar = styled.div`

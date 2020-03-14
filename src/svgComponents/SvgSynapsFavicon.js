@@ -1,6 +1,11 @@
-import * as React from "react";
+import React from "react";
+import withSvgContainer from "./withSvgContainer.js";
 
-function SvgSynapsFavicon( { backgroundFill = "#4CB69F", fill = "white", width = "200px", height = "200px", ...props } ){
+/**
+ * Synaps Fav Icon Svg
+ * @type SvgComponent
+ */
+function SvgSynapsFavicon( { background = "#4CB69F", fill = "white", width = "200px", height = "200px", ...props } ){
   return (
     <svg
       viewBox="0 0 58 46"
@@ -11,7 +16,7 @@ function SvgSynapsFavicon( { backgroundFill = "#4CB69F", fill = "white", width =
     >
       <path
         d="M28.521 40.845c9.62 0 17.42-7.776 17.42-17.369 0-9.592-7.8-17.369-17.42-17.369-9.62 0-17.419 7.777-17.419 17.37 0 9.592 7.8 17.368 17.42 17.368z"
-        fill={ backgroundFill }
+        fill={ background }
       />
       <path
         d="M20.35 14.205a.809.809 0 10-.81-.808c0 .446.363.808.81.808z"
@@ -761,4 +766,4 @@ function SvgSynapsFavicon( { backgroundFill = "#4CB69F", fill = "white", width =
   );
 }
 
-export default SvgSynapsFavicon;
+export default  withSvgContainer(SvgSynapsFavicon);

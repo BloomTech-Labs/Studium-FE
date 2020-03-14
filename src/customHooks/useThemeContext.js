@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDimensions } from "./useDimensions.js";
+import { sizes } from "./useAppHooks.js";
+import { useStyledThemingRules } from "./useStyledThemingRules.js";
+import { rules } from "./themingRules.js";
+import { THEMING_VALUES, THEMING_VARIABLES } from "./themingRules.js";
 
 /**
  * @type {Theme}
@@ -35,15 +39,26 @@ export let themeState = {
   smallRadius: 6,
   navBarTopHeight: 75,
   footerHeight: 50,
-  screenHeight: window.innerHeight,
-  screenWidth: window.outerWidth,
   
   navBarDark: "#0C2545",
   navBarLight: "#F6F5F3",
   
-  navStyle: "dark",
+  synapsDark: "#36405C",
+  synapsLight: "#FFFFFF",
+  
+  screenHeight: 375,
+  
+  [ THEMING_VARIABLES.NAV_STYLE ]: THEMING_VALUES.DARK,
   
 };
+
+export const APP_VIEW_MOBILE = "APP_VIEW_MOBILE";
+export const APP_VIEW_DESKTOP = "APP_VIEW_DESKTOP";
+
+/**
+ * @typedef {("APP_VIEW_DESKTOP" | "APP_VIEW_MOBILE")} AppView
+ *
+ */
 
 /**
  * @typedef {Object} Theme
@@ -75,13 +90,13 @@ export let themeState = {
  * @property {number} smallRadius
  * @property {number} navBarTopHeight
  * @property {number} footerHeight
- * @property {number} screenHeight
- * @property {number} screenWidth
  *
  * @property {string} navBarLight
  * @property {string} navBarDark
  *
- * @property {("light" | "dark")} navStyle
+ * @property {THEMING_VALUES} NAV_STYLE
+ *
+ * @property {number} screenHeight
  *
  */
 
@@ -90,27 +105,57 @@ export let themeState = {
  *
  * @description Custom hook to keep the theme context updated.
  * @category Custom Hooks
- * @returns Theme
+ * @returns {object}
+ * @property {Theme} theme
+ * @property {SetThemeVariable} setThemeVariable
  */
-export const useThemeContext = () => {
+export const useThemeContext = ( path ) => {
+  
   const [ theme, setTheme ] = useState( themeState );
   const [ width, height ] = useDimensions();
   
+  const [ appView, setAppView ] = useState(
+    width > sizes.tablet ? APP_VIEW_DESKTOP : APP_VIEW_MOBILE );
+  
+  const { checkAllRules, createRule } = useStyledThemingRules(
+    setThemeVariable, rules );
+  
+  
+  // if the path or the app View changes. Check the theming rules.
+  useEffect( () => {
+    checkAllRules( theme, path, appView );
+    
+  }, [ appView, path ] );
+  
   /**
-   * @typedef Set Theme Variable
+   * @typedef SetThemeVariable
    * @function
-   * @name {string}setVariables
+   * @name {string}setThemeVariable
    * @param {string | number} name
    * @param value
    * @return void
    */
-  const setVariables = ( name, value ) => {
+  const setThemeVariable = ( name, value ) => {
     setTheme( { ...theme, [ name ]: value } );
   };
   
+  /**
+   * Here we check when the width of the screen changes and then set the app
+   * view width to desktop or to mobile.
+   */
   useEffect( () => {
-    setTheme( { ...theme, screenHeight: height, screenWidth: width } );
+    if( width > sizes.tablet && appView !== APP_VIEW_DESKTOP ){
+      setAppView( APP_VIEW_DESKTOP );
+    }else if( width <= sizes.tablet && appView !==
+      APP_VIEW_DESKTOP ){
+      setAppView( APP_VIEW_MOBILE );
+    }
+    
+    if( height !== theme.screenHeight ){
+      setThemeVariable( "screenHeight", height );
+    }
+    
   }, [ width, height ] );
   
-  return { theme, setVariables };
+  return { theme, setThemeVariable };
 };

@@ -1,6 +1,6 @@
-import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
-import { useAppHooks } from '../customHooks/useAppHooks.js';
+import React from "react";
+import { Redirect, Route } from "react-router-dom";
+import { useAppHooks } from "../customHooks/useAppHooks.js";
 
 /**
  * Protected Route
@@ -27,10 +27,12 @@ export const ProtectedRoute = ( { component: Component, ...rest } ) => {
           if( usersState.user.uid ){
             return <Component { ...props } />;
           }else{
-            return <Redirect to={ '/' }/>;
+            
+            return <Redirect to={ "/" }/>;
           }
         }catch( e ){
-          return <Redirect to={ '/' }/>;
+          
+          return <Redirect to={ "/" }/>;
         }
       } }
     />
