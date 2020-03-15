@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import {CardEditDeleteIcons} from '../Icon/CardEditDeleteIcons.js';
 
 export const DeckName = ({
+  disableInput,
   highlighted,
   clickHandler,
   changeHandler,
