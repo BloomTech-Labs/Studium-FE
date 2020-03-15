@@ -94,7 +94,6 @@ export const NavBar = () => {
             className={'ant-dropdown-link'}
           />
         )}
-
         {getSignUpText()}
       </ContainerDiv>
     </StyledBar>
@@ -118,14 +117,15 @@ const StyledBar = styled.div`
 `;
 
 const Styledh2 = styled.h2`
-  display: flex;
-  align-items: center;
+  /* display: flex; */
+/* align-items: center;  */
   color: #fff;
-  position: absolute;
+  position: absolute; 
   width: 95px;
   height: 24px;
-  left: 1197px;
-  top: 38px;
+  left: 86%;
+  top: 54%;  
+  transform: 'transition(0, -53%)'; 
   font-family: Source Sans Pro;
   font-style: normal;
   font-weight: bold;

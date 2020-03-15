@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {FormInput, SynapsButton, SynapsText, SvgContainer} from '../components';
 import {ReactComponent as svg} from '../images/SmallWhiteLogo.svg';
-import {ReactComponent as smalllogo} from '../images/smalllogo.png';
+import {ReactComponent as brainpic} from '../images/brainpic.svg';
 import styled from 'styled-components';
 import {signIn, GOOGLE_PROVIDER, EMAIL_PROVIDER} from '../actions';
 import {useAppHooks} from '../customHooks/useAppHooks.js';
@@ -129,6 +129,20 @@ export function SignIn(props) {
         type={'darkgray'}
         onClick={e => handleEmailClick(e)}
       />
+    {/* <StyledBrainPic> */}
+{/*     
+    <SvgContainer 
+              
+              svg={svg}
+              
+    /> */}
+    <brainpic
+    style={{
+      position: 'absolute',
+    }}
+     />
+    
+    {/* </StyledBrainPic>  */}
     </StyledSignIn>
   );
 }
@@ -219,3 +233,7 @@ const StyledBorder = styled.span`
     max-width: 100%;
   }
 `;
+
+const StyledBrainPic = styled.div`
+
+`
