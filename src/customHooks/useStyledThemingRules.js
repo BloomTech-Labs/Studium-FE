@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { useLogger } from "./useLogger.js";
-import { APP_PATHS } from "./usePaths.js";
+import React, {useState} from 'react';
+import {useLogger} from './useLogger.js';
+import {APP_PATHS} from './usePaths.js';
 
 /**
  *  Used Styled Theming Rules
@@ -11,11 +11,10 @@ import { APP_PATHS } from "./usePaths.js";
  *  @property {CheckAllRules} checkAllRules
  *  @property {function} setRules
  */
-export const useStyledThemingRules = ( setThemeVariable, themeRules ) => {
-  
-  const [ rules, setRules ] = useState( themeRules || [] );
-  const logger = useLogger( "useStyledThemingRules" );
-  
+export const useStyledThemingRules = (setThemeVariable, themeRules) => {
+  const [rules, setRules] = useState(themeRules || []);
+  const logger = useLogger('useStyledThemingRules');
+
   /**
    *  Check all rules.
    *  @typedef CheckAllRules
@@ -29,12 +28,12 @@ export const useStyledThemingRules = ( setThemeVariable, themeRules ) => {
    * @param {string} currentPath
    * @returns void
    */
-  const checkAllRules = ( theme, appView, currentPath ) => {
-    rules.forEach( rule => {
-      checkRule( rule, currentPath, theme, appView );
-    } );
+  const checkAllRules = (theme, appView, currentPath) => {
+    rules.forEach(rule => {
+      checkRule(rule, currentPath, theme, appView);
+    });
   };
-  
+
   /**
    * Check Rule
    *
@@ -47,32 +46,31 @@ export const useStyledThemingRules = ( setThemeVariable, themeRules ) => {
    * @param theme
    * @return void
    */
-  const checkRule = ( rule, currentPath, theme, appView ) => {
-    logger.info(
-      `Checking ${ rule.themeVariable } rule for ${ rule.themeValue }` );
-    const appViewResult = checkView( rule, appView );
-    const pathResult = checkPath( rule, currentPath );
-    
+  const checkRule = (rule, currentPath, theme, appView) => {
+    logger.logInfo(
+      `Checking ${rule.themeVariable} rule for ${rule.themeValue}`
+    );
+    const appViewResult = checkView(rule, appView);
+    const pathResult = checkPath(rule, currentPath);
+
     /**
      * if the rule requirements have been met then check if the value is set
      * or if needs to be set.
      */
-    if( appViewResult && pathResult ){
-      const valueSet = theme[ rule.themeVariable ] === rule.themeValue;
-      
+    if (appViewResult && pathResult) {
+      const valueSet = theme[rule.themeVariable] === rule.themeValue;
+
       // if value is not set. Set the variable to the correct value
-      if( !valueSet ){
+      if (!valueSet) {
         logger.info(
-          `${ rule.themeVariable } has been set to ${ rule.themeValue }.` );
-        setThemeVariable( rule.themeVariable, rule.themeValue );
+          `${rule.themeVariable} has been set to ${rule.themeValue}.`
+        );
+        setThemeVariable(rule.themeVariable, rule.themeValue);
       }
-      
     }
-    
   };
-  
-  return { checkAllRules, setRules };
-  
+
+  return {checkAllRules, setRules};
 };
 
 /**
@@ -85,7 +83,7 @@ export const useStyledThemingRules = ( setThemeVariable, themeRules ) => {
  * @param path
  * @return {boolean}
  */
-const checkPath = ( rule, path ) => {
+const checkPath = (rule, path) => {
   return !rule.path || rule.path === path;
 };
 
@@ -99,7 +97,7 @@ const checkPath = ( rule, path ) => {
  * @param {AppView} appView
  * @return {boolean}
  */
-const checkView = ( rule, appView ) => {
+const checkView = (rule, appView) => {
   return !rule.appView || rule.appView === appView;
 };
 
@@ -114,10 +112,8 @@ const checkView = ( rule, appView ) => {
  * @param  {AppView} appView
  * @returns {ThemeRule}
  */
-export const createRule = ( themeVariable, themeValue, paths, appView ) => {
-  
-  return { themeVariable, themeValue, paths, appView };
-  
+export const createRule = (themeVariable, themeValue, paths, appView) => {
+  return {themeVariable, themeValue, paths, appView};
 };
 
 /**
