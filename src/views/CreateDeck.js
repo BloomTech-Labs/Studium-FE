@@ -6,7 +6,7 @@ import {DeckName} from '../components/CreateDeck/DeckName.js';
 import {SmallDeckSvg} from '../components/SmallDeckSvg/SmallDeckSvg.js';
 import {SynapsButton} from '../components/Button/SynapsButton.js';
 import {postDeck} from '../actions/decksActions.js';
-
+import {useAppHooks} from '../customHooks/useAppHooks.js';
 /**
  * Create Deck View
  * @category Views
@@ -14,7 +14,17 @@ import {postDeck} from '../actions/decksActions.js';
  * @example return (<CreateDeck />);
  */
 export const CreateDeck = props => {
+  const {
+    pathname,
+    changePath,
+    dispatch,
+    usersState,
+    decksState,
+    theme,
+  } = useAppHooks();
+  const [disableInput, setDisableInput] = useState('');
   const [newDeck, setNewDeck] = useState({});
+  const [newCard, setNewCard] = useState({});
   const [cardNum, setCardNum] = useState(1);
   const [visible, setVisible] = useState({
     front: false,
@@ -57,15 +67,16 @@ export const CreateDeck = props => {
       });
     }
   };
-  useEffect(() => {
-    console.log(newDeck);
-  }, [newDeck]);
+
   const changeHandler = e => {
     e.preventDefault();
     setNewDeck({deck_name: e.target.value});
   };
-  const submitForm = deckInfo => {
-    console.log('hi');
+  const submitForm = () => {
+    if (cardNum == 1) {
+      dispatch(postDeck(usersState.user.uid, newDeck));
+      setDisableInput('disabled');
+    }
   };
 
   return (
@@ -76,6 +87,7 @@ export const CreateDeck = props => {
           <SmallDeckSvg />
         </CardHeaderContainer>
         <DeckName
+          disableInput={disableInput}
           changeHandler={changeHandler}
           clickHandler={clickHandler}
           highlighted={highlighted.title}

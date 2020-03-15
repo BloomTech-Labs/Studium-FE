@@ -19,6 +19,7 @@ export const DeckName = ({
         <CardEditDeleteIcons />
       </DeckNameIconContainer>
       <FormInput
+        disableInput={disableInput}
         onChange={changeHandler}
         name="title"
         onClick={clickHandler}
