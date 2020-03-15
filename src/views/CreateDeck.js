@@ -5,6 +5,7 @@ import {CreateCard} from '../components/CreateCard/CreateCard.js';
 import {DeckName} from '../components/CreateDeck/DeckName.js';
 import {SmallDeckSvg} from '../components/SmallDeckSvg/SmallDeckSvg.js';
 import {SynapsButton} from '../components/Button/SynapsButton.js';
+import {postDeck} from '../actions/decksActions.js';
 
 /**
  * Create Deck View
@@ -13,6 +14,7 @@ import {SynapsButton} from '../components/Button/SynapsButton.js';
  * @example return (<CreateDeck />);
  */
 export const CreateDeck = props => {
+  const [newDeck, setNewDeck] = useState({});
   const [cardNum, setCardNum] = useState(1);
   const [visible, setVisible] = useState({
     front: false,
@@ -55,6 +57,16 @@ export const CreateDeck = props => {
       });
     }
   };
+  useEffect(() => {
+    console.log(newDeck);
+  }, [newDeck]);
+  const changeHandler = e => {
+    e.preventDefault();
+    setNewDeck({deck_name: e.target.value});
+  };
+  const submitForm = deckInfo => {
+    console.log('hi');
+  };
 
   return (
     <StyledCreateDeck>
@@ -63,7 +75,11 @@ export const CreateDeck = props => {
           <CreateCardTitleText text={'Create Deck'} />
           <SmallDeckSvg />
         </CardHeaderContainer>
-        <DeckName clickHandler={clickHandler} highlighted={highlighted.title} />
+        <DeckName
+          changeHandler={changeHandler}
+          clickHandler={clickHandler}
+          highlighted={highlighted.title}
+        />
       </CardNameContainer>
       <CreateCardContainer>
         <CreateCard
@@ -82,7 +98,11 @@ export const CreateDeck = props => {
         />
       </CreateCardContainer>
       <Bottom>
-        <SynapsButton text={'Add Another Card'} type={'primaryCreateCard'} />
+        <SynapsButton
+          onClick={submitForm}
+          text={'Add Another Card'}
+          type={'primaryCreateCard'}
+        />
         <SynapsButton text={'Done'} type={'defaultCreateCard'} />
       </Bottom>
     </StyledCreateDeck>

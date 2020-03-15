@@ -4,7 +4,12 @@ import {FormInput} from '../FormItems/Input/FormInput.js';
 import styled from 'styled-components';
 import {CardEditDeleteIcons} from '../Icon/CardEditDeleteIcons.js';
 
-export const DeckName = ({highlighted, clickHandler, ...props}) => {
+export const DeckName = ({
+  highlighted,
+  clickHandler,
+  changeHandler,
+  ...props
+}) => {
   return (
     <DeckNameContainer>
       <DeckNameIconContainer>
@@ -14,6 +19,7 @@ export const DeckName = ({highlighted, clickHandler, ...props}) => {
         <CardEditDeleteIcons />
       </DeckNameIconContainer>
       <FormInput
+        onChange={changeHandler}
         name="title"
         onClick={clickHandler}
         borderStyle={highlighted ? '1px solid #4CB69F' : '2px solid #908A7D'}
