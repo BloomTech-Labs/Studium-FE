@@ -82,8 +82,8 @@ export const CreateDeck = props => {
         />
       </CreateCardContainer>
       <Bottom>
-        <SynapsButton text={'Add Another Card'} type={'primary'} />
-        <SynapsButton text={'Done'} type={'default'} />
+        <SynapsButton text={'Add Another Card'} type={'primaryCreateCard'} />
+        <SynapsButton text={'Done'} type={'defaultCreateCard'} />
       </Bottom>
     </StyledCreateDeck>
   );
@@ -120,7 +120,8 @@ const CardNameContainer = styled.div`
 
 const Bottom = styled.div`
   width: 100%;
-  justify-self: flex-end;
+  height: 70px;
   display: flex;
   justify-content: space-around;
+  padding-bottom: 20px;
 `;
