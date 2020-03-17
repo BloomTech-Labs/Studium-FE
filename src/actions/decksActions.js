@@ -26,10 +26,10 @@ export const POSTING_DECK_START = 'POSTING_DECK_START';
 export const POSTING_DECK_SUCCESS = 'POSTING_DECK_SUCCESS';
 export const POSTING_DECK_FAILURE = 'POSTING_DECK_FAILURE';
 
-export const postDeck = uid => dispatch => {
+export const postDeck = (uid, newDeck) => dispatch => {
   dispatch({type: POSTING_DECK_START});
   createAxiosAuth(uid)
-    .get('/api/decks')
+    .post('/api/decks', newDeck)
     .then(res => {
       dispatch({type: POSTING_DECK_SUCCESS, payload: res.data});
     })

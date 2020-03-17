@@ -36,6 +36,10 @@ export const CreateDeck = props => {
     back: false,
   });
 
+  useEffect(() => {
+    console.log('deck state', decksState);
+  }, [newDeck.deck_name]);
+
   const clickHandler = e => {
     e.preventDefault();
     let clickedOn = e.target.name;
@@ -70,8 +74,15 @@ export const CreateDeck = props => {
 
   const changeHandler = e => {
     e.preventDefault();
-    setNewDeck({deck_name: e.target.value});
+    const targetName = e.target.name;
+    console.log(targetName);
+    switch (targetName) {
+      case 'title':
+        setNewDeck({deck_name: e.target.value});
+        console.log(newDeck);
+    }
   };
+
   const submitForm = () => {
     if (cardNum == 1) {
       dispatch(postDeck(usersState.user.uid, newDeck));
@@ -87,14 +98,17 @@ export const CreateDeck = props => {
           <SmallDeckSvg />
         </CardHeaderContainer>
         <DeckName
+          name={'newDeck'}
           disableInput={disableInput}
           changeHandler={changeHandler}
+          value={newDeck.deck_name}
           clickHandler={clickHandler}
           highlighted={highlighted.title}
         />
       </CardNameContainer>
       <CreateCardContainer>
         <CreateCard
+          name={'newCardFront'}
           drillName={'front'}
           clickHandler={clickHandler}
           highlighted={highlighted.front}
@@ -102,6 +116,7 @@ export const CreateDeck = props => {
           text={`Card ${cardNum} - Front`}
         />
         <CreateCard
+          name={'newCardBack'}
           drillName={'back'}
           clickHandler={clickHandler}
           highlighted={highlighted.back}
