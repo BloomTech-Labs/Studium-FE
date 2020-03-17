@@ -19,7 +19,6 @@ import PropTypes from 'prop-types';
  *
  */
 export const FormInput = ({
-  disableInput = '',
   width = '90%',
   bordered = 'false',
   borderRadius = 'small',
@@ -31,14 +30,14 @@ export const FormInput = ({
     if (borderRadius === 'large') {
       // bordered input with large radius
       return (
-        <StyledFormItem disableInput={disableInput} label={label}>
+        <StyledFormItem label={label}>
           <StyledAntdInputLargeRadius {...props} />
         </StyledFormItem>
       );
     } else {
       // bordered input with regular radius
       return (
-        <StyledFormItem disableInput={disableInput} label={label}>
+        <StyledFormItem label={label}>
           <StyledAntdInputSmallRadius {...props} />
         </StyledFormItem>
       );
@@ -46,7 +45,7 @@ export const FormInput = ({
   } else {
     // no border input
     return (
-      <StyledFormItem disableInput={disableInput} label={label}>
+      <StyledFormItem label={label}>
         <StyledBorderBottom>
           <StyledNoBorderAntdInput {...props} />
         </StyledBorderBottom>

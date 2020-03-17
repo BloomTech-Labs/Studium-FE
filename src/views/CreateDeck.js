@@ -22,7 +22,7 @@ export const CreateDeck = props => {
     decksState,
     theme,
   } = useAppHooks();
-  const [disableInput, setDisableInput] = useState('');
+  const [disableInput, setDisableInput] = useState(false);
   const [newDeck, setNewDeck] = useState({});
   const [newCard, setNewCard] = useState({});
   const [cardNum, setCardNum] = useState(1);
@@ -86,7 +86,7 @@ export const CreateDeck = props => {
   const submitForm = () => {
     if (cardNum == 1) {
       dispatch(postDeck(usersState.user.uid, newDeck));
-      setDisableInput('disabled');
+      setDisableInput(true);
     }
   };
 
@@ -98,6 +98,8 @@ export const CreateDeck = props => {
           <SmallDeckSvg />
         </CardHeaderContainer>
         <DeckName
+          newDeck={newDeck}
+          disableInput={disableInput}
           name={'newDeck'}
           disableInput={disableInput}
           changeHandler={changeHandler}
