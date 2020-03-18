@@ -9,7 +9,6 @@ import {
 import { useAuthStateChange } from "./customHooks/useAuthStateChange.js";
 import { SynapsBrain } from "./components";
 import { APP_VIEW_DESKTOP } from "./customHooks/themingRules.js";
-import { useHooksInit } from "./customHooks/useHooksInit.js";
 
 /**
  * App
@@ -27,6 +26,7 @@ function App( props ){
   }, [] );
   
   useAuthStateChange();
+  
   useEffect( () => {
     if( usersState.registerError && !alertMessage ){
       setAlert( "Error logging in. Please try again later." );

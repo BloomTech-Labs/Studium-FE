@@ -1,13 +1,13 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {useSelector} from 'react-redux';
-import {themeState} from './useThemeContext.js';
-import {useStyledThemingRules} from './useStyledThemingRules.js';
-import {useLogger} from './useLogger.js';
-import {APP_VIEW_MOBILE} from './themingRules.js';
-import {useHistory} from 'react-router-dom';
-import {useDispatch} from 'react-redux';
+import React, {useContext, useEffect, useState} from "react";
+import {useSelector} from "react-redux";
+import {themeState} from "./useThemeContext.js";
+import {useStyledThemingRules} from "./useStyledThemingRules.js";
+import {useLogger} from "./useLogger.js";
+import {APP_VIEW_MOBILE} from "./themingRules.js";
+import {useHistory} from "react-router-dom";
+import {useDispatch} from "react-redux";
 
-export const APP_HOOKS_DEBUG_NAME = 'App Hooks';
+export const APP_HOOKS_DEBUG_NAME = "App Hooks";
 /**
  * Use App Hooks
  *
@@ -26,12 +26,12 @@ export const useAppHooks = () => {
   const logger = useLogger(APP_HOOKS_DEBUG_NAME);
   const dispatch = useDispatch();
   const history = useHistory();
-
+  
   useEffect(() => {
-    logger.logInfo('Hooks updated');
+    logger.logInfo("Hooks updated");
     logger.logObject(stuff);
   }, [stuff]);
-
+  
   const {
     setHookVariable,
     path,
@@ -43,11 +43,11 @@ export const useAppHooks = () => {
     checkAllRules,
     setRules,
   } = stuff;
-
+  
   const {usersState, photosState, cardsState, decksState} = useSelector(
-    reducerState => reducerState
+    reducerState => reducerState,
   );
-
+  
   /**
    * @typedef {object} UseAppHooksReturn
    *@property {function} setHookVariable
@@ -66,7 +66,7 @@ export const useAppHooks = () => {
    * @property {number} height
    * @property {number} width
    */
-
+  
   return {
     dispatch,
     history,
@@ -86,19 +86,18 @@ export const useAppHooks = () => {
   };
 };
 
-export const USE_APP_HOOKS_STATE_DEBUG_NAME = 'App Hooks State';
+export const USE_APP_HOOKS_STATE_DEBUG_NAME = "App Hooks State";
 
 export const useAppHooksState = () => {
-  const path = '/';
-  const dispatch = '';
+  const path = "/";
+  const dispatch = "";
   const pushedState = {};
   const appView = APP_VIEW_MOBILE;
   const width = window.innerWidth;
   const height = window.innerHeight;
   const history = {};
   const logger = useLogger(USE_APP_HOOKS_STATE_DEBUG_NAME);
-  const {checkAllRules, setRules} = useStyledThemingRules();
-
+  
   const initialState = {
     dispatch,
     path,
@@ -109,16 +108,14 @@ export const useAppHooksState = () => {
     theme: themeState,
     history,
     useAppHooksInit: false,
-    checkAllRules,
-    setRules,
   };
-
-  logger.logInfo('Hooks almost initialized for the App Provider. ');
-  logger.logInfo('Initial State');
+  
+  logger.logInfo("Hooks almost initialized for the App Provider. ");
+  logger.logInfo("Initial State");
   logger.logInfo(initialState);
-
+  
   const [hooks, setHooks] = useState(initialState);
-
+  
   const setHookVariable = (name, value) => {
     logger.logInfo(`Setting ${name} to new value`);
     logger.logObject(value);
@@ -127,7 +124,7 @@ export const useAppHooksState = () => {
     newhooks[name] = value;
     setHooks(newhooks);
   };
-
+  
   return {hooks, setHookVariable};
 };
 
@@ -161,7 +158,7 @@ export const mediaQueries = {
   desktop: `(min-width: ${sizes.desktop}px)`,
 };
 
-export * from './useLogger.js';
+export * from "./useLogger.js";
 
 /**
  * @typedef {string} Color
