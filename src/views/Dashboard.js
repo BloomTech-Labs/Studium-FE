@@ -33,6 +33,7 @@ export const Dashboard = props => {
   };
 
   useEffect(() => {
+    console.log('dispatching getUserDecks action ||');
     dispatch(getUserDecks(usersState.user.uid));
   }, []);
 
@@ -47,7 +48,7 @@ export const Dashboard = props => {
     }
     changePath('/preview', {...deck});
   };
-
+  debugger;
   const getAlert = () => {
     if (decksState.errorDecksMessage) {
       return (

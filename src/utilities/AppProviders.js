@@ -18,11 +18,16 @@ const GlobalStyles = getGlobalStyles();
 const initialState = {};
 if(process.env.NODE_ENV !== "test"){
   REDUCER_NAMES.forEach(key => {
-    try{
-      initialState[key] = JSON.parse(
-        localStorage.getItem(SYNAPS_CONFIG.localStorageBasePath + key),
+     try {
+      const stateKey = JSON.parse(
+        localStorage.getItem(SYNAPS_CONFIG.localStorageBasePath + key)
       );
       
+
+      if (typeof stateKey === 'object' && stateKey !== null) {
+        initialState[key] = stateKey;
+      }
+
       logOutMessageOrDebug(
         createMessage(
           `Retried ${key} from local storage and adding it to initial state.`,

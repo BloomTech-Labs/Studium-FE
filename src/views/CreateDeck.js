@@ -36,10 +36,6 @@ export const CreateDeck = props => {
     back: false,
   });
 
-  useEffect(() => {
-    console.log('deck state', decksState);
-  }, [newDeck.deck_name]);
-
   const clickHandler = e => {
     e.preventDefault();
     let clickedOn = e.target.name;
@@ -101,7 +97,6 @@ export const CreateDeck = props => {
           newDeck={newDeck}
           disableInput={disableInput}
           name={'newDeck'}
-          disableInput={disableInput}
           changeHandler={changeHandler}
           value={newDeck.deck_name}
           clickHandler={clickHandler}
