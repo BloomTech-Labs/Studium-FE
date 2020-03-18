@@ -1,13 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { themeState } from "./useThemeContext.js";
-import { useStyledThemingRules } from "./useStyledThemingRules.js";
-import { useLogger } from "./useLogger.js";
-import { APP_VIEW_MOBILE } from "./themingRules.js";
-import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import React, {useContext, useEffect, useState} from 'react';
+import {useSelector} from 'react-redux';
+import {themeState} from './useThemeContext.js';
+import {useStyledThemingRules} from './useStyledThemingRules.js';
+import {useLogger} from './useLogger.js';
+import {APP_VIEW_MOBILE} from './themingRules.js';
+import {useHistory} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
 
-export const APP_HOOKS_DEBUG_NAME = "App Hooks";
+export const APP_HOOKS_DEBUG_NAME = 'App Hooks';
 /**
  * Use App Hooks
  *
@@ -22,25 +22,32 @@ export const APP_HOOKS_DEBUG_NAME = "App Hooks";
  */
 
 export const useAppHooks = () => {
-  
-  const { ...stuff } = useContext( AppHooksContext );
-  const logger = useLogger( APP_HOOKS_DEBUG_NAME );
+  const {...stuff} = useContext(AppHooksContext);
+  const logger = useLogger(APP_HOOKS_DEBUG_NAME);
   const dispatch = useDispatch();
   const history = useHistory();
-  
-  useEffect( () => {
-    logger.logInfo( "Hooks updated" );
-    logger.logObject( stuff );
-  }, [ stuff ] );
-  
+
+  useEffect(() => {
+    logger.logInfo('Hooks updated');
+    logger.logObject(stuff);
+  }, [stuff]);
+
   const {
-    setHookVariable, path,
-    pushedState, appView, width, height, theme, checkAllRules, setRules,
+    setHookVariable,
+    path,
+    pushedState,
+    appView,
+    width,
+    height,
+    theme,
+    checkAllRules,
+    setRules,
   } = stuff;
-  
-  const { usersState, photosState, cardsState, decksState } = useSelector(
-    reducerState => reducerState );
-  
+  debugger;
+  const {usersState, photosState, cardsState, decksState} = useSelector(
+    reducerState => reducerState
+  );
+
   /**
    * @typedef {object} UseAppHooksReturn
    *@property {function} setHookVariable
@@ -59,7 +66,7 @@ export const useAppHooks = () => {
    * @property {number} height
    * @property {number} width
    */
-  
+
   return {
     dispatch,
     history,
@@ -79,20 +86,19 @@ export const useAppHooks = () => {
   };
 };
 
-export const USE_APP_HOOKS_STATE_DEBUG_NAME = "App Hooks State";
+export const USE_APP_HOOKS_STATE_DEBUG_NAME = 'App Hooks State';
 
 export const useAppHooksState = () => {
-  
-  const path = "/";
-  const dispatch = "";
+  const path = '/';
+  const dispatch = '';
   const pushedState = {};
   const appView = APP_VIEW_MOBILE;
   const width = window.innerWidth;
   const height = window.innerHeight;
   const history = {};
-  const logger = useLogger( USE_APP_HOOKS_STATE_DEBUG_NAME );
-  const { checkAllRules, setRules } = useStyledThemingRules();
-  
+  const logger = useLogger(USE_APP_HOOKS_STATE_DEBUG_NAME);
+  const {checkAllRules, setRules} = useStyledThemingRules();
+
   const initialState = {
     dispatch,
     path,
@@ -101,27 +107,28 @@ export const useAppHooksState = () => {
     width,
     height,
     theme: themeState,
-    history, useAppHooksInit: false,
+    history,
+    useAppHooksInit: false,
     checkAllRules,
     setRules,
   };
-  
-  logger.logInfo( "Hooks almost initialized for the App Provider. " );
-  logger.logInfo( "Initial State" );
-  logger.logInfo( initialState );
-  
-  const [ hooks, setHooks ] = useState( initialState );
-  
-  const setHookVariable = ( name, value ) => {
-    logger.logInfo( `Setting ${ name } to new value` );
-    logger.logObject( value );
-    let string = JSON.stringify( hooks );
-    let newhooks = JSON.parse( string );
-    newhooks[ name ] = value;
-    setHooks( newhooks );
+
+  logger.logInfo('Hooks almost initialized for the App Provider. ');
+  logger.logInfo('Initial State');
+  logger.logInfo(initialState);
+
+  const [hooks, setHooks] = useState(initialState);
+
+  const setHookVariable = (name, value) => {
+    logger.logInfo(`Setting ${name} to new value`);
+    logger.logObject(value);
+    let string = JSON.stringify(hooks);
+    let newhooks = JSON.parse(string);
+    newhooks[name] = value;
+    setHooks(newhooks);
   };
-  
-  return { hooks, setHookVariable };
+
+  return {hooks, setHookVariable};
 };
 
 export const AppHooksContext = React.createContext();
@@ -145,16 +152,16 @@ export const sizes = {
  * @type {Devices}
  */
 export const mediaQueries = {
-  mobileS: `(min-width: ${ sizes.mobileS }px)`,
-  mobileM: `(min-width: ${ sizes.mobileM }px)`,
-  mobileL: `(min-width: ${ sizes.mobileL }px)`,
-  tablet: `(min-width: ${ sizes.tablet }px)`,
-  laptop: `(min-width: ${ sizes.laptop }px)`,
-  laptopL: `(min-width: ${ sizes.laptopL }px)`,
-  desktop: `(min-width: ${ sizes.desktop }px)`,
+  mobileS: `(min-width: ${sizes.mobileS}px)`,
+  mobileM: `(min-width: ${sizes.mobileM}px)`,
+  mobileL: `(min-width: ${sizes.mobileL}px)`,
+  tablet: `(min-width: ${sizes.tablet}px)`,
+  laptop: `(min-width: ${sizes.laptop}px)`,
+  laptopL: `(min-width: ${sizes.laptopL}px)`,
+  desktop: `(min-width: ${sizes.desktop}px)`,
 };
 
-export * from "./useLogger.js";
+export * from './useLogger.js';
 
 /**
  * @typedef {string} Color
@@ -185,4 +192,3 @@ export * from "./useLogger.js";
  * @property {MediaQuery} laptopL   1440px
  * @property {MediaQuery} desktop   2560px
  */
-
