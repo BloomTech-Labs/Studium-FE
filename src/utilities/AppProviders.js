@@ -19,10 +19,13 @@ const initialState = {};
 if (process.env.NODE_ENV !== 'test') {
   REDUCER_NAMES.forEach(key => {
     try {
-      initialState[key] = JSON.parse(
+      const stateKey = JSON.parse(
         localStorage.getItem(SYNAPS_CONFIG.localStorageBasePath + key)
       );
-      debugger;
+
+      if (typeof stateKey === 'object' && stateKey !== null) {
+        initialState[key] = stateKey;
+      }
 
       logOutMessageOrDebug(
         createMessage(

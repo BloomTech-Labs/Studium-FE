@@ -91,6 +91,7 @@ export const getUserDecks = uid => dispatch => {
   createAxiosAuth(uid)
     .get('/api/decks/user')
     .then(res => {
+      console.log('payload from .then ||', res.data);
       dispatch({type: RETRIEVE_USER_DECKS_SUCCESS, payload: res.data});
     })
     .catch(error => {
