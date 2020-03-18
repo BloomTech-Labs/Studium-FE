@@ -1,14 +1,19 @@
 import React, {useState, useEffect} from 'react';
-import {useDimensions} from './useDimensions.js';
-import {sizes} from './useAppHooks.js';
+import {useAppHooks, useLogger} from './useAppHooks.js';
 import {useStyledThemingRules} from './useStyledThemingRules.js';
-import {rules} from './themingRules.js';
-import {THEMING_VALUES, THEMING_VARIABLES} from './themingRules.js';
+import {
+  THEMING_VALUES,
+  THEMING_VARIABLES,
+  APP_VIEW_DESKTOP,
+  APP_VIEW_MOBILE,
+} from './themingRules.js';
+
+export const THEME_DEBUG_NAME = 'Theme';
 
 /**
  * @type {Theme}
  */
-export let themeState = {
+export const themeState = {
   primaryColor: '#0d2545',
   primaryColorB98C4: '#b9b8c4',
   primaryColor86869A: '#86869a',
@@ -50,9 +55,6 @@ export let themeState = {
 
   [THEMING_VARIABLES.NAV_STYLE]: THEMING_VALUES.DARK,
 };
-
-export const APP_VIEW_MOBILE = 'APP_VIEW_MOBILE';
-export const APP_VIEW_DESKTOP = 'APP_VIEW_DESKTOP';
 
 /**
  * @typedef {("APP_VIEW_DESKTOP" | "APP_VIEW_MOBILE")} AppView
@@ -108,14 +110,33 @@ export const APP_VIEW_DESKTOP = 'APP_VIEW_DESKTOP';
  * @property {Theme} theme
  * @property {SetThemeVariable} setThemeVariable
  */
-export const useThemeContext = path => {
+export const useThemeContext = () => {
+  const {theme, checkAllRules, setRules, appView, path} = useAppHooks();
+  const logger = useLogger(THEME_DEBUG_NAME);
+
+  /**
+   * Log new theme to the console on change.
+   */
+  useEffect(() => {
+    logger.logInfo('Theme updated.');
+    logger.logObject(theme);
+  }, [theme]);
+
+  useEffect(() => {
+    logger.logInfo(
+      'Either the path or the app view changed so we need to re' +
+        ' evaluate app theme.'
+    );
+
+    checkAllRules(theme, appView, path);
+  }, [appView, path]);
+};
+
+export const useTheme = () => {
   const [theme, setTheme] = useState(themeState);
-  const [width, height] = useDimensions();
 
-  const [appView, setAppView] = useState(
-    width > sizes.tablet ? APP_VIEW_DESKTOP : APP_VIEW_MOBILE
-  );
-
+  const logger = useLogger(THEME_DEBUG_NAME);
+  logger.logInfo('Theme Provider was generated.');
   /**
    * @typedef SetThemeVariable
    * @function
@@ -124,38 +145,13 @@ export const useThemeContext = path => {
    * @param value
    * @return void
    */
+
   const setThemeVariable = (name, value) => {
-    setTheme({
-      ...theme,
-      [name]: value,
-    });
+    logger.logInfo(`Set new theme state: [${name}]: ${value} `);
+    const newTheme = {...theme, [name]: value};
+    logger.logObject(newTheme);
+    setTheme({...theme, [name]: value});
   };
-
-  const {checkAllRules, createRule} = useStyledThemingRules(
-    setThemeVariable,
-    rules
-  );
-
-  // if the path or the app View changes. Check the theming rules.
-  useEffect(() => {
-    checkAllRules(theme, path, appView);
-  }, [appView, path]);
-
-  /**
-   * Here we check when the width of the screen changes and then set the app
-   * view width to desktop or to mobile.
-   */
-  useEffect(() => {
-    if (width > sizes.tablet && appView !== APP_VIEW_DESKTOP) {
-      setAppView(APP_VIEW_DESKTOP);
-    } else if (width <= sizes.tablet && appView !== APP_VIEW_DESKTOP) {
-      setAppView(APP_VIEW_MOBILE);
-    }
-
-    if (height !== theme.screenHeight) {
-      setThemeVariable('screenHeight', height);
-    }
-  }, [width, height]);
 
   return {theme, setThemeVariable};
 };
