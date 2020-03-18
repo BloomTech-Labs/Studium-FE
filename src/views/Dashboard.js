@@ -19,7 +19,7 @@ import {Alert} from 'antd';
  */
 export const Dashboard = props => {
   const [selected, setSelected] = useState(0);
-  debugger;
+
   const {
     pathname,
     changePath,

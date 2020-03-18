@@ -14,12 +14,17 @@ import rootReducer from '../reducers';
  * @returns Store
  *
  */
-export const getStore = initalState =>
-  createStore(
-    rootReducer,
-    initalState,
-    composeWithDevTools(applyMiddleware(storageBackUp, logger, Thunk))
-  );
+export const getStore = initialState =>
+  initialState
+    ? createStore(
+        rootReducer,
+        initialState,
+        composeWithDevTools(applyMiddleware(storageBackUp, logger, Thunk))
+      )
+    : createStore(
+        rootReducer,
+        composeWithDevTools(applyMiddleware(storageBackUp, logger, Thunk))
+      );
 
 /**
  * @typedef {object} Store

@@ -43,7 +43,7 @@ export const useAppHooks = () => {
     checkAllRules,
     setRules,
   } = stuff;
-  debugger;
+
   const {usersState, photosState, cardsState, decksState} = useSelector(
     reducerState => reducerState
   );

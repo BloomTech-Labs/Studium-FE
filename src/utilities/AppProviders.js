@@ -16,13 +16,13 @@ export const APP_PROVIDER_DEBUG_NAME = 'App Provider';
 
 const GlobalStyles = getGlobalStyles();
 const initialState = {};
-
 if (process.env.NODE_ENV !== 'test') {
   REDUCER_NAMES.forEach(key => {
     try {
       initialState[key] = JSON.parse(
         localStorage.getItem(SYNAPS_CONFIG.localStorageBasePath + key)
       );
+      debugger;
 
       logOutMessageOrDebug(
         createMessage(
@@ -53,7 +53,9 @@ if (process.env.NODE_ENV !== 'test') {
   });
 }
 
-export const store = getStore(initialState.length == 4 && initialState);
+export const store = getStore(
+  Object.values(initialState).length >= REDUCER_NAMES.length && initialState
+);
 
 /**
  * App Providers
