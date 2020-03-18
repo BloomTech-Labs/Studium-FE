@@ -23,6 +23,7 @@ export const useStyledThemingRules = () => {
   
   const [ rules, setRules ] = useState();
   const logger = useLogger( THEMING_DEBUG_NAME );
+  logger.logInfo("Styled Theming running")
   
   useEffect( () => {
     logger.logInfo( "Setting the theming rules." );

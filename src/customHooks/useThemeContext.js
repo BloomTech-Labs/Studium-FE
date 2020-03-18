@@ -46,7 +46,7 @@ export const themeState = {
   navBarLight: "#F6F5F3",
   
   synapsDark: "#36405C",
-  synapsLight: "#FFFFFF",
+  synapsLight: "#ffffff",
   
   screenHeight: 375,
   
@@ -110,7 +110,7 @@ export const themeState = {
  */
 export const useThemeContext = () => {
   
-  const { theme, checkAllRules, setRules, appView, path } = useAppHooks();
+  const { theme, checkAllRules, setRules, appView, path, setHookVariable } = useAppHooks();
   const logger = useLogger( THEME_DEBUG_NAME );
   
   /**
@@ -121,11 +121,15 @@ export const useThemeContext = () => {
     logger.logObject( theme );
   }, [ theme ] );
   
+  const setThemeVariable = () => {
+    logger.logInfo( "Setting new theme vraible" );
+  };
+  
   useEffect( () => {
     logger.logInfo( "Either the path or the app view changed so we need to re" +
       " evaluate app theme." );
     
-    checkAllRules( theme, appView, path);
+    //    checkAllRules( theme, appView, path, setThemeVariable );
   }, [ appView, path ] );
   
 };

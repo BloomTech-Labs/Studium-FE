@@ -96,7 +96,7 @@ export const logToBrowserTerminal = ( message ) => {
     }else if( message.logType === LOG_TYPES.ERROR ){
       colotStr = "background: red;";
     }else if( message.logType === LOG_TYPES.WARNING ){
-      colotStr = "background: yellow;";
+      colotStr = "background: yellow; color: black;";
     }
     colotStr += ` font-size: ${ debugTextSize }`;
     log( `%c${ str }`, colotStr );

@@ -1,15 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import { ContainerDiv, SynapsBrain } from "..";
-import { useAppHooks, sizes } from "../../customHooks/useAppHooks.js";
+import { ContainerDiv } from "..";
+import { useAppHooks } from "../../customHooks/useAppHooks.js";
 import {
   SvgBrainPic, SvgSynapsFavicon, SvgSynapsLogoText,
 } from "../../svgComponents";
 import {
   APP_VIEW_DESKTOP, APP_VIEW_MOBILE,
 } from "../../customHooks/themingRules.js";
-import theming from "styled-theming";
 
 /**
  *  LogoLeft
@@ -18,7 +17,7 @@ import theming from "styled-theming";
  *
  */
 const LogoLeft = () => {
-  const { theme, pathname, appView } = useAppHooks();
+  const { theme, appView } = useAppHooks();
   
   if( appView === APP_VIEW_DESKTOP ){
     return (
@@ -30,7 +29,7 @@ const LogoLeft = () => {
         alignItems={ "flex-end" } margin={ "2% 0 0 10%" }
       >
         
-        <SvgSynapsFavicon height={ "100%" } width={ "40%" }/>
+        <SvgSynapsFavicon height={ "100%" } width={ "40%" } top={ "-10px" }/>
         <SvgSynapsLogoText
           theme={ theme } fill={ theme.synapsDark }
           width={ "60%" }

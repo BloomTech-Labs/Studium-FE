@@ -70,6 +70,8 @@ const AppProvider = props => {
   const logger = useLogger( APP_PROVIDER_DEBUG_NAME );
   logger.logInfo( `Node Env: ${ process.env.NODE_ENV }.` );
   logger.logInfo( `App provider being rendered.` );
+  logger.logInfo( "App provider props" );
+  logger.logObject( props );
   
   return (
     
