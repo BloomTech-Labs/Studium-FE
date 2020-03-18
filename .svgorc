@@ -1,28 +1,22 @@
 {
   "plugins": [
     {
-      "removeTitle": false
+      "mergePaths": true
     },
     {
       "removeViewBox": false
     },
     {
-      "removeDoctype": false
+      "convertTransform": true
     },
     {
-      "removeDimensions": true
+      "reusePaths": true
     },
     {
-      "cleanupAttrs": false
+      "convertEllipseToCircle": true
     },
     {
-      "removeEmptyAttrs": false
-    },
-    {
-      "convertStyleToAttrs": true
-    },
-    {
-      "moveElemsAttrsToGroup": true
+      "convertShapeToPath": true
     }
   ]
 }

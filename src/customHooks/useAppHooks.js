@@ -1,8 +1,13 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistoryAndPath } from "./useHistoryAndPath.js";
-import { useThemeContext } from "./useThemeContext.js";
+import React, { useContext, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { themeState } from "./useThemeContext.js";
+import { useStyledThemingRules } from "./useStyledThemingRules.js";
+import { useLogger } from "./useLogger.js";
+import { APP_VIEW_MOBILE } from "./themingRules.js";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
+export const APP_HOOKS_DEBUG_NAME = "App Hooks";
 /**
  * Use App Hooks
  *
@@ -12,28 +17,114 @@ import { useThemeContext } from "./useThemeContext.js";
  * @category Custom Hooks
  * @function
  * @name useAppHooks
- * @returns {UseAppHooksReturn}
+ * @returns UseAppHooksReturn
  *
  */
+
 export const useAppHooks = () => {
   
+  const { ...stuff } = useContext( AppHooksContext );
+  const logger = useLogger( APP_HOOKS_DEBUG_NAME );
   const dispatch = useDispatch();
-  const state = useSelector( reducerState => reducerState );
-  let { path, pushedState, changePath } = useHistoryAndPath();
-  const { theme } = useThemeContext( path );
+  const history = useHistory();
+  
+  useEffect( () => {
+    logger.logInfo( "Hooks updated" );
+    logger.logObject( stuff );
+  }, [ stuff ] );
+  
+  const {
+    setHookVariable, path,
+    pushedState, appView, width, height, theme, checkAllRules, setRules,
+  } = stuff;
+  
+  const { usersState, photosState, cardsState, decksState } = useSelector(
+    reducerState => reducerState );
+  
+  /**
+   * @typedef {object} UseAppHooksReturn
+   *@property {function} setHookVariable
+   * @property {Dispatch}  dispatch
+   * @property {History} history
+   * @property {UsersReducerState} usersState
+   * @property {CardsState} cardsState
+   * @property {PhotoReducerState} photosState
+   * @property {{}} deckState
+   * @property {Theme} theme
+   * @property {function} setRules
+   * @property {AppView} appView
+   * @property {ChangePath} changePath
+   * @property {APP_PATH} path,
+   * @property {any} pushedState
+   * @property {number} height
+   * @property {number} width
+   */
   
   return {
     dispatch,
+    history,
+    usersState,
+    cardsState,
+    photosState,
+    decksState,
+    checkAllRules,
     theme,
-    usersState: state.usersState,
-    cardsState: state.cardsState,
-    photosState: state.photosState,
-    decksState: state.decksState,
-    pathname: path,
-    changePath: changePath,
-    pathPushedState: pushedState,
+    setRules,
+    appView,
+    path,
+    pushedState,
+    width,
+    height,
+    setHookVariable,
   };
 };
+
+export const USE_APP_HOOKS_STATE_DEBUG_NAME = "App Hooks State";
+
+export const useAppHooksState = () => {
+  
+  const path = "/";
+  const dispatch = "";
+  const pushedState = {};
+  const appView = APP_VIEW_MOBILE;
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  const history = {};
+  const logger = useLogger( USE_APP_HOOKS_STATE_DEBUG_NAME );
+  const { checkAllRules, setRules } = useStyledThemingRules();
+  
+  const initialState = {
+    dispatch,
+    path,
+    pushedState,
+    appView,
+    width,
+    height,
+    theme: themeState,
+    history, useAppHooksInit: false,
+    checkAllRules,
+    setRules,
+  };
+  
+  logger.logInfo( "Hooks almost initialized for the App Provider. " );
+  logger.logInfo( "Initial State" );
+  logger.logInfo( initialState );
+  
+  const [ hooks, setHooks ] = useState( initialState );
+  
+  const setHookVariable = ( name, value ) => {
+    logger.logInfo( `Setting ${ name } to new value` );
+    logger.logObject( value );
+    let string = JSON.stringify( hooks );
+    let newhooks = JSON.parse( string );
+    newhooks[ name ] = value;
+    setHooks( newhooks );
+  };
+  
+  return { hooks, setHookVariable };
+};
+
+export const AppHooksContext = React.createContext();
 
 /**
  * @type Sizes
@@ -67,21 +158,6 @@ export * from "./useLogger.js";
 
 /**
  * @typedef {string} Color
- */
-
-/**
- * @typedef {object} UseAppHooksReturn
- *
- * @property {Dispatch}  dispatch
- * @property {Theme} theme
- * @property {UsersReducerState} usersState
- * @property {CardsState} cardsState
- * @property {PhotoReducerState} photosState
- * @property {{}} deckState
- * @property {History} history
- * @property {string} pathname
- * @property {ChangePath} changePath
- * @property {any} pathPushedState
  */
 
 /**

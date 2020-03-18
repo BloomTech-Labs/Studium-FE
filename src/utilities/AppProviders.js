@@ -1,17 +1,60 @@
 import React, { useEffect } from "react";
-import { ThemeProvider } from "styled-components";
 import { Provider } from "react-redux";
 import { getStore } from "./getStore.js";
 import { getGlobalStyles } from "./getGlobalStyles.js";
-import { useThemeContext } from "../customHooks/useThemeContext.js";
 import { useLogger } from "../customHooks/useLogger.js";
 import { BrowserRouter as Router } from "react-router-dom";
-import Cookies from "universal-cookie";
+import { createMessage, logOutMessageOrDebug } from "./debugLogger.js";
+import {
+  useAppHooksState, AppHooksContext,
+} from "../customHooks/useAppHooks.js";
+import { LOG_TYPES } from "./constants.js";
+import { STORAGE_BACKUP_DEBUG_NAME } from "../middleWare/reduxMiddware.js";
+import { useHooksInit } from "../customHooks/useHooksInit.js";
+import { REDUCER_NAMES } from "../reducers";
+import { SYNAPS_CONFIG } from "../synapsConfig.js";
 
-export const cookies = new Cookies();
+export const APP_PROVIDER_DEBUG_NAME = "App Provider";
 
-export const store = getStore();
 const GlobalStyles = getGlobalStyles();
+const initalState = {};
+
+if( process.env.NODE_ENV !== "test" ){
+  
+  REDUCER_NAMES.forEach( key => {
+    try{
+      initalState[ key ] = JSON.parse(
+        localStorage.getItem( SYNAPS_CONFIG.localStorageBasePath + key ) );
+      
+      logOutMessageOrDebug(
+        createMessage(
+          `Retried ${ key } from local storage and adding it to initial state.`,
+          LOG_TYPES.INFO,
+          STORAGE_BACKUP_DEBUG_NAME,
+        ) );
+      
+      logOutMessageOrDebug(
+        createMessage(
+          initalState[ key ],
+          LOG_TYPES.OBJECT,
+          STORAGE_BACKUP_DEBUG_NAME,
+        ) );
+      
+    }catch( e ){
+      
+      logOutMessageOrDebug(
+        createMessage( `Unable to parse local store info for key ${ key }`,
+          LOG_TYPES.INFO,
+          STORAGE_BACKUP_DEBUG_NAME,
+        ) );
+      
+      initalState[ key ] = "";
+    }
+    
+  } );
+}
+
+export const store = getStore( initalState );
 
 /**
  * App Providers
@@ -20,32 +63,36 @@ const GlobalStyles = getGlobalStyles();
  * @description Store and theme provider setup for our application.
  */
 const AppProvider = props => {
-  const logger = useLogger( "App Provider" );
+  
+  useEffect( () => {
+  }, [] );
+  const { hooks, setHookVariable } = useAppHooksState();
+  const logger = useLogger( APP_PROVIDER_DEBUG_NAME );
   logger.logInfo( `Node Env: ${ process.env.NODE_ENV }.` );
   logger.logInfo( `App provider being rendered.` );
   
-  if( process.env.NODE_ENV !== "test" ){
-    // set prev log in state of the user if not in testing env
-    const allCookies = cookies.getAll();
-    if( Object.keys( allCookies ).length > 0 ){
-      Object.keys( allCookies ).forEach( key => {
-        
-        store.dispatch( {
-          type: "SET_INIT_STATE",
-          payload: { name: key, value: allCookies[ key ] },
-        } );
-      } );
-    }
-  }
-  
-  const theme = useThemeContext();
   return (
-    <ThemeProvider theme={ theme }>
-      <Provider store={ store }>
-        <GlobalStyles/>
-        <Router>{ props.children }</Router>
-      </Provider>
-    </ThemeProvider>
+    
+    <Provider store={ store }>
+      <AppHooksContext.Provider value={ { setHookVariable, ...hooks } }>
+        <Router>
+          <AfterHooks { ...props }/>
+        </Router>
+      </AppHooksContext.Provider>
+    </Provider>
+  
+  );
+};
+
+const AfterHooks = props => {
+  const logger = useLogger( APP_PROVIDER_DEBUG_NAME );
+  logger.logInfo( `After hooks provider rendered.` );
+  useHooksInit();
+  return (
+    <>
+      <GlobalStyles/>
+      { props.children }
+    </>
   );
 };
 

@@ -1,6 +1,8 @@
-import { createRule } from "./useStyledThemingRules.js";
 import { APP_PATHS } from "./usePaths.js";
-import { APP_VIEW_DESKTOP, APP_VIEW_MOBILE } from "./useThemeContext.js";
+import { createRule } from "./useStyledThemingRules.js";
+
+export const APP_VIEW_MOBILE = "APP_VIEW_MOBILE";
+export const APP_VIEW_DESKTOP = "APP_VIEW_DESKTOP";
 
 /**
  * @typedef {object.<THEME_VARIABLE, {string}>} THEMING_VARIABLES
@@ -27,9 +29,9 @@ export const THEMING_VALUES = {
  */
 
 /**
- * @typedef {ThemeRule[]} rules
+ * @typedef {ThemeRule[]} themingRules
  */
-export const rules = [
+export const getThemingRules = () => [
   createRule( THEMING_VARIABLES.NAV_STYLE, THEMING_VALUES.DARK,
     [
       APP_PATHS.PREVIEW_DECK_PATH, APP_PATHS.GAME_PATH, APP_PATHS.SIGN_IN_PATH,

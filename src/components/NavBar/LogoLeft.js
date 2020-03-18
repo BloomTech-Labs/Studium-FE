@@ -6,6 +6,9 @@ import { useAppHooks, sizes } from "../../customHooks/useAppHooks.js";
 import {
   SvgBrainPic, SvgSynapsFavicon, SvgSynapsLogoText,
 } from "../../svgComponents";
+import {
+  APP_VIEW_DESKTOP, APP_VIEW_MOBILE,
+} from "../../customHooks/themingRules.js";
 import theming from "styled-theming";
 
 /**
@@ -15,9 +18,9 @@ import theming from "styled-theming";
  *
  */
 const LogoLeft = () => {
-  const { theme, pathname } = useAppHooks();
+  const { theme, pathname, appView } = useAppHooks();
   
-  if( theme.screenWidth > sizes.tablet ){
+  if( appView === APP_VIEW_DESKTOP ){
     return (
       <ContainerDiv
         height={ "100%" } position={ "relative" }

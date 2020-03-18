@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   createMessage, logOutMessageOrDebug,
 } from "../utilities/debugLogger.js";
+import { LOG_TYPES } from "../utilities/constants.js";
 
 /**
  * Use Logger
@@ -17,7 +18,8 @@ export const useLogger = ( name = "App" ) => {
   
   useEffect( () => {
     if( name === "App" ){
-      log( "You should think about passing in the location of the logs being" +
+      logOut(
+        "You should think about passing in the location of the logs being" +
         " conducted to better provide debug assistance. App will be used" +
         " instead for the time.", "info" );
     }
@@ -32,7 +34,7 @@ export const useLogger = ( name = "App" ) => {
    * @param {string} message
    */
   const logInfo = ( message ) => {
-    log( message, "info" );
+    logOut( message, LOG_TYPES.INFO );
   };
   
   /**
@@ -43,7 +45,35 @@ export const useLogger = ( name = "App" ) => {
    * @param {string} message
    */
   const logError = message => {
-    log( message, "error" );
+    logOut( message, LOG_TYPES.ERROR );
+  };
+  
+  /**
+   * @typedef LogWarning
+   *
+   * @description Logs a message to the console or browser with a yellow
+   * background
+   * @function
+   * @param {string} message
+   */
+  const logWarning = message => {
+    logOut( message, LOG_TYPES.WARNING );
+  };
+  
+  /**
+   * Log out a plain message with no  styling added.
+   * @param message
+   */
+  const log = ( message ) => {
+    logOut( message, LOG_TYPES.PLAIN );
+  };
+  
+  /**
+   * Log out a object to the browser.
+   * @param object
+   */
+  const logObject = ( object ) => {
+    logOut( object, LOG_TYPES.OBJECT );
   };
   
   /**
@@ -52,9 +82,9 @@ export const useLogger = ( name = "App" ) => {
    * the debug logger creating the correct message object.
    * @function
    * @param {string} message
-   * @param {('info' | "error")} type
+   * @param {logType} type
    */
-  const log = ( message, type ) => {
+  const logOut = ( message, type ) => {
     logOutMessageOrDebug( createMessage( message, type, location ) );
   };
   
@@ -64,7 +94,9 @@ export const useLogger = ( name = "App" ) => {
   const logger = {};
   logger.logInfo = logInfo;
   logger.logError = logError;
-  
+  logger.logObject = logObject;
+  logger.logWarning = logWarning;
+  logger.log = log;
   return logger;
   
 };
@@ -73,4 +105,7 @@ export const useLogger = ( name = "App" ) => {
  * @typedef {object} Logger
  * @property {LogInfo} logInfo
  * @property{LogError} logError
+ * @property{LogError} logObject
+ * @property{LogError} logWarning
+ * @property{LogError} log
  */

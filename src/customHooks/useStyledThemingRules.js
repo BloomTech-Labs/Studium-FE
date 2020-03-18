@@ -1,37 +1,59 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLogger } from "./useLogger.js";
-import { APP_PATHS } from "./usePaths.js";
+import {
+  APP_VIEW_DESKTOP, APP_VIEW_MOBILE, getThemingRules,
+} from "./themingRules.js";
+
+export const THEMING_DEBUG_NAME = "Styled Theming";
+/**
+ * @typedef {object} UseStyledThemingRulesReturn
+ * @property {CheckAllRules} checkAllRules
+ * @property {SetRules} setRules
+ */
 
 /**
  *  Used Styled Theming Rules
  * @typedef {function} UseStyledThemingRules
  *
- * @param {function} setThemeVariable
- * @return {object}
- *  @property {CheckAllRules} checkAllRules
- *  @property {function} setRules
+ * @param {ThemeRule[]} themeRules
+ * @return UseStyledThemingRulesReturn
+ *
  */
-export const useStyledThemingRules = ( setThemeVariable, themeRules ) => {
+export const useStyledThemingRules = () => {
   
-  const [ rules, setRules ] = useState( themeRules || [] );
-  const logger = useLogger( "useStyledThemingRules" );
+  const [ rules, setRules ] = useState();
+  const logger = useLogger( THEMING_DEBUG_NAME );
+  
+  useEffect( () => {
+    logger.logInfo( "Setting the theming rules." );
+    const themeRules = getThemingRules();
+    themeRules.forEach( rule => {
+      logger.logInfo(
+        `Rule: ${ rule.themeVariable } -> ${ rule.appView } -> ${ rule.paths } -> ${ rule.themeValue }` );
+    } );
+    
+    setRules( themeRules );
+    
+  }, [] );
   
   /**
    *  Check all rules.
-   *  @typedef CheckAllRules
+   *  @typedef {function} CheckAllRules
+   *  @name checkAllRules
    *  @description Checks all the rules against the current app view and
    *  path to see if any theming variables need to be changed.
    *
-   * @function
-   * @name checkAllRules
    * @param {Theme} theme
    * @param {AppView} appView
-   * @param {string} currentPath
-   * @returns void
+   * @param {APP_PATH} currentPath
+   * @param {SetThemeVariable} setThemeVariable
    */
-  const checkAllRules = ( theme, appView, currentPath ) => {
-    rules.forEach( rule => {
-      checkRule( rule, currentPath, theme, appView );
+  const checkAllRules = ( theme, appView, currentPath, setThemeVariable ) => {
+    const themeRules = getThemingRules();
+    logger.logInfo( "Checking theme rules." );
+    themeRules.forEach( rule => {
+      
+      checkRule( rule, currentPath, theme, appView, setThemeVariable );
     } );
   };
   
@@ -41,15 +63,14 @@ export const useStyledThemingRules = ( setThemeVariable, themeRules ) => {
    * @description Check the rule to see if the conditions have been met and set
    *   the value of the theme variable if they have been.
    * @function
-   * @param rule
-   * @param appView
-   * @param currentPath
-   * @param theme
+   * @param {ThemeRule} rule
+   * @param {AppView} appView
+   * @param {APP_PATH} currentPath
+   * @param {Theme} theme
+   * @param {SetThemeVariable} setThemeVariable
    * @return void
    */
-  const checkRule = ( rule, currentPath, theme, appView ) => {
-    logger.info(
-      `Checking ${ rule.themeVariable } rule for ${ rule.themeValue }` );
+  const checkRule = ( rule, currentPath, theme, appView, setThemeVariable ) => {
     const appViewResult = checkView( rule, appView );
     const pathResult = checkPath( rule, currentPath );
     
@@ -62,7 +83,7 @@ export const useStyledThemingRules = ( setThemeVariable, themeRules ) => {
       
       // if value is not set. Set the variable to the correct value
       if( !valueSet ){
-        logger.info(
+        logger.logInfo(
           `${ rule.themeVariable } has been set to ${ rule.themeValue }.` );
         setThemeVariable( rule.themeVariable, rule.themeValue );
       }
@@ -86,7 +107,10 @@ export const useStyledThemingRules = ( setThemeVariable, themeRules ) => {
  * @return {boolean}
  */
 const checkPath = ( rule, path ) => {
-  return !rule.path || rule.path === path;
+  
+  const result = rule.paths.length === 0 || rule.paths.includes( path );
+  
+  return result;
 };
 
 /**

@@ -6,9 +6,16 @@ import { ReactComponent as SmallWhiteLogo } from "../../images/SmallWhiteLogo.sv
 import { signOut } from "../../actions";
 import theming from "styled-theming";
 import {
-  useAppHooks, mediaQueries, sizes,
+  useAppHooks, mediaQueries, sizes, useLogger,
 } from "../../customHooks/useAppHooks.js";
 import LogoLeft from "./LogoLeft.js";
+import {
+  APP_VIEW_DESKTOP, THEMING_VALUES, THEMING_VARIABLES,
+} from "../../customHooks/themingRules.js";
+import { APP_PATHS } from "../../customHooks/usePaths.js";
+import { useComparPrevContext } from "../../customHooks/useComparPrevContext.js";
+
+export const NAV_BAR_DEBUG_NAME = "Nav Bar";
 
 /**
  * Nav Bar
@@ -18,9 +25,21 @@ import LogoLeft from "./LogoLeft.js";
  *  return (<NavBar />)
  */
 export const NavBar = () => {
-  const { usersState, theme, dispatch, changePath, pathname } = useAppHooks();
+  const { usersState, theme, dispatch, changePath, pathname, appView } = useAppHooks();
   const [ menuOpen, setMenuOpen ] = useState( false );
   const [ avatarUrl, setAvatarUrl ] = useState( "" );
+  const logger = useLogger( NAV_BAR_DEBUG_NAME );
+  const { compareContext, printPrevContext } = useComparPrevContext(
+    NAV_BAR_DEBUG_NAME,
+    { theme, changePath, pathname, appView },
+  );
+  
+  logger.logInfo( "Nav Bar rendered" );
+  
+  useEffect( () => {
+    compareContext( { theme, changePath, pathname, appView } );
+    printPrevContext( 5 );
+  }, [ theme, changePath, pathname, appView ] );
   
   useEffect( () => {
     if( usersState.user && usersState.user.photoURL ){
@@ -36,10 +55,10 @@ export const NavBar = () => {
   };
   
   const getSignUpText = () => {
-    if( theme.screenWidth > 768 ){
-      if( pathname === "/signup" ){
+    if( appView === APP_VIEW_DESKTOP ){
+      if( pathname === APP_PATHS.SIGN_UP_PATH ){
         return <Styledh2>SignIn</Styledh2>;
-      }else if( pathname === "/signin" ){
+      }else if( pathname === APP_PATHS.SIGN_IN_PATH ){
         return <Styledh2>SignUp</Styledh2>;
       }
     }else{
@@ -67,29 +86,31 @@ export const NavBar = () => {
           className={ "ant-dropdown-link" }
         />
         
-        
         { getSignUpText() }
       </ContainerDiv>
     </StyledBar>
   );
 };
 
-NavBar.propTypes = {
-  backgroundColor: PropTypes.string,
-};
+NavBar.propTypes = {};
 
 const WhiteLogo = styled( SmallWhiteLogo )`
 
 `;
 
-const backgroundColor = theming( "navStyle", {
-  light: props => props.theme.navBarLight,
-  dark: props => props.theme.navBarDark,
-  hidden: "transparent",
+const backgroundColor = theming( THEMING_VARIABLES.NAV_STYLE, {
+  [ THEMING_VALUES.DARK ]: props => {
+    
+    return props.theme.navBarDark;
+  },
+  [ THEMING_VALUES.LIGHT ]: props => {
+    
+    return props.theme.navBarLight;
+  },
 } );
 
 const StyledBar = styled.div`
-  background-color: ${ backgroundColor };
+  background: ${ backgroundColor };
   display: flex;
   justify-content: center;
   z-index: 15;
@@ -98,9 +119,7 @@ const StyledBar = styled.div`
   width: 100%;
   height: ${ props => props.theme.navBarTopHeight + "px" };
 
-  @media screen and ${ mediaQueries.tablet } {
-  
-  }
+ 
 `;
 
 const Styledh2 = styled.h2`

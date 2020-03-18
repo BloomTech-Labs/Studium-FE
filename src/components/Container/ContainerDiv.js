@@ -17,7 +17,6 @@ import styled from "styled-components";
  *  )
  */
 export const ContainerDiv = props => {
-  debugger;
   return <Div { ...props }>{ props.children }</Div>;
 };
 
