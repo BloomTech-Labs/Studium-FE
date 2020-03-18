@@ -4,7 +4,14 @@ import {FormInput} from '../FormItems/Input/FormInput.js';
 import styled from 'styled-components';
 import {CardEditDeleteIcons} from '../Icon/CardEditDeleteIcons.js';
 
-export const DeckName = ({highlighted, clickHandler, ...props}) => {
+export const DeckName = ({
+  newDeck,
+  disableInput,
+  highlighted,
+  clickHandler,
+  changeHandler,
+  ...props
+}) => {
   return (
     <DeckNameContainer>
       <DeckNameIconContainer>
@@ -13,13 +20,18 @@ export const DeckName = ({highlighted, clickHandler, ...props}) => {
         </DeckTitlePrompt>
         <CardEditDeleteIcons />
       </DeckNameIconContainer>
-      <FormInput
-        name="title"
-        onClick={clickHandler}
-        borderStyle={highlighted ? '1px solid #4CB69F' : '2px solid #908A7D'}
-        inputWidth={'100%'}
-        bordered={true}
-      />
+      {disableInput ? (
+        <h1>{newDeck.deck_name}</h1>
+      ) : (
+        <FormInput
+          onChange={changeHandler}
+          name="title"
+          onClick={clickHandler}
+          borderStyle={highlighted ? '1px solid #4CB69F' : '2px solid #908A7D'}
+          inputWidth={'100%'}
+          bordered={true}
+        />
+      )}
     </DeckNameContainer>
   );
 };

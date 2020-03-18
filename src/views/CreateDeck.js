@@ -5,7 +5,8 @@ import {CreateCard} from '../components/CreateCard/CreateCard.js';
 import {DeckName} from '../components/CreateDeck/DeckName.js';
 import {SmallDeckSvg} from '../components/SmallDeckSvg/SmallDeckSvg.js';
 import {SynapsButton} from '../components/Button/SynapsButton.js';
-
+import {postDeck} from '../actions/decksActions.js';
+import {useAppHooks} from '../customHooks/useAppHooks.js';
 /**
  * Create Deck View
  * @category Views
@@ -13,6 +14,17 @@ import {SynapsButton} from '../components/Button/SynapsButton.js';
  * @example return (<CreateDeck />);
  */
 export const CreateDeck = props => {
+  const {
+    pathname,
+    changePath,
+    dispatch,
+    usersState,
+    decksState,
+    theme,
+  } = useAppHooks();
+  const [disableInput, setDisableInput] = useState(false);
+  const [newDeck, setNewDeck] = useState({});
+  const [newCard, setNewCard] = useState({});
   const [cardNum, setCardNum] = useState(1);
   const [visible, setVisible] = useState({
     front: false,
@@ -23,6 +35,10 @@ export const CreateDeck = props => {
     front: false,
     back: false,
   });
+
+  useEffect(() => {
+    console.log('deck state', decksState);
+  }, [newDeck.deck_name]);
 
   const clickHandler = e => {
     e.preventDefault();
@@ -56,6 +72,24 @@ export const CreateDeck = props => {
     }
   };
 
+  const changeHandler = e => {
+    e.preventDefault();
+    const targetName = e.target.name;
+    console.log(targetName);
+    switch (targetName) {
+      case 'title':
+        setNewDeck({deck_name: e.target.value});
+        console.log(newDeck);
+    }
+  };
+
+  const submitForm = () => {
+    if (cardNum == 1) {
+      dispatch(postDeck(usersState.user.uid, newDeck));
+      setDisableInput(true);
+    }
+  };
+
   return (
     <StyledCreateDeck>
       <CardNameContainer>
@@ -63,10 +97,20 @@ export const CreateDeck = props => {
           <CreateCardTitleText text={'Create Deck'} />
           <SmallDeckSvg />
         </CardHeaderContainer>
-        <DeckName clickHandler={clickHandler} highlighted={highlighted.title} />
+        <DeckName
+          newDeck={newDeck}
+          disableInput={disableInput}
+          name={'newDeck'}
+          disableInput={disableInput}
+          changeHandler={changeHandler}
+          value={newDeck.deck_name}
+          clickHandler={clickHandler}
+          highlighted={highlighted.title}
+        />
       </CardNameContainer>
       <CreateCardContainer>
         <CreateCard
+          name={'newCardFront'}
           drillName={'front'}
           clickHandler={clickHandler}
           highlighted={highlighted.front}
@@ -74,6 +118,7 @@ export const CreateDeck = props => {
           text={`Card ${cardNum} - Front`}
         />
         <CreateCard
+          name={'newCardBack'}
           drillName={'back'}
           clickHandler={clickHandler}
           highlighted={highlighted.back}
@@ -82,8 +127,12 @@ export const CreateDeck = props => {
         />
       </CreateCardContainer>
       <Bottom>
-        <SynapsButton text={'Add Another Card'} type={'primary'} />
-        <SynapsButton text={'Done'} type={'default'} />
+        <SynapsButton
+          onClick={submitForm}
+          text={'Add Another Card'}
+          type={'primaryCreateCard'}
+        />
+        <SynapsButton text={'Done'} type={'defaultCreateCard'} />
       </Bottom>
     </StyledCreateDeck>
   );
@@ -120,7 +169,8 @@ const CardNameContainer = styled.div`
 
 const Bottom = styled.div`
   width: 100%;
-  justify-self: flex-end;
+  height: 70px;
   display: flex;
   justify-content: space-around;
+  padding-bottom: 20px;
 `;
