@@ -33,8 +33,8 @@ export const Dashboard = props => {
   };
 
   useEffect(() => {
-    console.log('dispatching getUserDecks action ||');
     dispatch(getUserDecks(usersState.user.uid));
+    console.log('decksState from dashboard ||', decksState.decks);
   }, []);
 
   const changeDeckSelected = deck => {
@@ -48,15 +48,15 @@ export const Dashboard = props => {
     }
     changePath('/preview', {...deck});
   };
-  debugger;
-  const getAlert = () => {
-    if (decksState.errorDecksMessage) {
-      return (
-        <Alert message={decksState.errorDecksMessage} type="warning" closable />
-      );
-    }
-    return '';
-  };
+
+  // const getAlert = () => {
+  //   if (decksState.errorDecksMessage) {
+  //     return (
+  //       <Alert message={decksState.errorDecksMessage} type="warning" closable />
+  //     );
+  //   }
+  //   return '';
+  // };
 
   return (
     <StyledDashboard className={'dashboard'}>
@@ -76,25 +76,23 @@ export const Dashboard = props => {
         </>
       )}
 
-      {getAlert()}
+      {/* {getAlert()} */}
       <StyledDeckHolder className={'deck-container'}>
-        <PreviewDeckCards>
-          <SmallFlashCard
-            border={'dashed'}
-            icon={'plus'}
-            onClick={() => deckClicked()}
-          />
-          {decksState.decks.map(deck => {
-            return (
-              <SmallFlashCard
-                key={deck.deck_id}
-                deck={deck}
-                border={'solid'}
-                onClick={e => deckClicked(deck)}
-              />
-            );
-          })}
-        </PreviewDeckCards>
+        <SmallFlashCard
+          border={'dashed'}
+          icon={'plus'}
+          onClick={() => deckClicked()}
+        />
+        {decksState.decks.map(deck => {
+          return (
+            <SmallFlashCard
+              key={deck.deck_id}
+              deck={deck}
+              border={'solid'}
+              onClick={e => deckClicked(deck)}
+            />
+          );
+        })}
       </StyledDeckHolder>
     </StyledDashboard>
   );
@@ -117,6 +115,7 @@ const StyledDashboard = styled.div`
   flex-direction: column;
   max-width: 100%;
   height: 100%;
+  width: 100%;
 
   @media screen and ${mediaQueries.tablet} {
     width: 100%;
