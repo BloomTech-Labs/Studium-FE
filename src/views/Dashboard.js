@@ -35,6 +35,7 @@ export const Dashboard = props => {
   useEffect(() => {
     dispatch(getUserDecks(usersState.user.uid));
     console.log('decksState from dashboard ||', decksState.decks);
+    console.log('changePath from dashboard ||', changePath);
   }, []);
 
   const changeDeckSelected = deck => {
@@ -78,17 +79,12 @@ export const Dashboard = props => {
 
       {/* {getAlert()} */}
       <StyledDeckHolder className={'deck-container'}>
-        <SmallFlashCard
-          border={'dashed'}
-          icon={'plus'}
-          onClick={() => deckClicked()}
-        />
+        <PreviewDeckCards />
         {decksState.decks.map(deck => {
           return (
-            <SmallFlashCard
+            <PreviewDeckCards
               key={deck.deck_id}
               deck={deck}
-              border={'solid'}
               onClick={e => deckClicked(deck)}
             />
           );
@@ -121,6 +117,5 @@ const StyledDashboard = styled.div`
     width: 100%;
     height: 100vh;
     position: absolute;
-    left: 400px;
   }
 `;
