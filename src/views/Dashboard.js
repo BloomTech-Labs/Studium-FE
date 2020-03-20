@@ -50,15 +50,6 @@ export const Dashboard = props => {
     changePath('/preview', {...deck});
   };
 
-  // const getAlert = () => {
-  //   if (decksState.errorDecksMessage) {
-  //     return (
-  //       <Alert message={decksState.errorDecksMessage} type="warning" closable />
-  //     );
-  //   }
-  //   return '';
-  // };
-
   return (
     <StyledDashboard className={'dashboard'}>
       {theme.screenWidth <= sizes.tablet && (
@@ -77,7 +68,6 @@ export const Dashboard = props => {
         </>
       )}
 
-      {/* {getAlert()} */}
       <StyledDeckHolder className={'deck-container'}>
         <PreviewDeckCards />
         {decksState.decks.map(deck => {
