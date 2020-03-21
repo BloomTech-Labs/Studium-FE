@@ -49,6 +49,8 @@ const withSvgContainer = ( Svg ) => {
         <Svg height={ svgHeight } width={ svgWidth } fill={ svgFill }
              background={ svgBackground }
              opacity={ svgOpacity } { ...props }/>
+             
+             
       </ContainerDiv>
     );
   };

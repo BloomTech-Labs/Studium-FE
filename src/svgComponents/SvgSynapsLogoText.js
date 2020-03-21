@@ -7,7 +7,7 @@ import withSvgContainer from "./withSvgContainer.js";
  * @type SvgComponent
  */
 function SvgSynapsLogoText( props ){
-  console.log( props.fill );
+  
   return (
     
     <svg

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
-import {useLogger} from "./useLogger.js";
 import {getThemingRules} from "./themingRules.js";
+import {useAppHooks} from "./useAppHooks.js";
 
 export const THEMING_DEBUG_NAME = "Styled Theming";
 /**
@@ -20,10 +20,12 @@ export const THEMING_DEBUG_NAME = "Styled Theming";
 export const useStyledThemingRules = () => {
   
   const [rules, setRules] = useState();
-  const logger = useLogger(THEMING_DEBUG_NAME);
+  const {getLogger} = useAppHooks("use themeing rules");
+  const logger = getLogger(THEMING_DEBUG_NAME);
   logger.logInfo("Styled Theming running");
   
   useEffect(() => {
+    
     logger.logInfo("Setting the theming rules.");
     const themeRules = getThemingRules();
     themeRules.forEach(rule => {
@@ -82,14 +84,15 @@ export const useStyledThemingRules = () => {
       // if value is not set. Set the variable to the correct value
       if(!valueSet){
         logger.logInfo(
-          `${rule.themeVariable} has been set to ${rule.themeValue}.`,
+          `${rule.themeVariable} should be set to ${rule.themeValue}.`,
         );
+        logger.logObject(rule);
         setThemeVariable(rule.themeVariable, rule.themeValue);
       }
     }
-    
-    return {checkAllRules, setRules};
   };
+  
+  return {checkAllRules, setRules};
 };
 
 /**

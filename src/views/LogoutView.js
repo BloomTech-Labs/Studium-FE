@@ -10,7 +10,7 @@ import { useAppHooks } from '../customHooks/useAppHooks.js';
  * @example return (<Logout />);
  */
 export const LogoutView = props => {
-  const { dispatch } = useAppHooks();
+  const { dispatch } = useAppHooks("LogoutView");
   return (
     <div>
       <SynapsButton

@@ -1,15 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-import { SynapsBrain } from "../components/SynapsBrain/SynapsBrain.js";
-import { CreateButton } from "../components/Button/CreateButton.js";
+import SecondAnimatedSynapsComponent
+  from "../svgComponents/SecondAnimatedSynapsComponent.js";
 
 export const Testing = () => {
-  return ( <StyledTesting>
-  </StyledTesting> );
+  return (<StyledTesting>
+    <SecondAnimatedSynapsComponent/> width={"600px"} height={"600px"}/>
+  </StyledTesting>);
   
 };
 
 const StyledTesting = styled.div`
   margin: 0 auto;
-  width: 400px;
+  width: 800px;
 `;

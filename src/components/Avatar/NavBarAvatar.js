@@ -1,7 +1,11 @@
-import React from 'react';
-import { Avatar } from 'antd';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import React, {useState} from "react";
+import {Avatar} from "antd";
+import styled from "styled-components";
+import PropTypes from "prop-types";
+import {Popover} from "antd";
+import {useAppHooks} from "../../customHooks/useAppHooks.js";
+import {signOut} from "../../actions";
+import {APP_PATHS} from "../../customHooks/usePaths.js";
 
 /**
  * Nav Bar Avatar
@@ -11,20 +15,55 @@ import PropTypes from 'prop-types';
  *  <NavBarAvatar />
  *  )
  */
-export const NavBarAvatar = ( { avatarUrl, ...props } ) => {
+export const NavBarAvatar = ({avatarUrl, ...props}) => {
   
-  if( avatarUrl ){
-    return <StyledAntAvatar src={ avatarUrl } { ...props } size={ 40 }/>;
+  const [open, setOpen] = useState(false);
+  
+  const {dispatch, changePath} = useAppHooks("Nav Bar");
+  
+  const handleClick = (path) => {
+    setOpen(false);
+    if(path === "logout"){
+      dispatch(signOut());
+    }else if(path === "signin"){
+      changePath(APP_PATHS.SIGN_IN_PATH);
+    }
+  };
+  
+  const getContent = () => {
+    return (
+      <div>
+        <p onClick={() => handleClick("logout")}>Logout</p>
+        <p onClick={() => handleClick("signin")}>SignIn</p>
+      </div>
+    );
+  };
+  
+  if(avatarUrl){
+    return (
+      <Popover placement="bottomRight" title={"Hi"} content={getContent()}
+               visible={open}
+               trigger="click">
+        <StyledAntAvatar src={avatarUrl} {...props} size={40}
+                         onClick={() => setOpen(!open)}
+        />
+      </Popover>
+    );
   }
-  return ( <AvatarIcon
-    style={ {
-      position: 'absolute', top: '15px', right: '8%',
-    } }
-    { ...props }
-  /> );
+  return (
+    <Popover placement="bottomRight" title={"Hi"} content={getContent()}
+             visible={open}
+             trigger="click">
+      <AvatarIcon
+        style={{position: "absolute", top: "15px", right: "8%", zIndex: 20}}
+        {...props} onClick={() => setOpen(!open)}
+      />
+    </Popover>
+  
+  );
 };
 
-const StyledAntAvatar = styled( Avatar )`
+const StyledAntAvatar = styled(Avatar)`
   && {
     position: absolute;
     background-color: #585858;
@@ -35,7 +74,7 @@ const StyledAntAvatar = styled( Avatar )`
   }
 `;
 
-const AvatarIcon = styled( Avatar )`
+const AvatarIcon = styled(Avatar)`
   && {
     position: absolute;
     background-color: #585858;

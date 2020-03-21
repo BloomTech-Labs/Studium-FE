@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import { SmallLogo, SynapsButton, SynapsText } from '../components';
-import { useAppHooks, mediaQueries } from '../customHooks/useAppHooks.js';
+import React, {useEffect} from "react";
+import styled from "styled-components";
+import {SmallLogo, SynapsButton, SynapsText} from "../components";
+import {useAppHooks, mediaQueries} from "../customHooks/useAppHooks.js";
 
 /**
  * Landing Page
@@ -10,13 +10,17 @@ import { useAppHooks, mediaQueries } from '../customHooks/useAppHooks.js';
  * @example return (<LandingPage />);
  */
 export const LandingPage = props => {
-  const { changePath } = useAppHooks();
+  const {changePath} = useAppHooks("LandingPage");
+  
+  useEffect(() => {
+  
+  }, []);
   
   const handleClick = name => {
-    if( name === 'SignIn' ){
-      changePath( '/signIn' );
+    if(name === "SignIn"){
+      changePath("/signIn");
     }else{
-      changePath( '/signup' );
+      changePath("/signup");
     }
   };
   
@@ -28,28 +32,28 @@ export const LandingPage = props => {
           <SynapsText/>
         </MobileHeader>
         <SynapsButton
-          text={ 'Sign In' }
-          size={ 'large' }
-          type={ 'primary' }
-          onClick={ () => handleClick( 'SignIn' ) }
-          style={ {
-            margin: '2rem auto',
-            width: '204px',
-            height: '62px',
-            borderRadius: '15px',
-          } }
+          text={"Sign In"}
+          size={"large"}
+          type={"primary"}
+          onClick={() => handleClick("SignIn")}
+          style={{
+            margin: "2rem auto",
+            width: "204px",
+            height: "62px",
+            borderRadius: "15px",
+          }}
         />
         <SynapsButton
-          text={ 'Sign Up' }
-          size={ 'large' }
-          type={ 'darkgray' }
-          onClick={ () => handleClick( 'SignUp' ) }
-          style={ {
-            margin: '0 auto',
-            width: '204px',
-            height: '62px',
-            borderRadius: '15px',
-          } }
+          text={"Sign Up"}
+          size={"large"}
+          type={"darkgray"}
+          onClick={() => handleClick("SignUp")}
+          style={{
+            margin: "0 auto",
+            width: "204px",
+            height: "62px",
+            borderRadius: "15px",
+          }}
         />
       </Mobile>
       <Desktop>
@@ -109,7 +113,7 @@ const Mobile = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 146px;
-  @media ${ mediaQueries.tablet } {
+  @media ${mediaQueries.tablet} {
     display: none;
   }
 `;
@@ -118,7 +122,7 @@ const MobileHeader = styled.div``;
 
 const Desktop = styled.div`
   display: none;
-  @media ${ mediaQueries.tablet } {
+  @media ${mediaQueries.tablet} {
   }
 `;
 

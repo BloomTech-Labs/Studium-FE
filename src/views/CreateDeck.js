@@ -21,7 +21,8 @@ export const CreateDeck = props => {
     usersState,
     decksState,
     theme,
-  } = useAppHooks();
+    getLogger,
+  } = useAppHooks("CreateDeck");
   const [disableInput, setDisableInput] = useState(false);
   const [newDeck, setNewDeck] = useState({});
   const [newCard, setNewCard] = useState({});

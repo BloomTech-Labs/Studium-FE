@@ -13,7 +13,7 @@ import { mediaQueries, useAppHooks } from '../../customHooks/useAppHooks.js';
  */
 export const Footer = ( props ) => {
   
-  const { changePath, theme, pathname } = useAppHooks();
+  const { changePath, theme, pathname } = useAppHooks("Footer");
   
   /**
    * Add Deck

@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { ContainerDiv, NavBarAvatar } from "../index.js";
-import { ReactComponent as SmallWhiteLogo } from "../../images/SmallWhiteLogo.svg";
-import { signOut } from "../../actions";
+import {ContainerDiv, NavBarAvatar} from "../index.js";
+import {ReactComponent as SmallWhiteLogo} from "../../images/SmallWhiteLogo.svg";
+import {signOut} from "../../actions";
 import theming from "styled-theming";
 import {
-  useAppHooks, mediaQueries, sizes, useLogger,
+  useAppHooks, mediaQueries, sizes,
 } from "../../customHooks/useAppHooks.js";
 import LogoLeft from "./LogoLeft.js";
 import {
   APP_VIEW_DESKTOP, THEMING_VALUES, THEMING_VARIABLES,
 } from "../../customHooks/themingRules.js";
-import { APP_PATHS } from "../../customHooks/usePaths.js";
-import { useComparPrevContext } from "../../customHooks/useComparPrevContext.js";
+import {APP_PATHS} from "../../customHooks/usePaths.js";
+import {useComparPrevContext} from "../../customHooks/useComparPrevContext.js";
 
 export const NAV_BAR_DEBUG_NAME = "Nav Bar";
 
@@ -25,40 +25,49 @@ export const NAV_BAR_DEBUG_NAME = "Nav Bar";
  *  return (<NavBar />)
  */
 export const NavBar = () => {
-  const { usersState, theme, dispatch, changePath, pathname, appView } = useAppHooks();
-  const [ menuOpen, setMenuOpen ] = useState( false );
-  const [ avatarUrl, setAvatarUrl ] = useState( "" );
-  const logger = useLogger( NAV_BAR_DEBUG_NAME );
-  const { compareContext, printPrevContext } = useComparPrevContext(
+  const {usersState, theme, themingRules, getLogger, dispatch, changePath, path, appView} = useAppHooks(
+    "Nav Bar");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [avatarUrl, setAvatarUrl] = useState("");
+  const logger = getLogger(NAV_BAR_DEBUG_NAME);
+  const {compareContext, printPrevContext} = useComparPrevContext(
     NAV_BAR_DEBUG_NAME,
-    { theme, changePath, pathname, appView },
+    {usersState, theme, getLogger, dispatch, changePath, path, appView},
   );
   
-  logger.logInfo( "Nav Bar rendered" );
+  logger.logVerbose("Nav Bar rendered");
   
-  useEffect( () => {
-    compareContext( { theme, changePath, pathname, appView } );
-    printPrevContext( 5 );
-  }, [ theme, changePath, pathname, appView ] );
+  useEffect(() => {
+    compareContext(
+      {usersState, theme, path, appView, themingRules});
+  }, [usersState, theme, path, appView, themingRules]);
   
-  useEffect( () => {
-    if( usersState.user && usersState.user.photoURL ){
-      setAvatarUrl( usersState.user.photoURL );
+  useEffect(() => {
+    
+    if(usersState.user && usersState.user.photoURL){
+      setAvatarUrl(usersState.user.photoURL);
+      
     }else{
-      setAvatarUrl( "" );
+      setAvatarUrl("");
+      
     }
-  }, [ usersState ] );
+  }, [usersState]);
   
   const logout = () => {
-    setMenuOpen( false );
-    signOut( dispatch );
+    setMenuOpen(false);
+    signOut(dispatch);
   };
   
   const getSignUpText = () => {
-    if( appView === APP_VIEW_DESKTOP ){
-      if( pathname === APP_PATHS.SIGN_UP_PATH ){
+    
+    if(appView === APP_VIEW_DESKTOP){
+      
+      if(path === APP_PATHS.SIGN_UP_PATH){
+        
         return <Styledh2>SignIn</Styledh2>;
-      }else if( pathname === APP_PATHS.SIGN_IN_PATH ){
+        
+      }else if(path === APP_PATHS.SIGN_IN_PATH){
+        
         return <Styledh2>SignUp</Styledh2>;
       }
     }else{
@@ -67,26 +76,26 @@ export const NavBar = () => {
   };
   
   return (
-    <StyledBar className={ "nav-bar" } theme={ theme }>
+    <StyledBar className={"nav-bar"} theme={themingRules} themeValuees={theme}>
       <ContainerDiv
-        justifyContent={ "space-between" }
-        className={ "nav-bar-container" }
-        flexDirection={ "row" }
-        width={ "100%" }
-        height={ "75px" }
-        position={ "relative" }
-        overFlowY={ "hidden" }
-        backgroundColor={ "transparent" }
+        justifyContent={"space-between"}
+        className={"nav-bar-container"}
+        flexDirection={"row"}
+        width={"100%"}
+        height={"75px"}
+        position={"relative"}
+        overFlowY={"hidden"}
+        backgroundColor={"transparent"}
       >
         <LogoLeft/>
         
         <NavBarAvatar
-          onClick={ logout }
-          avatarUrl={ avatarUrl }
-          className={ "ant-dropdown-link" }
+          onClick={logout}
+          avatarUrl={avatarUrl}
+          className={"ant-dropdown-link"}
         />
         
-        { getSignUpText() }
+        {getSignUpText()}
       </ContainerDiv>
     </StyledBar>
   );
@@ -94,30 +103,48 @@ export const NavBar = () => {
 
 NavBar.propTypes = {};
 
-const WhiteLogo = styled( SmallWhiteLogo )`
+const WhiteLogo = styled(SmallWhiteLogo)`
 
 `;
 
-const backgroundColor = theming( THEMING_VARIABLES.NAV_STYLE, {
-  [ THEMING_VALUES.DARK ]: props => {
+const backgroundColor = theming(THEMING_VARIABLES.NAV_STYLE, {
+  [THEMING_VALUES.DARK]: props => {
     
-    return props.theme.navBarDark;
+    return props.themeValuees.navBarDark;
   },
-  [ THEMING_VALUES.LIGHT ]: props => {
+  [THEMING_VALUES.LIGHT]: props => {
     
-    return props.theme.navBarLight;
+    return props.themeValuees.navBarLight;
+  }, [THEMING_VALUES.HIDDEN]: props => {
+    
+    return "transparent";
   },
-} );
+});
+
+const top = theming(THEMING_VARIABLES.NAV_STYLE, {
+  [THEMING_VALUES.DARK]: props => {
+    
+    return 0;
+  },
+  [THEMING_VALUES.LIGHT]: props => {
+    
+    return 0;
+  },
+  [THEMING_VALUES.HIDDEN]: props => {
+    
+    return "-75px";
+  },
+});
 
 const StyledBar = styled.div`
-  background: ${ backgroundColor };
+  background: ${backgroundColor};
   display: flex;
   justify-content: center;
   z-index: 15;
   position: absolute;
-  top: 0;
+  top: ${top};
   width: 100%;
-  height: ${ props => props.theme.navBarTopHeight + "px" };
+  height: ${props => props.theme.navBarTopHeight + "px"};
 
  
 `;
@@ -137,3 +164,4 @@ const Styledh2 = styled.h2`
   font-size: 28px;
   line-height: 24px;
 `;
+

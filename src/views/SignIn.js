@@ -13,7 +13,7 @@ import {mediaQueries, useAppHooks} from "../customHooks/useAppHooks.js";
  * @example return (<SignIn />);
  */
 export function SignIn(props){
-  const {dispatch, theme, pathname} = useAppHooks();
+  const {dispatch, theme, pathname} = useAppHooks("SignIn");
   const [info, setInfo] = useState({email: "", password: "", error: {}});
   
   const handleChange = e => {

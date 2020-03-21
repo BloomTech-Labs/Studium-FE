@@ -10,7 +10,7 @@ import {useAppHooks} from '../customHooks/useAppHooks.js';
  * @example return (<FlashCard />);
  */
 export const FlashCard = props => {
-  const {pathPushedState} = useAppHooks();
+  const {pathPushedState} = useAppHooks("FlashCard");
   // @type {Deck}
   const {deck} = pathPushedState;
 

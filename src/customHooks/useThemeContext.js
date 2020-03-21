@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import {useAppHooks, useLogger} from "./useAppHooks.js";
+import React, {useState, useEffect, useContext} from "react";
+import {AppHooksContext, useAppHooks} from "./useAppHooks.js";
 import {useStyledThemingRules} from "./useStyledThemingRules.js";
 import {
   THEMING_VALUES,
@@ -7,6 +7,7 @@ import {
   APP_VIEW_DESKTOP,
   APP_VIEW_MOBILE,
 } from "./themingRules.js";
+import {useAppView} from "./useAppView.js";
 
 export const THEME_DEBUG_NAME = "Theme";
 
@@ -53,7 +54,6 @@ export const themeState = {
   
   screenHeight: 375,
   
-  [THEMING_VARIABLES.NAV_STYLE]: THEMING_VALUES.DARK,
 };
 
 /**
@@ -110,35 +110,53 @@ export const themeState = {
  * @property {Theme} theme
  * @property {SetThemeVariable} setThemeVariable
  */
+
+/**
+ *@typedef {Object.<string, {string}>} ThemingRules
+ */
+const themingRules = {
+  [THEMING_VARIABLES.NAV_STYLE]: THEMING_VALUES.DARK,
+};
+
 export const useThemeContext = () => {
-  const {theme, checkAllRules, setRules, appView, path} = useAppHooks();
-  const logger = useLogger(THEME_DEBUG_NAME);
+  
+  const {getLogger, setRules, appView, path, setHookVariable, themingRules} = useContext(
+    AppHooksContext);
+  const {checkAllRules} = useStyledThemingRules();
+  const logger = getLogger(THEME_DEBUG_NAME);
   
   /**
    * Log new theme to the console on change.
    */
   useEffect(() => {
     logger.logInfo("Theme updated.");
-    logger.logObject(theme);
-  }, [theme]);
+    logger.logObject(themingRules);
+  }, [themingRules]);
   
-  const setThemeVariable = () => {
-    logger.logInfo("Setting new theme variable");
+  const setThemeVariable = (variableName, value) => {
+    logger.logInfo(`Setting ${variableName} to ${value}`);
+    const newThemeRules = {...themingRules, [variableName]: value};
+    logger.logObject(newThemeRules, "Attempting to update theme to.");
+    setHookVariable("themingRules", newThemeRules);
   };
   
   useEffect(() => {
+    
     logger.logInfo("Either the path or the app view changed so we need to re" +
       " evaluate app theme.");
     
-    //    checkAllRules( theme, appView, path, setThemeVariable );
+    checkAllRules(themingRules, appView, path, setThemeVariable);
   }, [appView, path]);
   
 };
 
 export const useTheme = () => {
-  const [theme, setTheme] = useState(themeState);
   
-  const logger = useLogger(THEME_DEBUG_NAME);
+  const {getLogger, appView, path} = useAppHooks("Use Theme");
+  const [theme, setTheme] = useState(themeState);
+  const {checkAllRules} = useStyledThemingRules();
+  
+  const logger = getLogger(THEME_DEBUG_NAME);
   logger.logInfo("Theme Provider was generated.");
   /**
    * @typedef SetThemeVariable
@@ -148,6 +166,7 @@ export const useTheme = () => {
    * @param value
    * @return void
    */
+  useAppView();
   
   const setThemeVariable = (name, value) => {
     logger.logInfo(`Set new theme state: [${name}]: ${value} `);
@@ -155,6 +174,13 @@ export const useTheme = () => {
     logger.logObject(newTheme);
     setTheme({...theme, [name]: value});
   };
+  
+  useEffect(() => {
+    if(appView && path){
+      checkAllRules(theme, appView, path, setThemeVariable());
+    }
+    
+  }, [appView, path]);
   
   return {theme, setThemeVariable};
 };

@@ -17,9 +17,10 @@ import {
  *
  */
 const LogoLeft = () => {
-  const { theme, appView } = useAppHooks();
+  const { theme, appView, themingRules } = useAppHooks("Logo Left");
   
   if( appView === APP_VIEW_DESKTOP ){
+    
     return (
       <ContainerDiv
         height={ "100%" } position={ "relative" }

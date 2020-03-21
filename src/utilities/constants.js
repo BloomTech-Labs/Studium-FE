@@ -1,5 +1,5 @@
 /**
- * @typedef {('INFO' | 'ERROR', 'WARNING' | 'OBJECT')} LogType
+ * @typedef {number} LogType
  *
  */
 
@@ -11,11 +11,12 @@
  * @param {logType} OBJECT
  */
 export const LOG_TYPES = {
-  INFO: "INFO",
-  WARNING: "WARNING",
-  ERROR: "ERROR",
-  OBJECT: "OBJECT",
-  PLAIN: "PLAIN",
+  VERBOSE: 1,
+  INFO: 2,
+  WARNING: 4,
+  ERROR: 5,
+  OBJECT: 6,
+  PLAIN: 3,
 };
 
 /**
