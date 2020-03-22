@@ -46,7 +46,7 @@ const Div = styled.div`
   align-items: ${ props => props.alignItems || 'center' };
   flex-direction: ${ props => props.flexDirection || 'column' };
   justify-content: ${ props => props.justifyContent || 'center' };
-  overflow-y: ${ props => props.overFlowY || 'scroll' };
+  overflow-y: ${ props => props.overFlowY || 'hidden' };
 
   ::-webkit-scrollbar {
     width: 0;

@@ -4,7 +4,8 @@ import styled from 'styled-components';
 function SvgComponent(props) {
   return (
     <svg
-      margin={'10px'}
+    //style={{position: 'absolute', top: '-500px', left: '-500px'}}
+      margin={'10px'}     
       width={1738}
       height={1692}
       viewBox="0 0 1738 1692"

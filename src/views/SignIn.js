@@ -7,6 +7,7 @@ import {signIn, GOOGLE_PROVIDER, EMAIL_PROVIDER} from '../actions';
 import {useAppHooks} from '../customHooks/useAppHooks.js';
 import {devices} from '../utilities/breakpoints-device';
 import SvgComponent from '../images/svgBrainPic/brainpic';
+import {useDimensions} from '../customHooks/useDimensions';
 
 /**
  * Sign In
@@ -17,6 +18,8 @@ import SvgComponent from '../images/svgBrainPic/brainpic';
 export function SignIn(props) {
   const {dispatch, theme, pathname} = useAppHooks();
   const [info, setInfo] = useState({email: '', password: '', error: {}});
+  const [width, height] = useDimensions();
+  console.log('height', height);
 
   const handleChange = e => {
     setInfo({...info, [e.target.name]: e.target.value});
@@ -54,9 +57,13 @@ export function SignIn(props) {
   };
 
   return (
-    <StyledSignIn data-testid={'sign-in-container'}>
+    <StyledSignIn
+      data-testid={'sign-in-container'}
+      height={height}
+      style={{border: '1px blue solid'}}
+    >
       {logoText() || (
-        <div styled={{height: '600px', width: '400px', position: 'relative'}}>
+        <div>
           {theme.screenWidth < 768 || (
             <SvgContainer
               width={'614px'}
@@ -130,33 +137,51 @@ export function SignIn(props) {
         type={'darkgray'}
         onClick={e => handleEmailClick(e)}
       />
-    {/* <StyledBrainPic> */}
-{/*     
+      {/* <StyledBrainPic> */}
+      {/*     
     <SvgContainer 
               
               svg={svg}
               
     /> */}
-    {/* <brainpic
+      {/* <brainpic
     style={{
       position: 'absolute',
     }} */}
-     {/* /> */}
-    
-    {/* </StyledBrainPic>  */}
-    <div styled={{position: 'relative'}}>
-    <SvgComponent />
-    </div>
+      {/* /> */}
+
+      {/* </StyledBrainPic>  */}
+      <StyledSvgContainer>
+        <div
+          style={{
+            position: 'relative',
+            border: '1px red solid',
+            height: '100%',
+            width: '100%',
+            overflow: 'hidden',
+            top: '0px',
+            left: '0px',
+          }}
+        >
+          <SvgComponent />
+        </div>
+      </StyledSvgContainer>
     </StyledSignIn>
   );
 }
 
-const StyledBrainPic = styled.div`
-
-`
+const StyledSvgContainer = styled.div`
+height: 100%;
+  /* height: ${props => props.height - 75 + 'px'}; */
+  position: absolute;
+  width: 100vw;
+  border: 1px pink solid;
+  top: 0px;
+  overflow: hidden;
+`;
 
 const StyledBtn2 = styled(SynapsButton)`
-  && {  
+  && {
     span {
       font-family: Source Sans Pro;
       font-style: normal;
@@ -205,12 +230,13 @@ const StyledFormInput = styled.div`
 `;
 
 const StyledSignIn = styled.div`
+overflow: hidden;
   display: flex;
   flex-direction: column;
   text-align: center;
   align-items: center;
   margin: 146px auto 0 auto;
-  height: 100%;
+  height: ${props => props.height - 75 - 146 - 50 + 'px'};
   @media ${devices.desktop} {
   }
 `;
@@ -241,5 +267,3 @@ const StyledBorder = styled.span`
     max-width: 100%;
   }
 `;
-
-
