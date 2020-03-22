@@ -7,9 +7,12 @@ import {ErrorBoundary} from "../components";
 import {REDUCER_NAMES} from "../reducers";
 import {SYNAPS_CONFIG} from "../synapsConfig.js";
 import {storageBackupDebugger} from "./oldConsole.js";
-import {useThemeContext} from "../customHooks/useThemeContext.js";
+import {
+  useThemeContext, useThemeRules,
+} from "../customHooks/useThemeContext.js";
 import {useDimensions} from "../customHooks/useDimensions.js";
 import appLogger from "../utilities/oldConsole.js";
+import {ThemeProvider} from "styled-components";
 
 export const APP_PROVIDER_DEBUG_NAME = "App Provider";
 const logger = appLogger.getLogger(APP_PROVIDER_DEBUG_NAME);
@@ -59,8 +62,8 @@ if(Object.values(initialState).length >= REDUCER_NAMES.length){
  */
 const AppProvider = props => {
   const {appLogger} = props;
-  const getLogger = appLogger.getLogger;
-  const {hooks, setHookVariable} = useAppHooksState(getLogger);
+  
+  const {themingRules, changeTheme} = useThemeRules(appLogger.getLogger);
   const logger = appLogger.getLogger(APP_PROVIDER_DEBUG_NAME);
   useEffect(() => {
   
@@ -73,20 +76,21 @@ const AppProvider = props => {
   
   return (
     <ErrorBoundary>
-      <Provider store={store}>
-        <AppHooksContext.Provider
-          value={{setHookVariable, ...hooks}}>
-          
-          <AfterHooks {...props} />
-        </AppHooksContext.Provider>
-      </Provider>
+      <ThemeProvider theme={{changeTheme, ...themingRules}}>
+        <Provider store={store}>
+            <AfterHooks {...props} />
+        </Provider>
+      </ThemeProvider>
     </ErrorBoundary>
   );
 };
 
 const AfterHooks = props => {
   
-  const logger = props.appLogger.getLogger(APP_PROVIDER_DEBUG_NAME);
+  
+  const getLogger = props.appLogger.getLogger;
+  const logger = getLogger(APP_PROVIDER_DEBUG_NAME);
+  const {hooks, setHookVariable} = useAppHooksState(getLogger);
   logger.logInfo(`After hooks provider rendered.`);
   useThemeContext();
   useDimensions();
@@ -94,6 +98,9 @@ const AfterHooks = props => {
   return (
     <>
       <GlobalStyles/>
+      <AppHooksContext.Provider
+        value={{setHookVariable, hooks}}>
+      </AppHooksContext.Provider>
       {props.children}
     </>
   );

@@ -86,7 +86,6 @@ export const useAppHooksState = (getLogger) => {
   const history = useHistory();
   const path = history.location.pathname;
   const pushedState = {};
-  const themingRules = {};
   const appView = window.innerWidth > sizes.tablet ? APP_VIEW_DESKTOP :
     APP_VIEW_MOBILE;
   const width = window.innerWidth;
@@ -110,8 +109,6 @@ export const useAppHooksState = (getLogger) => {
     appView,
     width,
     height,
-    theme: themeState,
-    themingRules,
     getLogger,
     history,
   };

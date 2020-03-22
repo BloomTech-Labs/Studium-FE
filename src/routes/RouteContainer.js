@@ -24,8 +24,6 @@ import {APP_PATHS} from "../customHooks/usePaths.js";
 export const RouteContainer = (props) => {
   const {theme} = useAppHooks("RouteContainer");
   
-  
-  
   return (
     <ContainerDiv
       className={"app-container"}
@@ -48,7 +46,7 @@ export const RouteContainer = (props) => {
         <ProtectedRoute path={APP_PATHS.PREVIEW_DECK_PATH}
                         component={PreviewDeck}/>
         <ProtectedRoute path={APP_PATHS.GAME_PATH} component={FlashCard}/>
-        <Route path={"/test"} component={Testing}/>
+        <Route path={"/test"} render={props => <Testing {...props}/>}/>
         
         <LoginSignUpRoute path={"/"}
                           component={LandingPage} {...props} />

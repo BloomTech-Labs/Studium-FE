@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { ContainerDiv } from "../components";
+import {ContainerDiv} from "../components";
 
 /**
  *  With Svg Container
@@ -12,7 +12,7 @@ import { ContainerDiv } from "../components";
  *  @param {SvgComponent} Svg
  *  @returns function(SvgContainerProps) => SvgContainer
  */
-const withSvgContainer = ( Svg ) => {
+const withSvgContainer = (Svg) => {
   
   /**
    * @typedef {object} SvgContainerProps
@@ -34,23 +34,25 @@ const withSvgContainer = ( Svg ) => {
    * @param {SvgContainerProps}
    * @returns SvgComponent
    */
-  const SvgContainer = ( {
+  
+  
+  const SvgContainer = ({
     margin = "0 auto", backgroundColor = "transparent", containerPosition = "relative",
     height = "100%", width = "100%", zIndex = "1", svgWidth = "100%", top = "0", left = "0",
     maxHeight = "unset", maxWidth = "unset",
     svgHeight = "100%", svgFill, svgBackground, svgOpacity = "1", ...props
-  } ) => {
+  }) => {
     return (
-      <ContainerDiv position={ containerPosition } margin={ margin }
-                    width={ width } top={ top } left={ left }
-                    heightMax={ maxHeight } maxWidth={ maxWidth }
-                    height={ height } backgroundColor={ backgroundColor }
-                    zIndex={ zIndex } id={ "svg-container" }>
-        <Svg height={ svgHeight } width={ svgWidth } fill={ svgFill }
-             background={ svgBackground }
-             opacity={ svgOpacity } { ...props }/>
-             
-             
+      <ContainerDiv position={containerPosition} margin={margin}
+                    width={width} top={top} left={left}
+                    heightMax={maxHeight} maxWidth={maxWidth}
+                    height={height} backgroundColor={backgroundColor}
+                    zIndex={zIndex} id={"svg-container"}>
+        <Svg height={svgHeight} width={svgWidth} fill={svgFill}
+             background={svgBackground}
+             opacity={svgOpacity} {...props}/>
+        
+        {props.children}
       </ContainerDiv>
     );
   };
@@ -78,7 +80,7 @@ const withSvgContainer = ( Svg ) => {
 };
 
 withSvgContainer.propTypes = {
-  Svg: PropTypes.objectOf( React.Component ),
+  Svg: PropTypes.objectOf(React.Component),
 };
 
 export default withSvgContainer;

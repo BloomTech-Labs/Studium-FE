@@ -20,7 +20,7 @@ export const THEMING_DEBUG_NAME = "Styled Theming";
 export const useStyledThemingRules = () => {
   
   const [rules, setRules] = useState();
-  const {getLogger} = useAppHooks("use themeing rules");
+  const {getLogger} = useAppHooks("use theming rules");
   const logger = getLogger(THEMING_DEBUG_NAME);
   logger.logInfo("Styled Theming running");
   

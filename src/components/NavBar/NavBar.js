@@ -107,7 +107,7 @@ const WhiteLogo = styled(SmallWhiteLogo)`
 
 `;
 
-const backgroundColor = theming(THEMING_VARIABLES.NAV_STYLE, {
+const backgroundColor = theming('navStyle', {
   [THEMING_VALUES.DARK]: props => {
     
     return props.themeValuees.navBarDark;
@@ -145,7 +145,6 @@ const StyledBar = styled.div`
   top: ${top};
   width: 100%;
   height: ${props => props.theme.navBarTopHeight + "px"};
-
  
 `;
 

@@ -26,6 +26,12 @@ import {
  * @property {} errorDecksMessage
  *
  */
+
+/**
+ * @typedef {object} Deck
+ *
+ */
+
 const initialState = {
   decks: [],
   fetchingDecks: false,

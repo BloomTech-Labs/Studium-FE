@@ -10,6 +10,7 @@ export const APP_PATHS = {
   CREATE_DECK_PATH: "/create/deck",
   PREVIEW_DECK_PATH: "/preview",
   GAME_PATH: "/game",
+  TESTING: "/test",
   LANDING_PAGE: "/",
 };
 
