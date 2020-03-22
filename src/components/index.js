@@ -17,3 +17,4 @@ export * from "./SynapsBrain/SynapsBrain.js";
 export * from "./SvgContainer/SvgContainer.js";
 export * from "../routes/RouteContainer.js";
 export * from "./SmallDeckSvg/SmallDeckSvg.js";
+export * from "./ErrorBoundary/ErrorBoundary.js";

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { AppHooksContext, useLogger } from "./useAppHooks.js";
+import { AppHooksContext } from "./useAppHooks.js";
 
 const USE_DIMENSIONS_DEBUG_NAME = "Use Dimensions";
 /**
@@ -14,8 +14,8 @@ const USE_DIMENSIONS_DEBUG_NAME = "Use Dimensions";
 
 export const useDimensions = () => {
   
-  const { height, width, setHookVariable } = useContext( AppHooksContext );
-  const logger = useLogger( USE_DIMENSIONS_DEBUG_NAME );
+  const { height, width, setHookVariable, getLogger } = useContext( AppHooksContext );
+  const logger = getLogger( USE_DIMENSIONS_DEBUG_NAME );
   
   useEffect( () => {
     window.addEventListener( "resize", updateDimensions );
@@ -30,7 +30,7 @@ export const useDimensions = () => {
   
   const updateDimensions = () => {
     logger.logInfo( "Update dimensions called" );
-    
+    debugger
     const update = () => {
       logger.logInfo( "Update called." );
       if( width !== window.innerWidth ){

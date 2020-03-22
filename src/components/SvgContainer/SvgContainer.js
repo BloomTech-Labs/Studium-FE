@@ -41,7 +41,7 @@ export const SvgContainer = ({
   testId = 'synaps-brain',
   ...props
 }) => {
-  const {theme} = useAppHooks();
+  const {theme} = useAppHooks("Svg Container");
   const StyledSvg = withStyles(Svg);
 
   return (

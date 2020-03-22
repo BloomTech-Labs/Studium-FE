@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
-import {FormInput, SynapsButton, SynapsText, SvgContainer} from '../components';
-import {ReactComponent as svg} from '../images/SmallWhiteLogo.svg';
-import {ReactComponent as smalllogo} from '../images/smalllogo.png';
-import styled from 'styled-components';
-import {signIn, GOOGLE_PROVIDER, EMAIL_PROVIDER} from '../actions';
-import { mediaQueries, useAppHooks } from '../customHooks/useAppHooks.js';
+import React, {useEffect, useState} from "react";
+import {FormInput, SynapsButton, SynapsText, SvgContainer} from "../components";
+import {ReactComponent as svg} from "../images/SmallWhiteLogo.svg";
+import {ReactComponent as smalllogo} from "../images/smalllogo.png";
+import styled from "styled-components";
+import {signIn, GOOGLE_PROVIDER, EMAIL_PROVIDER} from "../actions";
+import {mediaQueries, useAppHooks} from "../customHooks/useAppHooks.js";
 
 /**
  * Sign In
@@ -12,124 +12,127 @@ import { mediaQueries, useAppHooks } from '../customHooks/useAppHooks.js';
  * @component
  * @example return (<SignIn />);
  */
-export function SignIn(props) {
-  const {dispatch, theme, pathname} = useAppHooks();
-  const [info, setInfo] = useState({email: '', password: '', error: {}});
-
+export function SignIn(props){
+  const {dispatch, theme, pathname} = useAppHooks("SignIn");
+  const [info, setInfo] = useState({email: "", password: "", error: {}});
+  
   const handleChange = e => {
     setInfo({...info, [e.target.name]: e.target.value});
   };
-
+  
   const handleGoogleClick = e => {
     dispatch(signIn(GOOGLE_PROVIDER));
   };
-
+  
   const handleEmailClick = e => {
-    if (info.email !== '' && info.password !== '') {
+    if(info.email !== "" && info.password !== ""){
       dispatch(signIn(EMAIL_PROVIDER, info.email, info.password));
-    } else {
-      if (info.email === '') {
+    }else{
+      if(info.email === ""){
         setInfo({
           ...info,
-          error: {email: 'You must enter a email address.'},
+          error: {email: "You must enter a email address."},
         });
-      } else {
+      }else{
         setInfo({
           ...info,
           error: {
-            password: 'You must first enter a password.',
+            password: "You must first enter a password.",
           },
         });
       }
     }
   };
-
+  
   const logoText = () => {
-    if (theme.screenWidth < 768) {
-      return <SynapsText />;
+    if(theme.screenWidth < 768){
+      return <SynapsText/>;
     }
   };
-
+  
   return (
-    <StyledSignIn data-testid={'sign-in-container'}>
+    <StyledSignIn data-testid={"sign-in-container"}>
       {logoText() || (
-        <div styled={{height: '600px', width: '400px', position: 'relative'}}>
+        <div styled={{height: "600px", width: "400px", position: "relative"}}>
           {theme.screenWidth < 768 || (
             <SvgContainer
-              width={'614px'}
-              height={'176px'}
+              width={"614px"}
+              height={"176px"}
               svg={svg}
               zIndex={15}
-              position={'block'}
+              position={"block"}
               backgroundColor={theme.primaryColor}
-              color={'#fff'}
+              color={"#fff"}
               opacity={1}
               strokeColor={theme.primaryColor}
-              viewBox={'47 0 25 33'}
-              overflow={'visible'}
+              viewBox={"47 0 25 33"}
+              overflow={"visible"}
             />
           )}
         </div>
       )}
-
+      
       <StyledH2>Hey! Welcome Back.</StyledH2>
       <div>
         <StyledBtn
           style={{
-            color: '#fff',
-            backgroundColor: '#36405C',
-            margin: '0 0 1.5em',
-            padding: '0 2em 0',
-            width: '352px',
-            height: '72px',
+            color: "#fff",
+            backgroundColor: "#36405C",
+            margin: "0 0 1.5em",
+            padding: "0 2em 0",
+            width: "352px",
+            height: "72px",
           }}
-          icon={'google'}
-          text={'Log In with Google'}
-          shape={'round'}
-          size={'large'}
+          icon={"google"}
+          text={"Log In with Google"}
+          shape={"round"}
+          size={"large"}
           onClick={e => handleGoogleClick(e)}
         />
       </div>
-
-      <StyledBorder />
-
+      
+      <StyledBorder/>
+      
       <StyledFormInput>
         <FormInput
-          name={'email'}
-          value={info.email}
+          name={"email"}
           onChange={handleChange}
+          value={info.email}
           block={false}
-          label={'Email Address'}
+          label={"Email Address"}
           bordered={false}
         />
         <FormInput
-          name={'password'}
-          value={info.password}
+          name={"password"}
           onChange={handleChange}
+          value={info.password}
           block={true}
-          label={'Password'}
+          label={"Password"}
           bordered={false}
         />
+      
+      
       </StyledFormInput>
-
+      
       <StyledBtn2
         style={{
-          width: '352px',
-          height: '72px',
-          backgroundColor: '#0C2545',
-          margin: '0 0 1.5em',
-          padding: '0 2em 0',
-          border: '2px solid #fff',
+          width: "352px",
+          height: "72px",
+          backgroundColor: "#0C2545",
+          margin: "0 0 1.5em",
+          padding: "0 2em 0",
+          border: "2px solid #fff",
         }}
-        text={'Continue with Email'}
-        shape={'round'}
-        size={'large'}
-        type={'darkgray'}
+        text={"Continue with Email"}
+        shape={"round"}
+        size={"large"}
+        type={"darkgray"}
         onClick={e => handleEmailClick(e)}
       />
     </StyledSignIn>
   );
 }
+
 
 const StyledBtn2 = styled(SynapsButton)`
   && {

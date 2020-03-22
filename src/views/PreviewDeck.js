@@ -15,11 +15,11 @@ import { Alert, Icon } from 'antd';
  */
 export const PreviewDeck = props => {
   // @type CardState
-  const { cardsState, pathPushedState, dispatch, usersState } = useAppHooks();
+  const { cardsState, pathPushedState, dispatch, usersState } = useAppHooks("PreviewDeck");
   console.log( pathPushedState );
   
   useEffect( () => {
-    
+    debugger
     if( pathPushedState === null ){
     
     }else{

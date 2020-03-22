@@ -1,18 +1,15 @@
-import React, {useEffect, useState} from 'react';
-import styled from 'styled-components';
-import {NavBar, Footer, RouteContainer} from './components';
-import PropTypes from 'prop-types';
-import {Alert} from 'antd';
+import React, {useEffect, useState} from "react";
+import styled from "styled-components";
+import {NavBar, Footer, RouteContainer} from "./components";
+import PropTypes from "prop-types";
+import {Alert} from "antd";
 import {
   useAppHooks,
   mediaQueries,
-  sizes,
-  useLogger,
-} from './customHooks/useAppHooks.js';
-import {useAuthStateChange} from './customHooks/useAuthStateChange.js';
-import {SynapsBrain} from './components';
-import {APP_VIEW_DESKTOP} from './customHooks/themingRules.js';
-import {useHooksInit} from './customHooks/useHooksInit.js';
+} from "./customHooks/useAppHooks.js";
+import {useAuthStateChange} from "./customHooks/useAuthStateChange.js";
+import {SynapsBrain} from "./components";
+import {APP_VIEW_DESKTOP} from "./customHooks/themingRules.js";
 
 /**
  * App
@@ -20,56 +17,57 @@ import {useHooksInit} from './customHooks/useHooksInit.js';
  * @component
  * @example return (<App />);
  */
-function App(props) {
-  const [alertMessage, setAlert] = useState('');
-  const {theme, usersState, pathname, appView} = useAppHooks();
-  const logger = useLogger('App View');
-
+export default function App(props){
+  const [alertMessage, setAlert] = useState("");
+  const {theme, usersState, pathname, appView} = useAppHooks("App");
+  
+  const logger = props.logger;
+  
   useEffect(() => {
-    logger.logInfo('App view rendered.');
+    logger.logInfo("App view rendered.");
   }, []);
   useAuthStateChange();
-
+  
   useEffect(() => {
-    if (usersState.registerError && !alertMessage) {
-      setAlert('Error logging in. Please try again later.');
+    if(usersState.registerError && !alertMessage){
+      setAlert("Error logging in. Please try again later.");
     }
   }, [usersState]);
-
+  
   return (
     <StyledApp className="App" theme={theme}>
       {appView === APP_VIEW_DESKTOP && (
         <SynapsBrain
           zIndex={15}
-          width={'100vw'}
-          height={'100vh'}
-          position={'absolute'}
+          width={"100vw"}
+          height={"100vh"}
+          position={"absolute"}
           backgroundColor={
-            pathname === '/preview' ? theme.primaryColor : 'transparent'
+            pathname === "/preview" ? theme.primaryColor : "transparent"
           }
-          color={pathname === '/preview' ? '#153F6E' : '#EEECE8'}
+          color={pathname === "/preview" ? "#153F6E" : "#EEECE8"}
           opacity={1}
-          strokeColor={'transparent'}
-          viewBox={'-20 -20 400 400'}
+          strokeColor={"transparent"}
+          viewBox={"-20 -20 400 400"}
         />
       )}
-
+      
       {alertMessage && (
         <Alert
-          type={'error'}
+          type={"error"}
           onClose={() => setAlert(false)}
           message={alertMessage}
           closable
           style={{
-            position: 'absolute',
-            top: '20px',
-            zIndex: '15',
+            position: "absolute",
+            top: "20px",
+            zIndex: "15",
           }}
         />
       )}
-      <NavBar />
-      <RouteContainer />
-      <Footer />
+      <NavBar/>
+      <RouteContainer/>
+      <Footer/>
     </StyledApp>
   );
 }
@@ -96,26 +94,12 @@ const StyledApp = styled.div`
 
   @media ${mediaQueries.tablet} {
     background: ${props => {
-      if (props.pathname === '/preview') {
-        return props.theme.primaryColor;
-      } else {
-        return '#F6F5F3';
-      }
-    }};
+  if(props.pathname === "/preview"){
+    return props.theme.primaryColor;
+  }else{
+    return "#F6F5F3";
+  }
+}
+}
   }
 `;
-
-export default App;
-
-/**
- * @typedef { function } Dispatch
- * @param { function } function
- * @returns none
- *
- */
-
-/**
- * @typedef { object } User
- * @property { string } uid
- * @property { string } photoURL
- */
