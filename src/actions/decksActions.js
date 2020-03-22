@@ -31,6 +31,7 @@ export const postDeck = (uid, newDeck) => dispatch => {
     .post('/api/decks', newDeck)
     .then(res => {
       dispatch({type: POSTING_DECK_SUCCESS, payload: res.data});
+      console.log('|||posted new deck|||');
     })
     .catch(error => {
       dispatch({

@@ -61,6 +61,10 @@ export const CreateDeck = props => {
         ...visible,
         answer: true,
       });
+      if (newDeck.deck_name !== '' && newDeck.deck_name !== null) {
+        console.log('||inside of nested if||');
+        dispatch(postDeck(usersState.user.uid, newDeck));
+      }
     } else {
       setHighlighted({
         ...highlighted,
@@ -88,7 +92,7 @@ export const CreateDeck = props => {
     e.preventDefault();
     if (!highlighted.title) {
       if (cardNum == 1) {
-        dispatch(postDeck(usersState.user.uid, newDeck));
+        // dispatch(postDeck(usersState.user.uid, newDeck));
         setDisableInput(true);
       }
     }
