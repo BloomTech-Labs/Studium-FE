@@ -5,6 +5,7 @@ import {Input} from 'antd';
 const {TextArea} = Input;
 
 const StyledTextArea = ({
+  onChange,
   height = '23px',
   value,
   autoSize,
@@ -14,6 +15,7 @@ const StyledTextArea = ({
 }) => {
   return (
     <STextArea
+      onChange={onChange}
       style={{height: `100%`}}
       name={drillName}
       height={height}

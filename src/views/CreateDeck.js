@@ -22,19 +22,19 @@ export const CreateDeck = props => {
     decksState,
     theme,
     getLogger,
-  } = useAppHooks("CreateDeck");
+  } = useAppHooks('CreateDeck');
   const [disableInput, setDisableInput] = useState(false);
   const [newDeck, setNewDeck] = useState({});
   const [newCard, setNewCard] = useState({});
   const [cardNum, setCardNum] = useState(1);
   const [visible, setVisible] = useState({
-    front: false,
-    back: false,
+    question: false,
+    answer: false,
   });
   const [highlighted, setHighlighted] = useState({
     title: true,
-    front: false,
-    back: false,
+    question: false,
+    answer: false,
   });
 
   const clickHandler = e => {
@@ -45,45 +45,52 @@ export const CreateDeck = props => {
       setHighlighted({
         ...highlighted,
         title: false,
-        front: true,
+        question: true,
       });
       setVisible({
         ...visible,
-        front: true,
+        question: true,
       });
-    } else if (clickedOn == 'front' && highlighted.front == true) {
+    } else if (clickedOn == 'question' && highlighted.question == true) {
       setHighlighted({
         ...highlighted,
-        front: false,
-        back: true,
+        question: false,
+        answer: true,
       });
       setVisible({
         ...visible,
-        back: true,
+        answer: true,
       });
     } else {
       setHighlighted({
         ...highlighted,
-        back: false,
+        answer: false,
       });
     }
   };
 
   const changeHandler = e => {
-    e.preventDefault();
     const targetName = e.target.name;
-    console.log(targetName);
+    console.log('target name||', targetName);
     switch (targetName) {
       case 'title':
         setNewDeck({deck_name: e.target.value});
-        console.log(newDeck);
+        break;
+      default:
+        setNewCard({...newCard, [targetName]: e.target.value});
+        break;
     }
+    console.log(newDeck);
+    console.log(newCard);
   };
 
-  const submitForm = () => {
-    if (cardNum == 1) {
-      dispatch(postDeck(usersState.user.uid, newDeck));
-      setDisableInput(true);
+  const submitForm = e => {
+    e.preventDefault();
+    if (!highlighted.title) {
+      if (cardNum == 1) {
+        dispatch(postDeck(usersState.user.uid, newDeck));
+        setDisableInput(true);
+      }
     }
   };
 
@@ -106,20 +113,24 @@ export const CreateDeck = props => {
       </CardNameContainer>
       <CreateCardContainer>
         <CreateCard
-          name={'newCardFront'}
-          drillName={'front'}
+          changeHandler={changeHandler}
+          name={'newCardQuestion'}
+          drillName={'question'}
           clickHandler={clickHandler}
-          highlighted={highlighted.front}
-          visible={visible.front}
-          text={`Card ${cardNum} - Front`}
+          highlighted={highlighted.question}
+          visible={visible.question}
+          text={`Card ${cardNum} - Question`}
+          value={newCard.question}
         />
         <CreateCard
-          name={'newCardBack'}
-          drillName={'back'}
+          changeHandler={changeHandler}
+          name={'newCardAnswer'}
+          drillName={'answer'}
           clickHandler={clickHandler}
-          highlighted={highlighted.back}
-          visible={visible.back}
-          text={`Card ${cardNum} - Back`}
+          highlighted={highlighted.answer}
+          visible={visible.answer}
+          text={`Card ${cardNum} - Answer`}
+          value={newCard.answer}
         />
       </CreateCardContainer>
       <Bottom>
