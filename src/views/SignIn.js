@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import {FormInput, SynapsButton, SynapsText, SvgContainer} from '../components';
 import {ReactComponent as svg} from '../images/SmallWhiteLogo.svg';
-import {ReactComponent as brainpic} from '../images/brainpic.svg';
+// import {ReactComponent as brainpic} from '../images/brainpic.svg';
 import styled from 'styled-components';
 import {signIn, GOOGLE_PROVIDER, EMAIL_PROVIDER} from '../actions';
 import {useAppHooks} from '../customHooks/useAppHooks.js';
 import {devices} from '../utilities/breakpoints-device';
+import SvgComponent from '../images/svgBrainPic/brainpic';
 
 /**
  * Sign In
@@ -120,7 +121,7 @@ export function SignIn(props) {
           height: '72px',
           backgroundColor: '#0C2545',
           margin: '0 0 1.5em',
-          padding: '0 2em 0',
+          padding: '1.2em 2em 2em',
           border: '2px solid #fff',
         }}
         text={'Continue with Email'}
@@ -136,19 +137,26 @@ export function SignIn(props) {
               svg={svg}
               
     /> */}
-    <brainpic
+    {/* <brainpic
     style={{
       position: 'absolute',
-    }}
-     />
+    }} */}
+     {/* /> */}
     
     {/* </StyledBrainPic>  */}
+    <div styled={{position: 'relative'}}>
+    <SvgComponent />
+    </div>
     </StyledSignIn>
   );
 }
 
+const StyledBrainPic = styled.div`
+
+`
+
 const StyledBtn2 = styled(SynapsButton)`
-  && {
+  && {  
     span {
       font-family: Source Sans Pro;
       font-style: normal;
@@ -234,6 +242,4 @@ const StyledBorder = styled.span`
   }
 `;
 
-const StyledBrainPic = styled.div`
 
-`
