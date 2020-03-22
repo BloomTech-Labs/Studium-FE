@@ -9,7 +9,10 @@ import {
 } from "./customHooks/useAppHooks.js";
 import {useAuthStateChange} from "./customHooks/useAuthStateChange.js";
 import {SynapsBrain} from "./components";
-import {APP_VIEW_DESKTOP} from "./customHooks/themingRules.js";
+import {
+  APP_VIEW_DESKTOP, THEMING_VARIABLES, THEMING_VALUES,
+} from "./customHooks/themingRules.js";
+import theming from "styled-theming";
 
 /**
  * App
@@ -77,7 +80,18 @@ App.propTypes = {
   history: PropTypes.object,
 };
 
+const backgroundColor = theming(THEMING_VARIABLES.BACKGROUND, {
+  [THEMING_VALUES.DARK]: props => {
+    debugger;
+    return props.themeValuees.primaryColor;
+  }, [THEMING_VALUES.LIGHT]: props => {
+    
+    return props.themeValuees.navBarLight;
+  },
+});
+
 const StyledApp = styled.div`
+background: ${backgroundColor};
   box-sizing: border-box;
   position: relative;
   color: ${props => props.theme.color};
@@ -93,13 +107,6 @@ const StyledApp = styled.div`
   overflow-y: hidden;
 
   @media ${mediaQueries.tablet} {
-    background: ${props => {
-  if(props.pathname === "/preview"){
-    return props.theme.primaryColor;
-  }else{
-    return "#F6F5F3";
-  }
-}
-}
+  
   }
 `;

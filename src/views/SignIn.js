@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
 import {FormInput, SynapsButton, SynapsText, SvgContainer} from "../components";
 import {ReactComponent as svg} from "../images/SmallWhiteLogo.svg";
-import {ReactComponent as smalllogo} from "../images/smalllogo.png";
 import styled from "styled-components";
 import {signIn, GOOGLE_PROVIDER, EMAIL_PROVIDER} from "../actions";
-import {mediaQueries, useAppHooks} from "../customHooks/useAppHooks.js";
+import {mediaQueries, useAppHooks, sizes} from "../customHooks/useAppHooks.js";
+import {useAppView} from "../customHooks/useAppView.js";
 
 /**
  * Sign In
@@ -13,8 +13,9 @@ import {mediaQueries, useAppHooks} from "../customHooks/useAppHooks.js";
  * @example return (<SignIn />);
  */
 export function SignIn(props){
-  const {dispatch, theme, pathname} = useAppHooks("SignIn");
+  const {dispatch, theme, pathname, appView} = useAppHooks("SignIn");
   const [info, setInfo] = useState({email: "", password: "", error: {}});
+  const {height} = useAppView();
   
   const handleChange = e => {
     setInfo({...info, [e.target.name]: e.target.value});
@@ -51,9 +52,9 @@ export function SignIn(props){
   };
   
   return (
-    <StyledSignIn data-testid={"sign-in-container"}>
+    <StyledSignIn data-testid={"sign-in-container"} theme={theme}>
       {logoText() || (
-        <div styled={{height: "600px", width: "400px", position: "relative"}}>
+        <div>
           {theme.screenWidth < 768 || (
             <SvgContainer
               width={"614px"}
@@ -129,9 +130,48 @@ export function SignIn(props){
         type={"darkgray"}
         onClick={e => handleEmailClick(e)}
       />
+      {/* <StyledBrainPic> */}
+      {/*
+       <SvgContainer
+       
+       svg={svg}
+       
+       /> */}
+      {/* <brainpic
+       style={{
+       position: 'absolute',
+       }} */}
+      {/* /> */}
+      
+      {/* </StyledBrainPic>  */}
+      <StyledSvgContainer>
+        <div
+          style={{
+            position: "relative",
+            border: "1px red solid",
+            height: "100%",
+            width: "100%",
+            overflow: "hidden",
+            top: "0px",
+            left: "0px",
+          }}
+        >
+          <SvgComponent/>
+        </div>
+      </StyledSvgContainer>
     </StyledSignIn>
   );
 }
+
+const StyledSvgContainer = styled.div`
+height: 100%;
+  /* height: ${props => props.height - 75 + "px"}; */
+  position: absolute;
+  width: 100vw;
+  border: 1px pink solid;
+  top: 0px;
+  overflow: hidden;
+`;
 
 
 const StyledBtn2 = styled(SynapsButton)`
@@ -164,6 +204,7 @@ const StyledBtn = styled(SynapsButton)`
     }
   }
 `;
+
 const StyledFormInput = styled.div`
   width: 345px;
   margin: 0px 0px 0px 45px;
@@ -184,13 +225,18 @@ const StyledFormInput = styled.div`
 `;
 
 const StyledSignIn = styled.div`
+  overflow: hidden;
+  background: ${props => props.theme.primaryColor};
   display: flex;
   flex-direction: column;
   text-align: center;
   align-items: center;
   margin: 146px auto 0 auto;
-  height: 100%;
+  height: ${props => props.height - 75 - 146 - 50 + "px"};
+  
+  
   @media ${mediaQueries.desktop} {
+  height: 100%;
   }
 `;
 

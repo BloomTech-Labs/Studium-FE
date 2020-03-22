@@ -25,12 +25,14 @@ export const useDimensions = () => {
       window.removeEventListener("resize", updateDimensions);
       logger.logInfo("Removed listen for resize.");
     };
-  }, []);
+  }, [] );
   
   let timer = null;
   
   const updateDimensions = () => {
     logger.logInfo("Update dimensions called");
+    logger.logInfo( "Update dimensions called" );
+    
     const update = () => {
       logger.logInfo("Update called.");
       if(width !== window.innerWidth){
