@@ -6,7 +6,6 @@
 .pnp.js
 .idea
 
-#docs
 /src/types
 
 # testing
@@ -28,3 +27,5 @@ package-lock.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+/docs/
+/src/synapsConfig.js

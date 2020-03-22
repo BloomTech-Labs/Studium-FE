@@ -1,0 +1,22 @@
+{
+  "plugins": [
+    {
+      "mergePaths": true
+    },
+    {
+      "removeViewBox": false
+    },
+    {
+      "convertTransform": true
+    },
+    {
+      "reusePaths": true
+    },
+    {
+      "convertEllipseToCircle": true
+    },
+    {
+      "convertShapeToPath": true
+    }
+  ]
+}

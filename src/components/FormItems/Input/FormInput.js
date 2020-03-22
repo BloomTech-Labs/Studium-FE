@@ -19,6 +19,7 @@ import PropTypes from 'prop-types';
  *
  */
 export const FormInput = ({
+  width = '90%',
   bordered = 'false',
   borderRadius = 'small',
   label,
@@ -47,7 +48,7 @@ export const FormInput = ({
       <StyledFormItem label={label}>
         <StyledBorderBottom>
           <StyledNoBorderAntdInput {...props} />
-        </StyledBorderBottom> 
+        </StyledBorderBottom>
       </StyledFormItem>
     );
   }
@@ -56,7 +57,7 @@ export const FormInput = ({
 const StyledFormItem = styled(Form.Item)`
   && {
     text-align: left;
-    width: 90%;
+    width: ${props => props.width};
   }
 `;
 

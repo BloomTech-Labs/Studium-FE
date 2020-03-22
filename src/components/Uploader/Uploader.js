@@ -18,7 +18,7 @@ export const Uploader = props => {
   /**
    * @type PhotoReducerState
    */
-  const { photosState, dispatch } = useAppHooks();
+  const { photosState, dispatch } = useAppHooks("Uploader");
   const [ photoObject, setPhotoObject ] = useState( false );
   
   useEffect( () => {

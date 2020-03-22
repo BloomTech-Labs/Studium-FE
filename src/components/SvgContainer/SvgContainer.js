@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import {useTheme, ThemeContext} from 'styled-components';
 import PropTypes from 'prop-types';
 import {useAppHooks} from '../../customHooks/useAppHooks.js';
 
@@ -42,7 +41,7 @@ export const SvgContainer = ({
   testId = 'synaps-brain',
   ...props
 }) => {
-  const {theme} = useAppHooks();
+  const {theme} = useAppHooks("Svg Container");
   const StyledSvg = withStyles(Svg);
 
   return (
@@ -92,6 +91,7 @@ const withStyles = Component => styled(Component)`
     stroke: ${props => props.strokeColor || props.theme.white};
     stroke-width: ${props => props.strokeWidth || ' 1px'};
   }
+  
 `;
 
 const StyledContainer = styled.div`

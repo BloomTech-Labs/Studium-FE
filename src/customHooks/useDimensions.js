@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from "react";
+import { AppHooksContext } from "./useAppHooks.js";
 
+const USE_DIMENSIONS_DEBUG_NAME = "Use Dimensions";
 /**
  * Use Dimensions
  * @category Custom Hooks
@@ -12,34 +14,44 @@ import React, { useState, useEffect } from 'react';
 
 export const useDimensions = () => {
   
-  const [ width, setWidth ] = useState( window.innerWidth );
-  const [ height, setHeight ] = useState( window.innerWidth );
+  const { height, width, setHookVariable, getLogger } = useContext( AppHooksContext );
+  const logger = getLogger( USE_DIMENSIONS_DEBUG_NAME );
   
   useEffect( () => {
-    window.addEventListener( 'resize', updateDimensions );
-    
+    window.addEventListener( "resize", updateDimensions );
+    logger.logInfo( "Set up add event listener for window resize." );
     return () => {
-      window.removeEventListener( 'resize', updateDimensions );
+      window.removeEventListener( "resize", updateDimensions );
+      logger.logInfo( "Removed listen for resize." );
     };
   }, [] );
   
   let timer = null;
   
   const updateDimensions = () => {
-    
+    logger.logInfo( "Update dimensions called" );
+    debugger
     const update = () => {
-      setWidth( window.innerWidth );
-      setHeight( window.innerHeight );
+      logger.logInfo( "Update called." );
+      if( width !== window.innerWidth ){
+        logger.logInfo( "Updating width." );
+        setHookVariable( "width", window.innerWidth );
+      }
+      if( height !== window.innerHeight ){
+        logger.logInfo( "Updating height." );
+        setHookVariable( "height", window.innerHeight );
+      }
+      
       timer = null;
     };
     
     if( timer ){
+      logger.logInfo( "Clearing the timer" );
       clearTimeout( timer );
     }
+    logger.logInfo( "Setting the timer for debounce." );
     timer = setTimeout( update, 200 );
   };
-  
-  return [ width, height ];
   
 };
 

@@ -1,13 +1,11 @@
 import React, {useState} from 'react';
 import {FormInput, SynapsButton, SynapsText, SvgContainer} from '../components';
-import {ReactComponent as svg} from '../images/SmallWhiteLogo.svg';
-// import {ReactComponent as brainpic} from '../images/brainpic.svg';
-import styled from 'styled-components';
-import {signIn, GOOGLE_PROVIDER, EMAIL_PROVIDER} from '../actions';
-import {useAppHooks} from '../customHooks/useAppHooks.js';
 import {devices} from '../utilities/breakpoints-device';
 import SvgComponent from '../images/svgBrainPic/brainpic';
-import {useDimensions} from '../customHooks/useDimensions';
+import {ReactComponent as svg} from "../images/SmallWhiteLogo.svg";
+import styled from "styled-components";
+import {signIn, GOOGLE_PROVIDER, EMAIL_PROVIDER} from "../actions";
+import {mediaQueries, useAppHooks} from "../customHooks/useAppHooks.js";
 
 /**
  * Sign In
@@ -15,131 +13,129 @@ import {useDimensions} from '../customHooks/useDimensions';
  * @component
  * @example return (<SignIn />);
  */
-export function SignIn(props) {
-  const {dispatch, theme, pathname} = useAppHooks();
-  const [info, setInfo] = useState({email: '', password: '', error: {}});
+export function SignIn(props){
+  const {dispatch, theme, pathname} = useAppHooks("SignIn");
+  const [info, setInfo] = useState({email: "", password: "", error: {}});
   const [width, height] = useDimensions();
   console.log('height', height);
-
+  
+  
   const handleChange = e => {
     setInfo({...info, [e.target.name]: e.target.value});
   };
-
+  
   const handleGoogleClick = e => {
-    debugger;
     dispatch(signIn(GOOGLE_PROVIDER));
   };
-
+  
   const handleEmailClick = e => {
-    if (info.email !== '' && info.password !== '') {
+    if(info.email !== "" && info.password !== ""){
       dispatch(signIn(EMAIL_PROVIDER, info.email, info.password));
-    } else {
-      if (info.email === '') {
+    }else{
+      if(info.email === ""){
         setInfo({
           ...info,
-          error: {email: 'You must enter a email address.'},
+          error: {email: "You must enter a email address."},
         });
-      } else {
+      }else{
         setInfo({
           ...info,
           error: {
-            password: 'You must first enter a password.',
+            password: "You must first enter a password.",
           },
         });
       }
     }
   };
-
+  
   const logoText = () => {
-    if (theme.screenWidth < 768) {
-      return <SynapsText />;
+    if(theme.screenWidth < 768){
+      return <SynapsText/>;
     }
   };
-
+  
   return (
-    <StyledSignIn
-      data-testid={'sign-in-container'}
-      height={height}
-      style={{border: '1px blue solid'}}
-    >
+    <StyledSignIn data-testid={"sign-in-container"}>
       {logoText() || (
-        <div>
+        <div styled={{height: "600px", width: "400px", position: "relative"}}>
           {theme.screenWidth < 768 || (
             <SvgContainer
-              width={'614px'}
-              height={'176px'}
+              width={"614px"}
+              height={"176px"}
               svg={svg}
               zIndex={15}
-              position={'block'}
+              position={"block"}
               backgroundColor={theme.primaryColor}
-              color={'#fff'}
+              color={"#fff"}
               opacity={1}
               strokeColor={theme.primaryColor}
-              viewBox={'47 0 25 33'}
-              overflow={'visible'}
+              viewBox={"47 0 25 33"}
+              overflow={"visible"}
             />
           )}
         </div>
       )}
-
+      
       <StyledH2>Hey! Welcome Back.</StyledH2>
       <div>
         <StyledBtn
           style={{
-            color: '#fff',
-            backgroundColor: '#36405C',
-            margin: '0 0 1.5em',
-            padding: '0 2em 0',
-            width: '352px',
-            height: '72px',
+            color: "#fff",
+            backgroundColor: "#36405C",
+            margin: "0 0 1.5em",
+            padding: "0 2em 0",
+            width: "352px",
+            height: "72px",
           }}
-          icon={'google'}
-          text={'Log In with Google'}
-          shape={'round'}
-          size={'large'}
+          icon={"google"}
+          text={"Log In with Google"}
+          shape={"round"}
+          size={"large"}
           onClick={e => handleGoogleClick(e)}
         />
       </div>
-
-      <StyledBorder />
-
+      
+      <StyledBorder/>
+      
       <StyledFormInput>
         <FormInput
-          name={'email'}
-          value={info.email}
+          name={"email"}
           onChange={handleChange}
+          value={info.email}
           block={false}
-          label={'Email Address'}
+          label={"Email Address"}
           bordered={false}
         />
         <FormInput
-          name={'password'}
-          value={info.password}
+          name={"password"}
           onChange={handleChange}
+          value={info.password}
           block={true}
-          label={'Password'}
+          label={"Password"}
           bordered={false}
         />
+      
+      
       </StyledFormInput>
-
+      
       <StyledBtn2
         style={{
           width: '352px',
           height: '72px',
           backgroundColor: '#0C2545',
           margin: '0 0 1.5em',
-          padding: '1.2em 2em 2em',
+          padding: '0 2em 0',
           border: '2px solid #fff',
         }}
-        text={'Continue with Email'}
-        shape={'round'}
-        size={'large'}
-        type={'darkgray'}
+        text={"Continue with Email"}
+        shape={"round"}
+        size={"large"}
+        type={"darkgray"}
         onClick={e => handleEmailClick(e)}
       />
       {/* <StyledBrainPic> */}
-      {/*     
-    <SvgContainer 
+      {/*
+    <SvgContainer
               
               svg={svg}
               
@@ -169,6 +165,7 @@ export function SignIn(props) {
     </StyledSignIn>
   );
 }
+
 
 const StyledSvgContainer = styled.div`
 height: 100%;
@@ -213,7 +210,7 @@ const StyledBtn = styled(SynapsButton)`
 const StyledFormInput = styled.div`
   width: 345px;
   margin: 0px 0px 0px 45px;
-  @media ${devices.tablet} {
+  @media ${mediaQueries.tablet} {
     & label {
       color: #fff;
       font-family: Source Sans Pro;
@@ -238,6 +235,8 @@ overflow: hidden;
   margin: 146px auto 0 auto;
   height: ${props => props.height - 75 - 146 - 50 + 'px'};
   @media ${devices.desktop} {
+  height: 100%;
+  @media ${mediaQueries.desktop} {
   }
 `;
 
@@ -249,7 +248,7 @@ const StyledH2 = styled.h2`
   line-height: 24px;
   margin: 1rem 0 1em;
   color: #b7bfbc;
-  @media screen and ${devices.tablet} {
+  @media screen and ${mediaQueries.tablet} {
     font-family: Source Sans Pro;
     font-style: normal;
     font-weight: bold;
@@ -262,7 +261,7 @@ const StyledBorder = styled.span`
   width: 90%;
   border-bottom: 2px dashed #ccc;
   margin: 0 0 1.5em;
-  @media screen and ${devices.tablet} {
+  @media screen and ${mediaQueries.tablet} {
     width: 1144px;
     max-width: 100%;
   }

@@ -1,22 +1,16 @@
-import React from 'react';
-import styled from 'styled-components';
-import { SynapsBrain } from '../components/SynapsBrain/SynapsBrain.js';
-import { CreateButton } from '../components/Button/CreateButton.js';
+import React from "react";
+import styled from "styled-components";
+import SecondAnimatedSynapsComponent
+  from "../svgComponents/SecondAnimatedSynapsComponent.js";
 
-/**
- * Testing
- * @category Views
- * @component
- * @example return (<Testing />);
- */
 export const Testing = () => {
-  return ( <StyledTesting>
-    <CreateButton/>
-  </StyledTesting> );
+  return (<StyledTesting>
+    <SecondAnimatedSynapsComponent/> width={"600px"} height={"600px"}/>
+  </StyledTesting>);
+  
 };
 
 const StyledTesting = styled.div`
   margin: 0 auto;
-  width: 400px;
+  width: 800px;
 `;
-

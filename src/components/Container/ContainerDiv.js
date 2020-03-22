@@ -17,45 +17,44 @@ import PropTypes from 'prop-types';
  *  )
  */
 export const ContainerDiv = props => {
-  return <Div { ...props }>{ props.children }</Div>;
+  return <Div {...props}>{props.children}</Div>;
 };
 
 ContainerDiv.propTypes = {
-  navBarVis: PropTypes.bool,
+  alignItems: PropTypes.string,
+  backgroundColor: PropTypes.string,
+  children: PropTypes.any,
   flexDirection: PropTypes.string,
+  height: PropTypes.string,
   justifyContent: PropTypes.string,
+  left: PropTypes.string,
+  margin: PropTypes.string,
+  maxHeight: PropTypes.string,
+  maxWidth: PropTypes.string,
   overFlowY: PropTypes.string,
   position: PropTypes.string,
-  height: PropTypes.string,
-  heightMax: PropTypes.string,
-  margin: PropTypes.string,
   top: PropTypes.string,
-  alignItems: PropTypes.string,
+  width: PropTypes.string,
+  zIndex: PropTypes.number,
 };
 
 const Div = styled.div`
   box-sizing: border-box;
-  top: ${ props => props.top || 0 };
-  margin: ${ props => props.margin || '0' };
-  position: ${ props => props.position || 'absolute' };
-  width: ${ props => props.width || '100vw' };
-  height: ${ props => props.height || '100%' };
-  max-height: ${ props => props.maxHeight || '100%' };
-  max-width: 100vw;
+  top: ${props => props.top || 0};
+  left: ${props => props.left || 0};
+  margin: ${props => props.margin || '0'};
+  position: ${props => props.position || 'absolute'};
+  width: ${props => props.width || '100vw'};
+  height: ${props => props.height || '100vh'};
+  max-height: ${props => props.maxHeight || '100vh'};
+  max-width: ${props => props.maxWidth || '100vw'};
   display: flex;
+
   align-items: ${ props => props.alignItems || 'center' };
   flex-direction: ${ props => props.flexDirection || 'column' };
   justify-content: ${ props => props.justifyContent || 'center' };
   overflow-y: ${ props => props.overFlowY || 'hidden' };
-
   ::-webkit-scrollbar {
     width: 0;
   }
-
-  ::-webkit-scrollbar-track {
-  }
-
-  ::-webkit-scrollbar-thumb {
-  }
 `;
-

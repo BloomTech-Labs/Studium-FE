@@ -1,8 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import { SmallLogo, SynapsButton, SynapsText } from '../components';
-import { devices } from '../utilities/breakpoints-device';
-import { useAppHooks } from '../customHooks/useAppHooks.js';
+import React, {useEffect} from "react";
+import styled from "styled-components";
+import {SmallLogo, SynapsButton, SynapsText} from "../components";
+import {useAppHooks, mediaQueries} from "../customHooks/useAppHooks.js";
 
 /**
  * Landing Page
@@ -11,17 +10,21 @@ import { useAppHooks } from '../customHooks/useAppHooks.js';
  * @example return (<LandingPage />);
  */
 export const LandingPage = props => {
-  const { history } = useAppHooks();
+  const {changePath} = useAppHooks("LandingPage");
+  
+  useEffect(() => {
+  
+  }, []);
+  
   const handleClick = name => {
-    if( name === 'SignIn' ){
-      history.push( '/signIn' );
+    if(name === "SignIn"){
+      changePath("/signIn");
     }else{
-      history.push( '/signup' );
+      changePath("/signup");
     }
   };
   
   return (
-    
     <StyledLandingPage>
       <Mobile>
         <SmallLogo/>
@@ -29,28 +32,28 @@ export const LandingPage = props => {
           <SynapsText/>
         </MobileHeader>
         <SynapsButton
-          text={ 'Sign In' }
-          size={ 'large' }
-          type={ 'primary' }
-          onClick={ () => handleClick( 'SignIn' ) }
-          style={ {
-            margin: '2rem auto',
-            width: '204px',
-            height: '62px',
-            borderRadius: '15px',
-          } }
+          text={"Sign In"}
+          size={"large"}
+          type={"primary"}
+          onClick={() => handleClick("SignIn")}
+          style={{
+            margin: "2rem auto",
+            width: "204px",
+            height: "62px",
+            borderRadius: "15px",
+          }}
         />
         <SynapsButton
-          text={ 'Sign Up' }
-          size={ 'large' }
-          type={ 'darkgray' }
-          onClick={ () => handleClick( 'SignUp' ) }
-          style={ {
-            margin: '0 auto',
-            width: '204px',
-            height: '62px',
-            borderRadius: '15px',
-          } }
+          text={"Sign Up"}
+          size={"large"}
+          type={"darkgray"}
+          onClick={() => handleClick("SignUp")}
+          style={{
+            margin: "0 auto",
+            width: "204px",
+            height: "62px",
+            borderRadius: "15px",
+          }}
         />
       </Mobile>
       <Desktop>
@@ -103,7 +106,6 @@ export const LandingPage = props => {
         <Rectangle/>
       </Desktop>
     </StyledLandingPage>
-  
   );
 };
 
@@ -111,7 +113,7 @@ const Mobile = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 146px;
-  @media ${ devices.tablet } {
+  @media ${mediaQueries.tablet} {
     display: none;
   }
 `;
@@ -120,7 +122,7 @@ const MobileHeader = styled.div``;
 
 const Desktop = styled.div`
   display: none;
-  @media ${ devices.tablet } {
+  @media ${mediaQueries.tablet} {
   }
 `;
 
@@ -261,4 +263,3 @@ const Group4Text = styled.div`
   /* or 29px */
   color: #000000;
 `;
-

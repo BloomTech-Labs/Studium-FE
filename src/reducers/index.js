@@ -1,9 +1,12 @@
-import { combineReducers } from 'redux';
-import { usersReducer } from './usersReducer';
-import { photosReducer } from './photoReducer';
-import { cardsReducer } from './cardsReducer';
-import { decksReducer } from './decksReducer';
+import { combineReducers } from "redux";
+import { usersReducer } from "./usersReducer";
+import { photosReducer } from "./photoReducer";
+import { decksReducer } from "./decksReducer";
+import { cardsReducer } from "./cardsReducer.js";
 
+export const REDUCER_NAMES = [
+  "usersState", "photosState", "decksState", "cardsState",
+];
 /**
  * @typedef {object} RootState
  * @property {UsersReducerState} usersState
@@ -11,16 +14,15 @@ import { decksReducer } from './decksReducer';
  * @property {CardsState} cardsState
  */
 
- /**
+/**
  * Combine Reducers
  *
  * @category Reducers
  * @returns RootState
  */
-
-export default combineReducers({
+export default combineReducers( {
   usersState: usersReducer,
   photosState: photosReducer,
-  decksReducer: decksReducer,
-  cardsState: cardsReducer
-});
+  decksState: decksReducer,
+  cardsState: cardsReducer,
+} );

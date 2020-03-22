@@ -5,7 +5,10 @@
   "dependencies": {
     "antd": "^3.26.9",
     "axios": "^0.19.2",
+    "babel-plugin-macros": "^2.8.0",
+    "chalk": "^3.0.0",
     "firebase": "^7.8.1",
+    "moment": "^2.24.0",
     "pretty-format": "^25.1.0",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
@@ -18,7 +21,8 @@
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.0.1",
     "styled-reset": "^4.1.0",
-    "universal-cookie": "latest"
+    "styled-theming": "^2.2.0",
+    "universal-cookie": "^4.0.3"
   },
   "scripts": {
     "start": "react-scripts start ",
@@ -28,7 +32,10 @@
     "docs": "jsdoc -c jsdoc.json  --debug",
     "clear": "react-scripts test --clearCache",
     "coverage": "react-scripts test --coverage --watchAll=false || true",
-    "clear:run": "CI=true npm-run-all clear coverage || true"
+    "clear:run": "CI=true npm-run-all clear coverage || true",
+    "lint:css": "stylelint ./src/**/*.js",
+    "svg": "svgr -d ./src/svgs/ ./src/svgs/",
+    "svgo": "svgo --config=./.svgorc  --multipass ./src/svgs/froupOne1.svg -o ./src/svgComponents/froupOne1.svg"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -56,6 +63,10 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "debugLocations": [
+    "redux",
+    "theming"
+  ],
   "browserslist": {
     "production": [
       ">0.2%",
@@ -69,17 +80,20 @@
     ]
   },
   "devDependencies": {
+    "@svgr/babel-plugin-add-jsx-attribute": "^5.0.1",
+    "@svgr/babel-plugin-svg-dynamic-title": "^5.0.1",
+    "@svgr/cli": "^5.2.0",
+    "@svgr/plugin-jsx": "^5.2.0",
     "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "@types/jest": "^25.1.3",
     "@types/prop-types": "^15.7.3",
     "@types/react-redux": "^7.1.7",
     "@types/testing-library__jest-dom": "^5.0.1",
     "@types/testing-library__react": "^9.1.2",
-    "codeclimate-test-reporter": "^0.5.1",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
+    "eslint-loader": "^3.0.3",
     "eslint-plugin-jest": "^23.8.0",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.18.3",
@@ -87,11 +101,21 @@
     "jsdoc": "^3.6.3",
     "moxios": "^0.4.0",
     "npm-run-all": "^4.1.5",
+    "postcss-loader": "^3.0.0",
     "postcss-modules": "^1.5.0",
+    "postcss-styled": "^0.34.0",
     "prettier": "^1.19.1",
     "react-styleguide-generator": "^1.4.0",
     "react-styleguidist": "^10.6.2",
     "react-test-renderer": "^16.13.0",
-    "supertest": "^4.0.2"
+    "redux-devtools-extension": "^2.13.8",
+    "stylelint": "^13.2.1",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-custom-processor-loader": "^0.6.0",
+    "stylelint-processor-styled-components": "^1.10.0",
+    "supertest": "^4.0.2",
+    "svg-parser": "^2.0.4",
+    "svgo": "^1.3.2"
   }
 }
