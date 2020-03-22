@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -14,32 +13,12 @@ export const CreateButton = ({
   return (
     <Styled width={width} height={height} onClick={onClick} {...props}>
       <Svg />
-=======
-import React from "react";
-import styled from "styled-components";
-import PropTypes from "prop-types";
-import {Button} from "antd";
-import {ReactComponent as Svg} from "../../svgs/Ellipse 32.svg";
-import {ReactComponent as Union} from "../../svgs/Union.svg";
-
-export const CreateButton = ({
-  height = "69px", width = "69px", onClick, ...props
-}) => {
-  return (
-    <Styled width={width} height={height} onClick={onClick} {...props}>
-      <Union className={"button"} width={"100%"} height={"100%"} />
-      <Svg/>
->>>>>>> origin/actions-reducers-for-Decks
     </Styled>
   );
 };
 
 const Styled = styled(Button)`
-<<<<<<< HEAD
   && {
-=======
-&&{
->>>>>>> origin/actions-reducers-for-Decks
     display: flex;
     justify-content: center;
     align-items: center;

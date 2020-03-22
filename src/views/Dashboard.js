@@ -1,16 +1,16 @@
-import React, {useState, useEffect} from "react";
-import styled from "styled-components";
+import React, {useState, useEffect} from 'react';
+import styled from 'styled-components';
 import {
   SmallFlashCard,
   TitleText,
   SearchBar,
   PreviewDeckCards,
-} from "../components";
-import PropTypes from "prop-types";
-import {useAppHooks, mediaQueries, sizes} from "../customHooks/useAppHooks.js";
-import {getUserDecks} from "../actions";
-import {Alert} from "antd";
-import {SvgSnapsOutline} from "../svgComponents";
+} from '../components';
+import PropTypes from 'prop-types';
+import {useAppHooks, mediaQueries, sizes} from '../customHooks/useAppHooks.js';
+import {getUserDecks} from '../actions';
+import {Alert} from 'antd';
+import {SvgSnapsOutline} from '../svgComponents';
 
 /**
  * Dashboard
@@ -20,7 +20,7 @@ import {SvgSnapsOutline} from "../svgComponents";
  */
 export const Dashboard = props => {
   const [selected, setSelected] = useState(0);
-  
+
   const {
     pathname,
     changePath,
@@ -28,96 +28,75 @@ export const Dashboard = props => {
     usersState,
     decksState,
     theme,
-  } = useAppHooks("Dashboard");
+  } = useAppHooks('Dashboard');
   const search = e => {
     console.log(e.target.value);
   };
-  
+
   useEffect(() => {
-<<<<<<< HEAD
-=======
-    console.log("dispatching getUserDecks action ||");
->>>>>>> origin/actions-reducers-for-Decks
+    console.log('dispatching getUserDecks action ||');
     dispatch(getUserDecks(usersState.user.uid));
     console.log('decksState from dashboard ||', decksState.decks);
     console.log('changePath from dashboard ||', changePath);
   }, []);
-  
+
   const changeDeckSelected = deck => {
     setSelected(deck);
   };
-  
+
   const deckClicked = (deck = undefined) => {
-    console.log("Inside of deck clicked.");
-    if(!deck){
-      changePath("/create/deck");
+    console.log('Inside of deck clicked.');
+    if (!deck) {
+      changePath('/create/deck');
       return;
     }
-    changePath("/preview", {...deck});
+    changePath('/preview', {...deck});
   };
-<<<<<<< HEAD
 
-=======
-  
   const getAlert = () => {
-    if(decksState.errorDecksMessage){
+    if (decksState.errorDecksMessage) {
       return (
-        <Alert message={decksState.errorDecksMessage} type="warning" closable/>
+        <Alert message={decksState.errorDecksMessage} type="warning" closable />
       );
     }
-    return "";
+    return '';
   };
-  
->>>>>>> origin/actions-reducers-for-Decks
+
   return (
-    <StyledDashboard className={"dashboard"}>
+    <StyledDashboard className={'dashboard'}>
       {theme.screenWidth <= sizes.tablet && (
         <>
-          <TitleText text={"Dashboard"}/>
+          <TitleText text={'Dashboard'} />
           <SearchBar
             theme={theme}
             onSearch={search}
             style={{
-              marginTop: "8px",
-              marginBottom: "33px",
-              width: "80%",
-              marginLeft: "10%",
+              marginTop: '8px',
+              marginBottom: '33px',
+              width: '80%',
+              marginLeft: '10%',
             }}
           />
         </>
       )}
-<<<<<<< HEAD
 
-      <StyledDeckHolder className={'deck-container'}>
-        <PreviewDeckCards />
-=======
-      
       {getAlert()}
-      <StyledDeckHolder className={"deck-container"}>
+      <StyledDeckHolder className={'deck-container'}>
         <PreviewDeckCards
-          border={"dashed"}
-          icon={"plus"}
+          border={'dashed'}
+          icon={'plus'}
           onClick={e => deckClicked()}
-        
         />
->>>>>>> origin/actions-reducers-for-Decks
         {decksState.decks.map(deck => {
           return (
             <PreviewDeckCards
               key={deck.deck_id}
               deck={deck}
-<<<<<<< HEAD
-=======
-              border={"solid"}
->>>>>>> origin/actions-reducers-for-Decks
+              border={'solid'}
               onClick={e => deckClicked(deck)}
             />
           );
         })}
-<<<<<<< HEAD
-=======
-      
->>>>>>> origin/actions-reducers-for-Decks
       </StyledDeckHolder>
     </StyledDashboard>
   );
@@ -147,9 +126,6 @@ const StyledDashboard = styled.div`
     width: 100%;
     height: 100vh;
     position: absolute;
-<<<<<<< HEAD
-=======
     left: 0;
->>>>>>> origin/actions-reducers-for-Decks
   }
 `;
