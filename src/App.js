@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import {NavBar, Footer, RouteContainer} from "./components";
+import {SvgBrainPic} from "./svgComponents";
 import PropTypes from "prop-types";
 import {Alert} from "antd";
 import {
@@ -14,6 +15,7 @@ import {
 } from "./customHooks/themingRules.js";
 import theming from "styled-theming";
 import SvgComponent from "./images/svgBrainPic/brainpic.js";
+import {THEME} from "./customHooks/useThemeContext.js";
 
 /**
  * App
@@ -38,22 +40,28 @@ export default function App(props){
     }
   }, [usersState]);
   
+  const getBrainPicColorAndFill = () => {
+    const svgBrainProps = {};
+    if(theme.BACKGROUND === THEMING_VALUES.DARK){
+      svgBrainProps["fill"] = THEME.brainPicDark;
+    }else{
+      svgBrainProps["fill"] = THEME.brainPicLight;
+    }
+    
+    if(theme.BRAIN_SVG === THEMING_VALUES.BOTTOM){
+      svgBrainProps["top"] = "600px";
+    }else{
+      svgBrainProps["top"] = "146px";
+    }
+    return svgBrainProps;
+  };
+  const brainProps = getBrainPicColorAndFill();
   return (
     <StyledApp className="App">
-      <StyledSvgContainer className={"brain-pic-svg-container"}>
-        <div
-          style={{
-            position: "relative",
-            height: "100%",
-            width: "100%",
-            overflow: "hidden",
-            top: "0px",
-            left: "0px",
-          }}
-        >
-          <SvgComponent/>
-        </div>
-      </StyledSvgContainer>
+      {theme.BRAIN_SVG !== THEMING_VALUES.HIDDEN &&
+      < SvgBrainPic maxWidth={"1500px"} maxHeight={"1500px"} height={"1500px"}
+                    width={"1500px"} {...brainProps}/>
+      }
       
       {alertMessage && (
         <Alert
@@ -80,28 +88,6 @@ App.propTypes = {
   history: PropTypes.object,
 };
 
-const top = theming(THEMING_VARIABLES.BRAIN_SVG, {
-  [THEMING_VALUES.BOTTOM]: ({theme}) => {
-    return "77%";
-  },
-  
-  [THEMING_VALUES.TOP]: ({theme}) => {
-    return "106px";
-  },
-  
-  [THEMING_VALUES.HIDDEN]: ({theme}) => {
-    return "0";
-  },
-});
-
-const StyledSvgContainer = styled.div`
-height: 100%;
-  position: absolute;
-  width: 100vw;
-  top: ${top};
-  overflow: hidden;
-`;
-
 const backgroundColor = theming(THEMING_VARIABLES.BACKGROUND, {
   [THEMING_VALUES.DARK]: ({theme}) => {
     return theme.themeState.primaryColor;
@@ -116,7 +102,7 @@ background: ${backgroundColor};
   box-sizing: border-box;
   position: relative;
   color: ${props => props.theme.color};
-  padding: 75px 0 50px 0;
+  padding: 0 auto;
   text-align: center;
   flex-direction: column;
   display: flex;
@@ -125,7 +111,7 @@ background: ${backgroundColor};
   align-items: center;
   max-height: 100vh;
   min-height: 100vh;
-  overflow-y: hidden;
+  overflow: hidden;
 
   @media ${mediaQueries.tablet} {
   

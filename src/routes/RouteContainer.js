@@ -43,8 +43,9 @@ export const RouteContainer = (props) => {
       position={"fixed"}
       backgroundColor={"white"}
       top={"0"}
-      overFlowY={"hidden"}
-      margin={"75px auto 50px auto"}
+      overFlowY={"scroll"}
+      margin={theme.NAV_STYLE === THEMING_VALUES.HIDDEN ? "0 auto" :
+        "75px auto"}
       heightMax={calculateMaxHeight() + "px"}
     >
       <Switch>

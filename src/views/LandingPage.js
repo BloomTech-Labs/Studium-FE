@@ -1,6 +1,8 @@
 import React, {useEffect} from "react";
 import styled from "styled-components";
-import {SmallLogo, SynapsButton, SynapsText} from "../components";
+import {SmallLogo, SynapsButton} from "../components";
+import SvgSynapsLogoText from "../svgComponents/SvgSynapsLogoText.js";
+import {SvgBrainPaths} from "../svgComponents";
 import {useAppHooks, mediaQueries} from "../customHooks/useAppHooks.js";
 
 /**
@@ -10,7 +12,7 @@ import {useAppHooks, mediaQueries} from "../customHooks/useAppHooks.js";
  * @example return (<LandingPage />);
  */
 export const LandingPage = props => {
-  const {changePath} = useAppHooks("LandingPage");
+  const {changePath, theme} = useAppHooks("LandingPage");
   
   useEffect(() => {
   
@@ -25,11 +27,13 @@ export const LandingPage = props => {
   };
   
   return (
-    <StyledLandingPage>
-      <Mobile>
-        <SmallLogo/>
+    <StyledLandingPage data-testid={"landing-page"}>
+      <Mobile data-testid={"landing-page-mobile"}>
+        <SvgBrainPaths svgFill={"white"} strokeWidth={"1"} stroke={"white"}
+                       svgWidth={"100%"}
+                       height={"100%"}/>
         <MobileHeader>
-          <SynapsText/>
+          <SvgSynapsLogoText fill={theme.themeState.navBarLight}/>
         </MobileHeader>
         <SynapsButton
           text={"Sign In"}
@@ -112,7 +116,7 @@ export const LandingPage = props => {
 const Mobile = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 146px;
+  margin: 75px auto 0 auto;
   @media ${mediaQueries.tablet} {
     display: none;
   }
@@ -161,7 +165,7 @@ const Menu3 = styled.div`
 `;
 
 const StyledLandingPage = styled.div`
-  margin-bottom: 75px;
+  margin: 75px auto;
 `;
 
 const Headline = styled.div`

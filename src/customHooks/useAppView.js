@@ -20,7 +20,7 @@ export const useAppView = () => {
    * view width to desktop or to mobile.
    */
   useEffect(() => {
-    
+    debugger;
     logger.logInfo("Height and or width changed.");
     compareContext({appView, height, width});
     

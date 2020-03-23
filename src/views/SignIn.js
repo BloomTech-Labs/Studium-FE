@@ -1,10 +1,12 @@
 import React, {useState} from "react";
-import {FormInput, SynapsButton, SynapsText, SvgContainer} from "../components";
+import {FormInput, SynapsButton, SvgContainer} from "../components";
+import SvgSynapsLogoText from "../svgComponents/SvgSynapsLogoText.js";
 import SvgComponent from "../images/svgBrainPic/brainpic";
 import {ReactComponent as svg} from "../images/SmallWhiteLogo.svg";
 import styled from "styled-components";
 import {signIn, GOOGLE_PROVIDER, EMAIL_PROVIDER} from "../actions";
 import {mediaQueries, useAppHooks, sizes} from "../customHooks/useAppHooks.js";
+import {THEMING_VALUES} from "../customHooks/themingRules.js";
 
 /**
  * Sign In
@@ -44,33 +46,10 @@ export function SignIn(props){
     }
   };
   
-  const logoText = () => {
-    if(appView === "APP_VIEW_DESKTOP"){
-      return <SynapsText/>;
-    }
-  };
-  
   return (
     <StyledSignIn data-testid={"sign-in-container"}>
-      {logoText() || (
-        <div styled={{height: "600px", width: "400px", position: "relative"}}>
-          {theme.screenWidth < 768 || (
-            <SvgContainer
-              width={"614px"}
-              height={"176px"}
-              svg={svg}
-              zIndex={15}
-              position={"block"}
-              backgroundColor={theme.primaryColor}
-              color={"#fff"}
-              opacity={1}
-              strokeColor={theme.primaryColor}
-              viewBox={"47 0 25 33"}
-              overflow={"visible"}
-            />
-          )}
-        </div>
-      )}
+      <SvgSynapsLogoText fill={theme.BACKGROUND === THEMING_VALUES.DARK ?
+        theme.themeState.navBarLight : theme.themeState.navBarDark}/>
       
       <StyledH2>Hey! Welcome Back.</StyledH2>
       <div>
@@ -185,14 +164,13 @@ const StyledFormInput = styled.div`
 `;
 
 const StyledSignIn = styled.div`
-  overflow: hidden;
+  
   display: flex;
   flex-direction: column;
   text-align: center;
   align-items: center;
   margin: 6% auto 0 auto;
   height: 100%;
-  
   
   @media ${mediaQueries.desktop} {
   height: 100%;

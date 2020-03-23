@@ -17,7 +17,7 @@ export const THEME_DEBUG_NAME = "Theme";
 /**
  * @type {Theme}
  */
-export const themeState = {
+export const THEME = {
   primaryColor: "#0d2545",
   primaryColorB98C4: "#b9b8c4",
   primaryColor86869A: "#86869a",
@@ -55,7 +55,8 @@ export const themeState = {
   synapsDark: "#36405C",
   synapsLight: "#FFFFFF",
   
-  screenHeight: 375,
+  brainPicDark: "#36405C",
+  brainPicLight: "#EEECE8",
   
 };
 
@@ -100,7 +101,8 @@ export const themeState = {
  *
  * @property {THEMING_VALUES} NAV_STYLE
  *
- * @property {number} screenHeight
+ * @property {Color} brainPicDark
+ * @property {Color} brainPicLight
  *
  */
 
@@ -137,7 +139,7 @@ export const useThemeRules = (getLogger) => {
    * @property {ThemeRuleValues} themeRules
    * @property {ThemeRuleValues} themeRules
    */
-  return {themeRules, changeTheme, themeState};
+  return {themeRules, changeTheme, themeState: THEME};
   
 };
 

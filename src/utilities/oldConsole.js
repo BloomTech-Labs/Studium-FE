@@ -10,7 +10,7 @@ class AppLogger{
   constructor(){
     this.count = 0;
     this.lastLog = null;
-    this.storage = {};
+    this.storage = [];
     this.eventTimer = null;
     this.console = window.oldConsole;
     this.printResults = false;
@@ -32,7 +32,15 @@ class AppLogger{
       " border-radius: 2px;",
     };
     
+    this.getAppLogs = () => {
+      return this.storage;
+    };
+    
     this.attemptToLog = async(debugName, logType, message, object) => {
+      
+      if(SYNAPS_CONFIG.useAppLogger){
+        this.storage.push({debugName, logType, message, object});
+      }
       
       if(logType >= LOG_TYPES.WARNING){
         this.logNow(debugName, logType, message, object);
