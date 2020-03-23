@@ -1,11 +1,10 @@
-import React, {useState} from 'react';
-import {FormInput, SynapsButton, SynapsText, SvgContainer} from '../components';
-import SvgComponent from '../images/svgBrainPic/brainpic';
+import React, {useState} from "react";
+import {FormInput, SynapsButton, SynapsText, SvgContainer} from "../components";
+import SvgComponent from "../images/svgBrainPic/brainpic";
 import {ReactComponent as svg} from "../images/SmallWhiteLogo.svg";
 import styled from "styled-components";
 import {signIn, GOOGLE_PROVIDER, EMAIL_PROVIDER} from "../actions";
 import {mediaQueries, useAppHooks, sizes} from "../customHooks/useAppHooks.js";
-import {useAppView} from "../customHooks/useAppView.js";
 
 /**
  * Sign In
@@ -14,9 +13,8 @@ import {useAppView} from "../customHooks/useAppView.js";
  * @example return (<SignIn />);
  */
 export function SignIn(props){
-  const {dispatch, theme, pathname, appView} = useAppHooks("SignIn");
+  const {dispatch, theme, pathname, appView, height} = useAppHooks("SignIn");
   const [info, setInfo] = useState({email: "", password: "", error: {}});
-  const {height} = useAppView();
   
   const handleChange = e => {
     setInfo({...info, [e.target.name]: e.target.value});
@@ -47,13 +45,13 @@ export function SignIn(props){
   };
   
   const logoText = () => {
-    if(theme.screenWidth < 768){
+    if(appView === "APP_VIEW_DESKTOP"){
       return <SynapsText/>;
     }
   };
   
   return (
-    <StyledSignIn data-testid={"sign-in-container"} theme={theme}>
+    <StyledSignIn data-testid={"sign-in-container"}>
       {logoText() || (
         <div styled={{height: "600px", width: "400px", position: "relative"}}>
           {theme.screenWidth < 768 || (
@@ -118,12 +116,12 @@ export function SignIn(props){
       
       <StyledBtn2
         style={{
-          width: '352px',
-          height: '72px',
-          backgroundColor: '#0C2545',
-          margin: '0 0 1.5em',
-          padding: '0 2em 0',
-          border: '2px solid #fff',
+          width: "352px",
+          height: "72px",
+          backgroundColor: "#0C2545",
+          margin: "0 0 1.5em",
+          padding: "0 2em 0",
+          border: "2px solid #fff",
         }}
         text={"Continue with Email"}
         shape={"round"}
@@ -131,88 +129,10 @@ export function SignIn(props){
         type={"darkgray"}
         onClick={e => handleEmailClick(e)}
       />
-      {/* <StyledBrainPic> */}
-      {/*
-       <SvgContainer
-       
-       svg={svg}
-       
-       /> */}
-      {/* <brainpic
-       style={{
-       position: 'absolute',
-       }} */}
-      {/* /> */}
-      
-      {/* </StyledBrainPic>  */}
-      <StyledSvgContainer>
-        <div
-          style={{
-            position: "relative",
-            border: "1px red solid",
-            height: "100%",
-            width: "100%",
-            overflow: "hidden",
-            top: "0px",
-            left: "0px",
-          }}
-        >
-          <SvgComponent/>
-        </div>
-      </StyledSvgContainer>
-      {/* <StyledBrainPic> */}
-      {/*
-    <SvgContainer
-              
-              svg={svg}
-              
-    /> */}
-      {/* <brainpic
-    style={{
-      position: 'absolute',
-    }} */}
-      {/* /> */}
-
-      {/* </StyledBrainPic>  */}
-      <StyledSvgContainer>
-        <div
-          style={{
-            position: 'relative',
-            border: '1px red solid',
-            height: '100%',
-            width: '100%',
-            overflow: 'hidden',
-            top: '0px',
-            left: '0px',
-          }}
-        >
-          <SvgComponent />
-        </div>
-      </StyledSvgContainer>
+    
     </StyledSignIn>
   );
 }
-
-const StyledSvgContainer = styled.div`
-height: 100%;
-  /* height: ${props => props.height - 75 + "px"}; */
-  position: absolute;
-  width: 100vw;
-  border: 1px pink solid;
-  top: 0px;
-  overflow: hidden;
-`;
-
-
-const StyledSvgContainer = styled.div`
-height: 100%;
-  /* height: ${props => props.height - 75 + 'px'}; */
-  position: absolute;
-  width: 100vw;
-  border: 1px pink solid;
-  top: 0px;
-  overflow: hidden;
-`;
 
 const StyledBtn2 = styled(SynapsButton)`
   && {
@@ -266,19 +186,14 @@ const StyledFormInput = styled.div`
 
 const StyledSignIn = styled.div`
   overflow: hidden;
-  background: ${props => props.theme.primaryColor};
-overflow: hidden;
   display: flex;
   flex-direction: column;
   text-align: center;
   align-items: center;
-  margin: 146px auto 0 auto;
-  height: ${props => props.height - 75 - 146 - 50 + "px"};
-  
-  
-  height: ${props => props.height - 75 - 146 - 50 + 'px'};
-  @media ${devices.desktop} {
+  margin: 6% auto 0 auto;
   height: 100%;
+  
+  
   @media ${mediaQueries.desktop} {
   height: 100%;
   }

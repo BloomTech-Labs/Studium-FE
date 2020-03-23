@@ -10,6 +10,8 @@ import {Switch, Route} from "react-router";
 import {ContainerDiv} from "../components";
 import {useAppHooks, sizes} from "../customHooks/useAppHooks.js";
 import {APP_PATHS} from "../customHooks/usePaths.js";
+import {THEMING_VALUES} from "../customHooks/themingRules.js";
+import Debug from "../views/Debug.js";
 
 /**
  *   RouteContainer
@@ -22,17 +24,28 @@ import {APP_PATHS} from "../customHooks/usePaths.js";
  *
  */
 export const RouteContainer = (props) => {
-  const {theme} = useAppHooks("RouteContainer");
+  const {height, theme} = useAppHooks("RouteContainer");
+  
+  const calculateMaxHeight = () => {
+    let number = 0;
+    if(theme.NAV_STYLE !== THEMING_VALUES.HIDDEN){
+      number += theme.navBarTopHeight;
+    }
+    if(theme.FOOTER !== THEMING_VALUES.HIDDEN){
+      number += theme.footerHeight;
+    }
+    return height - number;
+  };
   
   return (
     <ContainerDiv
-      className={"app-container"}
+      className={"route-container"}
       position={"fixed"}
       backgroundColor={"white"}
       top={"0"}
       overFlowY={"hidden"}
       margin={"75px auto 50px auto"}
-      heightMax={(theme.screenHeight - 125) + "px"}
+      heightMax={calculateMaxHeight() + "px"}
     >
       <Switch>
         <LoginSignUpRoute path={APP_PATHS.SIGN_UP_PATH}
@@ -46,7 +59,10 @@ export const RouteContainer = (props) => {
         <ProtectedRoute path={APP_PATHS.PREVIEW_DECK_PATH}
                         component={PreviewDeck}/>
         <ProtectedRoute path={APP_PATHS.GAME_PATH} component={FlashCard}/>
-        <Route path={"/test"} render={props => <Testing {...props}/>}/>
+        <Route path={APP_PATHS.TESTING}
+               render={props => <Testing {...props}/>}/>
+        <Route path={"/debug"}
+               render={props => <Debug {...props}/>}/>
         
         <LoginSignUpRoute path={"/"}
                           component={LandingPage} {...props} />

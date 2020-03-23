@@ -14,8 +14,9 @@ const USE_DIMENSIONS_DEBUG_NAME = "Use Dimensions";
 
 export const useDimensions = () => {
   
-  const {height, width, setHookVariable, getLogger} = useContext(
+  const {hooks, setHookVariable} = useContext(
     AppHooksContext);
+  const {getLogger, width, height} = hooks;
   const logger = getLogger(USE_DIMENSIONS_DEBUG_NAME);
   
   useEffect(() => {
@@ -25,13 +26,13 @@ export const useDimensions = () => {
       window.removeEventListener("resize", updateDimensions);
       logger.logInfo("Removed listen for resize.");
     };
-  }, [] );
+  }, []);
   
   let timer = null;
   
   const updateDimensions = () => {
     logger.logInfo("Update dimensions called");
-    logger.logInfo( "Update dimensions called" );
+    logger.logInfo("Update dimensions called");
     
     const update = () => {
       logger.logInfo("Update called.");

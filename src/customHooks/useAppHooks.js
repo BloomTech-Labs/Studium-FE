@@ -1,10 +1,11 @@
 import React, {useContext, useEffect, useState} from "react";
 import {useSelector} from "react-redux";
-import {themeState} from "./useThemeContext.js";
+import {themeState, useThemeContext} from "./useThemeContext.js";
 import {APP_VIEW_DESKTOP, APP_VIEW_MOBILE} from "./themingRules.js";
 import {useDispatch} from "react-redux";
 import {useChangePath} from "./useHistoryAndPath.js";
 import {useHistory} from "react-router-dom";
+import {useTheme} from "styled-components";
 
 export const APP_HOOKS_DEBUG_NAME = "App Hooks";
 
@@ -23,8 +24,15 @@ export const APP_HOOKS_DEBUG_NAME = "App Hooks";
 
 export const useAppHooks = (nameOfCaller) => {
   
-  const {getLogger, setHookVariable, ...hooks} = useContext(AppHooksContext);
-  const logger = getLogger(USE_APP_HOOKS_STATE_DEBUG_NAME);
+  const {setHookVariable, hooks} = useContext(AppHooksContext);
+  const logger = hooks.getLogger(USE_APP_HOOKS_STATE_DEBUG_NAME);
+  /**
+   * @typedef {object} Theme
+   * @property {function} changeTheme
+   * @property {ThemeState} themeState
+   *
+   */
+  const theme = useTheme();
   const dispatch = useDispatch();
   const changePath = useChangePath();
   const history = useHistory();
@@ -42,28 +50,31 @@ export const useAppHooks = (nameOfCaller) => {
   /**
    * @typedef {object} UseAppHooksReturn
    *@property {function} setHookVariable
+   *@property {function} getLogger
    * @property {Dispatch}  dispatch
    * @property {UsersReducerState} usersState
    * @property {CardsState} cardsState
    * @property {PhotoReducerState} photosState
    * @property {{}} deckState
    * @property {Theme} theme
-   * @property {function} setRules
+   * @property {ThemeRuleValues} themeRules
    * @property {AppView} appView
    * @property {APP_PATH} path,
    * @property {number} height
    * @property {ChangePath} changePath
-   * @property {ThemingRules} themingRules
+   * @property {{any}} pushedState
+   * @property {number} width
+   * @property {number} height
    */
   
   return {
+    theme: theme,
     setHookVariable,
     dispatch,
     usersState,
     cardsState,
     photosState,
     decksState,
-    getLogger,
     changePath,
     ...hooks,
   };
@@ -73,11 +84,13 @@ export const USE_APP_HOOKS_STATE_DEBUG_NAME = "App Hooks State";
 
 /**
  * Use App Hook State
- * App Hoooks Theeme Provider State manager.
+ * App Hooks Theme Provider State manager.
  * @typedef {function} useAppAHooksState
  *
- * @param {Logger} getLogger
- * @return {{AppProviderState} hooks, {function} setHookVariable }
+ * @param {function} getLogger
+ * @return {{setHookVariable: setHookVariable, hooks: {pushedState: {}, path:
+ *   string, appView: (string | string), width: number, getLogger: function,
+ *   history: *, height: number}}}
  */
 export const useAppHooksState = (getLogger) => {
   
@@ -98,10 +111,7 @@ export const useAppHooksState = (getLogger) => {
    * @property {AppView} appView
    * @property {number} width
    * @property {number} height
-   * @property {Theme} theme
-   * @property {Theme} theme
    * @property {function} getLogger
-   * @property {Object.<string, {string}>}} themingRules
    */
   const initialState = {
     path: history.location.pathname,

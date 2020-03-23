@@ -61,14 +61,13 @@ if(Object.values(initialState).length >= REDUCER_NAMES.length){
  * @description Store and theme provider setup for our application.
  */
 const AppProvider = props => {
-  const {appLogger} = props;
-  
-  const {themingRules, changeTheme} = useThemeRules(appLogger.getLogger);
+  const {appLogger, ...rest} = props;
   const logger = appLogger.getLogger(APP_PROVIDER_DEBUG_NAME);
+  const {getLogger} = appLogger;
   useEffect(() => {
   
   }, []);
-  
+  const {themeRules, themeState, changeTheme} = useThemeRules(appLogger.getLogger);
   logger.logInfo(`Node Env: ${process.env.NODE_ENV}.`);
   logger.logInfo(`App provider being rendered.`);
   logger.logInfo("App provider props");
@@ -76,31 +75,41 @@ const AppProvider = props => {
   
   return (
     <ErrorBoundary>
-      <ThemeProvider theme={{changeTheme, ...themingRules}}>
+      <ThemeProvider theme={{changeTheme, themeState, ...themeRules}}>
         <Provider store={store}>
-            <AfterHooks {...props} />
+          <AfterStoreTheme logger={logger} getLogger={getLogger} {...rest} />
         </Provider>
       </ThemeProvider>
     </ErrorBoundary>
   );
 };
 
-const AfterHooks = props => {
+const AfterStoreTheme = props => {
   
-  
-  const getLogger = props.appLogger.getLogger;
-  const logger = getLogger(APP_PROVIDER_DEBUG_NAME);
+  const {getLogger, logger} = props;
   const {hooks, setHookVariable} = useAppHooksState(getLogger);
-  logger.logInfo(`After hooks provider rendered.`);
-  useThemeContext();
-  useDimensions();
+  logger.logInfo(`After Store and Theme provider rendered.`);
   
   return (
     <>
       <GlobalStyles/>
       <AppHooksContext.Provider
         value={{setHookVariable, hooks}}>
+        
+        <AfterHooks{...props}/>
       </AppHooksContext.Provider>
+    </>
+  );
+};
+
+const AfterHooks = props => {
+  
+  const {getLogger, logger} = props;
+  logger.logInfo(`After hooks provider rendered.`);
+  useThemeContext();
+  useDimensions();
+  return (
+    <>
       {props.children}
     </>
   );
