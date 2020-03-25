@@ -35,11 +35,11 @@ const withSvgContainer = (Svg) => {
    * @returns SvgComponent
    */
   
-  
+  debugger;
   const SvgContainer = ({
     margin = "0 auto", backgroundColor = "transparent", containerPosition = "relative",
     height = "100%", width = "100%", zIndex = "1", svgWidth = "100%", top = "0", left = "0",
-    maxHeight = "unset", maxWidth = "100%", transform,
+    maxHeight = "100%", maxWidth = "100%", transform,
     svgHeight = "100%", svgFill, svgBackground, svgOpacity = "1", ...props
   }) => {
     

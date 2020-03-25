@@ -40,13 +40,15 @@ const LogoLeft = () => {
       <ContainerDiv
         height={"100%"} width={"120px"} margin={"0 0 0 5%"}
         alignItems={"flex-start"} justifyContent={"flex-end"}
-        flexDirection={"row"} overFlowY={"visible"}
+        flexDirection={"row"} overFlowY={"visible"} overFlowX={"visible"}
         position={"relative"}>
         <SvgSynapsLogoText svgFill={theme.themeState.synapsLight} zIndex={10}
                            margin={"15% auto 0 auto"}/>
         
         <Brain containerPosition={"absolute"} height={"300px"}
-               zIndex={5} svgFill={"#164172"}
+               zIndex={5} svgFill={theme.themeState.brainPicDark}
+               maxWidth={"600px"}
+               maxHeight={"600px"}
                width={"300px"} top={"-25%"} svgWidth={"100%"}
                svgHeight={"100%"}
                left={"-40%"}/>
