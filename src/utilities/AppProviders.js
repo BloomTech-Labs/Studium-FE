@@ -105,7 +105,7 @@ const AfterStoreTheme = props => {
 
 const AfterHooks = props => {
   
-  const {getLogger, logger} = props;
+  const {logger} = props;
   logger.logInfo(`After hooks provider rendered.`);
   useThemeContext();
   useDimensions();

@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext} from "react";
 import {SYNAPS_CONFIG} from "../synapsConfig.js";
-import {AppHooksContext, useAppHooks} from "./useAppHooks.js";
+import {AppHooksContext} from "./useAppHooks.js";
 
 export const CONTEXT_API_DEBUG_NAME = "Context Api";
 /*
@@ -19,7 +19,7 @@ export const useComparPrevContext = (componentsDebugName,
     
     useEffect(() => {
       logger.logVerbose(`Context Compare Setup for ${debugName}`);
-    }, []);
+    }, [debugName, logger]);
     
     const printPrevContext = (number) => {
       let count = 0;
@@ -58,10 +58,6 @@ export const useComparPrevContext = (componentsDebugName,
               logger.logVerbose(
                 `Can not tell the difference for ${key}`);
             }
-            //
-            //            logger.logObjectWithMessage(lastContext[key], "Prev
-            // Context "); logger.logObjectWithMessage(newContext[key], "new
-            // Context ");
           });
           
           if(difference.length === 0){
@@ -71,7 +67,7 @@ export const useComparPrevContext = (componentsDebugName,
               logger.logObjectWithMessage(lastContext[key],
                 `${key} in last context.`,
               );
-              logger.logObjectWithMessage(newContext [key],
+              logger.logObjectWithMessage(newContext[key],
                 `${key} in new context.`,
               );
             });
@@ -100,7 +96,6 @@ export const useComparPrevContext = (componentsDebugName,
       try{
         const lastContextJson = localStorage.getItem(
           SYNAPS_CONFIG.localStorageContextBasePath + debugName);
-        const newContextJson = JSON.stringify(newContext);
         const lastContext = JSON.parse(lastContextJson);
         logCompareContext(lastContext[lastContext.length - 1], newContext);
         localStorage.setItem(

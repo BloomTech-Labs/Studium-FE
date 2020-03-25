@@ -4,12 +4,8 @@ import {NavBar, Footer, RouteContainer} from "./components";
 import {SvgBrainPic} from "./svgComponents";
 import PropTypes from "prop-types";
 import {Alert} from "antd";
-import {
-  useAppHooks,
-  
-} from "./customHooks/useAppHooks.js";
+import {useAppHooks} from "./customHooks/useAppHooks.js";
 import {useAuthStateChange} from "./customHooks/useAuthStateChange.js";
-import {SynapsBrain} from "./components";
 import {
   THEMING_VARIABLES, THEMING_VALUES,
 } from "./customHooks/themingRules.js";
@@ -33,7 +29,7 @@ export default function App(props){
   useEffect(() => {
     logger.logVerbose("App view rendered.");
   }, []);
-  useAuthStateChange();
+  useAuthStateChange(getHooks);
   
   useEffect(() => {
     if(usersState.registerError && !alertMessage){

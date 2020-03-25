@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from "react";
 import {AppHooksContext} from "./useAppHooks.js";
 import {useStyledThemingRules} from "./useStyledThemingRules.js";
-import {DEFAULT_THEME_RULE_VALUES, THEMING_VALUES} from "./themingRules.js";
+import {DEFAULT_THEME_RULE_VALUES} from "./themingRules.js";
 import {ThemeContext} from "styled-components";
 import {useComparPrevContext} from "./useComparPrevContext.js";
 import {SYNAPS_CONFIG} from "../synapsConfig.js";
@@ -53,7 +53,7 @@ export const useThemeContext = () => {
   const {path, appView, getLogger} = hooks;
   const {compareContext} = useComparPrevContext(
     THEME_DEBUG_NAME, themeRules);
-  const checkAllRules = useStyledThemingRules();
+  const checkAllRules = useStyledThemingRules(getLogger);
   const logger = getLogger(THEME_DEBUG_NAME);
   
   const changeRules = (changes) => {
