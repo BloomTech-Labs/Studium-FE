@@ -13,6 +13,7 @@ import {
 import {useDimensions} from "../customHooks/useDimensions.js";
 import appLogger from "../utilities/oldConsole.js";
 import {ThemeProvider} from "styled-components";
+import {useAppView} from "../customHooks/useAppView.js";
 
 export const APP_PROVIDER_DEBUG_NAME = "App Provider";
 const logger = appLogger.getLogger(APP_PROVIDER_DEBUG_NAME);
@@ -67,7 +68,8 @@ const AppProvider = props => {
   useEffect(() => {
   
   }, []);
-  const {themeRules, themeState, changeTheme} = useThemeRules(appLogger.getLogger);
+  const {themeRules, themeState, changeTheme} = useThemeRules(
+    appLogger.getLogger);
   logger.logInfo(`Node Env: ${process.env.NODE_ENV}.`);
   logger.logInfo(`App provider being rendered.`);
   logger.logInfo("App provider props");
@@ -108,6 +110,7 @@ const AfterHooks = props => {
   logger.logInfo(`After hooks provider rendered.`);
   useThemeContext();
   useDimensions();
+  useAppView();
   return (
     <>
       {props.children}

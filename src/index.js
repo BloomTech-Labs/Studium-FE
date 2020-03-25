@@ -25,9 +25,9 @@ try{
 
 ReactDOM.render(
   <Router>
-  <AppProvider appLogger={appLogger}>
-    <App logger={logger}/>
-  </AppProvider>
+    <AppProvider appLogger={appLogger}>
+      <App logger={logger}/>
+    </AppProvider>
   </Router>
   , document.getElementById("root"));
 

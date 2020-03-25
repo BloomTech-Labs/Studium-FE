@@ -1,10 +1,12 @@
 import React, {useState} from "react";
-import {FormInput, SynapsButton, SynapsText, SvgContainer} from "../components";
+import {FormInput, SynapsButton, SvgContainer} from "../components";
+import SvgSynapsLogoText from "../svgComponents/SvgSynapsLogoText.js";
 import SvgComponent from "../images/svgBrainPic/brainpic";
 import {ReactComponent as svg} from "../images/SmallWhiteLogo.svg";
 import styled from "styled-components";
 import {signIn, GOOGLE_PROVIDER, EMAIL_PROVIDER} from "../actions";
 import {mediaQueries, useAppHooks, sizes} from "../customHooks/useAppHooks.js";
+import {THEMING_VALUES} from "../customHooks/themingRules.js";
 
 /**
  * Sign In
@@ -20,57 +22,34 @@ export function SignIn(props){
     setInfo({...info, [e.target.name]: e.target.value});
   };
   
-  const handleGoogleClick = e => {
-    dispatch(signIn(GOOGLE_PROVIDER));
-  };
-  
-  const handleEmailClick = e => {
-    if(info.email !== "" && info.password !== ""){
-      dispatch(signIn(EMAIL_PROVIDER, info.email, info.password));
-    }else{
-      if(info.email === ""){
-        setInfo({
-          ...info,
-          error: {email: "You must enter a email address."},
-        });
+  const handleSignInClick = type => {
+    if(type === EMAIL_PROVIDER){
+      if(info.email !== "" && info.password !== ""){
+        dispatch(signIn(EMAIL_PROVIDER, info.email, info.password));
       }else{
-        setInfo({
-          ...info,
-          error: {
-            password: "You must first enter a password.",
-          },
-        });
+        if(info.email === ""){
+          setInfo({
+            ...info,
+            error: {email: "You must enter a email address."},
+          });
+        }else{
+          setInfo({
+            ...info,
+            error: {
+              password: "You must first enter a password.",
+            },
+          });
+        }
       }
-    }
-  };
-  
-  const logoText = () => {
-    if(appView === "APP_VIEW_DESKTOP"){
-      return <SynapsText/>;
+    }else{
+      dispatch(signIn(GOOGLE_PROVIDER));
     }
   };
   
   return (
     <StyledSignIn data-testid={"sign-in-container"}>
-      {logoText() || (
-        <div styled={{height: "600px", width: "400px", position: "relative"}}>
-          {theme.screenWidth < 768 || (
-            <SvgContainer
-              width={"614px"}
-              height={"176px"}
-              svg={svg}
-              zIndex={15}
-              position={"block"}
-              backgroundColor={theme.primaryColor}
-              color={"#fff"}
-              opacity={1}
-              strokeColor={theme.primaryColor}
-              viewBox={"47 0 25 33"}
-              overflow={"visible"}
-            />
-          )}
-        </div>
-      )}
+      <SvgSynapsLogoText fill={theme.BACKGROUND === THEMING_VALUES.DARK ?
+        theme.themeState.navBarLight : theme.themeState.navBarDark}/>
       
       <StyledH2>Hey! Welcome Back.</StyledH2>
       <div>
@@ -87,7 +66,7 @@ export function SignIn(props){
           text={"Log In with Google"}
           shape={"round"}
           size={"large"}
-          onClick={e => handleGoogleClick(e)}
+          onClick={e => handleSignInClick(GOOGLE_PROVIDER)}
         />
       </div>
       
@@ -127,7 +106,7 @@ export function SignIn(props){
         shape={"round"}
         size={"large"}
         type={"darkgray"}
-        onClick={e => handleEmailClick(e)}
+        onClick={e => handleSignInClick(EMAIL_PROVIDER)}
       />
     
     </StyledSignIn>
@@ -137,7 +116,6 @@ export function SignIn(props){
 const StyledBtn2 = styled(SynapsButton)`
   && {
     span {
-      font-family: Source Sans Pro;
       font-style: normal;
       font-weight: bold;
       font-size: 24px;
@@ -155,7 +133,6 @@ const StyledBtn = styled(SynapsButton)`
       font-size: 32px;
     }
     span {
-      font-family: Source Sans Pro;
       font-style: normal;
       font-weight: bold;
       font-size: 24px;
@@ -171,7 +148,6 @@ const StyledFormInput = styled.div`
   @media ${mediaQueries.tablet} {
     & label {
       color: #fff;
-      font-family: Source Sans Pro;
       font-style: normal;
       font-weight: bold;
       font-size: 21px;
@@ -185,22 +161,20 @@ const StyledFormInput = styled.div`
 `;
 
 const StyledSignIn = styled.div`
-  overflow: hidden;
+  
   display: flex;
   flex-direction: column;
   text-align: center;
   align-items: center;
   margin: 6% auto 0 auto;
   height: 100%;
-  
-  
+  width: 100%;
   @media ${mediaQueries.desktop} {
   height: 100%;
   }
 `;
 
 const StyledH2 = styled.h2`
-  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: bold;
   font-size: 30px;
@@ -208,7 +182,6 @@ const StyledH2 = styled.h2`
   margin: 1rem 0 1em;
   color: #b7bfbc;
   @media screen and ${mediaQueries.tablet} {
-    font-family: Source Sans Pro;
     font-style: normal;
     font-weight: bold;
     font-size: 36px;

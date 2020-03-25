@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import {Popover} from "antd";
 import {useAppHooks} from "../../customHooks/useAppHooks.js";
 import {signOut} from "../../actions";
-import {APP_PATHS} from "../../customHooks/usePaths.js";
+import {APP_PATHS} from "../../utilities/constants.js";
 
 /**
  * Nav Bar Avatar

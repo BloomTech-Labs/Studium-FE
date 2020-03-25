@@ -1,8 +1,10 @@
 import React, {useState} from "react";
-import {FormInput, SynapsText, SynapsButton} from "../components";
+import {FormInput, SynapsButton} from "../components";
+import SvgSynapsLogoText from "../svgComponents/SvgSynapsLogoText.js";
 import styled from "styled-components";
 import {EMAIL_PROVIDER, GOOGLE_PROVIDER, signIn} from "../actions";
 import {useAppHooks} from "../customHooks/useAppHooks.js";
+import {THEME} from "../utilities/constants.js";
 
 /**
  * Sign Up
@@ -11,7 +13,7 @@ import {useAppHooks} from "../customHooks/useAppHooks.js";
  * @example return (<SignUp />);
  */
 export function SignUp(){
-  const {dispatch} = useAppHooks("SignUp");
+  const {dispatch, theme} = useAppHooks("SignUp");
   
   const [info, setInfo] = useState({email: "", password: "", error: {}});
   
@@ -43,7 +45,7 @@ export function SignUp(){
   };
   
   return (<StyledSignUp>
-    <SynapsText/>
+    <SvgSynapsLogoText fill={theme.themeState.navBarDark}/>
     
     <SynapsButton
       style={{margin: "1rem 0 1.5em", padding: "0 2em 0"}}

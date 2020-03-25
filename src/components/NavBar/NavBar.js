@@ -10,10 +10,10 @@ import {
 } from "../../customHooks/useAppHooks.js";
 import LogoLeft from "./LogoLeft.js";
 import {
-  APP_VIEW_DESKTOP, THEMING_VALUES, THEMING_VARIABLES,
+  THEMING_VALUES, THEMING_VARIABLES,
 } from "../../customHooks/themingRules.js";
-import {APP_PATHS} from "../../customHooks/usePaths.js";
 import {useComparPrevContext} from "../../customHooks/useComparPrevContext.js";
+import {APP_PATHS, APP_VIEW_DESKTOP, THEME} from "../../utilities/constants.js";
 
 export const NAV_BAR_DEBUG_NAME = "Nav Bar";
 
@@ -58,21 +58,24 @@ export const NavBar = () => {
     signOut(dispatch);
   };
   
-  const getSignUpText = () => {
+  const navBarRightContent = () => {
     
-    if(appView === APP_VIEW_DESKTOP){
-      
-      if(path === APP_PATHS.SIGN_UP_PATH){
-        
-        return <Styledh2>SignIn</Styledh2>;
-        
-      }else if(path === APP_PATHS.SIGN_IN_PATH){
-        
-        return <Styledh2>SignUp</Styledh2>;
-      }
-    }else{
-      return false;
+    if(path === APP_PATHS.SIGN_UP_PATH || path === APP_PATHS.LANDING_PAGE){
+      return <Styledh2 onClick={() => changePath(APP_PATHS.SIGN_IN_PATH)}>Sign
+        In</Styledh2>;
+    }else if(path === APP_PATHS.SIGN_IN_PATH){
+      return <Styledh2 onClick={() => changePath(APP_PATHS.SIGN_UP_PATH)}>Sign
+        Up</Styledh2>;
     }
+    
+    return (
+      <NavBarAvatar
+        onClick={logout}
+        avatarUrl={avatarUrl}
+        className={"ant-dropdown-link"}
+      />
+    );
+    
   };
   
   return (
@@ -88,14 +91,7 @@ export const NavBar = () => {
         backgroundColor={"transparent"}
       >
         <LogoLeft/>
-        
-        <NavBarAvatar
-          onClick={logout}
-          avatarUrl={avatarUrl}
-          className={"ant-dropdown-link"}
-        />
-        
-        {getSignUpText()}
+        {navBarRightContent()}
       </ContainerDiv>
     </StyledBar>
   );
@@ -145,18 +141,21 @@ const StyledBar = styled.div`
   top: ${top};
   width: 100%;
   height: ${props => props.theme.navBarTopHeight + "px"};
+
  
 `;
+
+const color = theming(THEMING_VARIABLES.NAV_STYLE, {
+  [THEMING_VALUES.DARK]: "white",
+  [THEMING_VALUES.LIGHT]: props => props.theme.themeState.synapsDark,
+  [THEMING_VALUES.HIDDEN]: props => props.theme.themeState.synapsDark,
+});
 
 const Styledh2 = styled.h2`
   display: flex;
   align-items: center;
-  color: #fff;
-  position: absolute;
-  width: 95px;
-  height: 24px;
-  left: 1197px;
-  top: 38px;
+  color: ${color};
+  margin: 0 10% 0 0;
   font-family: Source Sans Pro;
   font-style: normal;
   font-weight: bold;

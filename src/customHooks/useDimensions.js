@@ -31,6 +31,7 @@ export const useDimensions = () => {
   let timer = null;
   
   const updateDimensions = () => {
+    
     logger.logInfo("Update dimensions called");
     logger.logInfo("Update dimensions called");
     

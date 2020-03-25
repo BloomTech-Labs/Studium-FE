@@ -13,26 +13,46 @@ const StyledGroup = (props) => {
   
   useEffect(() => {
     let childrenArray;
-    const newProps = parseProps(props);
-    if(!newProps.group){
-      if(newProps.id === "paths"){
-        newProps.group = "paths";
-      }else if(newProps.id === "nodes"){
-        newProps.group = "nodes";
-      }
-    }
     
     if(Array.isArray(props.children)){
       childrenArray = props.children;
     }else{
       childrenArray = [props.children];
     }
+    let ext;
+    if(props.id.includes("nodes")){
+      ext = "_node";
+    }else{
+      ext = "_path";
+    }
+    
     setChildren(childrenArray.map(child => {
-      return React.cloneElement(child,
-        {onClick, group: newProps.group, key: newProps.id},
-      );
+      if(!child.props.id){
+        return React.cloneElement(child,
+          {
+            ...props,
+            onClick,
+            group: newProps.group,
+            key: child.props.id + ext,
+            id: props.id + ext,
+          },
+        );
+      }
+      return child;
     }));
   }, []);
+  
+  const addConnected = (ref) => {
+    debugger;
+  };
+  
+  const getConnectedElements = (ref) => {
+    if(ref.id.includes("_path")){
+    
+    }else{
+    
+    }
+  };
   
   const onClick = (id) => {
     console.log(`${id} just clicked.`);

@@ -45,6 +45,7 @@ export const useStyledThemingRules = () => {
    * @param {function} changeTheme
    */
   const checkAllRules = (theme, appView, currentPath, changeTheme) => {
+    
     const themeRules = getThemingRules();
     const themeChanges = [];
     logger.logInfo("Checking theme rules.");

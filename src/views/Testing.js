@@ -5,7 +5,7 @@ import SecondAnimatedSynapsComponent
 
 export const Testing = () => {
   return (<StyledTesting>
-    <SecondAnimatedSynapsComponent width={"600px"} height={"600px"}/>
+    <SecondAnimatedSynapsComponent width={"1000px"} height={"1000px"}/>
   </StyledTesting>);
   
 };

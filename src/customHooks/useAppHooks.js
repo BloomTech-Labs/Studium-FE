@@ -1,11 +1,13 @@
 import React, {useContext, useEffect, useState} from "react";
 import {useSelector} from "react-redux";
-import {themeState, useThemeContext} from "./useThemeContext.js";
-import {APP_VIEW_DESKTOP, APP_VIEW_MOBILE} from "./themingRules.js";
+import {useThemeContext} from "./useThemeContext.js";
 import {useDispatch} from "react-redux";
 import {useChangePath} from "./useHistoryAndPath.js";
 import {useHistory} from "react-router-dom";
 import {useTheme} from "styled-components";
+import {
+  APP_VIEW_DESKTOP, APP_VIEW_MOBILE, THEME,
+} from "../utilities/constants.js";
 
 export const APP_HOOKS_DEBUG_NAME = "App Hooks";
 
@@ -29,7 +31,8 @@ export const useAppHooks = (nameOfCaller) => {
   /**
    * @typedef {object} Theme
    * @property {function} changeTheme
-   * @property {ThemeState} themeState
+   * @property {ThemeState} theme
+   * @property {object.<THEMING_VALUE, {string}>}
    *
    */
   const theme = useTheme();
@@ -129,13 +132,20 @@ export const useAppHooksState = (getLogger) => {
   
   const [hooks, setHooks] = useState(initialState);
   
-  const setHookVariable = (name, value) => {
-    
-    logger.logInfo(`Setting ${name} to new value`);
-    logger.logObject(value);
-    let newState;
-    newState = {...hooks, [name]: value};
-    setHooks(newState);
+  const setHookVariable = (name, value, items = undefined) => {
+    if(items === undefined){
+      logger.logInfo(`Setting ${name} to new value`);
+      logger.logObject(value);
+      let newState;
+      newState = {...hooks, [name]: value};
+      setHooks(newState);
+    }else{
+      const newHooks = {...hooks};
+      items.forEach(item => {
+        newHooks[item.name] = item.value;
+      });
+      setHooks(newHooks);
+    }
     
   };
   

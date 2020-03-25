@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import React from "react";
+import styled from "styled-components";
+import PropTypes from "prop-types";
 
 /**
  * Container Div
@@ -17,6 +17,7 @@ import PropTypes from 'prop-types';
  *  )
  */
 export const ContainerDiv = props => {
+  console.log(props);
   return <Div {...props}>{props.children}</Div>;
 };
 
@@ -32,28 +33,34 @@ ContainerDiv.propTypes = {
   maxHeight: PropTypes.string,
   maxWidth: PropTypes.string,
   overFlowY: PropTypes.string,
+  overFlowX: PropTypes.string,
   position: PropTypes.string,
   top: PropTypes.string,
   width: PropTypes.string,
   zIndex: PropTypes.number,
+  padding: PropTypes.string,
+  transform: PropTypes.string,
 };
 
 const Div = styled.div`
   box-sizing: border-box;
   top: ${props => props.top || 0};
   left: ${props => props.left || 0};
-  margin: ${props => props.margin || '0'};
-  position: ${props => props.position || 'absolute'};
-  width: ${props => props.width || '100vw'};
-  height: ${props => props.height || '100vh'};
-  max-height: ${props => props.maxHeight || '100vh'};
-  max-width: ${props => props.maxWidth || '100vw'};
+  padding: ${props => props.padding || 0};
+  margin: ${props => props.margin || "0"};
+  position: ${props => props.position || "absolute"};
+  width: ${props => props.width || "100vw"};
+  height: ${props => props.height || "100vh"};
+  max-height: ${props => props.maxHeight || "100vh"};
+  max-width: ${props => props.maxWidth || "100vw"};
   display: flex;
 
-  align-items: ${ props => props.alignItems || 'center' };
-  flex-direction: ${ props => props.flexDirection || 'column' };
-  justify-content: ${ props => props.justifyContent || 'center' };
-  overflow-y: ${ props => props.overFlowY || 'hidden' };
+  align-items: ${props => props.alignItems || "center"};
+  flex-direction: ${props => props.flexDirection || "column"};
+  justify-content: ${props => props.justifyContent || "center"};
+  overflow-y: ${props => props.overFlowY || "hidden"};
+  overflow-x: ${props => props.overFlowX || "hidden"};
+  transform: ${props => props.transform || "none"};
   ::-webkit-scrollbar {
     width: 0;
   }
