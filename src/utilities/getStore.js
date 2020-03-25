@@ -27,7 +27,7 @@ export const getStore = (initialState, consoleLogger) => {
       if(store){
         consoleLogger.logInfo("Initial state set. ");
         const state = store.getState();
-        consoleLogger.logObjectWithMessage(state, "Set up store state." );
+        consoleLogger.logObjectWithMessage(state, "Set up store state.");
         return store;
       }
     }catch(e){
@@ -43,7 +43,7 @@ export const getStore = (initialState, consoleLogger) => {
     }
   }
   
-  logger.logVerbose("No previous state found.");
+  consoleLogger.logVerbose("No previous state found.");
   store = createStore(
     rootReducer,
     composeWithDevTools(applyMiddleware(storageBackUp, logger, Thunk)),

@@ -18,7 +18,7 @@ export const useComparPrevContext = (componentsDebugName,
     const logger = getLogger(debugName);
     
     useEffect(() => {
-      logger.logInfo(`Context Compare Setup for ${debugName}`);
+      logger.logVerbose(`Context Compare Setup for ${debugName}`);
     }, []);
     
     const printPrevContext = (number) => {
@@ -35,7 +35,6 @@ export const useComparPrevContext = (componentsDebugName,
     };
     
     const compareContext = (newContext) => {
-      
       if(SYNAPS_CONFIG.useLocalStorageToStorePrevContext){
         compareContextLocalStorage(newContext);
       }else{
@@ -82,7 +81,6 @@ export const useComparPrevContext = (componentsDebugName,
         }catch(e){
           logger.logWarning(`Was unable to compare context ${debugName}`);
           logger.logWarning(e.message);
-          
         }
         
       }else{
@@ -94,7 +92,6 @@ export const useComparPrevContext = (componentsDebugName,
           logger.logObjectWithMessage(lastContext, " Last Context ");
           logger.logObjectWithMessage(lastContext, " New Context ");
         }
-        
       }
       
     };
