@@ -84,7 +84,7 @@ export const THEME = {
   synapsDark: "#36405C",
   synapsLight: "#FFFFFF",
   
-  brainPicDark: "#36405C",
+  brainPicDark: "#164167",
   brainPicLight: "#EEECE8",
   
 };
@@ -173,7 +173,6 @@ export const MEDIA_QUERIES = {
   laptopL: `(min-width: ${SIZES.laptopL}px)`,
   desktop: `(min-width: ${SIZES.desktop}px)`,
 };
-
 
 /**
  * @typedef {function} Dispatch

@@ -39,42 +39,20 @@ export const NavBarAvatar = ({avatarUrl, ...props}) => {
     );
   };
   
-  if(avatarUrl){
-    return (
-      <Popover placement="bottomRight" title={"Hi"} content={getContent()}
-               visible={open}
-               trigger="click">
-        <StyledAntAvatar src={avatarUrl} {...props} size={40}
-                         onClick={() => setOpen(!open)}
-        />
-      </Popover>
-    );
-  }
   return (
     <Popover placement="bottomRight" title={"Hi"} content={getContent()}
              visible={open}
              trigger="click">
-      <AvatarIcon
-        style={{position: "absolute", top: "15px", right: "8%", zIndex: 20}}
-        {...props} onClick={() => setOpen(!open)}
-      />
+      {avatarUrl ? <StyledAntAvatar src={avatarUrl} {...props} size={40}
+                                    onClick={() => setOpen(!open)}
+      /> : <StyledAntAvatar {...props} size={40} onClick={() => setOpen(!open)}
+      />}
     </Popover>
   
   );
 };
 
 const StyledAntAvatar = styled(Avatar)`
-  && {
-    position: absolute;
-    background-color: #585858;
-    filter: contrast(0.5);
-    top: 35px;
-    right: 8%;
-    transform: translate(0, -50%);
-  }
-`;
-
-const AvatarIcon = styled(Avatar)`
   && {
     position: absolute;
     background-color: #585858;

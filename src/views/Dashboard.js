@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import styled from 'styled-components';
+import React, {useState, useEffect} from "react";
+import styled from "styled-components";
 import {
   SmallFlashCard,
   TitleText,
@@ -21,7 +21,7 @@ import {MEDIA_QUERIES, SIZES} from "../utilities/constants.js";
  */
 export const Dashboard = props => {
   const [selected, setSelected] = useState(0);
-
+  
   const {
     pathname,
     changePath,
@@ -29,63 +29,63 @@ export const Dashboard = props => {
     usersState,
     decksState,
     theme,
-  } = useAppHooks('Dashboard');
+  } = useAppHooks("Dashboard");
   const search = e => {
     console.log(e.target.value);
   };
-
+  
   useEffect(() => {
-    console.log('dispatching getUserDecks action ||');
+    console.log("dispatching getUserDecks action ||");
     dispatch(getUserDecks(usersState.user.uid));
   }, []);
-
-  console.log('decksState from dashboard ||', decksState.decks);
-
+  
+  console.log("decksState from dashboard ||", decksState.decks);
+  
   const changeDeckSelected = deck => {
     setSelected(deck);
   };
-
+  
   const deckClicked = (deck = undefined) => {
-    console.log('Inside of deck clicked.');
-    if (!deck) {
-      changePath('/create/deck');
+    console.log("Inside of deck clicked.");
+    if(!deck){
+      changePath("/create/deck");
       return;
     }
-    changePath('/preview', {...deck});
+    changePath("/preview", {...deck});
   };
-
+  
   const getAlert = () => {
-    if (decksState.errorDecksMessage) {
+    if(decksState.errorDecksMessage){
       return (
-        <Alert message={decksState.errorDecksMessage} type="warning" closable />
+        <Alert message={decksState.errorDecksMessage} type="warning" closable/>
       );
     }
-    return '';
+    return "";
   };
-
+  
   return (
     <StyledDashboard className={"dashboard"}>
       {theme.screenWidth <= SIZES.tablet && (
         <>
-          <TitleText text={'Dashboard'} />
+          <TitleText text={"Dashboard"}/>
           <SearchBar
             theme={theme}
             onSearch={search}
             style={{
-              marginTop: '8px',
-              marginBottom: '33px',
-              width: '80%',
-              marginLeft: '10%',
+              marginTop: "8px",
+              marginBottom: "33px",
+              width: "80%",
+              marginLeft: "10%",
             }}
           />
         </>
       )}
-
+      
       {getAlert()}
-      <StyledDeckHolder className={'deck-container'}>
+      <StyledDeckHolder className={"deck-container"}>
         <PreviewDeckCards
-          border={'dashed'}
-          icon={'plus'}
+          border={"dashed"}
+          icon={"plus"}
           onClick={e => deckClicked()}
         />
         {decksState.decks.map(deck => {
@@ -93,7 +93,7 @@ export const Dashboard = props => {
             <PreviewDeckCards
               key={deck.deck_id}
               deck={deck}
-              border={'solid'}
+              border={"solid"}
               onClick={e => deckClicked(deck)}
             />
           );
@@ -118,15 +118,13 @@ const StyledDeckHolder = styled.div`
 const StyledDashboard = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 100%;
-  max-width: 100%;
+  max-width: 1140px;
   height: 100%;
   width: 100%;
 
   @media screen and ${MEDIA_QUERIES.tablet} {
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    left: 0;
+    background: #FFFFFF;
+    margin-top: 65px;
+    border-radius: 10px;
   }
 `;
