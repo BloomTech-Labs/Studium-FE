@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import {SYNAPS_CONFIG} from "../synapsConfig.js";
-import {useAppHooks} from "./useAppHooks.js";
+import {AppHooksContext, useAppHooks} from "./useAppHooks.js";
 
 export const CONTEXT_API_DEBUG_NAME = "Context Api";
 /*
@@ -10,7 +10,8 @@ export const CONTEXT_API_DEBUG_NAME = "Context Api";
 export const useComparPrevContext = (componentsDebugName,
   initialContext = {}) => {
     
-    const {getLogger} = useAppHooks("useComparePrevContext");
+    const {hooks} = useContext(AppHooksContext);
+    const {getLogger} = hooks;
     const [isFirst, setIsFirst] = useState(true);
     const [debugName, setDebugName] = useState(componentsDebugName);
     const [prevContext, setPrevContext] = useState([initialContext]);

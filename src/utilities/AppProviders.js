@@ -7,9 +7,12 @@ import {ErrorBoundary} from "../components";
 import {REDUCER_NAMES} from "../reducers";
 import {SYNAPS_CONFIG} from "../synapsConfig.js";
 import {storageBackupDebugger} from "./oldConsole.js";
-import {useThemeContext} from "../customHooks/useThemeContext.js";
+import {
+  useThemeContext, useThemeRules,
+} from "../customHooks/useThemeContext.js";
 import {useDimensions} from "../customHooks/useDimensions.js";
 import appLogger from "../utilities/oldConsole.js";
+import {ThemeProvider} from "styled-components";
 
 export const APP_PROVIDER_DEBUG_NAME = "App Provider";
 const logger = appLogger.getLogger(APP_PROVIDER_DEBUG_NAME);
@@ -58,14 +61,13 @@ if(Object.values(initialState).length >= REDUCER_NAMES.length){
  * @description Store and theme provider setup for our application.
  */
 const AppProvider = props => {
-  const {appLogger} = props;
-  const getLogger = appLogger.getLogger;
-  const {hooks, setHookVariable} = useAppHooksState(getLogger);
+  const {appLogger, ...rest} = props;
   const logger = appLogger.getLogger(APP_PROVIDER_DEBUG_NAME);
+  const {getLogger} = appLogger;
   useEffect(() => {
   
   }, []);
-  
+  const {themeRules, themeState, changeTheme} = useThemeRules(appLogger.getLogger);
   logger.logInfo(`Node Env: ${process.env.NODE_ENV}.`);
   logger.logInfo(`App provider being rendered.`);
   logger.logInfo("App provider props");
@@ -73,27 +75,41 @@ const AppProvider = props => {
   
   return (
     <ErrorBoundary>
-      <Provider store={store}>
-        <AppHooksContext.Provider
-          value={{setHookVariable, ...hooks}}>
-          
-          <AfterHooks {...props} />
-        </AppHooksContext.Provider>
-      </Provider>
+      <ThemeProvider theme={{changeTheme, themeState, ...themeRules}}>
+        <Provider store={store}>
+          <AfterStoreTheme logger={logger} getLogger={getLogger} {...rest} />
+        </Provider>
+      </ThemeProvider>
     </ErrorBoundary>
+  );
+};
+
+const AfterStoreTheme = props => {
+  
+  const {getLogger, logger} = props;
+  const {hooks, setHookVariable} = useAppHooksState(getLogger);
+  logger.logInfo(`After Store and Theme provider rendered.`);
+  
+  return (
+    <>
+      <GlobalStyles/>
+      <AppHooksContext.Provider
+        value={{setHookVariable, hooks}}>
+        
+        <AfterHooks{...props}/>
+      </AppHooksContext.Provider>
+    </>
   );
 };
 
 const AfterHooks = props => {
   
-  const logger = props.appLogger.getLogger(APP_PROVIDER_DEBUG_NAME);
+  const {getLogger, logger} = props;
   logger.logInfo(`After hooks provider rendered.`);
   useThemeContext();
   useDimensions();
-  
   return (
     <>
-      <GlobalStyles/>
       {props.children}
     </>
   );

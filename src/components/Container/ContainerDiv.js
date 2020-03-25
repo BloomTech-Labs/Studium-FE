@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 /**
  * Container Div
@@ -49,13 +49,11 @@ const Div = styled.div`
   max-height: ${props => props.maxHeight || '100vh'};
   max-width: ${props => props.maxWidth || '100vw'};
   display: flex;
-  align-items: ${props => props.alignItems || 'center'};
-  flex-direction: ${props => props.flexDirection || 'column'};
-  justify-content: ${props => props.justifyContent || 'center'};
-  overflow-y: ${props => props.overFlowY || 'scroll'};
-  background: ${props => props.backgroundColor || 'transparent'};
-  z-index: ${props => props.zIndex || 20};
 
+  align-items: ${ props => props.alignItems || 'center' };
+  flex-direction: ${ props => props.flexDirection || 'column' };
+  justify-content: ${ props => props.justifyContent || 'center' };
+  overflow-y: ${ props => props.overFlowY || 'hidden' };
   ::-webkit-scrollbar {
     width: 0;
   }

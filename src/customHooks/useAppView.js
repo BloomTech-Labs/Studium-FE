@@ -7,8 +7,9 @@ export const APP_VIEW_DEBUG_NAME = "Use App View";
 
 export const useAppView = () => {
   
-  const {appView, width, height, getLogger, setHookVariable} = useContext(
+  const {setHookVariable, hooks} = useContext(
     AppHooksContext);
+  const {appView, width, height, getLogger} = hooks;
   const logger = getLogger(APP_VIEW_DEBUG_NAME);
   const {compareContext, printPrevContext, addInitialContext} = useComparPrevContext(
     APP_VIEW_DEBUG_NAME, {appView, height, width});

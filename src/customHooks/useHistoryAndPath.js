@@ -52,8 +52,8 @@ export const useHistoryAndPath = () => {
 export const useChangePath = () => {
   
   const history = useHistory();
-  const {getLogger} = useContext(AppHooksContext);
-  const logger = getLogger(USE_CHANGE_PATH_DEBUG);
+  const {hooks} = useContext(AppHooksContext);
+  const logger = hooks.getLogger(USE_CHANGE_PATH_DEBUG);
   
   logger.logVerbose(`useChangePath has been called.`);
   /**

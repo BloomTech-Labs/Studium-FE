@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 
 /**
  * @typedef {object.<{APP_PATH}, string>} AppPaths
  */
 export const APP_PATHS = {
-  SIGN_UP_PATH: "/signUp",
-  SIGN_IN_PATH: "/signIn",
+  SIGN_UP_PATH: "/signup",
+  SIGN_IN_PATH: "/signin",
   DASHBOARD_PATH: "/dashboard",
   CREATE_DECK_PATH: "/create/deck",
   PREVIEW_DECK_PATH: "/preview",
   GAME_PATH: "/game",
+  TESTING: "/test",
   LANDING_PAGE: "/",
 };
 
@@ -24,12 +25,12 @@ export const APP_PATHS = {
  * @typedef {function} UsePaths
  */
 export const usePaths = () => {
-  const [ appPaths, setPaths ] = useState( [] );
+  const [appPaths, setPaths] = useState([]);
   
-  const addPaths = ( paths ) => {
-    setPaths( paths );
+  const addPaths = (paths) => {
+    setPaths(paths);
   };
   
-  return { addPaths, appPaths };
+  return {addPaths, appPaths};
   
 };

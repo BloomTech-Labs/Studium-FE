@@ -9,7 +9,11 @@ import {
 } from "./customHooks/useAppHooks.js";
 import {useAuthStateChange} from "./customHooks/useAuthStateChange.js";
 import {SynapsBrain} from "./components";
-import {APP_VIEW_DESKTOP} from "./customHooks/themingRules.js";
+import {
+  APP_VIEW_DESKTOP, THEMING_VARIABLES, THEMING_VALUES,
+} from "./customHooks/themingRules.js";
+import theming from "styled-theming";
+import SvgComponent from "./images/svgBrainPic/brainpic.js";
 
 /**
  * App
@@ -35,22 +39,21 @@ export default function App(props){
   }, [usersState]);
   
   return (
-    <StyledApp className="App" theme={theme}>
-      {appView === APP_VIEW_DESKTOP && (
-        <SynapsBrain
-          zIndex={15}
-          width={"100vw"}
-          height={"100vh"}
-          position={"absolute"}
-          backgroundColor={
-            pathname === "/preview" ? theme.primaryColor : "transparent"
-          }
-          color={pathname === "/preview" ? "#153F6E" : "#EEECE8"}
-          opacity={1}
-          strokeColor={"transparent"}
-          viewBox={"-20 -20 400 400"}
-        />
-      )}
+    <StyledApp className="App">
+      <StyledSvgContainer className={"brain-pic-svg-container"}>
+        <div
+          style={{
+            position: "relative",
+            height: "100%",
+            width: "100%",
+            overflow: "hidden",
+            top: "0px",
+            left: "0px",
+          }}
+        >
+          <SvgComponent/>
+        </div>
+      </StyledSvgContainer>
       
       {alertMessage && (
         <Alert
@@ -77,7 +80,39 @@ App.propTypes = {
   history: PropTypes.object,
 };
 
+const top = theming(THEMING_VARIABLES.BRAIN_SVG, {
+  [THEMING_VALUES.BOTTOM]: ({theme}) => {
+    return "77%";
+  },
+  
+  [THEMING_VALUES.TOP]: ({theme}) => {
+    return "106px";
+  },
+  
+  [THEMING_VALUES.HIDDEN]: ({theme}) => {
+    return "0";
+  },
+});
+
+const StyledSvgContainer = styled.div`
+height: 100%;
+  position: absolute;
+  width: 100vw;
+  top: ${top};
+  overflow: hidden;
+`;
+
+const backgroundColor = theming(THEMING_VARIABLES.BACKGROUND, {
+  [THEMING_VALUES.DARK]: ({theme}) => {
+    return theme.themeState.primaryColor;
+  }, [THEMING_VALUES.LIGHT]: ({theme}) => {
+    
+    return theme.themeState.navBarLight;
+  },
+});
+
 const StyledApp = styled.div`
+background: ${backgroundColor};
   box-sizing: border-box;
   position: relative;
   color: ${props => props.theme.color};
@@ -93,13 +128,6 @@ const StyledApp = styled.div`
   overflow-y: hidden;
 
   @media ${mediaQueries.tablet} {
-    background: ${props => {
-  if(props.pathname === "/preview"){
-    return props.theme.primaryColor;
-  }else{
-    return "#F6F5F3";
-  }
-}
-}
+  
   }
 `;

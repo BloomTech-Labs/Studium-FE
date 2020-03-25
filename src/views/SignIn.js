@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {FormInput, SynapsButton, SynapsText, SvgContainer} from "../components";
+import SvgComponent from "../images/svgBrainPic/brainpic";
 import {ReactComponent as svg} from "../images/SmallWhiteLogo.svg";
-import {ReactComponent as smalllogo} from "../images/smalllogo.png";
 import styled from "styled-components";
 import {signIn, GOOGLE_PROVIDER, EMAIL_PROVIDER} from "../actions";
-import {mediaQueries, useAppHooks} from "../customHooks/useAppHooks.js";
+import {mediaQueries, useAppHooks, sizes} from "../customHooks/useAppHooks.js";
 
 /**
  * Sign In
@@ -13,7 +13,7 @@ import {mediaQueries, useAppHooks} from "../customHooks/useAppHooks.js";
  * @example return (<SignIn />);
  */
 export function SignIn(props){
-  const {dispatch, theme, pathname} = useAppHooks("SignIn");
+  const {dispatch, theme, pathname, appView, height} = useAppHooks("SignIn");
   const [info, setInfo] = useState({email: "", password: "", error: {}});
   
   const handleChange = e => {
@@ -45,7 +45,7 @@ export function SignIn(props){
   };
   
   const logoText = () => {
-    if(theme.screenWidth < 768){
+    if(appView === "APP_VIEW_DESKTOP"){
       return <SynapsText/>;
     }
   };
@@ -129,10 +129,10 @@ export function SignIn(props){
         type={"darkgray"}
         onClick={e => handleEmailClick(e)}
       />
+    
     </StyledSignIn>
   );
 }
-
 
 const StyledBtn2 = styled(SynapsButton)`
   && {
@@ -164,6 +164,7 @@ const StyledBtn = styled(SynapsButton)`
     }
   }
 `;
+
 const StyledFormInput = styled.div`
   width: 345px;
   margin: 0px 0px 0px 45px;
@@ -184,13 +185,17 @@ const StyledFormInput = styled.div`
 `;
 
 const StyledSignIn = styled.div`
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   text-align: center;
   align-items: center;
-  margin: 146px auto 0 auto;
+  margin: 6% auto 0 auto;
   height: 100%;
+  
+  
   @media ${mediaQueries.desktop} {
+  height: 100%;
   }
 `;
 

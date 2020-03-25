@@ -5,9 +5,12 @@ import {
   THEMING_VALUES,
   THEMING_VARIABLES,
   APP_VIEW_DESKTOP,
-  APP_VIEW_MOBILE,
+  APP_VIEW_MOBILE, DEFAULT_THEME_RULE_VALUES,
 } from "./themingRules.js";
 import {useAppView} from "./useAppView.js";
+import {ThemeContext} from "styled-components";
+import {useComparPrevContext} from "./useComparPrevContext.js";
+import {SYNAPS_CONFIG} from "../synapsConfig.js";
 
 export const THEME_DEBUG_NAME = "Theme";
 
@@ -62,7 +65,7 @@ export const themeState = {
  */
 
 /**
- * @typedef {Object} Theme
+ * @typedef {Object} ThemeState
  * @property {Color} primaryColor
  * @property {Color} primaryColorB98C4
  * @property {Color} primaryColor86869A
@@ -107,80 +110,59 @@ export const themeState = {
  * @description Custom hook to keep the theme context updated.
  * @category Custom Hooks
  * @returns {object}
- * @property {Theme} theme
- * @property {SetThemeVariable} setThemeVariable
  */
-
-/**
- *@typedef {Object.<string, {string}>} ThemingRules
- */
-const themingRules = {
-  [THEMING_VARIABLES.NAV_STYLE]: THEMING_VALUES.DARK,
+export const useThemeRules = (getLogger) => {
+  const logger = getLogger(THEME_DEBUG_NAME);
+  let baseConfig = DEFAULT_THEME_RULE_VALUES;
+  if(localStorage.getItem(SYNAPS_CONFIG.localStorageBasePath + "/themeRules")){
+    baseConfig = JSON.parse(
+      localStorage.getItem(SYNAPS_CONFIG.localStorageBasePath + "/themeRules"));
+  }
+  const [themeRules, setThemeRules] = useState(baseConfig);
+  
+  const changeTheme = (value) => {
+    logger.logVerbose("Changing Theme Rules");
+    
+    setThemeRules(value);
+  };
+  
+  useEffect(() => {
+    localStorage.setItem(SYNAPS_CONFIG.localStorageBasePath + "/themeRules",
+      JSON.stringify(themeRules),
+    );
+  }, [themeRules]);
+  
+  /**
+   * @typedef {object} UseThemeRulesReturn
+   * @property {ThemeRuleValues} themeRules
+   * @property {ThemeRuleValues} themeRules
+   */
+  return {themeRules, changeTheme, themeState};
+  
 };
 
 export const useThemeContext = () => {
-  
-  const {getLogger, setRules, appView, path, setHookVariable, themingRules} = useContext(
-    AppHooksContext);
-  const {checkAllRules} = useStyledThemingRules();
+  const {changeTheme, themeState, ...themeRules} = useContext(ThemeContext);
+  const {hooks} = useContext(AppHooksContext);
+  const {path, appView, getLogger} = hooks;
+  const {compareContext} = useComparPrevContext(
+    THEME_DEBUG_NAME, {themeRules, appView, path});
+  const checkAllRules = useStyledThemingRules();
   const logger = getLogger(THEME_DEBUG_NAME);
   
-  /**
-   * Log new theme to the console on change.
-   */
-  useEffect(() => {
-    logger.logInfo("Theme updated.");
-    logger.logObject(themingRules);
-  }, [themingRules]);
-  
-  const setThemeVariable = (variableName, value) => {
-    logger.logInfo(`Setting ${variableName} to ${value}`);
-    const newThemeRules = {...themingRules, [variableName]: value};
-    logger.logObject(newThemeRules, "Attempting to update theme to.");
-    setHookVariable("themingRules", newThemeRules);
+  const changeRules = (changes) => {
+    const newRules = {...themeRules};
+    logger.logVerbose(`Changing Theme Rules`);
+    changes.forEach(rule => {
+      logger.logVerbose(`${rule.themeVariable} --> ${rule.themeValue}`);
+      newRules[rule.themeVariable] = rule.themeValue;
+    });
+    changeTheme(newRules);
   };
   
   useEffect(() => {
-    
-    logger.logInfo("Either the path or the app view changed so we need to re" +
-      " evaluate app theme.");
-    
-    checkAllRules(themingRules, appView, path, setThemeVariable);
+    compareContext({themeRules, appView, path});
+    checkAllRules(themeRules, appView, path, changeRules);
   }, [appView, path]);
   
-};
-
-export const useTheme = () => {
-  
-  const {getLogger, appView, path} = useAppHooks("Use Theme");
-  const [theme, setTheme] = useState(themeState);
-  const {checkAllRules} = useStyledThemingRules();
-  
-  const logger = getLogger(THEME_DEBUG_NAME);
-  logger.logInfo("Theme Provider was generated.");
-  /**
-   * @typedef SetThemeVariable
-   * @function
-   * @name {string}setThemeVariable
-   * @param {string | number} name
-   * @param value
-   * @return void
-   */
-  useAppView();
-  
-  const setThemeVariable = (name, value) => {
-    logger.logInfo(`Set new theme state: [${name}]: ${value} `);
-    const newTheme = {...theme, [name]: value};
-    logger.logObject(newTheme);
-    setTheme({...theme, [name]: value});
-  };
-  
-  useEffect(() => {
-    if(appView && path){
-      checkAllRules(theme, appView, path, setThemeVariable());
-    }
-    
-  }, [appView, path]);
-  
-  return {theme, setThemeVariable};
 };

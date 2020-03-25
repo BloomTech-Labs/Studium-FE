@@ -76,7 +76,7 @@ export const NavBar = () => {
   };
   
   return (
-    <StyledBar className={"nav-bar"} theme={themingRules} themeValuees={theme}>
+    <StyledBar className={"nav-bar"}>
       <ContainerDiv
         justifyContent={"space-between"}
         className={"nav-bar-container"}
@@ -110,11 +110,11 @@ const WhiteLogo = styled(SmallWhiteLogo)`
 const backgroundColor = theming(THEMING_VARIABLES.NAV_STYLE, {
   [THEMING_VALUES.DARK]: props => {
     
-    return props.themeValuees.navBarDark;
+    return props.theme.themeState.navBarDark;
   },
   [THEMING_VALUES.LIGHT]: props => {
     
-    return props.themeValuees.navBarLight;
+    return props.theme.themeState.navBarLight;
   }, [THEMING_VALUES.HIDDEN]: props => {
     
     return "transparent";
@@ -145,7 +145,6 @@ const StyledBar = styled.div`
   top: ${top};
   width: 100%;
   height: ${props => props.theme.navBarTopHeight + "px"};
-
  
 `;
 
