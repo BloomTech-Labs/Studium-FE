@@ -10,11 +10,10 @@ import {
 } from "../../customHooks/useAppHooks.js";
 import LogoLeft from "./LogoLeft.js";
 import {
-  APP_VIEW_DESKTOP, THEMING_VALUES, THEMING_VARIABLES,
+  THEMING_VALUES, THEMING_VARIABLES,
 } from "../../customHooks/themingRules.js";
-import {APP_PATHS} from "../../customHooks/usePaths.js";
 import {useComparPrevContext} from "../../customHooks/useComparPrevContext.js";
-import {THEME} from "../../customHooks/useThemeContext.js";
+import {APP_PATHS, APP_VIEW_DESKTOP, THEME} from "../../utilities/constants.js";
 
 export const NAV_BAR_DEBUG_NAME = "Nav Bar";
 

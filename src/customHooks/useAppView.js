@@ -1,7 +1,7 @@
 import React, {useContext, useEffect} from "react";
 import {AppHooksContext, sizes, useAppHooks} from "./useAppHooks.js";
-import {APP_VIEW_DESKTOP, APP_VIEW_MOBILE} from "./themingRules.js";
 import {useComparPrevContext} from "./useComparPrevContext.js";
+import {APP_VIEW_DESKTOP, APP_VIEW_MOBILE} from "../utilities/constants.js";
 
 export const APP_VIEW_DEBUG_NAME = "Use App View";
 
@@ -20,7 +20,7 @@ export const useAppView = () => {
    * view width to desktop or to mobile.
    */
   useEffect(() => {
-    debugger;
+    
     logger.logInfo("Height and or width changed.");
     compareContext({appView, height, width});
     

@@ -27,6 +27,7 @@ export const SYNAPS_CONFIG = {
   groupLogsTogether: false,
   collapseLogGroups: false,
   useAppLogger: true,
+  useTrace: false,
 };
 
 const empty = [

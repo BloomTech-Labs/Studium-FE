@@ -12,6 +12,9 @@ import PropTypes from "prop-types";
 const StyledSvg = (props) => {
   
   const newProps = parseProps(props);
+  
+  
+  
   return (
     <StyledSvgComponent {...newProps} >
       {props.children}

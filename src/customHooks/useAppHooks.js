@@ -1,11 +1,13 @@
 import React, {useContext, useEffect, useState} from "react";
 import {useSelector} from "react-redux";
-import {THEME, useThemeContext} from "./useThemeContext.js";
-import {APP_VIEW_DESKTOP, APP_VIEW_MOBILE} from "./themingRules.js";
+import {useThemeContext} from "./useThemeContext.js";
 import {useDispatch} from "react-redux";
 import {useChangePath} from "./useHistoryAndPath.js";
 import {useHistory} from "react-router-dom";
 import {useTheme} from "styled-components";
+import {
+  APP_VIEW_DESKTOP, APP_VIEW_MOBILE, THEME,
+} from "../utilities/constants.js";
 
 export const APP_HOOKS_DEBUG_NAME = "App Hooks";
 

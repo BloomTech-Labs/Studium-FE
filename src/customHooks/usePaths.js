@@ -1,18 +1,4 @@
-import React, {useState, useEffect} from "react";
-
-/**
- * @typedef {object.<{APP_PATH}, string>} AppPaths
- */
-export const APP_PATHS = {
-  SIGN_UP_PATH: "/signup",
-  SIGN_IN_PATH: "/signin",
-  DASHBOARD_PATH: "/dashboard",
-  CREATE_DECK_PATH: "/create/deck",
-  PREVIEW_DECK_PATH: "/preview",
-  GAME_PATH: "/game",
-  TESTING: "/test",
-  LANDING_PAGE: "/",
-};
+import React, {useState} from "react";
 
 /**
  * @typedef {(APP_PATHS.SIGN_IN_PATH | APP_PATHS.SIGN_UP_PATH |

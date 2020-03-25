@@ -11,11 +11,12 @@ import {
 import {useAuthStateChange} from "./customHooks/useAuthStateChange.js";
 import {SynapsBrain} from "./components";
 import {
-  APP_VIEW_DESKTOP, THEMING_VARIABLES, THEMING_VALUES,
+  THEMING_VARIABLES, THEMING_VALUES,
 } from "./customHooks/themingRules.js";
 import theming from "styled-theming";
+import {useTheming} from "./customHooks/useTheming.js";
 import SvgComponent from "./images/svgBrainPic/brainpic.js";
-import {THEME} from "./customHooks/useThemeContext.js";
+import {APP_VIEW_DESKTOP, THEME} from "./utilities/constants.js";
 
 /**
  * App
@@ -26,6 +27,7 @@ import {THEME} from "./customHooks/useThemeContext.js";
 export default function App(props){
   const [alertMessage, setAlert] = useState("");
   const {theme, usersState, pathname, appView} = useAppHooks("App");
+  const getValue = useTheming("App.js");
   
   const logger = props.logger;
   
@@ -40,29 +42,26 @@ export default function App(props){
     }
   }, [usersState]);
   
-  const getBrainPicColorAndFill = () => {
-    const svgBrainProps = {};
-    if(theme.BACKGROUND === THEMING_VALUES.DARK){
-      svgBrainProps["fill"] = THEME.brainPicDark;
-    }else{
-      svgBrainProps["fill"] = THEME.brainPicLight;
-    }
-    
-    if(theme.BRAIN_SVG === THEMING_VALUES.BOTTOM){
-      svgBrainProps["top"] = "600px";
-    }else{
-      svgBrainProps["top"] = "146px";
-    }
-    return svgBrainProps;
-  };
-  const brainProps = getBrainPicColorAndFill();
   return (
     <StyledApp className="App">
       {theme.BRAIN_SVG !== THEMING_VALUES.HIDDEN &&
-      < SvgBrainPic maxWidth={"1500px"} maxHeight={"1500px"} height={"1500px"}
-                    width={"1500px"} {...brainProps}/>
+      <SvgBrainPic
+        maxWidth={"1500px"}
+        maxHeight={"1500px"}
+        height={"1500px"}
+        width={"1500px"} left={"50%"} transform={"translate(-50%, 0)"}
+        fill={getValue(THEMING_VARIABLES.BACKGROUND,
+          {
+            [THEMING_VALUES.DARK]: THEME.brainPicDark,
+            [THEMING_VALUES.LIGHT]: THEME.brainPicLight,
+          },
+        )}
+        top={getValue(THEMING_VARIABLES.BRAIN_SVG, {
+          [THEMING_VALUES.BOTTOM]: "600PX",
+          [THEMING_VALUES.TOP]: "146px",
+        })}
+      />
       }
-      
       {alertMessage && (
         <Alert
           type={"error"}

@@ -39,6 +39,7 @@ ContainerDiv.propTypes = {
   width: PropTypes.string,
   zIndex: PropTypes.number,
   padding: PropTypes.string,
+  transform: PropTypes.string,
 };
 
 const Div = styled.div`
@@ -59,6 +60,7 @@ const Div = styled.div`
   justify-content: ${props => props.justifyContent || "center"};
   overflow-y: ${props => props.overFlowY || "hidden"};
   overflow-x: ${props => props.overFlowX || "hidden"};
+  transform: ${props => props.transform || "none"};
   ::-webkit-scrollbar {
     width: 0;
   }

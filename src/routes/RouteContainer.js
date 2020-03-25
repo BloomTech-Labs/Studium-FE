@@ -9,9 +9,9 @@ import {
 import {Switch, Route} from "react-router";
 import {ContainerDiv} from "../components";
 import {useAppHooks, sizes} from "../customHooks/useAppHooks.js";
-import {APP_PATHS} from "../customHooks/usePaths.js";
 import {THEMING_VALUES} from "../customHooks/themingRules.js";
 import Debug from "../views/Debug.js";
+import {APP_PATHS} from "../utilities/constants.js";
 
 /**
  *   RouteContainer
@@ -62,9 +62,6 @@ export const RouteContainer = (props) => {
         <ProtectedRoute path={APP_PATHS.GAME_PATH} component={FlashCard}/>
         <Route path={APP_PATHS.TESTING}
                render={props => <Testing {...props}/>}/>
-        <Route path={"/debug"}
-               render={props => <Debug {...props}/>}/>
-        
         <LoginSignUpRoute path={"/"}
                           component={LandingPage} {...props} />
       </Switch>

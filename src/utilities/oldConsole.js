@@ -233,7 +233,8 @@ window.console = {
     if(logOtherReports){
       appLogger.closeGroup();
       appLogger.console.log(message, ...optionalParams);
-      appLogger.console.trace();
+      SYNAPS_CONFIG.useTrace && appLogger.console.trace();
+      
     }
     
   },

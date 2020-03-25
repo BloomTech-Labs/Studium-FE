@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useRef} from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import StyledSvg from "./StyledSvg.js";
 import StyledGroup from "./StyledGroup.js";
+import StyledMainGroup from "./StyledMainGroup.js";
 import StyledMask from "./StyledMask.js";
 import StyledPath from "./StyledPath.js";
 
@@ -13,11 +14,14 @@ import StyledPath from "./StyledPath.js";
  *
  */
 const BrainSynaps = (props) => {
-  console.log(props.id);
+  const svgRef = useRef(null);
+  
   return (
-    <StyledSvg width="207" height="186" viewBox="0 0 207 186" fill={props.fill}
+    <StyledSvg ref={svgRef} width={props.width} height={props.height}
+               viewBox="0 0 207 186"
+               fill={props.fill}
                xmlns="http://www.w3.org/2000/svg" {...props}>
-      <StyledGroup id="main-group">
+      <StyledMainGroup>
         <StyledGroup id="paths">
           <StyledGroup id="Vector">
             <StyledMask id="path-2-inside-1" fill={props.fill}>
@@ -3058,7 +3062,7 @@ const BrainSynaps = (props) => {
             </StyledMask>
             <StyledPath
               d="M62.3647 19.7709C66.1789 19.7709 69.2709 16.6987 69.2709 12.9089C69.2709 9.11911 66.1789 6.04688 62.3647 6.04688C58.5505 6.04688 55.4585 9.11911 55.4585 12.9089C55.4585 16.6987 58.5505 19.7709 62.3647 19.7709Z"
-              fill={props.fill} stroke={props.stroke}
+              fill={"red"} stroke={props.stroke}
               stroke-width={props.strokeWidth}
               stroke-linecap="round" stroke-linejoin="round"
               mask="url(#path-228-inside-213)"
@@ -3975,7 +3979,7 @@ const BrainSynaps = (props) => {
             />
           </StyledGroup>
         </StyledGroup>
-      </StyledGroup>
+      </StyledMainGroup>
     </StyledSvg>
   );
 };

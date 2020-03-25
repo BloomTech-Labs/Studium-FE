@@ -22,27 +22,27 @@ export function SignIn(props){
     setInfo({...info, [e.target.name]: e.target.value});
   };
   
-  const handleGoogleClick = e => {
-    dispatch(signIn(GOOGLE_PROVIDER));
-  };
-  
-  const handleEmailClick = e => {
-    if(info.email !== "" && info.password !== ""){
-      dispatch(signIn(EMAIL_PROVIDER, info.email, info.password));
-    }else{
-      if(info.email === ""){
-        setInfo({
-          ...info,
-          error: {email: "You must enter a email address."},
-        });
+  const handleSignInClick = type => {
+    if(type === EMAIL_PROVIDER){
+      if(info.email !== "" && info.password !== ""){
+        dispatch(signIn(EMAIL_PROVIDER, info.email, info.password));
       }else{
-        setInfo({
-          ...info,
-          error: {
-            password: "You must first enter a password.",
-          },
-        });
+        if(info.email === ""){
+          setInfo({
+            ...info,
+            error: {email: "You must enter a email address."},
+          });
+        }else{
+          setInfo({
+            ...info,
+            error: {
+              password: "You must first enter a password.",
+            },
+          });
+        }
       }
+    }else{
+      dispatch(signIn(GOOGLE_PROVIDER));
     }
   };
   
@@ -66,7 +66,7 @@ export function SignIn(props){
           text={"Log In with Google"}
           shape={"round"}
           size={"large"}
-          onClick={e => handleGoogleClick(e)}
+          onClick={e => handleSignInClick(GOOGLE_PROVIDER)}
         />
       </div>
       
@@ -106,7 +106,7 @@ export function SignIn(props){
         shape={"round"}
         size={"large"}
         type={"darkgray"}
-        onClick={e => handleEmailClick(e)}
+        onClick={e => handleSignInClick(EMAIL_PROVIDER)}
       />
     
     </StyledSignIn>
@@ -116,7 +116,6 @@ export function SignIn(props){
 const StyledBtn2 = styled(SynapsButton)`
   && {
     span {
-      font-family: Source Sans Pro;
       font-style: normal;
       font-weight: bold;
       font-size: 24px;
@@ -134,7 +133,6 @@ const StyledBtn = styled(SynapsButton)`
       font-size: 32px;
     }
     span {
-      font-family: Source Sans Pro;
       font-style: normal;
       font-weight: bold;
       font-size: 24px;
@@ -150,7 +148,6 @@ const StyledFormInput = styled.div`
   @media ${mediaQueries.tablet} {
     & label {
       color: #fff;
-      font-family: Source Sans Pro;
       font-style: normal;
       font-weight: bold;
       font-size: 21px;
@@ -171,14 +168,13 @@ const StyledSignIn = styled.div`
   align-items: center;
   margin: 6% auto 0 auto;
   height: 100%;
-  
+  width: 100%;
   @media ${mediaQueries.desktop} {
   height: 100%;
   }
 `;
 
 const StyledH2 = styled.h2`
-  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: bold;
   font-size: 30px;
@@ -186,7 +182,6 @@ const StyledH2 = styled.h2`
   margin: 1rem 0 1em;
   color: #b7bfbc;
   @media screen and ${mediaQueries.tablet} {
-    font-family: Source Sans Pro;
     font-style: normal;
     font-weight: bold;
     font-size: 36px;

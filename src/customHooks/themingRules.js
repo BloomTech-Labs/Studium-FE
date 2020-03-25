@@ -1,8 +1,8 @@
-import {APP_PATHS} from "./usePaths.js";
-import {createRule} from "./useStyledThemingRules.js";
 
-export const APP_VIEW_MOBILE = "APP_VIEW_MOBILE";
-export const APP_VIEW_DESKTOP = "APP_VIEW_DESKTOP";
+import {createRule} from "./useStyledThemingRules.js";
+import {
+  APP_PATHS, APP_VIEW_DESKTOP, APP_VIEW_MOBILE,
+} from "../utilities/constants.js";
 
 /**
  * @typedef {object.<THEME_VARIABLE, {string}>} THEMING_VARIABLES
@@ -53,7 +53,7 @@ export const getThemingRules = () => [
     THEMING_VALUES.DARK,
     [
       APP_PATHS.PREVIEW_DECK_PATH, APP_PATHS.GAME_PATH, APP_PATHS.SIGN_IN_PATH,
-      APP_PATHS.DASHBOARD_PATH,
+      APP_PATHS.DASHBOARD_PATH, APP_PATHS.TESTING,
     ],
     APP_VIEW_DESKTOP,
   ),
@@ -64,7 +64,6 @@ export const getThemingRules = () => [
       APP_PATHS.SIGN_UP_PATH,
       APP_PATHS.CREATE_DECK_PATH,
       APP_PATHS.LANDING_PAGE,
-      APP_PATHS.TESTING,
     ],
     APP_VIEW_DESKTOP,
   ),
@@ -113,13 +112,17 @@ export const getThemingRules = () => [
       APP_PATHS.CREATE_DECK_PATH,
       APP_PATHS.LANDING_PAGE,
       APP_PATHS.GAME_PATH,
-      APP_PATHS.TESTING,
       APP_PATHS.PREVIEW_DECK_PATH,
     ],
     APP_VIEW_DESKTOP,
   ), createRule(THEMING_VARIABLES.BRAIN_SVG, THEMING_VALUES.BOTTOM,
     [
       APP_PATHS.SIGN_UP_PATH, APP_PATHS.SIGN_IN_PATH,
+    ],
+    APP_VIEW_DESKTOP,
+  ), createRule(THEMING_VARIABLES.BRAIN_SVG, THEMING_VALUES.HIDDEN,
+    [
+      APP_PATHS.TESTING,
     ],
     APP_VIEW_DESKTOP,
   ), createRule(THEMING_VARIABLES.BRAIN_SVG, THEMING_VALUES.BOTTOM,

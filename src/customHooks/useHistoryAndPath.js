@@ -28,11 +28,9 @@ export const useChangePath = () => {
    * @returns void
    */
   const changePath = (pathToChangeTo, stateToPush = null) => {
-    console.trace();
     
     logger.logVerbose(`"Change path function init.`);
-    console.trace();
-    
+    pathToChangeTo = pathToChangeTo.toLowerCase();
     if(pathToChangeTo !== undefined && pathToChangeTo !==
       history.location.pathname){
       

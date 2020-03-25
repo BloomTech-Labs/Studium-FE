@@ -6,9 +6,7 @@ import {useAppHooks} from "../../customHooks/useAppHooks.js";
 import {
   SvgBrainPic, SvgSynapsFavicon, SvgSynapsLogoText,
 } from "../../svgComponents";
-import {
-  APP_VIEW_DESKTOP, APP_VIEW_MOBILE,
-} from "../../customHooks/themingRules.js";
+import {APP_VIEW_DESKTOP, APP_VIEW_MOBILE} from "../../utilities/constants.js";
 
 /**
  *  LogoLeft
