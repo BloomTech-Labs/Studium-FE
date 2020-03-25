@@ -50,6 +50,8 @@ export const useAppHooks = (nameOfCaller) => {
   const getHooks = () => {
     return {
       theme: theme,
+      path: history.location.pathname,
+      pathPushedState: history.location.state,
       setHookVariable,
       dispatch,
       usersState,
@@ -122,15 +124,12 @@ export const useAppHooksState = (getLogger) => {
   /**
    * @typedef {object} AppProviderState
    * @property {object} pushedState
-   * @property {string} path
    * @property {AppView} appView
    * @property {number} width
    * @property {number} height
    * @property {function} getLogger
    */
   const initialState = {
-    path: history.location.pathname,
-    pushedState,
     appView,
     width,
     height,
@@ -144,6 +143,7 @@ export const useAppHooksState = (getLogger) => {
   const [hooks, setHooks] = useState(initialState);
   
   const setHookVariable = (name, value, items = undefined) => {
+    
     if(items === undefined){
       logger.logVerbose(`Setting ${name} to new value`);
       logger.logObject(value);

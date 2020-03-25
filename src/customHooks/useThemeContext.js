@@ -1,6 +1,7 @@
 import React, {useContext, useEffect, useState} from "react";
 import {AppHooksContext} from "./useAppHooks.js";
 import {useStyledThemingRules} from "./useStyledThemingRules.js";
+import {useHistory} from "react-router-dom";
 import {DEFAULT_THEME_RULE_VALUES} from "./themingRules.js";
 import {ThemeContext} from "styled-components";
 import {useComparPrevContext} from "./useComparPrevContext.js";
@@ -50,11 +51,11 @@ export const useThemeContext = () => {
   const theme = useContext(ThemeContext);
   const {changeTheme, themeState, ...themeRules} = theme;
   const {hooks} = useContext(AppHooksContext);
-  const {path, appView, getLogger} = hooks;
+  const history = useHistory();
   const {compareContext} = useComparPrevContext(
     THEME_DEBUG_NAME, themeRules);
-  const checkAllRules = useStyledThemingRules(getLogger);
-  const logger = getLogger(THEME_DEBUG_NAME);
+  const checkAllRules = useStyledThemingRules(hooks.getLogger);
+  const logger = hooks.getLogger(THEME_DEBUG_NAME);
   
   const changeRules = (changes) => {
     const newRules = {...themeRules};
@@ -67,11 +68,14 @@ export const useThemeContext = () => {
   };
   
   useEffect(() => {
-    checkAllRules(themeRules, appView, path, changeRules);
-  }, [appView, path]);
+    
+    checkAllRules(themeRules, hooks.appView, history.location.pathname,
+      changeRules,
+    );
+  }, [hooks.appView, history.location.pathname]);
   
   useEffect(() => {
-    debugger;
+    
     compareContext(themeRules);
   }, [theme]);
   

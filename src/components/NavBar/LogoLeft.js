@@ -20,7 +20,7 @@ const LogoLeft = ({getHooks}) => {
   const {theme, appView, changePath, usersState} = getHooks("Logo Left");
   
   const logoClicked = () => {
-    debugger;
+    
     if(usersState.user.uuid){
       changePath(APP_PATHS.DASHBOARD_PATH);
     }else{
