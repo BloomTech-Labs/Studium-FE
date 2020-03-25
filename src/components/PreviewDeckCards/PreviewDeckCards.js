@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import {Card, Icon} from 'antd';
-import {CreateButton} from '../Button/CreateButton.js';
+import React from "react";
+import styled from "styled-components";
+import PropTypes from "prop-types";
+import {Card, Icon} from "antd";
+import {CreateButton} from "../Button/CreateButton.js";
 
 /**
  * Preview Deck Cards
@@ -23,32 +23,32 @@ export const PreviewDeckCards = ({
   loading,
   block,
   hoverEffect,
-  selected = 'none',
+  selected = "none",
   deck,
-  type = 'inner',
-  size = 'default',
+  type = "inner",
+  size = "default",
   ...props
 }) => (
   <StyledAntdCard
     type={type}
     size={size}
     icon={icon}
-    loading={loading && 'loading'}
-    block={block && 'block'}
+    loading={loading && "loading"}
+    block={block && "block"}
     {...props}
   >
     {!deck && (
-      <p className={'deck-text'} style={{marginBottom: '1.5rem'}}>
+      <p className={"deck-text"} style={{marginBottom: "1.5rem"}}>
         Add decks
       </p>
     )}
-    {!deck && <CreateButton width={'73px'} height={'73px'} />}
-    {deck && <p className={'deck-text'}>{deck.deck_name}</p>}
+    {!deck && <CreateButton width={"55px"} height={"55px"}/>}
+    {deck && <p className={"deck-text"}>{deck.deck_name}</p>}
     <Icon
-      type={'check-circle'}
+      type={"check-circle"}
       style={{
         display: selected,
-        position: 'absolute',
+        position: "absolute",
         // bottom: '5px',
         // right: '5px',
       }}
@@ -101,6 +101,6 @@ PreviewDeckCards.propTypes = {
   block: PropTypes.bool,
   hoverEffect: PropTypes.bool,
   deck: PropTypes.object,
-  type: PropTypes.oneOf(['inner']),
-  size: PropTypes.oneOf(['default']),
+  type: PropTypes.oneOf(["inner"]),
+  size: PropTypes.oneOf(["default"]),
 };

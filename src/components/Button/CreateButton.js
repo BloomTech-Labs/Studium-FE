@@ -1,18 +1,18 @@
-import React from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import {Button} from 'antd';
-import {ReactComponent as Svg} from '../../images/Union.svg';
+import React from "react";
+import styled from "styled-components";
+import PropTypes from "prop-types";
+import {Button} from "antd";
+import {ReactComponent as Svg} from "../../svgs/Union.svg";
 
 export const CreateButton = ({
-  height = '69px',
-  width = '69px',
+  height = "69px",
+  width = "69px",
   onClick,
   ...props
 }) => {
   return (
     <Styled width={width} height={height} onClick={onClick} {...props}>
-      <Svg />
+      <Svg/>
     </Styled>
   );
 };

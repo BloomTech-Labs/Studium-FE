@@ -11,7 +11,7 @@ import {useAppHooks} from "../customHooks/useAppHooks.js";
 import {getUserDecks} from "../actions";
 import {Alert} from "antd";
 import {SvgSnapsOutline} from "../svgComponents";
-import {MEDIA_QUERIES, SIZES} from "../utilities/constants.js";
+import {APP_VIEW_MOBILE, MEDIA_QUERIES, SIZES} from "../utilities/constants.js";
 
 /**
  * Dashboard
@@ -23,7 +23,7 @@ export const Dashboard = props => {
   const [selected, setSelected] = useState(0);
   
   const {
-    pathname,
+    appView,
     changePath,
     dispatch,
     usersState,
@@ -65,21 +65,22 @@ export const Dashboard = props => {
   
   return (
     <StyledDashboard className={"dashboard"}>
-      {theme.screenWidth <= SIZES.tablet && (
-        <>
-          <TitleText text={"Dashboard"}/>
-          <SearchBar
-            theme={theme}
-            onSearch={search}
-            style={{
-              marginTop: "8px",
-              marginBottom: "33px",
-              width: "80%",
-              marginLeft: "10%",
-            }}
-          />
-        </>
-      )}
+      {appView === APP_VIEW_MOBILE &&
+      <>
+        <TitleText text={"Dashboard"}/>
+        <SearchBar
+          theme={theme}
+          onSearch={search}
+          style={{
+            marginTop: "8px",
+            marginBottom: "33px",
+            width: "80%",
+            marginLeft: "10%",
+            height: "37px",
+          }}
+        />
+      </>
+      }
       
       {getAlert()}
       <StyledDeckHolder className={"deck-container"}>
