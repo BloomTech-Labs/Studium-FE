@@ -36,9 +36,9 @@ export const Dashboard = props => {
   useEffect(() => {
     console.log('dispatching getUserDecks action ||');
     dispatch(getUserDecks(usersState.user.uid));
-    console.log('decksState from dashboard ||', decksState.decks);
-    console.log('changePath from dashboard ||', changePath);
   }, []);
+
+  console.log('decksState from dashboard ||', decksState.decks);
 
   const changeDeckSelected = deck => {
     setSelected(deck);
