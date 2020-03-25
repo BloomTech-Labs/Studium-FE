@@ -6,14 +6,16 @@ import {ReactComponent as SmallWhiteLogo} from "../../images/SmallWhiteLogo.svg"
 import {signOut} from "../../actions";
 import theming from "styled-theming";
 import {
-  useAppHooks, mediaQueries, sizes,
+  useAppHooks,
 } from "../../customHooks/useAppHooks.js";
 import LogoLeft from "./LogoLeft.js";
 import {
   THEMING_VALUES, THEMING_VARIABLES,
 } from "../../customHooks/themingRules.js";
 import {useComparPrevContext} from "../../customHooks/useComparPrevContext.js";
-import {APP_PATHS, APP_VIEW_DESKTOP, THEME} from "../../utilities/constants.js";
+import {
+  APP_PATHS, APP_VIEW_DESKTOP, MEDIA_QUERIES, SIZES, THEME,
+} from "../../utilities/constants.js";
 
 export const NAV_BAR_DEBUG_NAME = "Nav Bar";
 

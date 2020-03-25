@@ -1,4 +1,3 @@
-
 import {createRule} from "./useStyledThemingRules.js";
 import {
   APP_PATHS, APP_VIEW_DESKTOP, APP_VIEW_MOBILE,

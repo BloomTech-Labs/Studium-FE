@@ -7,8 +7,9 @@ import {ReactComponent as GreenCircle} from "../../svgs/SynapsFavicon.svg";
 import {ReactComponent as Brain} from "../../images/brainpic.svg";
 import Logo from "../../images/brainpic.svg";
 import {
-  useAppHooks, sizes, mediaQueries,
+  useAppHooks,  
 } from "../../customHooks/useAppHooks.js";
+import {MEDIA_QUERIES, SIZES} from "../../utilities/constants.js";
 
 /**
  *   NavBarLogo
@@ -28,7 +29,7 @@ const NavBarLogo = (props) => {
     backgroundColor = theme.primaryColor;
   }
   
-  if(theme.screenWidth > sizes.tablet){
+  if(theme.screenWidth > SIZES.tablet){
     return (
       <LogoContainer id={"logo-container"}>
         <StyledBrain data-testid={"big-brain"} id={"brain"} width={"400"}
@@ -154,7 +155,7 @@ overflow: visible;
 height: 100vh;
 width: 100vw;
 
-@media screen and ${props => mediaQueries.tablet} {
+@media screen and ${props => MEDIA_QUERIES.tablet} {
     position: absolute;
     left: 0;
     top: 0;

@@ -3,7 +3,8 @@ import styled from "styled-components";
 import {SmallLogo, SynapsButton} from "../components";
 import SvgSynapsLogoText from "../svgComponents/SvgSynapsLogoText.js";
 import {SvgBrainPaths} from "../svgComponents";
-import {useAppHooks, mediaQueries} from "../customHooks/useAppHooks.js";
+import {useAppHooks} from "../customHooks/useAppHooks.js";
+import {MEDIA_QUERIES} from "../utilities/constants.js";
 
 /**
  * Landing Page
@@ -117,7 +118,7 @@ const Mobile = styled.div`
   display: flex;
   flex-direction: column;
   margin: 75px auto 0 auto;
-  @media ${mediaQueries.tablet} {
+  @media ${MEDIA_QUERIES.tablet} {
     display: none;
   }
 `;
@@ -126,7 +127,7 @@ const MobileHeader = styled.div``;
 
 const Desktop = styled.div`
   display: none;
-  @media ${mediaQueries.tablet} {
+  @media ${MEDIA_QUERIES.tablet} {
   }
 `;
 

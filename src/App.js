@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import {Alert} from "antd";
 import {
   useAppHooks,
-  mediaQueries,
+  
 } from "./customHooks/useAppHooks.js";
 import {useAuthStateChange} from "./customHooks/useAuthStateChange.js";
 import {SynapsBrain} from "./components";
@@ -15,8 +15,7 @@ import {
 } from "./customHooks/themingRules.js";
 import theming from "styled-theming";
 import {useTheming} from "./customHooks/useTheming.js";
-import SvgComponent from "./images/svgBrainPic/brainpic.js";
-import {APP_VIEW_DESKTOP, THEME} from "./utilities/constants.js";
+import {MEDIA_QUERIES} from "./utilities/constants.js";
 
 /**
  * App
@@ -52,14 +51,15 @@ export default function App(props){
         width={"1500px"} left={"50%"} transform={"translate(-50%, 0)"}
         fill={getValue(THEMING_VARIABLES.BACKGROUND,
           {
-            [THEMING_VALUES.DARK]: THEME.brainPicDark,
-            [THEMING_VALUES.LIGHT]: THEME.brainPicLight,
+            [THEMING_VALUES.DARK]: theme.themeState.brainPicDark,
+            [THEMING_VALUES.LIGHT]: theme.themeState.navBarLight,
           },
         )}
-        top={getValue(THEMING_VARIABLES.BRAIN_SVG, {
-          [THEMING_VALUES.BOTTOM]: "600PX",
-          [THEMING_VALUES.TOP]: "146px",
-        })}
+        top={
+          getValue(THEMING_VARIABLES.BRAIN_SVG, {
+            [THEMING_VALUES.BOTTOM]: "600PX",
+            [THEMING_VALUES.TOP]: "146px",
+          })}
       />
       }
       {alertMessage && (
@@ -91,7 +91,6 @@ const backgroundColor = theming(THEMING_VARIABLES.BACKGROUND, {
   [THEMING_VALUES.DARK]: ({theme}) => {
     return theme.themeState.primaryColor;
   }, [THEMING_VALUES.LIGHT]: ({theme}) => {
-    
     return theme.themeState.navBarLight;
   },
 });
@@ -112,7 +111,7 @@ background: ${backgroundColor};
   min-height: 100vh;
   overflow: hidden;
 
-  @media ${mediaQueries.tablet} {
+  @media ${MEDIA_QUERIES.tablet} {
   
   }
 `;

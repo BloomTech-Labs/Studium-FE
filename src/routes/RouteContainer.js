@@ -8,10 +8,10 @@ import {
 } from "../views";
 import {Switch, Route} from "react-router";
 import {ContainerDiv} from "../components";
-import {useAppHooks, sizes} from "../customHooks/useAppHooks.js";
+import {useAppHooks} from "../customHooks/useAppHooks.js";
 import {THEMING_VALUES} from "../customHooks/themingRules.js";
 import Debug from "../views/Debug.js";
-import {APP_PATHS} from "../utilities/constants.js";
+import {APP_PATHS, SIZES} from "../utilities/constants.js";
 
 /**
  *   RouteContainer

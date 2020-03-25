@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { Icon } from 'antd';
 import { ContainerDiv } from '../Container/ContainerDiv.js';
 import PropTypes from 'prop-types';
-import { mediaQueries, useAppHooks } from '../../customHooks/useAppHooks.js';
+import { useAppHooks } from '../../customHooks/useAppHooks.js';
+import {MEDIA_QUERIES} from "../../utilities/constants.js";
 
 /**
  * Footer
@@ -82,7 +83,7 @@ const StyledFooter = styled.div`
   height: 50px;
   background: #E1DED7;
   align-items: center;
-  @media screen and ${ mediaQueries.tablet } {
+  @media screen and ${ MEDIA_QUERIES.tablet } {
   display: none;
     };
 `;

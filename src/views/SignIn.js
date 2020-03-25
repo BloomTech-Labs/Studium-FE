@@ -5,8 +5,9 @@ import SvgComponent from "../images/svgBrainPic/brainpic";
 import {ReactComponent as svg} from "../images/SmallWhiteLogo.svg";
 import styled from "styled-components";
 import {signIn, GOOGLE_PROVIDER, EMAIL_PROVIDER} from "../actions";
-import {mediaQueries, useAppHooks, sizes} from "../customHooks/useAppHooks.js";
+import {useAppHooks} from "../customHooks/useAppHooks.js";
 import {THEMING_VALUES} from "../customHooks/themingRules.js";
+import {MEDIA_QUERIES, SIZES} from "../utilities/constants.js";
 
 /**
  * Sign In
@@ -145,7 +146,7 @@ const StyledBtn = styled(SynapsButton)`
 const StyledFormInput = styled.div`
   width: 345px;
   margin: 0px 0px 0px 45px;
-  @media ${mediaQueries.tablet} {
+  @media ${MEDIA_QUERIES.tablet} {
     & label {
       color: #fff;
       font-style: normal;
@@ -169,7 +170,7 @@ const StyledSignIn = styled.div`
   margin: 6% auto 0 auto;
   height: 100%;
   width: 100%;
-  @media ${mediaQueries.desktop} {
+  @media ${MEDIA_QUERIES.desktop} {
   height: 100%;
   }
 `;
@@ -181,7 +182,7 @@ const StyledH2 = styled.h2`
   line-height: 24px;
   margin: 1rem 0 1em;
   color: #b7bfbc;
-  @media screen and ${mediaQueries.tablet} {
+  @media screen and ${MEDIA_QUERIES.tablet} {
     font-style: normal;
     font-weight: bold;
     font-size: 36px;
@@ -193,7 +194,7 @@ const StyledBorder = styled.span`
   width: 90%;
   border-bottom: 2px dashed #ccc;
   margin: 0 0 1.5em;
-  @media screen and ${mediaQueries.tablet} {
+  @media screen and ${MEDIA_QUERIES.tablet} {
     width: 1144px;
     max-width: 100%;
   }

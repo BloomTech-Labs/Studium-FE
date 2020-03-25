@@ -7,10 +7,11 @@ import {
   PreviewDeckCards,
 } from "../components";
 import PropTypes from "prop-types";
-import {useAppHooks, mediaQueries, sizes} from "../customHooks/useAppHooks.js";
+import {useAppHooks} from "../customHooks/useAppHooks.js";
 import {getUserDecks} from "../actions";
 import {Alert} from "antd";
 import {SvgSnapsOutline} from "../svgComponents";
+import {MEDIA_QUERIES, SIZES} from "../utilities/constants.js";
 
 /**
  * Dashboard
@@ -62,7 +63,7 @@ export const Dashboard = props => {
   
   return (
     <StyledDashboard className={"dashboard"}>
-      {theme.screenWidth <= sizes.tablet && (
+      {theme.screenWidth <= SIZES.tablet && (
         <>
           <TitleText text={"Dashboard"}/>
           <SearchBar
@@ -121,7 +122,7 @@ const StyledDashboard = styled.div`
   max-width: 100%;
   height: 100%;
 
-  @media screen and ${mediaQueries.tablet} {
+  @media screen and ${MEDIA_QUERIES.tablet} {
     width: 100%;
     height: 100vh;
     position: absolute;

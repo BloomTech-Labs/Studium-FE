@@ -19,7 +19,7 @@ function SvgBrainPic(props){
       {...props}
     >
       <g opacity={"81%"}
-         fill={props.fill}
+         fill={"white"}
          clipPath="url(#BrainPic_svg__clip0)"
       >
         <path
