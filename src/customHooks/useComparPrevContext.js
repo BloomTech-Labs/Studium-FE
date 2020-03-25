@@ -23,7 +23,7 @@ export const useComparPrevContext = (componentsDebugName,
     
     const printPrevContext = (number) => {
       let count = 0;
-      logger.logInfo(`Prev contexts for ${debugName}`);
+      logger.logVerbose(`Prev contexts for ${debugName}`);
       for(let i = prevContext.length; i >= 0 && count < number; i--){
         logger.logObject(prevContext[i - 1]);
         count++;

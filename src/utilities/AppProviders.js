@@ -21,10 +21,9 @@ const GlobalStyles = getGlobalStyles();
 const initialState = {};
 
 if(process.env.NODE_ENV !== "test"){
+  storageBackupDebugger.logVerbose("Attempting to get inital state from" +
+    " localstorage");
   REDUCER_NAMES.forEach(key => {
-    
-    storageBackupDebugger.logVerbose("Attempting to get inital state from" +
-      " localstorage");
     try{
       
       const stateKey = JSON.parse(
@@ -90,7 +89,7 @@ const AfterStoreTheme = props => {
   
   const {getLogger, logger} = props;
   const {hooks, setHookVariable} = useAppHooksState(getLogger);
-  logger.logInfo(`After Store and Theme provider rendered.`);
+  logger.logVerbose(`After Store and Theme provider rendered.`);
   
   return (
     <>

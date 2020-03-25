@@ -21,10 +21,10 @@ export const useDimensions = () => {
   
   useEffect(() => {
     window.addEventListener("resize", updateDimensions);
-    logger.logInfo("Set up add event listener for window resize.");
+    logger.logVerbose("Set up add event listener for window resize.");
     return () => {
       window.removeEventListener("resize", updateDimensions);
-      logger.logInfo("Removed listen for resize.");
+      logger.logVerbose("Removed listen for resize.");
     };
   }, []);
   
@@ -32,17 +32,16 @@ export const useDimensions = () => {
   
   const updateDimensions = () => {
     
-    logger.logInfo("Update dimensions called");
-    logger.logInfo("Update dimensions called");
+    logger.logVerbose("Update dimensions called");
     
     const update = () => {
-      logger.logInfo("Update called.");
+      logger.logVerbose("Update called.");
       if(width !== window.innerWidth){
-        logger.logInfo("Updating width.");
+        logger.logVerbose("Updating width.");
         setHookVariable("width", window.innerWidth);
       }
       if(height !== window.innerHeight){
-        logger.logInfo("Updating height.");
+        logger.logVerbose("Updating height.");
         setHookVariable("height", window.innerHeight);
       }
       
@@ -50,10 +49,10 @@ export const useDimensions = () => {
     };
     
     if(timer){
-      logger.logInfo("Clearing the timer");
+      logger.logVerbose("Clearing the timer");
       clearTimeout(timer);
     }
-    logger.logInfo("Setting the timer for debounce.");
+    logger.logVerbose("Setting the timer for debounce.");
     timer = setTimeout(update, 200);
   };
   

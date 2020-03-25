@@ -23,7 +23,7 @@ export const useAppView = () => {
    */
   useEffect(() => {
     
-    logger.logInfo("Height and or width changed.");
+    logger.logVerbose("Height and or width changed/.");
     compareContext({appView, height, width});
     
     if(width > SIZES.tablet && appView !== APP_VIEW_DESKTOP){

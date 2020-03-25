@@ -37,7 +37,7 @@ export const useAppHooks = (nameOfCaller) => {
   const changePath = useChangePath();
   const history = useHistory();
   useEffect(() => {
-    logger.logInfo(`Hooks updated for ${nameOfCaller}`);
+    logger.logVerbose(`Hooks updated for ${nameOfCaller}`);
     
   }, [
     hooks,
@@ -46,6 +46,20 @@ export const useAppHooks = (nameOfCaller) => {
   const {usersState, photosState, cardsState, decksState} = useSelector(
     reducerState => reducerState,
   );
+  
+  const getHooks = () => {
+    return {
+      theme: theme,
+      setHookVariable,
+      dispatch,
+      usersState,
+      cardsState,
+      photosState,
+      decksState,
+      changePath,
+      ...hooks,
+    };
+  };
   
   /**
    * @typedef {object} UseAppHooksReturn
@@ -76,6 +90,7 @@ export const useAppHooks = (nameOfCaller) => {
     photosState,
     decksState,
     changePath,
+    getHooks,
     ...hooks,
   };
 };
@@ -124,14 +139,13 @@ export const useAppHooksState = (getLogger) => {
   };
   
   logger.logVerbose("Hooks almost initialized for the App Provider. ");
-  logger.logVerbose("Initial State");
-  logger.logVerbose(initialState);
+  logger.logObjectWithMessage(initialState, "Initial State");
   
   const [hooks, setHooks] = useState(initialState);
   
   const setHookVariable = (name, value, items = undefined) => {
     if(items === undefined){
-      logger.logInfo(`Setting ${name} to new value`);
+      logger.logVerbose(`Setting ${name} to new value`);
       logger.logObject(value);
       let newState;
       newState = {...hooks, [name]: value};
@@ -147,7 +161,7 @@ export const useAppHooksState = (getLogger) => {
   };
   
   useEffect(() => {
-    logger.logInfo("Hooks state changed in provider,");
+    logger.logInfo("Hooks state changed in useAppHooksState,");
   }, [hooks]);
   
   return {

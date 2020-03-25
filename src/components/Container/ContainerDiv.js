@@ -17,7 +17,6 @@ import PropTypes from "prop-types";
  *  )
  */
 export const ContainerDiv = props => {
-  console.log(props);
   return <Div {...props}>{props.children}</Div>;
 };
 

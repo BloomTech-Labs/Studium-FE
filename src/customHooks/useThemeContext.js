@@ -47,11 +47,12 @@ export const useThemeRules = (getLogger) => {
 };
 
 export const useThemeContext = () => {
-  const {changeTheme, themeState, ...themeRules} = useContext(ThemeContext);
+  const theme = useContext(ThemeContext);
+  const {changeTheme, themeState, ...themeRules} = theme;
   const {hooks} = useContext(AppHooksContext);
   const {path, appView, getLogger} = hooks;
   const {compareContext} = useComparPrevContext(
-    THEME_DEBUG_NAME, {themeRules, appView, path});
+    THEME_DEBUG_NAME, themeRules);
   const checkAllRules = useStyledThemingRules();
   const logger = getLogger(THEME_DEBUG_NAME);
   
@@ -66,9 +67,12 @@ export const useThemeContext = () => {
   };
   
   useEffect(() => {
-    
-    compareContext({themeRules, appView, path});
     checkAllRules(themeRules, appView, path, changeRules);
   }, [appView, path]);
+  
+  useEffect(() => {
+    debugger;
+    compareContext(themeRules);
+  }, [theme]);
   
 };

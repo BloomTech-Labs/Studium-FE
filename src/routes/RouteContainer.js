@@ -24,7 +24,7 @@ import {APP_PATHS, SIZES} from "../utilities/constants.js";
  *
  */
 export const RouteContainer = (props) => {
-  const {height, theme} = useAppHooks("RouteContainer");
+  const {height, theme} = props.getHooks("RouteContainer");
   
   const calculateMaxHeight = () => {
     let number = 0;
@@ -54,12 +54,13 @@ export const RouteContainer = (props) => {
         <LoginSignUpRoute path={APP_PATHS.SIGN_IN_PATH}
                           component={SignIn} {...props} />
         <ProtectedRoute path={APP_PATHS.DASHBOARD_PATH}
-                        component={Dashboard}/>
+                        component={Dashboard} {...props}/>
         <ProtectedRoute path={APP_PATHS.CREATE_DECK_PATH}
-                        component={CreateDeck}/>
+                        component={CreateDeck} {...props}/>
         <ProtectedRoute path={APP_PATHS.PREVIEW_DECK_PATH}
-                        component={PreviewDeck}/>
-        <ProtectedRoute path={APP_PATHS.GAME_PATH} component={FlashCard}/>
+                        component={PreviewDeck} {...props}/>
+        <ProtectedRoute path={APP_PATHS.GAME_PATH}
+                        component={FlashCard} {...props}/>
         <Route path={APP_PATHS.TESTING}
                render={props => <Testing {...props}/>}/>
         <LoginSignUpRoute path={"/"}

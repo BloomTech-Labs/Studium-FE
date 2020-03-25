@@ -16,7 +16,6 @@ export const useChangePath = () => {
     AppHooksContext);
   const logger = hooks.getLogger(USE_CHANGE_PATH_DEBUG);
   
-  logger.logVerbose(`useChangePath has been called.`);
   /**
    * Change Path
    * @typedef {function} ChangePath
@@ -29,7 +28,7 @@ export const useChangePath = () => {
    */
   const changePath = (pathToChangeTo, stateToPush = null) => {
     
-    logger.logVerbose(`"Change path function init.`);
+    logger.logVerbose(`Change path called.`);
     pathToChangeTo = pathToChangeTo.toLowerCase();
     if(pathToChangeTo !== undefined && pathToChangeTo !==
       history.location.pathname){
@@ -50,7 +49,8 @@ export const useChangePath = () => {
     
     if(history.location.pathname !== path){
       hooksToChange.push({name: "path", value: history.location.pathname});
-      logger.logInfo(`Setting new path variable.`);
+      logger.logInfo(
+        `Setting new path variable to ${history.location.pathname}.`);
     }
     
     if(history.location.state !== pushedState){

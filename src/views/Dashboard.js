@@ -19,7 +19,7 @@ import {APP_VIEW_MOBILE, MEDIA_QUERIES, SIZES} from "../utilities/constants.js";
  * @component
  * @example return (<Dashboard />);
  */
-export const Dashboard = props => {
+export const Dashboard = ({getHooks}) => {
   const [selected, setSelected] = useState(0);
   
   const {
@@ -29,7 +29,7 @@ export const Dashboard = props => {
     usersState,
     decksState,
     theme,
-  } = useAppHooks("Dashboard");
+  } = getHooks("Dashboard");
   const search = e => {
   
   };

@@ -88,9 +88,12 @@ class AppLogger{
     this.logMessage = (debugName, logType, message) => {
       let str = "";
       if(!this.groupLogs){
-        str += debugName;
+        str += debugName + ": ";
       }
       str += message;
+      if(logType === LOG_TYPES.VERBOSE){
+      
+      }
       this.console.log("%c" + str, this.colorString[logType] +
         ` text-size: ${SYNAPS_CONFIG.debugLogTextSize}`);
     };
@@ -150,7 +153,7 @@ class AppLogger{
           );
         }
       }
-      this.console.dir({...object});
+      this.console.dir(object);
       
       if(message){
         this.console.groupEnd();

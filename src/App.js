@@ -25,13 +25,13 @@ import {MEDIA_QUERIES} from "./utilities/constants.js";
  */
 export default function App(props){
   const [alertMessage, setAlert] = useState("");
-  const {theme, usersState, pathname, appView} = useAppHooks("App");
+  const {theme, usersState, pathname, appView, getHooks} = useAppHooks("App");
   const getValue = useTheming("App.js");
   
   const logger = props.logger;
   
   useEffect(() => {
-    logger.logInfo("App view rendered.");
+    logger.logVerbose("App view rendered.");
   }, []);
   useAuthStateChange();
   
@@ -54,7 +54,7 @@ export default function App(props){
         fill={getValue(THEMING_VARIABLES.BACKGROUND,
           {
             [THEMING_VALUES.DARK]: theme.themeState.brainPicDark,
-            [THEMING_VALUES.LIGHT]: theme.themeState.navBarLight,
+            [THEMING_VALUES.LIGHT]: theme.themeState.brainPicLight,
           },
         )}
         top={
@@ -77,9 +77,9 @@ export default function App(props){
           }}
         />
       )}
-      <NavBar/>
-      <RouteContainer/>
-      <Footer/>
+      <NavBar getHooks={getHooks}/>
+      <RouteContainer getHooks={getHooks}/>
+      <Footer getHooks={getHooks}/>
     </StyledApp>
   );
 }

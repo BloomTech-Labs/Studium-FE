@@ -6,7 +6,9 @@ import {useAppHooks} from "../../customHooks/useAppHooks.js";
 import {
   SvgBrainPic, SvgSynapsFavicon, SvgSynapsLogoText,
 } from "../../svgComponents";
-import {APP_VIEW_DESKTOP, APP_VIEW_MOBILE} from "../../utilities/constants.js";
+import {
+  APP_PATHS, APP_VIEW_DESKTOP, APP_VIEW_MOBILE,
+} from "../../utilities/constants.js";
 
 /**
  *  LogoLeft
@@ -14,8 +16,17 @@ import {APP_VIEW_DESKTOP, APP_VIEW_MOBILE} from "../../utilities/constants.js";
  *  @component
  *
  */
-const LogoLeft = () => {
-  const {theme, appView, themingRules} = useAppHooks("Logo Left");
+const LogoLeft = ({getHooks}) => {
+  const {theme, appView, changePath, usersState} = getHooks("Logo Left");
+  
+  const logoClicked = () => {
+    debugger;
+    if(usersState.user.uuid){
+      changePath(APP_PATHS.DASHBOARD_PATH);
+    }else{
+      changePath(APP_PATHS.LANDING_PAGE);
+    }
+  };
   
   if(appView === APP_VIEW_DESKTOP){
     
@@ -28,8 +39,11 @@ const LogoLeft = () => {
         alignItems={"flex-end"} margin={"2% 0 0 10%"}
       >
         
-        <SvgSynapsFavicon height={"100%"} width={"40%"} top={"-10px"}/>
-        <SvgSynapsLogoText fill={theme.themeState.synapsDark}
+        <SvgSynapsFavicon onClick={() => logoClicked()} height={"100%"}
+                          width={"40%"}
+                          top={"-10px"}/>
+        <SvgSynapsLogoText onClick={() => logoClicked()}
+                           fill={theme.themeState.synapsDark}
                            width={"60%"}
                            height={"100%"}
         />
@@ -42,7 +56,8 @@ const LogoLeft = () => {
         alignItems={"flex-start"} justifyContent={"flex-end"}
         flexDirection={"row"} overFlowY={"visible"} overFlowX={"visible"}
         position={"relative"}>
-        <SvgSynapsLogoText svgFill={theme.themeState.synapsLight} zIndex={10}
+        <SvgSynapsLogoText onClick={() => logoClicked()}
+                           svgFill={theme.themeState.synapsLight} zIndex={10}
                            margin={"15% auto 0 auto"}/>
         
         <Brain containerPosition={"absolute"} height={"300px"}

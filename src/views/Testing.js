@@ -3,7 +3,7 @@ import styled from "styled-components";
 import SecondAnimatedSynapsComponent
   from "../svgComponents/SecondAnimatedSynapsComponent.js";
 
-export const Testing = () => {
+export const Testing = (props) => {
   return (<StyledTesting>
     <SecondAnimatedSynapsComponent width={"1000px"} height={"1000px"}/>
   </StyledTesting>);

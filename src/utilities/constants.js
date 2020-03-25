@@ -85,7 +85,7 @@ export const THEME = {
   synapsLight: "#FFFFFF",
   
   brainPicDark: "#164167",
-  brainPicLight: "#EEECE8",
+  brainPicLight: "#e1ded7",
   
 };
 
@@ -132,6 +132,10 @@ export const THEME = {
 
 export const APP_VIEW_MOBILE = "APP_VIEW_MOBILE";
 export const APP_VIEW_DESKTOP = "APP_VIEW_DESKTOP";
+
+/**
+ * @typedef {string} APP_PATH
+ */
 
 /**
  * @typedef {object.<{APP_PATH}, string>} AppPaths

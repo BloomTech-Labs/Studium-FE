@@ -1,12 +1,13 @@
-import React, {useState, useEffect} from 'react';
-import styled from 'styled-components';
-import {CreateCardTitleText} from '../components/Text/TitleText/CreateCardTitleText.js';
-import {CreateCard} from '../components/CreateCard/CreateCard.js';
-import {DeckName} from '../components/CreateDeck/DeckName.js';
-import {SmallDeckSvg} from '../components/SmallDeckSvg/SmallDeckSvg.js';
-import {SynapsButton} from '../components/Button/SynapsButton.js';
-import {postDeck} from '../actions/decksActions.js';
-import {useAppHooks} from '../customHooks/useAppHooks.js';
+import React, {useState, useEffect} from "react";
+import styled from "styled-components";
+import {CreateCardTitleText} from "../components/Text/TitleText/CreateCardTitleText.js";
+import {CreateCard} from "../components/CreateCard/CreateCard.js";
+import {DeckName} from "../components/CreateDeck/DeckName.js";
+import {SmallDeckSvg} from "../components/SmallDeckSvg/SmallDeckSvg.js";
+import {SynapsButton} from "../components/Button/SynapsButton.js";
+import {postDeck} from "../actions/decksActions.js";
+import {useAppHooks} from "../customHooks/useAppHooks.js";
+
 /**
  * Create Deck View
  * @category Views
@@ -22,7 +23,7 @@ export const CreateDeck = props => {
     decksState,
     theme,
     getLogger,
-  } = useAppHooks('CreateDeck');
+  } = props.getHooks("CreateDeck");
   const [disableInput, setDisableInput] = useState(false);
   const [newDeck, setNewDeck] = useState({});
   const [newCard, setNewCard] = useState({});
@@ -36,12 +37,12 @@ export const CreateDeck = props => {
     question: false,
     answer: false,
   });
-
+  
   const clickHandler = e => {
     e.preventDefault();
     let clickedOn = e.target.name;
-
-    if (clickedOn == 'title' && highlighted.title == true) {
+    
+    if(clickedOn == "title" && highlighted.title == true){
       setHighlighted({
         ...highlighted,
         title: false,
@@ -51,7 +52,7 @@ export const CreateDeck = props => {
         ...visible,
         question: true,
       });
-    } else if (clickedOn == 'question' && highlighted.question == true) {
+    }else if(clickedOn == "question" && highlighted.question == true){
       setHighlighted({
         ...highlighted,
         question: false,
@@ -61,23 +62,23 @@ export const CreateDeck = props => {
         ...visible,
         answer: true,
       });
-      if (newDeck.deck_name !== '' && newDeck.deck_name !== null) {
-        console.log('||inside of nested if||');
+      if(newDeck.deck_name !== "" && newDeck.deck_name !== null){
+        console.log("||inside of nested if||");
         dispatch(postDeck(usersState.user.uid, newDeck));
       }
-    } else {
+    }else{
       setHighlighted({
         ...highlighted,
         answer: false,
       });
     }
   };
-
+  
   const changeHandler = e => {
     const targetName = e.target.name;
-    console.log('target name||', targetName);
-    switch (targetName) {
-      case 'title':
+    console.log("target name||", targetName);
+    switch(targetName){
+      case "title":
         setNewDeck({deck_name: e.target.value});
         break;
       default:
@@ -87,28 +88,28 @@ export const CreateDeck = props => {
     console.log(newDeck);
     console.log(newCard);
   };
-
+  
   const submitForm = e => {
     e.preventDefault();
-    if (!highlighted.title) {
-      if (cardNum == 1) {
+    if(!highlighted.title){
+      if(cardNum == 1){
         // dispatch(postDeck(usersState.user.uid, newDeck));
         setDisableInput(true);
       }
     }
   };
-
+  
   return (
     <StyledCreateDeck>
       <CardNameContainer>
         <CardHeaderContainer>
-          <CreateCardTitleText text={'Create Deck'} />
-          <SmallDeckSvg />
+          <CreateCardTitleText text={"Create Deck"}/>
+          <SmallDeckSvg/>
         </CardHeaderContainer>
         <DeckName
           newDeck={newDeck}
           disableInput={disableInput}
-          name={'newDeck'}
+          name={"newDeck"}
           changeHandler={changeHandler}
           value={newDeck.deck_name}
           clickHandler={clickHandler}
@@ -118,8 +119,8 @@ export const CreateDeck = props => {
       <CreateCardContainer>
         <CreateCard
           changeHandler={changeHandler}
-          name={'newCardQuestion'}
-          drillName={'question'}
+          name={"newCardQuestion"}
+          drillName={"question"}
           clickHandler={clickHandler}
           highlighted={highlighted.question}
           visible={visible.question}
@@ -128,8 +129,8 @@ export const CreateDeck = props => {
         />
         <CreateCard
           changeHandler={changeHandler}
-          name={'newCardAnswer'}
-          drillName={'answer'}
+          name={"newCardAnswer"}
+          drillName={"answer"}
           clickHandler={clickHandler}
           highlighted={highlighted.answer}
           visible={visible.answer}
@@ -140,10 +141,10 @@ export const CreateDeck = props => {
       <Bottom>
         <SynapsButton
           onClick={submitForm}
-          text={'Add Another Card'}
-          type={'primaryCreateCard'}
+          text={"Add Another Card"}
+          type={"primaryCreateCard"}
         />
-        <SynapsButton text={'Done'} type={'defaultCreateCard'} />
+        <SynapsButton text={"Done"} type={"defaultCreateCard"}/>
       </Bottom>
     </StyledCreateDeck>
   );

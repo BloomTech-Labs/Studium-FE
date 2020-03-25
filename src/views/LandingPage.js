@@ -12,8 +12,8 @@ import {MEDIA_QUERIES} from "../utilities/constants.js";
  * @component
  * @example return (<LandingPage />);
  */
-export const LandingPage = props => {
-  const {changePath, theme} = useAppHooks("LandingPage");
+export const LandingPage = ({getHooks}) => {
+  const {changePath, theme} = getHooks("LandingPage");
   
   useEffect(() => {
   
@@ -136,7 +136,6 @@ const HeaderName = styled.div`
 `;
 
 const Menu1 = styled.div`
-  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: normal;
   font-size: 25px;
@@ -146,7 +145,6 @@ const Menu1 = styled.div`
 `;
 
 const Menu2 = styled.div`
-  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: normal;
   font-size: 25px;
@@ -156,7 +154,6 @@ const Menu2 = styled.div`
 `;
 
 const Menu3 = styled.div`
-  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: normal;
   font-size: 25px;
@@ -170,7 +167,6 @@ const StyledLandingPage = styled.div`
 `;
 
 const Headline = styled.div`
-  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: bold;
   font-size: 122px;
@@ -194,7 +190,6 @@ const Rectangle = styled.div`
 `;
 
 const Paragraph = styled.div`
-  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: normal;
   font-size: 35px;
@@ -204,7 +199,6 @@ const Paragraph = styled.div`
 `;
 
 const Paragraph2 = styled.div`
-  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: normal;
   font-size: 35px;
@@ -223,7 +217,6 @@ const Group1 = styled.div`
 `;
 
 const Group1Text = styled.div`
-  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: normal;
   font-size: 24px;
@@ -237,7 +230,6 @@ const Group2 = styled.div`
 `;
 
 const Group2Text = styled.div`
-  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: normal;
   font-size: 24px;
@@ -260,7 +252,6 @@ const Group4 = styled.div`
 `;
 
 const Group4Text = styled.div`
-  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: normal;
   font-size: 24px;

@@ -13,12 +13,10 @@ import {Alert, Icon} from "antd";
  * @component
  * @example return (<PreviewDeck />);
  */
-export const PreviewDeck = props => {
+export const PreviewDeck = ({getHooks}) => {
   // @type CardState
-  const {cardsState, pathPushedState, dispatch, usersState} = useAppHooks(
+  const {cardsState, pathPushedState, dispatch, usersState} = getHooks(
     "PreviewDeck");
-  
-  console.log(pathPushedState);
   
   useEffect(() => {
     if(pathPushedState === undefined){

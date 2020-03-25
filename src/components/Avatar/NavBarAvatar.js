@@ -3,7 +3,6 @@ import {Avatar} from "antd";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import {Popover} from "antd";
-import {useAppHooks} from "../../customHooks/useAppHooks.js";
 import {signOut} from "../../actions";
 import {APP_PATHS} from "../../utilities/constants.js";
 
@@ -15,11 +14,11 @@ import {APP_PATHS} from "../../utilities/constants.js";
  *  <NavBarAvatar />
  *  )
  */
-export const NavBarAvatar = ({avatarUrl, ...props}) => {
+export const NavBarAvatar = ({getHooks, avatarUrl, ...props}) => {
   
   const [open, setOpen] = useState(false);
   
-  const {dispatch, changePath, usersState} = useAppHooks("Nav Bar");
+  const {dispatch, changePath, usersState} = getHooks("Nav Bar");
   
   const handleClick = (path) => {
     setOpen(false);
@@ -77,5 +76,6 @@ p {
 `;
 
 NavBarAvatar.propTypes = {
+  getHooks: PropTypes.func.isRequired,
   avatarUrl: PropTypes.string,
 };
