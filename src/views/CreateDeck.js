@@ -37,6 +37,21 @@ export const CreateDeck = props => {
     answer: false,
   });
 
+  const fieldValidated = stateHook => {
+    if (stateHook !== '' && typeof stateHook !== 'undefined') {
+      console.log('returning true from fieldValidated');
+      return true;
+    } else {
+      console.log('returning false from fieldValidated');
+      return false;
+    }
+  };
+
+  useEffect(() => {
+    console.log('||||logger from useEffect||||', newDeck);
+    console.log('||||logger from useEffect||||', newCard);
+  }, [newDeck, newCard]);
+
   const clickHandler = e => {
     e.preventDefault();
     let clickedOn = e.target.name;
@@ -51,7 +66,11 @@ export const CreateDeck = props => {
         ...visible,
         question: true,
       });
-    } else if (clickedOn == 'question' && highlighted.question == true) {
+    } else if (
+      clickedOn == 'question' &&
+      highlighted.question == true &&
+      fieldValidated(newDeck.deck_name)
+    ) {
       setHighlighted({
         ...highlighted,
         question: false,
@@ -61,11 +80,7 @@ export const CreateDeck = props => {
         ...visible,
         answer: true,
       });
-      if (newDeck.deck_name !== '' && newDeck.deck_name !== null) {
-        console.log('||inside of nested if||');
-        dispatch(postDeck(usersState.user.uid, newDeck));
-      }
-    } else {
+    } else if (fieldValidated(newCard.question)) {
       setHighlighted({
         ...highlighted,
         answer: false,
@@ -90,12 +105,14 @@ export const CreateDeck = props => {
 
   const submitForm = e => {
     e.preventDefault();
-    if (!highlighted.title) {
-      if (cardNum == 1) {
-        // dispatch(postDeck(usersState.user.uid, newDeck));
-        setDisableInput(true);
-      }
-    }
+    dispatch(postDeck(usersState.user.uid, newDeck));
+    setDisableInput(true);
+    setTimeout(() => {
+      setNewCard({
+        ...newCard,
+        deck_id: decksState.decks[decksState.decks.length - 1].deck_id,
+      });
+    }, 500);
   };
 
   return (

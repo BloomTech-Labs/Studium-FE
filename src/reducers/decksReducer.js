@@ -72,7 +72,7 @@ export const decksReducer = (state = initialState, action) => {
       return {
         ...state,
         fetchingDecks: false,
-        decks: action.payload,
+        decks: [...state.decks, action.payload],
         errorDecksMessage: undefined,
       };
     case POSTING_DECK_FAILURE:
