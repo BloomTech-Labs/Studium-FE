@@ -5,13 +5,24 @@ import {Input} from 'antd';
 const {TextArea} = Input;
 
 const StyledTextArea = ({
+  onChange,
+  height = '23px',
   value,
   autoSize,
   clickHandler,
   drillName = 'defaultName',
   ...props
 }) => {
-  return <STextArea name={drillName} onClick={clickHandler} {...props} />;
+  return (
+    <STextArea
+      onChange={onChange}
+      style={{height: `100%`}}
+      name={drillName}
+      height={height}
+      onClick={clickHandler}
+      {...props}
+    />
+  );
 };
 
 StyledTextArea.propTypes = {
@@ -22,8 +33,6 @@ StyledTextArea.propTypes = {
 export default StyledTextArea;
 
 const STextArea = styled(TextArea)`
-  width: 175px;
-  height: 23px;
   border-top-style: none;
   border-bottom-style: none;
   border-left-style: none;

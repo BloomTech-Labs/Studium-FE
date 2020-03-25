@@ -60,7 +60,7 @@ export const decksReducer = (state = initialState, action) => {
         decks: [],
         errorDecksMessage: action.error,
       };
-    
+
     // Creates a new deck
     case POSTING_DECK_START:
       return {
@@ -82,7 +82,7 @@ export const decksReducer = (state = initialState, action) => {
         decks: [],
         errorDecksMessage: action.error,
       };
-    
+
     // Deletes a single deck
     case DELETING_DECK_START:
       return {
@@ -104,7 +104,7 @@ export const decksReducer = (state = initialState, action) => {
         decks: [],
         errorDecksMessage: action.error,
       };
-    
+
     //Edits single deck
     case UPDATING_DECK_START:
       return {
@@ -126,7 +126,7 @@ export const decksReducer = (state = initialState, action) => {
         decks: [],
         errorDecksMessage: action.error,
       };
-    
+
     // Retrieves all current User's decks
     case RETRIEVE_USER_DECKS_START:
       return {
@@ -138,7 +138,7 @@ export const decksReducer = (state = initialState, action) => {
       return {
         ...state,
         fetchingDecks: false,
-        decks: action.payload,
+        decks: [...state.decks, action.payload],
         errorDecksMessage: undefined,
       };
     case RETRIEVE_USER_DECKS_FAILURE:
@@ -148,7 +148,7 @@ export const decksReducer = (state = initialState, action) => {
         decks: [],
         errorDecksMessage: action.error,
       };
-    
+
     //Retrieve single deck
     case RETRIEVE_DECK_START:
       return {
