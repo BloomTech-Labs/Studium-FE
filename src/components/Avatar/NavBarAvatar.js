@@ -19,7 +19,7 @@ export const NavBarAvatar = ({avatarUrl, ...props}) => {
   
   const [open, setOpen] = useState(false);
   
-  const {dispatch, changePath} = useAppHooks("Nav Bar");
+  const {dispatch, changePath, usersState} = useAppHooks("Nav Bar");
   
   const handleClick = (path) => {
     setOpen(false);
@@ -32,23 +32,26 @@ export const NavBarAvatar = ({avatarUrl, ...props}) => {
   
   const getContent = () => {
     return (
-      <div>
-        <p onClick={() => handleClick("logout")}>Logout</p>
-        <p onClick={() => handleClick("signin")}>SignIn</p>
-      </div>
+      <AvatarMenu>
+        {/*<p onClick={() => handleClick("logout")}>Edit Profile</p>*/}
+        <p style={{background: "#D7EDE8"}}
+           onClick={() => handleClick("logout")}>Logout</p>
+      </AvatarMenu>
     );
   };
   
   return (
-    <Popover placement="bottomRight" title={"Hi"} content={getContent()}
+    <Popover placement="bottomRight"
+             title={"Hi " + usersState.user.displayName}
+             content={getContent()}
              visible={open}
              trigger="click">
       {avatarUrl ? <StyledAntAvatar src={avatarUrl} {...props} size={40}
                                     onClick={() => setOpen(!open)}
-      /> : <StyledAntAvatar {...props} size={40} onClick={() => setOpen(!open)}
-      />}
+        /> :
+        <StyledAntAvatar {...props} size={40} onClick={() => setOpen(!open)}
+        />}
     </Popover>
-  
   );
 };
 
@@ -61,6 +64,16 @@ const StyledAntAvatar = styled(Avatar)`
     right: 8%;
     transform: translate(0, -50%);
   }
+`;
+
+const AvatarMenu = styled.div`
+background: #A8D6CC;
+width: 100%;
+p {
+  padding: 10px;
+  font-weight: bold;
+  color: #00352A;
+}
 `;
 
 NavBarAvatar.propTypes = {
