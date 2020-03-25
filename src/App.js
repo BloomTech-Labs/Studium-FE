@@ -45,10 +45,12 @@ export default function App(props){
     <StyledApp className="App">
       {theme.BRAIN_SVG !== THEMING_VALUES.HIDDEN &&
       <SvgBrainPic
-        maxWidth={"1500px"}
-        maxHeight={"1500px"}
-        height={"1500px"}
-        width={"1500px"} left={"50%"} transform={"translate(-50%, 0)"}
+        maxWidth={"1800px"}
+        maxHeight={"1800px"}
+        height={"1800px"}
+        width={"1800px"}
+        left={"50%"}
+        transform={"translate(-50%, 0)"}
         fill={getValue(THEMING_VARIABLES.BACKGROUND,
           {
             [THEMING_VALUES.DARK]: theme.themeState.brainPicDark,
@@ -58,7 +60,7 @@ export default function App(props){
         top={
           getValue(THEMING_VARIABLES.BRAIN_SVG, {
             [THEMING_VALUES.BOTTOM]: "600PX",
-            [THEMING_VALUES.TOP]: "146px",
+            [THEMING_VALUES.TOP]: "50px",
           })}
       />
       }

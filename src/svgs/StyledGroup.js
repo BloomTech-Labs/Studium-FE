@@ -43,7 +43,7 @@ const StyledGroup = (props) => {
   }, []);
   
   const addConnected = (ref) => {
-    debugger;
+  
   };
   
   const getConnectedElements = (ref) => {

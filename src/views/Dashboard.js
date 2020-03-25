@@ -31,27 +31,25 @@ export const Dashboard = props => {
     theme,
   } = useAppHooks("Dashboard");
   const search = e => {
-    console.log(e.target.value);
+  
   };
   
   useEffect(() => {
-    console.log("dispatching getUserDecks action ||");
+    
     dispatch(getUserDecks(usersState.user.uid));
   }, []);
-  
-  console.log("decksState from dashboard ||", decksState.decks);
   
   const changeDeckSelected = deck => {
     setSelected(deck);
   };
   
   const deckClicked = (deck = undefined) => {
-    console.log("Inside of deck clicked.");
+    
     if(!deck){
       changePath("/create/deck");
       return;
     }
-    changePath("/preview", {...deck});
+    changePath("/preview", deck);
   };
   
   const getAlert = () => {

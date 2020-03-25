@@ -22,7 +22,7 @@ const StyledPath = (props) => {
   };
   
   const addConnected = (box) => {
-    debugger;
+  
   };
   
   //  if(!props.id.includes("mask")){
