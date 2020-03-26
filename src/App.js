@@ -48,8 +48,17 @@ export default function App(props){
       <SvgBrainPic
         maxWidth={"1500px"}
         maxHeight={"1500px"}
-        height={"1500px"}
-        width={"1500px"} left={"50%"} transform={"translate(-50%, 0)"}
+        height={getValue(THEMING_VARIABLES.BRAIN_SVG, {
+          [THEMING_VALUES.BOTTOM]: "1500px",
+          [THEMING_VALUES.TOP]: "1500px",
+          [THEMING_VALUES.MOBILE]: "624px",
+        })}
+        width={getValue(THEMING_VARIABLES.BRAIN_SVG, {
+          [THEMING_VALUES.BOTTOM]: "1500px",
+          [THEMING_VALUES.TOP]: "1500px",
+          [THEMING_VALUES.MOBILE]: "624px",
+        })} 
+        left={"50%"} transform={"translate(-50%, 0)"}
         fill={getValue(THEMING_VARIABLES.BACKGROUND,
           {
             [THEMING_VALUES.DARK]: THEME.brainPicDark,
@@ -59,7 +68,9 @@ export default function App(props){
         top={getValue(THEMING_VARIABLES.BRAIN_SVG, {
           [THEMING_VALUES.BOTTOM]: "600PX",
           [THEMING_VALUES.TOP]: "146px",
+          [THEMING_VALUES.MOBILE]: "624px",
         })}
+        
       />
       }
       {alertMessage && (

@@ -84,7 +84,7 @@ export const THEME = {
   synapsDark: "#36405C",
   synapsLight: "#FFFFFF",
   
-  brainPicDark: "#36405C",
+  brainPicDark: "#164172",
   brainPicLight: "#EEECE8",
   
 };
