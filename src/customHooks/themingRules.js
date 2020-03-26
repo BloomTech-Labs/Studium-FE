@@ -27,6 +27,7 @@ export const THEMING_VALUES = {
   LIGHT: "LIGHT",
   BOTTOM: "BOTTOM",
   TOP: "TOP",
+  MOBILE: 'MOBILE'
 };
 
 /**
@@ -129,7 +130,7 @@ export const getThemingRules = () => [
       APP_PATHS.TESTING,
     ],
     APP_VIEW_DESKTOP,
-  ), createRule(THEMING_VARIABLES.BRAIN_SVG, THEMING_VALUES.BOTTOM,
+  ), createRule(THEMING_VARIABLES.BRAIN_SVG, THEMING_VALUES.MOBILE,
     [
       APP_PATHS.SIGN_UP_PATH, APP_PATHS.SIGN_IN_PATH,
     ],

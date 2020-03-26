@@ -15,101 +15,106 @@ import {MEDIA_QUERIES, SIZES} from "../utilities/constants.js";
  * @component
  * @example return (<SignIn />);
  */
-export function SignIn(props){
-  const {dispatch, theme, pathname, appView, height} = useAppHooks("SignIn");
-  const [info, setInfo] = useState({email: "", password: "", error: {}});
-  
+export function SignIn(props) {
+  const {dispatch, theme, pathname, appView, height} = useAppHooks('SignIn');
+  const [info, setInfo] = useState({email: '', password: '', error: {}});
+
   const handleChange = e => {
     setInfo({...info, [e.target.name]: e.target.value});
   };
-  
+
   const handleSignInClick = type => {
-    if(type === EMAIL_PROVIDER){
-      if(info.email !== "" && info.password !== ""){
+    if (type === EMAIL_PROVIDER) {
+      if (info.email !== '' && info.password !== '') {
         dispatch(signIn(EMAIL_PROVIDER, info.email, info.password));
-      }else{
-        if(info.email === ""){
+      } else {
+        if (info.email === '') {
           setInfo({
             ...info,
-            error: {email: "You must enter a email address."},
+            error: {email: 'You must enter a email address.'},
           });
-        }else{
+        } else {
           setInfo({
             ...info,
             error: {
-              password: "You must first enter a password.",
+              password: 'You must first enter a password.',
             },
           });
         }
       }
-    }else{
+    } else {
       dispatch(signIn(GOOGLE_PROVIDER));
     }
   };
-  
+
   return (
-    <StyledSignIn data-testid={"sign-in-container"}>
-      <SvgSynapsLogoText fill={theme.BACKGROUND === THEMING_VALUES.DARK ?
-        theme.themeState.navBarLight : theme.themeState.navBarDark}/>
-      
+    <StyledSignIn data-testid={'sign-in-container'}>
+      <SvgSynapsLogoText
+        height={'100px'}
+        width={'250xp'}
+        margin={'70px 0 0 0'}
+        fill={
+          theme.BACKGROUND === THEMING_VALUES.DARK
+            ? theme.themeState.navBarLight
+            : theme.themeState.navBarDark
+        }
+      />
+
       <StyledH2>Hey! Welcome Back.</StyledH2>
       <div>
         <StyledBtn
           style={{
-            color: "#fff",
-            backgroundColor: "#36405C",
-            margin: "0 0 1.5em",
-            padding: "0 2em 0",
-            width: "352px",
-            height: "72px",
+            color: '#fff',
+            backgroundColor: '#36405C',
+            margin: '0 0 1.5em',
+            padding: '0 2em 0',
+            width: '260px',
+            height: '60px',
           }}
-          icon={"google"}
-          text={"Log In with Google"}
-          shape={"round"}
-          size={"large"}
+          icon={'google'}
+          text={'Log In with Google'}
+          shape={'round'}
+          size={'large'}
           onClick={e => handleSignInClick(GOOGLE_PROVIDER)}
         />
       </div>
-      
-      <StyledBorder/>
-      
+
+      <StyledBorder />
+
       <StyledFormInput>
         <FormInput
-          name={"email"}
+          name={'email'}
           onChange={handleChange}
           value={info.email}
           block={false}
-          label={"Email Address"}
+          label={'Email Address'}
           bordered={false}
         />
         <FormInput
-          name={"password"}
+          name={'password'}
           onChange={handleChange}
           value={info.password}
           block={true}
-          label={"Password"}
+          label={'Password'}
           bordered={false}
         />
-      
-      
       </StyledFormInput>
-      
+
       <StyledBtn2
         style={{
-          width: "352px",
-          height: "72px",
-          backgroundColor: "#0C2545",
-          margin: "0 0 1.5em",
-          padding: "0 2em 0",
-          border: "2px solid #fff",
+          width: '260px',
+          height: '72px',
+          backgroundColor: '#0C2545',
+          margin: '0 0 1.5em',
+          padding: '0 2em 0',
+          border: '2px solid #fff',
         }}
-        text={"Continue with Email"}
-        shape={"round"}
-        size={"large"}
-        type={"darkgray"}
+        text={'Continue with Email'}
+        shape={'round'}
+        size={'large'}
+        type={'darkgray'}
         onClick={e => handleSignInClick(EMAIL_PROVIDER)}
       />
-    
     </StyledSignIn>
   );
 }
@@ -130,15 +135,15 @@ const StyledBtn = styled(SynapsButton)`
     display: flex;
     justify-content: space-evenly;
     .anticon.anticon-google {
-      margin-top: 17px;
+      margin-top: 15px;
       font-size: 32px;
     }
     span {
       font-style: normal;
       font-weight: bold;
-      font-size: 24px;
+      font-size: 21px;
       line-height: 24px;
-      margin-top: 21px;
+      margin: auto 10px;
     }
   }
 `;
@@ -162,7 +167,6 @@ const StyledFormInput = styled.div`
 `;
 
 const StyledSignIn = styled.div`
-  
   display: flex;
   flex-direction: column;
   text-align: center;
