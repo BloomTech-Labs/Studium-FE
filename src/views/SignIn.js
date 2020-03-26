@@ -1,13 +1,13 @@
-import React, {useState} from "react";
-import {FormInput, SynapsButton, SvgContainer} from "../components";
-import SvgSynapsLogoText from "../svgComponents/SvgSynapsLogoText.js";
-import SvgComponent from "../images/svgBrainPic/brainpic";
-import {ReactComponent as svg} from "../images/SmallWhiteLogo.svg";
-import styled from "styled-components";
-import {signIn, GOOGLE_PROVIDER, EMAIL_PROVIDER} from "../actions";
-import {useAppHooks} from "../customHooks/useAppHooks.js";
-import {THEMING_VALUES} from "../customHooks/themingRules.js";
-import {MEDIA_QUERIES, SIZES} from "../utilities/constants.js";
+import React, {useState} from 'react';
+import {FormInput, SynapsButton, SvgContainer} from '../components';
+import SvgSynapsLogoText from '../svgComponents/SvgSynapsLogoText.js';
+import SvgComponent from '../images/svgBrainPic/brainpic';
+import {ReactComponent as svg} from '../images/SmallWhiteLogo.svg';
+import styled from 'styled-components';
+import {signIn, GOOGLE_PROVIDER, EMAIL_PROVIDER} from '../actions';
+import {useAppHooks} from '../customHooks/useAppHooks.js';
+import {THEMING_VALUES} from '../customHooks/themingRules.js';
+import {MEDIA_QUERIES, SIZES} from '../utilities/constants.js';
 
 /**
  * Sign In
@@ -103,7 +103,7 @@ export function SignIn(props) {
       <StyledBtn2
         style={{
           width: '260px',
-          height: '72px',
+          height: '60px',
           backgroundColor: '#0C2545',
           margin: '0 0 1.5em',
           padding: '0 2em 0',
@@ -124,8 +124,9 @@ const StyledBtn2 = styled(SynapsButton)`
     span {
       font-style: normal;
       font-weight: bold;
-      font-size: 24px;
+      font-size: 21px;
       line-height: 24px;
+      margin: auto 0;
     }
   }
 `;
@@ -149,8 +150,17 @@ const StyledBtn = styled(SynapsButton)`
 `;
 
 const StyledFormInput = styled.div`
-  width: 345px;
-  margin: 0px 0px 0px 45px;
+  width: 255px;
+  margin: 10px;
+  background-color: transparent;
+  .ant-input.sc-fzplWN.hgfzoL {
+    background: transparent;
+    color: #fff;
+  }
+  & label {
+    color: #fff;
+  }
+
   @media ${MEDIA_QUERIES.tablet} {
     & label {
       color: #fff;
@@ -175,7 +185,7 @@ const StyledSignIn = styled.div`
   height: 100%;
   width: 100%;
   @media ${MEDIA_QUERIES.desktop} {
-  height: 100%;
+    height: 100%;
   }
 `;
 
@@ -196,7 +206,7 @@ const StyledH2 = styled.h2`
 
 const StyledBorder = styled.span`
   width: 90%;
-  border-bottom: 2px dashed #ccc;
+  border-bottom: 2px dashed #000;
   margin: 0 0 1.5em;
   @media screen and ${MEDIA_QUERIES.tablet} {
     width: 1144px;
