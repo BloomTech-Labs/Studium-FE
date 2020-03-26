@@ -19,7 +19,7 @@ export const PreviewDeck = ({getHooks}) => {
     "PreviewDeck");
   
   useEffect(() => {
-    debugger;
+    
     if(pathPushedState === undefined){
     
     }else{

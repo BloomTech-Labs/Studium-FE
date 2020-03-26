@@ -47,6 +47,7 @@ export default function App(props){
         width={"1800px"}
         left={"50%"}
         transform={"translate(-50%, 0)"}
+        style={{minWidth: "100%"}}
         fill={getValue(THEMING_VARIABLES.BACKGROUND,
           {
             [THEMING_VALUES.DARK]: theme.themeState.brainPicDark,
@@ -56,7 +57,7 @@ export default function App(props){
         top={
           getValue(THEMING_VARIABLES.BRAIN_SVG, {
             [THEMING_VALUES.BOTTOM]: "600PX",
-            [THEMING_VALUES.TOP]: "50px",
+            [THEMING_VALUES.TOP]: "70px",
           })}
       />
       }
