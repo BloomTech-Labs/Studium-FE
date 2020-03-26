@@ -12,6 +12,25 @@ body {
     height: 100%;
 }
 
+.ant-popover-inner > div {
+    background: #4CB69F;
+}
+
+.ant-popover-inner > div > .ant-popover-inner-content {
+    padding: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ant-popover-inner > div > .ant-popover-title {
+    color: white;
+    font-weight: bold;
+    line-height: 22px;
+    padding: 10px;
+}
+
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

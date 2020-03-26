@@ -7,6 +7,8 @@ import {CardEditDeleteIcons} from '../Icon/CardEditDeleteIcons.js';
 import propTypes from 'prop-types';
 
 export const CreateCard = ({
+  changeHandler,
+  value,
   highlighted,
   visible,
   text,
@@ -24,8 +26,7 @@ export const CreateCard = ({
         <TextArea
           clickHandler={clickHandler}
           drillName={drillName}
-          onChange={props.onChange}
-          value={props.value || ''}
+          onChange={changeHandler}
           placeholder={'Start typing...'}
         />
         <Uploader />

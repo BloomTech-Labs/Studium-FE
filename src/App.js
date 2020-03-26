@@ -4,19 +4,14 @@ import {NavBar, Footer, RouteContainer} from "./components";
 import {SvgBrainPic} from "./svgComponents";
 import PropTypes from "prop-types";
 import {Alert} from "antd";
-import {
-  useAppHooks,
-  mediaQueries,
-} from "./customHooks/useAppHooks.js";
+import {useAppHooks} from "./customHooks/useAppHooks.js";
 import {useAuthStateChange} from "./customHooks/useAuthStateChange.js";
-import {SynapsBrain} from "./components";
 import {
   THEMING_VARIABLES, THEMING_VALUES,
 } from "./customHooks/themingRules.js";
 import theming from "styled-theming";
 import {useTheming} from "./customHooks/useTheming.js";
-import SvgComponent from "./images/svgBrainPic/brainpic.js";
-import {APP_VIEW_DESKTOP, THEME} from "./utilities/constants.js";
+import {MEDIA_QUERIES} from "./utilities/constants.js";
 
 /**
  * App
@@ -26,15 +21,15 @@ import {APP_VIEW_DESKTOP, THEME} from "./utilities/constants.js";
  */
 export default function App(props){
   const [alertMessage, setAlert] = useState("");
-  const {theme, usersState, pathname, appView} = useAppHooks("App");
+  const {theme, usersState, pathname, appView, getHooks} = useAppHooks("App");
   const getValue = useTheming("App.js");
   
   const logger = props.logger;
   
   useEffect(() => {
-    logger.logInfo("App view rendered.");
+    logger.logVerbose("App view rendered.");
   }, []);
-  useAuthStateChange();
+  useAuthStateChange(getHooks);
   
   useEffect(() => {
     if(usersState.registerError && !alertMessage){
@@ -61,8 +56,8 @@ export default function App(props){
         left={"50%"} transform={"translate(-50%, 0)"}
         fill={getValue(THEMING_VARIABLES.BACKGROUND,
           {
-            [THEMING_VALUES.DARK]: THEME.brainPicDark,
-            [THEMING_VALUES.LIGHT]: THEME.brainPicLight,
+            [THEMING_VALUES.DARK]: theme.themeState.brainPicDark,
+            [THEMING_VALUES.LIGHT]: theme.themeState.brainPicLight,
           },
         )}
         top={getValue(THEMING_VARIABLES.BRAIN_SVG, {
@@ -86,9 +81,9 @@ export default function App(props){
           }}
         />
       )}
-      <NavBar/>
-      <RouteContainer/>
-      <Footer/>
+      <NavBar getHooks={getHooks}/>
+      <RouteContainer getHooks={getHooks}/>
+      <Footer getHooks={getHooks}/>
     </StyledApp>
   );
 }
@@ -102,7 +97,6 @@ const backgroundColor = theming(THEMING_VARIABLES.BACKGROUND, {
   [THEMING_VALUES.DARK]: ({theme}) => {
     return theme.themeState.primaryColor;
   }, [THEMING_VALUES.LIGHT]: ({theme}) => {
-    
     return theme.themeState.navBarLight;
   },
 });
@@ -123,7 +117,7 @@ background: ${backgroundColor};
   min-height: 100vh;
   overflow: hidden;
 
-  @media ${mediaQueries.tablet} {
+  @media ${MEDIA_QUERIES.tablet} {
   
   }
 `;

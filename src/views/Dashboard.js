@@ -7,10 +7,11 @@ import {
   PreviewDeckCards,
 } from "../components";
 import PropTypes from "prop-types";
-import {useAppHooks, mediaQueries, sizes} from "../customHooks/useAppHooks.js";
+import {useAppHooks} from "../customHooks/useAppHooks.js";
 import {getUserDecks} from "../actions";
 import {Alert} from "antd";
 import {SvgSnapsOutline} from "../svgComponents";
+import {APP_VIEW_MOBILE, MEDIA_QUERIES, SIZES} from "../utilities/constants.js";
 
 /**
  * Dashboard
@@ -18,23 +19,23 @@ import {SvgSnapsOutline} from "../svgComponents";
  * @component
  * @example return (<Dashboard />);
  */
-export const Dashboard = props => {
+export const Dashboard = ({getHooks}) => {
   const [selected, setSelected] = useState(0);
   
   const {
-    pathname,
+    appView,
     changePath,
     dispatch,
     usersState,
     decksState,
     theme,
-  } = useAppHooks("Dashboard");
+  } = getHooks("Dashboard");
   const search = e => {
-    console.log(e.target.value);
+  
   };
   
   useEffect(() => {
-    console.log("dispatching getUserDecks action ||");
+    
     dispatch(getUserDecks(usersState.user.uid));
   }, []);
   
@@ -43,12 +44,12 @@ export const Dashboard = props => {
   };
   
   const deckClicked = (deck = undefined) => {
-    console.log("Inside of deck clicked.");
+    
     if(!deck){
       changePath("/create/deck");
       return;
     }
-    changePath("/preview", {...deck});
+    changePath("/preview", deck);
   };
   
   const getAlert = () => {
@@ -62,21 +63,22 @@ export const Dashboard = props => {
   
   return (
     <StyledDashboard className={"dashboard"}>
-      {theme.screenWidth <= sizes.tablet && (
-        <>
-          <TitleText text={"Dashboard"}/>
-          <SearchBar
-            theme={theme}
-            onSearch={search}
-            style={{
-              marginTop: "8px",
-              marginBottom: "33px",
-              width: "80%",
-              marginLeft: "10%",
-            }}
-          />
-        </>
-      )}
+      {appView === APP_VIEW_MOBILE &&
+      <>
+        <TitleText text={"Dashboard"}/>
+        <SearchBar
+          theme={theme}
+          onSearch={search}
+          style={{
+            marginTop: "8px",
+            marginBottom: "33px",
+            width: "80%",
+            marginLeft: "10%",
+            height: "37px",
+          }}
+        />
+      </>
+      }
       
       {getAlert()}
       <StyledDeckHolder className={"deck-container"}>
@@ -84,7 +86,6 @@ export const Dashboard = props => {
           border={"dashed"}
           icon={"plus"}
           onClick={e => deckClicked()}
-        
         />
         {decksState.decks.map(deck => {
           return (
@@ -96,7 +97,6 @@ export const Dashboard = props => {
             />
           );
         })}
-      
       </StyledDeckHolder>
     </StyledDashboard>
   );
@@ -117,14 +117,13 @@ const StyledDeckHolder = styled.div`
 const StyledDashboard = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 100%;
-  max-width: 100%;
+  max-width: 1140px;
   height: 100%;
+  width: 100%;
 
-  @media screen and ${mediaQueries.tablet} {
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    left: 0;
+  @media screen and ${MEDIA_QUERIES.tablet} {
+    background: #FFFFFF;
+    margin-top: 65px;
+    border-radius: 10px;
   }
 `;

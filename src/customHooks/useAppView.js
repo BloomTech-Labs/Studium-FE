@@ -1,7 +1,9 @@
 import React, {useContext, useEffect} from "react";
-import {AppHooksContext, sizes, useAppHooks} from "./useAppHooks.js";
+import {AppHooksContext, useAppHooks} from "./useAppHooks.js";
 import {useComparPrevContext} from "./useComparPrevContext.js";
-import {APP_VIEW_DESKTOP, APP_VIEW_MOBILE} from "../utilities/constants.js";
+import {
+  APP_VIEW_DESKTOP, APP_VIEW_MOBILE, SIZES,
+} from "../utilities/constants.js";
 
 export const APP_VIEW_DEBUG_NAME = "Use App View";
 
@@ -21,14 +23,14 @@ export const useAppView = () => {
    */
   useEffect(() => {
     
-    logger.logInfo("Height and or width changed.");
+    logger.logVerbose("Height and or width changed/.");
     compareContext({appView, height, width});
     
-    if(width > sizes.tablet && appView !== APP_VIEW_DESKTOP){
+    if(width > SIZES.tablet && appView !== APP_VIEW_DESKTOP){
       logger.logInfo("Changing app view to DESKTOP");
       setHookVariable("appView", APP_VIEW_DESKTOP);
       
-    }else if(width <= sizes.tablet && appView !==
+    }else if(width <= SIZES.tablet && appView !==
       APP_VIEW_MOBILE){
       logger.logInfo("Changing app view to MOBILE");
       setHookVariable("appView", APP_VIEW_MOBILE);

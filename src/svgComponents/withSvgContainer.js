@@ -38,8 +38,8 @@ const withSvgContainer = (Svg) => {
   
   const SvgContainer = ({
     margin = "0 auto", backgroundColor = "transparent", containerPosition = "relative",
-    height = "100%", width = "100%", zIndex = "1", svgWidth = "100%", top = "0", left = "0",
-    maxHeight = "unset", maxWidth = "100%", transform,
+    height = "100%", width = "100%", zIndex = 1, svgWidth = "100%", top = "0", left = "0",
+    maxHeight = "100%", maxWidth = "100%", transform, onClick,
     svgHeight = "100%", svgFill, svgBackground, svgOpacity = "1", ...props
   }) => {
     
@@ -49,7 +49,7 @@ const withSvgContainer = (Svg) => {
                     maxHeight={maxHeight} maxWidth={maxWidth}
                     height={height} backgroundColor={backgroundColor}
                     zIndex={zIndex} id={"svg-container"}
-                    overFlowY={"visible"}
+                    overFlowY={"visible"} onClick={onClick}
                     overFlowX={"visible"}
                     transform={transform}
       >

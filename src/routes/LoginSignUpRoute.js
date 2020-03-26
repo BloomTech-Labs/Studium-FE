@@ -24,12 +24,12 @@ export const LoginSignUpRoute = ({component: Component, ...rest}) => {
       render={props => {
         try{
           if(usersState.user.uid){
-            return <Redirect to={"/dashboard"} {...props} />;
+            return <Redirect to={"/dashboard"} {...rest} />;
           }else{
-            return <Component {...props} />;
+            return <Component {...props} {...rest} />;
           }
         }catch(e){
-          return <Component {...props} />;
+          return <Component {...props} {...rest}/>;
         }
       }}
     />

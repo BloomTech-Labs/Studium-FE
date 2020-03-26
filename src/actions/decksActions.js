@@ -10,7 +10,6 @@ export const getDecks = uid => dispatch => {
   createAxiosAuth(uid)
     .get('/api/decks')
     .then(res => {
-      console.log('getDecks -> res', res);
       dispatch({type: RETRIEVE_DECKS_SUCCESS, payload: res.data});
     })
     .catch(error => {
@@ -32,6 +31,7 @@ export const postDeck = (uid, newDeck) => dispatch => {
     .post('/api/decks', newDeck)
     .then(res => {
       dispatch({type: POSTING_DECK_SUCCESS, payload: res.data});
+      console.log('|||posted new deck|||');
     })
     .catch(error => {
       dispatch({
@@ -87,12 +87,13 @@ export const RETRIEVE_USER_DECKS_SUCCESS = 'RETRIEVE_USER_DECKS_SUCCESS';
 export const RETRIEVE_USER_DECKS_FAILURE = 'RETRIEVE_USER_DECKS_FAILURE';
 
 export const getUserDecks = uid => dispatch => {
+  console.log('|| GETUSERDECKS FUNCTION CALLED ||');
   dispatch({type: RETRIEVE_USER_DECKS_START});
   createAxiosAuth(uid)
     .get('/api/decks/user')
     .then(res => {
-      console.log('payload from .then ||', res.data);
       dispatch({type: RETRIEVE_USER_DECKS_SUCCESS, payload: res.data});
+      console.log('got users decks ||', res.data);
     })
     .catch(error => {
       dispatch({

@@ -24,10 +24,10 @@ export const SYNAPS_CONFIG = {
   showLogsFromOtherPeople: true,
   debugLogLevel: LOG_TYPES.VERBOSE,
   debugError: null,
-  groupLogsTogether: false,
+  groupLogsTogether: true,
   collapseLogGroups: false,
   useAppLogger: true,
-  useTrace: false,
+  useTrace: true,
 };
 
 const empty = [
