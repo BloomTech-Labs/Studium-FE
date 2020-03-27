@@ -61,7 +61,7 @@ export default function App(props){
           },
         )}
         top={getValue(THEMING_VARIABLES.BRAIN_SVG, {
-          [THEMING_VALUES.BOTTOM]: "600PX",
+          [THEMING_VALUES.BOTTOM]: "800px",
           [THEMING_VALUES.TOP]: "146px",
           [THEMING_VALUES.MOBILE]: "624px",
         })}

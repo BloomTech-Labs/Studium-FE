@@ -50,9 +50,11 @@ export function SignIn(props) {
   return (
     <StyledSignIn data-testid={'sign-in-container'}>
       <SvgSynapsLogoText
-        height={'100px'}
-        width={'250xp'}
-        margin={'70px 0 0 0'}
+        height={'176px'}
+        width={'614px'}
+        maxHeight={'1000px'}
+        maxWidth={'1000px'}
+        margin={'10px 0 0 0'}
         fill={
           theme.BACKGROUND === THEMING_VALUES.DARK
             ? theme.themeState.navBarLight
@@ -63,14 +65,6 @@ export function SignIn(props) {
       <StyledH2>Hey! Welcome Back.</StyledH2>
       <div>
         <StyledBtn
-          style={{
-            color: '#fff',
-            backgroundColor: '#36405C',
-            margin: '0 0 1.5em',
-            padding: '0 2em 0',
-            width: '260px',
-            height: '60px',
-          }}
           icon={'google'}
           text={'Log In with Google'}
           shape={'round'}
@@ -101,14 +95,6 @@ export function SignIn(props) {
       </StyledFormInput>
 
       <StyledBtn2
-        style={{
-          width: '260px',
-          height: '60px',
-          backgroundColor: '#0C2545',
-          margin: '0 0 1.5em',
-          padding: '0 2em 0',
-          border: '2px solid #fff',
-        }}
         text={'Continue with Email'}
         shape={'round'}
         size={'large'}
@@ -121,12 +107,25 @@ export function SignIn(props) {
 
 const StyledBtn2 = styled(SynapsButton)`
   && {
+    width: 260px;
+    height: 60px;
+    background-color: transparent;
+    margin: 0 0 1.5em;
+    padding: 0 2em 0;
+    border: 2px solid #fff;
     span {
       font-style: normal;
       font-weight: bold;
       font-size: 21px;
       line-height: 24px;
       margin: auto 0;
+    }
+
+    @media ${MEDIA_QUERIES.tablet} {
+      width: 352px;
+      height: 62px;
+      span {
+      }
     }
   }
 `;
@@ -135,6 +134,12 @@ const StyledBtn = styled(SynapsButton)`
   && {
     display: flex;
     justify-content: space-evenly;
+    color: #fff;
+    background-color: #36405c;
+    margin: 0 0 1.5em;
+    padding: 0 2em 0;
+    width: 260px;
+    height: 60px;
     .anticon.anticon-google {
       margin-top: 15px;
       font-size: 32px;
@@ -145,6 +150,11 @@ const StyledBtn = styled(SynapsButton)`
       font-size: 21px;
       line-height: 24px;
       margin: auto 10px;
+    }
+
+    @media ${MEDIA_QUERIES.tablet} {
+      width: 352px;
+      height: 62px;
     }
   }
 `;
