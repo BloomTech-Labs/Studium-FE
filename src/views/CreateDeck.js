@@ -47,10 +47,10 @@ export const CreateDeck = props => {
     }
   };
 
-  useEffect(() => {
-    console.log('||||logger from useEffect||||', newDeck);
-    console.log('||||logger from useEffect||||', newCard);
-  }, [newDeck, newCard]);
+  // useEffect(() => {
+  //   console.log('||||logger from useEffect||||', newDeck);
+  //   console.log('||||logger from useEffect||||', newCard);
+  // }, [newDeck, newCard]);
 
   const clickHandler = e => {
     e.preventDefault();
@@ -113,6 +113,8 @@ export const CreateDeck = props => {
         deck_id: decksState.decks[decksState.decks.length - 1].deck_id,
       });
     }, 500);
+
+    // dispatch()
   };
 
   return (
@@ -134,6 +136,7 @@ export const CreateDeck = props => {
       </CardNameContainer>
       <CreateCardContainer>
         <CreateCard
+          id={1}
           changeHandler={changeHandler}
           name={'newCardQuestion'}
           drillName={'question'}
@@ -144,6 +147,7 @@ export const CreateDeck = props => {
           value={newCard.question}
         />
         <CreateCard
+          id={2}
           changeHandler={changeHandler}
           name={'newCardAnswer'}
           drillName={'answer'}
