@@ -71,17 +71,16 @@ export const cardsReducer = (state = initialState, action) => {
     case GET_ALL_CARDS_FOR_DECK_INIT:
       return {...state, isLoading: true, error: null};
     case GET_ALL_CARDS_FOR_DECK_SUCCESS:
-      
       return {
         ...state,
-        cards: [...state.cards, ...action.payload],
-        isLoading: true,
+        cards: action.payload,
+        isLoading: false,
         error: null,
       };
     case GET_ALL_CARDS_FOR_DECK_FAIL:
       return {...state, isLoading: false, error: action.payload};
     case CREATE_CARD_INIT:
-      return {...state, isLoading: true, error: null};
+      return {...state, creatingCard: true, error: null};
     case CREATE_CARD_SUCCESS:
       return {
         ...state,
@@ -102,11 +101,11 @@ export const cardsReducer = (state = initialState, action) => {
           }
           return card;
         }),
-        creatingCard: false,
+        deletingCard: false,
         error: null,
       };
-    case UPDATE_CARD_FAIL:
-      return {...state, updatingCard: false, error: action.payload};
+    case DELETE_CARD_FAIL:
+      return {...state, deletingCard: false, error: action.payload};
     case UPDATE_CARD_INIT:
       return {...state, updatingCard: true, error: null};
     case UPDATE_CARD_SUCCESS:
@@ -118,11 +117,11 @@ export const cardsReducer = (state = initialState, action) => {
           }
           return card;
         }),
-        deletingCard: false,
+        updatingCard: false,
         error: null,
       };
-    case DELETE_CARD_FAIL:
-      return {...state, deletingCard: false, error: action.payload};
+    case UPDATE_CARD_FAIL:
+      return {...state, updatingCard: false, error: action.payload};
     default:
       return state;
   }
