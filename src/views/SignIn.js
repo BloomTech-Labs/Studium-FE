@@ -1,13 +1,11 @@
 import React, {useState} from 'react';
 import {FormInput, SynapsButton, SvgContainer} from '../components';
 import SvgSynapsLogoText from '../svgComponents/SvgSynapsLogoText.js';
-import SvgComponent from '../images/svgBrainPic/brainpic';
-import {ReactComponent as svg} from '../images/SmallWhiteLogo.svg';
 import styled from 'styled-components';
 import {signIn, GOOGLE_PROVIDER, EMAIL_PROVIDER} from '../actions';
 import {useAppHooks} from '../customHooks/useAppHooks.js';
 import {THEMING_VALUES} from '../customHooks/themingRules.js';
-import {MEDIA_QUERIES, SIZES} from '../utilities/constants.js';
+import {APP_PATHS, MEDIA_QUERIES, SIZES} from '../utilities/constants.js';
 
 /**
  * Sign In
@@ -16,9 +14,11 @@ import {MEDIA_QUERIES, SIZES} from '../utilities/constants.js';
  * @example return (<SignIn />);
  */
 export function SignIn(props) {
-  const {dispatch, theme, pathname, appView, height} = useAppHooks('SignIn');
+  const {dispatch, theme, path, appView, height} = useAppHooks('SignIn');
   const [info, setInfo] = useState({email: '', password: '', error: {}});
 
+  console.log('APP_PATHS', APP_PATHS);
+  console.log('path', path);
   const handleChange = e => {
     setInfo({...info, [e.target.name]: e.target.value});
   };
@@ -47,6 +47,20 @@ export function SignIn(props) {
     }
   };
 
+  const switchWelcomeTitle = () => {
+    if (path === '/signin') {
+      return <StyledH2>Hey! Welcome Back.</StyledH2>;
+    } else {
+      return (
+        <StyledH2
+          style={{
+            display: 'none',
+          }}
+        ></StyledH2>
+      );
+    }
+  };
+
   return (
     <StyledSignIn data-testid={'sign-in-container'}>
       <SvgSynapsLogoText
@@ -62,7 +76,7 @@ export function SignIn(props) {
         }
       />
 
-      <StyledH2>Hey! Welcome Back.</StyledH2>
+      {switchWelcomeTitle()}
       <div>
         <StyledBtn
           icon={'google'}
