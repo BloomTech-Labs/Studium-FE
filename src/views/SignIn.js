@@ -4,8 +4,13 @@ import SvgSynapsLogoText from '../svgComponents/SvgSynapsLogoText.js';
 import styled from 'styled-components';
 import {signIn, GOOGLE_PROVIDER, EMAIL_PROVIDER} from '../actions';
 import {useAppHooks} from '../customHooks/useAppHooks.js';
-import {THEMING_VALUES} from '../customHooks/themingRules.js';
-import {APP_PATHS, MEDIA_QUERIES, SIZES} from '../utilities/constants.js';
+import theming from 'styled-theming';
+import {useTheming} from '../customHooks/useTheming.js';
+import {
+  THEMING_VALUES,
+  THEMING_VARIABLES,
+} from '../customHooks/themingRules.js';
+import {THEME, MEDIA_QUERIES, SIZES} from '../utilities/constants.js';
 
 /**
  * Sign In
@@ -14,11 +19,12 @@ import {APP_PATHS, MEDIA_QUERIES, SIZES} from '../utilities/constants.js';
  * @example return (<SignIn />);
  */
 export function SignIn(props) {
-  const {dispatch, theme, path, appView, height} = useAppHooks('SignIn');
+  const {dispatch, theme, path, appView, height, getHooks} = useAppHooks(
+    'SignIn'
+  );
   const [info, setInfo] = useState({email: '', password: '', error: {}});
+  const getValue = useTheming('App.js');
 
-  console.log('APP_PATHS', APP_PATHS);
-  console.log('path', path);
   const handleChange = e => {
     setInfo({...info, [e.target.name]: e.target.value});
   };
@@ -63,17 +69,25 @@ export function SignIn(props) {
 
   return (
     <StyledSignIn data-testid={'sign-in-container'}>
-      <SvgSynapsLogoText
-        height={'176px'}
-        width={'614px'}
+      <SvgSynapsLogoText 
         maxHeight={'1000px'}
         maxWidth={'1000px'}
         margin={'10px 0 0 0'}
         fill={
           theme.BACKGROUND === THEMING_VALUES.DARK
             ? theme.themeState.navBarLight
-            : theme.themeState.navBarDark
+            : theme.themeState.secondary4CB69F
         }
+        height={getValue(THEMING_VARIABLES.BRAIN_SVG, {
+          [THEMING_VALUES.BOTTOM]: '176px',
+          [THEMING_VALUES.TOP]: '1500px',
+          [THEMING_VALUES.MOBILE]: '150px',
+        })}
+        width={getValue(THEMING_VARIABLES.BRAIN_SVG, {
+          [THEMING_VALUES.BOTTOM]: '614px',
+          [THEMING_VALUES.TOP]: '1500px',
+          [THEMING_VALUES.MOBILE]: '300px',
+        })}
       />
 
       {switchWelcomeTitle()}
@@ -119,14 +133,24 @@ export function SignIn(props) {
   );
 }
 
+const switchText = theming(THEMING_VARIABLES.BACKGROUND, {
+  [THEMING_VALUES.DARK]: ({theme}) => {
+    return theme.themeState.white;
+  },
+  [THEMING_VALUES.LIGHT]: ({theme}) => {
+    return theme.themeState.primaryColor36405C;
+  },
+});
+
 const StyledBtn2 = styled(SynapsButton)`
   && {
+    color: ${switchText};
     width: 260px;
     height: 60px;
     background-color: transparent;
     margin: 0 0 1.5em;
     padding: 0 2em 0;
-    border: 2px solid #fff;
+    border: 2px solid ${switchText};
     span {
       font-style: normal;
       font-weight: bold;
@@ -138,7 +162,9 @@ const StyledBtn2 = styled(SynapsButton)`
     @media ${MEDIA_QUERIES.tablet} {
       width: 352px;
       height: 62px;
+      border: 2px solid ${switchText};
       span {
+        color: ${switchText};
       }
     }
   }
@@ -148,8 +174,8 @@ const StyledBtn = styled(SynapsButton)`
   && {
     display: flex;
     justify-content: space-evenly;
-    color: #fff;
-    background-color: #36405c;
+    color: ${THEME.white};
+    background-color: ${THEME.primaryColor36405C};
     margin: 0 0 1.5em;
     padding: 0 2em 0;
     width: 260px;
@@ -179,28 +205,27 @@ const StyledFormInput = styled.div`
   background-color: transparent;
   .ant-input.sc-fzplWN.hgfzoL {
     background: transparent;
-    color: #fff;
   }
   & label {
-    color: #fff;
+    color: ${switchText};
   }
 
   @media ${MEDIA_QUERIES.tablet} {
     & label {
-      color: #fff;
+      color: ${switchText};
       font-style: normal;
       font-weight: bold;
       font-size: 21px;
       line-height: 24px;
     }
-
     & input {
-      background-color: #0d2545;
+      background-color: ${THEME.primaryColor};
     }
   }
 `;
 
 const StyledSignIn = styled.div`
+  color: ${switchText};
   display: flex;
   flex-direction: column;
   text-align: center;
