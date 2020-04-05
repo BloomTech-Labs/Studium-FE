@@ -19,4 +19,3 @@ CreateDeck.propTypes = {};
 const StyledCreateDeck = styled.div`
   width: 100%;
 `;
-

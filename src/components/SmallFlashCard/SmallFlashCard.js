@@ -52,7 +52,7 @@ const StyledAntdCard = styled( Card )`
     font-weight: bold;
     width: 94px;
     height: 94px;
-    border-radius: 17px;
+    
     background-color: ${ props => {
   if( props.type === 'primary' ){
     return props.theme.mainColor;
