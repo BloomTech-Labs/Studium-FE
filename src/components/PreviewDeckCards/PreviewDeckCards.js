@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import PropTypes from "prop-types";
-import {Card, Icon} from "antd";
-import {CreateButton} from "../Button/CreateButton.js";
+import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import {Card, Icon} from 'antd';
+import {CreateButton} from '../Button/CreateButton.js';
 
 /**
  * Preview Deck Cards
@@ -36,35 +36,32 @@ export const PreviewDeckCards = ({
   loading,
   block,
   hoverEffect,
-  selected = "none",
+  selected = 'none',
   deck,
-  card,
-  type = "inner",
-  size = "default",
-  cardOrDeck = "deck",
+  type = 'inner',
+  size = 'default',
   ...props
 }) => (
   <StyledAntdCard
     type={type}
     size={size}
     icon={icon}
-    loading={loading && "loading"}
-    block={block && "block"}
+    loading={loading && 'loading'}
+    block={block && 'block'}
     {...props}
   >
-    {!deck && !card && (
-      <p className={"deck-text"} style={{marginBottom: "1.5rem"}}>
-        {cardOrDeck === "deck" ? "Add Deck": "Add Card"}
+    {!deck && (
+      <p className={'deck-text'} style={{marginBottom: '1.5rem'}}>
+        Add decks
       </p>
     )}
-    {!deck && !card && <CreateButton width={"55px"} height={"55px"}/>}
-    {deck && <p className={"deck-text"}>{deck}</p>}
-    {card && <p className={"deck-text"}>{card.question}</p>}
+    {!deck && <CreateButton width={'55px'} height={'55px'}/>}
+    {deck && <p className={'deck-text'}>{deck.deck_name}</p>}
     <Icon
-      type={"check-circle"}
+      type={'check-circle'}
       style={{
         display: selected,
-        position: "absolute",
+        position: 'absolute',
         // bottom: '5px',
         // right: '5px',
       }}
@@ -117,6 +114,6 @@ PreviewDeckCards.propTypes = {
   block: PropTypes.bool,
   hoverEffect: PropTypes.bool,
   deck: PropTypes.object,
-  type: PropTypes.oneOf(["inner"]),
-  size: PropTypes.oneOf(["default"]),
+  type: PropTypes.oneOf(['inner']),
+  size: PropTypes.oneOf(['default']),
 };

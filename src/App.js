@@ -24,26 +24,22 @@ export default function App(props){
   const {theme, usersState, pathname, appView, getHooks} = useAppHooks('App');
   const getValue = useTheming('App.js');
   
-export default function App(props) {
-  const [alertMessage, setAlert] = useState('');
-  const {theme, usersState, pathname, appView, getHooks} = useAppHooks('App');
-  const getValue = useTheming('App.js');
-
   const logger = props.logger;
-
+  
   useEffect(() => {
     logger.logVerbose('App view rendered.');
   }, []);
   useAuthStateChange(getHooks);
-
+  
   useEffect(() => {
     if(usersState.registerError && !alertMessage){
       setAlert('Error logging in. Please try again later.');
-    if (usersState.registerError && !alertMessage) {
-      setAlert('Error logging in. Please try again later.');
+      if(usersState.registerError && !alertMessage){
+        setAlert('Error logging in. Please try again later.');
+      }
     }
   }, [usersState]);
-
+  
   return (
     <StyledApp className="App">
       {theme.BRAIN_SVG !== THEMING_VALUES.HIDDEN &&
@@ -61,45 +57,13 @@ export default function App(props) {
           [THEMING_VALUES.MOBILE]: '624px',
         })}
         left={'50%'} transform={'translate(-50%, 0)'}
-        fill={getValue(THEMING_VARIABLES.BACKGROUND,
-          {
-      {theme.BRAIN_SVG !== THEMING_VALUES.HIDDEN && (
-        <SvgBrainPic
-          maxWidth={'1500px'}
-          maxHeight={'1500px'}
-          height={getValue(THEMING_VARIABLES.BRAIN_SVG, {
-            [THEMING_VALUES.BOTTOM]: '1500px',
-            [THEMING_VALUES.TOP]: '1500px',
-            [THEMING_VALUES.MOBILE]: '624px',
-          })}
-          width={getValue(THEMING_VARIABLES.BRAIN_SVG, {
-            [THEMING_VALUES.BOTTOM]: '1500px',
-            [THEMING_VALUES.TOP]: '1500px',
-            [THEMING_VALUES.MOBILE]: '624px',
-          })}
-          left={'50%'}
-          transform={'translate(-50%, 0)'}
-          fill={getValue(THEMING_VARIABLES.BACKGROUND, {
-            [THEMING_VALUES.DARK]: theme.themeState.brainPicDark,
-            [THEMING_VALUES.LIGHT]: theme.themeState.brainPicLight,
-          },
-        )}
-        top={
-          getValue(THEMING_VARIABLES.BRAIN_SVG, {
-            [THEMING_VALUES.BOTTOM]: '600PX',
-            [THEMING_VALUES.TOP]: '70px',
-            [THEMING_VALUES.MOBILE]: '624px',
-          })}
+        top={getValue(THEMING_VARIABLES.BRAIN_SVG, {
+          [THEMING_VALUES.BOTTOM]: '800px',
+          [THEMING_VALUES.TOP]: '146px',
+          [THEMING_VALUES.MOBILE]: '624px',
+        })}
       />
       }
-          })}
-          top={getValue(THEMING_VARIABLES.BRAIN_SVG, {
-            [THEMING_VALUES.BOTTOM]: '800px',
-            [THEMING_VALUES.TOP]: '146px',
-            [THEMING_VALUES.MOBILE]: '624px',
-          })}
-        />
-      )}
       {alertMessage && (
         <Alert
           type={'error'}
@@ -113,9 +77,9 @@ export default function App(props) {
           }}
         />
       )}
-      <NavBar getHooks={getHooks} />
-      <RouteContainer getHooks={getHooks} />
-      <Footer getHooks={getHooks} />
+      <NavBar getHooks={getHooks}/>
+      <RouteContainer getHooks={getHooks}/>
+      <Footer getHooks={getHooks}/>
     </StyledApp>
   );
 }

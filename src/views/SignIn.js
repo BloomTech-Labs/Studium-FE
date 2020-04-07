@@ -12,42 +12,32 @@ import {
 } from '../customHooks/themingRules.js';
 import {THEME, MEDIA_QUERIES, SIZES} from '../utilities/constants.js';
 
-/**
- * Sign In
- * @category Views
- * @component
- * @example return (<SignIn />);
- */
 export function SignIn(props){
-  const {dispatch, theme, pathname, appView, height} = useAppHooks("SignIn");
-  const [info, setInfo] = useState({email: "", password: "", error: {}});
-  
-export function SignIn(props) {
   const {dispatch, theme, path, appView, height, getHooks} = useAppHooks(
-    'SignIn'
+    'SignIn',
   );
   const [info, setInfo] = useState({email: '', password: '', error: {}});
   const getValue = useTheming('App.js');
-
+  
   const handleChange = e => {
     setInfo({...info, [e.target.name]: e.target.value});
   };
   
   const handleSignInClick = type => {
     if(type === EMAIL_PROVIDER){
-      if(info.email !== "" && info.password !== ""){
+      if(info.email !== '' && info.password !== ''){
         dispatch(signIn(EMAIL_PROVIDER, info.email, info.password));
       }else{
-        if(info.email === ""){
+        if(info.email === ''){
           setInfo({
             ...info,
-            error: {email: "You must enter a email address."},
+            error: {email: 'You must enter a email address.'},
           });
         }else{
           setInfo({
             ...info,
             error: {
-              password: "You must first enter a password.",
+              password: 'You must first enter a password.',
             },
           });
         }
@@ -57,11 +47,10 @@ export function SignIn(props) {
     }
   };
   
-
   const switchWelcomeTitle = () => {
-    if (path === '/signin') {
+    if(path === '/signin'){
       return <StyledH2>Hey! Welcome Back.</StyledH2>;
-    } else {
+    }else{
       return (
         <StyledH2
           style={{
@@ -71,13 +60,8 @@ export function SignIn(props) {
       );
     }
   };
-
+  
   return (
-    <StyledSignIn data-testid={"sign-in-container"}>
-      <SvgSynapsLogoText
-        height={"100px"}
-        width={"250xp"}
-        margin={"70px 0 0 0"}
     <StyledSignIn data-testid={'sign-in-container'}>
       <SvgSynapsLogoText
         maxHeight={'1000px'}
@@ -101,22 +85,18 @@ export function SignIn(props) {
       />
       
       <StyledH2>Hey! Welcome Back.</StyledH2>
-
+      
       {switchWelcomeTitle()}
       <div>
         <StyledBtn
           style={{
-            color: "#fff",
-            backgroundColor: "#36405C",
-            margin: "0 0 1.5em",
-            padding: "0 2em 0",
-            width: "260px",
-            height: "60px",
+            color: '#fff',
+            backgroundColor: '#36405C',
+            margin: '0 0 1.5em',
+            padding: '0 2em 0',
+            width: '260px',
+            height: '60px',
           }}
-          icon={"google"}
-          text={"Log In with Google"}
-          shape={"round"}
-          size={"large"}
           icon={'google'}
           text={'Log In with Google'}
           shape={'round'}
@@ -129,36 +109,32 @@ export function SignIn(props) {
       
       <StyledFormInput>
         <FormInput
-          name={"email"}
+          name={'email'}
           onChange={handleChange}
           value={info.email}
           block={false}
-          label={"Email Address"}
+          label={'Email Address'}
           bordered={false}
         />
         <FormInput
-          name={"password"}
+          name={'password'}
           onChange={handleChange}
           value={info.password}
           block={true}
-          label={"Password"}
+          label={'Password'}
           bordered={false}
         />
       </StyledFormInput>
       
       <StyledBtn2
         style={{
-          width: "260px",
-          height: "72px",
-          backgroundColor: "#0C2545",
-          margin: "0 0 1.5em",
-          padding: "0 2em 0",
-          border: "2px solid #fff",
+          width: '260px',
+          height: '72px',
+          backgroundColor: '#0C2545',
+          margin: '0 0 1.5em',
+          padding: '0 2em 0',
+          border: '2px solid #fff',
         }}
-        text={"Continue with Email"}
-        shape={"round"}
-        size={"large"}
-        type={"darkgray"}
         text={'Continue with Email'}
         shape={'round'}
         size={'large'}
@@ -245,9 +221,6 @@ const StyledFormInput = styled.div`
   & label {
     color: ${switchText};
   }
-
-  width: 345px;
-  margin: 0px 0px 0px 45px;
   
   @media ${MEDIA_QUERIES.tablet} {
     & label {
