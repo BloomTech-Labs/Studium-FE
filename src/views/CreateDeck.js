@@ -53,15 +53,6 @@ export const CreateDeck = props => {
     let uid = usersState.user.uid;
     console.log('||||logger from useEffect||||', newDeck);
     console.log('||||logger from useEffect||||', newCard);
-    if (
-      newDeck.deck_name &&
-      newCard.question &&
-      newCard.answer &&
-      newCard.deck_id
-    ) {
-      console.log('newCard before dispatch|||', newCard);
-      dispatch(createCard(newCard, uid));
-    }
   }, [newDeck, newCard]);
 
   const clickHandler = e => {
@@ -93,6 +84,12 @@ export const CreateDeck = props => {
         answer: true,
       });
     } else if (fieldValidated(newCard.question)) {
+      let uid = usersState.user.uid;
+      dispatch(postDeck(uid, newDeck));
+      setNewCard({
+        ...newCard,
+        deck_id: decksState.decks[decksState.decks.length - 1].deck_id + 1,
+      });
       setHighlighted({
         ...highlighted,
         answer: false,
@@ -117,13 +114,21 @@ export const CreateDeck = props => {
 
   const submitForm = e => {
     e.preventDefault();
-    setDisableInput(true);
     let uid = usersState.user.uid;
-    dispatch(postDeck(uid, newDeck));
-    setNewCard({
-      ...newCard,
-      deck_id: decksState.decks[0].deck_id + 1,
-    });
+    setDisableInput(true);
+    if (
+      newDeck.deck_name &&
+      newCard.question &&
+      newCard.answer &&
+      newCard.deck_id &&
+      newDeck.deck_name != '' &&
+      newCard.question != '' &&
+      newCard.answer != '' &&
+      newCard.deck_id != ''
+    ) {
+      console.log('newCard before dispatch|||', newCard);
+      dispatch(createCard(newCard, uid));
+    }
   };
 
   return (
