@@ -118,7 +118,7 @@ export const CreateDeck = props => {
   const submitForm = e => {
     e.preventDefault();
     let uid = usersState.user.uid;
-    setDisableInput(true);
+
     if (
       newDeck.deck_name &&
       newCard.question &&
@@ -129,6 +129,7 @@ export const CreateDeck = props => {
       newCard.answer != '' &&
       newCard.deck_id != ''
     ) {
+      setDisableInput(true);
       console.log('newCard before dispatch|||', newCard);
       dispatch(createCard(newCard, uid));
       setNewCard({...newCard, question: '', answer: '', deck_id: ''});
@@ -183,7 +184,13 @@ export const CreateDeck = props => {
           text={'Add Another Card'}
           type={'primaryCreateCard'}
         />
-        <SynapsButton text={'Done'} type={'defaultCreateCard'} />
+        <SynapsButton
+          text={'Done'}
+          type={'defaultCreateCard'}
+          onClick={() => {
+            changePath('/dashboard');
+          }}
+        />
       </Bottom>
     </StyledCreateDeck>
   );
