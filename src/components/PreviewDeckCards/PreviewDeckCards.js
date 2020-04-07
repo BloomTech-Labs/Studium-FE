@@ -16,6 +16,19 @@ import {CreateButton} from "../Button/CreateButton.js";
  * return (
  *  <PreviewDeckCards text={"Card Title"} />
  * )
+ * @param text
+ * @param icon
+ * @param loading
+ * @param block
+ * @param hoverEffect
+ * @param selected
+ * @param {Deck}deck
+ * @param {Card}card
+ * @param type
+ * @param size
+ * @param cardOrDeck
+ * @param props
+ * @return {*}
  */
 export const PreviewDeckCards = ({
   text,
@@ -25,8 +38,10 @@ export const PreviewDeckCards = ({
   hoverEffect,
   selected = "none",
   deck,
+  card,
   type = "inner",
   size = "default",
+  cardOrDeck = "deck",
   ...props
 }) => (
   <StyledAntdCard
@@ -37,13 +52,14 @@ export const PreviewDeckCards = ({
     block={block && "block"}
     {...props}
   >
-    {!deck && (
+    {!deck && !card && (
       <p className={"deck-text"} style={{marginBottom: "1.5rem"}}>
-        Add decks
+        {cardOrDeck === "deck" ? "Add Deck": "Add Card"}
       </p>
     )}
-    {!deck && <CreateButton width={"55px"} height={"55px"}/>}
-    {deck && <p className={"deck-text"}>{deck.deck_name}</p>}
+    {!deck && !card && <CreateButton width={"55px"} height={"55px"}/>}
+    {deck && <p className={"deck-text"}>{deck}</p>}
+    {card && <p className={"deck-text"}>{card.question}</p>}
     <Icon
       type={"check-circle"}
       style={{

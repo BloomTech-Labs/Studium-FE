@@ -1,17 +1,17 @@
-import React, {useEffect, useState} from "react";
-import styled from "styled-components";
-import {NavBar, Footer, RouteContainer} from "./components";
-import {SvgBrainPic} from "./svgComponents";
-import PropTypes from "prop-types";
-import {Alert} from "antd";
-import {useAppHooks} from "./customHooks/useAppHooks.js";
-import {useAuthStateChange} from "./customHooks/useAuthStateChange.js";
+import React, {useEffect, useState} from 'react';
+import styled from 'styled-components';
+import {NavBar, Footer, RouteContainer} from './components';
+import {SvgBrainPic} from './svgComponents';
+import PropTypes from 'prop-types';
+import {Alert} from 'antd';
+import {useAppHooks} from './customHooks/useAppHooks.js';
+import {useAuthStateChange} from './customHooks/useAuthStateChange.js';
 import {
   THEMING_VARIABLES, THEMING_VALUES,
-} from "./customHooks/themingRules.js";
-import theming from "styled-theming";
-import {useTheming} from "./customHooks/useTheming.js";
-import {MEDIA_QUERIES} from "./utilities/constants.js";
+} from './customHooks/themingRules.js';
+import theming from 'styled-theming';
+import {useTheming} from './customHooks/useTheming.js';
+import {MEDIA_QUERIES} from './utilities/constants.js';
 
 /**
  * App
@@ -20,20 +20,20 @@ import {MEDIA_QUERIES} from "./utilities/constants.js";
  * @example return (<App />);
  */
 export default function App(props){
-  const [alertMessage, setAlert] = useState("");
-  const {theme, usersState, pathname, appView, getHooks} = useAppHooks("App");
-  const getValue = useTheming("App.js");
+  const [alertMessage, setAlert] = useState('');
+  const {theme, usersState, pathname, appView, getHooks} = useAppHooks('App');
+  const getValue = useTheming('App.js');
   
   const logger = props.logger;
   
   useEffect(() => {
-    logger.logVerbose("App view rendered.");
+    logger.logVerbose('App view rendered.');
   }, []);
   useAuthStateChange(getHooks);
   
   useEffect(() => {
     if(usersState.registerError && !alertMessage){
-      setAlert("Error logging in. Please try again later.");
+      setAlert('Error logging in. Please try again later.');
     }
   }, [usersState]);
   
@@ -41,19 +41,19 @@ export default function App(props){
     <StyledApp className="App">
       {theme.BRAIN_SVG !== THEMING_VALUES.HIDDEN &&
       <SvgBrainPic
-        maxWidth={"1500px"}
-        maxHeight={"1500px"}
+        maxWidth={'1500px'}
+        maxHeight={'1500px'}
         height={getValue(THEMING_VARIABLES.BRAIN_SVG, {
-          [THEMING_VALUES.BOTTOM]: "1500px",
-          [THEMING_VALUES.TOP]: "1500px",
-          [THEMING_VALUES.MOBILE]: "624px",
+          [THEMING_VALUES.BOTTOM]: '1500px',
+          [THEMING_VALUES.TOP]: '1500px',
+          [THEMING_VALUES.MOBILE]: '624px',
         })}
         width={getValue(THEMING_VARIABLES.BRAIN_SVG, {
-          [THEMING_VALUES.BOTTOM]: "1500px",
-          [THEMING_VALUES.TOP]: "1500px",
-          [THEMING_VALUES.MOBILE]: "624px",
+          [THEMING_VALUES.BOTTOM]: '1500px',
+          [THEMING_VALUES.TOP]: '1500px',
+          [THEMING_VALUES.MOBILE]: '624px',
         })}
-        left={"50%"} transform={"translate(-50%, 0)"}
+        left={'50%'} transform={'translate(-50%, 0)'}
         fill={getValue(THEMING_VARIABLES.BACKGROUND,
           {
             [THEMING_VALUES.DARK]: theme.themeState.brainPicDark,
@@ -62,22 +62,22 @@ export default function App(props){
         )}
         top={
           getValue(THEMING_VARIABLES.BRAIN_SVG, {
-            [THEMING_VALUES.BOTTOM]: "600PX",
-            [THEMING_VALUES.TOP]: "70px",
-            [THEMING_VALUES.MOBILE]: "624px",
+            [THEMING_VALUES.BOTTOM]: '600PX',
+            [THEMING_VALUES.TOP]: '70px',
+            [THEMING_VALUES.MOBILE]: '624px',
           })}
       />
       }
       {alertMessage && (
         <Alert
-          type={"error"}
+          type={'error'}
           onClose={() => setAlert(false)}
           message={alertMessage}
           closable
           style={{
-            position: "absolute",
-            top: "20px",
-            zIndex: "15",
+            position: 'absolute',
+            top: '20px',
+            zIndex: '15',
           }}
         />
       )}
@@ -106,7 +106,6 @@ background: ${backgroundColor};
   box-sizing: border-box;
   position: relative;
   color: ${props => props.theme.color};
-  padding: 0 auto;
   text-align: center;
   flex-direction: column;
   display: flex;
@@ -117,7 +116,4 @@ background: ${backgroundColor};
   min-height: 100vh;
   overflow: hidden;
 
-  @media ${MEDIA_QUERIES.tablet} {
-  
-  }
 `;
