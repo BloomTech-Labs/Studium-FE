@@ -1,12 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {NavBar, Footer, RouteContainer} from './components';
+import {SvgBrainPic} from './svgComponents';
 import PropTypes from 'prop-types';
 import {Alert} from 'antd';
-import {devices} from './utilities/breakpoints-device.js';
 import {useAppHooks} from './customHooks/useAppHooks.js';
 import {useAuthStateChange} from './customHooks/useAuthStateChange.js';
-import {ReactComponent as SvgDashboards} from '../src/images/Group.svg';
+import {THEMING_VARIABLES, THEMING_VALUES} from './customHooks/themingRules.js';
+import theming from 'styled-theming';
+import {useTheming} from './customHooks/useTheming.js';
+import {MEDIA_QUERIES} from './utilities/constants.js';
 
 /**
  * App
@@ -14,11 +17,18 @@ import {ReactComponent as SvgDashboards} from '../src/images/Group.svg';
  * @component
  * @example return (<App />);
  */
-function App(props) {
+export default function App(props) {
   const [alertMessage, setAlert] = useState('');
-  const {theme, usersState, dispatch} = useAppHooks();
+  const {theme, usersState, pathname, appView, getHooks} = useAppHooks('App');
+  const getValue = useTheming('App.js');
 
-  useAuthStateChange();
+  const logger = props.logger;
+
+  useEffect(() => {
+    logger.logVerbose('App view rendered.');
+  }, []);
+  useAuthStateChange(getHooks);
+
   useEffect(() => {
     if (usersState.registerError && !alertMessage) {
       setAlert('Error logging in. Please try again later.');
@@ -26,7 +36,34 @@ function App(props) {
   }, [usersState]);
 
   return (
-    <StyledApp className="App" theme={theme}>
+    <StyledApp className="App">
+      {theme.BRAIN_SVG !== THEMING_VALUES.HIDDEN && (
+        <SvgBrainPic
+          maxWidth={'1500px'}
+          maxHeight={'1500px'}
+          height={getValue(THEMING_VARIABLES.BRAIN_SVG, {
+            [THEMING_VALUES.BOTTOM]: '1500px',
+            [THEMING_VALUES.TOP]: '1500px',
+            [THEMING_VALUES.MOBILE]: '624px',
+          })}
+          width={getValue(THEMING_VARIABLES.BRAIN_SVG, {
+            [THEMING_VALUES.BOTTOM]: '1500px',
+            [THEMING_VALUES.TOP]: '1500px',
+            [THEMING_VALUES.MOBILE]: '624px',
+          })}
+          left={'50%'}
+          transform={'translate(-50%, 0)'}
+          fill={getValue(THEMING_VARIABLES.BACKGROUND, {
+            [THEMING_VALUES.DARK]: theme.themeState.brainPicDark,
+            [THEMING_VALUES.LIGHT]: theme.themeState.brainPicLight,
+          })}
+          top={getValue(THEMING_VARIABLES.BRAIN_SVG, {
+            [THEMING_VALUES.BOTTOM]: '800px',
+            [THEMING_VALUES.TOP]: '146px',
+            [THEMING_VALUES.MOBILE]: '624px',
+          })}
+        />
+      )}
       {alertMessage && (
         <Alert
           type={'error'}
@@ -40,10 +77,9 @@ function App(props) {
           }}
         />
       )}
-      <NavBar />
-      <SvgDashboards></SvgDashboards>
-      <RouteContainer />
-      <Footer />
+      <NavBar getHooks={getHooks} />
+      <RouteContainer getHooks={getHooks} />
+      <Footer getHooks={getHooks} />
     </StyledApp>
   );
 }
@@ -53,11 +89,21 @@ App.propTypes = {
   history: PropTypes.object,
 };
 
+const backgroundColor = theming(THEMING_VARIABLES.BACKGROUND, {
+  [THEMING_VALUES.DARK]: ({theme}) => {
+    return theme.themeState.primaryColor;
+  },
+  [THEMING_VALUES.LIGHT]: ({theme}) => {
+    return theme.themeState.navBarLight;
+  },
+});
+
 const StyledApp = styled.div`
+  background: ${backgroundColor};
   box-sizing: border-box;
   position: relative;
   color: ${props => props.theme.color};
-  padding: ${props => (props.navBarVis ? '75px 0 50px 0' : 0)};
+  padding: 0 auto;
   text-align: center;
   flex-direction: column;
   display: flex;
@@ -66,44 +112,8 @@ const StyledApp = styled.div`
   align-items: center;
   max-height: 100vh;
   min-height: 100vh;
-  overflow-y: hidden;
-  background: #e5e5e5;
+  overflow: hidden;
 
-  > SvgDashboards {
-    height: 233px;
-    width: 233px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    position: absolute;
-  }
-
-  @media ${devices.tablet} {
-    background-image: ${SvgDashboards};
-  }
-
-  @media ${devices.desktop} {
-    background: #e5e5e5;
-    background-image: ${SvgDashboards};
-  }
-
-  @media ${(devices.mobileS, devices.mobileM, devices.mobileL)} {
-    background-image: ${SvgDashboards};
-    background: #e5e5e5;
+  @media ${MEDIA_QUERIES.tablet} {
   }
 `;
-
-export default App;
-
-/**
- * @typedef {function} Dispatch
- * @param {function} function
- * @returns none
- *
- */
-
-/**
- * @typedef {object} User
- * @property {string} uid
- * @property {string} photoURL
- */

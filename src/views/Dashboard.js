@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import {SmallFlashCard, TitleText, SearchBar} from '../components';
+import {SmallFlashCard, TitleText, SearchBar, PreviewDeckCards } from '../components';
 import PropTypes from 'prop-types';
 import {devices} from '../utilities/breakpoints-device.js';
 import {useAppHooks} from '../customHooks/useAppHooks.js';
@@ -8,6 +8,10 @@ import {ReactComponent as Svg} from '../images/Group.svg';
 import {CreateButton} from '../components/Button/CreateButton';
 import myPic from '../images/Group.png';
 import {ReactComponent as SynapsBrainImage} from '../images/Frame.svg';
+import {getUserDecks} from "../actions";
+import {Alert} from "antd";
+import {SvgSnapsOutline} from "../svgComponents";
+import {APP_VIEW_MOBILE, MEDIA_QUERIES, SIZES} from "../utilities/constants.js";
 
 const decks = [
   {deck_name: 'Some Name', deck_id: 1},
@@ -235,4 +239,13 @@ text-color: #36405C;
 
 const Wrap = styled.div`
   background: ${myPic};
+  max-width: 1140px;
+  height: 100%;
+  width: 100%;
+
+  @media screen and ${MEDIA_QUERIES.tablet} {
+    background: #FFFFFF;
+    margin-top: 65px;
+    border-radius: 10px;
+  }
 `;

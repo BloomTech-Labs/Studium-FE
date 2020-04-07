@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, useContext} from "react";
+import {AppHooksContext} from "./useAppHooks.js";
 
+const USE_DIMENSIONS_DEBUG_NAME = "Use Dimensions";
 /**
  * Use Dimensions
  * @category Custom Hooks
@@ -12,34 +14,47 @@ import React, { useState, useEffect } from 'react';
 
 export const useDimensions = () => {
   
-  const [ width, setWidth ] = useState( window.innerWidth );
-  const [ height, setHeight ] = useState( window.innerWidth );
+  const {hooks, setHookVariable} = useContext(
+    AppHooksContext);
+  const {getLogger, width, height} = hooks;
+  const logger = getLogger(USE_DIMENSIONS_DEBUG_NAME);
   
-  useEffect( () => {
-    window.addEventListener( 'resize', updateDimensions );
-    
+  useEffect(() => {
+    window.addEventListener("resize", updateDimensions);
+    logger.logVerbose("Set up add event listener for window resize.");
     return () => {
-      window.removeEventListener( 'resize', updateDimensions );
+      window.removeEventListener("resize", updateDimensions);
+      logger.logVerbose("Removed listen for resize.");
     };
-  }, [] );
+  }, []);
   
   let timer = null;
   
   const updateDimensions = () => {
     
+    logger.logVerbose("Update dimensions called");
+    
     const update = () => {
-      setWidth( window.innerWidth );
-      setHeight( window.innerHeight );
+      logger.logVerbose("Update called.");
+      if(width !== window.innerWidth){
+        logger.logVerbose("Updating width.");
+        setHookVariable("width", window.innerWidth);
+      }
+      if(height !== window.innerHeight){
+        logger.logVerbose("Updating height.");
+        setHookVariable("height", window.innerHeight);
+      }
+      
       timer = null;
     };
     
-    if( timer ){
-      clearTimeout( timer );
+    if(timer){
+      logger.logVerbose("Clearing the timer");
+      clearTimeout(timer);
     }
-    timer = setTimeout( update, 200 );
+    logger.logVerbose("Setting the timer for debounce.");
+    timer = setTimeout(update, 200);
   };
-  
-  return [ width, height ];
   
 };
 

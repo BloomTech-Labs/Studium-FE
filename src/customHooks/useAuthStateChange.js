@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
-import firebase from '../config/firebase/FirebaseConfig.js';
-import { signedIn, signOut } from '../actions';
-import { useAppHooks } from './useAppHooks.js';
+import React, {useEffect} from "react";
+import firebase from "../config/firebase/FirebaseConfig.js";
+import {signedIn, signOut} from "../actions";
 
 /**
  * Use Auth State Change
@@ -11,24 +10,28 @@ import { useAppHooks } from './useAppHooks.js';
  * google auth state change.
  *
  */
-export const useAuthStateChange = () => {
+export const useAuthStateChange = (getHooks) => {
   
-  const { dispatch, pathname, changePath } = useAppHooks();
-  //Promises. This function gets called in for google sign in
-  useEffect( () => {
-    firebase.auth().onAuthStateChanged( user => {
+  const {changePath, dispatch, path} = getHooks("Use Auth State");
+  
+  //Promises. This function gets called in for google sign in;
+  
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(user => {
       /**
        * @type {User}
        */
-      if( user ){
-        dispatch( signedIn( user ) );
-        if( pathname === '/signIn' || pathname === '/signup' || pathname ===
-          '/' ){
-          changePath( '/dashboard' );
+      if(user){
+        
+        dispatch(signedIn(user));
+        if(path === "/signin" || path === "/signup" || path ===
+          "/"){
+          changePath("/dashboard");
         }
       }else{
-        dispatch( signOut() );
+        dispatch(signOut());
       }
-    } );
-  }, [] );
+    });
+  }, []);
+  
 };

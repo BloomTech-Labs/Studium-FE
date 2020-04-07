@@ -1,2 +1,2 @@
-export * from './LoginSignUpRoute.js';
-export * from './ProtectedRoute.js';
+export * from "./LoginSignUpRoute.js";
+export * from "./ProtectedRoute.js";

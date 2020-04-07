@@ -1,19 +1,26 @@
-import React from 'react';
-import { cookies } from '../utilities/AppProviders.js';
+import React from "react";
+import {reduxLogger, storageBackupDebugger} from "../utilities/oldConsole.js";
+import {LOG_TYPES} from "../utilities/constants.js";
+import {SYNAPS_CONFIG} from "../synapsConfig.js";
+
+export const REDUX_LOGGER_DEBUG_NAME = "Redux Logger";
 
 /**
  * Logs all actions and states after they are dispatched.
  * @category ReduxMiddleware
  */
 export const logger = store => next => action => {
-  console.group( action.type );
-  console.info( 'dispatching', action );
-  let result = next( action );
-  console.log( 'next state', store.getState() );
-  console.groupEnd();
+  reduxLogger.logInfo(`Dispatching --> ${action.type}`);
+  reduxLogger.logObjectWithMessage(action, "Action");
+  
+  let result = next(action);
+  
+  reduxLogger.logObjectWithMessage(store.getState(), "Next state.");
+  
   return result;
 };
 
+export const STORAGE_BACKUP_DEBUG_NAME = "Storage Backup Middleware";
 /**
  * Cookies Middle Ware.
  *
@@ -23,16 +30,37 @@ export const logger = store => next => action => {
  * @param store
  * @returns {function(*): function(*=): *}
  */
-export const cookiesRedux = store => next => action => {
+export const storageBackUp = store => next => action => {
+  const result = next(action);
   
-  const result = next( action );
-  
-  if( action.type !== 'SET_INIT_STATE' ){
+  if(action.type && action.type !== "SET_INIT_STATE"){
     const newState = store.getState();
-    Object.keys( newState ).forEach( key => {
-      cookies.set( key, newState[ key ] );
-    } );
+    storageBackupDebugger.logVerbose(`Comparing local storage with new new
+        state for reducer.`);
+    Object.keys(newState).forEach(key => {
+      
+      const state = JSON.stringify(newState[key]);
+      const prevState = localStorage.getItem(
+        SYNAPS_CONFIG.localStorageBasePath + key,
+      );
+      
+      storageBackupDebugger.logObjectWithMessage(JSON.parse(prevState),
+        `${key} --> PrevState`,
+      );
+      storageBackupDebugger.logObjectWithMessage(newState[key],
+        `${key} --> NewState`,
+      );
+      
+      if(prevState !== state){
+        storageBackupDebugger.logInfo("Updating local storage.");
+        
+        localStorage.setItem(SYNAPS_CONFIG.localStorageBasePath + key,
+          state,
+        );
+      }else{
+        storageBackupDebugger.logVerbose("No reason to update state.");
+      }
+    });
   }
   return result;
-  
 };

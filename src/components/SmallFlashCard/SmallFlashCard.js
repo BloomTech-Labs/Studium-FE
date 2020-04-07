@@ -1,8 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import { Card, Icon } from 'antd';
-
+import React from "react";
+import styled from "styled-components";
+import PropTypes from "prop-types";
+import {Card, Icon} from "antd";
 
 /**
  * Small Flash Card
@@ -13,24 +12,25 @@ import { Card, Icon } from 'antd';
  *  <SmallFlashCard />
  *  )
  */
-export const SmallFlashCard = ( {
-  text, type = 'inner', size = 'default', icon, loading, block, hoverable, deck, ...props
-} ) => {
+export const SmallFlashCard = ({
+  text, type = "inner", size = "default", icon, loading, block, hoverable, deck, ...props
+}) => {
+  
   return (
     
     <StyledAntdCard
-      type={ type }
-      size={ size }
-      icon={ icon }
-      loading={ loading && 'loading' }
-      block={ block && 'block' }
-      { ...props }
+      type={type}
+      size={size}
+      icon={icon}
+      loading={loading && "loading"}
+      block={block && "block"}
+      {...props}
     >
       
-      { icon &&
-      ( <Icon type={ icon } style={ { fontSize: '32px', color: 'black' } }/> ) }
+      {icon &&
+      (<Icon type={icon} style={{fontSize: "32px", color: "black"}}/>)}
       
-      { deck && <p className={ 'card-text' }>{ deck.deck_name }</p> }
+      {deck && <p className={"card-text"}>{deck.deck_name}</p>}
     </StyledAntdCard>
   
   );
@@ -38,36 +38,42 @@ export const SmallFlashCard = ( {
 
 SmallFlashCard.propTypes = {
   text: PropTypes.string,
-  type: PropTypes.oneOf( [ 'inner' ] ),
-  size: PropTypes.oneOf( [ 'default', 'small' ] ),
+  type: PropTypes.oneOf(["inner"]),
+  size: PropTypes.oneOf(["default", "small"]),
   icon: PropTypes.string,
   loading: PropTypes.bool,
   block: PropTypes.bool,
   hoverable: PropTypes.bool,
 };
 
-const StyledAntdCard = styled( Card )`
+const StyledAntdCard = styled(Card)`
   && {
     margin: 8px;
     font-weight: bold;
     width: 94px;
     height: 94px;
+<<<<<<< HEAD
     
     background-color: ${ props => {
   if( props.type === 'primary' ){
+=======
+    border-radius: 17px;
+    background-color: ${props => {
+  if(props.type === "primary"){
+>>>>>>> SignInDesktopView
     return props.theme.mainColor;
   }else{
     return props.theme.white;
   }
-} };
+}};
 
-    border: ${ props => {
-  if( props.border === 'dashed' ){
-    return '3px dashed rgba(136, 136, 136, 0.75)';
-  }else if( props.border === 'solid' ){
-    return '3px solid #c4c4c4';
+    border: ${props => {
+  if(props.border === "dashed"){
+    return "3px dashed rgba(136, 136, 136, 0.75)";
+  }else if(props.border === "solid"){
+    return "3px solid #c4c4c4";
   }
-} };
+}};
 
     > .ant-card-body {
       display: flex;

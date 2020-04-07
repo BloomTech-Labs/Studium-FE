@@ -1,15 +1,58 @@
-import React, { useEffect } from 'react';
-import { ThemeProvider } from 'styled-components';
-import { Provider } from 'react-redux';
-import { getStore } from './getStore.js';
-import { getCookies } from './getCookies.js';
-import { getGlobalStyles } from './getGlobalStyles.js';
-import { useThemeContext } from '../customHooks/useThemeContext.js';
-import { BrowserRouter as Router } from 'react-router-dom';
+import React, {useEffect} from "react";
+import {Provider} from "react-redux";
+import {getStore} from "./getStore.js";
+import {getGlobalStyles} from "./getGlobalStyles.js";
+import {useAppHooksState, AppHooksContext} from "../customHooks/useAppHooks.js";
+import {ErrorBoundary} from "../components";
+import {REDUCER_NAMES} from "../reducers";
+import {SYNAPS_CONFIG} from "../synapsConfig.js";
+import {storageBackupDebugger} from "./oldConsole.js";
+import {
+  useThemeContext, useThemeRules,
+} from "../customHooks/useThemeContext.js";
+import {useDimensions} from "../customHooks/useDimensions.js";
+import appLogger from "../utilities/oldConsole.js";
+import {ThemeProvider} from "styled-components";
+import {useAppView} from "../customHooks/useAppView.js";
 
-export const store = getStore();
-export const cookies = getCookies();
+export const APP_PROVIDER_DEBUG_NAME = "App Provider";
+const logger = appLogger.getLogger(APP_PROVIDER_DEBUG_NAME);
 const GlobalStyles = getGlobalStyles();
+const initialState = {};
+
+if(process.env.NODE_ENV !== "test"){
+  storageBackupDebugger.logVerbose("Attempting to get inital state from" +
+    " localstorage");
+  REDUCER_NAMES.forEach(key => {
+    try{
+      
+      const stateKey = JSON.parse(
+        localStorage.getItem(SYNAPS_CONFIG.localStorageBasePath + key),
+      );
+      
+      storageBackupDebugger.logObjectWithMessage(stateKey, `${key}`);
+      if(typeof stateKey === "object" && stateKey !== null){
+        initialState[key] = stateKey;
+      }else{
+        storageBackupDebugger.logWarning("Unable to parse localstorage for" +
+          " state.");
+      }
+      
+    }catch(e){
+      storageBackupDebugger.logError(e.message);
+      initialState[key] = "";
+    }
+  });
+}
+let store;
+if(Object.values(initialState).length >= REDUCER_NAMES.length){
+  store = getStore(
+    Object.values(initialState).length >= REDUCER_NAMES.length && initialState,
+    logger,
+  );
+}else{
+  store = getStore(false, logger);
+}
 
 /**
  * App Providers
@@ -17,28 +60,60 @@ const GlobalStyles = getGlobalStyles();
  *
  * @description Store and theme provider setup for our application.
  */
-const AppProvider = ( props ) => {
+const AppProvider = props => {
+  const {appLogger, ...rest} = props;
+  const logger = appLogger.getLogger(APP_PROVIDER_DEBUG_NAME);
+  const {getLogger} = appLogger;
+  useEffect(() => {
   
-  useEffect( () => {
-    if( Object.keys( cookies ).length > 0 ){
-      Object.keys( cookies ).forEach( key => {
-        store.dispatch( {
-          type: 'SET_INIT_STATE',
-          payload: { name: key, value: cookies[ key ] },
-        } );
-      } );
-    }
-  }, [] );
+  }, []);
+  const {themeRules, themeState, changeTheme} = useThemeRules(
+    appLogger.getLogger);
+  logger.logInfo(`Node Env: ${process.env.NODE_ENV}.`);
+  logger.logInfo(`App provider being rendered.`);
+  logger.logInfo("App provider props");
+  logger.logObject(props);
   
-  const theme = useThemeContext();
-  return ( <ThemeProvider theme={ theme }>
-      <Provider store={ store }>
-        <GlobalStyles/>
-        <Router>
-          { props.children }
-        </Router>
-      </Provider>
-    </ThemeProvider>
+  return (
+    <ErrorBoundary>
+      <ThemeProvider theme={{changeTheme, themeState, ...themeRules}}>
+        <Provider store={store}>
+          <AfterStoreTheme logger={logger} getLogger={getLogger} {...rest} />
+        </Provider>
+      </ThemeProvider>
+    </ErrorBoundary>
+  );
+};
+
+const AfterStoreTheme = props => {
+  
+  const {getLogger, logger} = props;
+  const {hooks, setHookVariable} = useAppHooksState(getLogger);
+  logger.logVerbose(`After Store and Theme provider rendered.`);
+  
+  return (
+    <>
+      <GlobalStyles/>
+      <AppHooksContext.Provider
+        value={{setHookVariable, hooks}}>
+        
+        <AfterHooks{...props}/>
+      </AppHooksContext.Provider>
+    </>
+  );
+};
+
+const AfterHooks = props => {
+  
+  const {logger} = props;
+  logger.logInfo(`After hooks provider rendered.`);
+  useThemeContext();
+  useDimensions();
+  useAppView();
+  return (
+    <>
+      {props.children}
+    </>
   );
 };
 
