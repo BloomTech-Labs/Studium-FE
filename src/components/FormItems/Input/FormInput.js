@@ -59,6 +59,10 @@ const StyledFormItem = styled(Form.Item)`
     .ant-form-item-label{
       padding: 0 0 0;
     }
+    .ant-form-item-label{
+      padding: 0 0 0 0;
+      line-height: 1;
+    }
     text-align: left;
     width: ${props => props.width};
   }

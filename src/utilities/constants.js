@@ -54,8 +54,10 @@ export const THEME = {
   primaryColor36405C: "#36405c",
   primaryColor293046: "#293046",
   primaryColor353544: "#353544",
+  primaryColor122543: "#122543",
   
   secondaryColor: "#A2D8C7",
+  secondary4CB69F: "#4CB69F",
   secondaryColorEAF5F1: "#EAF5F1",
   secondaryColorD8EEE6: "#D8EEE6",
   secondaryColorC6E6DB: "#C6E6DB",
@@ -85,8 +87,7 @@ export const THEME = {
   synapsLight: "#FFFFFF",
   
   brainPicDark: "#164167",
-  brainPicLight: "#e1ded7",
-  
+  brainPicLight: "#e1ded7",  
 };
 
 /**

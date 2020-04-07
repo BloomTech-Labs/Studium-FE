@@ -50,7 +50,7 @@ export const RouteContainer = (props) => {
     >
       <Switch>
         <LoginSignUpRoute path={APP_PATHS.SIGN_UP_PATH}
-                          component={SignUp} {...props} />
+                          component={SignIn} {...props} />
         <LoginSignUpRoute path={APP_PATHS.SIGN_IN_PATH}
                           component={SignIn} {...props} />
         <ProtectedRoute path={APP_PATHS.DASHBOARD_PATH}
