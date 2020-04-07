@@ -62,6 +62,10 @@ export default function App(props){
           [THEMING_VALUES.TOP]: '146px',
           [THEMING_VALUES.MOBILE]: '624px',
         })}
+        fill={getValue(THEMING_VARIABLES.BACKGROUND, {
+          [THEMING_VALUES.DARK]: theme.themeState.brainPicDark,
+          [THEMING_VALUES.LIGHT]: theme.themeState.brainPicLight,
+        })}
       />
       }
       {alertMessage && (
