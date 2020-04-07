@@ -53,6 +53,28 @@ export function SignIn(props) {
     }
   };
 
+  const handleGoogleClick = e => {
+    dispatch(signIn(GOOGLE_PROVIDER));
+  };
+  
+  const handleEmailClick = e => {
+    if(info.email !== "" && info.password !== ""){
+      dispatch(signIn(EMAIL_PROVIDER, info.email, info.password));
+    }else{
+      if(info.email === ""){
+        setInfo({
+          ...info, error: {email: "You must enter a email address."},
+        });
+      }else{
+        setInfo({
+          ...info, error: {
+            password: "You must first enter a password.",
+          },
+        });
+      }
+    }    
+  };
+
   const switchWelcomeTitle = () => {
     if (path === '/signin') {
       return <StyledH2>Hey! Welcome Back.</StyledH2>;
@@ -67,9 +89,57 @@ export function SignIn(props) {
     }
   };
 
+  const switchStyledBtnText = () => {
+    if (path === '/signup') {
+      return (
+        <StyledBtn
+          icon={'google'}
+          text={'Sign Up with Google'}
+          shape={'round'}
+          size={'large'}
+          onClick={handleGoogleClick}
+        />
+      );
+    } else {
+      return (
+        <StyledBtn
+          icon={'google'}
+          text={'Log In with Google'}
+          shape={'round'}
+          size={'large'}
+          onClick={e => handleSignInClick(GOOGLE_PROVIDER)}
+        />
+      );
+    }
+  };
+
+  const switchStyledBtn2Text = () => {
+    if (path === '/signup') {
+      return (
+        <StyledBtn2
+          text={'Sign Up with Email'}
+          shape={'round'}
+          size={'large'}
+          type={'darkgray'}
+          onClick={handleEmailClick}
+        />
+      );
+    } else {
+      return (
+        <StyledBtn2
+          text={'Continue with Email'}
+          shape={'round'}
+          size={'large'}
+          type={'darkgray'}
+          onClick={e => handleSignInClick(EMAIL_PROVIDER)}
+        />
+      );
+    }
+  };
+
   return (
     <StyledSignIn data-testid={'sign-in-container'}>
-      <SvgSynapsLogoText 
+      <SvgSynapsLogoText
         maxHeight={'1000px'}
         maxWidth={'1000px'}
         margin={'10px 0 0 0'}
@@ -91,15 +161,7 @@ export function SignIn(props) {
       />
 
       {switchWelcomeTitle()}
-      <div>
-        <StyledBtn
-          icon={'google'}
-          text={'Log In with Google'}
-          shape={'round'}
-          size={'large'}
-          onClick={e => handleSignInClick(GOOGLE_PROVIDER)}
-        />
-      </div>
+      {switchStyledBtnText()}
 
       <StyledBorder />
 
@@ -122,13 +184,7 @@ export function SignIn(props) {
         />
       </StyledFormInput>
 
-      <StyledBtn2
-        text={'Continue with Email'}
-        shape={'round'}
-        size={'large'}
-        type={'darkgray'}
-        onClick={e => handleSignInClick(EMAIL_PROVIDER)}
-      />
+      {switchStyledBtn2Text()}
     </StyledSignIn>
   );
 }
