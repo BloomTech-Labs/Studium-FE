@@ -11,10 +11,15 @@ import Rectangle from '../../images/uploadIcon/Rectangle85.jpg';
  * )
  */
 export const UploadIcon = props => {
-  return ( <StyledUploadIcon data-testid="upload-icon">
-    <img src={ Rectangle } style={ { height: '59px', width: '67px' } }
-         alt={ 'upload icon' }/>
-  </StyledUploadIcon> );
+  return (
+    <StyledUploadIcon data-testid="upload-icon">
+      <img
+        src={Rectangle}
+        style={{height: '59px', width: '67px'}}
+        alt={'upload icon'}
+      />
+    </StyledUploadIcon>
+  );
 };
 
 const StyledUploadIcon = styled.div`
@@ -23,7 +28,7 @@ const StyledUploadIcon = styled.div`
   position: relative;
   width: 67px;
   height: 59px;
+  background-color: transparent;
 `;
 
 UploadIcon.propTypes = {};
-

@@ -58,6 +58,7 @@ const StyledFormItem = styled(Form.Item)`
   && {
     text-align: left;
     width: ${props => props.width};
+    background-color: transparent;
   }
 `;
 
@@ -71,6 +72,7 @@ const StyledNoBorderAntdInput = styled(Input)`
     :focus {
       box-shadow: none;
     }
+    background-color: transparent;
   }
 `;
 
@@ -80,6 +82,7 @@ const StyledAntdInputLargeRadius = styled(Input)`
     :focus {
       box-shadow: none;
     }
+    background-color: transparent;
   }
 `;
 
@@ -89,6 +92,7 @@ const StyledAntdInputSmallRadius = styled(Input)`
     :focus {
       box-shadow: none;
     }
+    background-color: transparent;
   }
 `;
 

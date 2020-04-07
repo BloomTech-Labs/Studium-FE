@@ -38,6 +38,7 @@ const STextArea = styled(TextArea)`
   border-bottom-style: none;
   border-left-style: none;
   border-right-style: none;
+  background-color: transparent;
   .no-outline:focus {
     outline: none;
   }
