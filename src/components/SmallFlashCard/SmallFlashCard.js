@@ -52,15 +52,9 @@ const StyledAntdCard = styled(Card)`
     font-weight: bold;
     width: 94px;
     height: 94px;
-<<<<<<< HEAD
-    
-    background-color: ${ props => {
-  if( props.type === 'primary' ){
-=======
     border-radius: 17px;
     background-color: ${props => {
   if(props.type === "primary"){
->>>>>>> SignInDesktopView
     return props.theme.mainColor;
   }else{
     return props.theme.white;
