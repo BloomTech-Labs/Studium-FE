@@ -32,7 +32,8 @@ export const Uploader = props => {
   const customRequest = file => {
     console.log('|||uid from uploadImage|||', usersState.user.uid);
     file.id = props.id;
-    dispatch(uploadImage(file, usersState.user.uid));
+    let uid = usersState.user.uid;
+    dispatch(uploadImage(file, uid));
   };
 
   const getUrl = () => {

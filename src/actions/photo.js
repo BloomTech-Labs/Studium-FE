@@ -12,15 +12,15 @@ export const UPLOAD_PHOTO = 'UPLOAD_PHOTO';
  * @param file
  * @returns {function}
  */
-export const uploadImage = (file, userId) => dispatch => {
+export const uploadImage = (file, uid) => dispatch => {
   dispatch({type: UPLOADING_PHOTO_INIT, payload: file});
   console.log('|||file from uploadImage|||', file);
-  console.log('|||userId from uploadImage|||', userId);
+  console.log('|||userId from uploadImage|||', uid);
   // const data = new FormData();
   // data.append('file', file.file);
   const data = {file: file.file};
 
-  return createAxios(userId)
+  return createAxios(uid)
     .post('api/photo/upload', data, {
       onUploadProgress: ProgressEvent => {
         file.progress = ProgressEvent.loaded / ProgressEvent.total;
@@ -28,6 +28,7 @@ export const uploadImage = (file, userId) => dispatch => {
       },
     })
     .then(res => {
+      console.log('response from createAxios|||', res);
       file.progress = 0;
       file.uploading = false;
       file.file = {
@@ -37,7 +38,7 @@ export const uploadImage = (file, userId) => dispatch => {
       dispatch({type: UPLOADING_PHOTO_SUCCESS, payload: file});
     })
     .catch(err => {
-      console.log(err);
+      console.log('err from catch |||', err);
       file.error = err;
       dispatch({type: UPLOADING_PHOTO_FAILED, payload: file});
     });

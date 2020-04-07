@@ -6,6 +6,7 @@ import {DeckName} from '../components/CreateDeck/DeckName.js';
 import {SmallDeckSvg} from '../components/SmallDeckSvg/SmallDeckSvg.js';
 import {SynapsButton} from '../components/Button/SynapsButton.js';
 import {postDeck} from '../actions/decksActions.js';
+import {createCard} from '../actions/cardActions.js';
 import {useAppHooks} from '../customHooks/useAppHooks.js';
 /**
  * Create Deck View
@@ -31,6 +32,7 @@ export const CreateDeck = props => {
     question: false,
     answer: false,
   });
+  const [cardReady, setCardReady] = useState(false);
   const [highlighted, setHighlighted] = useState({
     title: true,
     question: false,
@@ -47,10 +49,20 @@ export const CreateDeck = props => {
     }
   };
 
-  // useEffect(() => {
-  //   console.log('||||logger from useEffect||||', newDeck);
-  //   console.log('||||logger from useEffect||||', newCard);
-  // }, [newDeck, newCard]);
+  useEffect(() => {
+    let uid = usersState.user.uid;
+    console.log('||||logger from useEffect||||', newDeck);
+    console.log('||||logger from useEffect||||', newCard);
+    if (
+      newDeck.deck_name &&
+      newCard.question &&
+      newCard.answer &&
+      newCard.deck_id
+    ) {
+      console.log('newCard before dispatch|||', newCard);
+      dispatch(createCard(newCard, uid));
+    }
+  }, [newDeck, newCard]);
 
   const clickHandler = e => {
     e.preventDefault();
@@ -105,16 +117,13 @@ export const CreateDeck = props => {
 
   const submitForm = e => {
     e.preventDefault();
-    dispatch(postDeck(usersState.user.uid, newDeck));
     setDisableInput(true);
-    setTimeout(() => {
-      setNewCard({
-        ...newCard,
-        deck_id: decksState.decks[decksState.decks.length - 1].deck_id,
-      });
-    }, 500);
-
-    // dispatch()
+    let uid = usersState.user.uid;
+    dispatch(postDeck(uid, newDeck));
+    setNewCard({
+      ...newCard,
+      deck_id: decksState.decks[0].deck_id + 1,
+    });
   };
 
   return (
