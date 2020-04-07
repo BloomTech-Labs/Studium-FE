@@ -26,13 +26,16 @@ export const CreateDeck = props => {
   } = useAppHooks('CreateDeck');
   const [disableInput, setDisableInput] = useState(false);
   const [newDeck, setNewDeck] = useState({});
-  const [newCard, setNewCard] = useState({});
+  const [newCard, setNewCard] = useState({
+    question: '',
+    answer: '',
+    deck_id: '',
+  });
   const [cardNum, setCardNum] = useState(1);
   const [visible, setVisible] = useState({
     question: false,
     answer: false,
   });
-  const [cardReady, setCardReady] = useState(false);
   const [highlighted, setHighlighted] = useState({
     title: true,
     question: false,
@@ -128,6 +131,8 @@ export const CreateDeck = props => {
     ) {
       console.log('newCard before dispatch|||', newCard);
       dispatch(createCard(newCard, uid));
+      setNewCard({...newCard, question: '', answer: '', deck_id: ''});
+      setCardNum(cardNum + 1);
     }
   };
 

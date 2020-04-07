@@ -20,6 +20,7 @@ const StyledTextArea = ({
       name={drillName}
       height={height}
       onClick={clickHandler}
+      value={value}
       {...props}
     />
   );

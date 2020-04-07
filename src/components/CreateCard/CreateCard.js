@@ -24,6 +24,7 @@ export const CreateCard = ({
       </StyledCreateCardHeaderContainer>
       <StyledCreateCard highlighted={highlighted}>
         <TextArea
+          value={value}
           clickHandler={clickHandler}
           drillName={drillName}
           onChange={changeHandler}
