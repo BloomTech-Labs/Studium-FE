@@ -11,8 +11,6 @@ export const CardEditDeleteIcons = ({
   newCard,
   setNewCard,
 }) => {
-  console.log('name from icons.js|||', name);
-
   const editClickHandler = e => {
     console.log('edit button was clicked');
   };

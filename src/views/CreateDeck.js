@@ -6,6 +6,7 @@ import {DeckName} from '../components/CreateDeck/DeckName.js';
 import {SmallDeckSvg} from '../components/SmallDeckSvg/SmallDeckSvg.js';
 import {SynapsButton} from '../components/Button/SynapsButton.js';
 import {postDeck} from '../actions/decksActions.js';
+import {updateDeck} from '../actions/decksActions.js';
 import {createCard} from '../actions/cardActions.js';
 import {useAppHooks} from '../customHooks/useAppHooks.js';
 /**
@@ -40,6 +41,9 @@ export const CreateDeck = props => {
     question: false,
     answer: false,
   });
+  const [formError, setFormError] = useState(false);
+
+  let uid = usersState.user.uid;
 
   const fieldValidated = stateHook => {
     if (stateHook !== '' && typeof stateHook !== 'undefined') {
@@ -85,7 +89,6 @@ export const CreateDeck = props => {
         answer: true,
       });
     } else if (fieldValidated(newCard.question)) {
-      let uid = usersState.user.uid;
       dispatch(postDeck(uid, newDeck));
       setNewCard({
         ...newCard,
@@ -113,25 +116,37 @@ export const CreateDeck = props => {
     console.log(newCard);
   };
 
-  const compareDeckNameToState = () => {
+  const deckNameChanged = () => {
     let stateDeckName = decksState.decks[decksState.decks.length - 1].deck_name;
 
-    if (newDeck.deck_name !== stateDeckName) {
-      return false;
-    } else {
+    if (newDeck.deck_name !== stateDeckName && cardNum > 1) {
       return true;
+    } else {
+      return false;
     }
   };
 
-  // const updateDeckNameIfChange = () => {
-  //   if (!compareDeckNameToState()) {
-  //     dispatch(updateDeck)
-  //   }
-  // }
+  const updateDeckNameIfChange = () => {
+    if (deckNameChanged()) {
+      console.log('dispatching update|||');
+      dispatch(
+        updateDeck(
+          uid,
+          decksState.decks[decksState.decks.length - 1].deck_id,
+          newDeck
+        )
+      );
+    }
+  };
+
+  const doneSubmit = e => {
+    e.preventDefault();
+    updateDeckNameIfChange();
+    changePath('/dashboard');
+  };
 
   const submitForm = e => {
     e.preventDefault();
-    let uid = usersState.user.uid;
 
     if (
       newDeck.deck_name &&
@@ -146,7 +161,10 @@ export const CreateDeck = props => {
       dispatch(createCard(newCard, uid));
       setNewCard({...newCard, question: '', answer: '', deck_id: ''});
       setCardNum(cardNum + 1);
+    } else {
+      setFormError(true);
     }
+    updateDeckNameIfChange();
   };
 
   return (
@@ -203,9 +221,7 @@ export const CreateDeck = props => {
         <SynapsButton
           text={'Done'}
           type={'defaultCreateCard'}
-          onClick={() => {
-            changePath('/dashboard');
-          }}
+          onClick={doneSubmit}
         />
       </Bottom>
     </StyledCreateDeck>

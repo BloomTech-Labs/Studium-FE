@@ -68,7 +68,7 @@ export const UPDATING_DECK_FAILURE = 'UPDATING_DECK_FAILURE';
 export const updateDeck = (uid, deck_id, changes) => dispatch => {
   dispatch({type: UPDATING_DECK_START});
   createAxiosAuth(uid)
-    .update(`/api/decks/${deck_id}`, changes)
+    .put(`/api/decks/${deck_id}`, changes)
     .then(res => {
       dispatch({type: UPDATING_DECK_SUCCESS, payload: res.data});
     })
@@ -86,8 +86,6 @@ export const RETRIEVE_USER_DECKS_SUCCESS = 'RETRIEVE_USER_DECKS_SUCCESS';
 export const RETRIEVE_USER_DECKS_FAILURE = 'RETRIEVE_USER_DECKS_FAILURE';
 
 export const getUserDecks = uid => dispatch => {
-  console.log('|||getting user Decks|||');
-
   dispatch({type: RETRIEVE_USER_DECKS_START});
   createAxiosAuth(uid)
     .get('/api/decks/user')
@@ -107,10 +105,10 @@ export const RETRIEVE_DECK_START = 'RETRIEVE_DECK_START';
 export const RETRIEVE_DECK_SUCCESS = 'RETRIEVE_DECK_SUCCESS';
 export const RETRIEVE_DECK_FAILURE = 'RETRIEVE_DECK_FAILURE';
 
-export const getDeck = uid => dispatch => {
+export const getDeck = (uid, deck_id) => dispatch => {
   dispatch({type: RETRIEVE_DECK_START});
   createAxiosAuth(uid)
-    .get('/api/decks/:id')
+    .get(`/api/decks/${deck_id}`)
     .then(res => {
       dispatch({type: RETRIEVE_DECK_SUCCESS, payload: res.data});
     })
