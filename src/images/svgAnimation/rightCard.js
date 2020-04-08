@@ -1,6 +1,6 @@
 import * as React from "react"
 
-function SvgComponent(props) {
+export const RightCard = (props) =>{
     return (
         <svg width={26} height={28} viewBox="0 0 26 28" fill="none" {...props}>
         <g filter="url(#prefix__filter0_i)">
@@ -40,5 +40,3 @@ function SvgComponent(props) {
         </svg>
     )
 }
-
-export default SvgComponent
