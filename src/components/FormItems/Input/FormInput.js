@@ -23,23 +23,33 @@ export const FormInput = ({
   width = '90%',
   bordered = 'false',
   borderRadius = 'small',
+  borderStyle,
   label,
   error,
   ...props
 }) => {
+  console.log('border style from formInput|||', borderStyle);
   if (bordered) {
     if (borderRadius === 'large') {
       // bordered input with large radius
       return (
         <StyledFormItem label={label}>
-          <StyledAntdInputLargeRadius value={value} {...props} />
+          <StyledAntdInputLargeRadius
+            style={{border: borderStyle}}
+            value={value}
+            {...props}
+          />
         </StyledFormItem>
       );
     } else {
       // bordered input with regular radius
       return (
         <StyledFormItem label={label}>
-          <StyledAntdInputSmallRadius value={value} {...props} />
+          <StyledAntdInputSmallRadius
+            style={{border: borderStyle}}
+            value={value}
+            {...props}
+          />
         </StyledFormItem>
       );
     }
@@ -48,7 +58,11 @@ export const FormInput = ({
     return (
       <StyledFormItem label={label}>
         <StyledBorderBottom>
-          <StyledNoBorderAntdInput value={value} {...props} />
+          <StyledNoBorderAntdInput
+            style={{border: borderStyle}}
+            value={value}
+            {...props}
+          />
         </StyledBorderBottom>
       </StyledFormItem>
     );
@@ -60,11 +74,12 @@ const StyledFormItem = styled(Form.Item)`
     text-align: left;
     width: ${props => props.width};
     background-color: transparent;
+    border: ${props => props.borderStyle};
   }
 `;
 
 const StyledBorderBottom = styled.div`
-  border-bottom: 1px solid gray;
+  border-bottom: ${props => props.borderStyle};
 `;
 
 const StyledNoBorderAntdInput = styled(Input)`
@@ -84,6 +99,7 @@ const StyledAntdInputLargeRadius = styled(Input)`
       box-shadow: none;
     }
     background-color: transparent;
+    border: ${props => props.borderStyle};
   }
 `;
 
@@ -94,6 +110,7 @@ const StyledAntdInputSmallRadius = styled(Input)`
       box-shadow: none;
     }
     background-color: transparent;
+    border: ${props => props.borderStyle};
   }
 `;
 
