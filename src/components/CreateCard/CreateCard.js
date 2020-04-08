@@ -7,6 +7,8 @@ import {CardEditDeleteIcons} from '../Icon/CardEditDeleteIcons.js';
 import propTypes from 'prop-types';
 
 export const CreateCard = ({
+  newDeck,
+  setNewDeck,
   newCard,
   setNewCard,
   name,

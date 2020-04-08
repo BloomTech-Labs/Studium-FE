@@ -19,6 +19,7 @@ import PropTypes from 'prop-types';
  *
  */
 export const FormInput = ({
+  value,
   width = '90%',
   bordered = 'false',
   borderRadius = 'small',
@@ -31,14 +32,14 @@ export const FormInput = ({
       // bordered input with large radius
       return (
         <StyledFormItem label={label}>
-          <StyledAntdInputLargeRadius {...props} />
+          <StyledAntdInputLargeRadius value={value} {...props} />
         </StyledFormItem>
       );
     } else {
       // bordered input with regular radius
       return (
         <StyledFormItem label={label}>
-          <StyledAntdInputSmallRadius {...props} />
+          <StyledAntdInputSmallRadius value={value} {...props} />
         </StyledFormItem>
       );
     }
@@ -47,7 +48,7 @@ export const FormInput = ({
     return (
       <StyledFormItem label={label}>
         <StyledBorderBottom>
-          <StyledNoBorderAntdInput {...props} />
+          <StyledNoBorderAntdInput value={value} {...props} />
         </StyledBorderBottom>
       </StyledFormItem>
     );

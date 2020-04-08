@@ -24,7 +24,6 @@ export const CreateDeck = props => {
     theme,
     getLogger,
   } = useAppHooks('CreateDeck');
-  const [disableInput, setDisableInput] = useState(false);
   const [newDeck, setNewDeck] = useState({});
   const [newCard, setNewCard] = useState({
     question: '',
@@ -128,8 +127,6 @@ export const CreateDeck = props => {
       newCard.answer != '' &&
       newCard.deck_id != ''
     ) {
-      setDisableInput(true);
-      console.log('newCard before dispatch|||', newCard);
       dispatch(createCard(newCard, uid));
       setNewCard({...newCard, question: '', answer: '', deck_id: ''});
       setCardNum(cardNum + 1);
@@ -144,9 +141,8 @@ export const CreateDeck = props => {
           <SmallDeckSvg />
         </CardHeaderContainer>
         <DeckName
-          setDisableInput={setDisableInput}
+          setNewDeck={setNewDeck}
           newDeck={newDeck}
-          disableInput={disableInput}
           name={'newDeck'}
           changeHandler={changeHandler}
           value={newDeck.deck_name}

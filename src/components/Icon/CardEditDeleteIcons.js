@@ -6,7 +6,8 @@ import styled from 'styled-components';
 export const CardEditDeleteIcons = ({
   type,
   name,
-  setDisableInput,
+  newDeck,
+  setNewDeck,
   newCard,
   setNewCard,
 }) => {
@@ -14,26 +15,21 @@ export const CardEditDeleteIcons = ({
 
   const editClickHandler = e => {
     console.log('edit button was clicked');
-    if (name === 'newDeck' && setDisableInput) {
-      setDisableInput(false);
-    }
   };
   const clearClickHandler = e => {
-    let clickName = e.target.name;
-    console.log('name from clear|||', clickName);
-    console.log('clear button was clicked');
     if (name === 'newCardQuestion') {
       setNewCard({...newCard, question: ''});
-    }
-    if (name === 'newCardAnswer') {
+    } else if (name === 'newCardAnswer') {
       setNewCard({...newCard, answer: ''});
+    } else if (name === 'newDeck') {
+      setNewDeck({...newDeck, deck_name: ''});
     }
   };
 
   if (type === 'edit') {
     return (
       <StyledIonContainer>
-        <Icon name={name} onClick={editClickHandler} type="edit" />
+        <Icon type="edit" />
       </StyledIonContainer>
     );
   } else if (type === 'clear') {
@@ -58,6 +54,8 @@ CardEditDeleteIcons.propTypes = {
 
 const StyledIonContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: ${props =>
+    props.type === 'both' ? 'space-between' : 'flex-end'};
+  align-items: center;
   width: 55px;
 `;

@@ -5,7 +5,9 @@ import styled from 'styled-components';
 import {CardEditDeleteIcons} from '../Icon/CardEditDeleteIcons.js';
 
 export const DeckName = ({
+  value,
   name,
+  setNewDeck,
   newDeck,
   setDisableInput,
   disableInput,
@@ -21,23 +23,23 @@ export const DeckName = ({
           Title of Deck
         </DeckTitlePrompt>
         <CardEditDeleteIcons
+          setNewDeck={setNewDeck}
+          newDeck={newDeck}
           type={'clear'}
           name={name}
           setDisableInput={setDisableInput}
         />
       </DeckNameIconContainer>
-      {disableInput ? (
-        <h1>{newDeck.deck_name}</h1>
-      ) : (
-        <FormInput
-          onChange={changeHandler}
-          name="title"
-          onClick={clickHandler}
-          borderStyle={highlighted ? '1px solid #4CB69F' : '2px solid #908A7D'}
-          inputWidth={'100%'}
-          bordered={true}
-        />
-      )}
+
+      <FormInput
+        onChange={changeHandler}
+        name="title"
+        onClick={clickHandler}
+        borderStyle={highlighted ? '1px solid #4CB69F' : '2px solid #908A7D'}
+        inputWidth={'100%'}
+        bordered={true}
+        value={value}
+      />
     </DeckNameContainer>
   );
 };
