@@ -18,15 +18,15 @@ function CardAnimation({open}) {
     )
 }
 const StyledLeft = styled(LeftCard)`
-    transition: all 4s;
+    transition: all 1s;
     position: absolute;
     left: 30%;
     top: 50%;
-    transform-origin: 47% 100%;
+    transform-origin: 77% 100%;
     transform: ${props => props.open ? "translate(-50%, -50%)" : "translate(-50%, -50%) rotateZ(32deg)"};
 `;
 const StyledRight = styled(RightCard)`
-    transition: all 4s;
+    transition: all 1s;
     position: absolute;
     left: 70%;
     top: 50%;
