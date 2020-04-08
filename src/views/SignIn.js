@@ -28,6 +28,7 @@ export function SignIn(props) {
   const handleChange = e => {
     setInfo({...info, [e.target.name]: e.target.value});
   };
+  console.log(props)
 
   const handleSignInClick = type => {
     if (type === EMAIL_PROVIDER) {
