@@ -5,7 +5,9 @@ import styled from 'styled-components';
 import {CardEditDeleteIcons} from '../Icon/CardEditDeleteIcons.js';
 
 export const DeckName = ({
+  name,
   newDeck,
+  setDisableInput,
   disableInput,
   highlighted,
   clickHandler,
@@ -18,7 +20,11 @@ export const DeckName = ({
         <DeckTitlePrompt highlighted={highlighted}>
           Title of Deck
         </DeckTitlePrompt>
-        <CardEditDeleteIcons />
+        <CardEditDeleteIcons
+          type={'clear'}
+          name={name}
+          setDisableInput={setDisableInput}
+        />
       </DeckNameIconContainer>
       {disableInput ? (
         <h1>{newDeck.deck_name}</h1>

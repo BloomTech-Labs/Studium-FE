@@ -7,6 +7,9 @@ import {CardEditDeleteIcons} from '../Icon/CardEditDeleteIcons.js';
 import propTypes from 'prop-types';
 
 export const CreateCard = ({
+  newCard,
+  setNewCard,
+  name,
   changeHandler,
   value,
   highlighted,
@@ -20,7 +23,12 @@ export const CreateCard = ({
     <StyledCreateCardContainer visible={visible}>
       <StyledCreateCardHeaderContainer>
         <CreateCardText highlighted={highlighted} text={text} />
-        <CardEditDeleteIcons />
+        <CardEditDeleteIcons
+          type={'clear'}
+          name={name}
+          newCard={newCard}
+          setNewCard={setNewCard}
+        />
       </StyledCreateCardHeaderContainer>
       <StyledCreateCard highlighted={highlighted}>
         <TextArea

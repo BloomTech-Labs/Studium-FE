@@ -53,7 +53,6 @@ export const CreateDeck = props => {
   };
 
   useEffect(() => {
-    let uid = usersState.user.uid;
     console.log('||||logger from useEffect||||', newDeck);
     console.log('||||logger from useEffect||||', newCard);
   }, [newDeck, newCard]);
@@ -145,6 +144,7 @@ export const CreateDeck = props => {
           <SmallDeckSvg />
         </CardHeaderContainer>
         <DeckName
+          setDisableInput={setDisableInput}
           newDeck={newDeck}
           disableInput={disableInput}
           name={'newDeck'}
@@ -165,6 +165,8 @@ export const CreateDeck = props => {
           visible={visible.question}
           text={`Card ${cardNum} - Question`}
           value={newCard.question}
+          newCard={newCard}
+          setNewCard={setNewCard}
         />
         <CreateCard
           id={2}
@@ -176,6 +178,8 @@ export const CreateDeck = props => {
           visible={visible.answer}
           text={`Card ${cardNum} - Answer`}
           value={newCard.answer}
+          newCard={newCard}
+          setNewCard={setNewCard}
         />
       </CreateCardContainer>
       <Bottom>
