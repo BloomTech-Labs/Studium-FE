@@ -45,10 +45,10 @@ export const DELETING_DECK_START = 'DELETING_DECK_START';
 export const DELETING_DECK_SUCCESS = 'DELETING_DECK_SUCCESS';
 export const DELETING_DECK_FAILURE = 'DELETING_DECK_FAILURE';
 
-export const deleteDeck = uid => dispatch => {
+export const deleteDeck = (uid, deck_id) => dispatch => {
   dispatch({type: DELETING_DECK_START});
   createAxiosAuth(uid)
-    .get('/api/decks/:id')
+    .delete(`/api/decks/${deck_id}`)
     .then(res => {
       dispatch({type: DELETING_DECK_SUCCESS, payload: res.data});
     })
@@ -65,10 +65,10 @@ export const UPDATING_DECK_START = 'UPDATING_DECK_START';
 export const UPDATING_DECK_SUCCESS = 'UPDATING_DECK_SUCCESS';
 export const UPDATING_DECK_FAILURE = 'UPDATING_DECK_FAILURE';
 
-export const updateDeck = uid => dispatch => {
+export const updateDeck = (uid, deck_id, changes) => dispatch => {
   dispatch({type: UPDATING_DECK_START});
   createAxiosAuth(uid)
-    .get('/api/decks/:deck_id')
+    .update(`/api/decks/${deck_id}`, changes)
     .then(res => {
       dispatch({type: UPDATING_DECK_SUCCESS, payload: res.data});
     })

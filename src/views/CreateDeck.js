@@ -113,6 +113,22 @@ export const CreateDeck = props => {
     console.log(newCard);
   };
 
+  const compareDeckNameToState = () => {
+    let stateDeckName = decksState.decks[decksState.decks.length - 1].deck_name;
+
+    if (newDeck.deck_name !== stateDeckName) {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
+  // const updateDeckNameIfChange = () => {
+  //   if (!compareDeckNameToState()) {
+  //     dispatch(updateDeck)
+  //   }
+  // }
+
   const submitForm = e => {
     e.preventDefault();
     let uid = usersState.user.uid;
