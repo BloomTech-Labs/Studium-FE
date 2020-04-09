@@ -16,6 +16,19 @@ import {CreateButton} from '../Button/CreateButton.js';
  * return (
  *  <PreviewDeckCards text={"Card Title"} />
  * )
+ * @param text
+ * @param icon
+ * @param loading
+ * @param block
+ * @param hoverEffect
+ * @param selected
+ * @param {Deck}deck
+ * @param {Card}card
+ * @param type
+ * @param size
+ * @param cardOrDeck
+ * @param props
+ * @return {*}
  */
 export const PreviewDeckCards = ({
   text,
@@ -42,7 +55,7 @@ export const PreviewDeckCards = ({
         Add decks
       </p>
     )}
-    {!deck && <CreateButton width={'73px'} height={'73px'} />}
+    {!deck && <CreateButton width={'55px'} height={'55px'}/>}
     {deck && <p className={'deck-text'}>{deck.deck_name}</p>}
     <Icon
       type={'check-circle'}

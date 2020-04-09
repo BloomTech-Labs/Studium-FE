@@ -71,6 +71,13 @@ export const FormInput = ({
 
 const StyledFormItem = styled(Form.Item)`
   && {
+    .ant-form-item-label {
+      padding: 0 0 0;
+    }
+    .ant-form-item-label {
+      padding: 0 0 0 0;
+      line-height: 1;
+    }
     text-align: left;
     width: ${props => props.width};
     background-color: transparent;
@@ -85,6 +92,9 @@ const StyledBorderBottom = styled.div`
 const StyledNoBorderAntdInput = styled(Input)`
   && {
     border: 0px;
+    .ant-form-item-label {
+      padding: 0 0 0;
+    }
     :focus {
       box-shadow: none;
     }
@@ -95,6 +105,9 @@ const StyledNoBorderAntdInput = styled(Input)`
 const StyledAntdInputLargeRadius = styled(Input)`
   && {
     border-radius: ${props => props.theme.largeRadius};
+    .ant-form-item-label {
+      padding: 0 0 0;
+    }
     :focus {
       box-shadow: none;
     }
@@ -106,6 +119,10 @@ const StyledAntdInputLargeRadius = styled(Input)`
 const StyledAntdInputSmallRadius = styled(Input)`
   && {
     border-radius: ${props => props.theme.smallRadius};
+    .ant-form-item-label {
+      padding: 0 0 0;
+    }
+
     :focus {
       box-shadow: none;
     }

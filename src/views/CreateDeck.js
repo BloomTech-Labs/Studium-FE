@@ -17,13 +17,12 @@ import {useAppHooks} from '../customHooks/useAppHooks.js';
  */
 export const CreateDeck = props => {
   const {
-    pathname,
-    changePath,
     dispatch,
     usersState,
     decksState,
     theme,
     getLogger,
+    changePath,
   } = useAppHooks('CreateDeck');
   const [newDeck, setNewDeck] = useState({});
   const [newCard, setNewCard] = useState({

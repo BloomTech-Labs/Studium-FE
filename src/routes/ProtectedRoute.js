@@ -17,7 +17,7 @@ import {useAppHooks} from "../customHooks/useAppHooks.js";
  *  )
  */
 export const ProtectedRoute = ({component: Component, ...rest}) => {
-  const {usersState} = useAppHooks("ProtectedRoute");
+  const {usersState} = rest.getHooks("ProtectedRoute");
   
   return (
     <Route
@@ -25,7 +25,7 @@ export const ProtectedRoute = ({component: Component, ...rest}) => {
       render={props => {
         try{
           if(usersState.user.uid){
-            return <Component {...props} />;
+            return <Component {...rest} />;
           }else{
             return <Redirect to={"/"}/>;
           }

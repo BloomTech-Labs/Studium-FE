@@ -18,7 +18,7 @@ function SvgBrainPic(props){
       height={props.height}
       {...props}
     >
-      <g opacity={"81%"}
+      <g opacity={props.opacity}
          fill={props.fill}
          clipPath="url(#BrainPic_svg__clip0)"
       >
@@ -31,7 +31,7 @@ function SvgBrainPic(props){
       </g>
       <defs>
         <clipPath id="BrainPic_svg__clip0">
-          <path fill="white" d="M0 0h1738v1692H0z"/>
+          <path fill={props.fill} d="M0 0h1738v1692H0z"/>
         </clipPath>
       </defs>
     </svg>

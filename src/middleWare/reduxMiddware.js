@@ -35,6 +35,8 @@ export const storageBackUp = store => next => action => {
   
   if(action.type && action.type !== "SET_INIT_STATE"){
     const newState = store.getState();
+    storageBackupDebugger.logVerbose(`Comparing local storage with new new
+        state for reducer.`);
     Object.keys(newState).forEach(key => {
       
       const state = JSON.stringify(newState[key]);
@@ -42,13 +44,12 @@ export const storageBackUp = store => next => action => {
         SYNAPS_CONFIG.localStorageBasePath + key,
       );
       
-      
-      storageBackupDebugger.logVerbose(`Comparing local storage with new new
-        state for reducer ${key}`);
       storageBackupDebugger.logObjectWithMessage(JSON.parse(prevState),
-        `PrevState`,
+        `${key} --> PrevState`,
       );
-      storageBackupDebugger.logObjectWithMessage(newState[key], `NewState`);
+      storageBackupDebugger.logObjectWithMessage(newState[key],
+        `${key} --> NewState`,
+      );
       
       if(prevState !== state){
         storageBackupDebugger.logInfo("Updating local storage.");

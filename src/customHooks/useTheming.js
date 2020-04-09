@@ -11,7 +11,7 @@ const USE_THEMING_DEBUG_NAME = "useTheming";
  * @return {function(...[*]=)}
  */
 export const useTheming = (componentName) => {
-  const {getLogger} = useAppHooks("useTheme");
+  const {getLogger} = useAppHooks("useTheming");
   const theme = useTheme();
   const logger = getLogger(USE_THEMING_DEBUG_NAME);
   

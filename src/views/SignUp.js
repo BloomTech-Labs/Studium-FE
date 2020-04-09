@@ -4,7 +4,6 @@ import SvgSynapsLogoText from "../svgComponents/SvgSynapsLogoText.js";
 import styled from "styled-components";
 import {EMAIL_PROVIDER, GOOGLE_PROVIDER, signIn} from "../actions";
 import {useAppHooks} from "../customHooks/useAppHooks.js";
-import {THEME} from "../utilities/constants.js";
 
 /**
  * Sign Up

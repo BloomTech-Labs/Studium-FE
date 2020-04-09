@@ -54,8 +54,10 @@ export const THEME = {
   primaryColor36405C: "#36405c",
   primaryColor293046: "#293046",
   primaryColor353544: "#353544",
+  primaryColor122543: "#122543",
   
   secondaryColor: "#A2D8C7",
+  secondary4CB69F: "#4CB69F",
   secondaryColorEAF5F1: "#EAF5F1",
   secondaryColorD8EEE6: "#D8EEE6",
   secondaryColorC6E6DB: "#C6E6DB",
@@ -84,9 +86,8 @@ export const THEME = {
   synapsDark: "#36405C",
   synapsLight: "#FFFFFF",
   
-  brainPicDark: "#36405C",
-  brainPicLight: "#EEECE8",
-  
+  brainPicDark: "#164167",
+  brainPicLight: "#e1ded7",  
 };
 
 /**
@@ -134,6 +135,10 @@ export const APP_VIEW_MOBILE = "APP_VIEW_MOBILE";
 export const APP_VIEW_DESKTOP = "APP_VIEW_DESKTOP";
 
 /**
+ * @typedef {string} APP_PATH
+ */
+
+/**
  * @typedef {object.<{APP_PATH}, string>} AppPaths
  */
 export const APP_PATHS = {
@@ -146,3 +151,64 @@ export const APP_PATHS = {
   TESTING: "/test",
   LANDING_PAGE: "/",
 };
+
+/**
+ * @type Sizes
+ *
+ */
+export const SIZES = {
+  mobileS: 320,
+  mobileM: 375,
+  mobileL: 425,
+  tablet: 768,
+  laptop: 1024,
+  laptopL: 1440,
+  desktop: 2560,
+};
+/**
+ * @category Utilities
+ * @type {Devices}
+ */
+export const MEDIA_QUERIES = {
+  mobileS: `(min-width: ${SIZES.mobileS}px)`,
+  mobileM: `(min-width: ${SIZES.mobileM}px)`,
+  mobileL: `(min-width: ${SIZES.mobileL}px)`,
+  tablet: `(min-width: ${SIZES.tablet}px)`,
+  laptop: `(min-width: ${SIZES.laptop}px)`,
+  laptopL: `(min-width: ${SIZES.laptopL}px)`,
+  desktop: `(min-width: ${SIZES.desktop}px)`,
+};
+
+/**
+ * @typedef {function} Dispatch
+ */
+
+/**
+ * @typedef {string} Color
+ */
+
+/**
+ * @typedef {object} Sizes
+ * @property {number} mobileS '320px',
+ * @property {number} mobileM '375px',
+ * @property {number} mobileL '425px',
+ * @property {number} tablet '768px',
+ * @property {number} laptop '1024px',
+ * @property {number} laptopL '1440px',
+ * @property {number} desktop '2560px',
+ */
+
+/**
+ * @typedef {string} MediaQuery
+ */
+
+/**
+ * @typedef {object} Devices
+ * @property {MediaQuery} mobileS   320px
+ * @property {MediaQuery} mobileM   375px
+ * @property {MediaQuery} mobileL   425px
+ * @property {MediaQuery} tablet    768px
+ * @property {MediaQuery} laptop    1024px
+ * @property {MediaQuery} laptopL   1440px
+ * @property {MediaQuery} desktop   2560px
+ */

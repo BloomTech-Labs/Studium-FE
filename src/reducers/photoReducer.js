@@ -54,7 +54,10 @@ export const photosReducer = (state = initialState, action) => {
     case UPLOADING_PHOTO_FAILED:
       return {...state, isLoading: false, error: action.payload};
     case UPLOADING_PHOTO_SUCCESS:
-      return {...state, isLoading: false, photos: action.payload};
+    case UPLOADING_PHOTO_PROGRESS:
+      state.photos[action.payload.id] = action.payload;
+      return {photos: {...state.photos}};
+
     default:
       return state;
   }

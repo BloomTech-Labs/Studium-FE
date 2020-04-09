@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import {getThemingRules} from "./themingRules.js";
-import {useAppHooks} from "./useAppHooks.js";
 
 export const THEMING_DEBUG_NAME = "Styled Theming";
 
@@ -11,11 +10,9 @@ export const THEMING_DEBUG_NAME = "Styled Theming";
  * @return {checkAllRules}
  *
  */
-export const useStyledThemingRules = () => {
+export const useStyledThemingRules = (getLogger) => {
   
   const [rules, setRules] = useState();
-  
-  const {getLogger} = useAppHooks("use theming rules");
   const logger = getLogger(THEMING_DEBUG_NAME);
   logger.logInfo("Styled Theming running");
   

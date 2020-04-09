@@ -3,7 +3,8 @@ import styled from "styled-components";
 import {SmallLogo, SynapsButton} from "../components";
 import SvgSynapsLogoText from "../svgComponents/SvgSynapsLogoText.js";
 import {SvgBrainPaths} from "../svgComponents";
-import {useAppHooks, mediaQueries} from "../customHooks/useAppHooks.js";
+import {useAppHooks} from "../customHooks/useAppHooks.js";
+import {MEDIA_QUERIES} from "../utilities/constants.js";
 
 /**
  * Landing Page
@@ -11,8 +12,8 @@ import {useAppHooks, mediaQueries} from "../customHooks/useAppHooks.js";
  * @component
  * @example return (<LandingPage />);
  */
-export const LandingPage = props => {
-  const {changePath, theme} = useAppHooks("LandingPage");
+export const LandingPage = ({getHooks}) => {
+  const {changePath, theme} = getHooks("LandingPage");
   
   useEffect(() => {
   
@@ -117,7 +118,7 @@ const Mobile = styled.div`
   display: flex;
   flex-direction: column;
   margin: 75px auto 0 auto;
-  @media ${mediaQueries.tablet} {
+  @media ${MEDIA_QUERIES.tablet} {
     display: none;
   }
 `;
@@ -126,7 +127,7 @@ const MobileHeader = styled.div``;
 
 const Desktop = styled.div`
   display: none;
-  @media ${mediaQueries.tablet} {
+  @media ${MEDIA_QUERIES.tablet} {
   }
 `;
 
@@ -135,7 +136,6 @@ const HeaderName = styled.div`
 `;
 
 const Menu1 = styled.div`
-  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: normal;
   font-size: 25px;
@@ -145,7 +145,6 @@ const Menu1 = styled.div`
 `;
 
 const Menu2 = styled.div`
-  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: normal;
   font-size: 25px;
@@ -155,7 +154,6 @@ const Menu2 = styled.div`
 `;
 
 const Menu3 = styled.div`
-  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: normal;
   font-size: 25px;
@@ -169,7 +167,6 @@ const StyledLandingPage = styled.div`
 `;
 
 const Headline = styled.div`
-  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: bold;
   font-size: 122px;
@@ -193,7 +190,6 @@ const Rectangle = styled.div`
 `;
 
 const Paragraph = styled.div`
-  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: normal;
   font-size: 35px;
@@ -203,7 +199,6 @@ const Paragraph = styled.div`
 `;
 
 const Paragraph2 = styled.div`
-  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: normal;
   font-size: 35px;
@@ -222,7 +217,6 @@ const Group1 = styled.div`
 `;
 
 const Group1Text = styled.div`
-  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: normal;
   font-size: 24px;
@@ -236,7 +230,6 @@ const Group2 = styled.div`
 `;
 
 const Group2Text = styled.div`
-  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: normal;
   font-size: 24px;
@@ -259,7 +252,6 @@ const Group4 = styled.div`
 `;
 
 const Group4Text = styled.div`
-  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: normal;
   font-size: 24px;

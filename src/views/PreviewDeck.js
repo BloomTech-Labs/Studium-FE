@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, {useEffect} from "react";
+import PropTypes from "prop-types";
 
-import styled from 'styled-components';
-import { getAllCardsForDeck } from '../actions/cardActions.js';
-import { TitleText, PreviewDeckCards, SearchBar } from '../components';
-import { useAppHooks } from '../customHooks/useAppHooks.js';
-import { Alert, Icon } from 'antd';
+import styled from "styled-components";
+import {getAllCardsForDeck} from "../actions/cardActions.js";
+import {TitleText, PreviewDeckCards, SearchBar} from "../components";
+import {useAppHooks} from "../customHooks/useAppHooks.js";
+import {Alert, Icon} from "antd";
 
 /**
  * Preview Deck
@@ -13,26 +13,26 @@ import { Alert, Icon } from 'antd';
  * @component
  * @example return (<PreviewDeck />);
  */
-export const PreviewDeck = props => {
+export const PreviewDeck = ({getHooks}) => {
   // @type CardState
-  const { cardsState, pathPushedState, dispatch, usersState } = useAppHooks("PreviewDeck");
-  console.log( pathPushedState );
+  const {cardsState, pathPushedState, dispatch, usersState} = getHooks(
+    "PreviewDeck");
   
-  useEffect( () => {
-    debugger
-    if( pathPushedState === null ){
+  useEffect(() => {
+    
+    if(pathPushedState === undefined){
     
     }else{
       dispatch(
-        getAllCardsForDeck( pathPushedState.deck_id, usersState.user.uid ) );
+        getAllCardsForDeck(pathPushedState.deck_id, usersState.user.uid));
     }
     
-  }, [ pathPushedState ] );
+  }, [pathPushedState]);
   
   const getAlert = () => {
-    if( cardsState.error ){
+    if(cardsState.error){
       return <Alert
-        message={ cardsState.error.message }
+        message={cardsState.error.message}
         type="warning"
         closable
       />;
@@ -41,28 +41,28 @@ export const PreviewDeck = props => {
   
   return (
     <StyledPreviewDeck>
-      { getAlert() }
+      {getAlert()}
       <TopContainer>
         <StyledIconLeft type="left"/>
         <p>Back</p>
         <SearchContainer>
-          <SearchBar height={ '23px' } borderRadius={ '14px' }
-                     onSearch={ () => {
-                     } }/>
+          <SearchBar height={"23px"} borderRadius={"14px"}
+                     onSearch={() => {
+                     }}/>
         </SearchContainer>
-        <p style={ { marginRight: '9%' } }>Select</p>
+        <p style={{marginRight: "9%"}}>Select</p>
       </TopContainer>
       <TitleText
-        text={(pathPushedState && pathPushedState.deck_name) || 'Preview'}
+        text={(pathPushedState && pathPushedState.deck_name) || "Preview"}
       />
       <StyledPreviewDeckHolder>
-        <PreviewDeckCards key={ 0 }/>
-        { Object.values( cardsState.cards ).filter(
-          card => card.deck_id === pathPushedState.deck_id ).map(
+        <PreviewDeckCards key={0}/>
+        {Object.values(cardsState.cards).filter(
+          card => card.deck_id === pathPushedState.deck_id).map(
           card => {
-            console.log( card );
-            return <PreviewDeckCards key={ card.card_id } card={ card }/>;
-          } ) }
+            console.log(card);
+            return <PreviewDeckCards key={card.card_id} card={card}/>;
+          })}
       
       </StyledPreviewDeckHolder>
     </StyledPreviewDeck>
@@ -76,11 +76,11 @@ const TopContainer = styled.div`
 display: flex;
 flex-direction: row;
 font-size: 12px;
-widthL 100vw;
+width: 100vw;
 
 `;
 
-const StyledIconLeft = styled( Icon )`
+const StyledIconLeft = styled(Icon)`
 margin-right: %9;
 `;
 
@@ -93,9 +93,11 @@ const StyledPreviewDeck = styled.div`
   display: flex;
   flex-direction: column;
   padding: 16px 1rem;
-  max-width: 100%;
+  max-width: 1140px;
   min-height: 90%;
   width: 100%;
+  border-radius: 10px;
+  background: ${props => props.theme.themeState.navBarLight};
 `;
 
 const StyledPreviewDeckHolder = styled.div`

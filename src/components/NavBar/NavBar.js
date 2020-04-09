@@ -6,14 +6,16 @@ import {ReactComponent as SmallWhiteLogo} from "../../images/SmallWhiteLogo.svg"
 import {signOut} from "../../actions";
 import theming from "styled-theming";
 import {
-  useAppHooks, mediaQueries, sizes,
+  useAppHooks,
 } from "../../customHooks/useAppHooks.js";
 import LogoLeft from "./LogoLeft.js";
 import {
   THEMING_VALUES, THEMING_VARIABLES,
 } from "../../customHooks/themingRules.js";
 import {useComparPrevContext} from "../../customHooks/useComparPrevContext.js";
-import {APP_PATHS, APP_VIEW_DESKTOP, THEME} from "../../utilities/constants.js";
+import {
+  APP_PATHS, APP_VIEW_DESKTOP, MEDIA_QUERIES, SIZES, THEME,
+} from "../../utilities/constants.js";
 
 export const NAV_BAR_DEBUG_NAME = "Nav Bar";
 
@@ -24,8 +26,8 @@ export const NAV_BAR_DEBUG_NAME = "Nav Bar";
  * @example
  *  return (<NavBar />)
  */
-export const NavBar = () => {
-  const {usersState, theme, themingRules, getLogger, dispatch, changePath, path, appView} = useAppHooks(
+export const NavBar = ({getHooks}) => {
+  const {usersState, theme, getLogger, dispatch, changePath, path, appView} = getHooks(
     "Nav Bar");
   const [menuOpen, setMenuOpen] = useState(false);
   const [avatarUrl, setAvatarUrl] = useState("");
@@ -39,8 +41,8 @@ export const NavBar = () => {
   
   useEffect(() => {
     compareContext(
-      {usersState, theme, path, appView, themingRules});
-  }, [usersState, theme, path, appView, themingRules]);
+      {usersState, theme, path, appView});
+  }, [usersState, theme, path, appView]);
   
   useEffect(() => {
     
@@ -70,6 +72,7 @@ export const NavBar = () => {
     
     return (
       <NavBarAvatar
+        getHooks={getHooks}
         onClick={logout}
         avatarUrl={avatarUrl}
         className={"ant-dropdown-link"}
@@ -90,7 +93,7 @@ export const NavBar = () => {
         overFlowY={"hidden"}
         backgroundColor={"transparent"}
       >
-        <LogoLeft/>
+        <LogoLeft getHooks={getHooks}/>
         {navBarRightContent()}
       </ContainerDiv>
     </StyledBar>

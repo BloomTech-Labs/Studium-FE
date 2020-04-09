@@ -1,8 +1,6 @@
-import React, {useContext, useEffect} from "react";
+import React, {useEffect} from "react";
 import firebase from "../config/firebase/FirebaseConfig.js";
 import {signedIn, signOut} from "../actions";
-import {useAppHooks} from "./useAppHooks.js";
-import {useHistory} from "react-router-dom";
 
 /**
  * Use Auth State Change
@@ -12,9 +10,9 @@ import {useHistory} from "react-router-dom";
  * google auth state change.
  *
  */
-export const useAuthStateChange = () => {
+export const useAuthStateChange = (getHooks) => {
   
-  const {changePath, dispatch, history, path} = useAppHooks("Use Auth State");
+  const {changePath, dispatch, path} = getHooks("Use Auth State");
   
   //Promises. This function gets called in for google sign in;
   

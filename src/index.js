@@ -13,13 +13,13 @@ const logger = appLogger.getLogger("App");
 
 try{
   if(SYNAPS_CONFIG.appsToDebbug.length > 0){
-    logger.logInfo("Debug Logger Active");
+    logger.logVerbose("Debug Logger Active");
     logger.logInfo("To log debug messages you have to" +
       " add the app location name to the appsToDebug variable in the App" +
       " config file. ");
   }
 }catch(e){
-  logger.error(e.message);
+  logger.logError(e.message);
   SYNAPS_CONFIG.debugError = true;
 }
 

@@ -40,7 +40,7 @@ export const CreateCard = ({
           onChange={changeHandler}
           placeholder={'Start typing...'}
         />
-        <Uploader />
+        <Uploader id={drillName} />
       </StyledCreateCard>
     </StyledCreateCardContainer>
   );

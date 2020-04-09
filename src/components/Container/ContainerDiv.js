@@ -17,7 +17,6 @@ import PropTypes from "prop-types";
  *  )
  */
 export const ContainerDiv = props => {
-  console.log(props);
   return <Div {...props}>{props.children}</Div>;
 };
 
@@ -54,7 +53,7 @@ const Div = styled.div`
   max-height: ${props => props.maxHeight || "100vh"};
   max-width: ${props => props.maxWidth || "100vw"};
   display: flex;
-
+  z-index: ${props => props.zIndex || 1};
   align-items: ${props => props.alignItems || "center"};
   flex-direction: ${props => props.flexDirection || "column"};
   justify-content: ${props => props.justifyContent || "center"};

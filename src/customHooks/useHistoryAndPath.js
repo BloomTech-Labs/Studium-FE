@@ -16,7 +16,6 @@ export const useChangePath = () => {
     AppHooksContext);
   const logger = hooks.getLogger(USE_CHANGE_PATH_DEBUG);
   
-  logger.logVerbose(`useChangePath has been called.`);
   /**
    * Change Path
    * @typedef {function} ChangePath
@@ -29,44 +28,21 @@ export const useChangePath = () => {
    */
   const changePath = (pathToChangeTo, stateToPush = null) => {
     
-    logger.logVerbose(`"Change path function init.`);
+    logger.logVerbose(`Change path called.`);
     pathToChangeTo = pathToChangeTo.toLowerCase();
     if(pathToChangeTo !== undefined && pathToChangeTo !==
       history.location.pathname){
-      
       logger.logVerbose("Pushing  new url: " + pathToChangeTo);
       if(stateToPush){
         history.push(pathToChangeTo, stateToPush);
       }else{
         history.push(pathToChangeTo);
       }
+      
     }
     
     logger.logVerbose("Not updaing path: " + pathToChangeTo);
   };
-  
-  useEffect(() => {
-    const hooksToChange = [];
-    
-    if(history.location.pathname !== path){
-      hooksToChange.push({name: "path", value: history.location.pathname});
-      logger.logInfo(`Setting new path variable.`);
-    }
-    
-    if(history.location.state !== pushedState){
-      hooksToChange.push({name: "pushedState", value: history.location.state});
-      logger.logObjectWithMessage(history.location.state, "New location" +
-        " state.");
-    }
-    
-    if(hooksToChange.length > 0){
-      setHookVariable("hooks", "noVale", hooksToChange);
-      
-    }else{
-      logger.logWarning("No history object detected.");
-    }
-    
-  }, [history.location.pathname]);
   
   return changePath;
   

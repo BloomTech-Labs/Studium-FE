@@ -18,7 +18,7 @@ export const Uploader = props => {
   /**
    * @type PhotoReducerState
    */
-  const {photosState, dispatch, usersState} = useAppHooks('Uploader');
+  const {photosState, usersState, dispatch} = useAppHooks('Uploader');
   const [photoObject, setPhotoObject] = useState(false);
 
   useEffect(() => {
@@ -32,20 +32,22 @@ export const Uploader = props => {
   const customRequest = file => {
     console.log('|||uid from uploadImage|||', usersState.user.uid);
     file.id = props.id;
-    let uid = usersState.user.uid;
-    dispatch(uploadImage(file, uid));
+    dispatch(uploadImage(file));
   };
 
   const getUrl = () => {
     if (photoObject) {
-      if (photoObject.file.url) {
-        return photoObject.file.url;
+      if (photoObject.file.uid) {
+        return (
+          'https://res.cloudinary.com/www-synapsapp-com/image/upload/v1582468332/' +
+          photoObject.file.uid
+        );
       }
     }
     return undefined;
   };
 
-  const loadImage = photoObject && photoObject.file && photoObject.file.url;
+  const loadImage = photoObject && photoObject.file && photoObject.file.uid;
   return (
     <div data-testid="upload">
       <StyledUpload
@@ -71,7 +73,7 @@ export const Uploader = props => {
 };
 
 Uploader.propTypes = {
-  id: PropTypes.number,
+  id: PropTypes.string,
 };
 
 const StyledUpload = styled(Upload)`
