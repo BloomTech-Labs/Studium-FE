@@ -6,7 +6,6 @@ import {DeckName} from "../components/CreateDeck/DeckName.js";
 import {SmallDeckSvg} from "../components/SmallDeckSvg/SmallDeckSvg.js";
 import {SynapsButton} from "../components/Button/SynapsButton.js";
 import {postDeck} from "../actions/decksActions.js";
-import {useAppHooks} from "../customHooks/useAppHooks.js";
 
 /**
  * Create Deck View
@@ -16,13 +15,8 @@ import {useAppHooks} from "../customHooks/useAppHooks.js";
  */
 export const CreateDeck = props => {
   const {
-    pathname,
-    changePath,
     dispatch,
     usersState,
-    decksState,
-    theme,
-    getLogger,
   } = props.getHooks("CreateDeck");
   const [disableInput, setDisableInput] = useState(false);
   const [newDeck, setNewDeck] = useState({});

@@ -19,8 +19,8 @@ export const CreateCard = ({
   return (
     <StyledCreateCardContainer visible={visible}>
       <StyledCreateCardHeaderContainer>
-        <CreateCardText highlighted={highlighted} text={text} />
-        <CardEditDeleteIcons />
+        <CreateCardText highlighted={highlighted} text={text}/>
+        <CardEditDeleteIcons/>
       </StyledCreateCardHeaderContainer>
       <StyledCreateCard highlighted={highlighted}>
         <TextArea
@@ -29,7 +29,7 @@ export const CreateCard = ({
           onChange={changeHandler}
           placeholder={'Start typing...'}
         />
-        <Uploader />
+        <Uploader id={drillName}/>
       </StyledCreateCard>
     </StyledCreateCardContainer>
   );
@@ -44,7 +44,7 @@ const StyledCreateCard = styled.div`
   width: 314px;
   height: 149px;
   border: ${props =>
-    props.highlighted ? '2px solid #4CB69F' : '2px solid #908a7d'};
+  props.highlighted ? '2px solid #4CB69F' : '2px solid #908a7d'};
   border-radius: 4px;
   display: flex;
   justify-content: space-between;

@@ -48,7 +48,7 @@ export const useAppHooks = (nameOfCaller) => {
   );
   
   const getHooks = () => {
-    // debugger;
+    //
     return {
       theme: theme,
       path: history.location.pathname,
