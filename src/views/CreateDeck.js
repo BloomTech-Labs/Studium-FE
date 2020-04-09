@@ -9,6 +9,12 @@ import {postDeck} from '../actions/decksActions.js';
 import {updateDeck} from '../actions/decksActions.js';
 import {createCard} from '../actions/cardActions.js';
 import {useAppHooks} from '../customHooks/useAppHooks.js';
+import theming from 'styled-theming';
+import {
+  THEMING_VARIABLES,
+  THEMING_VALUES,
+} from '../customHooks/themingRules.js';
+
 /**
  * Create Deck View
  * @category Views
@@ -23,6 +29,7 @@ export const CreateDeck = props => {
     theme,
     getLogger,
     changePath,
+    appView,
   } = useAppHooks('CreateDeck');
   const [newDeck, setNewDeck] = useState({});
   const [newCard, setNewCard] = useState({
@@ -167,7 +174,7 @@ export const CreateDeck = props => {
   };
 
   return (
-    <StyledCreateDeck>
+    <StyledCreateDeck appView={appView}>
       <CardNameContainer>
         <CardHeaderContainer>
           <CreateCardTitleText text={'Create Deck'} />
@@ -230,7 +237,9 @@ export const CreateDeck = props => {
 CreateDeck.propTypes = {};
 
 const StyledCreateDeck = styled.div`
-  width: 375px;
+  width: ${props => (props.appView === 'APP_VIEW_MOBILE' ? '375px' : '100%')};
+  max-width: ${props =>
+    props.appView === 'APP_VIEW_MOBILE' ? '100%' : '1140px'};
   height: 812px;
   display: flex;
   padding: 0 36px;
