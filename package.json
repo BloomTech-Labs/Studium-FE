@@ -28,7 +28,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test ",
     "eject": "react-scripts eject",
-    "docs": "jsdoc -c jsdoc.json  --debug",
     "clear": "react-scripts test --clearCache",
     "coverage": "react-scripts test --coverage --watchAll=false || true",
     "clear:run": "CI=true npm-run-all clear coverage || true",
