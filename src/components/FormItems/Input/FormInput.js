@@ -99,6 +99,10 @@ const StyledNoBorderAntdInput = styled(Input)`
       box-shadow: none;
     }
     background-color: transparent;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 24px;
   }
 `;
 
@@ -113,6 +117,10 @@ const StyledAntdInputLargeRadius = styled(Input)`
     }
     background-color: transparent;
     border: ${props => props.borderStyle};
+    font-style: normal;
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 24px;
   }
 `;
 
@@ -128,6 +136,10 @@ const StyledAntdInputSmallRadius = styled(Input)`
     }
     background-color: transparent;
     border: ${props => props.borderStyle};
+    font-style: normal;
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 24px;
   }
 `;
 
