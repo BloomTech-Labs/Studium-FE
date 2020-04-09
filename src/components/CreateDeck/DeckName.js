@@ -55,9 +55,11 @@ const DeckNameContainer = styled.div`
 
 const DeckTitlePrompt = styled.h1`
   color: ${props => (props.highlighted ? '#4CB69F' : '#888888')};
+  font-style: normal;
   font-weight: bold;
   font-size: 26px;
   text-align: left;
+  line-height: 33px;
 `;
 
 const DeckNameIconContainer = styled.div`

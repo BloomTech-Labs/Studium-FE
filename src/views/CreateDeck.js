@@ -235,8 +235,8 @@ const StyledCreateDeck = styled.div`
   display: flex;
   padding: 0 36px;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
+  align-items: center;
+  justify-content: flex-start;
   background-color: #f6f5f3;
 `;
 

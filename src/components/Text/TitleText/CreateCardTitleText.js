@@ -21,7 +21,6 @@ const StyledTitle = styled.div`
   font-weight: 900;
   font-size: 45px;
   line-height: 24px;
-  font-weight: bold;
   text-align: left;
   margin-bottom: 30px;
   margin-top: 30px;
