@@ -44,8 +44,8 @@ export default function App(props){
     <StyledApp className="App">
       {theme.BRAIN_SVG !== THEMING_VALUES.HIDDEN &&
       <SvgBrainPic
-        maxWidth={'1500px'}
-        maxHeight={'1500px'}
+        maxWidth={'3000px'}
+        maxHeight={'3000px'}
         height={getValue(THEMING_VARIABLES.BRAIN_SVG, {
           [THEMING_VALUES.BOTTOM]: '1500px',
           [THEMING_VALUES.TOP]: '1500px',

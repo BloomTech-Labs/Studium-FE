@@ -83,9 +83,6 @@ export function SignIn(props){
           [THEMING_VALUES.MOBILE]: '300px',
         })}
       />
-      
-      <StyledH2>Hey! Welcome Back.</StyledH2>
-      
       {switchWelcomeTitle()}
       <div>
         <StyledBtn
