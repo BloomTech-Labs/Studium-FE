@@ -230,11 +230,14 @@ export const CreateDeck = props => {
 CreateDeck.propTypes = {};
 
 const StyledCreateDeck = styled.div`
-  width: 315px;
+  width: 375px;
   height: 812px;
   display: flex;
+  padding: 0 36px;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: center;
+  background-color: #f6f5f3;
 `;
 
 const CreateCardContainer = styled.div`
