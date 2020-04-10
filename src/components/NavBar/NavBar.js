@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import {ContainerDiv, NavBarAvatar} from "../index.js";
-import {ReactComponent as SmallWhiteLogo} from "../../images/SmallWhiteLogo.svg";
+import {ReactComponent as SmallWhiteLogo} from "../../svgs/SmallWhiteLogo.svg";
 import {signOut} from "../../actions";
 import theming from "styled-theming";
 import {
