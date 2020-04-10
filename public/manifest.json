@@ -21,9 +21,5 @@
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff",
-  "debugLocations": [
-    "redux",
-    "theming"
-  ]
+  "background_color": "#ffffff"
 }
