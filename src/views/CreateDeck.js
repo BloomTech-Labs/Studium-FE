@@ -183,6 +183,7 @@ export const CreateDeck = props => {
           <SmallDeckSvg />
         </CardHeaderContainer>
         <DeckName
+          appView={appView}
           setNewDeck={setNewDeck}
           newDeck={newDeck}
           name={'newDeck'}
@@ -190,6 +191,7 @@ export const CreateDeck = props => {
           value={newDeck.deck_name}
           clickHandler={clickHandler}
           highlighted={highlighted.title}
+          setHighlighted={setHighlighted}
         />
       </CardNameContainer>
       <CreateCardContainer>
@@ -244,7 +246,8 @@ const StyledCreateDeck = styled.div`
     props.appView === 'APP_VIEW_MOBILE' ? '100%' : '1140px'};
   height: 812px;
   display: flex;
-  padding: 0 36px;
+  padding: ${props =>
+    props.appView === 'APP_VIEW_MOBILE' ? '0 36px' : '63px 67px 15px 67px'};
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;

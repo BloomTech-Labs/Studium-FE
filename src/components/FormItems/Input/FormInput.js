@@ -19,6 +19,7 @@ import PropTypes from 'prop-types';
  *
  */
 export const FormInput = ({
+  appView,
   value,
   width = '90%',
   bordered = 'false',
@@ -28,14 +29,15 @@ export const FormInput = ({
   error,
   ...props
 }) => {
-  console.log('border style from formInput|||', borderStyle);
+  console.log('input width from formInput|||', width);
   if (bordered) {
     if (borderRadius === 'large') {
       // bordered input with large radius
       return (
         <StyledFormItem label={label}>
           <StyledAntdInputLargeRadius
-            style={{border: borderStyle}}
+            width={width}
+            borderStyle={borderStyle}
             value={value}
             {...props}
           />
@@ -46,7 +48,8 @@ export const FormInput = ({
       return (
         <StyledFormItem label={label}>
           <StyledAntdInputSmallRadius
-            style={{border: borderStyle}}
+            width={width}
+            borderStyle={borderStyle}
             value={value}
             {...props}
           />
@@ -59,7 +62,8 @@ export const FormInput = ({
       <StyledFormItem label={label}>
         <StyledBorderBottom>
           <StyledNoBorderAntdInput
-            style={{border: borderStyle}}
+            width={width}
+            borderStyle={borderStyle}
             value={value}
             {...props}
           />
@@ -79,7 +83,6 @@ const StyledFormItem = styled(Form.Item)`
       line-height: 1;
     }
     text-align: left;
-    width: ${props => props.width};
     background-color: transparent;
     border: ${props => props.borderStyle};
   }
@@ -98,11 +101,14 @@ const StyledNoBorderAntdInput = styled(Input)`
     :focus {
       box-shadow: none;
     }
-    background-color: transparent;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 19px;
-    line-height: 24px;
+    .ant-input {
+      width: ${props => props.width};
+      background-color: transparent;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 19px;
+      line-height: 24px;
+    }
   }
 `;
 
@@ -115,6 +121,7 @@ const StyledAntdInputLargeRadius = styled(Input)`
     :focus {
       box-shadow: none;
     }
+    width: ${props => props.width};
     background-color: transparent;
     border: ${props => props.borderStyle};
     font-style: normal;
@@ -126,7 +133,8 @@ const StyledAntdInputLargeRadius = styled(Input)`
 
 const StyledAntdInputSmallRadius = styled(Input)`
   && {
-    border-radius: ${props => props.theme.smallRadius};
+    border-radius: ${props =>
+      props.appView === 'APP_VIEW_MOBILE' ? props.theme.smallRadius : '0px'};
     .ant-form-item-label {
       padding: 0 0 0;
     }
@@ -134,6 +142,7 @@ const StyledAntdInputSmallRadius = styled(Input)`
     :focus {
       box-shadow: none;
     }
+    width: ${props => props.width};
     background-color: transparent;
     border: ${props => props.borderStyle};
     font-style: normal;

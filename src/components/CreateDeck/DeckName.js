@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {FormInput} from '../FormItems/Input/FormInput.js';
 import styled from 'styled-components';
@@ -12,31 +12,45 @@ export const DeckName = ({
   setDisableInput,
   disableInput,
   highlighted,
+  setHighlighted,
   clickHandler,
   changeHandler,
+  appView,
   ...props
 }) => {
+  useEffect(() => {
+    if (appView === 'APP_VIEW_DESKTOP') {
+      setHighlighted(false);
+    }
+  }, [appView]);
+
   return (
     <DeckNameContainer>
       <DeckNameIconContainer>
         <DeckTitlePrompt highlighted={highlighted}>
-          Title of Deck
+          {props.appView === 'APP_VIEW_MOBILE'
+            ? 'Title of Deck'
+            : 'Name of Deck'}
         </DeckTitlePrompt>
-        <CardEditDeleteIcons
-          setNewDeck={setNewDeck}
-          newDeck={newDeck}
-          type={'clear'}
-          name={name}
-          setDisableInput={setDisableInput}
-        />
+        {props.appView === 'APP_VIEW_MOBILE' && (
+          <CardEditDeleteIcons
+            setNewDeck={setNewDeck}
+            newDeck={newDeck}
+            type={'clear'}
+            name={name}
+            setDisableInput={setDisableInput}
+          />
+        )}
       </DeckNameIconContainer>
 
       <FormInput
+        appView={appView}
+        className="formClassSynaps"
         onChange={changeHandler}
         name="title"
         onClick={clickHandler}
         borderStyle={highlighted ? '2px solid #4CB69F' : '2px solid #908A7D'}
-        inputWidth={'100%'}
+        width={appView === 'APP_VIEW_MOBILE' ? '100%' : '35%'}
         bordered={true}
         value={value}
       />
@@ -54,12 +68,20 @@ const DeckNameContainer = styled.div`
 `;
 
 const DeckTitlePrompt = styled.h1`
-  color: ${props => (props.highlighted ? '#4CB69F' : '#888888')};
+  color: ${props =>
+    props.appView === 'APP_VIEW_DESKTOP' ? '#36405C' : '#888888'};
+  color: ${props =>
+    props.highlighted && props.appView === 'APP_VIEW_MOBILE'
+      ? '#4CB69F'
+      : '#888888'};
   font-style: normal;
-  font-weight: bold;
-  font-size: 26px;
+  font-weight: ${props =>
+    props.appView === 'APP_VIEW_MOBILE' ? 'bold' : 'normal'};
+  font-size: ${props =>
+    props.appView === 'APP_VIEW_MOBILE' ? '26px' : '24px'};
   text-align: left;
   line-height: 33px;
+  margin-bottom: 12px;
 `;
 
 const DeckNameIconContainer = styled.div`

@@ -22,9 +22,11 @@ const StyledTitle = styled.div`
   font-weight: ${props => (props.appView === 'MOBILE_VIEW_MOBILE' ? 900 : 600)};
   font-size: ${props =>
     props.appView === 'MOBILE_VIEW_MOBILE' ? '45px' : '47px'};
-  line-height: 24px;
+  line-height: ${props =>
+    props.appView === 'MOBILE_VIEW_MOBILE' ? '24px' : '30px'};
   text-align: left;
-  margin-bottom: 30px;
+  margin-bottom: ${props =>
+    props.appView === 'MOBILE_VIEW_MOBILE' ? '30px' : '75px'};
   margin-top: 30px;
 `;
 
