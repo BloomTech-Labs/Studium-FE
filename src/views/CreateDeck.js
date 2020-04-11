@@ -9,11 +9,6 @@ import {postDeck} from '../actions/decksActions.js';
 import {updateDeck} from '../actions/decksActions.js';
 import {createCard} from '../actions/cardActions.js';
 import {useAppHooks} from '../customHooks/useAppHooks.js';
-import theming from 'styled-theming';
-import {
-  THEMING_VARIABLES,
-  THEMING_VALUES,
-} from '../customHooks/themingRules.js';
 
 /**
  * Create Deck View
@@ -177,7 +172,14 @@ export const CreateDeck = props => {
     <StyledCreateDeck appView={appView}>
       <CardNameContainer>
         <CardHeaderContainer>
-          <CreateCardTitleText text={'Create Deck'} />
+          <CreateCardTitleText
+            appView={appView}
+            text={
+              appView === 'APP_VIEW_MOBILE'
+                ? 'Create Deck'
+                : 'Create New Deck of Flashcards'
+            }
+          />
           <SmallDeckSvg />
         </CardHeaderContainer>
         <DeckName
