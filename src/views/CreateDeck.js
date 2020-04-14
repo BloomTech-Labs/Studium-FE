@@ -58,9 +58,11 @@ export const CreateDeck = props => {
   };
 
   useEffect(() => {
-    console.log('||||logger from useEffect||||', newDeck);
-    console.log('||||logger from useEffect||||', newCard);
-  }, [newDeck, newCard]);
+    if (appView === APP_VIEW_DESKTOP) {
+      setHighlighted({title: false, question: false, answer: false});
+      setVisible({question: true, answer: true});
+    }
+  }, [appView]);
 
   const clickHandler = e => {
     e.preventDefault();
@@ -204,7 +206,11 @@ export const CreateDeck = props => {
           clickHandler={clickHandler}
           highlighted={highlighted.question}
           visible={visible.question}
-          text={`Card ${cardNum} - Question`}
+          text={
+            appView === APP_VIEW_MOBILE
+              ? `Card ${cardNum} - Question`
+              : 'Question'
+          }
           value={newCard.question}
           newCard={newCard}
           setNewCard={setNewCard}
@@ -217,7 +223,9 @@ export const CreateDeck = props => {
           clickHandler={clickHandler}
           highlighted={highlighted.answer}
           visible={visible.answer}
-          text={`Card ${cardNum} - Answer`}
+          text={
+            appView === APP_VIEW_MOBILE ? `Card ${cardNum} - Answer` : 'Answer'
+          }
           value={newCard.answer}
           newCard={newCard}
           setNewCard={setNewCard}
