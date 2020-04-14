@@ -1,17 +1,32 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import {SmallFlashCard, TitleText, SearchBar, PreviewDeckCards } from '../components';
+import {
+  SmallFlashCard,
+  TitleText,
+  SearchBar,
+  PreviewDeckCards,
+  CreateCard,
+} from '../components';
+import SvgSynapsLogoText from '../svgComponents/SvgSynapsLogoText.js';
 import PropTypes from 'prop-types';
-import {devices} from '../utilities/breakpoints-device.js';
 import {useAppHooks} from '../customHooks/useAppHooks.js';
 import {ReactComponent as Svg} from '../images/Group.svg';
-import {CreateButton} from '../components/Button/CreateButton';
 import myPic from '../images/Group.png';
-import {ReactComponent as SynapsBrainImage} from '../images/Frame.svg';
-import {getUserDecks} from "../actions";
-import {Alert} from "antd";
-import {SvgSnapsOutline} from "../svgComponents";
-import {APP_VIEW_MOBILE, MEDIA_QUERIES, SIZES} from "../utilities/constants.js";
+import {getUserDecks} from '../actions';
+import {Alert} from 'antd';
+import {SvgSnapsOutline} from '../svgComponents';
+import {
+  APP_VIEW_MOBILE,
+  THEME,
+  MEDIA_QUERIES,
+  SIZES,
+} from '../utilities/constants.js';
+import theming from 'styled-theming';
+import {useTheming} from '../customHooks/useTheming.js';
+import {
+  THEMING_VALUES,
+  THEMING_VARIABLES,
+} from '../customHooks/themingRules.js';
 
 const decks = [
   {deck_name: 'Some Name', deck_id: 1},
@@ -59,7 +74,17 @@ const decks = [
  */
 export const Dashboard = props => {
   const [selected, setSelected] = useState(0);
-  const {pathname, changePath} = useAppHooks();
+  const {
+    pathname,
+    changePath,
+    dispatch,
+    theme,
+    path,
+    appView,
+    height,
+    getHooks,
+  } = useAppHooks('Dashboard');
+  const getValue = useTheming('App.js');
   const search = e => {
     console.log(e.target.value);
   };
@@ -77,24 +102,7 @@ export const Dashboard = props => {
   };
 
   return (
-    // <SynapsBrainImage
-    //   style={{
-    //     backgroundColor: '#EEECE8',
-    //   }}
-    // >
     <StyledDashboard className={'dashboard'}>
-      {/* <Svg
-        style={{
-          position: 'absolute',
-          left: '0.04%',
-          right: '0.1',
-          top: '-0.2%',
-          bottom: '0%',
-          mixBlendMode: 'color-burn',
-          //backgroundColor: '#EEECE8',
-          //opacity: '0.1',
-        }}
-      > */}
       <StyledTitleText>
         <TitleText
           text={'My Flashcards'}
@@ -104,69 +112,41 @@ export const Dashboard = props => {
             fontFamily: 'Source Sans Pro',
             fontStyle: 'normal',
             fontWeight: '900',
-            fontSize: '47px',
-            lineHeight: '24px',
-            marginTop: '53px',
           }}
         />
       </StyledTitleText>
-      <StyledSearchBar>
+      <StyledSearchBar text={'search all cards'}>
         <SearchBar
           onSearch={search}
+          text={'search all cards'}
           style={{
             position: 'absolute',
-            width: '237px',
-            height: '35px',
-            left: '584px',
+            width: '23%',
+            height: '5%',
+            left: '65%',
             top: '24px',
             border: '2px solid #343D58',
             boxSizing: 'border-box',
-            borderRadius: '14px',
+            borderRadius: '8px',
             marginTop: '8px',
             marginBottom: '33px',
           }}
         />
       </StyledSearchBar>
       <StyledDeckHolder>
-        <SmallFlashCard
-          text={'Create Deck'}
-          icon={'plus'}
-          onClick={() => deckClicked()}
-          style={{
-            width: '126px',
-            height: '164px',
-            background: '#EEECE8',
-            borderRadius: '10px',
-            border: '2px dashed #D7EEE7',
-          }}
-        />
-        {/* <CreateButton
-      text = {'Create Deck'}
-      style = {{
-        left: '-22%',
-        top: '8%',
-      }}
-      /> */}
+        <PreviewDeckCards text={'Create Deck'} onClick={() => deckClicked()} />
 
         {decks.map(deck => {
           return (
-            <SmallFlashCard
+            <PreviewDeckCards
               key={deck.deck_id}
               deck={deck}
               onClick={e => deckClicked(deck)}
-              style={{
-                width: '126px',
-                height: '164px',
-                background: '#EEECE8',
-                borderRadius: '10px',
-                border: '2px dashed #D7EEE7',
-              }}
             />
           );
         })}
       </StyledDeckHolder>
     </StyledDashboard>
-    //</SynapsBrainImage>
   );
 };
 
@@ -178,35 +158,36 @@ const StyledDeckHolder = styled.div`
   max-width: 100%;
   display: flex;
   flex-wrap: wrap;
-  margin: -65px 15% 12%;
+  margin: -5% 15% 12%;
   justify-content: space-around;
   background: white;
-  height: 1063px;
+  height: 100%;
   left: 10%;
 `;
 
 const StyledDashboard = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 65%;
+  max-width: 100%;
   height: 100%;
   overflow-y: scroll;
-  background: white;
+  background: ${THEME.white};
 
-  @media screen and ${devices.tablet} {
+  @media screen and ${MEDIA_QUERIES.tablet} {
     height: 100vh;
     position: absolute;
-    left: 262px;
+    left: 17%;
     top: 11%;
     right: 13%;
   }
 
-  @media screen and ${devices.desktop} {
+  @media screen and ${MEDIA_QUERIES.desktop} {
     width: 100%;
     height: 100vh;
     position: absolute;
     left: 200px;
     background-image: url(../images/Group.svg);
+    background-color: ${THEME.primaryColor36405C};
   }
   > svg {
     height: 33px;
@@ -244,7 +225,7 @@ const Wrap = styled.div`
   width: 100%;
 
   @media screen and ${MEDIA_QUERIES.tablet} {
-    background: #FFFFFF;
+    background: #ffffff;
     margin-top: 65px;
     border-radius: 10px;
   }
