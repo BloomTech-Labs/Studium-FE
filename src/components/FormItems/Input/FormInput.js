@@ -27,6 +27,7 @@ export const FormInput = ({
   borderStyle,
   label,
   error,
+  placeholder = '',
   ...props
 }) => {
   console.log('input width from formInput|||', width);
@@ -39,6 +40,7 @@ export const FormInput = ({
             width={width}
             borderStyle={borderStyle}
             value={value}
+            placeholder={placeholder}
             {...props}
           />
         </StyledFormItem>
@@ -51,6 +53,7 @@ export const FormInput = ({
             width={width}
             borderStyle={borderStyle}
             value={value}
+            placeholder={placeholder}
             {...props}
           />
         </StyledFormItem>
@@ -65,6 +68,7 @@ export const FormInput = ({
             width={width}
             borderStyle={borderStyle}
             value={value}
+            placeholder={placeholder}
             {...props}
           />
         </StyledBorderBottom>

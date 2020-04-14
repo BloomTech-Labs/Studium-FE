@@ -9,6 +9,7 @@ import {postDeck} from '../actions/decksActions.js';
 import {updateDeck} from '../actions/decksActions.js';
 import {createCard} from '../actions/cardActions.js';
 import {useAppHooks} from '../customHooks/useAppHooks.js';
+import {APP_VIEW_MOBILE, APP_VIEW_DESKTOP} from '../utilities/constants.js';
 
 /**
  * Create Deck View
@@ -175,7 +176,7 @@ export const CreateDeck = props => {
           <CreateCardTitleText
             appView={appView}
             text={
-              appView === 'APP_VIEW_MOBILE'
+              appView === APP_VIEW_MOBILE
                 ? 'Create Deck'
                 : 'Create New Deck of Flashcards'
             }
@@ -241,13 +242,13 @@ export const CreateDeck = props => {
 CreateDeck.propTypes = {};
 
 const StyledCreateDeck = styled.div`
-  width: ${props => (props.appView === 'APP_VIEW_MOBILE' ? '375px' : '100%')};
+  width: ${props => (props.appView === APP_VIEW_MOBILE ? '375px' : '100%')};
   max-width: ${props =>
-    props.appView === 'APP_VIEW_MOBILE' ? '100%' : '1140px'};
+    props.appView === APP_VIEW_MOBILE ? '100%' : '1140px'};
   height: 812px;
   display: flex;
   padding: ${props =>
-    props.appView === 'APP_VIEW_MOBILE' ? '0 36px' : '63px 67px 15px 67px'};
+    props.appView === APP_VIEW_MOBILE ? '0 36px' : '63px 67px 15px 67px'};
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
