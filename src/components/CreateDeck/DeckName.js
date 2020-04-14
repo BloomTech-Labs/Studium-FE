@@ -19,14 +19,8 @@ export const DeckName = ({
   appView,
   ...props
 }) => {
-  useEffect(() => {
-    if (appView === APP_VIEW_DESKTOP) {
-      setHighlighted(false);
-    }
-  }, [appView]);
-
   return (
-    <DeckNameContainer>
+    <DeckNameContainer appView={appView}>
       <DeckNameIconContainer>
         <DeckTitlePrompt highlighted={highlighted}>
           {props.appView === APP_VIEW_MOBILE ? 'Title of Deck' : 'Name of Deck'}
@@ -62,6 +56,7 @@ DeckName.propTypes = {};
 
 const DeckNameContainer = styled.div`
   width: 100%;
+  ${props => (props.appView === APP_VIEW_DESKTOP ? 'height: 50%;' : '')}
   display: flex;
   flex-direction: column;
   justify-content: space-between;

@@ -5,6 +5,7 @@ import TextArea from '../FormItems/Input/TextArea.js';
 import CreateCardText from '../Text/CreateCardText.js';
 import {CardEditDeleteIcons} from '../Icon/CardEditDeleteIcons.js';
 import propTypes from 'prop-types';
+import {APP_VIEW_MOBILE, APP_VIEW_DESKTOP} from '../../utilities/constants.js';
 
 export const CreateCard = ({
   newDeck,
@@ -19,26 +20,35 @@ export const CreateCard = ({
   text,
   drillName,
   clickHandler,
+  appView,
   ...props
 }) => {
   return (
-    <StyledCreateCardContainer visible={visible}>
+    <StyledCreateCardContainer appView={appView} visible={visible}>
       <StyledCreateCardHeaderContainer>
-        <CreateCardText highlighted={highlighted} text={text} />
-        <CardEditDeleteIcons
-          type={'clear'}
-          name={name}
-          newCard={newCard}
-          setNewCard={setNewCard}
+        <CreateCardText
+          appView={appView}
+          highlighted={highlighted}
+          text={text}
         />
+        {props.appView === APP_VIEW_MOBILE && (
+          <CardEditDeleteIcons
+            type={'clear'}
+            name={name}
+            newCard={newCard}
+            setNewCard={setNewCard}
+          />
+        )}
       </StyledCreateCardHeaderContainer>
-      <StyledCreateCard highlighted={highlighted}>
+      <StyledCreateCard appView={appView} highlighted={highlighted}>
         <TextArea
           value={value}
           clickHandler={clickHandler}
           drillName={drillName}
           onChange={changeHandler}
-          placeholder={'Start typing...'}
+          placeholder={
+            appView === APP_VIEW_MOBILE ? 'Start typing...' : 'Add Text'
+          }
         />
         <Uploader id={drillName} />
       </StyledCreateCard>
@@ -52,10 +62,12 @@ CreateCard.propTypes = {
 };
 
 const StyledCreateCard = styled.div`
-  width: 314px;
-  height: 149px;
+  width: ${props => (props.appView === APP_VIEW_MOBILE ? '314px' : '100%')};
+  height: ${props => (props.appView === APP_VIEW_MOBILE ? '149px' : '90%')};
   border: ${props =>
     props.highlighted ? '2px solid #4CB69F' : '2px solid #908a7d'};
+  ${props =>
+    props.appView === APP_VIEW_DESKTOP ? 'border: 1px solid #36405C;' : ''}
   border-radius: 4px;
   display: flex;
   justify-content: space-between;
@@ -64,21 +76,23 @@ const StyledCreateCard = styled.div`
   textarea {
     align-self: flex-start;
   }
+  ${props =>
+    props.appView === APP_VIEW_DESKTOP ? 'background-color: #eeece8;' : ''};
 `;
 
 const StyledCreateCardContainer = styled.div`
-  width: 314px;
-  height: 180px;
+  width: ${props => (props.appView === APP_VIEW_MOBILE ? '314px' : '48%')};
+  height: ${props => (props.appView === APP_VIEW_MOBILE ? '180px' : '100%')};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-bottom: 30px;
+  margin-bottom: ${props => (props.appView === APP_VIEW_MOBILE ? '30px' : '')};
   display: ${props => (props.visible ? 'block' : 'none')};
 `;
 
 const StyledCreateCardHeaderContainer = styled.div`
   width: 100%;
-  height: 31px;
+  height: ${props => (props.appView === APP_VIEW_MOBILE ? '31px' : '10%;')};
   display: flex;
   justify-content: space-between;
   align-items: center;

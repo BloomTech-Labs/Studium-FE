@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {Input, Form} from 'antd';
 import PropTypes from 'prop-types';
+import {APP_VIEW_DESKTOP, APP_VIEW_MOBILE} from '../../../utilities/constants';
 
 /**
  * Form Input
@@ -37,6 +38,7 @@ export const FormInput = ({
       return (
         <StyledFormItem label={label}>
           <StyledAntdInputLargeRadius
+            appView={appView}
             width={width}
             borderStyle={borderStyle}
             value={value}
@@ -50,6 +52,7 @@ export const FormInput = ({
       return (
         <StyledFormItem label={label}>
           <StyledAntdInputSmallRadius
+            appView={appView}
             width={width}
             borderStyle={borderStyle}
             value={value}
@@ -65,6 +68,7 @@ export const FormInput = ({
       <StyledFormItem label={label}>
         <StyledBorderBottom>
           <StyledNoBorderAntdInput
+            appView={appView}
             width={width}
             borderStyle={borderStyle}
             value={value}
@@ -107,6 +111,11 @@ const StyledNoBorderAntdInput = styled(Input)`
     }
     .ant-input {
       width: ${props => props.width};
+      ${props => (props.appView === APP_VIEW_DESKTOP ? 'height: 38px;' : '')}
+      ${props =>
+        props.appView === APP_VIEW_DESKTOP
+          ? 'border: 1px solid #36405C;'
+          : ''}
       background-color: transparent;
       font-style: normal;
       font-weight: 600;
@@ -126,8 +135,11 @@ const StyledAntdInputLargeRadius = styled(Input)`
       box-shadow: none;
     }
     width: ${props => props.width};
+    ${props => (props.appView === APP_VIEW_DESKTOP ? 'height: 38px;' : '')}
     background-color: transparent;
     border: ${props => props.borderStyle};
+    ${props =>
+      props.appView === APP_VIEW_DESKTOP ? 'border: 1px solid #36405C;' : ''}
     font-style: normal;
     font-weight: 600;
     font-size: 19px;
@@ -147,8 +159,11 @@ const StyledAntdInputSmallRadius = styled(Input)`
       box-shadow: none;
     }
     width: ${props => props.width};
+    ${props => (props.appView === APP_VIEW_DESKTOP ? 'height: 38px;' : '')}
     background-color: transparent;
     border: ${props => props.borderStyle};
+    ${props =>
+      props.appView === APP_VIEW_DESKTOP ? 'border: 1px solid #36405C;' : ''}
     font-style: normal;
     font-weight: 600;
     font-size: 19px;
