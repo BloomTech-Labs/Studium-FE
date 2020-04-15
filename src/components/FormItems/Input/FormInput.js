@@ -28,10 +28,9 @@ export const FormInput = ({
   borderStyle,
   label,
   error,
-  placeholder = '',
+  placeholder,
   ...props
 }) => {
-  console.log('input width from formInput|||', width);
   if (bordered) {
     if (borderRadius === 'large') {
       // bordered input with large radius

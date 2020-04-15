@@ -240,6 +240,7 @@ export const CreateDeck = props => {
           type={'primaryCreateCard'}
         />
         <SynapsButton
+          style={appView === APP_VIEW_DESKTOP && {marginTop: '20px'}}
           text={'Done'}
           type={'defaultCreateCard'}
           onClick={doneSubmit}
@@ -270,7 +271,7 @@ const StyledCreateDeck = styled.div`
 
 const CreateCardContainer = styled.div`
   width: 100%;
-  height: ${props => (props.appView === APP_VIEW_MOBILE ? '450px' : '50%')};
+  height: ${props => (props.appView === APP_VIEW_MOBILE ? '450px' : '40%')};
   display: flex;
   flex-direction: ${props =>
     props.appView === APP_VIEW_MOBILE ? 'column' : 'row'};
@@ -299,6 +300,11 @@ const Bottom = styled.div`
   width: 100%;
   height: ${props => (props.appView === APP_VIEW_MOBILE ? '70px' : '25%')};
   display: flex;
-  justify-content: space-around;
+  ${props =>
+    props.appView === APP_VIEW_DESKTOP ? 'flex-direction: column;' : ''}
+  ${props => (props.appView === APP_VIEW_DESKTOP ? 'align-items: center;' : '')}
+  justify-content:  ${props =>
+    props.appView === APP_VIEW_DESKTOP ? 'flex-end;' : 'space-around'};
+  
   padding-bottom: 20px;
 `;

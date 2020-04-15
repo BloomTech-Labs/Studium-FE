@@ -68,7 +68,8 @@ const StyledCreateCard = styled.div`
     props.highlighted ? '2px solid #4CB69F' : '2px solid #908a7d'};
   ${props =>
     props.appView === APP_VIEW_DESKTOP ? 'border: 1px solid #36405C;' : ''}
-  border-radius: 4px;
+  border-radius: ${props =>
+    props.appView === APP_VIEW_MOBILE ? '4px' : '10px'};
   display: flex;
   justify-content: space-between;
   align-items: center;

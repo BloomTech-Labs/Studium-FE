@@ -22,8 +22,8 @@ export const DeckName = ({
   return (
     <DeckNameContainer appView={appView}>
       <DeckNameIconContainer>
-        <DeckTitlePrompt highlighted={highlighted}>
-          {props.appView === APP_VIEW_MOBILE ? 'Title of Deck' : 'Name of Deck'}
+        <DeckTitlePrompt appView={appView} highlighted={highlighted}>
+          {appView === APP_VIEW_MOBILE ? 'Title of Deck' : 'Name of Deck'}
         </DeckTitlePrompt>
         {props.appView === APP_VIEW_MOBILE && (
           <CardEditDeleteIcons
@@ -37,7 +37,9 @@ export const DeckName = ({
       </DeckNameIconContainer>
 
       <FormInput
-        placeholder={props.appView === APP_VIEW_MOBILE ? '' : 'Name of Deck'}
+        placeholder={
+          appView === APP_VIEW_MOBILE ? 'Start typing...' : 'Name of Deck'
+        }
         appView={appView}
         className="formClassSynaps"
         onChange={changeHandler}
@@ -64,14 +66,12 @@ const DeckNameContainer = styled.div`
 
 const DeckTitlePrompt = styled.h1`
   color: ${props =>
-    props.appView === APP_VIEW_DESKTOP ? '#36405C' : '#888888'};
-  color: ${props =>
     props.highlighted && props.appView === APP_VIEW_MOBILE
       ? '#4CB69F'
       : '#888888'};
+  ${props => (props.appView === APP_VIEW_DESKTOP ? 'color: #36405C;' : '')}
   font-style: normal;
-  font-weight: ${props =>
-    props.appView === APP_VIEW_MOBILE ? 'bold' : 'normal'};
+  font-weight: ${props => (props.appView === APP_VIEW_MOBILE ? 'bold' : '600')};
   font-size: ${props => (props.appView === APP_VIEW_MOBILE ? '26px' : '24px')};
   text-align: left;
   line-height: 33px;
