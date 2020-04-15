@@ -21,7 +21,8 @@
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.0.1",
     "styled-reset": "^4.1.0",
-    "styled-theming": "^2.2.0"
+    "styled-theming": "^2.2.0",
+    "@testing-library/react": "latest"
   },
   "scripts": {
     "start": "react-scripts start ",

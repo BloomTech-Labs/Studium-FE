@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import card2 from '../../../images/Card2.jpg';
-import card3 from '../../../images/Card3.jpg';
 import { Card } from 'antd';
 import PropTypes from 'prop-types';
 
