@@ -134,14 +134,25 @@ export const Dashboard = props => {
         />
       </StyledSearchBar>
       <StyledDeckHolder>
-        <PreviewDeckCards text={'Create Deck'} onClick={() => deckClicked()} />
+        <StyledCard
+          text={'Create Deck'}
+          onClick={() => deckClicked()}
+          style={{
+            width: '177px',
+            height: '231px',
+          }}
+        />
 
         {decks.map(deck => {
           return (
-            <PreviewDeckCards
+            <StyledCard
               key={deck.deck_id}
               deck={deck}
               onClick={e => deckClicked(deck)}
+              style={{
+                width: '167px',
+                height: '221px',
+              }}
             />
           );
         })}
@@ -158,7 +169,7 @@ const StyledDeckHolder = styled.div`
   max-width: 100%;
   display: flex;
   flex-wrap: wrap;
-  margin: -5% 15% 12%;
+  margin: -5% 11% 12%;
   justify-content: space-around;
   background: white;
   height: 100%;
@@ -228,5 +239,18 @@ const Wrap = styled.div`
     background: #ffffff;
     margin-top: 65px;
     border-radius: 10px;
+  }
+`;
+
+const StyledCard = styled(PreviewDeckCards)`
+  @media screen and ${MEDIA_QUERIES.tablet} {
+    height: 231px;
+    width: 177px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 28px;
+    text-align: center;
+    color: #5c6078;
   }
 `;
