@@ -1,5 +1,5 @@
-import {SYNAPS_CONFIG} from "../synapsConfig.js";
-import {LOG_TYPES} from "./constants.js";
+import {SYNAPS_CONFIG} from '../synapsConfig.js';
+import {LOG_TYPES} from './constants.js';
 
 window.oldConsole = window.console;
 
@@ -21,15 +21,15 @@ class AppLogger{
     this.appToDebug = SYNAPS_CONFIG.appsToDebbug;
     this.loggers = {};
     this.colorString = {
-      [LOG_TYPES.VERBOSE]: "padding: 2px 20px; border-radius: 5px;",
-      [LOG_TYPES.INFO]: "background: #7AD7F0; color: black; padding: 5px" +
-      " 20px; border-radius: 2px;",
-      [LOG_TYPES.WARNING]: "background: #fde5b5; color: black; padding: 5px" +
-      " 20px; border-radius: 2px;",
-      [LOG_TYPES.ERROR]: "background: #f39090; color: black; padding: 5px" +
-      " 20px; border-radius: 2px;",
-      [LOG_TYPES.OBJECT]: "background: rgb(76, 182, 159); padding: 5px 20px;" +
-      " border-radius: 2px;",
+      [LOG_TYPES.VERBOSE]: 'padding: 2px 20px; border-radius: 5px;',
+      [LOG_TYPES.INFO]: 'background: #7AD7F0; color: black; padding: 5px' +
+      ' 20px; border-radius: 2px;',
+      [LOG_TYPES.WARNING]: 'background: #fde5b5; color: black; padding: 5px' +
+      ' 20px; border-radius: 2px;',
+      [LOG_TYPES.ERROR]: 'background: #f39090; color: black; padding: 5px' +
+      ' 20px; border-radius: 2px;',
+      [LOG_TYPES.OBJECT]: 'background: rgb(76, 182, 159); padding: 5px 20px;' +
+      ' border-radius: 2px;',
     };
     
     this.getAppLogs = () => {
@@ -50,7 +50,7 @@ class AppLogger{
         // check if log level is high enough and the if the component is listed
         // in the debug apps.
         if(this.debugLogLevel <= logType){
-          if(this.appToDebug.includes("All") ||
+          if(this.appToDebug.includes('All') ||
             this.appToDebug.includes(debugName)){
             this.logNow(debugName, logType, message, object);
             
@@ -86,15 +86,15 @@ class AppLogger{
      * @param message
      */
     this.logMessage = (debugName, logType, message) => {
-      let str = "";
+      let str = '';
       if(!this.groupLogs){
-        str += debugName + ": ";
+        str += debugName + ': ';
       }
       str += message;
       if(logType === LOG_TYPES.VERBOSE){
       
       }
-      this.console.log("%c" + str, this.colorString[logType] +
+      this.console.log('%c' + str, this.colorString[logType] +
         ` text-size: ${SYNAPS_CONFIG.debugLogTextSize}`);
     };
     
@@ -115,12 +115,12 @@ class AppLogger{
      */
     this.openGroup = (group) => {
       if(this.collapseGroups){
-        this.console.groupCollapsed("%c" + group,
+        this.console.groupCollapsed('%c' + group,
           this.colorString[LOG_TYPES.WARNING] +
           ` text-size: ${SYNAPS_CONFIG.debugLogTextSize}`,
         );
       }else{
-        this.console.group("%c" + group,
+        this.console.group('%c' + group,
           this.colorString[LOG_TYPES.WARNING] +
           ` text-size: ${SYNAPS_CONFIG.debugLogTextSize}`,
         );
@@ -139,15 +139,15 @@ class AppLogger{
     
     this.logObject = (logType, message, object, debugName) => {
       if(message){
-        let str = "";
+        let str = '';
         if(!SYNAPS_CONFIG.groupLogsTogether){
-          str += debugName + " --> ";
-          this.console.log("%c" + str + message,
+          str += debugName + ' --> ';
+          this.console.log('%c' + str + message,
             this.colorString[LOG_TYPES.INFO] +
             ` text-size: ${SYNAPS_CONFIG.debugLogTextSize}`,
           );
         }else{
-          this.console.groupCollapsed("%c" + str + message,
+          this.console.groupCollapsed('%c' + str + message,
             this.colorString[LOG_TYPES.INFO] +
             ` text-size: ${SYNAPS_CONFIG.debugLogTextSize}`,
           );
@@ -223,9 +223,9 @@ class Loger{
 }
 
 const appLogger = new AppLogger();
-export const reduxLogger = appLogger.getLogger("Redux Logger");
+export const reduxLogger = appLogger.getLogger('Redux Logger');
 export const storageBackupDebugger = appLogger.getLogger(
-  "Storage Backup Middleware");
+  'Storage Backup Middleware');
 
 const logOtherReports = SYNAPS_CONFIG.showLogsFromOtherPeople;
 

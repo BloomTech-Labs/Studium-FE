@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@testing-library/react": "latest",
     "antd": "^3.26.9",
     "axios": "^0.19.2",
     "babel-plugin-macros": "^2.8.0",
@@ -22,7 +23,7 @@
     "styled-components": "^5.0.1",
     "styled-reset": "^4.1.0",
     "styled-theming": "^2.2.0",
-    "@testing-library/react": "latest"
+    "typeface-source-sans-pro": "^1.1.5"
   },
   "scripts": {
     "start": "react-scripts start ",
