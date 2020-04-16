@@ -27,17 +27,14 @@ export const NAV_BAR_DEBUG_NAME = "Nav Bar";
  *  return (<NavBar />)
  */
 export const NavBar = ({getHooks}) => {
-  const {usersState, theme, getLogger, dispatch, changePath, path, appView} = getHooks(
+  const {usersState, theme, dispatch, changePath, path, appView} = getHooks(
     "Nav Bar");
   const [menuOpen, setMenuOpen] = useState(false);
   const [avatarUrl, setAvatarUrl] = useState("");
-  const logger = getLogger(NAV_BAR_DEBUG_NAME);
   const {compareContext, printPrevContext} = useComparPrevContext(
     NAV_BAR_DEBUG_NAME,
-    {usersState, theme, getLogger, dispatch, changePath, path, appView},
+    {usersState, theme, dispatch, changePath, path, appView},
   );
-  
-  logger.logVerbose("Nav Bar rendered");
   
   useEffect(() => {
     compareContext(

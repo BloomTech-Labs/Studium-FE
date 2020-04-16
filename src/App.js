@@ -19,16 +19,11 @@ import {MEDIA_QUERIES} from './utilities/constants.js';
  * @component
  * @example return (<App />);
  */
-export default function App(props){
+export default function App(){
   const [alertMessage, setAlert] = useState('');
   const {theme, usersState, pathname, appView, getHooks} = useAppHooks('App');
   const getValue = useTheming('App.js');
   
-  const logger = props.logger;
-  
-  useEffect(() => {
-    logger.logVerbose('App view rendered.');
-  }, []);
   useAuthStateChange(getHooks);
   
   useEffect(() => {

@@ -7,7 +7,6 @@ import {
   APP_VIEW_DESKTOP, APP_VIEW_MOBILE, SIZES,
 } from "../utilities/constants.js";
 
-export const APP_HOOKS_DEBUG_NAME = "App Hooks";
 
 /**
  * Use App Hooks
@@ -24,7 +23,6 @@ export const APP_HOOKS_DEBUG_NAME = "App Hooks";
 export const useAppHooks = (nameOfCaller) => {
   
   const {setHookVariable, hooks} = useContext(AppHooksContext);
-  const logger = hooks.getLogger(USE_APP_HOOKS_STATE_DEBUG_NAME);
   /**
    * @typedef {object} Theme
    * @property {function} changeTheme
@@ -36,12 +34,7 @@ export const useAppHooks = (nameOfCaller) => {
   const dispatch = useDispatch();
   const changePath = useChangePath();
   const history = useHistory();
-  useEffect(() => {
-    logger.logVerbose(`Hooks updated for ${nameOfCaller}`);
-    
-  }, [
-    hooks,
-  ]);
+
   
   const {usersState, photosState, cardsState, decksState} = useSelector(
     reducerState => reducerState,
@@ -67,7 +60,6 @@ export const useAppHooks = (nameOfCaller) => {
   /**
    * @typedef {object} UseAppHooksReturn
    * @property {function} setHookVariable
-   * @property {function} getLogger
    * @property {Dispatch}  dispatch
    * @property {UsersReducerState} usersState
    * @property {CardsState} cardsState
@@ -106,15 +98,13 @@ export const USE_APP_HOOKS_STATE_DEBUG_NAME = "App Hooks State";
  * App Hooks Theme Provider State manager.
  * @typedef {function} useAppAHooksState
  *
- * @param {function} getLogger
+
  * @return {{setHookVariable: setHookVariable, hooks: {pushedState: {}, path:
- *   string, appView: (string | string), width: number, getLogger: function,
+ *   string, appView: (string | string), width: number,
  *   history: *, height: number}}}
  */
-export const useAppHooksState = (getLogger) => {
+export const useAppHooksState = () => {
   
-  const logger = getLogger(USE_APP_HOOKS_STATE_DEBUG_NAME);
-  logger.logVerbose("Provider for hooks state called.");
   const history = useHistory();
   const path = history.location.pathname;
   const pushedState = {};
@@ -129,26 +119,19 @@ export const useAppHooksState = (getLogger) => {
    * @property {AppView} appView
    * @property {number} width
    * @property {number} height
-   * @property {function} getLogger
    */
   const initialState = {
     appView,
     width,
     height,
-    getLogger,
     history,
   };
-  
-  logger.logVerbose("Hooks almost initialized for the App Provider. ");
-  logger.logObjectWithMessage(initialState, "Initial State");
   
   const [hooks, setHooks] = useState(initialState);
   
   const setHookVariable = (name, value, items = undefined) => {
     
     if(items === undefined){
-      logger.logVerbose(`Setting ${name} to new value`);
-      logger.logObject(value);
       let newState;
       newState = {...hooks, [name]: value};
       setHooks(newState);
@@ -161,10 +144,6 @@ export const useAppHooksState = (getLogger) => {
     }
     
   };
-  
-  useEffect(() => {
-    logger.logInfo("Hooks state changed in useAppHooksState,");
-  }, [hooks]);
   
   return {
     hooks,

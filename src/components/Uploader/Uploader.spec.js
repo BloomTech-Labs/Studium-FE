@@ -2,7 +2,6 @@ import React from 'react';
 import {
   customRender, getNodesByType, getByTestId, fireEvent, store, getByRole,
 } from '../../utilities/test-utils.js';
-import { logOutMessageOrDebug } from '../../utilities/debugLogger.js';
 import { Uploader } from './Uploader.js';
 import moxios from 'moxios';
 
@@ -16,7 +15,7 @@ describe( 'Styled Uploader', () => {
     const { debug, container } = customRender( <Uploader id={ 1 }/> );
     
     // log out the component to the console when debug is turned on in env
-    logOutMessageOrDebug( { debug } );
+
     
     // get the button from the container.
     const button = await getByTestId( container, 'upload' );

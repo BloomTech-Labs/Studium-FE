@@ -14,7 +14,6 @@ export const useChangePath = () => {
   const history = useHistory();
   const {hooks, path, pushedState, setHookVariable} = useContext(
     AppHooksContext);
-  const logger = hooks.getLogger(USE_CHANGE_PATH_DEBUG);
   
   /**
    * Change Path
@@ -28,11 +27,9 @@ export const useChangePath = () => {
    */
   const changePath = (pathToChangeTo, stateToPush = null) => {
     
-    logger.logVerbose(`Change path called.`);
     pathToChangeTo = pathToChangeTo.toLowerCase();
     if(pathToChangeTo !== undefined && pathToChangeTo !==
       history.location.pathname){
-      logger.logVerbose("Pushing  new url: " + pathToChangeTo);
       if(stateToPush){
         history.push(pathToChangeTo, stateToPush);
       }else{
@@ -41,7 +38,6 @@ export const useChangePath = () => {
       
     }
     
-    logger.logVerbose("Not updaing path: " + pathToChangeTo);
   };
   
   return changePath;

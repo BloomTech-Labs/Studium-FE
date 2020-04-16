@@ -20,8 +20,6 @@ export const CreateDeck = props => {
     dispatch,
     usersState,
     decksState,
-    theme,
-    getLogger,
     changePath,
   } = useAppHooks('CreateDeck');
   const [newDeck, setNewDeck] = useState({});

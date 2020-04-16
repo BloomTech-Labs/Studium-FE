@@ -1,17 +1,13 @@
-import React from "react";
-import styled from "styled-components";
-import PropTypes from "prop-types";
-import {LoginSignUpRoute, ProtectedRoute} from "./index.js";
+import React from 'react';
+import {LoginSignUpRoute, ProtectedRoute} from './index.js';
 import {
-  CreateDeck, Dashboard, FlashCard, LandingPage, PreviewDeck, SignIn, SignUp,
+  CreateDeck, Dashboard, FlashCard, LandingPage, PreviewDeck, SignIn,
   Testing,
-} from "../views";
-import {Switch, Route} from "react-router";
-import {ContainerDiv} from "../components";
-import {useAppHooks} from "../customHooks/useAppHooks.js";
-import {THEMING_VALUES} from "../customHooks/themingRules.js";
-import Debug from "../views/Debug.js";
-import {APP_PATHS, SIZES} from "../utilities/constants.js";
+} from '../views';
+import {Switch, Route} from 'react-router';
+import {ContainerDiv} from '../components';
+import {THEMING_VALUES} from '../customHooks/themingRules.js';
+import {APP_PATHS, SIZES} from '../utilities/constants.js';
 
 /**
  *   RouteContainer
@@ -24,7 +20,7 @@ import {APP_PATHS, SIZES} from "../utilities/constants.js";
  *
  */
 export const RouteContainer = (props) => {
-  const {height, theme} = props.getHooks("RouteContainer");
+  const {height, theme} = props.getHooks('RouteContainer');
   
   const calculateMaxHeight = () => {
     let number = 0;
@@ -39,14 +35,14 @@ export const RouteContainer = (props) => {
   
   return (
     <ContainerDiv
-      className={"route-container"}
-      position={"fixed"}
-      backgroundColor={"white"}
-      top={"0"}
-      overFlowY={"scroll"}
-      margin={theme.NAV_STYLE === THEMING_VALUES.HIDDEN ? "0 auto" :
-        "75px auto"}
-      heightMax={calculateMaxHeight() + "px"}
+      className={'route-container'}
+      position={'fixed'}
+      backgroundColor={'white'}
+      top={'0'}
+      overFlowY={'scroll'}
+      margin={theme.NAV_STYLE === THEMING_VALUES.HIDDEN ? '0 auto' :
+        '75px auto'}
+      heightMax={calculateMaxHeight() + 'px'}
     >
       <Switch>
         <LoginSignUpRoute path={APP_PATHS.SIGN_UP_PATH}
@@ -63,7 +59,7 @@ export const RouteContainer = (props) => {
                         component={FlashCard} {...props}/>
         <Route path={APP_PATHS.TESTING}
                render={props => <Testing {...props}/>}/>
-        <LoginSignUpRoute path={"/"}
+        <LoginSignUpRoute path={'/'}
                           component={LandingPage} {...props} />
       </Switch>
     </ContainerDiv>

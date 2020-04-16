@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from "react";
 import styled from "styled-components";
-import PropTypes from "prop-types";
 import {SYNAPS_CONFIG} from "../synapsConfig.js";
-import appLogger from "../utilities/oldConsole.js";
 
 /**
  *   Debug
@@ -28,7 +26,7 @@ const Debug = (props) => {
     if(rules !== JSON.stringify(themeRules)){
       setThemeRules(JSON.parse(rules));
     }
-    let logs = appLogger.getAppLogs();
+
     setAppLogs(logs);
     
   };

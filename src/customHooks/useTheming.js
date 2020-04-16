@@ -11,17 +11,13 @@ const USE_THEMING_DEBUG_NAME = "useTheming";
  * @return {function(...[*]=)}
  */
 export const useTheming = (componentName) => {
-  const {getLogger} = useAppHooks("useTheming");
   const theme = useTheme();
-  const logger = getLogger(USE_THEMING_DEBUG_NAME);
   
   return (themeVariable, valuesToReturn) => {
     try{
       const themeValue = theme[themeVariable];
       return valuesToReturn[themeValue];
     }catch(e){
-      logger.logWarning(
-        `Unable to get a return value for ${themeVariable} for ${componentName}.`);
       return Object.values(valuesToReturn)[0];
     }
     
