@@ -8,6 +8,7 @@ import {Switch, Route} from 'react-router';
 import {ContainerDiv} from '../components';
 import {THEMING_VALUES} from '../customHooks/themingRules.js';
 import {APP_PATHS} from '../utilities/constants.js';
+import QuizMode from '../views/QuizMode.js';
 
 /**
  *   RouteContainer
@@ -56,8 +57,8 @@ export const RouteContainer = (props) => {
                         component={CreateDeck} {...props}/>
         <ProtectedRoute path={APP_PATHS.PREVIEW_DECK_PATH}
                         component={PreviewDeck} {...props}/>
-        <ProtectedRoute path={APP_PATHS.GAME_PATH}
-                        component={FlashCard} {...props}/>
+        <ProtectedRoute path={APP_PATHS.QUIZ_MODE}
+                        component={QuizMode} {...props}/>
         <Route path={APP_PATHS.TESTING}
                render={props => <Testing {...props}/>}/>
         <LoginSignUpRoute path={'/'}

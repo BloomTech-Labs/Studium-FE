@@ -16,7 +16,7 @@ import SvgPlusIcon from '../../svgComponents/SvgPlusIcon.js';
  *
  */
 export const Footer = (props) => {
-  debugger;
+  
   const {changePath, pathname} = props.getHooks();
   
   /**
@@ -26,7 +26,7 @@ export const Footer = (props) => {
    * @name addDeck
    */
   const addDeck = () => {
-    debugger;
+    
     changePath('/create/deck');
     
   };

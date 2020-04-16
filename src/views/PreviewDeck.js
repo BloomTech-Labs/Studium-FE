@@ -5,7 +5,7 @@ import {getAllCardsForDeck} from '../actions/cardActions.js';
 import {
   TitleText, PreviewDeckCards, SearchBar, SynapsButton,
 } from '../components';
-import {THEME} from '../utilities/constants.js';
+import {APP_PATHS, THEME} from '../utilities/constants.js';
 import {Alert, Icon} from 'antd';
 import {
   THEMING_VALUES, THEMING_VARIABLES,
@@ -72,7 +72,7 @@ export const PreviewDeck = ({getHooks}) => {
           })}
       
       </StyledPreviewDeckHolder>
-      <StudyButton onClick={ () => changePath("/")} height={'43px'} width={'88%'} text={'Study Deck'}
+      <StudyButton onClick={ () => changePath(APP_PATHS.QUIZ_MODE, pathPushedState)} height={'43px'} width={'88%'} text={'Study Deck'}
                    type={'secondary'}/>
     </StyledPreviewDeck>
   );

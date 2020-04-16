@@ -118,10 +118,9 @@ const StyledDashboard = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 1140px;
-  height: 100%;
   width: 100%;
   background: #FFFFFF;
-
+  padding-bottom: 200px;
   @media screen and ${MEDIA_QUERIES.tablet} {
     
     margin-top: 65px;

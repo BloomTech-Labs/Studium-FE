@@ -77,6 +77,7 @@ export const useAppHooks = () => {
    */
   return {
     path: history.location.pathname,
+    pathPushedState: history.location.state,
     theme: theme,
     setHookVariable,
     dispatch,

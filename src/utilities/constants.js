@@ -150,6 +150,7 @@ export const APP_PATHS = {
   GAME_PATH: '/game',
   TESTING: '/test',
   LANDING_PAGE: '/',
+  QUIZ_MODE: '/quiz-mode',
 };
 
 /**
