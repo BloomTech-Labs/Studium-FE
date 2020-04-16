@@ -239,12 +239,13 @@ export const CreateDeck = props => {
           text={'Add Another Card'}
           type={'primaryCreateCard'}
         />
-        <SynapsButton
-          style={appView === APP_VIEW_DESKTOP && {marginTop: '20px'}}
-          text={'Done'}
-          type={'defaultCreateCard'}
-          onClick={doneSubmit}
-        />
+        <BottomButton appView={appView}>
+          <SynapsButton
+            text={'Done'}
+            type={'defaultCreateCard'}
+            onClick={doneSubmit}
+          />
+        </BottomButton>
       </Bottom>
     </StyledCreateDeck>
   );
@@ -294,6 +295,7 @@ const CardNameContainer = styled.div`
   ${props => (props.appView === APP_VIEW_DESKTOP ? 'height: 25%;' : '')}
   width: 100%;
   margin-bottom: 15px;
+  ${props => (props.appView === APP_VIEW_DESKTOP ? 'margin-bottom: 50px;' : '')}
 `;
 
 const Bottom = styled.div`
@@ -307,4 +309,8 @@ const Bottom = styled.div`
     props.appView === APP_VIEW_DESKTOP ? 'flex-end;' : 'space-around'};
   
   padding-bottom: 20px;
+`;
+
+const BottomButton = styled.div`
+  ${props => (props.appView === APP_VIEW_DESKTOP ? 'margin-top: 10px;' : '')}
 `;

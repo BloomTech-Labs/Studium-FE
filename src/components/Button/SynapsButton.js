@@ -44,6 +44,7 @@ SynapsButton.propTypes = {
   type: PropTypes.oneOf([
     'primary',
     'primaryCreateCard',
+    'defaultCreateCard',
     'default',
     'dashed',
     'danger',
