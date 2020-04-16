@@ -75,7 +75,6 @@ export const useAppHooks = (nameOfCaller) => {
    * @property {number} width
    * @property {number} height
    */
-  
   return {
     path: history.location.pathname,
     theme: theme,

@@ -2,7 +2,9 @@ import React, {useEffect} from 'react';
 import {Provider} from 'react-redux';
 import {getStore} from './getStore.js';
 import {getGlobalStyles} from './getGlobalStyles.js';
-import {useAppHooksState, AppHooksContext} from '../customHooks/useAppHooks.js';
+import {
+  useAppHooksState, AppHooksContext, useAppHooks,
+} from '../customHooks/useAppHooks.js';
 import {ErrorBoundary} from '../components';
 import {REDUCER_NAMES} from '../reducers';
 import {SYNAPS_CONFIG} from '../synapsConfig.js';
@@ -12,6 +14,7 @@ import {
 import {useDimensions} from '../customHooks/useDimensions.js';
 import {ThemeProvider} from 'styled-components';
 import {useAppView} from '../customHooks/useAppView.js';
+import {BrowserRouter as Router} from 'react-router-dom';
 
 export const APP_PROVIDER_DEBUG_NAME = 'App Provider';
 const GlobalStyles = getGlobalStyles();
@@ -59,11 +62,14 @@ const AppProvider = props => {
   
   return (
     <ErrorBoundary>
-      <ThemeProvider theme={{changeTheme, themeState, ...themeRules}}>
-        <Provider store={store}>
-          <AfterStoreTheme {...props} />
-        </Provider>
-      </ThemeProvider>
+      <Router>
+        <ThemeProvider theme={{changeTheme, themeState, ...themeRules}}>
+          <Provider store={store}>
+            <AfterStoreTheme {...props} />
+          </Provider>
+        </ThemeProvider>
+      </Router>
+    
     </ErrorBoundary>
   );
 };
@@ -89,6 +95,7 @@ const AfterHooks = props => {
   useThemeContext();
   useDimensions();
   useAppView();
+  
   return (
     <>
       {props.children}
