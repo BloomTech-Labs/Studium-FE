@@ -6,11 +6,13 @@ import {Button, Modal} from 'antd';
 
 
 export const SynapsModal = ({
+    title,
     centered,
     onOk,
     onCancel,
     zIndex,
     mask,
+    icon,
     ...props
 }) => {
     return (
@@ -20,15 +22,21 @@ export const SynapsModal = ({
         onCancel={onCancel}
         zIndex={zIndex}
         mask={mask}
+        {...props}
         >
-
+        {title}
         </StyledAntdModal>
     )
 }
 
 SynapsModal.propTypes = {
+    title: PropTypes.string,
     centered: PropTypes.bool,
-    
+    onOk: PropTypes.any,
+    onCancel: PropTypes.any,
+    centered: PropTypes.bool,
+    mask: PropTypes.bool,
+    icon: PropTypes.string,    
 }
 
 const StyledAntdModal = styled(Modal)`
