@@ -20,6 +20,7 @@ class AppLogger{
     this.debugLogLevel = SYNAPS_CONFIG.debugLogLevel;
     this.appToDebug = SYNAPS_CONFIG.appsToDebbug;
     this.loggers = {};
+    this.showLogsFromOthers = SYNAPS_CONFIG.showLogsFromOtherPeople;
     this.colorString = {
       [LOG_TYPES.VERBOSE]: 'padding: 2px 20px; border-radius: 5px;',
       [LOG_TYPES.INFO]: 'background: #7AD7F0; color: black; padding: 5px' +
@@ -34,6 +35,14 @@ class AppLogger{
     
     this.getAppLogs = () => {
       return this.storage;
+    };
+    
+    this.logMessageFromOthers = (message, type, optionalParams) => {
+      if(this.showLogsFromOthers){
+        this.checkGroup('others');
+        this.console[type](message, ...optionalParams);
+      }
+      
     };
     
     this.attemptToLog = async(debugName, logType, message, object) => {
@@ -227,169 +236,124 @@ export const reduxLogger = appLogger.getLogger('Redux Logger');
 export const storageBackupDebugger = appLogger.getLogger(
   'Storage Backup Middleware');
 
-const logOtherReports = SYNAPS_CONFIG.showLogsFromOtherPeople;
-
 window.console = {
   
   log: (message, ...optionalParams) => {
-    
-    if(logOtherReports){
-      appLogger.closeGroup();
-      appLogger.console.log(message, ...optionalParams);
-      SYNAPS_CONFIG.useTrace && appLogger.console.trace();
-      
-    }
-    
+    appLogger.logMessageFromOthers(message, 'log', optionalParams);
   },
+  
   info: (message, ...optionalParams) => {
-    if(logOtherReports){
-      appLogger.closeGroup();
-      appLogger.console.info(message, ...optionalParams);
-    }
-    
+    appLogger.logMessageFromOthers(message, 'info', optionalParams);
   },
   warn: (message, ...optionalParams) => {
-    if(logOtherReports){
-      appLogger.closeGroup();
-      appLogger.console.warn(message, ...optionalParams);
-    }
-    
+    appLogger.logMessageFromOthers(message, 'warn', optionalParams);
   },
   error: (message, ...optionalParams) => {
-    if(logOtherReports){
-      appLogger.closeGroup();
-      appLogger.console.error(message, ...optionalParams);
-    }
+    
+    appLogger.logMessageFromOthers(message, 'error', optionalParams);
     
   },
   debug: (message, ...optionalParams) => {
-    if(logOtherReports){
-      appLogger.closeGroup();
-      appLogger.console.debug(message, ...optionalParams);
-    }
+    appLogger.logMessageFromOthers(message, 'debug', optionalParams);
   },
   
   dir: (value, ...optionalParams) => {
-    appLogger.closeGroup();
-    appLogger.console.dir(value, ...optionalParams);
+    appLogger.logMessageFromOthers(value, 'dir', optionalParams);
   },
   
   dirxml: (value) => {
-    appLogger.closeGroup();
-    appLogger.console.dirxml(value);
+    appLogger.logMessageFromOthers(value, 'dirxml');
   },
   
   table: (...tabularData) => {
-    appLogger.closeGroup();
-    appLogger.console.table(...tabularData);
+    appLogger.logMessageFromOthers(tabularData, 'table');
   },
   
   trace: () => {
-    appLogger.closeGroup();
-    appLogger.console.trace();
+    appLogger.logMessageFromOthers('', 'trace');
   },
   
   group: (groupTitle, ...optionalParams) => {
-    appLogger.closeGroup();
-    appLogger.console.group(groupTitle, ...optionalParams);
+    appLogger.logMessageFromOthers(groupTitle, 'group', ...optionalParams);
   },
   
   groupEnd: () => {
-    appLogger.closeGroup();
-    appLogger.console.groupEnd();
+    appLogger.logMessageFromOthers('', 'groupEnd');
   },
   
   groupCollapsed: (groupTitle, ...optionalParams) => {
-    appLogger.console.groupCollapsed(groupTitle, ...optionalParams);
+    appLogger.logMessageFromOthers(groupTitle, 'groupCollapsed',
+      ...optionalParams,
+    );
   },
   
   clear: () => {
-    appLogger.closeGroup();
-    appLogger.console.clear();
+    appLogger.logMessageFromOthers('', 'clear');
   },
   
   count: (label) => {
-    appLogger.closeGroup();
-    appLogger.console.count(label);
+    appLogger.logMessageFromOthers(label, 'count');
   },
   
   countReset: () => {
-    appLogger.closeGroup();
-    appLogger.console.countReset();
+    appLogger.logMessageFromOthers('', 'countReset');
     
   },
   
   assert: (condition, message, ...data) => {
-    appLogger.closeGroup();
-    appLogger.console.assert(condition, message, ...data);
+    // todo: "come back and finish this. "
+    appLogger.logMessageFromOthers(message, 'assert', ...data);
     
   },
   
   profileEnd: (reportName) => {
-    appLogger.closeGroup();
-    appLogger.console.profileEnd(reportName);
+    appLogger.logMessageFromOthers(reportName, 'profileEnd');
   },
   
   profile: (reportName) => {
-    appLogger.closeGroup();
-    appLogger.console.profile(reportName);
+    appLogger.logMessageFromOthers(reportName, 'profile');
   },
   
   time: (label) => {
-    appLogger.closeGroup();
-    appLogger.console.time(label);
+    appLogger.logMessageFromOthers(label, 'time');
   },
   
   timeEnd: (label) => {
-    appLogger.closeGroup();
-    appLogger.console.timeEnd(label);
+    appLogger.logMessageFromOthers(label, 'timeEnd');
   },
   
   timeStamp: (label) => {
-    appLogger.closeGroup();
-    appLogger.console.timeStamp(label);
+    appLogger.logMessageFromOthers(label, 'timeStamp');
   },
   
   timeline: (label) => {
-    appLogger.closeGroup();
-    appLogger.console.timeline(label);
+    appLogger.logMessageFromOthers(label, 'timeline');
   },
   
   timelineEnd: (label) => {
-    appLogger.closeGroup();
-    appLogger.console.timelineEnd(label);
+    appLogger.logMessageFromOthers(label, 'timelineEnd');
   },
   
   markTimeline: (label) => {
-    appLogger.closeGroup();
-    appLogger.console.markTimeline(label);
   },
   
   exception: () => {
-    appLogger.closeGroup();
-    appLogger.console.exception();
   },
   
   context: () => {
-    appLogger.closeGroup();
-    appLogger.console.context();
     
   },
   
   memory: () => {
-    appLogger.closeGroup();
-    appLogger.console.memory();
     
   },
   
   reactStack: (e) => {
-    appLogger.closeGroup();
-    appLogger.console.reactStack(e);
+    appLogger.logMessageFromOthers(e, 'reactStack');
   },
   
   reactStackEnd: (e) => {
-    appLogger.closeGroup();
-    appLogger.console.reactStackEnd(e);
+    appLogger.logMessageFromOthers(e, 'reactStackEnd');
   },
   
 };
