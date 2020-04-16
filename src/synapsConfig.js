@@ -5,9 +5,7 @@ export const SYNAPS_CONFIG = {
   localStorageBasePath: '/storage/state/',
   useLocalStorageToStorePrevContext: false,
   localStorageContextBasePath: '/storage/context/',
-  appsToDebbug: [
-    'App',
-  ],
+  appsToDebbug: [],
   debugLogTextSize: DEBUG_LOG_SIZES.NORMAL,
   debugLogKeepGrouped: false,
   showLogsFromOtherPeople: true,
