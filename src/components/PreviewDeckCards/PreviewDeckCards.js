@@ -36,7 +36,7 @@ export const PreviewDeckCards = ({
   loading,
   block,
   hoverEffect,
-  selected = 'none',
+  selected = false,
   cardType = 'deck',
   deck,
   type = 'inner',
@@ -64,6 +64,7 @@ export const PreviewDeckCards = ({
       {(deck || card) &&
       <p className={'deck-text'}>{cardType === 'deck' ? deck.deck_name :
         card.question}</p>}
+      {selected && <h1>This card is selected.</h1>}
     
     </StyledAntdCard>
   );

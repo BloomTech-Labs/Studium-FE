@@ -53,7 +53,7 @@ const StyledCardContainer = styled.div`
 
 const StyledCard = styled(Card)`
   && {
-    margin: 121px auto 0 auto;
+    margin: 12px auto 0 auto;
     background: ${props => props.position === 'front' ? '#F7F7F7' :
   '#1b1414c9'};
     color: ${props => (props.position === 'front' ? '#1b1414c9' : 'white')};

@@ -8,16 +8,16 @@ import {ReactComponent as SvgNext} from '../svgs/NextButton.svg';
 export default function QuizMode({getHooks}){
   const {cardsState, pathPushedState} = getHooks();
   const [notViewed, setNotViewed] = useState([]);
-  const [Viewed, setViewed] = useState([]);
+  const [viewed, setViewed] = useState([]);
   const deck = pathPushedState;
   
   useEffect(() => {
     
     let arrayii = cardsState.cards.filter(card => {
-      return card.deck_id === deck.deck_id && !Viewed.includes(card) &&
+      return card.deck_id === deck.deck_id && !viewed.includes(card) &&
         !notViewed.includes(card);
     });
-    setViewed([...arrayii, Viewed]);
+    setNotViewed([...arrayii, ...notViewed]);
   }, [cardsState.cards]);
   
   //  useEffect(() => {
@@ -28,34 +28,68 @@ export default function QuizMode({getHooks}){
   //    setNotViewed([...newArray, ...notViewed]);
   //  }, [cardsState.cards]);
   
-  function back({}){
-    
-    let lastCard = Viewed.pop();
-    setNotViewed([...notViewed, lastCard]);
-    setViewed([...Viewed, lastCard]);
+  function back(){
+    debugger;
+    if(viewed.length > 0){
+      let lastCard = viewed.pop();
+      setNotViewed([lastCard, ...notViewed]);
+      setViewed([...viewed]);
+    }
   }
   
-  function next({}){
-    let firstCard = notViewed.shift();
-    setNotViewed([...notViewed, firstCard]);
-    setViewed([...Viewed, firstCard]);
+  function next(){
+    debugger;
+    if(notViewed.length > 1){
+      let firstCard = notViewed.shift();
+      setNotViewed([...notViewed]);
+      setViewed([...viewed, firstCard]);
+    }
   }
   
   return (
-    <Container>
+    <Container data-testid={'quiz-mode-container'}>
       <TitleText text={deck.deck_name} color={'#2A685B'}/>
       {notViewed.length > 0 &&
-      <BigFlashCard flashCard={notViewed[0]}> </BigFlashCard>}
+      <FlashCardContainer data-testid={'flash-card-container'}>
+        <BigFlashCard flashCard={notViewed[0]}> </BigFlashCard>}
+      </FlashCardContainer>}
+      <ButtonContainer data-testid={'button-card-container'}>
+        <Button>
+          <SvgBack onClick={() => back()}/>
+        </Button>
+        <Button>
+          <SvgNext onClick={() => next()}/>
+        </Button>
       
-      <SvgBack onClick={() => back()}/>
-      <SvgNext onClick={() => next()}/>
+      </ButtonContainer>
     </Container>
   );
 }
+const Button = styled.div`
+
+`;
+
+const FlashCardContainer = styled.div`
+margin-bottom: 2rem;
+border: 1px solid red;
+`;
+
+const ButtonContainer = styled.div`
+display: flex;
+flex-direction: row;
+border: 1px solid blue;
+width: 200px;
+justify-content: space-between;
+
+`;
 
 const Container = styled.div`
     width: 100%;
     height: 100%;
     background-color: white;
+    display: flex;
+    justify-content: flex-start;
+    align-items:  center;
+    flex-direction: column;
 `;
 

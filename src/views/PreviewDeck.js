@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import theming from 'styled-theming';
 import {getAllCardsForDeck} from '../actions/cardActions.js';
@@ -22,6 +22,9 @@ export const PreviewDeck = ({getHooks}) => {
   const {cardsState, pathPushedState, dispatch, usersState, changePath} = getHooks(
     'PreviewDeck');
   
+  const [cardsSelected, setCardsSelected] = useState({});
+  const [selectMode, setSelectMode] = useState(false);
+  
   useEffect(() => {
     
     if(pathPushedState === undefined){
@@ -32,6 +35,18 @@ export const PreviewDeck = ({getHooks}) => {
     }
     
   }, [pathPushedState]);
+  
+  const cardClicked = (card) => {
+    if(!selectMode){
+      return;
+    }
+    if(!!cardsSelected[card.card_id]){
+      delete cardsSelected[card.card_id];
+      setCardsSelected({...cardsSelected});
+    }else{
+      setCardsSelected({...cardsSelected, [card.card_id]: card});
+    }
+  };
   
   const getAlert = () => {
     if(cardsState.error){
@@ -48,13 +63,14 @@ export const PreviewDeck = ({getHooks}) => {
       {getAlert()}
       <TopContainer>
         <StyledIconLeft type="left"/>
-        <p>Back</p>
+        <p onClick={() => changePath(APP_PATHS.DASHBOARD_PATH)}>Back</p>
         <SearchContainer>
           <SearchBar height={'23px'} borderRadius={'14px'}
                      onSearch={() => {
                      }}/>
         </SearchContainer>
-        <p style={{marginRight: '9%'}}>Select</p>
+        <p onClick={() => setSelectMode(!selectMode)}
+           style={{marginRight: '9%'}}>Select</p>
       </TopContainer>
       <TitleText
         text={(pathPushedState && pathPushedState.deck_name) || 'Preview'}
@@ -66,14 +82,18 @@ export const PreviewDeck = ({getHooks}) => {
         {Object.values(cardsState.cards).filter(card =>
           card.deck_id === pathPushedState.deck_id).map(
           card => {
-            return <PreviewDeckCards getHooks={getHooks} cardType={'card'}
+            return <PreviewDeckCards onClick={() => cardClicked(card)}
+                                     getHooks={getHooks} cardType={'card'}
                                      key={card.card_id}
+                                     selected={!!cardsSelected[card.card_id]}
                                      card={card}/>;
           })}
       
       </StyledPreviewDeckHolder>
-      <StudyButton onClick={ () => changePath(APP_PATHS.QUIZ_MODE, pathPushedState)} height={'43px'} width={'88%'} text={'Study Deck'}
-                   type={'secondary'}/>
+      <StudyButton
+        onClick={() => changePath(APP_PATHS.QUIZ_MODE, pathPushedState)}
+        height={'43px'} width={'88%'} text={'Study Deck'}
+        type={'secondary'}/>
     </StyledPreviewDeck>
   );
   
