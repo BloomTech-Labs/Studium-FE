@@ -26,6 +26,7 @@ export const CreateDeck = props => {
     getLogger,
     changePath,
     appView,
+    height,
   } = useAppHooks('CreateDeck');
   const [newDeck, setNewDeck] = useState({});
   const [newCard, setNewCard] = useState({
@@ -172,7 +173,7 @@ export const CreateDeck = props => {
   };
 
   return (
-    <StyledCreateDeck appView={appView}>
+    <StyledCreateDeck height={height} appView={appView}>
       <CardNameContainer appView={appView}>
         <CardHeaderContainer appView={appView}>
           <CreateCardTitleText
@@ -257,7 +258,10 @@ const StyledCreateDeck = styled.div`
   width: ${props => (props.appView === APP_VIEW_MOBILE ? '375px' : '100%')};
   max-width: ${props =>
     props.appView === APP_VIEW_MOBILE ? '100%' : '1140px'};
-  height: ${props => (props.appView === APP_VIEW_MOBILE ? '812px' : '100%')};
+  height: ${props =>
+    props.appView === APP_VIEW_MOBILE
+      ? '812px'
+      : (props.height - 75).toString() + 'px'};
   display: flex;
   padding: ${props =>
     props.appView === APP_VIEW_MOBILE ? '0 36px' : '63px 67px 15px 67px'};
@@ -267,7 +271,7 @@ const StyledCreateDeck = styled.div`
   align-items: center;
   justify-content: flex-start;
   background-color: #f6f5f3;
-  ${props => (props.appView === APP_VIEW_DESKTOP ? 'margin-top: 75px;' : '')}
+  ${props => (props.appView === APP_VIEW_DESKTOP ? 'margin-top: 50px;' : '')}
 `;
 
 const CreateCardContainer = styled.div`
@@ -295,7 +299,7 @@ const CardNameContainer = styled.div`
   ${props => (props.appView === APP_VIEW_DESKTOP ? 'height: 25%;' : '')}
   width: 100%;
   margin-bottom: 15px;
-  ${props => (props.appView === APP_VIEW_DESKTOP ? 'margin-bottom: 50px;' : '')}
+  ${props => (props.appView === APP_VIEW_DESKTOP ? 'margin-bottom: 35px;' : '')}
 `;
 
 const Bottom = styled.div`
@@ -306,9 +310,9 @@ const Bottom = styled.div`
     props.appView === APP_VIEW_DESKTOP ? 'flex-direction: column;' : ''}
   ${props => (props.appView === APP_VIEW_DESKTOP ? 'align-items: center;' : '')}
   justify-content:  ${props =>
-    props.appView === APP_VIEW_DESKTOP ? 'flex-end;' : 'space-around'};
-  
-  padding-bottom: 20px;
+    props.appView === APP_VIEW_DESKTOP ? 'center;' : 'space-around'};
+   ${props =>
+     props.appView === APP_VIEW_MOBILE ? 'padding-bottom: 20px;' : ''}
 `;
 
 const BottomButton = styled.div`

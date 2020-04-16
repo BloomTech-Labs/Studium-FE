@@ -42,6 +42,8 @@ export const CreateCard = ({
       </StyledCreateCardHeaderContainer>
       <StyledCreateCard appView={appView} highlighted={highlighted}>
         <TextArea
+          height={`100%`}
+          appView={appView}
           value={value}
           clickHandler={clickHandler}
           drillName={drillName}
@@ -71,18 +73,17 @@ const StyledCreateCard = styled.div`
   border-radius: ${props =>
     props.appView === APP_VIEW_MOBILE ? '4px' : '10px'};
   display: flex;
+  ${props =>
+    props.appView === APP_VIEW_DESKTOP ? 'flex-direction: column;' : ''}
   justify-content: space-between;
   align-items: center;
   padding: 7px;
-  textarea {
-    align-self: flex-start;
-  }
   ${props =>
     props.appView === APP_VIEW_DESKTOP ? 'background-color: #eeece8;' : ''};
 `;
 
 const StyledCreateCardContainer = styled.div`
-  width: ${props => (props.appView === APP_VIEW_MOBILE ? '314px' : '48%')};
+  width: ${props => (props.appView === APP_VIEW_MOBILE ? '314px' : '47%')};
   height: ${props => (props.appView === APP_VIEW_MOBILE ? '180px' : '100%')};
   display: flex;
   flex-direction: column;
