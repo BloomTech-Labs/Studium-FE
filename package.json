@@ -33,9 +33,7 @@
     "clear": "react-scripts test --clearCache",
     "coverage": "react-scripts test --coverage --watchAll=false || true",
     "clear:run": "CI=true npm-run-all clear coverage || true",
-    "lint:css": "stylelint ./src/**/*.js",
-    "svg": "svgr -d ./src/svgs/ ./src/svgs/",
-    "svgo": "svgo --config=./.svgorc  --multipass ./src/svgs/froupOne1.svg -o ./src/svgComponents/froupOne1.svg"
+    "lint:css": "stylelint ./src/**/*.js"
   },
   "jest": {
     "collectCoverageFrom": [

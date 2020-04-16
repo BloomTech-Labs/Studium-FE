@@ -57,14 +57,14 @@ const initialState = {
  * @returns {CardsState} state
  */
 export const cardsReducer = (state = initialState, action) => {
-  switch (action.type) {
+  switch(action.type){
     case 'SET_INIT_STATE':
-      if (
+      if(
         action.payload &&
         action.payload.name &&
         action.payload.name.includes('cards') &&
         action.payload.value
-      ) {
+      ){
         return action.payload.value;
       }
       return state;
@@ -96,10 +96,7 @@ export const cardsReducer = (state = initialState, action) => {
       return {
         ...state,
         cards: state.cards.filter(card => {
-          if (card.card_id === action.payload) {
-            return;
-          }
-          return card;
+          return card.card_id !== action.payload;
         }),
         deletingCard: false,
         error: null,
@@ -112,7 +109,7 @@ export const cardsReducer = (state = initialState, action) => {
       return {
         ...state,
         cards: state.cards.filter(card => {
-          if (card.card_id === action.payload.card_id) {
+          if(card.card_id === action.payload.card_id){
             return action.payload;
           }
           return card;
