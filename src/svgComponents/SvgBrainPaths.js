@@ -1,7 +1,5 @@
 import React from 'react';
 import withSvgContainer from './withSvgContainer.js';
-import styled from 'styled-components';
-import {ContainerDiv} from '../components';
 
 /**
  * Svg Brain Pic

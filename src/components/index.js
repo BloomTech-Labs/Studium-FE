@@ -1,6 +1,5 @@
 export * from "./Uploader/Uploader.js";
 export * from "./Uploader/UploadIcon.js";
-export * from "./SmallLogo/SmallLogo.js";
 export * from "./Avatar/NavBarAvatar.js";
 export * from "./Button/SynapsButton.js";
 export * from "./SmallFlashCard/SmallFlashCard.js";
@@ -12,8 +11,6 @@ export * from "./SearchBar/SearchBar.js";
 export * from "./Text/TitleText/TitleText.js";
 export * from "./CardIcon/CardIcon.js";
 export * from "./Footer/Footer.js";
-export * from "./SynapsBrain/SynapsBrain.js";
-export * from "./SvgContainer/SvgContainer.js";
 export * from "../routes/RouteContainer.js";
 export * from "./SmallDeckSvg/SmallDeckSvg.js";
 export * from "./ErrorBoundary/ErrorBoundary.js";

@@ -20,7 +20,7 @@ import {
  * @returns UseAppHooksReturn
  *
  */
-export const useAppHooks = (nameOfCaller) => {
+export const useAppHooks = () => {
   
   const {setHookVariable, hooks} = useContext(AppHooksContext);
   /**

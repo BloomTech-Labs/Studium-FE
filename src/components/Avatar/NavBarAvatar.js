@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import {Popover} from 'antd';
 import {signOut} from '../../actions';
 import {APP_PATHS} from '../../utilities/constants.js';
-import {useAppHooks} from '../../customHooks/useAppHooks.js';
 
 /**
  * Nav Bar Avatar
@@ -18,13 +17,7 @@ import {useAppHooks} from '../../customHooks/useAppHooks.js';
 export const NavBarAvatar = ({getHooks, avatarUrl, ...props}) => {
   
   const [open, setOpen] = useState(false);
-  let hooks = undefined;
-  if(getHooks){
-    hooks = getHooks('Nav Bar');
-  }else{
-    hooks = useAppHooks('Nav Bar Avatar');
-  }
-  const {dispatch, usersState, changePath} = hooks;
+  const {dispatch, usersState, changePath} = getHooks();
   
   const handleClick = (path) => {
     setOpen(false);

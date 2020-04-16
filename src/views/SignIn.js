@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
-import {FormInput, SynapsButton, SvgContainer} from '../components';
+import {FormInput, SynapsButton} from '../components';
 import SvgSynapsLogoText from '../svgComponents/SvgSynapsLogoText.js';
 import styled from 'styled-components';
 import {signIn, GOOGLE_PROVIDER, EMAIL_PROVIDER} from '../actions';
-import {useAppHooks} from '../customHooks/useAppHooks.js';
 import theming from 'styled-theming';
 import {useTheming} from '../customHooks/useTheming.js';
 import {
@@ -12,8 +11,8 @@ import {
 } from '../customHooks/themingRules.js';
 import {THEME, MEDIA_QUERIES, SIZES} from '../utilities/constants.js';
 
-export function SignIn(props){
-  const {dispatch, theme, path, appView, height, getHooks} = useAppHooks(
+export function SignIn({getHooks}){
+  const {dispatch, theme, path} = getHooks(
     'SignIn',
   );
   const [info, setInfo] = useState({email: '', password: '', error: {}});

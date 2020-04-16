@@ -1,6 +1,4 @@
 import React from 'react';
-import withSvgContainer from './withSvgContainer.js';
-import styled from 'styled-components';
 import {ContainerDiv} from '../components';
 
 /**
@@ -23,9 +21,9 @@ function SvgBrainPic(props){
       <svg
         id={'brain-pic-svg'}
         viewBox="0 0 1738 1692"
-        fill={props.fill}
-        width={props.width}
-        height={props.height}
+        fill={props.svgFill}
+        width={props.svgWidth}
+        height={props.svgHeight}
         {...props}
       >
         <g opacity={props.opacity}

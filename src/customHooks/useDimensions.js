@@ -1,7 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react';
 import {AppHooksContext} from './useAppHooks.js';
 
-const USE_DIMENSIONS_DEBUG_NAME = 'Use Dimensions';
 /**
  * Use Dimensions
  * @category Custom Hooks

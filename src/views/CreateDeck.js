@@ -9,6 +9,7 @@ import {postDeck} from '../actions/decksActions.js';
 import {updateDeck} from '../actions/decksActions.js';
 import {createCard} from '../actions/cardActions.js';
 import {useAppHooks} from '../customHooks/useAppHooks.js';
+
 /**
  * Create Deck View
  * @category Views
@@ -39,29 +40,29 @@ export const CreateDeck = props => {
     answer: false,
   });
   const [formError, setFormError] = useState(false);
-
+  
   let uid = usersState.user.uid;
-
+  
   const fieldValidated = stateHook => {
-    if (stateHook !== '' && typeof stateHook !== 'undefined') {
+    if(stateHook !== '' && typeof stateHook !== 'undefined'){
       console.log('returning true from fieldValidated');
       return true;
-    } else {
+    }else{
       console.log('returning false from fieldValidated');
       return false;
     }
   };
-
+  
   useEffect(() => {
     console.log('||||logger from useEffect||||', newDeck);
     console.log('||||logger from useEffect||||', newCard);
   }, [newDeck, newCard]);
-
+  
   const clickHandler = e => {
     e.preventDefault();
     let clickedOn = e.target.name;
-
-    if (clickedOn == 'title' && highlighted.title == true) {
+    
+    if(clickedOn === 'title' && highlighted.title === true){
       setHighlighted({
         ...highlighted,
         title: false,
@@ -71,11 +72,11 @@ export const CreateDeck = props => {
         ...visible,
         question: true,
       });
-    } else if (
-      clickedOn == 'question' &&
-      highlighted.question == true &&
+    }else if(
+      clickedOn === 'question' &&
+      highlighted.question === true &&
       fieldValidated(newDeck.deck_name)
-    ) {
+    ){
       setHighlighted({
         ...highlighted,
         question: false,
@@ -85,7 +86,7 @@ export const CreateDeck = props => {
         ...visible,
         answer: true,
       });
-    } else if (fieldValidated(newCard.question)) {
+    }else if(fieldValidated(newCard.question)){
       dispatch(postDeck(uid, newDeck));
       setNewCard({
         ...newCard,
@@ -97,11 +98,11 @@ export const CreateDeck = props => {
       });
     }
   };
-
+  
   const changeHandler = e => {
     const targetName = e.target.name;
     console.log('target name||', targetName);
-    switch (targetName) {
+    switch(targetName){
       case 'title':
         setNewDeck({deck_name: e.target.value});
         break;
@@ -112,64 +113,64 @@ export const CreateDeck = props => {
     console.log(newDeck);
     console.log(newCard);
   };
-
+  
   const deckNameChanged = () => {
     let stateDeckName = decksState.decks[decksState.decks.length - 1].deck_name;
-
-    if (newDeck.deck_name !== stateDeckName && cardNum > 1) {
+    
+    if(newDeck.deck_name !== stateDeckName && cardNum > 1){
       return true;
-    } else {
+    }else{
       return false;
     }
   };
-
+  
   const updateDeckNameIfChange = () => {
-    if (deckNameChanged()) {
+    if(deckNameChanged()){
       console.log('dispatching update|||');
       dispatch(
         updateDeck(
           uid,
           decksState.decks[decksState.decks.length - 1].deck_id,
-          newDeck
-        )
+          newDeck,
+        ),
       );
     }
   };
-
+  
   const doneSubmit = e => {
     e.preventDefault();
     updateDeckNameIfChange();
     changePath('/dashboard');
   };
-
+  
   const submitForm = e => {
     e.preventDefault();
-
-    if (
+    
+    if(
       newDeck.deck_name &&
       newCard.question &&
       newCard.answer &&
       newCard.deck_id &&
-      newDeck.deck_name != '' &&
-      newCard.question != '' &&
-      newCard.answer != '' &&
-      newCard.deck_id != ''
-    ) {
+      newDeck.deck_name !== '' &&
+      newCard.question !== '' &&
+      newCard.answer !== '' &&
+      newCard.deck_id !== ''
+    ){
       dispatch(createCard(newCard, uid));
       setNewCard({...newCard, question: '', answer: '', deck_id: ''});
       setCardNum(cardNum + 1);
-    } else {
+    }else{
       setFormError(true);
     }
     updateDeckNameIfChange();
   };
-
+  
   return (
     <StyledCreateDeck>
       <CardNameContainer>
         <CardHeaderContainer>
-          <CreateCardTitleText text={'Create Deck'} />
-          <SmallDeckSvg />
+          <CreateCardTitleText text={'Create Deck'}/>
+          <SmallDeckSvg/>
         </CardHeaderContainer>
         <DeckName
           setNewDeck={setNewDeck}

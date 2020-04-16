@@ -1,16 +1,12 @@
 import React from "react";
 import {useTheme} from "styled-components";
-import {useAppHooks} from "./useAppHooks.js";
-
-const USE_THEMING_DEBUG_NAME = "useTheming";
-
 
 /**
  * @typedef (CustomHook) useTheming
  * @param {string} componentName
  * @return {function(...[*]=)}
  */
-export const useTheming = (componentName) => {
+export const useTheming = () => {
   const theme = useTheme();
   
   return (themeVariable, valuesToReturn) => {

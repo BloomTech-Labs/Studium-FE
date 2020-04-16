@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {FormInput} from '../FormItems/Input/FormInput.js';
 import styled from 'styled-components';
 import {CardEditDeleteIcons} from '../Icon/CardEditDeleteIcons.js';
@@ -10,11 +9,9 @@ export const DeckName = ({
   setNewDeck,
   newDeck,
   setDisableInput,
-  disableInput,
   highlighted,
   clickHandler,
   changeHandler,
-  ...props
 }) => {
   return (
     <DeckNameContainer>
@@ -44,7 +41,6 @@ export const DeckName = ({
   );
 };
 
-DeckName.propTypes = {};
 
 const DeckNameContainer = styled.div`
   width: 100%;

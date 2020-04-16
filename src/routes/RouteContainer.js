@@ -7,7 +7,7 @@ import {
 import {Switch, Route} from 'react-router';
 import {ContainerDiv} from '../components';
 import {THEMING_VALUES} from '../customHooks/themingRules.js';
-import {APP_PATHS, SIZES} from '../utilities/constants.js';
+import {APP_PATHS} from '../utilities/constants.js';
 
 /**
  *   RouteContainer
@@ -20,7 +20,7 @@ import {APP_PATHS, SIZES} from '../utilities/constants.js';
  *
  */
 export const RouteContainer = (props) => {
-  const {height, theme} = props.getHooks('RouteContainer');
+  const {height, theme} = props.getHooks();
   
   const calculateMaxHeight = () => {
     let number = 0;
@@ -37,6 +37,7 @@ export const RouteContainer = (props) => {
     <ContainerDiv
       className={'route-container'}
       position={'fixed'}
+      justifyContent={'flex-start'}
       backgroundColor={'white'}
       top={'0'}
       overFlowY={'scroll'}

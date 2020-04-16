@@ -12,7 +12,7 @@ export const useAppView = () => {
   const {setHookVariable, hooks} = useContext(
     AppHooksContext);
   const {appView, width, height} = hooks;
-  const {compareContext, printPrevContext, addInitialContext} = useComparPrevContext(
+  const {compareContext} = useComparPrevContext(
     APP_VIEW_DEBUG_NAME, {appView, height, width});
   
   /**

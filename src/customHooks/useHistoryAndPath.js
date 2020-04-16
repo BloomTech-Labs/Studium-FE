@@ -1,9 +1,7 @@
-import React, {useState, useEffect, useContext} from "react";
-import {AppHooksContext} from "./useAppHooks.js";
-import {useHistory} from "react-router-dom";
-import {useComparPrevContext} from "./useComparPrevContext.js";
+import React from 'react';
+import {useHistory} from 'react-router-dom';
 
-export const USE_CHANGE_PATH_DEBUG = "Use Change Path";
+export const USE_CHANGE_PATH_DEBUG = 'Use Change Path';
 
 /**
  * @typedef {function} UseChangePath
@@ -12,8 +10,6 @@ export const USE_CHANGE_PATH_DEBUG = "Use Change Path";
 export const useChangePath = () => {
   
   const history = useHistory();
-  const {hooks, path, pushedState, setHookVariable} = useContext(
-    AppHooksContext);
   
   /**
    * Change Path

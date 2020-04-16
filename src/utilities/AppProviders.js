@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Provider} from 'react-redux';
 import {getStore} from './getStore.js';
 import {getGlobalStyles} from './getGlobalStyles.js';
@@ -95,10 +95,12 @@ const AfterHooks = props => {
   useThemeContext();
   useDimensions();
   useAppView();
-  
+  const {getHooks} = useAppHooks();
+  const {children, ...rest} = props;
+  const newChildren = React.cloneElement(props.children, {getHooks, ...rest});
   return (
     <>
-      {props.children}
+      {newChildren}
     </>
   );
 };

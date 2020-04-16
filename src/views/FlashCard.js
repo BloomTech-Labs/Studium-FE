@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import {TitleText} from '../components';
-import {useAppHooks} from '../customHooks/useAppHooks.js';
 
 /**
  * FlashCard

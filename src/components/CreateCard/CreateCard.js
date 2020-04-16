@@ -19,7 +19,6 @@ export const CreateCard = ({
   text,
   drillName,
   clickHandler,
-  ...props
 }) => {
   return (
     <StyledCreateCardContainer visible={visible}>
