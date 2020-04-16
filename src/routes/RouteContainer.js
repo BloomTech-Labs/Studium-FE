@@ -25,15 +25,15 @@ export const RouteContainer = (props) => {
   
   const calculateMaxHeight = () => {
     let number = 0;
-    if(theme.NAV_STYLE !== THEMING_VALUES.HIDDEN){
+    if (theme.NAV_STYLE !== THEMING_VALUES.HIDDEN) {
       number += theme.navBarTopHeight;
     }
-    if(theme.FOOTER !== THEMING_VALUES.HIDDEN){
+    if (theme.FOOTER !== THEMING_VALUES.HIDDEN) {
       number += theme.footerHeight;
     }
     return height - number;
   };
-  
+
   return (
     <ContainerDiv
       className={'route-container'}

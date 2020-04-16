@@ -9,6 +9,7 @@ import {postDeck} from '../actions/decksActions.js';
 import {updateDeck} from '../actions/decksActions.js';
 import {createCard} from '../actions/cardActions.js';
 import {useAppHooks} from '../customHooks/useAppHooks.js';
+import {APP_VIEW_MOBILE, APP_VIEW_DESKTOP} from '../utilities/constants.js';
 
 /**
  * Create Deck View
@@ -22,6 +23,7 @@ export const CreateDeck = props => {
     usersState,
     decksState,
     changePath,
+    appView,
   } = useAppHooks('CreateDeck');
   const [newDeck, setNewDeck] = useState({});
   const [newCard, setNewCard] = useState({
@@ -58,6 +60,12 @@ export const CreateDeck = props => {
     console.log('||||logger from useEffect||||', newCard);
   }, [newDeck, newCard]);
   
+    if (appView === APP_VIEW_DESKTOP) {
+      setHighlighted({title: false, question: false, answer: false});
+      setVisible({question: true, answer: true});
+    }
+  }, [appView]);
+
   const clickHandler = e => {
     e.preventDefault();
     let clickedOn = e.target.name;
@@ -166,13 +174,23 @@ export const CreateDeck = props => {
   };
   
   return (
-    <StyledCreateDeck>
+    <StyledCreateDeck appView={appView}>
       <CardNameContainer>
         <CardHeaderContainer>
           <CreateCardTitleText text={'Create Deck'}/>
           <SmallDeckSvg/>
+          <CreateCardTitleText
+            appView={appView}
+            text={
+              appView === APP_VIEW_MOBILE
+                ? 'Create Deck'
+                : 'Create New Deck of Flashcards'
+            }
+          />
+          <SmallDeckSvg />
         </CardHeaderContainer>
         <DeckName
+          appView={appView}
           setNewDeck={setNewDeck}
           newDeck={newDeck}
           name={'newDeck'}
@@ -180,6 +198,7 @@ export const CreateDeck = props => {
           value={newDeck.deck_name}
           clickHandler={clickHandler}
           highlighted={highlighted.title}
+          setHighlighted={setHighlighted}
         />
       </CardNameContainer>
       <CreateCardContainer>
@@ -191,7 +210,11 @@ export const CreateDeck = props => {
           clickHandler={clickHandler}
           highlighted={highlighted.question}
           visible={visible.question}
-          text={`Card ${cardNum} - Question`}
+          text={
+            appView === APP_VIEW_MOBILE
+              ? `Card ${cardNum} - Question`
+              : 'Question'
+          }
           value={newCard.question}
           newCard={newCard}
           setNewCard={setNewCard}
@@ -204,7 +227,9 @@ export const CreateDeck = props => {
           clickHandler={clickHandler}
           highlighted={highlighted.answer}
           visible={visible.answer}
-          text={`Card ${cardNum} - Answer`}
+          text={
+            appView === APP_VIEW_MOBILE ? `Card ${cardNum} - Answer` : 'Answer'
+          }
           value={newCard.answer}
           newCard={newCard}
           setNewCard={setNewCard}
@@ -229,11 +254,17 @@ export const CreateDeck = props => {
 CreateDeck.propTypes = {};
 
 const StyledCreateDeck = styled.div`
-  width: 315px;
+  width: ${props => (props.appView === APP_VIEW_MOBILE ? '375px' : '100%')};
+  max-width: ${props =>
+    props.appView === APP_VIEW_MOBILE ? '100%' : '1140px'};
   height: 812px;
   display: flex;
+  padding: ${props =>
+    props.appView === APP_VIEW_MOBILE ? '0 36px' : '63px 67px 15px 67px'};
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #f6f5f3;
 `;
 
 const CreateCardContainer = styled.div`

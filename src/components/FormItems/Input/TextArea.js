@@ -42,9 +42,8 @@ const STextArea = styled(TextArea)`
   .no-outline:focus {
     outline: none;
   }
-  font-family: Source Sans Pro;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 600;
   font-size: 19px;
   line-height: 24px;
   :focus {

@@ -64,6 +64,13 @@ SynapsButton.propTypes = {
 
 const StyledAntdButton = styled(Button)`
   && {
+    border: ${props => {
+      if (props.type === 'defaultCreateCard') {
+        return '3px solid #4CB69F';
+      } else {
+        return 0;
+      }
+    }};
   
    height: ${props => props.height ? props.height : '100%'};
    width: ${props => props.width ? props.width : '100%'};
@@ -92,11 +99,28 @@ const StyledAntdButton = styled(Button)`
   }
 }};
 
-    ${props => {
-  if(
+    :active {
+      background-color: ${props => {
+        if (props.type === 'primaryCreateCard') {
+          return '#235449';
+        } else if (props.type === 'defaultCreateCard') {
+          return '#6FEDB7';
+        }
+      }};
+      border: ${props => {
+        if (props.type === 'primaryCreateCard') {
+          return '3px solid #235449';
+        } else if (props.type === 'defaultCreateCard') {
+          return '3px solid #6FEDB7';
+        }
+      }};
+    }
+
+     ${props => {
+  if (
     props.type === 'primaryCreateCard' ||
     props.type === 'defaultCreateCard'
-  ){
+  ) {
     return 'width: 136px; height: 42px; border-radius: 11px;';
   }
 }}

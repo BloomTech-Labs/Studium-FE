@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledCardText = ({text, highlighted}) => {
+const StyledCardText = ({text, highlighted, appView}) => {
   return <StyledTitle highlighted={highlighted}>{text}</StyledTitle>;
 };
 
