@@ -5,15 +5,6 @@ export const SYNAPS_CONFIG = {
   localStorageBasePath: '/storage/state/',
   useLocalStorageToStorePrevContext: false,
   localStorageContextBasePath: '/storage/context/',
-  appsToDebbug: [],
-  debugLogTextSize: DEBUG_LOG_SIZES.NORMAL,
-  debugLogKeepGrouped: false,
-  showLogsFromOtherPeople: true,
-  debugLogLevel: LOG_TYPES.VERBOSE,
-  debugError: null,
-  groupLogsTogether: false,
-  collapseLogGroups: false,
-  useTrace: false,
 };
 
 const empty = [
