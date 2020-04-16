@@ -1,6 +1,9 @@
 {
   "name": "synaps",
   "version": "0.1.0",
+  "engines": {
+    "node": "10.14.x"
+  },
   "private": true,
   "dependencies": {
     "antd": "^3.26.9",
