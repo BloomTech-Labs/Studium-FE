@@ -9,14 +9,12 @@ import {
   THEMING_VALUES,
   THEMING_VARIABLES,
 } from '../customHooks/themingRules.js';
-import {THEME, MEDIA_QUERIES, SIZES} from '../utilities/constants.js';
+import {THEME, MEDIA_QUERIES} from '../utilities/constants.js';
 
 export function SignIn({getHooks}){
-  const {dispatch, theme, path} = getHooks(
-    'SignIn',
-  );
+  const {dispatch, theme, path} = getHooks();
   const [info, setInfo] = useState({email: '', password: '', error: {}});
-  const getValue = useTheming('App.js');
+  const getValue = useTheming();
   
   const handleChange = e => {
     setInfo({...info, [e.target.name]: e.target.value});
@@ -68,8 +66,8 @@ export function SignIn({getHooks}){
         margin={'10px 0 0 0'}
         fill={
           theme.BACKGROUND === THEMING_VALUES.DARK
-            ? theme.themeState.navBarLight
-            : theme.themeState.secondary4CB69F
+            ? theme.themeState.NAV_BAR_LIGHT
+            : theme.themeState.SECONDARY_DARKER1
         }
         height={getValue(THEMING_VARIABLES.BRAIN_SVG, {
           [THEMING_VALUES.BOTTOM]: '176px',
@@ -227,7 +225,7 @@ const StyledFormInput = styled.div`
       line-height: 24px;
     }
     & input {
-      background-color: ${THEME.primaryColor};
+      background-color: ${THEME.PRIMARY_COLOR};
     }
   }
 `;

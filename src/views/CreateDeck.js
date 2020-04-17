@@ -169,7 +169,7 @@ export const CreateDeck = props => {
   
   const submitForm = e => {
     e.preventDefault();
-    debugger;
+    
     if(
       newDeck.deck_name &&
       newCard.question &&
