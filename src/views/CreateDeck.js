@@ -290,7 +290,7 @@ const StyledCreateDeck = styled.div`
   padding: ${props =>
     props.appView === APP_VIEW_MOBILE ? '0 36px' : '63px 67px 15px 67px'};
   ${props =>
-    props.appView === APP_VIEW_DESKTOP ? 'padding: 0 67px 0 67px;' : ''}
+    props.appView === APP_VIEW_DESKTOP ? 'padding: 63px 67px 0 67px;' : ''}
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
@@ -300,7 +300,7 @@ const StyledCreateDeck = styled.div`
 
 const CreateCardContainer = styled.div`
   width: 100%;
-  height: ${props => (props.appView === APP_VIEW_MOBILE ? '450px' : '40%')};
+  height: ${props => (props.appView === APP_VIEW_MOBILE ? '425px' : '40%')};
   display: flex;
   flex-direction: ${props =>
     props.appView === APP_VIEW_MOBILE ? 'column' : 'row'};
@@ -337,6 +337,8 @@ const Bottom = styled.div`
     props.appView === APP_VIEW_DESKTOP ? 'center;' : 'space-around'};
    ${props =>
      props.appView === APP_VIEW_MOBILE ? 'padding-bottom: 20px;' : ''}
+    padding: ${props =>
+      props.appView === APP_VIEW_DESKTOP ? '20px 0 0 0' : '0 0 40px 0'}
 `;
 
 const BottomButton = styled.div`
