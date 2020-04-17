@@ -1,10 +1,10 @@
-import React, {useState} from "react";
-import {Avatar} from "antd";
-import styled from "styled-components";
-import PropTypes from "prop-types";
-import {Popover} from "antd";
-import {signOut} from "../../actions";
-import {APP_PATHS} from "../../utilities/constants.js";
+import React, {useState} from 'react';
+import {Avatar} from 'antd';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import {Popover} from 'antd';
+import {signOut} from '../../actions';
+import {APP_PATHS} from '../../utilities/constants.js';
 
 /**
  * Nav Bar Avatar
@@ -17,14 +17,13 @@ import {APP_PATHS} from "../../utilities/constants.js";
 export const NavBarAvatar = ({getHooks, avatarUrl, ...props}) => {
   
   const [open, setOpen] = useState(false);
-  
-  const {dispatch, changePath, usersState} = getHooks("Nav Bar");
+  const {dispatch, usersState, changePath} = getHooks();
   
   const handleClick = (path) => {
     setOpen(false);
-    if(path === "logout"){
+    if(path === 'logout'){
       dispatch(signOut());
-    }else if(path === "signin"){
+    }else if(path === 'signin'){
       changePath(APP_PATHS.SIGN_IN_PATH);
     }
   };
@@ -33,15 +32,15 @@ export const NavBarAvatar = ({getHooks, avatarUrl, ...props}) => {
     return (
       <AvatarMenu>
         {/*<p onClick={() => handleClick("logout")}>Edit Profile</p>*/}
-        <p style={{background: "#D7EDE8"}}
-           onClick={() => handleClick("logout")}>Logout</p>
+        <p style={{background: '#D7EDE8'}}
+           onClick={() => handleClick('logout')}>Logout</p>
       </AvatarMenu>
     );
   };
   
   return (
     <Popover placement="bottomRight"
-             title={"Hi " + usersState.user.displayName}
+             title={'Hi ' + usersState.user.displayName}
              content={getContent()}
              visible={open}
              trigger="click">
@@ -76,6 +75,6 @@ p {
 `;
 
 NavBarAvatar.propTypes = {
-  getHooks: PropTypes.func.isRequired,
+  getHooks: PropTypes.func,
   avatarUrl: PropTypes.string,
 };

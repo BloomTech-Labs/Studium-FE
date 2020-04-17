@@ -4,14 +4,12 @@ import {NavBar, Footer, RouteContainer} from './components';
 import {SvgBrainPic} from './svgComponents';
 import PropTypes from 'prop-types';
 import {Alert} from 'antd';
-import {useAppHooks} from './customHooks/useAppHooks.js';
 import {useAuthStateChange} from './customHooks/useAuthStateChange.js';
 import {
   THEMING_VARIABLES, THEMING_VALUES,
 } from './customHooks/themingRules.js';
 import theming from 'styled-theming';
 import {useTheming} from './customHooks/useTheming.js';
-import {MEDIA_QUERIES} from './utilities/constants.js';
 
 /**
  * App
@@ -19,16 +17,11 @@ import {MEDIA_QUERIES} from './utilities/constants.js';
  * @component
  * @example return (<App />);
  */
-export default function App(props){
+export default function App({getHooks}){
   const [alertMessage, setAlert] = useState('');
-  const {theme, usersState, pathname, appView, getHooks} = useAppHooks('App');
-  const getValue = useTheming('App.js');
+  const {theme, usersState} = getHooks();
+  const getValue = useTheming();
   
-  const logger = props.logger;
-  
-  useEffect(() => {
-    logger.logVerbose('App view rendered.');
-  }, []);
   useAuthStateChange(getHooks);
   
   useEffect(() => {
@@ -44,8 +37,8 @@ export default function App(props){
     <StyledApp className="App">
       {theme.BRAIN_SVG !== THEMING_VALUES.HIDDEN &&
       <SvgBrainPic
-        maxWidth={'1500px'}
-        maxHeight={'1500px'}
+        maxWidth={'3000px'}
+        maxHeight={'3000px'}
         height={getValue(THEMING_VARIABLES.BRAIN_SVG, {
           [THEMING_VALUES.BOTTOM]: '1500px',
           [THEMING_VALUES.TOP]: '1500px',
@@ -116,7 +109,4 @@ const StyledApp = styled.div`
   max-height: 100vh;
   min-height: 100vh;
   overflow: hidden;
-
-  @media ${MEDIA_QUERIES.tablet} {
-  }
 `;

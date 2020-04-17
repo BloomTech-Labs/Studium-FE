@@ -7,6 +7,7 @@ exports[`Styled Uploader snapshot renders 1`] = `
   position: relative;
   width: 67px;
   height: 59px;
+  background-color: transparent;
 }
 
 .c0.c0 > .ant-upload.ant-upload-select-picture-card {
@@ -35,16 +36,12 @@ exports[`Styled Uploader snapshot renders 1`] = `
           style="display: none;"
           type="file"
         />
-        <div
+        <svg
           class="c1"
           data-testid="upload-icon"
         >
-          <img
-            alt="upload icon"
-            src="Rectangle85.jpg"
-            style="height: 59px; width: 67px;"
-          />
-        </div>
+          ImageUploadButton.svg
+        </svg>
       </span>
     </div>
   </span>

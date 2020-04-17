@@ -1,14 +1,16 @@
 {
   "name": "synaps",
   "version": "0.1.0",
+  "engines": {
+    "node": "13.x.x"
+  },
   "private": true,
   "dependencies": {
     "antd": "^3.26.9",
     "axios": "^0.19.2",
-    "babel-plugin-macros": "^2.8.0",
-    "chalk": "^3.0.0",
-    "firebase": "^7.8.1",
+    "firebase": "^7.14.0",
     "moment": "^2.24.0",
+    "polished": "^3.5.1",
     "pretty-format": "^25.1.0",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
@@ -21,20 +23,18 @@
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.0.1",
     "styled-reset": "^4.1.0",
-    "styled-theming": "^2.2.0"
+    "styled-theming": "^2.2.0",
+    "typeface-source-sans-pro": "^1.1.5"
   },
   "scripts": {
     "start": "react-scripts start ",
-    "build": "react-scripts build",
+    "build": "react-scripts build ",
     "test": "react-scripts test ",
     "eject": "react-scripts eject",
-    "docs": "jsdoc -c jsdoc.json  --debug",
     "clear": "react-scripts test --clearCache",
     "coverage": "react-scripts test --coverage --watchAll=false || true",
     "clear:run": "CI=true npm-run-all clear coverage || true",
-    "lint:css": "stylelint ./src/**/*.js",
-    "svg": "svgr -d ./src/svgs/ ./src/svgs/",
-    "svgo": "svgo --config=./.svgorc  --multipass ./src/svgs/froupOne1.svg -o ./src/svgComponents/froupOne1.svg"
+    "lint:css": "stylelint ./src/**/*.js"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -62,10 +62,6 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "debugLocations": [
-    "redux",
-    "theming"
-  ],
   "browserslist": {
     "production": [
       ">0.2%",
@@ -79,10 +75,7 @@
     ]
   },
   "devDependencies": {
-    "@svgr/babel-plugin-add-jsx-attribute": "^5.0.1",
-    "@svgr/babel-plugin-svg-dynamic-title": "^5.0.1",
-    "@svgr/cli": "^5.2.0",
-    "@svgr/plugin-jsx": "^5.2.0",
+    "@testing-library/react": "latest",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/user-event": "^7.1.2",
     "@types/jest": "^25.1.3",
@@ -97,7 +90,6 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.18.3",
     "jest-styled-components": "^7.0.0",
-    "jsdoc": "^3.6.3",
     "moxios": "^0.4.0",
     "npm-run-all": "^4.1.5",
     "postcss-loader": "^3.0.0",
@@ -113,8 +105,6 @@
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-custom-processor-loader": "^0.6.0",
     "stylelint-processor-styled-components": "^1.10.0",
-    "supertest": "^4.0.2",
-    "svg-parser": "^2.0.4",
-    "svgo": "^1.3.2"
+    "supertest": "^4.0.2"
   }
 }

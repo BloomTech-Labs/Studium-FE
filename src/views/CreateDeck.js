@@ -19,15 +19,13 @@ import {APP_VIEW_MOBILE, APP_VIEW_DESKTOP} from '../utilities/constants.js';
  */
 export const CreateDeck = props => {
   const {
-    dispatch,
     usersState,
-    decksState,
-    theme,
-    getLogger,
-    changePath,
     appView,
+    dispatch,
+    decksState,
+    changePath,
     height,
-  } = useAppHooks('CreateDeck');
+  } = useAppHooks();
   const [newDeck, setNewDeck] = useState({});
   const [newCard, setNewCard] = useState({
     question: '',
@@ -45,6 +43,8 @@ export const CreateDeck = props => {
     answer: false,
   });
   const [formError, setFormError] = useState(false);
+  const [numberOfDecks, setNumberOfDecks] = useState(decksState.decks.length);
+  const [deckCreated, setDeckCreated] = useState(false);
 
   let uid = usersState.user.uid;
 
@@ -59,6 +59,21 @@ export const CreateDeck = props => {
   };
 
   useEffect(() => {
+    if (decksState.decks.length > numberOfDecks) {
+      setDeckCreated(true);
+      setNumberOfDecks(decksState.decks.length);
+      const deck_id = decksState.decks[decksState.decks.length - 1].deck_id;
+      setNewCard({
+        ...newCard,
+        deck_id,
+      });
+      setNewDeck({...newDeck, deck_id});
+    }
+  }, [decksState]);
+
+  useEffect(() => {
+    console.log('||||logger from useEffect||||', newDeck);
+    console.log('||||logger from useEffect||||', newCard);
     if (appView === APP_VIEW_DESKTOP) {
       setHighlighted({title: false, question: false, answer: false});
       setVisible({question: true, answer: true});
@@ -69,7 +84,7 @@ export const CreateDeck = props => {
     e.preventDefault();
     let clickedOn = e.target.name;
 
-    if (clickedOn == 'title' && highlighted.title == true) {
+    if (clickedOn === 'title' && highlighted.title === true) {
       setHighlighted({
         ...highlighted,
         title: false,
@@ -80,8 +95,8 @@ export const CreateDeck = props => {
         question: true,
       });
     } else if (
-      clickedOn == 'question' &&
-      highlighted.question == true &&
+      clickedOn === 'question' &&
+      highlighted.question === true &&
       fieldValidated(newDeck.deck_name)
     ) {
       setHighlighted({
@@ -94,10 +109,12 @@ export const CreateDeck = props => {
         answer: true,
       });
     } else if (fieldValidated(newCard.question)) {
+      if (deckCreated) {
+        return;
+      }
       dispatch(postDeck(uid, newDeck));
       setNewCard({
         ...newCard,
-        deck_id: decksState.decks[decksState.decks.length - 1].deck_id + 1,
       });
       setHighlighted({
         ...highlighted,
@@ -152,19 +169,24 @@ export const CreateDeck = props => {
 
   const submitForm = e => {
     e.preventDefault();
-
+    debugger;
     if (
       newDeck.deck_name &&
       newCard.question &&
       newCard.answer &&
       newCard.deck_id &&
-      newDeck.deck_name != '' &&
-      newCard.question != '' &&
-      newCard.answer != '' &&
-      newCard.deck_id != ''
+      newDeck.deck_name !== '' &&
+      newCard.question !== '' &&
+      newCard.answer !== '' &&
+      newCard.deck_id !== ''
     ) {
       dispatch(createCard(newCard, uid));
-      setNewCard({...newCard, question: '', answer: '', deck_id: ''});
+      setNewCard({
+        ...newCard,
+        question: '',
+        answer: '',
+        deck_id: newDeck.deck_id,
+      });
       setCardNum(cardNum + 1);
     } else {
       setFormError(true);

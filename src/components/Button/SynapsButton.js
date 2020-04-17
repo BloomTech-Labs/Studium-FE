@@ -15,6 +15,8 @@ import {Button} from 'antd';
  */
 export const SynapsButton = ({
   text,
+  height,
+  width,
   type = 'primary',
   size = 'default',
   icon,
@@ -32,6 +34,8 @@ export const SynapsButton = ({
       shape={shape}
       loading={loading && 'loading'}
       block={block && 'block'}
+      height={height}
+      width={width}
       {...props}
     >
       {text}
@@ -56,6 +60,7 @@ SynapsButton.propTypes = {
   shape: PropTypes.oneOf(['circle', 'round']),
   loading: PropTypes.bool,
   block: PropTypes.bool,
+  
 };
 
 const StyledAntdButton = styled(Button)`
@@ -67,30 +72,33 @@ const StyledAntdButton = styled(Button)`
         return 0;
       }
     }};
+  
+   height: ${props => props.height ? props.height : '100%'};
+   width: ${props => props.width ? props.width : '100%'};
 
     color: ${props => {
-      if (props.type === 'darkgray') {
-        return 'white';
-      } else if (props.type === 'defaultCreateCard') {
-        return '#4CB69F';
-      } else if (props.type === 'primaryCreateCard') {
-        return '#fff';
-      } else {
-        return 'black';
-      }
-    }};
+  if(props.type === 'secondary'){
+    return 'white';
+  }else if(props.type === 'defaultCreateCard'){
+    return '#4CB69F';
+  }else if(props.type === 'primaryCreateCard'){
+    return '#fff';
+  }else{
+    return 'black';
+  }
+}};
 
     background-color: ${props => {
-      if (props.type === 'primary') {
-        return props.theme.primary;
-      } else if (props.type === 'primaryCreateCard') {
-        return '#4CB69F';
-      } else if (props.type === 'darkgray') {
-        return props.theme.darkGray;
-      } else {
-        return props.theme.lightGray;
-      }
-    }};
+  if(props.type === 'secondary'){
+    return props.theme.themeState.secondary4CB69F;
+  }else if(props.type === 'primaryCreateCard'){
+    return '#4CB69F';
+  }else if(props.type === 'darkgray'){
+    return props.theme.darkGray;
+  }else{
+    return props.theme.lightGray;
+  }
+}};
 
     :active {
       background-color: ${props => {
@@ -109,13 +117,13 @@ const StyledAntdButton = styled(Button)`
       }};
     }
 
-    ${props => {
-      if (
-        props.type === 'primaryCreateCard' ||
-        props.type === 'defaultCreateCard'
-      ) {
-        return 'width: 136px; height: 42px; border-radius: 11px;';
-      }
-    }}
+     ${props => {
+  if (
+    props.type === 'primaryCreateCard' ||
+    props.type === 'defaultCreateCard'
+  ) {
+    return 'width: 136px; height: 42px; border-radius: 11px;';
+  }
+}}
   }
 `;

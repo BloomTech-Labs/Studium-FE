@@ -1,7 +1,5 @@
-import React from "react";
-import styled from "styled-components";
-import {TitleText} from "../components";
-import {useAppHooks} from "../customHooks/useAppHooks.js";
+import React from 'react';
+import styled from 'styled-components';
 
 /**
  * FlashCard
@@ -9,14 +7,11 @@ import {useAppHooks} from "../customHooks/useAppHooks.js";
  * @component
  * @example return (<FlashCard />);
  */
-export const FlashCard = ({getHooks}) => {
-  const {pathPushedState} = getHooks("FlashCard");
-  // @type {Deck}
-  const {deck} = pathPushedState;
+export const FlashCard = () => {
   
   return (
     <StyledFlashCard>
-      <TitleText text={deck.deck_name}/>
+    
     </StyledFlashCard>
   );
 };

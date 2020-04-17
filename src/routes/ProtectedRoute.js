@@ -1,6 +1,5 @@
 import React from "react";
 import {Redirect, Route} from "react-router-dom";
-import {useAppHooks} from "../customHooks/useAppHooks.js";
 
 /**
  * Protected Route
@@ -17,7 +16,7 @@ import {useAppHooks} from "../customHooks/useAppHooks.js";
  *  )
  */
 export const ProtectedRoute = ({component: Component, ...rest}) => {
-  const {usersState} = rest.getHooks("ProtectedRoute");
+  const {usersState} = rest.getHooks();
   
   return (
     <Route

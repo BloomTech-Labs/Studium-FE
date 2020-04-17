@@ -26,6 +26,7 @@ export const POSTING_DECK_SUCCESS = 'POSTING_DECK_SUCCESS';
 export const POSTING_DECK_FAILURE = 'POSTING_DECK_FAILURE';
 
 export const postDeck = (uid, newDeck) => dispatch => {
+  debugger;
   dispatch({type: POSTING_DECK_START});
   createAxiosAuth(uid)
     .post('/api/decks', newDeck)
