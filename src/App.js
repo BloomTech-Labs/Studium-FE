@@ -5,9 +5,7 @@ import {SvgBrainPic} from './svgComponents';
 import PropTypes from 'prop-types';
 import {Alert} from 'antd';
 import {useAuthStateChange} from './customHooks/useAuthStateChange.js';
-import {
-  THEMING_VARIABLES, THEMING_VALUES,
-} from './customHooks/themingRules.js';
+import {THEMING_VARIABLES, THEMING_VALUES} from './customHooks/themingRules.js';
 import theming from 'styled-theming';
 import {useTheming} from './customHooks/useTheming.js';
 
@@ -17,50 +15,51 @@ import {useTheming} from './customHooks/useTheming.js';
  * @component
  * @example return (<App />);
  */
-export default function App({getHooks}){
+export default function App({getHooks}) {
   const [alertMessage, setAlert] = useState('');
   const {theme, usersState} = getHooks();
   const getValue = useTheming();
-  
+
   useAuthStateChange(getHooks);
-  
+
   useEffect(() => {
-    if(usersState.registerError && !alertMessage){
+    if (usersState.registerError && !alertMessage) {
       setAlert('Error logging in. Please try again later.');
-      if(usersState.registerError && !alertMessage){
+      if (usersState.registerError && !alertMessage) {
         setAlert('Error logging in. Please try again later.');
       }
     }
   }, [usersState]);
-  
+
   return (
     <StyledApp className="App">
-      {theme.BRAIN_SVG !== THEMING_VALUES.HIDDEN &&
-      <SvgBrainPic
-        maxWidth={'3000px'}
-        maxHeight={'3000px'}
-        height={getValue(THEMING_VARIABLES.BRAIN_SVG, {
-          [THEMING_VALUES.BOTTOM]: '1500px',
-          [THEMING_VALUES.TOP]: '1500px',
-          [THEMING_VALUES.MOBILE]: '624px',
-        })}
-        width={getValue(THEMING_VARIABLES.BRAIN_SVG, {
-          [THEMING_VALUES.BOTTOM]: '1500px',
-          [THEMING_VALUES.TOP]: '1500px',
-          [THEMING_VALUES.MOBILE]: '624px',
-        })}
-        left={'50%'} transform={'translate(-50%, 0)'}
-        top={getValue(THEMING_VARIABLES.BRAIN_SVG, {
-          [THEMING_VALUES.BOTTOM]: '800px',
-          [THEMING_VALUES.TOP]: '146px',
-          [THEMING_VALUES.MOBILE]: '624px',
-        })}
-        fill={getValue(THEMING_VARIABLES.BACKGROUND, {
-          [THEMING_VALUES.DARK]: theme.themeState.brainPicDark,
-          [THEMING_VALUES.LIGHT]: theme.themeState.brainPicLight,
-        })}
-      />
-      }
+      {theme.BRAIN_SVG !== THEMING_VALUES.HIDDEN && (
+        <SvgBrainPic
+          maxWidth={'3000px'}
+          maxHeight={'3000px'}
+          height={getValue(THEMING_VARIABLES.BRAIN_SVG, {
+            [THEMING_VALUES.BOTTOM]: '1800px',
+            [THEMING_VALUES.TOP]: '1800px',
+            [THEMING_VALUES.MOBILE]: '624px',
+          })}
+          width={getValue(THEMING_VARIABLES.BRAIN_SVG, {
+            [THEMING_VALUES.BOTTOM]: '1800px',
+            [THEMING_VALUES.TOP]: '1800px',
+            [THEMING_VALUES.MOBILE]: '624px',
+          })}
+          left={'50%'}
+          transform={'translate(-50%, 0)'}
+          top={getValue(THEMING_VARIABLES.BRAIN_SVG, {
+            [THEMING_VALUES.BOTTOM]: '800px',
+            [THEMING_VALUES.TOP]: '65px',
+            [THEMING_VALUES.MOBILE]: '624px',
+          })}
+          fill={getValue(THEMING_VARIABLES.BACKGROUND, {
+            [THEMING_VALUES.DARK]: theme.themeState.brainPicDark,
+            [THEMING_VALUES.LIGHT]: theme.themeState.brainPicLight,
+          })}
+        />
+      )}
       {alertMessage && (
         <Alert
           type={'error'}
@@ -74,9 +73,9 @@ export default function App({getHooks}){
           }}
         />
       )}
-      <NavBar getHooks={getHooks}/>
-      <RouteContainer getHooks={getHooks}/>
-      <Footer getHooks={getHooks}/>
+      <NavBar getHooks={getHooks} />
+      <RouteContainer getHooks={getHooks} />
+      <Footer getHooks={getHooks} />
     </StyledApp>
   );
 }

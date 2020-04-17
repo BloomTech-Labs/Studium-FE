@@ -258,13 +258,15 @@ export const CreateDeck = props => {
       </CreateCardContainer>
       <Bottom appView={appView}>
         <SynapsButton
+          appView={appView}
           onClick={submitForm}
           text={'Add Another Card'}
           type={'primaryCreateCard'}
         />
         <BottomButton appView={appView}>
           <SynapsButton
-            text={'Done'}
+            appView={appView}
+            text={appView === APP_VIEW_MOBILE ? 'Done' : 'Done Adding Cards'}
             type={'defaultCreateCard'}
             onClick={doneSubmit}
           />
