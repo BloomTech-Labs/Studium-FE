@@ -52,6 +52,10 @@ export const DEBUG_LOG_SIZES = {
  */
 export const THEME = {
   PRIMARY_COLOR: '#0d2545',
+  PRIMARY_COLOR_LIGHTER1: '#36405c',
+  
+  COLOR_WHITE: "#f0ede6",
+  
   SECONDARY_COLOR: '#A2D8C7',
   SECONDARY_DARKER1: '#4CB69F',
   

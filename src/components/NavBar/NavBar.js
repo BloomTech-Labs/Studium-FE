@@ -84,8 +84,8 @@ export const NavBar = ({getHooks}) => {
 NavBar.propTypes = {};
 
 const backgroundColor = theming(THEMING_VARIABLES.NAV_STYLE, {
-  [THEMING_VALUES.DARK]: THEME.navBarDark,
-  [THEMING_VALUES.LIGHT]: THEME.navBarLight,
+  [THEMING_VALUES.DARK]: THEME.NAV_BAR_DARK,
+  [THEMING_VALUES.LIGHT]: THEME.NAV_BAR_LIGHT,
   [THEMING_VALUES.HIDDEN]: 'transparent',
   
 });
@@ -104,15 +104,15 @@ const StyledBar = styled.div`
   position: absolute;
   top: ${top};
   width: 100%;
-  height: ${props => props.theme.navBarTopHeight + 'px'};
+  height: ${THEME.NAV_BAR_HEIGHT + 'px'};
 
  
 `;
 
 const color = theming(THEMING_VARIABLES.NAV_STYLE, {
   [THEMING_VALUES.DARK]: 'white',
-  [THEMING_VALUES.LIGHT]: props => props.theme.themeState.synapsDark,
-  [THEMING_VALUES.HIDDEN]: props => props.theme.themeState.synapsDark,
+  [THEMING_VALUES.LIGHT]: THEME.SYNAPS_DARK,
+  [THEMING_VALUES.HIDDEN]: THEME.SYNAPS_DARK,
 });
 
 const Styledh2 = styled.h2`

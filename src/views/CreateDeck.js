@@ -166,7 +166,7 @@ export const CreateDeck = props => {
     updateDeckNameIfChange();
     changePath('/dashboard');
   };
-  
+  debugger;
   const submitForm = e => {
     e.preventDefault();
     
@@ -192,8 +192,8 @@ export const CreateDeck = props => {
   
   return (
     <StyledCreateDeck appView={appView}>
-      <CardNameContainer>
-        <CardHeaderContainer>
+      <CardNameContainer appView={appView}>
+        <CardHeaderContainer appView={appView}>
           
           <SmallDeckSvg/>
           <CreateCardTitleText

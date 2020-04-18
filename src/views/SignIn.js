@@ -9,7 +9,8 @@ import {
   THEMING_VALUES,
   THEMING_VARIABLES,
 } from '../customHooks/themingRules.js';
-import {THEME, MEDIA_QUERIES} from '../utilities/constants.js';
+import {THEME, MEDIA_QUERIES, APP_PATHS} from '../utilities/constants.js';
+import EmailButton from '../svgComponents/EmailButton.js';
 
 export function SignIn({getHooks}){
   const {dispatch, theme, path} = getHooks();
@@ -45,7 +46,7 @@ export function SignIn({getHooks}){
   };
   
   const switchWelcomeTitle = () => {
-    if(path === '/signin'){
+    if(path === APP_PATHS.SIGN_IN_PATH){
       return <StyledH2>Hey! Welcome Back.</StyledH2>;
     }else{
       return (
@@ -120,29 +121,13 @@ export function SignIn({getHooks}){
         />
       </StyledFormInput>
       
-      <StyledBtn2
-        style={{
-          width: '260px',
-          height: '72px',
-          backgroundColor: '#0C2545',
-          margin: '0 0 1.5em',
-          padding: '0 2em 0',
-          border: '2px solid #fff',
-        }}
-        text={'Continue with Email'}
-        shape={'round'}
-        size={'large'}
-        type={'darkgray'}
-        onClick={e => handleSignInClick(EMAIL_PROVIDER)}
-      />
+      <EmailButton/>
     </StyledSignIn>
   );
 }
 
 const switchText = theming(THEMING_VARIABLES.BACKGROUND, {
-  [THEMING_VALUES.DARK]: ({theme}) => {
-    return theme.themeState.white;
-  },
+  [THEMING_VALUES.DARK]: 'white',
   [THEMING_VALUES.LIGHT]: ({theme}) => {
     return theme.themeState.primaryColor36405C;
   },
@@ -180,8 +165,8 @@ const StyledBtn = styled(SynapsButton)`
   && {
     display: flex;
     justify-content: space-evenly;
-    color: ${THEME.white};
-    background-color: ${THEME.primaryColor36405C};
+    color: white;
+    background-color: ${THEME.PRIMARY_COLOR_LIGHTER1};
     margin: 0 0 1.5em;
     padding: 0 2em 0;
     width: 260px;
