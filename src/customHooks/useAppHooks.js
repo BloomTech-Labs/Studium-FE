@@ -1,12 +1,13 @@
-import React, {useContext, useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {useChangePath} from "./useHistoryAndPath.js";
-import {useHistory} from "react-router-dom";
-import {useTheme} from "styled-components";
+import React, {useContext, useEffect, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {useChangePath} from './useHistoryAndPath.js';
+import {useHistory} from 'react-router-dom';
+import {useTheme} from 'styled-components';
 import {
-  APP_VIEW_DESKTOP, APP_VIEW_MOBILE, SIZES,
-} from "../utilities/constants.js";
-
+  APP_VIEW_DESKTOP,
+  APP_VIEW_MOBILE,
+  SIZES,
+} from '../utilities/constants.js';
 
 /**
  * Use App Hooks
@@ -21,7 +22,6 @@ import {
  *
  */
 export const useAppHooks = () => {
-  
   const {setHookVariable, hooks} = useContext(AppHooksContext);
   /**
    * @typedef {object} Theme
@@ -35,11 +35,10 @@ export const useAppHooks = () => {
   const changePath = useChangePath();
   const history = useHistory();
 
-  
   const {usersState, photosState, cardsState, decksState} = useSelector(
-    reducerState => reducerState,
+    reducerState => reducerState
   );
-  
+
   const getHooks = () => {
     //
     return {
@@ -56,7 +55,7 @@ export const useAppHooks = () => {
       ...hooks,
     };
   };
-  
+
   /**
    * @typedef {object} UseAppHooksReturn
    * @property {function} setHookVariable
@@ -91,7 +90,7 @@ export const useAppHooks = () => {
   };
 };
 
-export const USE_APP_HOOKS_STATE_DEBUG_NAME = "App Hooks State";
+export const USE_APP_HOOKS_STATE_DEBUG_NAME = 'App Hooks State';
 
 /**
  * Use App Hook State
@@ -104,15 +103,14 @@ export const USE_APP_HOOKS_STATE_DEBUG_NAME = "App Hooks State";
  *   history: *, height: number}}}
  */
 export const useAppHooksState = () => {
-  
   const history = useHistory();
   const path = history.location.pathname;
   const pushedState = {};
-  const appView = window.innerWidth > SIZES.tablet ? APP_VIEW_DESKTOP :
-    APP_VIEW_MOBILE;
+  const appView =
+    window.innerWidth > SIZES.tablet ? APP_VIEW_DESKTOP : APP_VIEW_MOBILE;
   const width = window.innerWidth;
   const height = window.innerHeight;
-  
+
   /**
    * @typedef {object} AppProviderState
    * @property {object} pushedState
@@ -126,25 +124,23 @@ export const useAppHooksState = () => {
     height,
     history,
   };
-  
+
   const [hooks, setHooks] = useState(initialState);
-  
+
   const setHookVariable = (name, value, items = undefined) => {
-    
-    if(items === undefined){
+    if (items === undefined) {
       let newState;
       newState = {...hooks, [name]: value};
       setHooks(newState);
-    }else{
+    } else {
       const newHooks = {...hooks};
       items.forEach(item => {
         newHooks[item.name] = item.value;
       });
       setHooks(newHooks);
     }
-    
   };
-  
+
   return {
     hooks,
     setHookVariable,

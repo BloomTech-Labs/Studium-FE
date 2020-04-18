@@ -20,24 +20,23 @@ export const Uploader = props => {
    */
   const {photosState, usersState, dispatch} = useAppHooks('Uploader');
   const [photoObject, setPhotoObject] = useState(false);
-  
+
   useEffect(() => {
     Object.values(photosState.photos).forEach(photoObject => {
-      if(photoObject.id === props.id){
+      if (photoObject.id === props.id) {
         setPhotoObject(photoObject);
       }
     });
   }, [photosState, props.id]);
-  
+
   const customRequest = file => {
-    console.log('|||uid from uploadImage|||', usersState.user.uid);
     file.id = props.id;
     dispatch(uploadImage(file));
   };
-  
+
   const getUrl = () => {
-    if(photoObject){
-      if(photoObject.file.uid){
+    if (photoObject) {
+      if (photoObject.file.uid) {
         return (
           'https://res.cloudinary.com/www-synapsapp-com/image/upload/v1582468332/' +
           photoObject.file.uid
@@ -46,7 +45,7 @@ export const Uploader = props => {
     }
     return undefined;
   };
-  
+
   const loadImage = photoObject && photoObject.file && photoObject.file.uid;
   return (
     <div data-testid="upload">
@@ -65,7 +64,7 @@ export const Uploader = props => {
             data-testid="upload-image"
           />
         ) : (
-          <UploadIcon/>
+          <UploadIcon />
         )}
       </StyledUpload>
     </div>
@@ -87,13 +86,13 @@ const StyledUpload = styled(Upload)`
   }
 `;
 
-function beforeUpload(file){
+function beforeUpload(file) {
   const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
-  if(!isJpgOrPng){
+  if (!isJpgOrPng) {
     message.error('You can only upload JPG/PNG file!');
   }
   const isLt2M = file.size / 1024 / 1024 < 2;
-  if(!isLt2M){
+  if (!isLt2M) {
     message.error('Image must smaller than 2MB!');
   }
   return isJpgOrPng && isLt2M;
