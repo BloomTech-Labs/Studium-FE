@@ -42,7 +42,7 @@ export const CreateCard = ({
       </StyledCreateCardHeaderContainer>
       <StyledCreateCard appView={appView} highlighted={highlighted}>
         <TextArea
-          height={`100%`}
+          height={`40%`}
           appView={appView}
           value={value}
           clickHandler={clickHandler}
@@ -52,7 +52,9 @@ export const CreateCard = ({
             appView === APP_VIEW_MOBILE ? 'Start typing...' : 'Add Text'
           }
         />
-        <Uploader id={drillName} />
+        <UploaderContainer>
+          <Uploader id={drillName} />
+        </UploaderContainer>
       </StyledCreateCard>
     </StyledCreateCardContainer>
   );
@@ -98,4 +100,11 @@ const StyledCreateCardHeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
+
+const UploaderContainer = styled.div`
+  width: 100%;
+  height: 60%;
+  display: flex;
+  justify-content: center;
 `;

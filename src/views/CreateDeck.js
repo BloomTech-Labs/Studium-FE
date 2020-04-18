@@ -45,15 +45,14 @@ export const CreateDeck = props => {
   const [formError, setFormError] = useState(false);
   const [numberOfDecks, setNumberOfDecks] = useState(decksState.decks.length);
   const [deckCreated, setDeckCreated] = useState(false);
+  const [allFieldsValidated, setAllFieldsValidated] = useState(false);
 
   let uid = usersState.user.uid;
 
   const fieldValidated = stateHook => {
     if (stateHook !== '' && typeof stateHook !== 'undefined') {
-      console.log('returning true from fieldValidated');
       return true;
     } else {
-      console.log('returning false from fieldValidated');
       return false;
     }
   };
@@ -72,13 +71,17 @@ export const CreateDeck = props => {
   }, [decksState]);
 
   useEffect(() => {
-    console.log('||||logger from useEffect||||', newDeck);
-    console.log('||||logger from useEffect||||', newCard);
     if (appView === APP_VIEW_DESKTOP) {
       setHighlighted({title: false, question: false, answer: false});
       setVisible({question: true, answer: true});
     }
   }, [appView]);
+
+  useEffect(() => {
+    if (fieldValidated(newCard.question) && fieldValidated(newCard.question)) {
+      setAllFieldsValidated(true);
+    }
+  }, [newCard]);
 
   const clickHandler = e => {
     e.preventDefault();
@@ -125,7 +128,6 @@ export const CreateDeck = props => {
 
   const changeHandler = e => {
     const targetName = e.target.name;
-    console.log('target name||', targetName);
     switch (targetName) {
       case 'title':
         setNewDeck({deck_name: e.target.value});
@@ -134,8 +136,6 @@ export const CreateDeck = props => {
         setNewCard({...newCard, [targetName]: e.target.value});
         break;
     }
-    console.log(newDeck);
-    console.log(newCard);
   };
 
   const deckNameChanged = () => {
@@ -150,7 +150,6 @@ export const CreateDeck = props => {
 
   const updateDeckNameIfChange = () => {
     if (deckNameChanged()) {
-      console.log('dispatching update|||');
       dispatch(
         updateDeck(
           uid,
@@ -169,17 +168,7 @@ export const CreateDeck = props => {
 
   const submitForm = e => {
     e.preventDefault();
-    debugger;
-    if (
-      newDeck.deck_name &&
-      newCard.question &&
-      newCard.answer &&
-      newCard.deck_id &&
-      newDeck.deck_name !== '' &&
-      newCard.question !== '' &&
-      newCard.answer !== '' &&
-      newCard.deck_id !== ''
-    ) {
+    if (allFieldsValidated()) {
       dispatch(createCard(newCard, uid));
       setNewCard({
         ...newCard,
