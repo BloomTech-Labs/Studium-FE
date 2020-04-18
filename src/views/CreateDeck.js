@@ -78,7 +78,11 @@ export const CreateDeck = props => {
   }, [appView]);
 
   useEffect(() => {
-    if (fieldValidated(newCard.question) && fieldValidated(newCard.question)) {
+    if (
+      fieldValidated(newCard.question) &&
+      fieldValidated(newCard.answer) &&
+      fieldValidated(newDeck.deck_name)
+    ) {
       setAllFieldsValidated(true);
     }
   }, [newCard]);
@@ -168,7 +172,7 @@ export const CreateDeck = props => {
 
   const submitForm = e => {
     e.preventDefault();
-    if (allFieldsValidated()) {
+    if (allFieldsValidated) {
       dispatch(createCard(newCard, uid));
       setNewCard({
         ...newCard,
@@ -251,6 +255,7 @@ export const CreateDeck = props => {
           onClick={submitForm}
           text={'Add Another Card'}
           type={'primaryCreateCard'}
+          allFieldsValidated={allFieldsValidated}
         />
         <BottomButton appView={appView}>
           <SynapsButton
