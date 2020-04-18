@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
-import { SmallLogo, SynapsButton, SynapsText } from '../components';
-import { devices } from '../utilities/breakpoints-device';
-import { useAppHooks } from '../customHooks/useAppHooks.js';
+import {SynapsButton} from '../components';
+import SvgSynapsLogoText from '../svgComponents/SvgSynapsLogoText.js';
+import {SvgBrainPaths} from '../svgComponents';
+import {MEDIA_QUERIES} from '../utilities/constants.js';
 
 /**
  * Landing Page
@@ -10,47 +11,53 @@ import { useAppHooks } from '../customHooks/useAppHooks.js';
  * @component
  * @example return (<LandingPage />);
  */
-export const LandingPage = props => {
-  const { history } = useAppHooks();
+export const LandingPage = ({getHooks}) => {
+  const {changePath, theme} = getHooks();
+  
+  useEffect(() => {
+  
+  }, []);
+  
   const handleClick = name => {
-    if( name === 'SignIn' ){
-      history.push( '/signIn' );
+    if(name === 'SignIn'){
+      changePath('/signIn');
     }else{
-      history.push( '/signup' );
+      changePath('/signup');
     }
   };
   
   return (
-    
-    <StyledLandingPage>
-      <Mobile>
-        <SmallLogo/>
+    <StyledLandingPage data-testid={'landing-page'}>
+      <Mobile data-testid={'landing-page-mobile'}>
+        <SvgBrainPaths svgFill={'white'} strokeWidth={'1'} stroke={'white'}
+                       svgWidth={'100%'}
+                       height={'100%'}/>
         <MobileHeader>
-          <SynapsText/>
+          <SvgSynapsLogoText fill={theme.themeState.navBarLight}/>
         </MobileHeader>
         <SynapsButton
-          text={ 'Sign In' }
-          size={ 'large' }
-          type={ 'primary' }
-          onClick={ () => handleClick( 'SignIn' ) }
-          style={ {
+          text={'Sign In'}
+          size={'large'}
+          type={'primary'}
+          onClick={() => handleClick('SignIn')}
+          style={{
             margin: '2rem auto',
             width: '204px',
             height: '62px',
             borderRadius: '15px',
-          } }
+          }}
         />
         <SynapsButton
-          text={ 'Sign Up' }
-          size={ 'large' }
-          type={ 'darkgray' }
-          onClick={ () => handleClick( 'SignUp' ) }
-          style={ {
+          text={'Sign Up'}
+          size={'large'}
+          type={'darkgray'}
+          onClick={() => handleClick('SignUp')}
+          style={{
             margin: '0 auto',
             width: '204px',
             height: '62px',
             borderRadius: '15px',
-          } }
+          }}
         />
       </Mobile>
       <Desktop>
@@ -103,15 +110,14 @@ export const LandingPage = props => {
         <Rectangle/>
       </Desktop>
     </StyledLandingPage>
-  
   );
 };
 
 const Mobile = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 146px;
-  @media ${ devices.tablet } {
+  margin: 75px auto 0 auto;
+  @media ${MEDIA_QUERIES.tablet} {
     display: none;
   }
 `;
@@ -120,7 +126,7 @@ const MobileHeader = styled.div``;
 
 const Desktop = styled.div`
   display: none;
-  @media ${ devices.tablet } {
+  @media ${MEDIA_QUERIES.tablet} {
   }
 `;
 
@@ -129,7 +135,6 @@ const HeaderName = styled.div`
 `;
 
 const Menu1 = styled.div`
-  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: normal;
   font-size: 25px;
@@ -139,7 +144,6 @@ const Menu1 = styled.div`
 `;
 
 const Menu2 = styled.div`
-  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: normal;
   font-size: 25px;
@@ -149,7 +153,6 @@ const Menu2 = styled.div`
 `;
 
 const Menu3 = styled.div`
-  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: normal;
   font-size: 25px;
@@ -159,11 +162,10 @@ const Menu3 = styled.div`
 `;
 
 const StyledLandingPage = styled.div`
-  margin-bottom: 75px;
+  margin: 75px auto;
 `;
 
 const Headline = styled.div`
-  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: bold;
   font-size: 122px;
@@ -187,7 +189,6 @@ const Rectangle = styled.div`
 `;
 
 const Paragraph = styled.div`
-  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: normal;
   font-size: 35px;
@@ -197,7 +198,6 @@ const Paragraph = styled.div`
 `;
 
 const Paragraph2 = styled.div`
-  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: normal;
   font-size: 35px;
@@ -216,7 +216,6 @@ const Group1 = styled.div`
 `;
 
 const Group1Text = styled.div`
-  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: normal;
   font-size: 24px;
@@ -230,7 +229,6 @@ const Group2 = styled.div`
 `;
 
 const Group2Text = styled.div`
-  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: normal;
   font-size: 24px;
@@ -253,7 +251,6 @@ const Group4 = styled.div`
 `;
 
 const Group4Text = styled.div`
-  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: normal;
   font-size: 24px;
@@ -261,4 +258,3 @@ const Group4Text = styled.div`
   /* or 29px */
   color: #000000;
 `;
-

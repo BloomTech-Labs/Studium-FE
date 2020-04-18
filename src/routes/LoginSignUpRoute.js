@@ -1,6 +1,6 @@
-import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
-import { useAppHooks } from '../customHooks/useAppHooks.js';
+import React from "react";
+import {Redirect, Route} from "react-router-dom";
+import {useAppHooks} from "../customHooks/useAppHooks.js";
 
 /**
  * Login Sing up Route
@@ -16,22 +16,22 @@ import { useAppHooks } from '../customHooks/useAppHooks.js';
  *     />
  *  )
  */
-export const LoginSignUpRoute = ( { component: Component, ...rest } ) => {
-  const { usersState } = useAppHooks();
+export const LoginSignUpRoute = ({component: Component, ...rest}) => {
+  const {usersState} = useAppHooks("LoginSignUpRoute");
   return (
     <Route
-      { ...rest }
-      render={ props => {
+      {...rest}
+      render={props => {
         try{
-          if( usersState.user.uid ){
-            return <Redirect to={ '/dashboard' } { ...props } />;
+          if(usersState.user.uid){
+            return <Redirect to={"/dashboard"} {...rest} />;
           }else{
-            return <Component { ...props } />;
+            return <Component {...props} {...rest} />;
           }
-        }catch( e ){
-          return <Component { ...props } />;
+        }catch(e){
+          return <Component {...props} {...rest}/>;
         }
-      } }
+      }}
     />
   );
 };

@@ -1,5 +1,7 @@
 import {
-  UPLOADING_PHOTO_FAILED, UPLOADING_PHOTO_SUCCESS, UPLOADING_PHOTO_PROGRESS,
+  UPLOADING_PHOTO_FAILED,
+  UPLOADING_PHOTO_SUCCESS,
+  UPLOADING_PHOTO_PROGRESS,
   UPLOADING_PHOTO_INIT,
 } from '../actions/photo.js';
 
@@ -10,6 +12,7 @@ import {
  */
 const initialState = {
   photos: {},
+  isLoading: false,
 };
 
 /**
@@ -31,21 +34,30 @@ const initialState = {
  * @param {Action} action
  * @returns {PhotoReducerState} state
  */
-export const photosReducer = ( state = initialState, action ) => {
-  switch( action.type ){
+export const photosReducer = (state = initialState, action) => {
+  switch (action.type) {
     case 'SET_INIT_STATE':
-      if( action.payload && action.payload.name &&
-        action.payload.name.includes( 'photos' ) ){
+      if (
+        action.payload &&
+        action.payload.name &&
+        action.payload.name.includes('photos') &&
+        action.payload.value
+      ) {
         return action.payload.value;
       }
       return state;
     case UPLOADING_PHOTO_INIT:
+      return {...state, isLoading: true, error: null};
+    // case UPLOADING_PHOTO_PROGRESS:
+    //   state.photos[action.payload.id] = action.payload;
+    //   return {...state, photos: {...state.photos}};
     case UPLOADING_PHOTO_FAILED:
+      return {...state, isLoading: false, error: action.payload};
     case UPLOADING_PHOTO_SUCCESS:
     case UPLOADING_PHOTO_PROGRESS:
-      state.photos[ action.payload.id ] = action.payload;
-      return { photos: { ...state.photos } };
-    
+      state.photos[action.payload.id] = action.payload;
+      return {photos: {...state.photos}};
+
     default:
       return state;
   }

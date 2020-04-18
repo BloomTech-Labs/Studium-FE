@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import { NavBar, Footer, RouteContainer } from './components';
+import {NavBar, Footer, RouteContainer} from './components';
+import {SvgBrainPic} from './svgComponents';
 import PropTypes from 'prop-types';
-import { Alert } from 'antd';
-import { devices } from './utilities/breakpoints-device.js';
-import { useAppHooks } from './customHooks/useAppHooks.js';
-import { useAuthStateChange } from './customHooks/useAuthStateChange.js';
+import {Alert} from 'antd';
+import {useAuthStateChange} from './customHooks/useAuthStateChange.js';
+import {THEMING_VARIABLES, THEMING_VALUES} from './customHooks/themingRules.js';
+import theming from 'styled-theming';
+import {useTheming} from './customHooks/useTheming.js';
 
 /**
  * App
@@ -13,46 +15,90 @@ import { useAuthStateChange } from './customHooks/useAuthStateChange.js';
  * @component
  * @example return (<App />);
  */
-function App( props ){
-  const [ alertMessage, setAlert ] = useState( '' );
-  const { theme, usersState, dispatch } = useAppHooks();
-  
-  useAuthStateChange();
-  useEffect( () => {
-    if( usersState.registerError && !alertMessage ){
-      setAlert( 'Error logging in. Please try again later.' );
+export default function App({getHooks}) {
+  const [alertMessage, setAlert] = useState('');
+  const {theme, usersState} = getHooks();
+  const getValue = useTheming();
+
+  useAuthStateChange(getHooks);
+
+  useEffect(() => {
+    if (usersState.registerError && !alertMessage) {
+      setAlert('Error logging in. Please try again later.');
+      if (usersState.registerError && !alertMessage) {
+        setAlert('Error logging in. Please try again later.');
+      }
     }
-  }, [ usersState ] );
-  
-  return ( <StyledApp
-      className="App"
-      theme={ theme }
-    >
-      { alertMessage && ( <Alert
-        type={ 'error' }
-        onClose={ () => setAlert( false ) }
-        message={ alertMessage }
-        closable
-        style={ {
-          position: 'absolute', top: '20px', zIndex: '15',
-        } }
-      /> ) }
-      <NavBar/>
-      <RouteContainer/>
-      <Footer/>
+  }, [usersState]);
+
+  return (
+    <StyledApp className="App">
+      {theme.BRAIN_SVG !== THEMING_VALUES.HIDDEN && (
+        <SvgBrainPic
+          maxWidth={'3000px'}
+          maxHeight={'3000px'}
+          height={getValue(THEMING_VARIABLES.BRAIN_SVG, {
+            [THEMING_VALUES.BOTTOM]: '1800px',
+            [THEMING_VALUES.TOP]: '1800px',
+            [THEMING_VALUES.MOBILE]: '624px',
+          })}
+          width={getValue(THEMING_VARIABLES.BRAIN_SVG, {
+            [THEMING_VALUES.BOTTOM]: '1800px',
+            [THEMING_VALUES.TOP]: '1800px',
+            [THEMING_VALUES.MOBILE]: '624px',
+          })}
+          left={'50%'}
+          transform={'translate(-50%, 0)'}
+          top={getValue(THEMING_VARIABLES.BRAIN_SVG, {
+            [THEMING_VALUES.BOTTOM]: '800px',
+            [THEMING_VALUES.TOP]: '65px',
+            [THEMING_VALUES.MOBILE]: '624px',
+          })}
+          fill={getValue(THEMING_VARIABLES.BACKGROUND, {
+            [THEMING_VALUES.DARK]: theme.themeState.brainPicDark,
+            [THEMING_VALUES.LIGHT]: theme.themeState.brainPicLight,
+          })}
+        />
+      )}
+      {alertMessage && (
+        <Alert
+          type={'error'}
+          onClose={() => setAlert(false)}
+          message={alertMessage}
+          closable
+          style={{
+            position: 'absolute',
+            top: '20px',
+            zIndex: '15',
+          }}
+        />
+      )}
+      <NavBar getHooks={getHooks} />
+      <RouteContainer getHooks={getHooks} />
+      <Footer getHooks={getHooks} />
     </StyledApp>
   );
 }
 
 App.propTypes = {
-  theme: PropTypes.object, history: PropTypes.object,
+  theme: PropTypes.object,
+  history: PropTypes.object,
 };
 
+const backgroundColor = theming(THEMING_VARIABLES.BACKGROUND, {
+  [THEMING_VALUES.DARK]: ({theme}) => {
+    return theme.themeState.primaryColor;
+  },
+  [THEMING_VALUES.LIGHT]: ({theme}) => {
+    return theme.themeState.navBarLight;
+  },
+});
+
 const StyledApp = styled.div`
+  background: ${backgroundColor};
   box-sizing: border-box;
   position: relative;
-  color: ${ props => props.theme.color };
-  padding: ${ props => ( props.navBarVis ? '75px 0 50px 0' : 0 ) };
+  color: ${props => props.theme.color};
   text-align: center;
   flex-direction: column;
   display: flex;
@@ -61,25 +107,5 @@ const StyledApp = styled.div`
   align-items: center;
   max-height: 100vh;
   min-height: 100vh;
-  overflow-y: hidden;
-  
-  @media ${ devices.tablet } {
-    background: ${ props => props.theme.primaryColor };
-   }
+  overflow: hidden;
 `;
-
-export default App;
-
-/**
- * @typedef {function} Dispatch
- * @param {function} function
- * @returns none
- *
- */
-
-/**
- * @typedef {object} User
- * @property {string} uid
- * @property {string} photoURL
- */
-

@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-
-import { createStore, applyMiddleware } from 'redux';
+import React, {useState} from 'react';
+import {composeWithDevTools} from 'redux-devtools-extension';
+import {createStore, applyMiddleware} from 'redux';
 import Thunk from 'redux-thunk';
-import { cookiesRedux, logger } from '../middleWare/reduxMiddware.js';
+import {storageBackUp, logger} from '../middleWare/reduxMiddware.js';
 import rootReducer from '../reducers';
 
 /**
@@ -14,9 +14,37 @@ import rootReducer from '../reducers';
  * @returns Store
  *
  */
-export const getStore = () => createStore( rootReducer,
-  applyMiddleware( cookiesRedux, logger, Thunk ),
-);
+export const getStore = (initialState) => {
+  let store = null;
+  
+  if(initialState){
+    try{
+      store = createStore(
+        rootReducer,
+        initialState,
+        composeWithDevTools(applyMiddleware(storageBackUp, logger, Thunk)),
+      );
+      if(store){
+        const state = store.getState();
+        return store;
+      }
+    }catch(e){
+      store = createStore(
+        rootReducer,
+        composeWithDevTools(applyMiddleware(storageBackUp, logger, Thunk)),
+      );
+      if(store){
+        return store;
+      }
+    }
+  }
+  
+  store = createStore(
+    rootReducer,
+    composeWithDevTools(applyMiddleware(storageBackUp, logger, Thunk)),
+  );
+  return store;
+};
 
 /**
  * @typedef {object} Store

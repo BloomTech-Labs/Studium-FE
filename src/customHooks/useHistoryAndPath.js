@@ -1,43 +1,42 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router';
+import React from 'react';
+import {useHistory} from 'react-router-dom';
+
+export const USE_CHANGE_PATH_DEBUG = 'Use Change Path';
 
 /**
- * Use History and Path
- * @category Custom Hooks
- * @function
- * @returns {{pushedState: any, path: string, changePath: ChangePath}}
+ * @typedef {function} UseChangePath
+ * @return {changePath}
  */
-export const useHistoryAndPath = () => {
+export const useChangePath = () => {
   
   const history = useHistory();
-  const [ path, setPath ] = useState( history.location.pathname );
-  const [ pushedState, setPushedState ] = useState( null );
-  
-  useEffect( () => {
-    if( history.location.pathname !== path ){
-      setPath( history.location.pathname );
-    }
-    
-    if( history.location.state !== pushedState ){
-      setPushedState( history.location.state );
-    }
-    
-  }, [ history ] );
   
   /**
-   * Changes the current url path
-   * @typedef ChangePath
-   * @param path
+   * Change Path
+   * @typedef {function} ChangePath
+   *
+   * @function
+   * @name changePath
+   * @param {string} pathToChangeTo
    * @param {{} | Any} [stateToPush]
+   * @returns void
    */
-  const changePath = ( path, stateToPush = null ) => {
-    if( stateToPush ){
-      history.push( path, stateToPush );
-    }else{
-      history.push( path );
+  const changePath = (pathToChangeTo, stateToPush = null) => {
+    
+    pathToChangeTo = pathToChangeTo.toLowerCase();
+    if(pathToChangeTo !== undefined && pathToChangeTo !==
+      history.location.pathname){
+      if(stateToPush){
+        history.push(pathToChangeTo, stateToPush);
+      }else{
+        history.push(pathToChangeTo);
+      }
+      
     }
+    
   };
   
-  return { changePath, path, pushedState };
+  return changePath;
   
 };
+

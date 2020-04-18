@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, useContext} from 'react';
+import {AppHooksContext} from './useAppHooks.js';
 
 /**
  * Use Dimensions
@@ -12,34 +13,37 @@ import React, { useState, useEffect } from 'react';
 
 export const useDimensions = () => {
   
-  const [ width, setWidth ] = useState( window.innerWidth );
-  const [ height, setHeight ] = useState( window.innerWidth );
+  const {hooks, setHookVariable} = useContext(
+    AppHooksContext);
+  const {width, height} = hooks;
   
-  useEffect( () => {
-    window.addEventListener( 'resize', updateDimensions );
-    
+  useEffect(() => {
+    window.addEventListener('resize', updateDimensions);
     return () => {
-      window.removeEventListener( 'resize', updateDimensions );
+      window.removeEventListener('resize', updateDimensions);
     };
-  }, [] );
+  }, []);
   
   let timer = null;
   
   const updateDimensions = () => {
     
     const update = () => {
-      setWidth( window.innerWidth );
-      setHeight( window.innerHeight );
+      if(width !== window.innerWidth){
+        setHookVariable('width', window.innerWidth);
+      }
+      if(height !== window.innerHeight){
+        setHookVariable('height', window.innerHeight);
+      }
+      
       timer = null;
     };
     
-    if( timer ){
-      clearTimeout( timer );
+    if(timer){
+      clearTimeout(timer);
     }
-    timer = setTimeout( update, 200 );
+    timer = setTimeout(update, 200);
   };
-  
-  return [ width, height ];
   
 };
 

@@ -1,7 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistoryAndPath } from './useHistoryAndPath.js';
-import { useThemeContext } from './useThemeContext.js';
+import React, {useContext, useEffect, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {useChangePath} from './useHistoryAndPath.js';
+import {useHistory} from 'react-router-dom';
+import {useTheme} from 'styled-components';
+import {
+  APP_VIEW_DESKTOP,
+  APP_VIEW_MOBILE,
+  SIZES,
+} from '../utilities/constants.js';
 
 /**
  * Use App Hooks
@@ -10,66 +16,135 @@ import { useThemeContext } from './useThemeContext.js';
  * using in this application.
  *
  * @category Custom Hooks
- *  @function
+ * @function
  * @name useAppHooks
- * @returns {UseAppHooksReturn}
+ * @returns UseAppHooksReturn
  *
  */
 export const useAppHooks = () => {
-  
+  const {setHookVariable, hooks} = useContext(AppHooksContext);
+  /**
+   * @typedef {object} Theme
+   * @property {function} changeTheme
+   * @property {ThemeState} themeState
+   * @property {object.<THEMING_VALUE, {string}>}
+   *
+   */
+  const theme = useTheme();
   const dispatch = useDispatch();
-  const usersState = useSelector( state => state.usersState );
-  const cardsState = useSelector( state => state.cardsState );
-  const photosState = useSelector( state => state.photosState );
-  const { path, pushedState, changePath } = useHistoryAndPath();
-  const theme = useThemeContext();
-  
+  const changePath = useChangePath();
+  const history = useHistory();
+
+  const {usersState, photosState, cardsState, decksState} = useSelector(
+    reducerState => reducerState
+  );
+
+  const getHooks = () => {
+    //
+    return {
+      theme: theme,
+      path: history.location.pathname,
+      pathPushedState: history.location.state,
+      setHookVariable,
+      dispatch,
+      usersState,
+      cardsState,
+      photosState,
+      decksState,
+      changePath,
+      ...hooks,
+    };
+  };
+
+  /**
+   * @typedef {object} UseAppHooksReturn
+   * @property {function} setHookVariable
+   * @property {Dispatch}  dispatch
+   * @property {UsersReducerState} usersState
+   * @property {CardsState} cardsState
+   * @property {PhotoReducerState} photosState
+   * @property {{}} deckState
+   * @property {Theme} theme
+   * @property {ThemeRuleValues} themeRules
+   * @property {AppView} appView
+   * @property {APP_PATH} path,
+   * @property {number} height
+   * @property {ChangePath} changePath
+   * @property {{any}} pushedState
+   * @property {number} width
+   * @property {number} height
+   */
   return {
+    path: history.location.pathname,
+    pathPushedState: history.location.state,
+    theme: theme,
+    setHookVariable,
     dispatch,
-    theme,
     usersState,
     cardsState,
     photosState,
-    pathname: path,
-    changePath: changePath,
-    pathPushedState: pushedState,
+    decksState,
+    changePath,
+    getHooks,
+    ...hooks,
   };
 };
 
+export const USE_APP_HOOKS_STATE_DEBUG_NAME = 'App Hooks State';
+
 /**
- * @typedef {object} UseAppHooksReturn
+ * Use App Hook State
+ * App Hooks Theme Provider State manager.
+ * @typedef {function} useAppAHooksState
  *
- * @property {Dispatch}  dispatch
- * @property {Dispatch} theme
- * @property {UsersReducerState} usersState
- * @property {CardsState} cardsState
- * @property {PhotoReducerState} photosState
- * @property {History} history
- * @property {AppCookies} cookies
- * @property {SetCookie} setCookie
- * @property {RemoveCookie} removeCookie
- * @property {string} pathname
- * @property {ChangePath} changePath
- * @property {any} pathPushedState
- */
 
-/**
- * @typedef SetCookie
- * @function
- * @param {string} key
- * @param {any} value
+ * @return {{setHookVariable: setHookVariable, hooks: {pushedState: {}, path:
+ *   string, appView: (string | string), width: number,
+ *   history: *, height: number}}}
  */
+export const useAppHooksState = () => {
+  const history = useHistory();
+  const path = history.location.pathname;
+  const pushedState = {};
+  const appView =
+    window.innerWidth > SIZES.tablet ? APP_VIEW_DESKTOP : APP_VIEW_MOBILE;
+  const width = window.innerWidth;
+  const height = window.innerHeight;
 
-/**
- * @typedef RemoveCookie
- * @function
- * @param {string} key
- */
+  /**
+   * @typedef {object} AppProviderState
+   * @property {object} pushedState
+   * @property {AppView} appView
+   * @property {number} width
+   * @property {number} height
+   */
+  const initialState = {
+    appView,
+    width,
+    height,
+    history,
+  };
 
-/**
- * @typedef {Object} AppCookies
- * @property {UsersReducerState} usersState
- * @property {PhotoReducerState} photosState
- * @property {CardsState} cardsState
- *
- */
+  const [hooks, setHooks] = useState(initialState);
+
+  const setHookVariable = (name, value, items = undefined) => {
+    if (items === undefined) {
+      let newState;
+      newState = {...hooks, [name]: value};
+      setHooks(newState);
+    } else {
+      const newHooks = {...hooks};
+      items.forEach(item => {
+        newHooks[item.name] = item.value;
+      });
+      setHooks(newHooks);
+    }
+  };
+
+  return {
+    hooks,
+    setHookVariable,
+  };
+};
+
+export const AppHooksContext = React.createContext();

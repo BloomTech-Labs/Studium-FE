@@ -60,7 +60,7 @@ export const GOOGLE_PROVIDER = 'GOOGLE_PROVIDER';
  * @returns {function}
  */
 export const signIn = ( authType, email, password ) => dispatch => {
-  debugger;
+  
   dispatch( action( ATTEMPT_SIGNIN ) );
   
   if( authType === EMAIL_PROVIDER ){

@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import { Upload, message } from 'antd';
-import { uploadImage } from '../../actions/photo';
-import { UploadIcon } from './UploadIcon.js';
+import {Upload, message} from 'antd';
+import {uploadImage} from '../../actions/photo';
+import {UploadIcon} from './UploadIcon.js';
 import * as PropTypes from 'prop-types';
-import { useAppHooks } from '../../customHooks/useAppHooks.js';
+import {useAppHooks} from '../../customHooks/useAppHooks.js';
 
 /**
  * Image Uploader
@@ -18,55 +18,64 @@ export const Uploader = props => {
   /**
    * @type PhotoReducerState
    */
-  const { photosState, dispatch } = useAppHooks();
-  const [ photoObject, setPhotoObject ] = useState( false );
-  
-  useEffect( () => {
-    Object.values( photosState.photos ).forEach( photoObject => {
-      if( photoObject.id === props.id ){
-        setPhotoObject( photoObject );
+  const {photosState, usersState, dispatch} = useAppHooks('Uploader');
+  const [photoObject, setPhotoObject] = useState(false);
+
+  useEffect(() => {
+    Object.values(photosState.photos).forEach(photoObject => {
+      if (photoObject.id === props.id) {
+        setPhotoObject(photoObject);
       }
-    } );
-  }, [ photosState ] );
-  
+    });
+  }, [photosState, props.id]);
+
   const customRequest = file => {
     file.id = props.id;
-    dispatch( uploadImage( file ) );
+    dispatch(uploadImage(file));
   };
-  
+
   const getUrl = () => {
-    if( photoObject ){
-      if( photoObject.file.url ){
-        return photoObject.file.url;
+    if (photoObject) {
+      if (photoObject.file.uid) {
+        return (
+          'https://res.cloudinary.com/www-synapsapp-com/image/upload/v1582468332/' +
+          photoObject.file.uid
+        );
       }
     }
     return undefined;
   };
-  
-  const loadImage = photoObject && photoObject.file && photoObject.file.url;
-  return ( <div data-testid="upload">
-    <StyledUpload
-      name="file"
-      listType="picture-card"
-      showUploadList={ false }
-      beforeUpload={ beforeUpload }
-      customRequest={ customRequest }
-    >
-      { loadImage ? ( <img
-        src={ getUrl() }
-        alt="avatar"
-        style={ { width: '100%' } }
-        data-testid="upload-image"
-      /> ) : ( <UploadIcon/> ) }
-    </StyledUpload>
-  </div> );
+
+  const loadImage = photoObject && photoObject.file && photoObject.file.uid;
+  return (
+    <div data-testid="upload">
+      <StyledUpload
+        name="file"
+        listType="picture-card"
+        showUploadList={false}
+        beforeUpload={beforeUpload}
+        customRequest={customRequest}
+      >
+        {loadImage ? (
+          <img
+            src={getUrl()}
+            alt="avatar"
+            style={{width: '100%'}}
+            data-testid="upload-image"
+          />
+        ) : (
+          <UploadIcon />
+        )}
+      </StyledUpload>
+    </div>
+  );
 };
 
 Uploader.propTypes = {
-  id: PropTypes.number,
+  id: PropTypes.string,
 };
 
-const StyledUpload = styled( Upload )`
+const StyledUpload = styled(Upload)`
   && {
     > .ant-upload.ant-upload-select-picture-card {
       border: none;
@@ -77,15 +86,14 @@ const StyledUpload = styled( Upload )`
   }
 `;
 
-function beforeUpload( file ){
+function beforeUpload(file) {
   const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
-  if( !isJpgOrPng ){
-    message.error( 'You can only upload JPG/PNG file!' );
+  if (!isJpgOrPng) {
+    message.error('You can only upload JPG/PNG file!');
   }
   const isLt2M = file.size / 1024 / 1024 < 2;
-  if( !isLt2M ){
-    message.error( 'Image must smaller than 2MB!' );
+  if (!isLt2M) {
+    message.error('Image must smaller than 2MB!');
   }
   return isJpgOrPng && isLt2M;
 }
-

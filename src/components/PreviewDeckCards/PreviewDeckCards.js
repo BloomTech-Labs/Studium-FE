@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Card, Icon } from 'antd';
+import {Card, Icon} from 'antd';
+import {CreateButton} from '../Button/CreateButton.js';
+import {APP_VIEW_DESKTOP} from '../../utilities/constants.js';
 
 /**
  * Preview Deck Cards
  *
- * @description This component shows the users all the different cards in
+ * @description This component shows the users all the different decks in
  * the deck.
  *
  * @component
@@ -15,39 +17,92 @@ import { Card, Icon } from 'antd';
  * return (
  *  <PreviewDeckCards text={"Card Title"} />
  * )
+ * @param text
+ * @param icon
+ * @param loading
+ * @param block
+ * @param hoverEffect
+ * @param selected
+ * @param {Deck}deck
+ * @param {Card}card
+ * @param type
+ * @param size
+ * @param cardOrDeck
+ * @param props
+ * @return {*}
  */
-export const PreviewDeckCards = ( {
-  text, icon, loading, block, hoverEffect, card, type = 'inner', size = 'default', ...props
-} ) => (
-  <StyledAntdCard
-    type={ type }
-    size={ size }
-    icon={ icon }
-    loading={ loading && 'loading' }
-    block={ block && 'block' }
-    { ...props }
-  >
+export const PreviewDeckCards = ({
+  getHooks,
+  loading,
+  block,
+  hoverEffect,
+  selected = false,
+  cardType = 'deck',
+  deck,
+  type = 'inner',
+  size = 'default',
+  card,
+  ...props
+}) => {
+  
+  const {appView} = getHooks();
+  return (
+    <StyledAntdCard
+      type={type}
+      size={size}
+      block={block && 'block'}
+      {...props}
+    >
+      {(!deck && cardType === 'deck' || !card && cardType === 'card') && (
+        <p className={'deck-text'}>
+          Add {cardType === 'deck' ? 'Deck' : 'Card'}
+        </p>
+      )}
+      {(!deck && cardType === 'deck' || !card && cardType === 'card') &&
+      <CreateButton width={appView === APP_VIEW_DESKTOP ? '55px' : '49PX'}
+                    height={appView === APP_VIEW_DESKTOP ? '55px' : '49PX'}/>}
+      {(deck || card) &&
+      <p className={'deck-text'}>{cardType === 'deck' ? deck.deck_name :
+        card.question}</p>}
+      {selected && <h1>This card is selected.</h1>}
     
-    { card && <p className={ 'deck-text' }>{ card.question }</p> }
-    <Icon type={ 'check-circle' }
-          style={ {
-            position: 'absolute', bottom: '5px', right: '5px',
-          } }
-    />
-  </StyledAntdCard>
+    </StyledAntdCard>
+  );
+};
 
-);
-
-const StyledAntdCard = styled( Card )`
+const StyledAntdCard = styled(Card)`
   && {
     position: relative;
-    width: 97px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 108px;
     height: 153px;
     margin-top: 20px;
     border-radius: 13px;
-    border: 3px solid rgba(136, 136, 136, 0.75);
+    border: 3px solid #d7eee7;
+    background: #eeece8;
     box-sizing: border-box;
-    > .deck-text {
+    font-size: 13px;
+    margin-left: 9px;
+    margin-right: 9px;
+
+    > .ant-card-body {
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: center;
+
+      > p.deck-text {
+      word-break: break-word;
+        text-overflow: hidden;
+        overflow-x: hidden;
+        font-weight: bold;
+        color: #5c6078;
+        line-height: 15px;
+        margin-bottom: 1.2rem;
+      }
     }
   }
 `;
@@ -58,7 +113,7 @@ PreviewDeckCards.propTypes = {
   loading: PropTypes.bool,
   block: PropTypes.bool,
   hoverEffect: PropTypes.bool,
-  card: PropTypes.object,
-  type: PropTypes.oneOf( [ 'inner' ] ),
-  size: PropTypes.oneOf( [ 'default' ] ),
+  deck: PropTypes.object,
+  type: PropTypes.oneOf(['inner']),
+  size: PropTypes.oneOf(['default']),
 };
