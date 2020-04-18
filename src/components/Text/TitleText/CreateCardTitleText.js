@@ -14,10 +14,9 @@ export const CreateCardTitleText = ({text}) => {
   return <StyledTitle>{text}</StyledTitle>;
 };
 
-const StyledTitle = styled.div`
+const StyledTitle = styled.h1`
   color: ${props =>
     props.appView === 'MOBILE_VIEW_MOBILE' ? '#2a685b' : '#36405C'};
-  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: ${props => (props.appView === 'MOBILE_VIEW_MOBILE' ? 900 : 600)};
   font-size: ${props =>
