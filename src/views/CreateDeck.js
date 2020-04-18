@@ -190,6 +190,12 @@ export const CreateDeck = props => {
   return (
     <StyledCreateDeck height={height} appView={appView}>
       <CardNameContainer appView={appView}>
+        {appView === APP_VIEW_MOBILE && (
+          <CancelButtonContainer>
+            <CancelButton onClick={doneSubmit}>Cancel</CancelButton>
+          </CancelButtonContainer>
+        )}
+
         <CardHeaderContainer appView={appView}>
           <CreateCardTitleText
             appView={appView}
@@ -337,4 +343,18 @@ const Bottom = styled.div`
 
 const BottomButton = styled.div`
   ${props => (props.appView === APP_VIEW_DESKTOP ? 'margin-top: 10px;' : '')}
+`;
+
+const CancelButtonContainer = styled.div`
+  width: 100%;
+  display: flex;
+  margin-top: 8px;
+`;
+
+const CancelButton = styled.p`
+  font-size: 11px;
+  line-height: 24px;
+  text-decoration-line: underline;
+  color: #000000;
+  opacity: 0.5;
 `;
