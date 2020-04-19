@@ -29,6 +29,7 @@ export const FormInput = ({
   label,
   error,
   placeholder,
+  fontWeight = 600,
   ...props
 }) => {
   if (bordered) {
@@ -42,6 +43,7 @@ export const FormInput = ({
             borderStyle={borderStyle}
             value={value}
             placeholder={placeholder}
+            fontWeight={fontWeight}
             {...props}
           />
         </StyledFormItem>
@@ -56,6 +58,7 @@ export const FormInput = ({
             borderStyle={borderStyle}
             value={value}
             placeholder={placeholder}
+            fontWeight={fontWeight}
             {...props}
           />
         </StyledFormItem>
@@ -72,6 +75,7 @@ export const FormInput = ({
             borderStyle={borderStyle}
             value={value}
             placeholder={placeholder}
+            fontWeight={fontWeight}
             {...props}
           />
         </StyledBorderBottom>
@@ -117,7 +121,7 @@ const StyledNoBorderAntdInput = styled(Input)`
           : ''}
       background-color: transparent;
       font-style: normal;
-      font-weight: 600;
+      font-weight: ${props => props.fontWeight};
       font-size: 19px;
       line-height: 24px;
     }
@@ -140,7 +144,7 @@ const StyledAntdInputLargeRadius = styled(Input)`
     ${props =>
       props.appView === APP_VIEW_DESKTOP ? 'border: 1px solid #36405C;' : ''}
     font-style: normal;
-    font-weight: 600;
+    font-weight: ${props => props.fontWeight};
     font-size: 19px;
     line-height: 24px;
   }
@@ -164,7 +168,7 @@ const StyledAntdInputSmallRadius = styled(Input)`
     ${props =>
       props.appView === APP_VIEW_DESKTOP ? 'border: 1px solid #36405C;' : ''}
     font-style: normal;
-    font-weight: 600;
+    font-weight: ${props => props.fontWeight};
     font-size: 19px;
     line-height: 24px;
   }

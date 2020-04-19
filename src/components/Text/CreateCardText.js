@@ -18,7 +18,6 @@ const StyledTitle = styled.div`
   font-size: ${props => (props.appView === APP_VIEW_MOBILE ? '20px' : '24px')};
   text-align: left;
   ${props => (props.appView === APP_VIEW_DESKTOP ? 'line-height: 30px;' : '')}
-  margin-bottom: 10px;
 `;
 
 export default StyledCardText;

@@ -59,7 +59,7 @@ const STextArea = styled(TextArea)`
         : ''}
 
     font-style: normal;
-    font-weight: 600;
+    font-weight: normal;
     font-size: 19px;
     line-height: 24px;
     :focus {

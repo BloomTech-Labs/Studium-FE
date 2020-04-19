@@ -25,7 +25,7 @@ export const CreateCard = ({
 }) => {
   return (
     <StyledCreateCardContainer appView={appView} visible={visible}>
-      <StyledCreateCardHeaderContainer>
+      <StyledCreateCardHeaderContainer appView={appView}>
         <CreateCardText
           appView={appView}
           highlighted={highlighted}
@@ -52,9 +52,13 @@ export const CreateCard = ({
             appView === APP_VIEW_MOBILE ? 'Start typing...' : 'Add Text'
           }
         />
-        <UploaderContainer>
+        {appView === APP_VIEW_MOBILE ? (
           <Uploader id={drillName} />
-        </UploaderContainer>
+        ) : (
+          <UploaderContainer>
+            <Uploader id={drillName} />
+          </UploaderContainer>
+        )}
       </StyledCreateCard>
     </StyledCreateCardContainer>
   );
@@ -66,7 +70,7 @@ CreateCard.propTypes = {
 };
 
 const StyledCreateCard = styled.div`
-  width: ${props => (props.appView === APP_VIEW_MOBILE ? '314px' : '100%')};
+  width: 100%;
   height: ${props => (props.appView === APP_VIEW_MOBILE ? '149px' : '90%')};
   border: ${props =>
     props.highlighted ? '2px solid #4CB69F' : '2px solid #908a7d'};
@@ -85,7 +89,7 @@ const StyledCreateCard = styled.div`
 `;
 
 const StyledCreateCardContainer = styled.div`
-  width: ${props => (props.appView === APP_VIEW_MOBILE ? '314px' : '47%')};
+  width: ${props => (props.appView === APP_VIEW_MOBILE ? '100%' : '47%')};
   height: ${props => (props.appView === APP_VIEW_MOBILE ? '180px' : '100%')};
   display: flex;
   flex-direction: column;
