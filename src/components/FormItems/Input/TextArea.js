@@ -55,7 +55,7 @@ const STextArea = styled(TextArea)`
       props.appView === APP_VIEW_DESKTOP ? 'center' : 'flex-start'};
     ${props =>
       props.appView === APP_VIEW_DESKTOP
-        ? ' ::-webkit-input-placeholder  {line-height: 90px; text-align: center; color: #939598; font-weight: normal; font-size: 24px;}'
+        ? ' ::-webkit-input-placeholder  {line-height: 70px; text-align: center; color: #939598; font-weight: normal; font-size: 24px;}'
         : ''}
 
     font-style: normal;

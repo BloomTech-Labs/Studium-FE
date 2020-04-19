@@ -90,7 +90,7 @@ const StyledCreateCard = styled.div`
 
 const StyledCreateCardContainer = styled.div`
   width: ${props => (props.appView === APP_VIEW_MOBILE ? '100%' : '47%')};
-  height: 100%;
+  height: ${props => (props.appView === APP_VIEW_MOBILE ? '48%' : '100%')};
   display: flex;
   flex-direction: column;
   justify-content: space-between;

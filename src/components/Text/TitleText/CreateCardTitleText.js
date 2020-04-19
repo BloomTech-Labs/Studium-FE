@@ -24,9 +24,7 @@ const StyledTitle = styled.h1`
   line-height: ${props =>
     props.appView === 'APP_VIEW_MOBILE' ? '24px' : '30px'};
   text-align: left;
-  margin-bottom: ${props =>
-    props.appView === 'APP_VIEW_MOBILE' ? '30px' : '75px'};
-  margin-top: 30px;
+  margin-bottom: 10px;
 `;
 
 CreateCardTitleText.propTypes = {
