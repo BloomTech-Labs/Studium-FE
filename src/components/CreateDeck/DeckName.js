@@ -58,7 +58,7 @@ const DeckNameContainer = styled.div`
   height: ${props => (props.appView === APP_VIEW_DESKTOP ? '50%' : '60%')};
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
 `;
 
 const DeckTitlePrompt = styled.h1`

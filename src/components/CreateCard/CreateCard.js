@@ -95,7 +95,7 @@ const StyledCreateCardContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: ${props => (props.appView === APP_VIEW_MOBILE ? '30px' : '')};
-  display: ${props => (props.visible ? 'block' : 'none')};
+  visibility: ${props => (props.visible ? 'visible' : 'hidden')};
 `;
 
 const StyledCreateCardHeaderContainer = styled.div`
