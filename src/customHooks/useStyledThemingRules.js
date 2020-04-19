@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from "react";
-import {getThemingRules} from "./themingRules.js";
+import React, {useEffect, useState} from 'react';
+import {getThemingRules} from './themingRules.js';
 
-export const THEMING_DEBUG_NAME = "Styled Theming";
+export const THEMING_DEBUG_NAME = 'Styled Theming';
 
 /**
  *  Used Styled Theming Rules
@@ -17,10 +17,6 @@ export const useStyledThemingRules = () => {
   useEffect(() => {
     
     const themeRules = getThemingRules();
-    themeRules.forEach(rule => {
-    
-    });
-    
     setRules(themeRules);
   }, []);
   
@@ -47,6 +43,7 @@ export const useStyledThemingRules = () => {
       }
     });
     if(themeChanges.length > 0){
+  
       changeTheme(themeChanges);
     }
   };

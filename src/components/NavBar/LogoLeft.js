@@ -62,11 +62,11 @@ const LogoLeft = ({getHooks}) => {
         flexDirection={'row'} overFlowY={'visible'} overFlowX={'visible'}
         position={'relative'}>
         <SvgSynapsLogoText onClick={() => logoClicked()}
-                           svgFill={theme.themeState.synapsLight} zIndex={10}
+                           svgFill={THEME.SYNAPS_LIGHT} zIndex={10}
                            margin={'15% auto 0 auto'}/>
-        
+  
         <Brain containerPosition={'absolute'} height={'300px'}
-               zIndex={5} svgFill={theme.themeState.brainPicDark}
+               zIndex={5} svgFill={THEME.BRAIN_PIC_DARK}
                maxWidth={'600px'}
                maxHeight={'600px'}
                width={'300px'} top={'-25%'} svgWidth={'100%'}

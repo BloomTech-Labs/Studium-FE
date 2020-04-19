@@ -1,15 +1,14 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {CreateCardTitleText} from '../components/Text/TitleText/CreateCardTitleText.js';
 import {CreateCard} from '../components/CreateCard/CreateCard.js';
 import {DeckName} from '../components/CreateDeck/DeckName.js';
 import {SmallDeckSvg} from '../components/SmallDeckSvg/SmallDeckSvg.js';
 import {SynapsButton} from '../components/Button/SynapsButton.js';
-import {postDeck} from '../actions/decksActions.js';
-import {updateDeck} from '../actions/decksActions.js';
+import {postDeck, updateDeck} from '../actions/decksActions.js';
 import {createCard} from '../actions/cardActions.js';
 import {useAppHooks} from '../customHooks/useAppHooks.js';
-import {APP_VIEW_MOBILE, APP_VIEW_DESKTOP} from '../utilities/constants.js';
+import {APP_VIEW_DESKTOP, APP_VIEW_MOBILE} from '../utilities/constants.js';
 
 /**
  * Create Deck View
@@ -46,19 +45,19 @@ export const CreateDeck = props => {
   const [numberOfDecks, setNumberOfDecks] = useState(decksState.decks.length);
   const [deckCreated, setDeckCreated] = useState(false);
   const [allFieldsValidated, setAllFieldsValidated] = useState(false);
-
+  
   let uid = usersState.user.uid;
-
+  
   const fieldValidated = stateHook => {
-    if (stateHook !== '' && typeof stateHook !== 'undefined') {
+    if(stateHook !== '' && typeof stateHook !== 'undefined'){
       return true;
-    } else {
+    }else{
       return false;
     }
   };
-
+  
   useEffect(() => {
-    if (decksState.decks.length > numberOfDecks) {
+    if(decksState.decks.length > numberOfDecks){
       setDeckCreated(true);
       setNumberOfDecks(decksState.decks.length);
       const deck_id = decksState.decks[decksState.decks.length - 1].deck_id;
@@ -69,29 +68,29 @@ export const CreateDeck = props => {
       setNewDeck({...newDeck, deck_id});
     }
   }, [decksState]);
-
+  
   useEffect(() => {
-    if (appView === APP_VIEW_DESKTOP) {
+    if(appView === APP_VIEW_DESKTOP){
       setHighlighted({title: false, question: false, answer: false});
       setVisible({question: true, answer: true});
     }
   }, [appView]);
-
+  
   useEffect(() => {
-    if (
+    if(
       fieldValidated(newCard.question) &&
       fieldValidated(newCard.answer) &&
       fieldValidated(newDeck.deck_name)
-    ) {
+    ){
       setAllFieldsValidated(true);
     }
   }, [newCard]);
-
+  
   const clickHandler = e => {
     e.preventDefault();
     let clickedOn = e.target.name;
-
-    if (clickedOn === 'title' && highlighted.title === true) {
+    
+    if(clickedOn === 'title' && highlighted.title === true){
       setHighlighted({
         ...highlighted,
         title: false,
@@ -101,11 +100,11 @@ export const CreateDeck = props => {
         ...visible,
         question: true,
       });
-    } else if (
+    }else if(
       clickedOn === 'question' &&
       highlighted.question === true &&
       fieldValidated(newDeck.deck_name)
-    ) {
+    ){
       setHighlighted({
         ...highlighted,
         question: false,
@@ -115,8 +114,8 @@ export const CreateDeck = props => {
         ...visible,
         answer: true,
       });
-    } else if (fieldValidated(newCard.question)) {
-      if (deckCreated) {
+    }else if(fieldValidated(newCard.question)){
+      if(deckCreated){
         return;
       }
       dispatch(postDeck(uid, newDeck));
@@ -129,10 +128,10 @@ export const CreateDeck = props => {
       });
     }
   };
-
+  
   const changeHandler = e => {
     const targetName = e.target.name;
-    switch (targetName) {
+    switch(targetName){
       case 'title':
         setNewDeck({deck_name: e.target.value});
         break;
@@ -141,38 +140,38 @@ export const CreateDeck = props => {
         break;
     }
   };
-
+  
   const deckNameChanged = () => {
     let stateDeckName = decksState.decks[decksState.decks.length - 1].deck_name;
-
-    if (newDeck.deck_name !== stateDeckName && cardNum > 1) {
+    
+    if(newDeck.deck_name !== stateDeckName && cardNum > 1){
       return true;
-    } else {
+    }else{
       return false;
     }
   };
-
+  
   const updateDeckNameIfChange = () => {
-    if (deckNameChanged()) {
+    if(deckNameChanged()){
       dispatch(
         updateDeck(
           uid,
           decksState.decks[decksState.decks.length - 1].deck_id,
-          newDeck
-        )
+          newDeck,
+        ),
       );
     }
   };
-
+  
   const doneSubmit = e => {
     e.preventDefault();
     updateDeckNameIfChange();
     changePath('/dashboard');
   };
-
+  
   const submitForm = e => {
     e.preventDefault();
-    if (allFieldsValidated) {
+    if(allFieldsValidated){
       dispatch(createCard(newCard, uid));
       setNewCard({
         ...newCard,
@@ -181,21 +180,21 @@ export const CreateDeck = props => {
         deck_id: newDeck.deck_id,
       });
       setCardNum(cardNum + 1);
-    } else {
+    }else{
       setFormError(true);
     }
     updateDeckNameIfChange();
   };
-
+  
   return (
-    <StyledCreateDeck height={height} appView={appView}>
+    <StyledCreateDeck height={height}>
       <CardNameContainer appView={appView}>
         {appView === APP_VIEW_MOBILE && (
           <CancelButtonContainer>
             <CancelButton onClick={doneSubmit}>Cancel</CancelButton>
           </CancelButtonContainer>
         )}
-
+        
         <CardHeaderContainer appView={appView}>
           <CreateCardTitleText
             appView={appView}
@@ -205,7 +204,7 @@ export const CreateDeck = props => {
                 : 'Create New Deck of Flashcards'
             }
           />
-          <SmallDeckSvg />
+          <SmallDeckSvg/>
         </CardHeaderContainer>
         <DeckName
           appView={appView}
@@ -279,18 +278,33 @@ export const CreateDeck = props => {
 CreateDeck.propTypes = {};
 
 const StyledCreateDeck = styled.div`
-  width: ${props => (props.appView === APP_VIEW_MOBILE ? '375px' : '100%')};
-  max-width: ${props =>
-    props.appView === APP_VIEW_MOBILE ? '100%' : '1140px'};
+
+${({theme}) => {
+  if(theme.appView === APP_VIEW_MOBILE){
+    return ({
+        width: '375px',
+        maxWidth: '100%',
+      }
+    
+    );
+  }else{
+    return {
+      width: '100%',
+      maxWidth: '1140px',
+    };
+  }
+}};
+
+
   height: ${props =>
-    props.appView === APP_VIEW_MOBILE
-      ? '812px'
-      : (props.height - 75).toString() + 'px'};
+  props.theme.appView === APP_VIEW_MOBILE
+    ? '812px'
+    : (props.height - 75).toString() + 'px'};
   display: flex;
-  padding: ${props =>
-    props.appView === APP_VIEW_MOBILE ? '0 36px' : '63px 67px 15px 67px'};
+  padding: ${({theme}) =>
+  theme.appView === APP_VIEW_MOBILE ? '0 36px' : '63px 67px 15px 67px'};
   ${props =>
-    props.appView === APP_VIEW_DESKTOP ? 'padding: 63px 67px 0 67px;' : ''}
+  props.appView === APP_VIEW_DESKTOP ? 'padding: 63px 67px 0 67px;' : ''}
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
@@ -303,11 +317,11 @@ const CreateCardContainer = styled.div`
   height: ${props => (props.appView === APP_VIEW_MOBILE ? '425px' : '40%')};
   display: flex;
   flex-direction: ${props =>
-    props.appView === APP_VIEW_MOBILE ? 'column' : 'row'};
+  props.appView === APP_VIEW_MOBILE ? 'column' : 'row'};
   ${props =>
-    props.appView === APP_VIEW_DESKTOP
-      ? 'justify-content: space-between;'
-      : ''};
+  props.appView === APP_VIEW_DESKTOP
+    ? 'justify-content: space-between;'
+    : ''};
 `;
 
 const CardHeaderContainer = styled.div`
@@ -331,14 +345,14 @@ const Bottom = styled.div`
   height: ${props => (props.appView === APP_VIEW_MOBILE ? '70px' : '25%')};
   display: flex;
   ${props =>
-    props.appView === APP_VIEW_DESKTOP ? 'flex-direction: column;' : ''}
+  props.appView === APP_VIEW_DESKTOP ? 'flex-direction: column;' : ''}
   ${props => (props.appView === APP_VIEW_DESKTOP ? 'align-items: center;' : '')}
   justify-content:  ${props =>
-    props.appView === APP_VIEW_DESKTOP ? 'center;' : 'space-around'};
+  props.appView === APP_VIEW_DESKTOP ? 'center;' : 'space-around'};
    ${props =>
-     props.appView === APP_VIEW_MOBILE ? 'padding-bottom: 20px;' : ''}
+  props.appView === APP_VIEW_MOBILE ? 'padding-bottom: 20px;' : ''}
     padding: ${props =>
-      props.appView === APP_VIEW_DESKTOP ? '20px 0 0 0' : '0 0 40px 0'}
+  props.appView === APP_VIEW_DESKTOP ? '20px 0 0 0' : '0 0 40px 0'}
 `;
 
 const BottomButton = styled.div`
