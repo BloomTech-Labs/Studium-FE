@@ -4,16 +4,19 @@ exports[`StyledContainer render correctly 1`] = `
 .c0 {
   box-sizing: border-box;
   top: 0;
+  left: 0;
+  padding: 0;
   margin: 0;
   position: absolute;
   width: 100vw;
-  height: 100%;
-  max-height: 100%;
+  height: 100vh;
+  max-height: 100vh;
   max-width: 100vw;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  z-index: 1;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -25,7 +28,11 @@ exports[`StyledContainer render correctly 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow-y: scroll;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  -webkit-transform: none;
+  -ms-transform: none;
+  transform: none;
 }
 
 .c0::-webkit-scrollbar {
