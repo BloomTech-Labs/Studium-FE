@@ -10,22 +10,22 @@ import styled from 'styled-components';
  *  <TitleText text={"Create Deck"} />
  *
  */
-export const CreateCardTitleText = ({text}) => {
-  return <StyledTitle>{text}</StyledTitle>;
+export const CreateCardTitleText = ({text, appView}) => {
+  return <StyledTitle appView={appView}>{text}</StyledTitle>;
 };
 
 const StyledTitle = styled.h1`
   color: ${props =>
-    props.appView === 'MOBILE_VIEW_MOBILE' ? '#2a685b' : '#36405C'};
+    props.appView === 'APP_VIEW_MOBILE' ? '#2A685B' : '#36405C'};
   font-style: normal;
   font-weight: ${props => (props.appView === 'MOBILE_VIEW_MOBILE' ? 900 : 600)};
   font-size: ${props =>
-    props.appView === 'MOBILE_VIEW_MOBILE' ? '45px' : '47px'};
+    props.appView === 'APP_VIEW_MOBILE' ? '45px' : '47px'};
   line-height: ${props =>
-    props.appView === 'MOBILE_VIEW_MOBILE' ? '24px' : '30px'};
+    props.appView === 'APP_VIEW_MOBILE' ? '24px' : '30px'};
   text-align: left;
   margin-bottom: ${props =>
-    props.appView === 'MOBILE_VIEW_MOBILE' ? '30px' : '75px'};
+    props.appView === 'APP_VIEW_MOBILE' ? '30px' : '75px'};
   margin-top: 30px;
 `;
 
