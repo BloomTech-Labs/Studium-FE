@@ -1,7 +1,7 @@
 <h1 align="center">
     <a href="https://production-lambda-synaps-fe.herokuapp.com/">Synaps</a>
 </h1>
-<h3 align="center">Up you testing game with the best flash card app.</h3>
+<h3 align="center">Up you testing game with the best flash card app</h3>
 <h3 align="center">Average testing score increase 20%.</h3>
 
 
