@@ -279,7 +279,7 @@ export const CreateDeck = props => {
 CreateDeck.propTypes = {};
 
 const StyledCreateDeck = styled.div`
-  width: ${props => (props.appView === APP_VIEW_MOBILE ? '375px' : '100%')};
+  min-width: ${props => (props.appView === APP_VIEW_MOBILE ? '375px' : '100%')};
   max-width: ${props =>
     props.appView === APP_VIEW_MOBILE ? '100%' : '1140px'};
   height: ${props => (props.height - 75).toString() + 'px'};
@@ -317,7 +317,7 @@ const CardHeaderContainer = styled.div`
 `;
 
 const CardNameContainer = styled.div`
-  height: ${props => (props.appView === APP_VIEW_DESKTOP ? '25%' : '23%')};
+  height: ${props => (props.appView === APP_VIEW_DESKTOP ? '25%' : '22%')};
   width: 100%;
   margin-bottom: 15px;
   ${props => (props.appView === APP_VIEW_DESKTOP ? 'margin-bottom: 35px;' : '')}
