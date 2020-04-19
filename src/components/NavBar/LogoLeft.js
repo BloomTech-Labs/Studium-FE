@@ -23,15 +23,15 @@ const LogoLeft = ({getHooks}) => {
   const getStyles = useTheming();
   const logoClicked = () => {
     
-    if(usersState.user.uuid){
+    if (usersState.user.uuid) {
       changePath(APP_PATHS.DASHBOARD_PATH);
-    }else{
+    } else {
       changePath(APP_PATHS.LANDING_PAGE);
     }
   };
-  
-  if(appView === APP_VIEW_DESKTOP){
-    
+
+  if (appView === APP_VIEW_DESKTOP) {
+
     return (
       <ContainerDiv
         height={'100%'} position={'relative'}
@@ -64,7 +64,7 @@ const LogoLeft = ({getHooks}) => {
         <SvgSynapsLogoText onClick={() => logoClicked()}
                            svgFill={THEME.SYNAPS_LIGHT} zIndex={10}
                            margin={'15% auto 0 auto'}/>
-  
+
         <Brain containerPosition={'absolute'} height={'300px'}
                zIndex={5} svgFill={THEME.BRAIN_PIC_DARK}
                maxWidth={'600px'}
