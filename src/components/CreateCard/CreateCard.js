@@ -31,7 +31,7 @@ export const CreateCard = ({
           highlighted={highlighted}
           text={text}
         />
-        {props.appView === APP_VIEW_MOBILE && (
+        {appView === APP_VIEW_MOBILE && (
           <CardEditDeleteIcons
             type={'clear'}
             name={name}
