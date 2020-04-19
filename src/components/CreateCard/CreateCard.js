@@ -71,7 +71,7 @@ CreateCard.propTypes = {
 
 const StyledCreateCard = styled.div`
   width: 100%;
-  height: ${props => (props.appView === APP_VIEW_MOBILE ? '149px' : '90%')};
+  height: 90%;
   border: ${props =>
     props.highlighted ? '2px solid #4CB69F' : '2px solid #908a7d'};
   ${props =>
@@ -90,7 +90,7 @@ const StyledCreateCard = styled.div`
 
 const StyledCreateCardContainer = styled.div`
   width: ${props => (props.appView === APP_VIEW_MOBILE ? '100%' : '47%')};
-  height: ${props => (props.appView === APP_VIEW_MOBILE ? '180px' : '100%')};
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -100,7 +100,7 @@ const StyledCreateCardContainer = styled.div`
 
 const StyledCreateCardHeaderContainer = styled.div`
   width: 100%;
-  height: ${props => (props.appView === APP_VIEW_MOBILE ? '31px' : '10%;')};
+  height: 10%;
   display: flex;
   justify-content: space-between;
   align-items: center;

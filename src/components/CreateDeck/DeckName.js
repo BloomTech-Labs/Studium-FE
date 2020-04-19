@@ -55,7 +55,7 @@ export const DeckName = ({
 
 const DeckNameContainer = styled.div`
   width: 100%;
-  ${props => (props.appView === APP_VIEW_DESKTOP ? 'height: 50%;' : '')}
+  height: ${props => (props.appView === APP_VIEW_DESKTOP ? '50%' : '60%')};
   display: flex;
   flex-direction: column;
   justify-content: space-between;

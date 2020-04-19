@@ -297,7 +297,7 @@ const StyledCreateDeck = styled.div`
 
 const CreateCardContainer = styled.div`
   width: 100%;
-  height: ${props => (props.appView === APP_VIEW_MOBILE ? '425px' : '40%')};
+  height: ${props => (props.appView === APP_VIEW_MOBILE ? '60%' : '40%')};
   display: flex;
   flex-direction: ${props =>
     props.appView === APP_VIEW_MOBILE ? 'column' : 'row'};
@@ -309,7 +309,7 @@ const CreateCardContainer = styled.div`
 
 const CardHeaderContainer = styled.div`
   width: 100%;
-  ${props => (props.appView === APP_VIEW_DESKTOP ? 'height: 50%;' : '')}
+  ${props => (props.appView === APP_VIEW_DESKTOP ? 'height: 30%;' : '')}
   padding: 0 2px;
   display: flex;
   justify-content: space-between;
@@ -317,7 +317,7 @@ const CardHeaderContainer = styled.div`
 `;
 
 const CardNameContainer = styled.div`
-  height: ${props => (props.appView === APP_VIEW_DESKTOP ? '25%' : '22%')};
+  height: 30%;
   width: 100%;
   margin-bottom: 15px;
   ${props => (props.appView === APP_VIEW_DESKTOP ? 'margin-bottom: 35px;' : '')}
@@ -325,7 +325,7 @@ const CardNameContainer = styled.div`
 
 const Bottom = styled.div`
   width: 100%;
-  height: ${props => (props.appView === APP_VIEW_MOBILE ? '70px' : '25%')};
+  height: ${props => (props.appView === APP_VIEW_MOBILE ? '10%' : '25%')};
   display: flex;
   ${props =>
     props.appView === APP_VIEW_DESKTOP ? 'flex-direction: column;' : ''}
