@@ -195,7 +195,6 @@ export const CreateDeck = props => {
             <CancelButton onClick={doneSubmit}>Cancel</CancelButton>
           </CancelButtonContainer>
         )}
-
         <CardHeaderContainer appView={appView}>
           <CreateCardTitleText
             appView={appView}
@@ -256,21 +255,23 @@ export const CreateDeck = props => {
         />
       </CreateCardContainer>
       <Bottom appView={appView}>
-        <SynapsButton
-          appView={appView}
-          onClick={submitForm}
-          text={'Add Another Card'}
-          type={'primaryCreateCard'}
-          allFieldsValidated={allFieldsValidated}
-        />
-        <BottomButton appView={appView}>
+        <ButtonContainer>
+          <SynapsButton
+            appView={appView}
+            onClick={submitForm}
+            text={'Add Another Card'}
+            type={'primaryCreateCard'}
+            allFieldsValidated={allFieldsValidated}
+          />
+        </ButtonContainer>
+        <ButtonContainer appView={appView}>
           <SynapsButton
             appView={appView}
             text={appView === APP_VIEW_MOBILE ? 'Done' : 'Done Adding Cards'}
             type={'defaultCreateCard'}
             onClick={doneSubmit}
           />
-        </BottomButton>
+        </ButtonContainer>
       </Bottom>
     </StyledCreateDeck>
   );
@@ -341,7 +342,7 @@ const Bottom = styled.div`
       props.appView === APP_VIEW_DESKTOP ? '20px 0 0 0' : '0 0 40px 0'}
 `;
 
-const BottomButton = styled.div`
+const ButtonContainer = styled.div`
   ${props => (props.appView === APP_VIEW_DESKTOP ? 'margin-top: 10px;' : '')}
 `;
 
