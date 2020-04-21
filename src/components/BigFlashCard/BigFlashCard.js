@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
-import card2 from '../../../images/Card2.jpg';
-import card3 from '../../../images/Card3.jpg';
-import { Card } from 'antd';
+import {Card} from 'antd';
 import PropTypes from 'prop-types';
 
 /**
@@ -15,59 +13,36 @@ import PropTypes from 'prop-types';
  *  <BigFlashCard flashCard={flashCard} />
  *  )
  */
-const BigFlashCard = ( { flashCard } ) => {
-  const [ position, setPosition ] = useState( 'front' );
+const BigFlashCard = ({flashCard}) => {
+  const [position, setPosition] = useState('front');
   
   const flipCard = () => {
     
     const newPos = position === 'front' ? 'back' : 'front';
-    setPosition( newPos );
+    setPosition(newPos);
   };
   
   return (
-    <StyledCardContainer data-testid = "StyledCardContainer" style={{ position: 'relative' }} onClick={flipCard}>
+    <StyledCardContainer data-testid="StyledCardContainer"
+                         style={{position: 'relative'}} onClick={flipCard}>
       <StyledCard
         position={position}
-      
-        style={{ width: '285px', height: '421.56px' }}
+        
+        style={{width: '285px', height: '421.56px'}}
       >
         <CardText>
-          { position === 'front' ? flashCard.question : flashCard.answer }
+          {position === 'front' ? flashCard.question : flashCard.answer}
         </CardText>
       </StyledCard>
-      <img
-        src={ card2 }
-        style={ {
-          position: 'absolute',
-          top: '14px',
-          height: '417px',
-          width: '276px',
-          zIndex: -1,
-          left: '5px',
-        } }
-        alt={ 'card' }
-      />
-      <img
-        src={ card3 }
-        style={ {
-          position: 'absolute',
-          top: '22px',
-          left: '7px',
-          height: '417px',
-          width: '260px',
-          zIndex: -3,
-        } }
-        alt={ 'card' }
-      />
     </StyledCardContainer>
   
   );
 };
 
 BigFlashCard.prototypes = {
-  flashCard: PropTypes.objectOf( {
+  flashCard: PropTypes.objectOf({
     question: PropTypes.string.isRequired, answer: PropTypes.string.isRequired,
-  } ).isRequired,
+  }).isRequired,
 };
 
 const StyledCardContainer = styled.div`
@@ -76,12 +51,12 @@ const StyledCardContainer = styled.div`
   position: relative;
 `;
 
-const StyledCard = styled( Card )`
+const StyledCard = styled(Card)`
   && {
-    margin: 121px auto 0 auto;
-    background: ${ props => props.position === 'front' ? '#F7F7F7' :
-  '#1b1414c9' };
-    color: ${ props => ( props.position === 'front' ? '#1b1414c9' : 'white' ) };
+    margin: 12px auto 0 auto;
+    background: ${props => props.position === 'front' ? '#F7F7F7' :
+  '#1b1414c9'};
+    color: ${props => (props.position === 'front' ? '#1b1414c9' : 'white')};
 
     border-radius: 11px;
     > .ant-card-body {
@@ -96,7 +71,7 @@ const StyledCard = styled( Card )`
 const CardText = styled.div`
   height: 100%;
   display: flex;
-  justifycontent: center;
+  justify-content: center;
   font-size: 20px;
   font-weight: 900;
   transition: all 1s;

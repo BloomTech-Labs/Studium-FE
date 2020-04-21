@@ -1,23 +1,16 @@
-import React, {useEffect, useState} from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import {ContainerDiv, NavBarAvatar} from "../index.js";
-import {ReactComponent as SmallWhiteLogo} from "../../images/SmallWhiteLogo.svg";
-import {signOut} from "../../actions";
-import theming from "styled-theming";
-import {
-  useAppHooks,
-} from "../../customHooks/useAppHooks.js";
-import LogoLeft from "./LogoLeft.js";
+import React, {useEffect, useState} from 'react';
+import styled from 'styled-components';
+import {ContainerDiv, NavBarAvatar} from '../index.js';
+import {signOut} from '../../actions';
+import theming from 'styled-theming';
+import LogoLeft from './LogoLeft.js';
+import {THEME} from '../../utilities/constants.js';
 import {
   THEMING_VALUES, THEMING_VARIABLES,
-} from "../../customHooks/themingRules.js";
-import {useComparPrevContext} from "../../customHooks/useComparPrevContext.js";
+} from '../../customHooks/themingRules.js';
 import {
-  APP_PATHS, APP_VIEW_DESKTOP, MEDIA_QUERIES, SIZES, THEME,
-} from "../../utilities/constants.js";
-
-export const NAV_BAR_DEBUG_NAME = "Nav Bar";
+  APP_PATHS,
+} from '../../utilities/constants.js';
 
 /**
  * Nav Bar
@@ -27,22 +20,10 @@ export const NAV_BAR_DEBUG_NAME = "Nav Bar";
  *  return (<NavBar />)
  */
 export const NavBar = ({getHooks}) => {
-  const {usersState, theme, getLogger, dispatch, changePath, path, appView} = getHooks(
-    "Nav Bar");
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [avatarUrl, setAvatarUrl] = useState("");
-  const logger = getLogger(NAV_BAR_DEBUG_NAME);
-  const {compareContext, printPrevContext} = useComparPrevContext(
-    NAV_BAR_DEBUG_NAME,
-    {usersState, theme, getLogger, dispatch, changePath, path, appView},
-  );
-  
-  logger.logVerbose("Nav Bar rendered");
-  
-  useEffect(() => {
-    compareContext(
-      {usersState, theme, path, appView});
-  }, [usersState, theme, path, appView]);
+  const {usersState, dispatch, changePath, path} = getHooks(
+    'Nav Bar');
+  const [setMenuOpen] = useState(false);
+  const [avatarUrl, setAvatarUrl] = useState('');
   
   useEffect(() => {
     
@@ -50,7 +31,7 @@ export const NavBar = ({getHooks}) => {
       setAvatarUrl(usersState.user.photoURL);
       
     }else{
-      setAvatarUrl("");
+      setAvatarUrl('');
       
     }
   }, [usersState]);
@@ -75,23 +56,23 @@ export const NavBar = ({getHooks}) => {
         getHooks={getHooks}
         onClick={logout}
         avatarUrl={avatarUrl}
-        className={"ant-dropdown-link"}
+        className={'ant-dropdown-link'}
       />
     );
     
   };
   
   return (
-    <StyledBar className={"nav-bar"}>
+    <StyledBar className={'nav-bar'}>
       <ContainerDiv
-        justifyContent={"space-between"}
-        className={"nav-bar-container"}
-        flexDirection={"row"}
-        width={"100%"}
-        height={"75px"}
-        position={"relative"}
-        overFlowY={"hidden"}
-        backgroundColor={"transparent"}
+        justifyContent={'space-between'}
+        className={'nav-bar-container'}
+        flexDirection={'row'}
+        width={'100%'}
+        height={'75px'}
+        position={'relative'}
+        overFlowY={'hidden'}
+        backgroundColor={'transparent'}
       >
         <LogoLeft getHooks={getHooks}/>
         {navBarRightContent()}
@@ -102,37 +83,17 @@ export const NavBar = ({getHooks}) => {
 
 NavBar.propTypes = {};
 
-const WhiteLogo = styled(SmallWhiteLogo)`
-
-`;
-
 const backgroundColor = theming(THEMING_VARIABLES.NAV_STYLE, {
-  [THEMING_VALUES.DARK]: props => {
-    
-    return props.theme.themeState.navBarDark;
-  },
-  [THEMING_VALUES.LIGHT]: props => {
-    
-    return props.theme.themeState.navBarLight;
-  }, [THEMING_VALUES.HIDDEN]: props => {
-    
-    return "transparent";
-  },
+  [THEMING_VALUES.DARK]: THEME.navBarDark,
+  [THEMING_VALUES.LIGHT]: THEME.navBarLight,
+  [THEMING_VALUES.HIDDEN]: 'transparent',
+  
 });
 
 const top = theming(THEMING_VARIABLES.NAV_STYLE, {
-  [THEMING_VALUES.DARK]: props => {
-    
-    return 0;
-  },
-  [THEMING_VALUES.LIGHT]: props => {
-    
-    return 0;
-  },
-  [THEMING_VALUES.HIDDEN]: props => {
-    
-    return "-75px";
-  },
+  [THEMING_VALUES.DARK]: 0,
+  [THEMING_VALUES.LIGHT]: 0,
+  [THEMING_VALUES.HIDDEN]: '-75px',
 });
 
 const StyledBar = styled.div`
@@ -143,13 +104,13 @@ const StyledBar = styled.div`
   position: absolute;
   top: ${top};
   width: 100%;
-  height: ${props => props.theme.navBarTopHeight + "px"};
+  height: ${props => props.theme.navBarTopHeight + 'px'};
 
  
 `;
 
 const color = theming(THEMING_VARIABLES.NAV_STYLE, {
-  [THEMING_VALUES.DARK]: "white",
+  [THEMING_VALUES.DARK]: 'white',
   [THEMING_VALUES.LIGHT]: props => props.theme.themeState.synapsDark,
   [THEMING_VALUES.HIDDEN]: props => props.theme.themeState.synapsDark,
 });
@@ -159,7 +120,6 @@ const Styledh2 = styled.h2`
   align-items: center;
   color: ${color};
   margin: 0 10% 0 0;
-  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: bold;
   font-size: 28px;

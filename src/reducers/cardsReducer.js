@@ -57,31 +57,30 @@ const initialState = {
  * @returns {CardsState} state
  */
 export const cardsReducer = (state = initialState, action) => {
-  switch (action.type) {
+  switch(action.type){
     case 'SET_INIT_STATE':
-      if (
+      if(
         action.payload &&
         action.payload.name &&
         action.payload.name.includes('cards') &&
         action.payload.value
-      ) {
+      ){
         return action.payload.value;
       }
       return state;
     case GET_ALL_CARDS_FOR_DECK_INIT:
       return {...state, isLoading: true, error: null};
     case GET_ALL_CARDS_FOR_DECK_SUCCESS:
-      
       return {
         ...state,
-        cards: [...state.cards, ...action.payload],
-        isLoading: true,
+        cards: action.payload,
+        isLoading: false,
         error: null,
       };
     case GET_ALL_CARDS_FOR_DECK_FAIL:
       return {...state, isLoading: false, error: action.payload};
     case CREATE_CARD_INIT:
-      return {...state, isLoading: true, error: null};
+      return {...state, creatingCard: true, error: null};
     case CREATE_CARD_SUCCESS:
       return {
         ...state,
@@ -97,32 +96,29 @@ export const cardsReducer = (state = initialState, action) => {
       return {
         ...state,
         cards: state.cards.filter(card => {
-          if (card.card_id === action.payload) {
-            return;
-          }
-          return card;
-        }),
-        creatingCard: false,
-        error: null,
-      };
-    case UPDATE_CARD_FAIL:
-      return {...state, updatingCard: false, error: action.payload};
-    case UPDATE_CARD_INIT:
-      return {...state, updatingCard: true, error: null};
-    case UPDATE_CARD_SUCCESS:
-      return {
-        ...state,
-        cards: state.cards.filter(card => {
-          if (card.card_id === action.payload.card_id) {
-            return action.payload;
-          }
-          return card;
+          return card.card_id !== action.payload;
         }),
         deletingCard: false,
         error: null,
       };
     case DELETE_CARD_FAIL:
       return {...state, deletingCard: false, error: action.payload};
+    case UPDATE_CARD_INIT:
+      return {...state, updatingCard: true, error: null};
+    case UPDATE_CARD_SUCCESS:
+      return {
+        ...state,
+        cards: state.cards.filter(card => {
+          if(card.card_id === action.payload.card_id){
+            return action.payload;
+          }
+          return card;
+        }),
+        updatingCard: false,
+        error: null,
+      };
+    case UPDATE_CARD_FAIL:
+      return {...state, updatingCard: false, error: action.payload};
     default:
       return state;
   }

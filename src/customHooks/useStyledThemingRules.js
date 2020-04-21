@@ -10,20 +10,15 @@ export const THEMING_DEBUG_NAME = "Styled Theming";
  * @return {checkAllRules}
  *
  */
-export const useStyledThemingRules = (getLogger) => {
+export const useStyledThemingRules = () => {
   
   const [rules, setRules] = useState();
-  const logger = getLogger(THEMING_DEBUG_NAME);
-  logger.logInfo("Styled Theming running");
   
   useEffect(() => {
     
-    logger.logInfo("Setting the theming rules.");
     const themeRules = getThemingRules();
     themeRules.forEach(rule => {
-      logger.logInfo(
-        `Rule: ${rule.themeVariable} -> ${rule.appView} -> ${rule.paths} -> ${rule.themeValue}`,
-      );
+    
     });
     
     setRules(themeRules);
@@ -45,7 +40,6 @@ export const useStyledThemingRules = (getLogger) => {
     
     const themeRules = getThemingRules();
     const themeChanges = [];
-    logger.logInfo("Checking theme rules.");
     themeRules.forEach(rule => {
       const change = checkRule(rule, currentPath, theme, appView);
       if(change){
@@ -82,10 +76,6 @@ export const useStyledThemingRules = (getLogger) => {
       
       // if value is not set. Set the variable to the correct value
       if(!valueSet){
-        logger.logInfo(
-          `${rule.themeVariable} should be set to ${rule.themeValue}.`,
-        );
-        logger.logObject(rule);
         return rule;
       }
       return false;

@@ -14,39 +14,34 @@ import rootReducer from '../reducers';
  * @returns Store
  *
  */
-export const getStore = (initialState, consoleLogger) => {
+export const getStore = (initialState) => {
   let store = null;
-
-  if (initialState) {
-    try {
+  
+  if(initialState){
+    try{
       store = createStore(
         rootReducer,
         initialState,
-        composeWithDevTools(applyMiddleware(storageBackUp, logger, Thunk))
+        composeWithDevTools(applyMiddleware(storageBackUp, logger, Thunk)),
       );
-      if (store) {
-        consoleLogger.logInfo('Initial state set. ');
+      if(store){
         const state = store.getState();
-        consoleLogger.logObjectWithMessage(state, "Set up store state.");
         return store;
       }
-    } catch (e) {
-      consoleLogger.logWarning('Was unable to parse local backup of state.');
-      consoleLogger.logWarning(e);
+    }catch(e){
       store = createStore(
         rootReducer,
-        composeWithDevTools(applyMiddleware(storageBackUp, logger, Thunk))
+        composeWithDevTools(applyMiddleware(storageBackUp, logger, Thunk)),
       );
-      if (store) {
+      if(store){
         return store;
       }
     }
   }
   
-  consoleLogger.logVerbose("No previous state found.");
   store = createStore(
     rootReducer,
-    composeWithDevTools(applyMiddleware(storageBackUp, logger, Thunk))
+    composeWithDevTools(applyMiddleware(storageBackUp, logger, Thunk)),
   );
   return store;
 };

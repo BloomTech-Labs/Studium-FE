@@ -1,11 +1,20 @@
-import React, {useEffect} from "react";
-import PropTypes from "prop-types";
-
-import styled from "styled-components";
-import {getAllCardsForDeck} from "../actions/cardActions.js";
-import {TitleText, PreviewDeckCards, SearchBar} from "../components";
-import {useAppHooks} from "../customHooks/useAppHooks.js";
-import {Alert, Icon} from "antd";
+import React, {useEffect, useState} from 'react';
+import styled from 'styled-components';
+import theming from 'styled-theming';
+import {getAllCardsForDeck} from '../actions/cardActions.js';
+import {
+  TitleText,
+  PreviewDeckCards,
+  SearchBar,
+  SynapsButton,
+} from '../components';
+import {APP_PATHS, THEME} from '../utilities/constants.js';
+import {Alert, Icon} from 'antd';
+import {
+  THEMING_VALUES,
+  THEMING_VARIABLES,
+} from '../customHooks/themingRules.js';
+import {CardEditDeleteIcons} from '../components/Icon/CardEditDeleteIcons';
 
 /**
  * Preview Deck
@@ -15,92 +24,153 @@ import {Alert, Icon} from "antd";
  */
 export const PreviewDeck = ({getHooks}) => {
   // @type CardState
-  const {cardsState, pathPushedState, dispatch, usersState} = getHooks(
-    "PreviewDeck");
-  
+  const {
+    cardsState,
+    pathPushedState,
+    dispatch,
+    usersState,
+    changePath,
+  } = getHooks('PreviewDeck');
+
+  const [cardsSelected, setCardsSelected] = useState({});
+  const [selectMode, setSelectMode] = useState(false);
+
   useEffect(() => {
-    debugger;
-    if(pathPushedState === undefined){
-    
-    }else{
+    if (pathPushedState === undefined) {
+    } else {
       dispatch(
-        getAllCardsForDeck(pathPushedState.deck_id, usersState.user.uid));
+        getAllCardsForDeck(pathPushedState.deck_id, usersState.user.uid)
+      );
     }
-    
   }, [pathPushedState]);
-  
-  const getAlert = () => {
-    if(cardsState.error){
-      return <Alert
-        message={cardsState.error.message}
-        type="warning"
-        closable
-      />;
+
+  const cardClicked = card => {
+    if (!selectMode) {
+      return;
+    }
+    if (!!cardsSelected[card.card_id]) {
+      delete cardsSelected[card.card_id];
+      setCardsSelected({...cardsSelected});
+    } else {
+      setCardsSelected({...cardsSelected, [card.card_id]: card});
     }
   };
-  
+
+  const getAlert = () => {
+    if (cardsState.error) {
+      return (
+        <Alert message={cardsState.error.message} type="warning" closable />
+      );
+    }
+  };
+
   return (
-    <StyledPreviewDeck>
+    <StyledPreviewDeck data-testid={'preview-deck-container'}>
       {getAlert()}
       <TopContainer>
-        <StyledIconLeft type="left"/>
-        <p>Back</p>
+        <StyledIconLeft type="left" />
+        <p onClick={() => changePath(APP_PATHS.DASHBOARD_PATH)}>Back</p>
         <SearchContainer>
-          <SearchBar height={"23px"} borderRadius={"14px"}
-                     onSearch={() => {
-                     }}/>
+          <SearchBar
+            height={'23px'}
+            borderRadius={'14px'}
+            onSearch={() => {}}
+          />
         </SearchContainer>
-        <p style={{marginRight: "9%"}}>Select</p>
+        <p
+          onClick={() => setSelectMode(!selectMode)}
+          style={{marginRight: '9%'}}
+        >
+          Select
+        </p>
       </TopContainer>
       <TitleText
-        text={(pathPushedState && pathPushedState.deck_name) || "Preview"}
+        text={(pathPushedState && pathPushedState.deck_name) || 'Preview'}
       />
       <StyledPreviewDeckHolder>
-        <PreviewDeckCards key={0}/>
-        {Object.values(cardsState.cards).filter(
-          card => card.deck_id === pathPushedState.deck_id).map(
-          card => {
-            console.log(card);
-            return <PreviewDeckCards key={card.card_id} card={card}/>;
+        <PreviewDeckCards cardType={'card'} key={0} getHooks={getHooks} />
+        {Object.values(cardsState.cards)
+          .filter(card => card.deck_id === pathPushedState.deck_id)
+          .map(card => {
+            return (
+              <PreviewDeckCards
+                onClick={() => cardClicked(card)}
+                getHooks={getHooks}
+                cardType={'card'}
+                key={card.card_id}
+                selected={!!cardsSelected[card.card_id]}
+                card={card}
+              />
+            );
           })}
-      
       </StyledPreviewDeckHolder>
+      <CardEditDeleteIcons type={'clear'} />
+      <StudyButton
+        onClick={() => changePath(APP_PATHS.QUIZ_MODE, pathPushedState)}
+        height={'43px'}
+        width={'88%'}
+        text={'Study Deck'}
+        type={'secondary'}
+      />
     </StyledPreviewDeck>
   );
-  
 };
 
-PreviewDeck.propTypes = {};
+const StudyButton = styled(SynapsButton)`
+  box-sizing: border-box;
+  align-self: center;
+  font-size: 24px;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  > span {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+`;
 
 const TopContainer = styled.div`
-display: flex;
-flex-direction: row;
-font-size: 12px;
-width: 100vw;
-
+  display: flex;
+  flex-direction: row;
+  font-size: 12px;
+  width: 100vw;
 `;
 
 const StyledIconLeft = styled(Icon)`
-margin-right: %9;
+  margin-right: 9%;
 `;
 
 const SearchContainer = styled.div`
-max-width: 50%;
-margin: 0 auto;
+  max-width: 50%;
+  margin: 0 auto;
 `;
 
+const previewDeckHeight = theming(THEMING_VARIABLES.FOOTER, {
+  [THEMING_VALUES.VISIBLE]: window.innerHeight - THEME.navBarTopHeight + 'px',
+  [THEMING_VALUES.HIDDEN]:
+    window.innerHeight - THEME.navBarTopHeight - 95 + 'px',
+});
+
+const marginBottom = theming(THEMING_VARIABLES.FOOTER, {
+  [THEMING_VALUES.VISIBLE]: THEME.footerHeight + 20 + 'px',
+  [THEMING_VALUES.HIDDEN]: '10px',
+});
+
 const StyledPreviewDeck = styled.div`
+  align-self: flex-start;
   display: flex;
   flex-direction: column;
-  padding: 16px 1rem;
   max-width: 1140px;
-  min-height: 90%;
+  max-height: ${previewDeckHeight};
   width: 100%;
   border-radius: 10px;
+  padding-bottom: ${marginBottom};
   background: ${props => props.theme.themeState.navBarLight};
 `;
 
 const StyledPreviewDeckHolder = styled.div`
+  overflow-y: scroll;
+  max-height: 100%;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;

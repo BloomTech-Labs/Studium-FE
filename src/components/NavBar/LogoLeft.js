@@ -1,13 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import PropTypes from "prop-types";
 import {ContainerDiv} from "..";
-import {useAppHooks} from "../../customHooks/useAppHooks.js";
 import {
   SvgBrainPic, SvgSynapsFavicon, SvgSynapsLogoText,
 } from "../../svgComponents";
 import {
-  APP_PATHS, APP_VIEW_DESKTOP, APP_VIEW_MOBILE,
+  APP_PATHS, APP_VIEW_DESKTOP
 } from "../../utilities/constants.js";
 
 /**
@@ -17,7 +15,7 @@ import {
  *
  */
 const LogoLeft = ({getHooks}) => {
-  const {theme, appView, changePath, usersState} = getHooks("Logo Left");
+  const {theme, appView, changePath, usersState} = getHooks();
   
   const logoClicked = () => {
     

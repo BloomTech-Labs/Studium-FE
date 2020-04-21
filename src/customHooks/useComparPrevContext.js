@@ -11,21 +11,13 @@ export const useComparPrevContext = (componentsDebugName,
   initialContext = {}) => {
     
     const {hooks} = useContext(AppHooksContext);
-    const {getLogger} = hooks;
     const [isFirst, setIsFirst] = useState(true);
     const [debugName, setDebugName] = useState(componentsDebugName);
     const [prevContext, setPrevContext] = useState([initialContext]);
-    const logger = getLogger(debugName);
-    
-    useEffect(() => {
-      logger.logVerbose(`Context Compare Setup for ${debugName}`);
-    }, [debugName, logger]);
     
     const printPrevContext = (number) => {
       let count = 0;
-      logger.logVerbose(`Prev contexts for ${debugName}`);
       for(let i = prevContext.length; i >= 0 && count < number; i--){
-        logger.logObject(prevContext[i - 1]);
         count++;
       }
     };
@@ -52,41 +44,31 @@ export const useComparPrevContext = (componentsDebugName,
           Object.keys(lastContext).forEach(key => {
             if(JSON.stringify(lastContext[key]) !==
               JSON.stringify(newContext[key])){
-              logger.logVerbose(`${key} is different on new context`);
               difference.push(key);
             }else{
-              logger.logVerbose(
-                `Can not tell the difference for ${key}`);
+            
             }
           });
           
           if(difference.length === 0){
-            logger.logWarning("Context was not different.");
+          
           }else{
             difference.forEach(key => {
-              logger.logObjectWithMessage(lastContext[key],
-                `${key} in last context.`,
-              );
-              logger.logObjectWithMessage(newContext[key],
-                `${key} in new context.`,
-              );
             });
             
           }
           
         }catch(e){
-          logger.logWarning(`Was unable to compare context ${debugName}`);
-          logger.logWarning(e.message);
+        
+        
         }
         
       }else{
-        logger.logVerbose("Comparing prev and new context.");
+        
         if(lastContext === newContext){
-          logger.logWarning(
-            "Can not tell the difference between prev and new context.");
+        
         }else{
-          logger.logObjectWithMessage(lastContext, " Last Context ");
-          logger.logObjectWithMessage(lastContext, " New Context ");
+        
         }
       }
       
@@ -103,10 +85,8 @@ export const useComparPrevContext = (componentsDebugName,
           JSON.stringify([...lastContext, newContext]),
         );
       }catch(e){
-        logger.logWarning("Was unable to parse local storage.");
-        logger.logWarning("Deleting local storage for context now.");
-        localStorage.removeItem(
-          SYNAPS_CONFIG.localStorageContextBasePath + debugName);
+      
+      
       }
     };
     

@@ -1,10 +1,9 @@
-import React, {useEffect} from "react";
-import styled from "styled-components";
-import {SmallLogo, SynapsButton} from "../components";
-import SvgSynapsLogoText from "../svgComponents/SvgSynapsLogoText.js";
-import {SvgBrainPaths} from "../svgComponents";
-import {useAppHooks} from "../customHooks/useAppHooks.js";
-import {MEDIA_QUERIES} from "../utilities/constants.js";
+import React, {useEffect} from 'react';
+import styled from 'styled-components';
+import {SynapsButton} from '../components';
+import SvgSynapsLogoText from '../svgComponents/SvgSynapsLogoText.js';
+import {SvgBrainPaths} from '../svgComponents';
+import {MEDIA_QUERIES} from '../utilities/constants.js';
 
 /**
  * Landing Page
@@ -13,51 +12,51 @@ import {MEDIA_QUERIES} from "../utilities/constants.js";
  * @example return (<LandingPage />);
  */
 export const LandingPage = ({getHooks}) => {
-  const {changePath, theme} = getHooks("LandingPage");
+  const {changePath, theme} = getHooks();
   
   useEffect(() => {
   
   }, []);
   
   const handleClick = name => {
-    if(name === "SignIn"){
-      changePath("/signIn");
+    if(name === 'SignIn'){
+      changePath('/signIn');
     }else{
-      changePath("/signup");
+      changePath('/signup');
     }
   };
   
   return (
-    <StyledLandingPage data-testid={"landing-page"}>
-      <Mobile data-testid={"landing-page-mobile"}>
-        <SvgBrainPaths svgFill={"white"} strokeWidth={"1"} stroke={"white"}
-                       svgWidth={"100%"}
-                       height={"100%"}/>
+    <StyledLandingPage data-testid={'landing-page'}>
+      <Mobile data-testid={'landing-page-mobile'}>
+        <SvgBrainPaths svgFill={'white'} strokeWidth={'1'} stroke={'white'}
+                       svgWidth={'100%'}
+                       height={'100%'}/>
         <MobileHeader>
           <SvgSynapsLogoText fill={theme.themeState.navBarLight}/>
         </MobileHeader>
         <SynapsButton
-          text={"Sign In"}
-          size={"large"}
-          type={"primary"}
-          onClick={() => handleClick("SignIn")}
+          text={'Sign In'}
+          size={'large'}
+          type={'primary'}
+          onClick={() => handleClick('SignIn')}
           style={{
-            margin: "2rem auto",
-            width: "204px",
-            height: "62px",
-            borderRadius: "15px",
+            margin: '2rem auto',
+            width: '204px',
+            height: '62px',
+            borderRadius: '15px',
           }}
         />
         <SynapsButton
-          text={"Sign Up"}
-          size={"large"}
-          type={"darkgray"}
-          onClick={() => handleClick("SignUp")}
+          text={'Sign Up'}
+          size={'large'}
+          type={'darkgray'}
+          onClick={() => handleClick('SignUp')}
           style={{
-            margin: "0 auto",
-            width: "204px",
-            height: "62px",
-            borderRadius: "15px",
+            margin: '0 auto',
+            width: '204px',
+            height: '62px',
+            borderRadius: '15px',
           }}
         />
       </Mobile>

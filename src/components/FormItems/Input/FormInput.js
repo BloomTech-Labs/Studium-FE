@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {Input, Form} from 'antd';
 import PropTypes from 'prop-types';
+import {APP_VIEW_DESKTOP, APP_VIEW_MOBILE} from '../../../utilities/constants';
 
 /**
  * Form Input
@@ -19,11 +20,15 @@ import PropTypes from 'prop-types';
  *
  */
 export const FormInput = ({
+  appView,
+  value,
   width = '90%',
   bordered = 'false',
   borderRadius = 'small',
+  borderStyle,
   label,
   error,
+  placeholder,
   ...props
 }) => {
   if (bordered) {
@@ -31,14 +36,28 @@ export const FormInput = ({
       // bordered input with large radius
       return (
         <StyledFormItem label={label}>
-          <StyledAntdInputLargeRadius {...props} />
+          <StyledAntdInputLargeRadius
+            appView={appView}
+            width={width}
+            borderStyle={borderStyle}
+            value={value}
+            placeholder={placeholder}
+            {...props}
+          />
         </StyledFormItem>
       );
     } else {
       // bordered input with regular radius
       return (
         <StyledFormItem label={label}>
-          <StyledAntdInputSmallRadius {...props} />
+          <StyledAntdInputSmallRadius
+            appView={appView}
+            width={width}
+            borderStyle={borderStyle}
+            value={value}
+            placeholder={placeholder}
+            {...props}
+          />
         </StyledFormItem>
       );
     }
@@ -47,7 +66,14 @@ export const FormInput = ({
     return (
       <StyledFormItem label={label}>
         <StyledBorderBottom>
-          <StyledNoBorderAntdInput {...props} />
+          <StyledNoBorderAntdInput
+            appView={appView}
+            width={width}
+            borderStyle={borderStyle}
+            value={value}
+            placeholder={placeholder}
+            {...props}
+          />
         </StyledBorderBottom>
       </StyledFormItem>
     );
@@ -56,24 +82,44 @@ export const FormInput = ({
 
 const StyledFormItem = styled(Form.Item)`
   && {
-    .ant-form-item-label{
+    .ant-form-item-label {
+      padding: 0 0 0;
+    }
+    .ant-form-item-label {
       padding: 0 0 0 0;
-      line-height: 1;     
+      line-height: 1;
     }
     text-align: left;
-    width: ${props => props.width};
+    background-color: transparent;
+    border: ${props => props.borderStyle};
   }
 `;
 
 const StyledBorderBottom = styled.div`
-  border-bottom: 1px solid gray;
+  border-bottom: ${props => props.borderStyle};
 `;
 
 const StyledNoBorderAntdInput = styled(Input)`
   && {
     border: 0px;
+    .ant-form-item-label {
+      padding: 0 0 0;
+    }
     :focus {
       box-shadow: none;
+    }
+    .ant-input {
+      width: ${props => props.width};
+      ${props => (props.appView === APP_VIEW_DESKTOP ? 'height: 38px;' : '')}
+      ${props =>
+        props.appView === APP_VIEW_DESKTOP
+          ? 'border: 1px solid #36405C;'
+          : ''}
+      background-color: transparent;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 19px;
+      line-height: 24px;
     }
   }
 `;
@@ -81,18 +127,46 @@ const StyledNoBorderAntdInput = styled(Input)`
 const StyledAntdInputLargeRadius = styled(Input)`
   && {
     border-radius: ${props => props.theme.largeRadius};
+    .ant-form-item-label {
+      padding: 0 0 0;
+    }
     :focus {
       box-shadow: none;
     }
+    width: ${props => props.width};
+    ${props => (props.appView === APP_VIEW_DESKTOP ? 'height: 38px;' : '')}
+    background-color: transparent;
+    border: ${props => props.borderStyle};
+    ${props =>
+      props.appView === APP_VIEW_DESKTOP ? 'border: 1px solid #36405C;' : ''}
+    font-style: normal;
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 24px;
   }
 `;
 
 const StyledAntdInputSmallRadius = styled(Input)`
   && {
-    border-radius: ${props => props.theme.smallRadius};
+    border-radius: ${props =>
+      props.appView === 'APP_VIEW_MOBILE' ? props.theme.smallRadius : '0px'};
+    .ant-form-item-label {
+      padding: 0 0 0;
+    }
+
     :focus {
       box-shadow: none;
     }
+    width: ${props => props.width};
+    ${props => (props.appView === APP_VIEW_DESKTOP ? 'height: 38px;' : '')}
+    background-color: transparent;
+    border: ${props => props.borderStyle};
+    ${props =>
+      props.appView === APP_VIEW_DESKTOP ? 'border: 1px solid #36405C;' : ''}
+    font-style: normal;
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 24px;
   }
 `;
 

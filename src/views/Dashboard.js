@@ -1,17 +1,14 @@
-import React, {useState, useEffect} from "react";
-import styled from "styled-components";
+import React, {useState, useEffect} from 'react';
+import styled from 'styled-components';
 import {
-  SmallFlashCard,
   TitleText,
   SearchBar,
   PreviewDeckCards,
-} from "../components";
-import PropTypes from "prop-types";
-import {useAppHooks} from "../customHooks/useAppHooks.js";
-import {getUserDecks} from "../actions";
-import {Alert} from "antd";
-import {SvgSnapsOutline} from "../svgComponents";
-import {APP_VIEW_MOBILE, MEDIA_QUERIES, SIZES} from "../utilities/constants.js";
+} from '../components';
+import PropTypes from 'prop-types';
+import {getUserDecks} from '../actions';
+import {Alert} from 'antd';
+import {APP_VIEW_MOBILE, MEDIA_QUERIES} from '../utilities/constants.js';
 
 /**
  * Dashboard
@@ -29,7 +26,7 @@ export const Dashboard = ({getHooks}) => {
     usersState,
     decksState,
     theme,
-  } = getHooks("Dashboard");
+  } = getHooks();
   const search = e => {
   
   };
@@ -46,10 +43,10 @@ export const Dashboard = ({getHooks}) => {
   const deckClicked = (deck = undefined) => {
     
     if(!deck){
-      changePath("/create/deck");
+      changePath('/create/deck');
       return;
     }
-    changePath("/preview", deck);
+    changePath('/preview', deck);
   };
   
   const getAlert = () => {
@@ -58,41 +55,44 @@ export const Dashboard = ({getHooks}) => {
         <Alert message={decksState.errorDecksMessage} type="warning" closable/>
       );
     }
-    return "";
+    return '';
   };
   
   return (
-    <StyledDashboard className={"dashboard"}>
+    <StyledDashboard className={'dashboard'}>
       {appView === APP_VIEW_MOBILE &&
       <>
-        <TitleText text={"Dashboard"}/>
+        <TitleText text={'Dashboard'}/>
         <SearchBar
           theme={theme}
           onSearch={search}
           style={{
-            marginTop: "8px",
-            marginBottom: "33px",
-            width: "80%",
-            marginLeft: "10%",
-            height: "37px",
+            marginTop: '8px',
+            marginBottom: '33px',
+            width: '80%',
+            marginLeft: '10%',
+            height: '37px',
           }}
         />
       </>
       }
       
       {getAlert()}
-      <StyledDeckHolder className={"deck-container"}>
+      
+      <StyledDeckHolder className={'deck-container'}>
         <PreviewDeckCards
-          border={"dashed"}
-          icon={"plus"}
+          border={'dashed'}
+          getHooks={getHooks}
           onClick={e => deckClicked()}
+        
         />
-        {decksState.decks.map(deck => {
+        {decksState.decks && decksState.decks.map(deck => {
           return (
             <PreviewDeckCards
               key={deck.deck_id}
+              getHooks={getHooks}
               deck={deck}
-              border={"solid"}
+              border={'solid'}
               onClick={e => deckClicked(deck)}
             />
           );
@@ -118,11 +118,11 @@ const StyledDashboard = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 1140px;
-  height: 100%;
   width: 100%;
-
+  background: #FFFFFF;
+  padding-bottom: 200px;
   @media screen and ${MEDIA_QUERIES.tablet} {
-    background: #FFFFFF;
+    
     margin-top: 65px;
     border-radius: 10px;
   }

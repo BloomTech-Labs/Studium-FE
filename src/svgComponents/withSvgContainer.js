@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import {ContainerDiv} from "../components";
+import React from 'react';
+import PropTypes from 'prop-types';
+import {ContainerDiv} from '../components';
 
 /**
  *  With Svg Container
@@ -37,10 +37,10 @@ const withSvgContainer = (Svg) => {
   
   
   const SvgContainer = ({
-    margin = "0 auto", backgroundColor = "transparent", containerPosition = "relative",
-    height = "100%", width = "100%", zIndex = 1, svgWidth = "100%", top = "0", left = "0",
-    maxHeight = "100%", maxWidth = "100%", transform, onClick,
-    svgHeight = "100%", svgFill, svgBackground, svgOpacity = "1", ...props
+    margin = '0 auto', backgroundColor = 'transparent', containerPosition = 'relative',
+    height = '100%', width = '100%', zIndex = 1, svgWidth = '100%', top = '0', left = '0',
+    maxHeight = '100%', maxWidth = '100%', transform, onClick, style,
+    svgHeight = '100%', svgFill, svgBackground, svgOpacity = '1', ...props
   }) => {
     
     return (
@@ -48,10 +48,10 @@ const withSvgContainer = (Svg) => {
                     width={width} top={top} left={left}
                     maxHeight={maxHeight} maxWidth={maxWidth}
                     height={height} backgroundColor={backgroundColor}
-                    zIndex={zIndex} id={"svg-container"}
-                    overFlowY={"visible"} onClick={onClick}
-                    overFlowX={"visible"}
-                    transform={transform}
+                    zIndex={zIndex} id={'svg-container'}
+                    overFlowY={'visible'} onClick={onClick}
+                    overFlowX={'visible'}
+                    transform={transform} style={style}
       >
         <Svg height={svgHeight} width={svgWidth} fill={svgFill}
              background={svgBackground}

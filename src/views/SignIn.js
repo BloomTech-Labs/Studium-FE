@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
-import {FormInput, SynapsButton, SvgContainer} from '../components';
+import {FormInput, SynapsButton} from '../components';
 import SvgSynapsLogoText from '../svgComponents/SvgSynapsLogoText.js';
 import styled from 'styled-components';
 import {signIn, GOOGLE_PROVIDER, EMAIL_PROVIDER} from '../actions';
-import {useAppHooks} from '../customHooks/useAppHooks.js';
 import theming from 'styled-theming';
 import {useTheming} from '../customHooks/useTheming.js';
 import {
@@ -12,35 +11,28 @@ import {
 } from '../customHooks/themingRules.js';
 import {THEME, MEDIA_QUERIES, SIZES} from '../utilities/constants.js';
 
-/**
- * Sign In
- * @category Views
- * @component
- * @example return (<SignIn />);
- */
-export function SignIn(props) {
-  const {dispatch, theme, path, appView, height, getHooks} = useAppHooks(
-    'SignIn'
+export function SignIn({getHooks}){
+  const {dispatch, theme, path} = getHooks(
+    'SignIn',
   );
   const [info, setInfo] = useState({email: '', password: '', error: {}});
   const getValue = useTheming('App.js');
-
+  
   const handleChange = e => {
     setInfo({...info, [e.target.name]: e.target.value});
   };
-  console.log(props)
 
   const handleSignInClick = type => {
-    if (type === EMAIL_PROVIDER) {
-      if (info.email !== '' && info.password !== '') {
+    if(type === EMAIL_PROVIDER){
+      if(info.email !== '' && info.password !== ''){
         dispatch(signIn(EMAIL_PROVIDER, info.email, info.password));
-      } else {
-        if (info.email === '') {
+      }else{
+        if(info.email === ''){
           setInfo({
             ...info,
             error: {email: 'You must enter a email address.'},
           });
-        } else {
+        }else{
           setInfo({
             ...info,
             error: {
@@ -49,7 +41,7 @@ export function SignIn(props) {
           });
         }
       }
-    } else {
+    }else{
       dispatch(signIn(GOOGLE_PROVIDER));
     }
   };
@@ -77,9 +69,9 @@ export function SignIn(props) {
   };
 
   const switchWelcomeTitle = () => {
-    if (path === '/signin') {
+    if(path === '/signin'){
       return <StyledH2>Hey! Welcome Back.</StyledH2>;
-    } else {
+    }else{
       return (
         <StyledH2
           style={{
@@ -160,7 +152,6 @@ export function SignIn(props) {
           [THEMING_VALUES.MOBILE]: '300px',
         })}
       />
-
       {switchWelcomeTitle()}
       {switchStyledBtnText()}
 
@@ -266,7 +257,7 @@ const StyledFormInput = styled.div`
   & label {
     color: ${switchText};
   }
-
+  
   @media ${MEDIA_QUERIES.tablet} {
     & label {
       color: ${switchText};

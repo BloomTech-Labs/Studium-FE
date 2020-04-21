@@ -1,9 +1,9 @@
-import React, {useState} from "react";
-import {FormInput, SynapsButton} from "../components";
-import SvgSynapsLogoText from "../svgComponents/SvgSynapsLogoText.js";
-import styled from "styled-components";
-import {EMAIL_PROVIDER, GOOGLE_PROVIDER, signIn} from "../actions";
-import {useAppHooks} from "../customHooks/useAppHooks.js";
+import React, {useState} from 'react';
+import {FormInput, SynapsButton} from '../components';
+import SvgSynapsLogoText from '../svgComponents/SvgSynapsLogoText.js';
+import styled from 'styled-components';
+import {EMAIL_PROVIDER, GOOGLE_PROVIDER, signIn} from '../actions';
+import {useAppHooks} from '../customHooks/useAppHooks.js';
 
 /**
  * Sign Up
@@ -12,9 +12,9 @@ import {useAppHooks} from "../customHooks/useAppHooks.js";
  * @example return (<SignUp />);
  */
 export function SignUp(){
-  const {dispatch, theme} = useAppHooks("SignUp");
+  const {dispatch, theme} = useAppHooks();
   
-  const [info, setInfo] = useState({email: "", password: "", error: {}});
+  const [info, setInfo] = useState({email: '', password: '', error: {}});
   
   const handleChange = (e) => {
     setInfo({...info, [e.target.name]: e.target.value});
@@ -25,17 +25,17 @@ export function SignUp(){
   };
   
   const handleEmailClick = e => {
-    if(info.email !== "" && info.password !== ""){
+    if(info.email !== '' && info.password !== ''){
       dispatch(signIn(EMAIL_PROVIDER, info.email, info.password));
     }else{
-      if(info.email === ""){
+      if(info.email === ''){
         setInfo({
-          ...info, error: {email: "You must enter a email address."},
+          ...info, error: {email: 'You must enter a email address.'},
         });
       }else{
         setInfo({
           ...info, error: {
-            password: "You must first enter a password.",
+            password: 'You must first enter a password.',
           },
         });
       }
@@ -46,11 +46,11 @@ export function SignUp(){
     <SvgSynapsLogoText fill={theme.themeState.navBarDark}/>
     
     <SynapsButton
-      style={{margin: "1rem 0 1.5em", padding: "0 2em 0"}}
-      icon={"google"}
-      text={"Sign Up with Google!"}
-      shape={"round"}
-      size={"large"}
+      style={{margin: '1rem 0 1.5em', padding: '0 2em 0'}}
+      icon={'google'}
+      text={'Sign Up with Google!'}
+      shape={'round'}
+      size={'large'}
       onClick={handleGoogleClick}
     />
     
@@ -58,29 +58,29 @@ export function SignUp(){
     
     <div>
       <FormInput
-        name={"email"}
+        name={'email'}
         value={info.email}
         onChange={handleChange}
         block={true}
-        label={"Email Address"}
+        label={'Email Address'}
         bordered={false}
       />
       <FormInput
-        name={"password"}
+        name={'password'}
         value={info.password}
         onChange={handleChange}
         block={true}
-        label={"Password"}
+        label={'Password'}
         bordered={false}
       />
     </div>
     
     <SynapsButton
-      style={{padding: "0 2.5em 0"}}
-      text={"Continue with Email"}
-      shape={"round"}
-      size={"large"}
-      type={"darkgray"}
+      style={{padding: '0 2.5em 0'}}
+      text={'Continue with Email'}
+      shape={'round'}
+      size={'large'}
+      type={'darkgray'}
       onClick={handleEmailClick}
     />
   </StyledSignUp>);
@@ -93,12 +93,6 @@ const StyledSignUp = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
-`;
-
-const StyledH1 = styled.h1`
-  font-size: 5.5em;
-  font-weight: 900;
-  margin: 0 0 0.5em;
 `;
 
 const StyledBorder = styled.span`
