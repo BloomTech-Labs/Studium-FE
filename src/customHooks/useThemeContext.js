@@ -1,14 +1,14 @@
-import React, {useContext, useEffect, useState} from "react";
-import {AppHooksContext} from "./useAppHooks.js";
-import {useStyledThemingRules} from "./useStyledThemingRules.js";
-import {useHistory} from "react-router-dom";
-import {DEFAULT_THEME_RULE_VALUES} from "./themingRules.js";
-import {ThemeContext} from "styled-components";
-import {useComparPrevContext} from "./useComparPrevContext.js";
-import {SYNAPS_CONFIG} from "../synapsConfig.js";
-import {THEME} from "../utilities/constants.js";
+import React, {useContext, useEffect, useState} from 'react';
+import {AppHooksContext} from './useAppHooks.js';
+import {useStyledThemingRules} from './useStyledThemingRules.js';
+import {useHistory} from 'react-router-dom';
+import {DEFAULT_THEME_RULE_VALUES} from './themingRules.js';
+import {ThemeContext} from 'styled-components';
+import {useComparPrevContext} from './useComparPrevContext.js';
+import {SYNAPS_CONFIG} from '../synapsConfig.js';
+import {THEME} from '../utilities/constants.js';
 
-export const THEME_DEBUG_NAME = "Theme";
+export const THEME_DEBUG_NAME = 'Theme';
 
 /**
  * Use Theme Context
@@ -17,23 +17,20 @@ export const THEME_DEBUG_NAME = "Theme";
  * @category Custom Hooks
  * @returns {object}
  */
-export const useThemeRules = (getLogger) => {
-  const logger = getLogger(THEME_DEBUG_NAME);
+export const useThemeRules = () => {
   let baseConfig = DEFAULT_THEME_RULE_VALUES;
-  if(localStorage.getItem(SYNAPS_CONFIG.localStorageBasePath + "/themeRules")){
+  if(localStorage.getItem(SYNAPS_CONFIG.localStorageBasePath + '/themeRules')){
     baseConfig = JSON.parse(
-      localStorage.getItem(SYNAPS_CONFIG.localStorageBasePath + "/themeRules"));
+      localStorage.getItem(SYNAPS_CONFIG.localStorageBasePath + '/themeRules'));
   }
   const [themeRules, setThemeRules] = useState(baseConfig);
   
   const changeTheme = (value) => {
-    logger.logVerbose("Changing Theme Rules");
-    
     setThemeRules(value);
   };
   
   useEffect(() => {
-    localStorage.setItem(SYNAPS_CONFIG.localStorageBasePath + "/themeRules",
+    localStorage.setItem(SYNAPS_CONFIG.localStorageBasePath + '/themeRules',
       JSON.stringify(themeRules),
     );
   }, [themeRules]);
@@ -54,14 +51,11 @@ export const useThemeContext = () => {
   const history = useHistory();
   const {compareContext} = useComparPrevContext(
     THEME_DEBUG_NAME, themeRules);
-  const checkAllRules = useStyledThemingRules(hooks.getLogger);
-  const logger = hooks.getLogger(THEME_DEBUG_NAME);
+  const checkAllRules = useStyledThemingRules();
   
   const changeRules = (changes) => {
     const newRules = {...themeRules};
-    logger.logVerbose(`Changing Theme Rules`);
     changes.forEach(rule => {
-      logger.logVerbose(`${rule.themeVariable} --> ${rule.themeValue}`);
       newRules[rule.themeVariable] = rule.themeValue;
     });
     changeTheme(newRules);

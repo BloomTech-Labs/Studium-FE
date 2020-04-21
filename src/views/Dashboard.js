@@ -1,11 +1,14 @@
+
 import React, {useState} from 'react';
+
+import React, {useState, useEffect} from 'react';
+
 import styled from 'styled-components';
 import {
-  SmallFlashCard,
   TitleText,
   SearchBar,
   PreviewDeckCards,
-  CreateCard,
+CreateCard,
 } from '../components';
 import SvgSynapsLogoText from '../svgComponents/SvgSynapsLogoText.js';
 import PropTypes from 'prop-types';
@@ -65,6 +68,12 @@ const decks = [
     deck_id: 6,
   },
 ];
+} from '../components';
+import PropTypes from 'prop-types';
+import {getUserDecks} from '../actions';
+import {Alert} from 'antd';
+import {APP_VIEW_MOBILE, MEDIA_QUERIES} from '../utilities/constants.js';
+
 
 /**
  * Dashboard
@@ -79,12 +88,16 @@ export const Dashboard = props => {
     changePath,
     dispatch,
     theme,
+
     path,
     appView,
     height,
     getHooks,
   } = useAppHooks('Dashboard');
   const getValue = useTheming('App.js');
+
+  } = getHooks();
+
   const search = e => {
     console.log(e.target.value);
   };
@@ -94,15 +107,33 @@ export const Dashboard = props => {
   };
 
   const deckClicked = (deck = undefined) => {
-    if (!deck) {
+ if (!deck) {
       changePath('/create/deck');
       return;
     }
     changePath('/preview', {...deck});
+
+    
+    if(!deck){
+      changePath('/create/deck');
+      return;
+    }
+    changePath('/preview', deck);
+  };
+  
+  const getAlert = () => {
+    if(decksState.errorDecksMessage){
+      return (
+        <Alert message={decksState.errorDecksMessage} type="warning" closable/>
+      );
+    }
+    return '';
+
   };
 
   return (
     <StyledDashboard className={'dashboard'}>
+
       <StyledTitleText>
         <TitleText
           text={'My Flashcards'}
@@ -116,10 +147,16 @@ export const Dashboard = props => {
         />
       </StyledTitleText>
       <StyledSearchBar text={'search all cards'}>
+
+      {appView === APP_VIEW_MOBILE &&
+      <>
+        <TitleText text={'Dashboard'}/>
+
         <SearchBar
           onSearch={search}
           text={'search all cards'}
           style={{
+
             position: 'absolute',
             width: '23%',
             height: '5%',
@@ -144,10 +181,37 @@ export const Dashboard = props => {
         />
 
         {decks.map(deck => {
+
+            marginTop: '8px',
+            marginBottom: '33px',
+            width: '80%',
+            marginLeft: '10%',
+            height: '37px',
+          }}
+        />
+      </>
+      }
+      
+      {getAlert()}
+      
+      <StyledDeckHolder className={'deck-container'}>
+        <PreviewDeckCards
+          border={'dashed'}
+          getHooks={getHooks}
+          onClick={e => deckClicked()}
+        
+        />
+        {decksState.decks && decksState.decks.map(deck => {
+
           return (
             <StyledCard
               key={deck.deck_id}
+              getHooks={getHooks}
               deck={deck}
+
+
+              border={'solid'}
+
               onClick={e => deckClicked(deck)}
               style={{
                 width: '167px',
@@ -232,11 +296,14 @@ text-color: #36405C;
 const Wrap = styled.div`
   background: ${myPic};
   max-width: 1140px;
-  height: 100%;
   width: 100%;
-
+  background: #FFFFFF;
+  padding-bottom: 200px;
   @media screen and ${MEDIA_QUERIES.tablet} {
+
     background: #ffffff;
+
+
     margin-top: 65px;
     border-radius: 10px;
   }

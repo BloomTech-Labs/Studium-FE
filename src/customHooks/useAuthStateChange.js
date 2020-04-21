@@ -12,7 +12,7 @@ import {signedIn, signOut} from "../actions";
  */
 export const useAuthStateChange = (getHooks) => {
   
-  const {changePath, dispatch, path} = getHooks("Use Auth State");
+  const {changePath, dispatch, path} = getHooks();
   
   //Promises. This function gets called in for google sign in;
   

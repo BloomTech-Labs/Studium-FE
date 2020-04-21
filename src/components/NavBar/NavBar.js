@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+ DashboardDesktopView
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import {ContainerDiv, NavBarAvatar} from '../index.js';
@@ -22,6 +23,20 @@ import {
 
 export const NAV_BAR_DEBUG_NAME = 'Nav Bar';
 
+import styled from 'styled-components';
+import {ContainerDiv, NavBarAvatar} from '../index.js';
+import {signOut} from '../../actions';
+import theming from 'styled-theming';
+import LogoLeft from './LogoLeft.js';
+import {THEME} from '../../utilities/constants.js';
+import {
+  THEMING_VALUES, THEMING_VARIABLES,
+} from '../../customHooks/themingRules.js';
+import {
+  APP_PATHS,
+} from '../../utilities/constants.js';
+
+
 /**
  * Nav Bar
  *
@@ -30,6 +45,7 @@ export const NAV_BAR_DEBUG_NAME = 'Nav Bar';
  *  return (<NavBar />)
  */
 export const NavBar = ({getHooks}) => {
+
   const {
     usersState,
     theme,
@@ -61,11 +77,25 @@ export const NavBar = ({getHooks}) => {
     compareContext({usersState, theme, path, appView});
   }, [usersState, theme, path, appView]);
 
+
+  const {usersState, dispatch, changePath, path} = getHooks(
+    'Nav Bar');
+  const [setMenuOpen] = useState(false);
+  const [avatarUrl, setAvatarUrl] = useState('');
+  
+master
   useEffect(() => {
     if (usersState.user && usersState.user.photoURL) {
       setAvatarUrl(usersState.user.photoURL);
+
     } else {
       setAvatarUrl('');
+
+      
+    }else{
+      setAvatarUrl('');
+      
+
     }
   }, [usersState]);
 
@@ -120,6 +150,7 @@ export const NavBar = ({getHooks}) => {
 
 NavBar.propTypes = {};
 
+
 const WhiteLogo = styled(SmallWhiteLogo)``;
 
 const backgroundColor = theming(THEMING_VARIABLES.NAV_STYLE, {
@@ -144,6 +175,18 @@ const top = theming(THEMING_VARIABLES.NAV_STYLE, {
   [THEMING_VALUES.HIDDEN]: props => {
     return '-75px';
   },
+const backgroundColor = theming(THEMING_VARIABLES.NAV_STYLE, {
+  [THEMING_VALUES.DARK]: THEME.navBarDark,
+  [THEMING_VALUES.LIGHT]: THEME.navBarLight,
+  [THEMING_VALUES.HIDDEN]: 'transparent',
+  
+});
+
+const top = theming(THEMING_VARIABLES.NAV_STYLE, {
+  [THEMING_VALUES.DARK]: 0,
+  [THEMING_VALUES.LIGHT]: 0,
+  [THEMING_VALUES.HIDDEN]: '-75px',
+
 });
 
 const StyledBar = styled.div`
@@ -168,7 +211,6 @@ const Styledh2 = styled.h2`
   align-items: center;
   color: ${color};
   margin: 0 10% 0 0;
-  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: bold;
   font-size: 28px;

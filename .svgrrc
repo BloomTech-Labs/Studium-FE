@@ -1,8 +1,0 @@
-{
-  "expandProps": "end",
-  "svgo": true,
-  "svgProps": {
-    "width": "{props.width}",
-    "height": "{props.height}"
-  }
-}

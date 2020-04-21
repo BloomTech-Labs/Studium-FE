@@ -1,8 +1,12 @@
 import {createRule} from './useStyledThemingRules.js';
 import {
+
   APP_PATHS,
   APP_VIEW_DESKTOP,
   APP_VIEW_MOBILE,
+
+  APP_PATHS, APP_VIEW_DESKTOP, APP_VIEW_MOBILE,
+
 } from '../utilities/constants.js';
 
 /**
@@ -13,6 +17,9 @@ export const THEMING_VARIABLES = {
   NAV_STYLE: 'NAV_STYLE',
   BRAIN_SVG: 'BRAIN_SVG',
   FOOTER: 'FOOTER',
+
+  CONTAINER: 'CONTAINER',
+
 };
 
 /**
@@ -30,6 +37,9 @@ export const THEMING_VALUES = {
   BOTTOM: 'BOTTOM',
   TOP: 'TOP',
   MOBILE: 'MOBILE',
+
+  DESKTOP: 'DESKTOP',
+
 };
 
 /**
@@ -58,6 +68,9 @@ export const getThemingRules = () => [
       APP_PATHS.PREVIEW_DECK_PATH,
       APP_PATHS.GAME_PATH,
       APP_PATHS.SIGN_IN_PATH,
+
+      APP_PATHS.DASHBOARD_PATH,
+
       APP_PATHS.TESTING,
     ],
     APP_VIEW_DESKTOP
@@ -93,7 +106,15 @@ export const getThemingRules = () => [
   createRule(
     THEMING_VARIABLES.BACKGROUND,
     THEMING_VALUES.DARK,
+
     [APP_PATHS.SIGN_IN_PATH, APP_PATHS.GAME_PATH, APP_PATHS.PREVIEW_DECK_PATH],
+
+    [
+      APP_PATHS.SIGN_IN_PATH,
+      APP_PATHS.DASHBOARD_PATH, APP_PATHS.GAME_PATH,
+      APP_PATHS.PREVIEW_DECK_PATH,
+    ],
+
     APP_VIEW_DESKTOP
   ),
   createRule(
@@ -103,6 +124,7 @@ export const getThemingRules = () => [
       APP_PATHS.SIGN_UP_PATH,
       APP_PATHS.CREATE_DECK_PATH,
       APP_PATHS.LANDING_PAGE,
+
       APP_PATHS.DASHBOARD_PATH,
     ],
     APP_VIEW_DESKTOP
@@ -116,12 +138,17 @@ export const getThemingRules = () => [
   createRule(
     THEMING_VARIABLES.BACKGROUND,
     THEMING_VALUES.LIGHT,
+
+    ],
+    APP_VIEW_DESKTOP
+  ),
+  createRule(THEMING_VARIABLES.BACKGROUND, THEMING_VALUES.DARK,
+    [APP_PATHS.SIGN_IN_PATH, APP_PATHS.LANDING_PAGE],
+    APP_VIEW_MOBILE,
+  ), createRule(THEMING_VARIABLES.BACKGROUND, THEMING_VALUES.LIGHT,
+
     [
       APP_PATHS.SIGN_UP_PATH,
-      APP_PATHS.CREATE_DECK_PATH,
-      APP_PATHS.DASHBOARD_PATH,
-      APP_PATHS.TESTING,
-      APP_PATHS.PREVIEW_DECK_PATH,
     ],
     APP_VIEW_MOBILE
   ),

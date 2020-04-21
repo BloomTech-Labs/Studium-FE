@@ -1,15 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`StyledAvatar render correctly 1`] = `
-<svg
-  style={
-    Object {
-      "position": "absolute",
-      "right": "8%",
-      "top": "15px",
-    }
-  }
->
-  ProfileIcons.svg
-</svg>
+.c0.c0 {
+  position: absolute;
+  background-color: #585858;
+  -webkit-filter: contrast(0.5);
+  filter: contrast(0.5);
+  top: 35px;
+  right: 8%;
+  -webkit-transform: translate(0,-50%);
+  -ms-transform: translate(0,-50%);
+  transform: translate(0,-50%);
+}
+
+<div>
+   
+  <span
+    class="ant-avatar c0 ant-avatar-circle"
+    style="width: 40px; height: 40px; line-height: 40px; font-size: 18px;"
+  >
+    <span
+      class="ant-avatar-string"
+      style="line-height: 40px; transform: scale(1) translateX(-50%);"
+    />
+  </span>
+   
+</div>
 `;

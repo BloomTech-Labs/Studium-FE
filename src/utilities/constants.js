@@ -32,10 +32,10 @@ export const LOG_TYPES = {
  * @param {DEBUG_LOG_SIZE} SMALL
  */
 export const DEBUG_LOG_SIZES = {
-  LARGE: "large",
-  MEDIUM: "medium",
-  NORMAL: "normal",
-  SMALL: "small",
+  LARGE: 'large',
+  MEDIUM: 'medium',
+  NORMAL: 'normal',
+  SMALL: 'small',
 };
 
 /**
@@ -47,47 +47,47 @@ export const DEBUG_LOG_SIZES = {
  * @type {ThemeState}
  */
 export const THEME = {
-  primaryColor: "#0d2545",
-  primaryColorB98C4: "#b9b8c4",
-  primaryColor86869A: "#86869a",
-  primaryColor5C5F78: "#5C5F78",
-  primaryColor36405C: "#36405c",
-  primaryColor293046: "#293046",
-  primaryColor353544: "#353544",
-  primaryColor122543: "#122543",
+  primaryColor: '#0d2545',
+  primaryColorB98C4: '#b9b8c4',
+  primaryColor86869A: '#86869a',
+  primaryColor5C5F78: '#5C5F78',
+  primaryColor36405C: '#36405c',
+  primaryColor293046: '#293046',
+  primaryColor353544: '#353544',
+  primaryColor122543: '#122543',
   
-  secondaryColor: "#A2D8C7",
-  secondary4CB69F: "#4CB69F",
-  secondaryColorEAF5F1: "#EAF5F1",
-  secondaryColorD8EEE6: "#D8EEE6",
-  secondaryColorC6E6DB: "#C6E6DB",
-  secondaryColorB5DFD1: "#B5DFD1",
-  secondaryColor92B2AA: "#92B2AA",
-  secondaryColor798A87: "#798A87",
+  secondaryColor: '#A2D8C7',
+  secondary4CB69F: '#4CB69F',
+  secondaryColorEAF5F1: '#EAF5F1',
+  secondaryColorD8EEE6: '#D8EEE6',
+  secondaryColorC6E6DB: '#C6E6DB',
+  secondaryColorB5DFD1: '#B5DFD1',
+  secondaryColor92B2AA: '#92B2AA',
+  secondaryColor798A87: '#798A87',
   
-  white: "#FFFFFF",
-  grayF1F2F2: "#F1F2F2",
-  grayE6E7E8: "#E6E7E8",
-  grayD1D3D4: "#D1D3D4",
-  grayBCBEC0: "#BEBEC0",
-  grayA7A9AC: "#A7A9AC",
-  gray939598: "#939598",
+  white: '#FFFFFF',
+  grayF1F2F2: '#F1F2F2',
+  grayE6E7E8: '#E6E7E8',
+  grayD1D3D4: '#D1D3D4',
+  grayBCBEC0: '#BEBEC0',
+  grayA7A9AC: '#A7A9AC',
+  gray939598: '#939598',
   
-  lightNavBarColor: "#E5E5E5",
+  lightNavBarColor: '#E5E5E5',
   
   largeRadius: 14,
   smallRadius: 6,
   navBarTopHeight: 75,
-  footerHeight: 50,
+  footerHeight: 70,
   
-  navBarDark: "#0C2545",
-  navBarLight: "#F6F5F3",
+  navBarDark: '#0C2545',
+  navBarLight: '#F6F5F3',
   
-  synapsDark: "#36405C",
-  synapsLight: "#FFFFFF",
+  synapsDark: '#36405C',
+  synapsLight: '#FFFFFF',
   
-  brainPicDark: "#164167",
-  brainPicLight: "#e1ded7",  
+  brainPicDark: '#164167',
+  brainPicLight: '#e1ded7',
 };
 
 /**
@@ -131,8 +131,8 @@ export const THEME = {
  *
  */
 
-export const APP_VIEW_MOBILE = "APP_VIEW_MOBILE";
-export const APP_VIEW_DESKTOP = "APP_VIEW_DESKTOP";
+export const APP_VIEW_MOBILE = 'APP_VIEW_MOBILE';
+export const APP_VIEW_DESKTOP = 'APP_VIEW_DESKTOP';
 
 /**
  * @typedef {string} APP_PATH
@@ -142,14 +142,15 @@ export const APP_VIEW_DESKTOP = "APP_VIEW_DESKTOP";
  * @typedef {object.<{APP_PATH}, string>} AppPaths
  */
 export const APP_PATHS = {
-  SIGN_UP_PATH: "/signup",
-  SIGN_IN_PATH: "/signin",
-  DASHBOARD_PATH: "/dashboard",
-  CREATE_DECK_PATH: "/create/deck",
-  PREVIEW_DECK_PATH: "/preview",
-  GAME_PATH: "/game",
-  TESTING: "/test",
-  LANDING_PAGE: "/",
+  SIGN_UP_PATH: '/signup',
+  SIGN_IN_PATH: '/signin',
+  DASHBOARD_PATH: '/dashboard',
+  CREATE_DECK_PATH: '/create/deck',
+  PREVIEW_DECK_PATH: '/preview',
+  GAME_PATH: '/game',
+  TESTING: '/test',
+  LANDING_PAGE: '/',
+  QUIZ_MODE: '/quiz-mode',
 };
 
 /**

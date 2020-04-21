@@ -6,13 +6,6 @@ exports[`Create Button works 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  box-sizing: border-box;
-  position: relative;
-  background: #4CB69F;
-  border-radius: 100%;
-  height: 69px;
-  width: 69px;
-  border: 7px solid white;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -21,11 +14,17 @@ exports[`Create Button works 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  box-sizing: border-box;
+  background: #4cb69f;
+  border-radius: 100%;
+  height: 69px;
+  width: 69px;
+  border: 7px solid white;
 }
 
-.c0.c0 > Svg {
-  height: 33px;
-  width: 33px;
+.c0.c0 > svg {
+  height: 55%;
+  width: 55%;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%,-50%);
@@ -36,8 +35,10 @@ exports[`Create Button works 1`] = `
 
 <button
   className="ant-btn c0"
+  height="69px"
   onClick={[Function]}
   type="button"
+  width="69px"
 >
   <svg>
     Union.svg

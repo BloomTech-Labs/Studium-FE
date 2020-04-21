@@ -14,16 +14,18 @@ export const CreateCardTitleText = ({text}) => {
   return <StyledTitle>{text}</StyledTitle>;
 };
 
-const StyledTitle = styled.div`
-  color: #2a685b;
-  font-family: Source Sans Pro;
+const StyledTitle = styled.h1`
+  color: ${props =>
+    props.appView === 'MOBILE_VIEW_MOBILE' ? '#2a685b' : '#36405C'};
   font-style: normal;
-  font-weight: 900;
-  font-size: 45px;
-  line-height: 24px;
-  font-weight: bold;
+  font-weight: ${props => (props.appView === 'MOBILE_VIEW_MOBILE' ? 900 : 600)};
+  font-size: ${props =>
+    props.appView === 'MOBILE_VIEW_MOBILE' ? '45px' : '47px'};
+  line-height: ${props =>
+    props.appView === 'MOBILE_VIEW_MOBILE' ? '24px' : '30px'};
   text-align: left;
-  margin-bottom: 30px;
+  margin-bottom: ${props =>
+    props.appView === 'MOBILE_VIEW_MOBILE' ? '30px' : '75px'};
   margin-top: 30px;
 `;
 
