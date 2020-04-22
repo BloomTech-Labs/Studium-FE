@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import {Card, Icon} from 'antd';
+import {Card} from 'antd';
 import {CreateButton} from '../Button/CreateButton.js';
 import {APP_VIEW_DESKTOP} from '../../utilities/constants.js';
 
@@ -44,8 +44,22 @@ export const PreviewDeckCards = ({
   card,
   ...props
 }) => {
-  
+
   const {appView} = getHooks();
+
+  const removeExtraLetters = (str) => {
+    str = str.split(' ');
+
+    str = str.map(word => {
+      if (word.length > 40) {
+        debugger;
+        word = word.slice(0, 40);
+      }
+      return word;
+    });
+    return str.join(' ');
+  };
+
   return (
     <StyledAntdCard
       type={type}
@@ -63,9 +77,9 @@ export const PreviewDeckCards = ({
                     height={appView === APP_VIEW_DESKTOP ? '55px' : '49PX'}/>}
       {(deck || card) &&
       <p className={'deck-text'}>{cardType === 'deck' ? deck.deck_name :
-        card.question}</p>}
+        removeExtraLetters(card.question)}</p>}
       {selected && <h1>This card is selected.</h1>}
-    
+
     </StyledAntdCard>
   );
 };
