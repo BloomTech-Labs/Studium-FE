@@ -92,42 +92,36 @@ To create the best Life Science flashcard application, that has excellent UI, wh
 
 ## Authentication API here
 
-🚫Replace text below with a description of the API
+OAuth - Google Based
 
-Water's like me. It's laaazy ... Boy, it always looks for the easiest way to do things A little happy sunlight shining through there. Let all these little things happen. Don't fight them. Learn to use them. Even the worst thing we can do here is good.
+When you log in you can either login with your Google account connected to your gmail or you can create a new account with just the email and password.
 
 
-
-# 3️⃣ Environment Variables
+#  Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
 
-🚫These are just examples, replace them with the specifics for your app
 
-    *  REACT_APP_apiKey - this is your Google API key, which can be generated in the Google Cloud Console
-    *  REACT_APP_authDomain - when you set up your Firebase project, this information will be in the dashboard
-    *  REACT_APP_databaseURL - in the Firebase dashboard
-    *  REACT_APP_projectID - in the Firebase dashboard
-    *  REACT_APP_storageBucket - in the Firebase dashboard
-    *  REACT_APP_messagingSenderId - in the Firebase dashboard
-    *  REACT_APP_stripe_API - this is your public Stripe API key, generated in the Stripe dashboard
-    *  REACT_APP_backendURL - optional for your local development server
-    *  REACT_APP_clientid - this is the Stripe_connect clientID, generated in Stripe_connect settings
+    REACT_APP_apiKey= ""
+    REACT_APP_authDomain=synaps-5ce5c.firebaseapp.com
+    REACT_APP_databaseURL=https://synaps-5ce5c.firebaseio.com
+    REACT_APP_projectId=synaps-5ce5c
+    REACT_APP_storageBucket=synaps-5ce5c.appspot.com
+    REACT_APP_messagingSenderId= ""
+    REACT_APP_appId=1:""
+    REACT_APP_ipinfoKey=""
 
-# 5️⃣ Content Licenses
+    REACT_APP_BASE_URL=https://staging-lambda-synaps-be.herokuapp.com/
 
-🚫For all content - images, icons, etc, use this table to document permission of use. Remove the two placeholders and add you content to this table
-
-| Image Filename | Source / Creator | License                                                                      |
-| -------------- | ---------------- | ---------------------------------------------------------------------------- |
-| doodles.png    | Nicole Bennett   | [Creative Commons](https://www.toptal.com/designers/subtlepatterns/doodles/) |
-| rings.svg      | Sam Herbert      | [MIT](https://github.com/SamHerbert/SVG-Loaders)                             |
+                            |
 
 # Testing
 
-🚫Document what you used for testing and why
+- Supertest
+- React Library
+- Jest-DOM
 
-# 4️⃣ Installation Instructions
+#  Installation Instructions
 
 FrontEnd
 Npm install should install all dependencies
@@ -138,9 +132,6 @@ node install
 
 ## Other Scripts
 
-🚫replace these examples with your own
-
-    * typecheck - runs the TypeScript compiler
     * build - creates a build of the application
     * start - starts the production server after a build is created
     * test - runs tests in **tests** directory \* eject - copy the configuration files and dependencies into the project so you have full control over them
