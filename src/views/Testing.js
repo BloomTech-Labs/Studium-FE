@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import {PreviewDeckCards} from '../components/PreviewDeckCards/PreviewDeckCards';
 
 
-export const Testing = (props) => {
+export const Testing = () => {
   return (<StyledTesting>
+    <PreviewDeckCards/>
   </StyledTesting>);
   
 };
