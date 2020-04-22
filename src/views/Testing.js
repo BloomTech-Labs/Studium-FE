@@ -4,7 +4,9 @@ import {PreviewDeckCards} from '../components/PreviewDeckCards/PreviewDeckCards'
 
 
 export const Testing = () => {
-  return (<StyledTesting>
+  return (
+  
+  <StyledTesting>
     <PreviewDeckCards/>
   </StyledTesting>);
   
