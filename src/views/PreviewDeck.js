@@ -64,6 +64,10 @@ export const PreviewDeck = ({getHooks}) => {
     }
   };
 
+  const modalClicked = () => {
+    
+  }
+
   return (
     <StyledPreviewDeck data-testid={'preview-deck-container'}>
       {getAlert()}
@@ -104,7 +108,9 @@ export const PreviewDeck = ({getHooks}) => {
             );
           })}
       </StyledPreviewDeckHolder>
-      <CardEditDeleteIcons type={'clear'} />
+      <CardEditDeleteIcons type={'clear'}
+      onClick={() => modalClicked()}
+       />
       <StudyButton
         onClick={() => changePath(APP_PATHS.QUIZ_MODE, pathPushedState)}
         height={'43px'}
