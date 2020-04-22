@@ -64,7 +64,7 @@ export const UPDATE_CARD_FAIL = 'UPDATE_CARD_FAIL';
  */
 export const updateCard = (card, uid) => dispatch => {
   dispatch(action(UPDATE_CARD_INIT));
-
+  debugger;
   return createAxiosAuth(uid)
     .put(`/api/cards/${card.card_id}`, card)
     .then(res => {
@@ -98,23 +98,5 @@ export const deleteCard = (card, uid) => dispatch => {
     .catch(err => {
       console.log(err);
       dispatch(action(DELETE_CARD_FAIL, err));
-    });
-};
-
-export const SEND_QUIZ_INIT = 'SEND_QUIZ_INIT';
-export const SEND_QUIZ_SUCCESS = 'SEND_QUIZ_SUCCESS';
-export const SEND_QUIZ_FAIL = 'SEND_QUIZ_FAIL';
-
-export const sendQuizResults = (card, uid) => dispatch => {
-  dispatch(action(SEND_QUIZ_INIT));
-
-  return createAxiosAuth(uid)
-    .put(`/api/cards/${card.card_id}`)
-    .then(res => {
-      dispatch(action(SEND_QUIZ_SUCCESS, res));
-    })
-    .catch(err => {
-      console.log(err);
-      dispatch(action(SEND_QUIZ_FAIL));
     });
 };
