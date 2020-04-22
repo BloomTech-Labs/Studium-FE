@@ -164,5 +164,5 @@ overflow-y: scroll;
   flex-wrap: wrap;
   overflow: scroll;
   padding-bottom: 150px;
-  background: ${props => props.cardClicked ? "red" :  "white"};
+  color: ${props => props.cardsState ? "Green" :  "white"};
 `;
