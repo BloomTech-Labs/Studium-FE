@@ -1,13 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import {PreviewDeckCards} from '../components/PreviewDeckCards/PreviewDeckCards';
+import { ProtectedRoute } from '../routes';
 
 
-export const Testing = () => {
+export const Testing = (props) => {
   return (
   
   <StyledTesting>
-    <PreviewDeckCards/>
+    <ProtectedRoute {...props}>
+      <PreviewDeckCards/>
+    </ProtectedRoute>
   </StyledTesting>);
   
 };
@@ -15,4 +18,4 @@ export const Testing = () => {
 const StyledTesting = styled.div`
   margin: 0 auto;
   width: 800px;
-`;
+`
