@@ -57,6 +57,7 @@ export const PreviewDeck = ({getHooks}) => {
       />;
     }
   };
+
   
   return (
     <StyledPreviewDeck data-testid={'preview-deck-container'}>
@@ -83,10 +84,10 @@ export const PreviewDeck = ({getHooks}) => {
           card.deck_id === pathPushedState.deck_id).map(
           card => {
             return <PreviewDeckCards onClick={() => cardClicked(card)}
-                                     getHooks={getHooks} cardType={'card'}
-                                     key={card.card_id}
-                                     selected={!!cardsSelected[card.card_id]}
-                                     card={card}/>;
+                                    getHooks={getHooks} cardType={'card'}
+                                    key={card.card_id}
+                                    selected={!!cardsSelected[card.card_id]}
+                                    card={card}/>;
           })}
       
       </StyledPreviewDeckHolder>
@@ -99,6 +100,9 @@ export const PreviewDeck = ({getHooks}) => {
   
 };
 
+// const PreviewDeckCards = styled.div`
+
+// `
 const StudyButton = styled(SynapsButton)`
 box-sizing: border-box;
 align-self: center;
@@ -160,4 +164,5 @@ overflow-y: scroll;
   flex-wrap: wrap;
   overflow: scroll;
   padding-bottom: 150px;
+  background: ${props => props.cardClicked ? "red" :  "white"};
 `;
