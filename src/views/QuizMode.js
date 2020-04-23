@@ -10,38 +10,53 @@ import moment from 'moment';
 export default function QuizMode({getHooks}) {
   const {cardsState, pathPushedState, dispatch, usersState} = getHooks();
   const [quizCards, setQuizCards] = useState({});
+  const [filteredQuizCards, setFilteredQuizCards] = useState({});
+  const [cardIndex, setCardIndex] = useState(0);
   const [quizComplete, setQuizComplete] = useState(false);
   const deck = pathPushedState;
 
   useEffect(() => {
-    const cards = {};
-    cardsState.forEach(card => {
-      cards[card.card_id] = {
-        card,
-        visitied: quizCards[card.card_id].visited || false,
-      };
+    const displayCards = {};
+    let arrNums = [];
+    for (let i = 0; i < cardsState.cards.length; i++) {
+      arrNums.push(i);
+    }
+    cardsState.cards.forEach(card => {
+      let randomIndex = Math.floor(Math.random() * arrNums.length);
+      let displayIndex = arrNums[randomIndex];
+      let firstHalf = arrNums.slice(0, randomIndex);
+      let secondHalf = arrNums.slice(randomIndex + 1, arrNums.length);
+      arrNums = [...firstHalf, ...secondHalf];
+
+      displayCards[displayIndex] = card;
     });
-    setQuizCards(cards);
+    debugger;
+    setQuizCards(displayCards);
+    getFilteredCards();
   }, [cardsState.cards]);
 
-  function back(card) {
-    let keys = [];
-    Object.keys(quizCards).push(keys);
+  useEffect(() => {
+    let allCards = quizCards;
 
-    let prev_card_index = keys.indexOf(card.card_id) - 1;
+    if (filteredQuizCards.length <= 1) {
+      setFilteredQuizCards(allCards);
+      setQuizComplete(true);
+      setTimeout(() => {
+        setQuizComplete(false);
+      }, 5000);
+    }
+  }, [cardIndex]);
 
-    let prev_card_id = keys[prev_card_index];
-
-    prev_card = quizCards[prev_card_id];
-
-    setQuizCards({
-      ...quizCards,
-      [prev_card_id]: {card, viewed: false},
-    });
+  function back() {
+    while (filteredQuizCards[cardIndex - 1] !== undefined) {
+      setCardIndex(cardIndex - 1);
+    }
   }
 
-  function next(card) {
-    setQuizCards({...quizCards, [card.card_id]: {card, visited: true}});
+  function next() {
+    while (filteredQuizCards[cardIndex - 1] !== undefined) {
+      setCardIndex(cardIndex + 1);
+    }
   }
 
   function updateQuizResults(name) {
@@ -57,79 +72,69 @@ export default function QuizMode({getHooks}) {
         quiz_results = 3;
     }
 
-    let currentCard = notViewed[0];
+    let currentCard = quizCards[cardIndex];
     currentCard.quiz_results = quiz_results;
     currentCard.last_viewed = moment()
       .unix()
       .toString();
 
-    // notViewed[0] = currentCard;
     dispatch(updateCard(currentCard, usersState.user.uid));
   }
 
-  function getCardsNotViewed() {
-    const arr = Object.values(quizCards).filter(({card, viewed}) => {
-      let if1 = moment().diff(moment.unix(card.last_viewed), 'minutes');
-      let if2 = moment().diff(moment.unix(card.last_viewed), 'hours');
-      debugger;
+  function getFilteredCards() {
+    let filteredCards = quizCards;
 
-      if (viewed) {
-        return false;
-      } else if (
-        !card.quiz_results ||
-        card.quiz_results === 0 ||
-        card.quiz_results === 1
-      ) {
-        return true;
-      } else if (card.quiz_results === 2) {
-        if (moment().diff(moment.unix(card.last_viewed), 'minutes') > 10) {
-          return true;
+    Object.keys(filteredCards).map(key => {
+      let currentCard = filteredCards[key];
+
+      let if1 = moment().diff(moment.unix(currentCard.last_viewed), 'minutes');
+      let if2 = moment().diff(moment.unix(currentCard.last_viewed), 'hours');
+
+      if (!currentCard.quiz_results) {
+        return;
+      } else if (currentCard.quiz_results === 2) {
+        if (
+          moment().diff(moment.unix(currentCard.last_viewed), 'minutes') > 10
+        ) {
+          return;
         } else {
-          return false;
+          delete filteredCards[key];
         }
-      } else if (card.quiz_results === 3) {
-        if (moment().diff(moment.unix(card.last_viewed), 'hours') > 4) {
-          return true;
+      } else if (currentCard.quiz_results === 3) {
+        if (moment().diff(moment.unix(currentCard.last_viewed), 'hours') > 4) {
+          return;
         } else {
-          return false;
+          delete filteredCards[key];
         }
       }
     });
 
-    if (arr.length === 0) {
-      setQuizComplete(true);
-      setTimeout(() => {
-        setQuizComplete(false);
-      }, 5000);
-      return cardsState.cards.filter(card => {
-        return card.deck_id === deck.deck_id;
-      });
-    }
-    return arr;
+    setFilteredQuizCards(filteredCards);
   }
-
-  const filteredCard = getCardsNotViewed()[0];
 
   return (
     <Container data-testid={'quiz-mode-container'}>
-      <TitleText text={deck.deck_name} color={'#2A685B'} />
-      {notViewed.length > 0 && (
+      {/* <TitleText text={deck.deck_name} color={'#2A685B'} /> */}
+      {/* {Object.keys(filteredQuizCards).length > 0 && (
         <>
           {quizComplete && <h1>Quiz Complete!</h1>}
           <FlashCardContainer data-testid={'flash-card-container'}>
-            <BigFlashCard flashCard={filteredCard}> </BigFlashCard>
+            <BigFlashCard flashCard={filteredQuizCards[cardIndex]}>
+              {' '}
+            </BigFlashCard>
           </FlashCardContainer>
         </>
-      )}
+      )} */}
+
       <ButtonContainer data-testid={'button-card-container'}>
         <Button>
-          <SvgBack onClick={() => back(filteredCard)} />
+          <SvgBack onClick={() => back()} />
         </Button>
         <Button onClick={() => updateQuizResults('Nope')}>Nope</Button>
         <Button onClick={() => updateQuizResults('Sort of')}>Sort of</Button>
         <Button onClick={() => updateQuizResults('100%')}>100%</Button>
         <Button>
-          <SvgNext onClick={() => next(filteredCard)} />
+          <SvgNext onClick={() => next()} />
         </Button>
       </ButtonContainer>
     </Container>
