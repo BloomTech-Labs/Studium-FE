@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import {NavBar, Footer, RouteContainer} from './components';
+import {Footer, NavBar, RouteContainer} from './components';
 import {SvgBrainPic} from './svgComponents';
 import PropTypes from 'prop-types';
 import {Alert} from 'antd';
 import {useAuthStateChange} from './customHooks/useAuthStateChange.js';
-import {THEMING_VARIABLES, THEMING_VALUES} from './customHooks/themingRules.js';
+import {THEMING_VALUES, THEMING_VARIABLES} from './customHooks/themingRules.js';
 import theming from 'styled-theming';
 import {useTheming} from './customHooks/useTheming.js';
 
@@ -15,7 +15,8 @@ import {useTheming} from './customHooks/useTheming.js';
  * @component
  * @example return (<App />);
  */
-export default function App({getHooks}) {
+export default function App ({getHooks}) {
+  debugger;
   const [alertMessage, setAlert] = useState('');
   const {theme, usersState} = getHooks();
   const getValue = useTheming();
@@ -73,9 +74,9 @@ export default function App({getHooks}) {
           }}
         />
       )}
-      <NavBar getHooks={getHooks} />
-      <RouteContainer getHooks={getHooks} />
-      <Footer getHooks={getHooks} />
+      <NavBar getHooks={getHooks}/>
+      <RouteContainer getHooks={getHooks}/>
+      <Footer getHooks={getHooks}/>
     </StyledApp>
   );
 }
