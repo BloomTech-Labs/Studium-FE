@@ -9,44 +9,39 @@ import moment from 'moment';
 
 export default function QuizMode({getHooks}) {
   const {cardsState, pathPushedState, dispatch, usersState} = getHooks();
-  const [notViewed, setNotViewed] = useState([]);
-  const [viewed, setViewed] = useState([]);
+  const [quizCards, setQuizCards] = useState({});
   const [quizComplete, setQuizComplete] = useState(false);
   const deck = pathPushedState;
 
   useEffect(() => {
-    let arrayii = cardsState.cards.filter(card => {
-      return (
-        card.deck_id === deck.deck_id &&
-        !viewed.includes(card) &&
-        !notViewed.includes(card)
-      );
+    const cards = {};
+    cardsState.forEach(card => {
+      cards[card.card_id] = {
+        card,
+        visitied: quizCards[card.card_id].visited || false,
+      };
     });
-    setNotViewed([...arrayii, ...notViewed]);
+    setQuizCards(cards);
   }, [cardsState.cards]);
 
-  //  useEffect(() => {
-  //
-  //    let newArray = cardsState.cards.filter(card => {
-  //      return card.deck_id === deck.deck_id && !notViewed.includes(card);
-  //    });
-  //    setNotViewed([...newArray, ...notViewed]);
-  //  }, [cardsState.cards]);
+  function back(card) {
+    let keys = [];
+    Object.keys(quizCards).push(keys);
 
-  function back() {
-    if (viewed.length > 0) {
-      let lastCard = viewed.pop();
-      setNotViewed([lastCard, ...notViewed]);
-      setViewed([...viewed]);
-    }
+    let prev_card_index = keys.indexOf(card.card_id) - 1;
+
+    let prev_card_id = keys[prev_card_index];
+
+    prev_card = quizCards[prev_card_id];
+
+    setQuizCards({
+      ...quizCards,
+      [prev_card_id]: {card, viewed: false},
+    });
   }
 
-  function next() {
-    if (notViewed.length > 1) {
-      let firstCard = notViewed.shift();
-      setNotViewed([...notViewed]);
-      setViewed([...viewed, firstCard]);
-    }
+  function next(card) {
+    setQuizCards({...quizCards, [card.card_id]: {card, visited: true}});
   }
 
   function updateQuizResults(name) {
@@ -73,11 +68,14 @@ export default function QuizMode({getHooks}) {
   }
 
   function getCardsNotViewed() {
-    const arr = notViewed.filter(card => {
+    const arr = Object.values(quizCards).filter(({card, viewed}) => {
       let if1 = moment().diff(moment.unix(card.last_viewed), 'minutes');
       let if2 = moment().diff(moment.unix(card.last_viewed), 'hours');
       debugger;
-      if (
+
+      if (viewed) {
+        return false;
+      } else if (
         !card.quiz_results ||
         card.quiz_results === 0 ||
         card.quiz_results === 1
@@ -97,6 +95,7 @@ export default function QuizMode({getHooks}) {
         }
       }
     });
+
     if (arr.length === 0) {
       setQuizComplete(true);
       setTimeout(() => {
@@ -109,6 +108,8 @@ export default function QuizMode({getHooks}) {
     return arr;
   }
 
+  const filteredCard = getCardsNotViewed()[0];
+
   return (
     <Container data-testid={'quiz-mode-container'}>
       <TitleText text={deck.deck_name} color={'#2A685B'} />
@@ -116,19 +117,19 @@ export default function QuizMode({getHooks}) {
         <>
           {quizComplete && <h1>Quiz Complete!</h1>}
           <FlashCardContainer data-testid={'flash-card-container'}>
-            <BigFlashCard flashCard={getCardsNotViewed()[0]}> </BigFlashCard>
+            <BigFlashCard flashCard={filteredCard}> </BigFlashCard>
           </FlashCardContainer>
         </>
       )}
       <ButtonContainer data-testid={'button-card-container'}>
         <Button>
-          <SvgBack onClick={() => back()} />
+          <SvgBack onClick={() => back(filteredCard)} />
         </Button>
         <Button onClick={() => updateQuizResults('Nope')}>Nope</Button>
         <Button onClick={() => updateQuizResults('Sort of')}>Sort of</Button>
         <Button onClick={() => updateQuizResults('100%')}>100%</Button>
         <Button>
-          <SvgNext onClick={() => next()} />
+          <SvgNext onClick={() => next(filteredCard)} />
         </Button>
       </ButtonContainer>
     </Container>
