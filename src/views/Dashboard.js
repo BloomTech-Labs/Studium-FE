@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import {PreviewDeckCards, SearchBar, TitleText,} from '../components';
+import {PreviewDeckCards, SearchBar, TitleText} from '../components';
 import PropTypes from 'prop-types';
 import {useAppHooks} from '../customHooks/useAppHooks.js';
 import myPic from '../images/Group.png';
-import {MEDIA_QUERIES, THEME,} from '../utilities/constants.js';
+import {MEDIA_QUERIES, THEME} from '../utilities/constants.js';
 import {useTheming} from '../customHooks/useTheming.js';
 
 const decks = [
@@ -109,32 +109,28 @@ export const Dashboard = props => {
         />
       </StyledSearchBar>
       <StyledDeckHolder>
-        <PreviewDeckCards text={'Create Deck'} getHooks={props.getHooks}
-                          onClick={() => deckClicked()}/>
-        <StyledCard
+        <PreviewDeckCards
           text={'Create Deck'}
-          getHooks={getHooks}
+          getHooks={props.getHooks}
           onClick={() => deckClicked()}
           style={{
-            width: '177px',
-            height: '231px',
+            width: '167px',
+            height: '221px',
           }}
         />
 
         {decks.map(deck => {
           return (
-            <PreviewDeckCards getHooks={props.getHooks}>
-              <StyledCard
-                key={deck.deck_id}
-                deck={deck}
-                getHooks={getHooks}
-                onClick={e => deckClicked(deck)}
-                style={{
-                  width: '167px',
-                  height: '221px',
-                }}
-              />
-            </PreviewDeckCards>
+            <StyledCard
+              key={deck.deck_id}
+              deck={deck}
+              getHooks={getHooks}
+              onClick={e => deckClicked(deck)}
+              style={{
+                width: '167px',
+                height: '221px',
+              }}
+            />
           );
         })}
       </StyledDeckHolder>

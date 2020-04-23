@@ -44,28 +44,26 @@ export const PreviewDeckCards = ({
   card,
   ...props
 }) => {
-  
   const {appView} = getHooks();
   return (
-    <StyledAntdCard
-      type={type}
-      size={size}
-      block={block && 'block'}
-      {...props}
-    >
-      {(!deck && cardType === 'deck' || !card && cardType === 'card') && (
+    <StyledAntdCard type={type} size={size} block={block && 'block'} {...props}>
+      {((!deck && cardType === 'deck') || (!card && cardType === 'card')) && (
         <p className={'deck-text'}>
           Add {cardType === 'deck' ? 'Deck' : 'Card'}
         </p>
       )}
-      {(!deck && cardType === 'deck' || !card && cardType === 'card') &&
-      <CreateButton width={appView === APP_VIEW_DESKTOP ? '55px' : '49PX'}
-                    height={appView === APP_VIEW_DESKTOP ? '55px' : '49PX'}/>}
-      {(deck || card) &&
-      <p className={'deck-text'}>{cardType === 'deck' ? deck.deck_name :
-        card.question}</p>}
+      {((!deck && cardType === 'deck') || (!card && cardType === 'card')) && (
+        <CreateButton
+          width={appView === APP_VIEW_DESKTOP ? '55px' : '49PX'}
+          height={appView === APP_VIEW_DESKTOP ? '55px' : '49PX'}
+        />
+      )}
+      {(deck || card) && (
+        <p className={'deck-text'}>
+          {cardType === 'deck' ? deck.deck_name : card.question}
+        </p>
+      )}
       {selected && <h1>This card is selected.</h1>}
-    
     </StyledAntdCard>
   );
 };
@@ -95,7 +93,7 @@ const StyledAntdCard = styled(Card)`
       justify-content: center;
 
       > p.deck-text {
-      word-break: break-word;
+        word-break: break-word;
         text-overflow: hidden;
         overflow-x: hidden;
         font-weight: bold;

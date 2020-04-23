@@ -39,7 +39,7 @@ export const NavBar = ({getHooks}) => {
   } = getHooks('Nav Bar');
   const [menuOpen, setMenuOpen] = useState(false);
   const [avatarUrl, setAvatarUrl] = useState('');
-  //const logger = getLogger(NAV_BAR_DEBUG_NAME);
+  // const logger = getLogger(NAV_BAR_DEBUG_NAME);
   const {compareContext, printPrevContext} = useComparPrevContext(
     NAV_BAR_DEBUG_NAME,
     {
