@@ -15,6 +15,7 @@ import {
   THEMING_VARIABLES,
 } from '../customHooks/themingRules.js';
 import {CardEditDeleteIcons} from '../components/Icon/CardEditDeleteIcons';
+import SynapsModal from '../components/Modal/Modal';
 
 /**
  * Preview Deck
@@ -34,6 +35,7 @@ export const PreviewDeck = ({getHooks}) => {
 
   const [cardsSelected, setCardsSelected] = useState({});
   const [selectMode, setSelectMode] = useState(false);
+  const [modalSelected, setModalClicked] = useState(false);
 
   useEffect(() => {
     if (pathPushedState === undefined) {
@@ -65,7 +67,9 @@ export const PreviewDeck = ({getHooks}) => {
   };
 
   const modalClicked = () => {
-    
+    this.setState({
+      visible: true,
+    })
   }
 
   return (

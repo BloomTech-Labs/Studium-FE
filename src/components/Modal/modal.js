@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import {SynapsButton} from '../components';
 import {Button, Modal} from 'antd';
 
-
-export const SynapsModal = ({
+const SynapsModal = ({
+    visible,
     title,
     centered,
     onOk,
@@ -22,6 +22,7 @@ export const SynapsModal = ({
         onCancel={onCancel}
         zIndex={zIndex}
         mask={mask}
+        visible={visible}
         {...props}
         >
         {title}
@@ -37,8 +38,10 @@ SynapsModal.propTypes = {
     centered: PropTypes.bool,
     mask: PropTypes.bool,
     icon: PropTypes.string,    
+    visible: PropTypes.bool
 }
 
 const StyledAntdModal = styled(Modal)`
 
 `
+export default SynapsModal;
