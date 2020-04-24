@@ -13,6 +13,7 @@ export const UPLOAD_PHOTO = 'UPLOAD_PHOTO';
  * @returns {function}
  */
 export const uploadImage = (file, uid) => dispatch => {
+  debugger;
   dispatch({type: UPLOADING_PHOTO_INIT, payload: file});
   console.log('|||file from uploadImage|||', file);
   console.log('|||userId from uploadImage|||', uid);

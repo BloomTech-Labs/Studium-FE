@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import {Upload, message} from 'antd';
+import {message, Upload} from 'antd';
 import {uploadImage} from '../../actions/photo';
 import {UploadIcon} from './UploadIcon.js';
 import * as PropTypes from 'prop-types';
@@ -15,6 +15,7 @@ import {useAppHooks} from '../../customHooks/useAppHooks.js';
  * )
  */
 export const Uploader = props => {
+  debugger;
   /**
    * @type PhotoReducerState
    */
@@ -22,6 +23,7 @@ export const Uploader = props => {
   const [photoObject, setPhotoObject] = useState(false);
 
   useEffect(() => {
+    debugger;
     Object.values(photosState.photos).forEach(photoObject => {
       if (photoObject.id === props.id) {
         setPhotoObject(photoObject);
@@ -30,11 +32,13 @@ export const Uploader = props => {
   }, [photosState, props.id]);
 
   const customRequest = file => {
+    debugger;
     file.id = props.id;
-    dispatch(uploadImage(file));
+    dispatch(uploadImage(file, usersState.user.uid));
   };
 
   const getUrl = () => {
+    debugger;
     if (photoObject) {
       if (photoObject.file.uid) {
         return (
