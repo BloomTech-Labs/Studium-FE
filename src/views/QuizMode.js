@@ -30,7 +30,6 @@ export default function QuizMode({getHooks}) {
 
       displayCards[displayIndex] = card;
     });
-    debugger;
     setQuizCards(displayCards);
 
     //BELOW REPLACES PREVIOUS GETFILTEREDCARDS() FUNCTION
@@ -60,8 +59,17 @@ export default function QuizMode({getHooks}) {
         }
       }
     });
-    debugger;
     setFilteredQuizCards(filteredCards);
+
+    let localIndexNum = cardIndex;
+
+    while (
+      filteredQuizCards[cardIndex] === undefined &&
+      cardIndex + 1 < Object.keys(filteredQuizCards).length
+    ) {
+      localIndexNum = localIndexNum + 1;
+    }
+    setCardIndex(localIndexNum);
   }, [cardsState.cards]);
 
   useEffect(() => {
@@ -77,12 +85,15 @@ export default function QuizMode({getHooks}) {
   }, [cardsState.cards, cardIndex]);
 
   function back() {
+    let localIndexNum = cardIndex;
+
     while (
       filteredQuizCards[cardIndex - 1] === undefined &&
-      cardIndex - 2 >= 0
+      cardIndex - 1 >= 0
     ) {
-      setCardIndex(cardIndex - 1);
+      localIndexNum = localIndexNum - 1;
     }
+    setCardIndex(localIndexNum);
 
     if (cardIndex - 1 >= 0) {
       setCardIndex(cardIndex - 1);
@@ -91,12 +102,16 @@ export default function QuizMode({getHooks}) {
   }
 
   function next() {
+    let localIndexNum = cardIndex;
+    let nextIndexInWhile = filteredQuizCards[cardIndex + 1];
+    let nextIndexPlusTwo = cardIndex + 2;
     while (
       filteredQuizCards[cardIndex + 1] === undefined &&
-      cardIndex + 2 < Object.keys(filteredQuizCards).length
+      cardIndex + 1 < Object.keys(filteredQuizCards).length
     ) {
-      setCardIndex(cardIndex + 1);
+      localIndexNum = localIndexNum + 1;
     }
+    setCardIndex(localIndexNum);
 
     if (cardIndex + 1 < Object.keys(filteredQuizCards).length) {
       setCardIndex(cardIndex + 1);
@@ -124,21 +139,32 @@ export default function QuizMode({getHooks}) {
       .toString();
 
     dispatch(updateCard(currentCard, usersState.user.uid));
+
+    let localIndexNum = cardIndex;
+
+    while (
+      filteredQuizCards[cardIndex] === undefined &&
+      cardIndex + 1 < Object.keys(filteredQuizCards).length
+    ) {
+      localIndexNum = localIndexNum + 1;
+    }
+    setCardIndex(localIndexNum);
   }
 
   return (
     <Container data-testid={'quiz-mode-container'}>
       <TitleText text={deck.deck_name} color={'#2A685B'} />
-      {Object.keys(filteredQuizCards).length > 0 && (
-        <>
-          {quizComplete && <h1>Quiz Complete!</h1>}
-          <FlashCardContainer data-testid={'flash-card-container'}>
-            <BigFlashCard flashCard={filteredQuizCards[cardIndex]}>
-              {' '}
-            </BigFlashCard>
-          </FlashCardContainer>
-        </>
-      )}
+      {Object.keys(filteredQuizCards).length > 0 &&
+        Object.keys(filteredQuizCards)[0] && (
+          <>
+            {quizComplete && <h1>Quiz Complete!</h1>}
+            <FlashCardContainer data-testid={'flash-card-container'}>
+              <BigFlashCard flashCard={filteredQuizCards[cardIndex]}>
+                {' '}
+              </BigFlashCard>
+            </FlashCardContainer>
+          </>
+        )}
 
       <ButtonContainer data-testid={'button-card-container'}>
         <Button>
