@@ -51,6 +51,7 @@ export const PreviewDeckCards = ({
       type={type}
       size={size}
       block={block && 'block'}
+      selected={selected}
       {...props}
     >
       {(!deck && cardType === 'deck' || !card && cardType === 'card') && (
@@ -64,13 +65,15 @@ export const PreviewDeckCards = ({
       {(deck || card) &&
       <p className={'deck-text'}>{cardType === 'deck' ? deck.deck_name :
         card.question}</p>}
-      {selected && <h1>This card is selected.</h1>}
+      {selected && <h1> </h1>}
     
     </StyledAntdCard>
   );
 };
 
 const StyledAntdCard = styled(Card)`
+
+
   && {
     position: relative;
     display: flex;
@@ -86,6 +89,11 @@ const StyledAntdCard = styled(Card)`
     font-size: 13px;
     margin-left: 9px;
     margin-right: 9px;
+    
+    &.ant-card.ant-card-bordered.ant-card-type-inner {
+      background-color: ${props => props.selected === (true) ?  "aliceblue" : "white"};
+    }
+    
 
     > .ant-card-body {
       padding: 10px;
