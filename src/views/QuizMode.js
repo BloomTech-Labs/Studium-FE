@@ -32,57 +32,9 @@ export default function QuizMode({getHooks}) {
     });
     debugger;
     setQuizCards(displayCards);
-    getFilteredCards();
-  }, [cardsState.cards]);
 
-  useEffect(() => {
-    let allCards = quizCards;
-
-    if (filteredQuizCards.length <= 1) {
-      setFilteredQuizCards(allCards);
-      setQuizComplete(true);
-      setTimeout(() => {
-        setQuizComplete(false);
-      }, 5000);
-    }
-  }, [cardIndex]);
-
-  function back() {
-    while (filteredQuizCards[cardIndex - 1] !== undefined) {
-      setCardIndex(cardIndex - 1);
-    }
-  }
-
-  function next() {
-    while (filteredQuizCards[cardIndex - 1] !== undefined) {
-      setCardIndex(cardIndex + 1);
-    }
-  }
-
-  function updateQuizResults(name) {
-    let quiz_results;
-    switch (name) {
-      case 'Nope':
-        quiz_results = 1;
-        break;
-      case 'Sort of':
-        quiz_results = 2;
-        break;
-      case '100%':
-        quiz_results = 3;
-    }
-
-    let currentCard = quizCards[cardIndex];
-    currentCard.quiz_results = quiz_results;
-    currentCard.last_viewed = moment()
-      .unix()
-      .toString();
-
-    dispatch(updateCard(currentCard, usersState.user.uid));
-  }
-
-  function getFilteredCards() {
-    let filteredCards = quizCards;
+    //BELOW REPLACES PREVIOUS GETFILTEREDCARDS() FUNCTION
+    let filteredCards = displayCards;
 
     Object.keys(filteredCards).map(key => {
       let currentCard = filteredCards[key];
@@ -108,14 +60,76 @@ export default function QuizMode({getHooks}) {
         }
       }
     });
-
+    debugger;
     setFilteredQuizCards(filteredCards);
+  }, [cardsState.cards]);
+
+  useEffect(() => {
+    let allCards = quizCards;
+
+    if (filteredQuizCards.length < 1) {
+      setFilteredQuizCards(allCards);
+      setQuizComplete(true);
+      setTimeout(() => {
+        setQuizComplete(false);
+      }, 5000);
+    }
+  }, [cardsState.cards, cardIndex]);
+
+  function back() {
+    while (
+      filteredQuizCards[cardIndex - 1] === undefined &&
+      cardIndex - 2 >= 0
+    ) {
+      setCardIndex(cardIndex - 1);
+    }
+
+    if (cardIndex - 1 >= 0) {
+      setCardIndex(cardIndex - 1);
+    }
+    debugger;
+  }
+
+  function next() {
+    while (
+      filteredQuizCards[cardIndex + 1] === undefined &&
+      cardIndex + 2 < Object.keys(filteredQuizCards).length
+    ) {
+      setCardIndex(cardIndex + 1);
+    }
+
+    if (cardIndex + 1 < Object.keys(filteredQuizCards).length) {
+      setCardIndex(cardIndex + 1);
+    }
+    debugger;
+  }
+
+  function updateQuizResults(name) {
+    let quiz_results;
+    switch (name) {
+      case 'Nope':
+        quiz_results = 1;
+        break;
+      case 'Sort of':
+        quiz_results = 2;
+        break;
+      case '100%':
+        quiz_results = 3;
+    }
+
+    let currentCard = quizCards[cardIndex];
+    currentCard.quiz_results = quiz_results;
+    currentCard.last_viewed = moment()
+      .unix()
+      .toString();
+
+    dispatch(updateCard(currentCard, usersState.user.uid));
   }
 
   return (
     <Container data-testid={'quiz-mode-container'}>
-      {/* <TitleText text={deck.deck_name} color={'#2A685B'} /> */}
-      {/* {Object.keys(filteredQuizCards).length > 0 && (
+      <TitleText text={deck.deck_name} color={'#2A685B'} />
+      {Object.keys(filteredQuizCards).length > 0 && (
         <>
           {quizComplete && <h1>Quiz Complete!</h1>}
           <FlashCardContainer data-testid={'flash-card-container'}>
@@ -124,7 +138,7 @@ export default function QuizMode({getHooks}) {
             </BigFlashCard>
           </FlashCardContainer>
         </>
-      )} */}
+      )}
 
       <ButtonContainer data-testid={'button-card-container'}>
         <Button>
@@ -140,6 +154,7 @@ export default function QuizMode({getHooks}) {
     </Container>
   );
 }
+
 const Button = styled.div``;
 
 const FlashCardContainer = styled.div`
