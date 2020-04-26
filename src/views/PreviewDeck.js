@@ -48,6 +48,13 @@ export const PreviewDeck = ({getHooks}) => {
     }
   };
   
+  const unSelected = () => {
+    if(selectMode){
+      setCardsSelected([]);
+    }
+    setSelectMode(!selectMode);
+  }
+
   const getAlert = () => {
     if(cardsState.error){
       return <Alert
@@ -70,7 +77,7 @@ export const PreviewDeck = ({getHooks}) => {
                      onSearch={() => {
                      }}/>
         </SearchContainer>
-        <Selected selected = {selectMode} onClick={() => setSelectMode(!selectMode)}>
+        <Selected selected = {selectMode} onClick={unSelected}>
             {selectMode === (false) ? "Select" : "Cancel" }
         </Selected>
       </TopContainer>
