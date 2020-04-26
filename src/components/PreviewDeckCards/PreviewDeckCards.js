@@ -91,7 +91,7 @@ const StyledAntdCard = styled(Card)`
     margin-right: 9px;
     
     &.ant-card.ant-card-bordered.ant-card-type-inner {
-      background-color: ${props => props.selected === (true) ?  "aliceblue" : "white"};
+      background-color: ${props => props.selected === (true) ?  "#4CB69F" : "white"};
     }
     
 
