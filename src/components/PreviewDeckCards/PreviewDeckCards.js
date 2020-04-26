@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import {Card, Icon} from 'antd';
+import {Card} from 'antd';
 import {CreateButton} from '../Button/CreateButton.js';
 import {APP_VIEW_DESKTOP} from '../../utilities/constants.js';
 
@@ -44,7 +44,7 @@ export const PreviewDeckCards = ({
   card,
   ...props
 }) => {
-  
+
   const {appView} = getHooks();
   return (
     <StyledAntdCard
@@ -65,7 +65,7 @@ export const PreviewDeckCards = ({
       <p className={'deck-text'}>{cardType === 'deck' ? deck.deck_name :
         card.question}</p>}
       {selected && <h1>This card is selected.</h1>}
-    
+
     </StyledAntdCard>
   );
 };

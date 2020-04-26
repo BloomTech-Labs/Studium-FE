@@ -3,16 +3,12 @@ import styled from 'styled-components';
 import theming from 'styled-theming';
 import {getAllCardsForDeck} from '../actions/cardActions.js';
 import {
-  TitleText,
-  PreviewDeckCards,
-  SearchBar,
-  SynapsButton,
+  PreviewDeckCards, SearchBar, SynapsButton, TitleText,
 } from '../components';
 import {APP_PATHS, THEME} from '../utilities/constants.js';
 import {Alert, Icon} from 'antd';
 import {
-  THEMING_VALUES,
-  THEMING_VARIABLES,
+  THEMING_VALUES, THEMING_VARIABLES,
 } from '../customHooks/themingRules.js';
 import {CardEditDeleteIcons} from '../components/Icon/CardEditDeleteIcons';
 import {SynapsModal} from '../components/Modal/SynapsModal.js';
@@ -61,34 +57,27 @@ export const PreviewDeck = ({getHooks}) => {
   const getAlert = () => {
     if (cardsState.error) {
       return (
-        <Alert message={cardsState.error.message} type="warning" closable />
+        <Alert message={cardsState.error.message} type="warning" closable/>
       );
     }
   };
 
-  const modalClicked = (visible) => {
     if(!modalSelected) {
       return 
     }
   }
 
-  // const modalClicked = (visible) => {
-  //   this.setModalClicked({
-  //     visible: true,
-  //   })
-  // }
-
-  return (
     <StyledPreviewDeck data-testid={'preview-deck-container'}>
       {getAlert()}
       <TopContainer>
-        <StyledIconLeft type="left" />
+        <StyledIconLeft type="left"/>
         <p onClick={() => changePath(APP_PATHS.DASHBOARD_PATH)}>Back</p>
         <SearchContainer>
           <SearchBar
             height={'23px'}
             borderRadius={'14px'}
-            onSearch={() => {}}
+            onSearch={() => {
+            }}
           />
         </SearchContainer>
         <p
@@ -102,7 +91,7 @@ export const PreviewDeck = ({getHooks}) => {
         text={(pathPushedState && pathPushedState.deck_name) || 'Preview'}
       />
       <StyledPreviewDeckHolder>
-        <PreviewDeckCards cardType={'card'} key={0} getHooks={getHooks} />
+        <PreviewDeckCards cardType={'card'} key={0} getHooks={getHooks}/>
         {Object.values(cardsState.cards)
           .filter(card => card.deck_id === pathPushedState.deck_id)
           .map(card => {
@@ -129,6 +118,7 @@ export const PreviewDeck = ({getHooks}) => {
         text={'Study Deck'}
         type={'secondary'}
       />
+      <SynapsModal/>
     </StyledPreviewDeck>
   );
 };
@@ -165,7 +155,7 @@ const SearchContainer = styled.div`
 const previewDeckHeight = theming(THEMING_VARIABLES.FOOTER, {
   [THEMING_VALUES.VISIBLE]: window.innerHeight - THEME.navBarTopHeight + 'px',
   [THEMING_VALUES.HIDDEN]:
-    window.innerHeight - THEME.navBarTopHeight - 95 + 'px',
+  window.innerHeight - THEME.navBarTopHeight - 95 + 'px',
 });
 
 const marginBottom = theming(THEMING_VARIABLES.FOOTER, {
