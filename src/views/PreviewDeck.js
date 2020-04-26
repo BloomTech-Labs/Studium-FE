@@ -70,8 +70,9 @@ export const PreviewDeck = ({getHooks}) => {
                      onSearch={() => {
                      }}/>
         </SearchContainer>
-        <p onClick={() => setSelectMode(!selectMode)}
-           style={{marginRight: '9%'}}>Select</p>
+        <Selected selected = {selectMode} onClick={() => setSelectMode(!selectMode)}>
+            {selectMode === (false) ? "Select" : "Cancel" }
+        </Selected>
       </TopContainer>
       <TitleText
         text={(pathPushedState && pathPushedState.deck_name) || 'Preview'}
@@ -100,7 +101,10 @@ export const PreviewDeck = ({getHooks}) => {
   
 };
 
-// const PreviewDeckCards = styled.div`
+const Selected = styled.p`
+  color: ${props => props.selected === (true) ? '#14E59E' : "#000"};
+  margin-right: 9%;
+`
 
 // `
 const StudyButton = styled(SynapsButton)`
@@ -121,7 +125,9 @@ display: flex;
 flex-direction: row;
 font-size: 12px;
 width: 100vw;
-
+justify-content: center;
+align-items: center;
+margin-top: 15px;
 `;
 
 const StyledIconLeft = styled(Icon)`
