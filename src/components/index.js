@@ -14,3 +14,4 @@ export * from "./Footer/Footer.js";
 export * from "../routes/RouteContainer.js";
 export * from "./SmallDeckSvg/SmallDeckSvg.js";
 export * from "./ErrorBoundary/ErrorBoundary.js";
+// export * from "./SynapsModal/SynapsModal.js";

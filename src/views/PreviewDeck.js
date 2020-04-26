@@ -15,7 +15,7 @@ import {
   THEMING_VARIABLES,
 } from '../customHooks/themingRules.js';
 import {CardEditDeleteIcons} from '../components/Icon/CardEditDeleteIcons';
-import SynapsModal from '../components/Modal/Modal';
+import {SynapsModal} from '../components/Modal/SynapsModal.js';
 
 /**
  * Preview Deck
@@ -66,11 +66,17 @@ export const PreviewDeck = ({getHooks}) => {
     }
   };
 
-  const modalClicked = () => {
-    this.setState({
-      visible: true,
-    })
+  const modalClicked = (visible) => {
+    if(!modalSelected) {
+      return 
+    }
   }
+
+  // const modalClicked = (visible) => {
+  //   this.setModalClicked({
+  //     visible: true,
+  //   })
+  // }
 
   return (
     <StyledPreviewDeck data-testid={'preview-deck-container'}>
@@ -112,9 +118,10 @@ export const PreviewDeck = ({getHooks}) => {
             );
           })}
       </StyledPreviewDeckHolder>
-      <CardEditDeleteIcons type={'clear'}
-      onClick={() => modalClicked()}
-       />
+      <CardEditDeleteIcons type={'clear'}>
+      <SynapsModal
+      onClick={() => modalClicked()}/>
+      </CardEditDeleteIcons>
       <StudyButton
         onClick={() => changePath(APP_PATHS.QUIZ_MODE, pathPushedState)}
         height={'43px'}
