@@ -187,5 +187,5 @@ overflow-y: scroll;
   flex-wrap: wrap;
   overflow: scroll;
   padding-bottom: 150px;
-  background-image: linear-gradient("red", transparent);
+  // background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
 `;
