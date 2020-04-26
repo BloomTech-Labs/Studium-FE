@@ -101,7 +101,7 @@ export const PreviewDeck = ({getHooks}) => {
       </StyledPreviewDeckHolder>
       <StudyButton
         onClick={() => changePath(APP_PATHS.QUIZ_MODE, pathPushedState)}
-        height={'43px'} width={'88%'} text={'Study Deck'}
+        height={'73px'} width={'90%'} text={'Study Deck'}
         type={'secondary'}/>
     </StyledPreviewDeck>
   );
@@ -117,13 +117,15 @@ const Selected = styled.p`
 const StudyButton = styled(SynapsButton)`
 box-sizing: border-box;
 align-self: center;
-font-size: 24px;
 border-radius: 5px;
 margin-top: 20px;
 margin-bottom: 20px;
   > span {
-  margin-top: 20px;
   margin-bottom: 20px;
+  margin-top:15px;
+  font-weight: bold;
+  color: white;
+  font-size:32px;
   }
 `;
 
