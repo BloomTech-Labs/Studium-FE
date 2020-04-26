@@ -103,6 +103,7 @@ export const PreviewDeck = ({getHooks}) => {
         onClick={() => changePath(APP_PATHS.QUIZ_MODE, pathPushedState)}
         height={'73px'} width={'90%'} text={'Study Deck'}
         type={'secondary'}/>
+        
     </StyledPreviewDeck>
   );
   
@@ -113,7 +114,14 @@ const Selected = styled.p`
   margin-right: 9%;
 `
 
-// `
+const Blur = styled.div`
+position: absolute;
+top: -80px;
+min-width: 100vw;
+height: 80px;
+background-image: linear-gradient(transparent, #ffffff8c);
+`;
+
 const StudyButton = styled(SynapsButton)`
 box-sizing: border-box;
 align-self: center;
@@ -179,4 +187,5 @@ overflow-y: scroll;
   flex-wrap: wrap;
   overflow: scroll;
   padding-bottom: 150px;
+  background-image: linear-gradient("red", transparent);
 `;
