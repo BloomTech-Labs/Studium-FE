@@ -126,6 +126,7 @@ export default function QuizMode({getHooks}) {
       let nextCard = filteredQuizCards[localIndex + 1];
       while (
         nextCard === undefined &&
+        prevCard === undefined &&
         localIndex + 1 < Object.keys(filteredQuizCards).length
       ) {
         localIndex = localIndex + 1;
@@ -170,6 +171,7 @@ export default function QuizMode({getHooks}) {
 
     if (
       currentCard === undefined &&
+      nextCard === undefined &&
       Object.keys(filteredQuizCards).length > 0
     ) {
       let prevCard = filteredQuizCards[localIndex - 1];
