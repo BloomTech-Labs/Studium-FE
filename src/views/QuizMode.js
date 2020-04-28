@@ -71,10 +71,7 @@ export default function QuizMode({getHooks}) {
     let currentCard = filteredCards[cardIndex];
     while (
       currentCard === undefined &&
-      localIndexNum + 1 <=
-        (Math.max(...Object.keys(filteredQuizCards))
-          ? Math.max(...Object.keys(filteredCards))
-          : Math.max(...Object.keys(filteredQuizCards)))
+      localIndexNum + 1 <= Math.max(...Object.keys(filteredCards))
     ) {
       localIndexNum = localIndexNum + 1;
     }
@@ -97,8 +94,8 @@ export default function QuizMode({getHooks}) {
 
   function back() {
     let localIndex = cardIndex;
-    let currentCard = filteredQuizCards[cardIndex];
-    let prevCard = filteredQuizCards[cardIndex - 1];
+    let currentCard = filteredQuizCards[localIndex];
+    let prevCard = filteredQuizCards[localIndex - 1];
 
     while (prevCard === undefined && localIndex - 1 >= 0) {
       localIndex = localIndex - 1;
@@ -175,15 +172,12 @@ export default function QuizMode({getHooks}) {
       Object.keys(filteredQuizCards).length > 0
     ) {
       let prevCard = filteredQuizCards[localIndex - 1];
-      while (
-        prevCard === undefined &&
-        localIndex - 1 <= Math.max(...Object.keys(filteredQuizCards))
-      ) {
+      while (prevCard === undefined && localIndex - 1 <= 0) {
         localIndex = localIndex - 1;
       }
 
       let lengthIf = Object.keys(filteredQuizCards).length;
-      if (localIndex - 1 <= Math.max(...Object.keys(filteredQuizCards))) {
+      if (localIndex - 1 <= 0) {
         localIndex = localIndex - 1;
       }
       setCardIndex(localIndex);
