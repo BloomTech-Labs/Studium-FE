@@ -71,10 +71,10 @@ export default function QuizMode({getHooks}) {
     let currentCard = filteredCards[cardIndex];
     while (
       currentCard === undefined &&
-      localIndexNum + 1 <
-        (Object.keys(filteredQuizCards).length < 1
-          ? Object.keys(filteredCards).length
-          : Object.keys(filteredQuizCards).length)
+      localIndexNum + 1 <=
+        (Math.max(...Object.keys(filteredQuizCards)) < 1
+          ? Math.max(...Object.keys(filteredCards))
+          : Math.max(...Object.keys(filteredQuizCards)))
     ) {
       localIndexNum = localIndexNum + 1;
     }
@@ -127,13 +127,13 @@ export default function QuizMode({getHooks}) {
       while (
         nextCard === undefined &&
         prevCard === undefined &&
-        localIndex + 1 < Object.keys(filteredQuizCards).length
+        localIndex + 1 <= Math.max(...Object.keys(filteredQuizCards))
       ) {
         localIndex = localIndex + 1;
       }
 
       let lengthIf = Object.keys(filteredQuizCards).length;
-      if (localIndex + 1 < Object.keys(filteredQuizCards).length) {
+      if (localIndex + 1 <= Math.max(...Object.keys(filteredQuizCards))) {
         localIndex = localIndex + 1;
       }
       setCardIndex(localIndex);
@@ -150,13 +150,13 @@ export default function QuizMode({getHooks}) {
     let nextIndexPlusTwo = cardIndex + 2;
     while (
       nextCard === undefined &&
-      localIndex + 1 < Object.keys(filteredQuizCards).length
+      localIndex + 1 <= Math.max(...Object.keys(filteredQuizCards))
     ) {
       localIndex = localIndex + 1;
     }
 
     let lengthIf = Object.keys(filteredQuizCards).length;
-    if (localIndex + 1 < Object.keys(filteredQuizCards).length) {
+    if (localIndex + 1 <= Math.max(...Object.keys(filteredQuizCards))) {
       localIndex = localIndex + 1;
     }
     setCardIndex(localIndex);
@@ -177,13 +177,13 @@ export default function QuizMode({getHooks}) {
       let prevCard = filteredQuizCards[localIndex - 1];
       while (
         prevCard === undefined &&
-        localIndex - 1 < Object.keys(filteredQuizCards).length
+        localIndex - 1 <= Math.max(...Object.keys(filteredQuizCards))
       ) {
         localIndex = localIndex - 1;
       }
 
       let lengthIf = Object.keys(filteredQuizCards).length;
-      if (localIndex - 1 < Object.keys(filteredQuizCards).length) {
+      if (localIndex - 1 <= Math.max(...Object.keys(filteredQuizCards))) {
         localIndex = localIndex - 1;
       }
       setCardIndex(localIndex);
