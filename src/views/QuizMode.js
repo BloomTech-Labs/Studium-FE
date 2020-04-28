@@ -15,11 +15,13 @@ export default function QuizMode({getHooks}) {
   const [quizComplete, setQuizComplete] = useState(false);
   const deck = pathPushedState;
 
-  // useEffect(() => {
-  //   if(quizComplete) {
-
-  //   }
-  // })
+  useEffect(() => {
+    if (quizComplete) {
+      setTimeout(() => {
+        setQuizComplete(false);
+      }, 5000);
+    }
+  }, [quizComplete]);
 
   useEffect(() => {
     const displayCards = {};
@@ -68,13 +70,36 @@ export default function QuizMode({getHooks}) {
     setFilteredQuizCards(filteredCards);
 
     let localIndexNum = cardIndex;
-    let currentCard = filteredCards[cardIndex];
-    while (
+    let currentCard = filteredCards[localIndexNum];
+    let nextCard = filteredCards[localIndexNum + 1];
+    let prevCard = filteredCards[localIndexNum - 1];
+
+    if (
       currentCard === undefined &&
-      localIndexNum + 1 <= Math.max(...Object.keys(filteredCards))
+      nextCard === undefined &&
+      localIndexNum + 2 <= Math.max(...Object.keys(filteredCards))
     ) {
+      while (
+        nextCard === undefined &&
+        localIndexNum + 1 <= Math.max(...Object.keys(filteredCards))
+      ) {
+        localIndexNum = localIndexNum + 1;
+      }
       localIndexNum = localIndexNum + 1;
+    } else if (
+      currentCard === undefined &&
+      prevCard === undefined &&
+      localIndexNum - 2 >= Math.min(...Object.keys(filteredCards))
+    ) {
+      while (
+        prevCard === undefined &&
+        localIndexNum - 1 >= Math.min(...Object.keys(filteredCards))
+      ) {
+        localIndexNum = localIndexNum - 1;
+      }
+      localIndexNum = localIndexNum - 1;
     }
+
     setCardIndex(localIndexNum);
 
     let checkIf1 = Object.keys(filteredQuizCards).length;
@@ -85,10 +110,8 @@ export default function QuizMode({getHooks}) {
       Object.keys(filteredCards).length < 1
     ) {
       setFilteredQuizCards(quizCards);
+      setCardIndex(0);
       setQuizComplete(true);
-      setTimeout(() => {
-        setQuizComplete(false);
-      }, 5000);
     }
   }, [cardsState.cards]);
 
@@ -97,36 +120,35 @@ export default function QuizMode({getHooks}) {
     let currentCard = filteredQuizCards[localIndex];
     let prevCard = filteredQuizCards[localIndex - 1];
 
-    while (prevCard === undefined && localIndex - 1 >= 0) {
+    while (
+      prevCard === undefined &&
+      localIndex - 1 >= Math.min(...Object.keys(filteredQuizCards))
+    ) {
       localIndex = localIndex - 1;
+      currentCard = filteredQuizCards[localIndex];
+      prevCard = filteredQuizCards[localIndex - 1];
     }
 
-    if (localIndex - 1 >= 0) {
+    if (localIndex - 1 >= Math.min(...Object.keys(filteredQuizCards))) {
       localIndex = localIndex - 1;
     }
 
     setCardIndex(localIndex);
 
-    if (Object.keys(filteredQuizCards).length < 1) {
-      setFilteredQuizCards(quizCards);
-      setCardIndex(0);
-      setQuizComplete(true);
-      setTimeout(() => {
-        setQuizComplete(false);
-      }, 5000);
-    }
-
     if (
       currentCard === undefined &&
+      prevCard === undefined &&
+      localIndex >= Math.min(...Object.keys(filteredQuizCards)) &&
       Object.keys(filteredQuizCards).length > 0
     ) {
       let nextCard = filteredQuizCards[localIndex + 1];
       while (
         nextCard === undefined &&
-        prevCard === undefined &&
         localIndex + 1 <= Math.max(...Object.keys(filteredQuizCards))
       ) {
         localIndex = localIndex + 1;
+        currentCard = filteredQuizCards[localIndex];
+        prevCard = filteredQuizCards[localIndex - 1];
       }
 
       let lengthIf = Object.keys(filteredQuizCards).length;
@@ -136,20 +158,28 @@ export default function QuizMode({getHooks}) {
       setCardIndex(localIndex);
     }
 
+    if (Object.keys(filteredQuizCards).length < 1) {
+      setFilteredQuizCards(quizCards);
+      setCardIndex(0);
+      setQuizComplete(true);
+    }
+
     debugger;
   }
 
   function next() {
     console.log('cardIndex||', cardIndex);
     let localIndex = cardIndex;
-    let currentCard = filteredQuizCards[cardIndex];
-    let nextCard = filteredQuizCards[cardIndex + 1];
-    let nextIndexPlusTwo = cardIndex + 2;
+    let currentCard = filteredQuizCards[localIndex];
+    let nextCard = filteredQuizCards[localIndex + 1];
+    let nextIndexPlusTwo = localIndex + 2;
     while (
       nextCard === undefined &&
       localIndex + 1 <= Math.max(...Object.keys(filteredQuizCards))
     ) {
       localIndex = localIndex + 1;
+      currentCard = filteredQuizCards[localIndex];
+      nextCard = filteredQuizCards[localIndex + 1];
     }
 
     let lengthIf = Object.keys(filteredQuizCards).length;
@@ -158,22 +188,17 @@ export default function QuizMode({getHooks}) {
     }
     setCardIndex(localIndex);
 
-    if (Object.keys(filteredQuizCards).length < 1) {
-      setFilteredQuizCards(quizCards);
-      setQuizComplete(true);
-      setTimeout(() => {
-        setQuizComplete(false);
-      }, 5000);
-    }
-
     if (
       currentCard === undefined &&
       nextCard === undefined &&
+      localIndex <= Math.max(...Object.keys(filteredQuizCards)) &&
       Object.keys(filteredQuizCards).length > 0
     ) {
       let prevCard = filteredQuizCards[localIndex - 1];
       while (prevCard === undefined && localIndex - 1 <= 0) {
         localIndex = localIndex - 1;
+        currentCard = filteredQuizCards[localIndex];
+        prevCard = filteredQuizCards[localIndex - 1];
       }
 
       let lengthIf = Object.keys(filteredQuizCards).length;
@@ -183,6 +208,11 @@ export default function QuizMode({getHooks}) {
       setCardIndex(localIndex);
     }
 
+    if (Object.keys(filteredQuizCards).length < 1) {
+      setFilteredQuizCards(quizCards);
+      setCardIndex(0);
+      setQuizComplete(true);
+    }
     debugger;
   }
 
