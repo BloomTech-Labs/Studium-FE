@@ -112,6 +112,7 @@ export default function QuizMode({getHooks}) {
 
     if (Object.keys(filteredQuizCards).length < 1) {
       setFilteredQuizCards(quizCards);
+      setCardIndex(0);
       setQuizComplete(true);
       setTimeout(() => {
         setQuizComplete(false);
@@ -122,7 +123,19 @@ export default function QuizMode({getHooks}) {
       currentCard === undefined &&
       Object.keys(filteredQuizCards).length > 0
     ) {
-      next();
+      let nextCard = filteredQuizCards[localIndex + 1];
+      while (
+        nextCard === undefined &&
+        localIndex + 1 < Object.keys(filteredQuizCards).length
+      ) {
+        localIndex = localIndex + 1;
+      }
+
+      let lengthIf = Object.keys(filteredQuizCards).length;
+      if (localIndex + 1 < Object.keys(filteredQuizCards).length) {
+        localIndex = localIndex + 1;
+      }
+      setCardIndex(localIndex);
     }
 
     debugger;
@@ -130,22 +143,22 @@ export default function QuizMode({getHooks}) {
 
   function next() {
     console.log('cardIndex||', cardIndex);
-    let localIndex2 = cardIndex;
+    let localIndex = cardIndex;
     let currentCard = filteredQuizCards[cardIndex];
     let nextCard = filteredQuizCards[cardIndex + 1];
     let nextIndexPlusTwo = cardIndex + 2;
     while (
       nextCard === undefined &&
-      localIndex2 + 1 < Object.keys(filteredQuizCards).length
+      localIndex + 1 < Object.keys(filteredQuizCards).length
     ) {
-      localIndex2 = localIndex2 + 1;
+      localIndex = localIndex + 1;
     }
 
     let lengthIf = Object.keys(filteredQuizCards).length;
-    if (localIndex2 + 1 < Object.keys(filteredQuizCards).length) {
-      localIndex2 = localIndex2 + 1;
+    if (localIndex + 1 < Object.keys(filteredQuizCards).length) {
+      localIndex = localIndex + 1;
     }
-    setCardIndex(localIndex2);
+    setCardIndex(localIndex);
 
     if (Object.keys(filteredQuizCards).length < 1) {
       setFilteredQuizCards(quizCards);
@@ -159,7 +172,19 @@ export default function QuizMode({getHooks}) {
       currentCard === undefined &&
       Object.keys(filteredQuizCards).length > 0
     ) {
-      back();
+      let prevCard = filteredQuizCards[localIndex - 1];
+      while (
+        prevCard === undefined &&
+        localIndex - 1 < Object.keys(filteredQuizCards).length
+      ) {
+        localIndex = localIndex - 1;
+      }
+
+      let lengthIf = Object.keys(filteredQuizCards).length;
+      if (localIndex - 1 < Object.keys(filteredQuizCards).length) {
+        localIndex = localIndex - 1;
+      }
+      setCardIndex(localIndex);
     }
 
     debugger;
