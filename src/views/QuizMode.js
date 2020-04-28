@@ -72,7 +72,7 @@ export default function QuizMode({getHooks}) {
     while (
       currentCard === undefined &&
       localIndexNum + 1 <=
-        (Math.max(...Object.keys(filteredQuizCards)) < 1
+        (Math.max(...Object.keys(filteredQuizCards))
           ? Math.max(...Object.keys(filteredCards))
           : Math.max(...Object.keys(filteredQuizCards)))
     ) {
