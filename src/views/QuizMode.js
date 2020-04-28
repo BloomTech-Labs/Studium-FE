@@ -15,6 +15,12 @@ export default function QuizMode({getHooks}) {
   const [quizComplete, setQuizComplete] = useState(false);
   const deck = pathPushedState;
 
+  // useEffect(() => {
+  //   if(quizComplete) {
+
+  //   }
+  // })
+
   useEffect(() => {
     const displayCards = {};
     let arrNums = [];
@@ -62,7 +68,7 @@ export default function QuizMode({getHooks}) {
     setFilteredQuizCards(filteredCards);
 
     let localIndexNum = cardIndex;
-    let currentCard = filteredQuizCards[cardIndex];
+    let currentCard = filteredCards[cardIndex];
     while (
       currentCard === undefined &&
       localIndexNum + 1 < Object.keys(filteredQuizCards).length
@@ -71,7 +77,8 @@ export default function QuizMode({getHooks}) {
     }
     setCardIndex(localIndexNum);
 
-    if (filteredQuizCards.length < 1) {
+    let checkIf = Object.keys(filteredCards).length;
+    if (Object.keys(filteredCards).length < 1) {
       setFilteredQuizCards(quizCards);
       setQuizComplete(true);
       setTimeout(() => {
@@ -95,7 +102,7 @@ export default function QuizMode({getHooks}) {
 
     setCardIndex(localIndexNum);
 
-    if (filteredQuizCards.length < 1) {
+    if (Object.keys(filteredQuizCards).length < 1) {
       setFilteredQuizCards(quizCards);
       setQuizComplete(true);
       setTimeout(() => {
@@ -103,7 +110,10 @@ export default function QuizMode({getHooks}) {
       }, 5000);
     }
 
-    if (currentCard === undefined && filteredQuizCards.length > 0) {
+    if (
+      currentCard === undefined &&
+      Object.keys(filteredQuizCards).length > 0
+    ) {
       next();
     }
 
@@ -122,12 +132,13 @@ export default function QuizMode({getHooks}) {
       localIndexNum = localIndexNum + 1;
     }
 
-    if (localIndexNum + 1 < filteredQuizCards.length) {
+    let lengthIf = Object.keys(filteredQuizCards).length;
+    if (localIndexNum + 1 < Object.keys(filteredQuizCards).length) {
       localIndexNum = localIndexNum + 1;
     }
     setCardIndex(localIndexNum);
 
-    if (filteredQuizCards.length < 1) {
+    if (Object.keys(filteredQuizCards).length < 1) {
       setFilteredQuizCards(quizCards);
       setQuizComplete(true);
       setTimeout(() => {
@@ -135,7 +146,10 @@ export default function QuizMode({getHooks}) {
       }, 5000);
     }
 
-    if (currentCard === undefined && filteredQuizCards.length > 0) {
+    if (
+      currentCard === undefined &&
+      Object.keys(filteredQuizCards).length > 0
+    ) {
       back();
     }
 
