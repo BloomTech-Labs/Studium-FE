@@ -33,7 +33,7 @@ export default function QuizMode({getHooks}) {
     setQuizCards(displayCards);
 
     //BELOW REPLACES PREVIOUS GETFILTEREDCARDS() FUNCTION
-    let filteredCards = displayCards;
+    let filteredCards = {...displayCards};
 
     Object.keys(filteredCards).map(key => {
       let currentCard = filteredCards[key];
@@ -62,60 +62,83 @@ export default function QuizMode({getHooks}) {
     setFilteredQuizCards(filteredCards);
 
     let localIndexNum = cardIndex;
-
+    let currentCard = filteredQuizCards[cardIndex];
     while (
-      filteredQuizCards[cardIndex] === undefined &&
-      cardIndex + 1 < Object.keys(filteredQuizCards).length
+      currentCard === undefined &&
+      localIndexNum + 1 < Object.keys(filteredQuizCards).length
     ) {
       localIndexNum = localIndexNum + 1;
     }
     setCardIndex(localIndexNum);
-  }, [cardsState.cards]);
-
-  useEffect(() => {
-    let allCards = quizCards;
 
     if (filteredQuizCards.length < 1) {
-      setFilteredQuizCards(allCards);
+      setFilteredQuizCards(quizCards);
       setQuizComplete(true);
       setTimeout(() => {
         setQuizComplete(false);
       }, 5000);
     }
-  }, [cardsState.cards, cardIndex]);
+  }, [cardsState.cards]);
 
   function back() {
     let localIndexNum = cardIndex;
+    let currentCard = filteredQuizCards[cardIndex];
+    let prevCard = filteredQuizCards[cardIndex - 1];
 
-    while (
-      filteredQuizCards[cardIndex - 1] === undefined &&
-      cardIndex - 1 >= 0
-    ) {
+    while (prevCard === undefined && cardIndex - 1 >= 0) {
       localIndexNum = localIndexNum - 1;
     }
-    setCardIndex(localIndexNum);
 
     if (cardIndex - 1 >= 0) {
-      setCardIndex(cardIndex - 1);
+      localIndexNum = localIndexNum - 1;
     }
+
+    setCardIndex(localIndexNum);
+
+    if (filteredQuizCards.length < 1) {
+      setFilteredQuizCards(quizCards);
+      setQuizComplete(true);
+      setTimeout(() => {
+        setQuizComplete(false);
+      }, 5000);
+    }
+
+    if (currentCard === undefined && filteredQuizCards.length > 0) {
+      next();
+    }
+
     debugger;
   }
 
   function next() {
     let localIndexNum = cardIndex;
-    let nextIndexInWhile = filteredQuizCards[cardIndex + 1];
+    let currentCard = filteredQuizCards[cardIndex];
+    let nextCard = filteredQuizCards[cardIndex + 1];
     let nextIndexPlusTwo = cardIndex + 2;
     while (
-      filteredQuizCards[cardIndex + 1] === undefined &&
-      cardIndex + 1 < Object.keys(filteredQuizCards).length
+      nextCard === undefined &&
+      localIndexNum + 1 < Object.keys(filteredQuizCards).length
     ) {
+      localIndexNum = localIndexNum + 1;
+    }
+
+    if (localIndexNum + 1 < filteredQuizCards.length) {
       localIndexNum = localIndexNum + 1;
     }
     setCardIndex(localIndexNum);
 
-    if (cardIndex + 1 < Object.keys(filteredQuizCards).length) {
-      setCardIndex(cardIndex + 1);
+    if (filteredQuizCards.length < 1) {
+      setFilteredQuizCards(quizCards);
+      setQuizComplete(true);
+      setTimeout(() => {
+        setQuizComplete(false);
+      }, 5000);
     }
+
+    if (currentCard === undefined && filteredQuizCards.length > 0) {
+      back();
+    }
+
     debugger;
   }
 
