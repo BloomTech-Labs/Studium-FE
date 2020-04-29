@@ -48,6 +48,13 @@ export const PreviewDeck = ({getHooks}) => {
     }
   };
   
+  const unSelected = () => {
+    if(selectMode){
+      setCardsSelected([]);
+    }
+    setSelectMode(!selectMode);
+  }
+
   const getAlert = () => {
     if(cardsState.error){
       return <Alert
@@ -57,6 +64,7 @@ export const PreviewDeck = ({getHooks}) => {
       />;
     }
   };
+
   
   return (
     <StyledPreviewDeck data-testid={'preview-deck-container'}>
@@ -69,8 +77,9 @@ export const PreviewDeck = ({getHooks}) => {
                      onSearch={() => {
                      }}/>
         </SearchContainer>
-        <p onClick={() => setSelectMode(!selectMode)}
-           style={{marginRight: '9%'}}>Select</p>
+        <Selected selected = {selectMode} onClick={unSelected}>
+            {selectMode === (false) ? "Select" : "Cancel" }
+        </Selected>
       </TopContainer>
       <TitleText
         text={(pathPushedState && pathPushedState.deck_name) || 'Preview'}
@@ -83,32 +92,48 @@ export const PreviewDeck = ({getHooks}) => {
           card.deck_id === pathPushedState.deck_id).map(
           card => {
             return <PreviewDeckCards onClick={() => cardClicked(card)}
-                                     getHooks={getHooks} cardType={'card'}
-                                     key={card.card_id}
-                                     selected={!!cardsSelected[card.card_id]}
-                                     card={card}/>;
+                                    getHooks={getHooks} cardType={'card'}
+                                    key={card.card_id}
+                                    selected={!!cardsSelected[card.card_id]}
+                                    card={card}/>;
           })}
       
       </StyledPreviewDeckHolder>
       <StudyButton
         onClick={() => changePath(APP_PATHS.QUIZ_MODE, pathPushedState)}
-        height={'43px'} width={'88%'} text={'Study Deck'}
+        height={'73px'} width={'90%'} text={'Study Deck'}
         type={'secondary'}/>
+        
     </StyledPreviewDeck>
   );
   
 };
 
+const Selected = styled.p`
+  color: ${props => props.selected === (true) ? '#14E59E' : "#000"};
+  margin-right: 9%;
+`
+
+const Blur = styled.div`
+position: absolute;
+top: -80px;
+min-width: 100vw;
+height: 80px;
+background-image: linear-gradient(transparent, #ffffff8c);
+`;
+
 const StudyButton = styled(SynapsButton)`
 box-sizing: border-box;
 align-self: center;
-font-size: 24px;
 border-radius: 5px;
 margin-top: 20px;
 margin-bottom: 20px;
   > span {
-  margin-top: 20px;
   margin-bottom: 20px;
+  margin-top:15px;
+  font-weight: bold;
+  color: white;
+  font-size:32px;
   }
 `;
 
@@ -117,7 +142,9 @@ display: flex;
 flex-direction: row;
 font-size: 12px;
 width: 100vw;
-
+justify-content: center;
+align-items: center;
+margin-top: 15px;
 `;
 
 const StyledIconLeft = styled(Icon)`
@@ -160,4 +187,5 @@ overflow-y: scroll;
   flex-wrap: wrap;
   overflow: scroll;
   padding-bottom: 150px;
+  // background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
 `;
