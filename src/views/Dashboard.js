@@ -174,7 +174,7 @@ const StyledDashboard = styled.div`
   width: 100%;
   height: 100%;
   overflow-y: scroll;
-  padding-bottom: 500px;
+  padding-bottom: 250px;
   background: ${THEME.white};
   @media screen and ${MEDIA_QUERIES.tablet} {
     margin-top: 50px;
