@@ -2,8 +2,8 @@
 
 exports[`StyledButton render correctly 1`] = `
 .c0.c0 {
-  border: 0;
-  color: black;
+  height: 100%;
+  width: 100%;
 }
 
 <button

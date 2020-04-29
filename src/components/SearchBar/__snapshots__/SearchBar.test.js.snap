@@ -1,6 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`StyledSearchBar render correctly 1`] = `
+.c0.c0 > .ant-input {
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+}
+
 .c0.c0 > .ant-input:focus {
   box-shadow: none;
 }

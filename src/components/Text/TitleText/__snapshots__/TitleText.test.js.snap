@@ -2,16 +2,25 @@
 
 exports[`StyledTitleText render correctly 1`] = `
 .c0 {
-  color: #888888;
-  font-weight: bold;
+  width: 100%;
+}
+
+.c1 {
+  color: #2A685B;
+  font-weight: 900;
   font-size: 45px;
   margin-left: 10%;
   margin-top: 24px;
   text-align: left;
-  margin-botom: 36px;
+  margin-bottom: 36px;
 }
 
 <div
   className="c0"
-/>
+>
+  <div
+    className="c1"
+    color="#2A685B"
+  />
+</div>
 `;

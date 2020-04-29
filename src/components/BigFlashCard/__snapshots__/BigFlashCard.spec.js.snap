@@ -1,6 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Big Flash Card BigFlashCard render correctly 1`] = `
+.c3 {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+
+.c3.svg1 {
+  z-index: 1;
+  top: 58%;
+}
+
+.c3.svg2 {
+  z-index: 0;
+  top: 63%;
+}
+
 .c0 {
   height: 390px;
   width: 283px;
@@ -13,9 +31,12 @@ exports[`Big Flash Card BigFlashCard render correctly 1`] = `
 }
 
 .c1.c1 {
-  margin: 121px auto 0 auto;
-  background: #F7F7F7;
+  margin: 0px auto 0 auto;
+  z-index: 2;
+  background: #FFFBF4;
   color: #1b1414c9;
+  width: 352PX;
+  height: 460PX;
   border-radius: 11px;
 }
 
@@ -61,7 +82,6 @@ exports[`Big Flash Card BigFlashCard render correctly 1`] = `
     <div
       class="ant-card c1 ant-card-bordered"
       position="front"
-      style="width: 285px; height: 421.56px;"
     >
       <div
         class="ant-card-body"
@@ -72,6 +92,42 @@ exports[`Big Flash Card BigFlashCard render correctly 1`] = `
           This is a question
         </div>
       </div>
+    </div>
+    <div
+      class=""
+    >
+      <svg
+        class="c3 svg1"
+        fill="none"
+        height="489.59999999999997"
+        viewBox="0 0 277 408"
+        width="332.4"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          fill="#FFF5E2"
+          height="407.558"
+          rx="11"
+          width="276.311"
+          x="0.491211"
+        />
+      </svg>
+      <svg
+        class="c3 svg2"
+        fill="none"
+        height="489.59999999999997"
+        viewBox="0 0 262 385"
+        width="332.4"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          fill="#E9E0D0"
+          height="384.558"
+          rx="11"
+          width="260.717"
+          x="0.949219"
+        />
+      </svg>
     </div>
   </div>
    
