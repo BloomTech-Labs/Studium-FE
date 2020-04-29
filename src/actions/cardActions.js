@@ -38,7 +38,7 @@ export const CREATE_CARD_FAIL = 'CREATE_CARD_FAIL';
  * @returns {function(*): PromiseLike<any> | Promise<any> | *}
  */
 export const createCard = (card, uid) => dispatch => {
-  debugger;
+
   dispatch(action(CREATE_CARD_INIT));
   
   return createAxiosAuth(uid).post('/api/cards', card).then(res => {

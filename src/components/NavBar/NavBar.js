@@ -1,16 +1,24 @@
 import React, {useEffect, useState} from 'react';
+//import {ReactComponent as SmallWhiteLogo} from '../../images/SmallWhiteLogo.svg';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import {ContainerDiv, NavBarAvatar} from '../index.js';
 import {signOut} from '../../actions';
 import theming from 'styled-theming';
 import LogoLeft from './LogoLeft.js';
-import {THEME} from '../../utilities/constants.js';
 import {
-  THEMING_VALUES, THEMING_VARIABLES,
+  THEMING_VALUES,
+  THEMING_VARIABLES,
 } from '../../customHooks/themingRules.js';
+import {useComparPrevContext} from '../../customHooks/useComparPrevContext.js';
 import {
   APP_PATHS,
+  APP_VIEW_DESKTOP,
+  MEDIA_QUERIES,
+  SIZES,
+  THEME,
 } from '../../utilities/constants.js';
+export const NAV_BAR_DEBUG_NAME = 'Nav Bar';
 
 /**
  * Nav Bar
@@ -20,37 +28,65 @@ import {
  *  return (<NavBar />)
  */
 export const NavBar = ({getHooks}) => {
-  const {usersState, dispatch, changePath, path} = getHooks(
-    'Nav Bar');
-  const [setMenuOpen] = useState(false);
+  const {
+    usersState,
+    theme,
+    getLogger,
+    dispatch,
+    changePath,
+    path,
+    appView,
+  } = getHooks('Nav Bar');
+  const [menuOpen, setMenuOpen] = useState(false);
   const [avatarUrl, setAvatarUrl] = useState('');
-  
+  //const logger = getLogger(NAV_BAR_DEBUG_NAME);
+  const {compareContext, printPrevContext} = useComparPrevContext(
+    NAV_BAR_DEBUG_NAME,
+    {
+      usersState,
+      theme,
+      getLogger,
+      dispatch,
+      changePath,
+      path,
+      appView,
+    }
+  );
+
+  //logger.logVerbose('Nav Bar rendered');
+
   useEffect(() => {
-    
-    if(usersState.user && usersState.user.photoURL){
+    compareContext({usersState, theme, path, appView});
+  }, [usersState, theme, path, appView]);
+
+  useEffect(() => {
+    if (usersState.user && usersState.user.photoURL) {
       setAvatarUrl(usersState.user.photoURL);
-      
-    }else{
+    } else {
       setAvatarUrl('');
-      
     }
   }, [usersState]);
-  
+
   const logout = () => {
     setMenuOpen(false);
     signOut(dispatch);
   };
-  
+
   const navBarRightContent = () => {
-    
-    if(path === APP_PATHS.SIGN_UP_PATH || path === APP_PATHS.LANDING_PAGE){
-      return <Styledh2 onClick={() => changePath(APP_PATHS.SIGN_IN_PATH)}>Sign
-        In</Styledh2>;
-    }else if(path === APP_PATHS.SIGN_IN_PATH){
-      return <Styledh2 onClick={() => changePath(APP_PATHS.SIGN_UP_PATH)}>Sign
-        Up</Styledh2>;
+    if (path === APP_PATHS.SIGN_UP_PATH || path === APP_PATHS.LANDING_PAGE) {
+      return (
+        <Styledh2 onClick={() => changePath(APP_PATHS.SIGN_IN_PATH)}>
+          Sign In
+        </Styledh2>
+      );
+    } else if (path === APP_PATHS.SIGN_IN_PATH) {
+      return (
+        <Styledh2 onClick={() => changePath(APP_PATHS.SIGN_UP_PATH)}>
+          Sign Up
+        </Styledh2>
+      );
     }
-    
+
     return (
       <NavBarAvatar
         getHooks={getHooks}
@@ -59,9 +95,8 @@ export const NavBar = ({getHooks}) => {
         className={'ant-dropdown-link'}
       />
     );
-    
   };
-  
+
   return (
     <StyledBar className={'nav-bar'}>
       <ContainerDiv
@@ -74,7 +109,7 @@ export const NavBar = ({getHooks}) => {
         overFlowY={'hidden'}
         backgroundColor={'transparent'}
       >
-        <LogoLeft getHooks={getHooks}/>
+        <LogoLeft getHooks={getHooks} />
         {navBarRightContent()}
       </ContainerDiv>
     </StyledBar>
@@ -83,17 +118,30 @@ export const NavBar = ({getHooks}) => {
 
 NavBar.propTypes = {};
 
+//const WhiteLogo = styled(SmallWhiteLogo)``;
+
 const backgroundColor = theming(THEMING_VARIABLES.NAV_STYLE, {
-  [THEMING_VALUES.DARK]: THEME.navBarDark,
-  [THEMING_VALUES.LIGHT]: THEME.navBarLight,
-  [THEMING_VALUES.HIDDEN]: 'transparent',
-  
+  [THEMING_VALUES.DARK]: props => {
+    return props.theme.themeState.navBarDark;
+  },
+  [THEMING_VALUES.LIGHT]: props => {
+    return props.theme.themeState.navBarLight;
+  },
+  [THEMING_VALUES.HIDDEN]: props => {
+    return 'transparent';
+  },
 });
 
 const top = theming(THEMING_VARIABLES.NAV_STYLE, {
-  [THEMING_VALUES.DARK]: 0,
-  [THEMING_VALUES.LIGHT]: 0,
-  [THEMING_VALUES.HIDDEN]: '-75px',
+  [THEMING_VALUES.DARK]: props => {
+    return 0;
+  },
+  [THEMING_VALUES.LIGHT]: props => {
+    return 0;
+  },
+  [THEMING_VALUES.HIDDEN]: props => {
+    return '-75px';
+  },
 });
 
 const StyledBar = styled.div`
@@ -105,8 +153,6 @@ const StyledBar = styled.div`
   top: ${top};
   width: 100%;
   height: ${props => props.theme.navBarTopHeight + 'px'};
-
- 
 `;
 
 const color = theming(THEMING_VARIABLES.NAV_STYLE, {
@@ -124,5 +170,8 @@ const Styledh2 = styled.h2`
   font-weight: bold;
   font-size: 28px;
   line-height: 24px;
-`;
 
+  @media screen and ${MEDIA_QUERIES.desktop} {
+    background: #eeece8;
+  }
+`;

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {TitleText} from '../components/Text/TitleText/TitleText.js';
 import BigFlashCard from '../components/BigFlashCard/BigFlashCard.js';
@@ -29,7 +29,7 @@ export default function QuizMode({getHooks}){
   //  }, [cardsState.cards]);
   
   function back(){
-    debugger;
+
     if(viewed.length > 0){
       let lastCard = viewed.pop();
       setNotViewed([lastCard, ...notViewed]);
@@ -38,7 +38,7 @@ export default function QuizMode({getHooks}){
   }
   
   function next(){
-    debugger;
+
     if(notViewed.length > 1){
       let firstCard = notViewed.shift();
       setNotViewed([...notViewed]);
