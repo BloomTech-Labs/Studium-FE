@@ -13,13 +13,14 @@ export default function QuizMode({getHooks}) {
   const [filteredQuizCards, setFilteredQuizCards] = useState({});
   const [displayedCard, setDisplayedCard] = useState({});
   const [cardIndex, setCardIndex] = useState(0);
-  const [quizComplete, setQuizComplete] = useState(false);
+  const [quizComplete, setQuizComplete] = useState(true);
+  const [completeAlert, setCompleteAlert] = useState(false);
   const deck = pathPushedState;
 
   useEffect(() => {
     if (quizComplete) {
       setTimeout(() => {
-        setQuizComplete(false);
+        setCompleteAlert(false);
       }, 5000);
     }
   }, [quizComplete]);
@@ -39,7 +40,6 @@ export default function QuizMode({getHooks}) {
 
       displayCards[displayIndex] = card;
     });
-    setQuizCards(displayCards);
 
     //BELOW REPLACES PREVIOUS GETFILTEREDCARDS() FUNCTION
     let filteredCards = {...displayCards};
@@ -100,11 +100,11 @@ export default function QuizMode({getHooks}) {
       }
     } else if (
       currentCardKey === undefined &&
-      Object.keys(filteredQuizCards).length === 0
+      Object.keys(filteredCards).length === 0
     ) {
-      let QuizCardsKeys = Object.keys(quizCards);
-      setFilteredQuizCards(quizCards);
-      setDisplayedCard(quizCards[QuizCardsKeys[0]]);
+      let QuizCardsKeys = Object.keys(displayCards);
+      setFilteredQuizCards(displayCards);
+      setDisplayedCard(displayCards[QuizCardsKeys[0]]);
       setQuizComplete(true);
     } else if (currentCardKey !== undefined) {
       setCardIndex(currentCardKey);
@@ -151,7 +151,7 @@ export default function QuizMode({getHooks}) {
         quiz_results = 3;
     }
 
-    let currentCard = quizCards[cardIndex];
+    let currentCard = filteredQuizCards[cardIndex];
     currentCard.quiz_results = quiz_results;
     currentCard.last_viewed = moment()
       .unix()
@@ -163,10 +163,11 @@ export default function QuizMode({getHooks}) {
   return (
     <Container data-testid={'quiz-mode-container'}>
       <TitleText text={deck.deck_name} color={'#2A685B'} />
+      <TitleText text={`All cards have been memorized!`} color={'#0C2545'} />
       {Object.keys(filteredQuizCards).length > 0 &&
         Object.keys(filteredQuizCards)[0] && (
           <>
-            {quizComplete && <h1>Quiz Complete!</h1>}
+            {completeAlert && <SynapsH1>Quiz Complete!</SynapsH1>}
             <FlashCardContainer data-testid={'flash-card-container'}>
               <BigFlashCard flashCard={displayedCard}> </BigFlashCard>
             </FlashCardContainer>
@@ -177,9 +178,15 @@ export default function QuizMode({getHooks}) {
         <Button>
           <SvgBack onClick={() => back()} />
         </Button>
-        <Button onClick={() => updateQuizResults('Nope')}>Nope</Button>
-        <Button onClick={() => updateQuizResults('Sort of')}>Sort of</Button>
-        <Button onClick={() => updateQuizResults('100%')}>100%</Button>
+        {!quizComplete && (
+          <div>
+            <Button onClick={() => updateQuizResults('Nope')}>Nope</Button>
+            <Button onClick={() => updateQuizResults('Sort of')}>
+              Sort of
+            </Button>
+            <Button onClick={() => updateQuizResults('100%')}>100%</Button>
+          </div>
+        )}
         <Button>
           <SvgNext onClick={() => next()} />
         </Button>
@@ -212,4 +219,9 @@ const Container = styled.div`
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+`;
+
+const SynapsH1 = styled.h1`
+  font-size: 24px;
+  font-weight: 600;
 `;
