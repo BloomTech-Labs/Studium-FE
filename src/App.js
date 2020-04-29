@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import {Alert} from 'antd';
 import {useAuthStateChange} from './customHooks/useAuthStateChange.js';
 import {THEMING_VALUES, THEMING_VARIABLES} from './customHooks/themingRules.js';
+import {THEME} from './utilities/constants.js';
 import theming from 'styled-theming';
 import {useTheming} from './customHooks/useTheming.js';
 
@@ -16,7 +17,7 @@ import {useTheming} from './customHooks/useTheming.js';
  * @example return (<App />);
  */
 export default function App ({getHooks}) {
-  debugger;
+
   const [alertMessage, setAlert] = useState('');
   const {theme, usersState} = getHooks();
   const getValue = useTheming();
@@ -56,8 +57,8 @@ export default function App ({getHooks}) {
             [THEMING_VALUES.MOBILE]: '624px',
           })}
           fill={getValue(THEMING_VARIABLES.BACKGROUND, {
-            [THEMING_VALUES.DARK]: theme.themeState.brainPicDark,
-            [THEMING_VALUES.LIGHT]: theme.themeState.brainPicLight,
+            [THEMING_VALUES.DARK]: THEME.brainPicDark,
+            [THEMING_VALUES.LIGHT]: THEME.brainPicLight,
           })}
         />
       )}
@@ -87,12 +88,8 @@ App.propTypes = {
 };
 
 const backgroundColor = theming(THEMING_VARIABLES.BACKGROUND, {
-  [THEMING_VALUES.DARK]: ({theme}) => {
-    return theme.themeState.primaryColor;
-  },
-  [THEMING_VALUES.LIGHT]: ({theme}) => {
-    return theme.themeState.navBarLight;
-  },
+  [THEMING_VALUES.DARK]: THEME.primaryColor,
+  [THEMING_VALUES.LIGHT]: THEME.navBarLight
 });
 
 const StyledApp = styled.div`

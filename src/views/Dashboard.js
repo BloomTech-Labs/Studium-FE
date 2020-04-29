@@ -111,29 +111,13 @@ export const Dashboard = props => {
       <StyledDeckHolder>
         <PreviewDeckCards text={'Create Deck'} getHooks={props.getHooks}
                           onClick={() => deckClicked()}/>
-        <StyledCard
-          text={'Create Deck'}
-          getHooks={getHooks}
-          onClick={() => deckClicked()}
-          style={{
-            width: '177px',
-            height: '231px',
-          }}
-        />
 
         {decks.map(deck => {
           return (
-            <PreviewDeckCards getHooks={props.getHooks}>
-              <StyledCard
-                key={deck.deck_id}
-                deck={deck}
-                getHooks={getHooks}
-                onClick={e => deckClicked(deck)}
-                style={{
-                  width: '167px',
-                  height: '221px',
-                }}
-              />
+            <PreviewDeckCards key={deck.deck_id} deck={deck}
+                              onClick={e => deckClicked(deck)}
+                              getHooks={props.getHooks}>
+
             </PreviewDeckCards>
           );
         })}
