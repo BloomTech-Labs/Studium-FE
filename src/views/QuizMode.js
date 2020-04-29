@@ -4,8 +4,12 @@ import {TitleText} from '../components/Text/TitleText/TitleText.js';
 import BigFlashCard from '../components/BigFlashCard/BigFlashCard.js';
 import {ReactComponent as SvgBack} from '../svgs/BackButton.svg';
 import {ReactComponent as SvgNext} from '../svgs/NextButton.svg';
+import {ReactComponent as Nope} from '../svgs/Nope.svg';
+import {ReactComponent as KindOf} from '../svgs/KindOf.svg';
+import {ReactComponent as Absolutely} from '../svgs/Absolutley.svg';
 import {updateCard} from '../actions/cardActions.js';
 import moment from 'moment';
+import {APP_VIEW_DESKTOP} from '../utilities/constants.js';
 
 export default function QuizMode ({getHooks}) {
   const {cardsState, pathPushedState, dispatch, usersState, appView} = getHooks();
@@ -13,7 +17,7 @@ export default function QuizMode ({getHooks}) {
   const [filteredQuizCards, setFilteredQuizCards] = useState({});
   const [displayedCard, setDisplayedCard] = useState({});
   const [cardIndex, setCardIndex] = useState(0);
-  const [quizComplete, setQuizComplete] = useState(true);
+  const [quizComplete, setQuizComplete] = useState(false);
   const [completeAlert, setCompleteAlert] = useState(false);
   const deck = pathPushedState;
 
@@ -179,13 +183,14 @@ export default function QuizMode ({getHooks}) {
           <SvgBack onClick={() => back()}/>
         </Button>
         {!quizComplete && (
-          <div>
-            <Button onClick={() => updateQuizResults('Nope')}>Nope</Button>
-            <Button onClick={() => updateQuizResults('Sort of')}>
-              Sort of
-            </Button>
-            <Button onClick={() => updateQuizResults('100%')}>100%</Button>
-          </div>
+          <CardAnswerButton>
+            <Nope onClick={() => updateQuizResults('Nope')}></Nope>
+            <KindOf onClick={() => updateQuizResults('Sort of')}>
+
+            </KindOf>
+            <Absolutely
+              onClick={() => updateQuizResults('100%')}></Absolutely>
+          </CardAnswerButton>
         )}
         <Button>
           <SvgNext onClick={() => next()}/>
@@ -195,22 +200,34 @@ export default function QuizMode ({getHooks}) {
   );
 }
 
+const CardAnswerButton = styled.div`
+display: flex;
+margin: 20px 0;
+`;
+
 const Button = styled.div``;
 
 const FlashCardContainer = styled.div`
+margin-top: ${props => props.theme.appView === APP_VIEW_DESKTOP ?
+  '-4rem' : '0'};
   margin-bottom: 2rem;
 `;
 
 const ButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
-  width: 200px;
+  width: 400px;
   justify-content: space-between;
   align-items: center;
+  padding-top: ${props => props.theme.appView === APP_VIEW_DESKTOP ?
+  '7rem' : '30px'};
 `;
 
 const Container = styled.div`
   width: 100%;
+  max-width: 1140px;
+  border-radius: ${props => props.theme.appView === APP_VIEW_DESKTOP ?
+  '10px' : '0'};
   height: 100%;
   background-color: white;
   display: flex;
