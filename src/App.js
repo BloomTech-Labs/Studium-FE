@@ -15,6 +15,8 @@ import {useTheming} from './customHooks/useTheming.js';
  * @component
  * @example return (<App />);
  */
+
+ 
 export default function App({getHooks}) {
   const [alertMessage, setAlert] = useState('');
   const {theme, usersState} = getHooks();

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import theming from 'styled-theming';
-import {getAllCardsForDeck} from '../actions/cardActions.js';
+import {getAllCardsForDeck, deleteCard} from '../actions/cardActions.js';
 import {
   TitleText, PreviewDeckCards, SearchBar, SynapsButton,
 } from '../components';
@@ -47,6 +47,18 @@ export const PreviewDeck = ({getHooks}) => {
       setCardsSelected({...cardsSelected, [card.card_id]: card});
     }
   };
+  const deleteButton = (cardIds) => {
+    if(!selectMode){
+      return;
+    } if(cardsSelected.length > 0) {
+      cardsSelected.forEach(cardId => {
+        const cardToDelete = cardsState.cards.filter(card => {
+          return card.card_id === cardId ? true : false;
+        })[0];
+        dispatch(deleteCard(cardToDelete, usersState.user.uid))
+      })
+    }
+  }
   
   const unSelected = () => {
     if(selectMode){

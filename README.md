@@ -92,7 +92,7 @@ To create the best Life Science flashcard application, that has excellent UI, wh
 
 ## Authentication API here
 
-OAuth - Google Based
+OAuth - Google Library key. 
 
 When you log in you can either login with your Google account connected to your gmail or you can create a new account with just the email and password.
 
