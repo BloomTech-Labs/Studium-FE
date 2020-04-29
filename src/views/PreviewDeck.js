@@ -5,11 +5,12 @@ import {getAllCardsForDeck, deleteCard} from '../actions/cardActions.js';
 import {
   TitleText, PreviewDeckCards, SearchBar, SynapsButton,
 } from '../components';
-import {APP_PATHS, THEME} from '../utilities/constants.js';
+import {APP_PATHS, THEME, APP_VIEW_MOBILE} from '../utilities/constants.js';
 import {Alert, Icon} from 'antd';
 import {
   THEMING_VALUES, THEMING_VARIABLES,
 } from '../customHooks/themingRules.js';
+import { ReactComponent as Delete} from "../svgs/delete.svg"
 
 /**
  * Preview Deck
@@ -115,7 +116,7 @@ export const PreviewDeck = ({getHooks}) => {
         onClick={() => changePath(APP_PATHS.QUIZ_MODE, pathPushedState)}
         height={'73px'} width={'90%'} text={'Study Deck'}
         type={'secondary'}/>
-        
+        <DeleteIcon/>
     </StyledPreviewDeck>
   );
   
@@ -124,6 +125,13 @@ export const PreviewDeck = ({getHooks}) => {
 const Selected = styled.p`
   color: ${props => props.selected === (true) ? '#14E59E' : "#000"};
   margin-right: 9%;
+`
+const DeleteIcon = styled(Delete)`
+  ${props => props.theme.appView === APP_VIEW_MOBILE ? "position:absolute" : ""};
+  ${props => {
+    if (props.theme.appView === APP_VIEW_MOBILE){
+      return "bottom: 5px; right: 5px;"
+  }}}
 `
 
 const Blur = styled.div`
