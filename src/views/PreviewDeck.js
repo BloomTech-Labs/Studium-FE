@@ -52,6 +52,13 @@ export const PreviewDeck = ({getHooks}) => {
     }
   };
 
+  const unSelected = () => {
+    if(selectMode){
+      setCardsSelected([]);
+    }
+    setSelectMode(!selectMode);
+  }
+
   const getAlert = () => {
     if (cardsState.error) {
       return (
@@ -59,6 +66,8 @@ export const PreviewDeck = ({getHooks}) => {
       );
     }
   };
+
+
 
   return (
     <StyledPreviewDeck data-testid={'preview-deck-container'}>
@@ -80,56 +89,72 @@ export const PreviewDeck = ({getHooks}) => {
         >
           Select
         </p>
+        <Selected selected = {selectMode} onClick={unSelected}>
+            {selectMode === false ? "Select" : "Cancel" }
+        </Selected>
       </TopContainer>
       <TitleText
         text={(pathPushedState && pathPushedState.deck_name) || 'Preview'}
       />
       <StyledPreviewDeckHolder>
-        <PreviewDeckCards cardType={'card'} key={0} getHooks={getHooks}/>
-        {Object.values(cardsState.cards)
-          .filter(card => card.deck_id === pathPushedState.deck_id)
-          .map(card => {
-            return (
-              <PreviewDeckCards
-                onClick={() => cardClicked(card)}
-                getHooks={getHooks}
-                cardType={'card'}
-                key={card.card_id}
-                selected={!!cardsSelected[card.card_id]}
-                card={card}
-              />
-            );
+        <PreviewDeckCards cardType={'card'} key={0}
+                          getHooks={getHooks}
+        />
+        {Object.values(cardsState.cards).filter(card =>
+          card.deck_id === pathPushedState.deck_id).map(
+          card => {
+            return <PreviewDeckCards onClick={() => cardClicked(card)}
+                                    getHooks={getHooks} cardType={'card'}
+                                    key={card.card_id}
+                                    selected={!!cardsSelected[card.card_id]}
+                                    card={card}/>;
           })}
       </StyledPreviewDeckHolder>
       <StudyButton
         onClick={() => changePath(APP_PATHS.QUIZ_MODE, pathPushedState)}
-        height={'43px'}
-        width={'88%'}
-        text={'Study Deck'}
-        type={'secondary'}
-      />
+        height={'73px'} width={'90%'} text={'Study Deck'}
+        type={'secondary'}/>
+
     </StyledPreviewDeck>
   );
 };
 
+const Selected = styled.p`
+  color: ${props => props.selected === (true) ? '#14E59E' : "#000"};
+  margin-right: 9%;
+`
+
+const Blur = styled.div`
+position: absolute;
+top: -80px;
+min-width: 100vw;
+height: 80px;
+background-image: linear-gradient(transparent, #ffffff8c);
+`;
+
 const StudyButton = styled(SynapsButton)`
-  box-sizing: border-box;
-  align-self: center;
-  font-size: 24px;
-  border-radius: 5px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+box-sizing: border-box;
+align-self: center;
+border-radius: 5px;
+margin-top: 20px;
+margin-bottom: 20px;
   > span {
-    margin-top: 20px;
-    margin-bottom: 20px;
+  margin-bottom: 20px;
+  margin-top:15px;
+  font-weight: bold;
+  color: white;
+  font-size:32px;
   }
 `;
 
 const TopContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  font-size: 12px;
-  width: 100vw;
+display: flex;
+flex-direction: row;
+font-size: 12px;
+width: 100vw;
+justify-content: center;
+align-items: center;
+margin-top: 15px;
 `;
 
 const StyledIconLeft = styled(Icon)`
@@ -162,17 +187,11 @@ const StyledPreviewDeck = styled.div`
   border-radius: 10px;
   padding-bottom: ${marginBottom};
   background: ${props => props.theme.themeState.navBarLight};
-
-  left: 152px;
-
-  background: #ffffff;
-  border-radius: 10px;
 `;
 
 const StyledPreviewDeckHolder = styled.div`
   overflow-y: scroll;
   max-height: 100%;
-  max-width: 90%;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
