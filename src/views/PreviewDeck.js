@@ -13,6 +13,7 @@ import {
   THEMING_VALUES, THEMING_VARIABLES,
 } from '../customHooks/themingRules.js';
 import {ReactComponent as Delete} from '../svgs/delete.svg';
+import {CardEditDeleteIcons} from '../components/Icon/CardEditDeleteIcons.js';
 
 /**
  * Preview Deck
@@ -171,8 +172,9 @@ flex-direction: ${props => props.theme.appView === APP_VIEW_DESKTOP ? 'row' :
 `;
 
 const Selected = styled.p`
-  color: ${props => props.selected === (true) ? '#14E59E' : '#000'};
+  color: ${props => (props.selected === true ? '#14E59E' : '#000')};
   margin-right: 9%;
+`;
 `;
 
 const DeleteIcon = styled(Delete)`
@@ -186,11 +188,11 @@ const DeleteIcon = styled(Delete)`
 `;
 
 const Blur = styled.div`
-position: absolute;
-top: -80px;
-min-width: 100vw;
-height: 80px;
-background-image: linear-gradient(transparent, #ffffff8c);
+  position: absolute;
+  top: -80px;
+  min-width: 100vw;
+  height: 80px;
+  background-image: linear-gradient(transparent, #ffffff8c);
 `;
 
 const StudyButton = styled(SynapsButton)`
@@ -211,7 +213,7 @@ margin-left: ${props => props.theme.appView === APP_VIEW_DESKTOP ? '9%;' :
   font-size:${props => props.theme.appView === APP_VIEW_DESKTOP ? '24px' :
   '32px'};
   }
-  
+
 `;
 
 const TopContainer = styled.div`
@@ -231,6 +233,8 @@ const StyledIconLeft = styled(Icon)`
 `;
 
 const SearchContainer = styled.div`
+  max-width: 50%;
+  margin: 0 auto;
   max-width: ${props => props.theme.appView === APP_VIEW_DESKTOP ? '50%' :
   '100%'};
   margin: 0 auto;
@@ -238,6 +242,8 @@ const SearchContainer = styled.div`
 
 const previewDeckHeight = theming(THEMING_VARIABLES.FOOTER, {
   [THEMING_VALUES.VISIBLE]: window.innerHeight - THEME.navBarTopHeight + 'px',
+  [THEMING_VALUES.HIDDEN]:
+    window.innerHeight - THEME.navBarTopHeight - 95 + 'px',
   [THEMING_VALUES.HIDDEN]:
   (window.innerHeight - THEME.navBarTopHeight - 50) + 'px',
 });
@@ -264,6 +270,7 @@ const StyledPreviewDeck = styled.div`
 `;
 
 const StyledPreviewDeckHolder = styled.div`
+  overflow-y: scroll;
   max-height: 100%;
   min-height: 100%;
   display: flex;
