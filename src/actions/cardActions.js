@@ -88,10 +88,6 @@ export const deleteCard = (card, uid) => dispatch => {
 
   dispatch(action(DELETE_CARD_INIT));
 
-  return createAxiosAuth(uid)
-    .put(`/api/cards/${card.card_id}`)
-    .then(res => {
-
   return createAxiosAuth(uid).delete(`/api/cards/${card.card_id}`).then(
     res => {
       dispatch(action(DELETE_CARD_SUCCESS, card.card_id));

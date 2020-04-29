@@ -4,16 +4,11 @@ import {TitleText} from '../components/Text/TitleText/TitleText.js';
 import BigFlashCard from '../components/BigFlashCard/BigFlashCard.js';
 import {ReactComponent as SvgBack} from '../svgs/BackButton.svg';
 import {ReactComponent as SvgNext} from '../svgs/NextButton.svg';
-import {THEME} from '../utilities/constants.js';
 import {updateCard} from '../actions/cardActions.js';
 import moment from 'moment';
 
-export default function QuizMode({getHooks}){
-  const {cardsState, pathPushedState, appView} = getHooks();
-  const [notViewed, setNotViewed] = useState([]);
-  const [viewed, setViewed] = useState([]);
-export default function QuizMode({getHooks}) {
-  const {cardsState, pathPushedState, dispatch, usersState} = getHooks();
+export default function QuizMode ({getHooks}) {
+  const {cardsState, pathPushedState, dispatch, usersState, appView} = getHooks();
   const [quizCards, setQuizCards] = useState({});
   const [filteredQuizCards, setFilteredQuizCards] = useState({});
   const [displayedCard, setDisplayedCard] = useState({});
@@ -33,7 +28,7 @@ export default function QuizMode({getHooks}) {
   useEffect(() => {
     const displayCards = {};
     let arrNums = [];
-    for (let i = 0; i < cardsState.cards.length; i++) {
+    for(let i = 0; i < cardsState.cards.length; i++) {
       arrNums.push(i);
     }
     cardsState.cards.forEach(card => {
@@ -56,18 +51,18 @@ export default function QuizMode({getHooks}) {
       let if2 = moment().diff(moment.unix(currentCard.last_viewed), 'hours');
 
       if (!currentCard.quiz_results) {
-        return;
+
       } else if (currentCard.quiz_results === 2) {
         if (
           moment().diff(moment.unix(currentCard.last_viewed), 'minutes') > 10
         ) {
-          return;
+
         } else {
           delete filteredCards[key];
         }
       } else if (currentCard.quiz_results === 3) {
         if (moment().diff(moment.unix(currentCard.last_viewed), 'hours') > 4) {
-          return;
+
         } else {
           delete filteredCards[key];
         }
@@ -117,15 +112,7 @@ export default function QuizMode({getHooks}) {
     }
   }, [cardsState.cards]);
 
-  function back(){
-
-    if(viewed.length > 0){
-      let lastCard = viewed.pop();
-      setNotViewed([lastCard, ...notViewed]);
-      setViewed([...viewed]);
-    }
-
-  function back() {
+  function back () {
     let keys = Object.keys(filteredQuizCards);
     let arrKeysCurrentIndex = keys.indexOf(cardIndex.toString());
     let arrKeysPrevIndex = arrKeysCurrentIndex - 1;
@@ -137,15 +124,8 @@ export default function QuizMode({getHooks}) {
     }
     debugger;
   }
-  
-  function next(){
 
-    if(notViewed.length > 1){
-      let firstCard = notViewed.shift();
-      setNotViewed([...notViewed]);
-      setViewed([...viewed, firstCard]);
-
-  function next() {
+  function next () {
     let keys = Object.keys(filteredQuizCards);
     let arrKeysCurrentIndex = keys.indexOf(cardIndex.toString());
     let arrKeysNextIndex = arrKeysCurrentIndex + 1;
@@ -158,9 +138,9 @@ export default function QuizMode({getHooks}) {
     debugger;
   }
 
-  function updateQuizResults(name) {
+  function updateQuizResults (name) {
     let quiz_results;
-    switch (name) {
+    switch(name) {
       case 'Nope':
         quiz_results = 1;
         break;
@@ -183,25 +163,20 @@ export default function QuizMode({getHooks}) {
   return (
     <Container data-testid={'quiz-mode-container'}>
       <TitleText text={deck.deck_name} color={'#2A685B'}/>
-      {notViewed.length > 0 &&
-      <FlashCardContainer data-testid={'flash-card-container'}>
-        <BigFlashCard appView={appView} flashCard={notViewed[0]}> </BigFlashCard>}
-      </FlashCardContainer>}
-      <TitleText text={deck.deck_name} color={'#2A685B'} />
-      <TitleText text={`All cards have been memorized!`} color={'#0C2545'} />
       {Object.keys(filteredQuizCards).length > 0 &&
-        Object.keys(filteredQuizCards)[0] && (
-          <>
-            {completeAlert && <SynapsH1>Quiz Complete!</SynapsH1>}
-            <FlashCardContainer data-testid={'flash-card-container'}>
-              <BigFlashCard flashCard={displayedCard}> </BigFlashCard>
-            </FlashCardContainer>
-          </>
-        )}
+      Object.keys(filteredQuizCards)[0] && (
+        <>
+          {completeAlert && <SynapsH1>Quiz Complete!</SynapsH1>}
+          <FlashCardContainer data-testid={'flash-card-container'}>
+            <BigFlashCard appView={appView}
+                          flashCard={displayedCard}> </BigFlashCard>
+          </FlashCardContainer>
+        </>
+      )}
 
       <ButtonContainer data-testid={'button-card-container'}>
         <Button>
-          <SvgBack onClick={() => back()} />
+          <SvgBack onClick={() => back()}/>
         </Button>
         {!quizComplete && (
           <div>
@@ -213,7 +188,7 @@ export default function QuizMode({getHooks}) {
           </div>
         )}
         <Button>
-          <SvgNext onClick={() => next()} />
+          <SvgNext onClick={() => next()}/>
         </Button>
       </ButtonContainer>
     </Container>
@@ -224,13 +199,11 @@ const Button = styled.div``;
 
 const FlashCardContainer = styled.div`
   margin-bottom: 2rem;
-  border: 1px solid red;
 `;
 
 const ButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
-  border: 1px solid blue;
   width: 200px;
   justify-content: space-between;
   align-items: center;
