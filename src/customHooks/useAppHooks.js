@@ -32,7 +32,8 @@ export const useAppHooks = () => {
   const dispatch = useDispatch();
   const changePath = useChangePath();
   const history = useHistory();
-
+  const [deleteClicked, setDeleteClicked] = useState(false);
+  const [selectingCards, setSelectingCards] = useState(false);
   const {usersState, photosState, cardsState, decksState} = useSelector(
     reducerState => reducerState
   );
@@ -55,6 +56,10 @@ export const useAppHooks = () => {
      * @property {{any}} pushedState
      * @property {number} width
      * @property {number} height
+     * @property {bool} selectingCards
+     * @property {bool} deleteClicked
+     * @property {function} setSelectingCards
+     * @property {function} setDeleteClicked
      */
     return {
       theme: theme,
@@ -67,6 +72,7 @@ export const useAppHooks = () => {
       photosState,
       decksState,
       changePath,
+      deleteClicked, setDeleteClicked, selectingCards, setSelectingCards,
       ...hooks,
     };
   };
@@ -88,6 +94,8 @@ export const useAppHooks = () => {
    * @property {{any}} pushedState
    * @property {number} width
    * @property {number} height
+   * @property {bool} deleteClicked
+   * @property {function} setDeleteClicked
    */
   return {
     path: history.location.pathname,
@@ -101,6 +109,7 @@ export const useAppHooks = () => {
     decksState,
     changePath,
     getHooks,
+    deleteClicked, setDeleteClicked,
     ...hooks,
   };
 };

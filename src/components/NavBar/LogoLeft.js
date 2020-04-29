@@ -21,9 +21,10 @@ import {
 const LogoLeft = ({getHooks}) => {
   const {theme, appView, changePath, usersState} = getHooks();
   const getStyles = useTheming();
+
   const logoClicked = () => {
-    
-    if (usersState.user.uuid) {
+
+    if (usersState.user.uid) {
       changePath(APP_PATHS.DASHBOARD_PATH);
     } else {
       changePath(APP_PATHS.LANDING_PAGE);
@@ -40,7 +41,7 @@ const LogoLeft = ({getHooks}) => {
         backgroundColor={'transparent'}
         alignItems={'flex-end'} margin={'2% 0 0 10%'}
       >
-        
+
         <SvgSynapsFavicon onClick={() => logoClicked()} height={'100%'}
                           width={'40%'}
                           top={'-10px'}/>
@@ -54,7 +55,7 @@ const LogoLeft = ({getHooks}) => {
         />
       </ContainerDiv>
     );
-  }else{
+  } else {
     return (
       <ContainerDiv
         height={'100%'} width={'120px'} margin={'0 0 0 5%'}
@@ -63,7 +64,8 @@ const LogoLeft = ({getHooks}) => {
         position={'relative'}>
         <SvgSynapsLogoText onClick={() => logoClicked()}
                            svgFill={THEME.SYNAPS_LIGHT} zIndex={10}
-                           margin={'15% auto 0 auto'}/>
+                           margin={'15% auto 0 auto'}/> //eslint-disable-line
+        null
 
         <Brain containerPosition={'absolute'} height={'300px'}
                zIndex={5} svgFill={THEME.BRAIN_PIC_DARK}
@@ -75,7 +77,7 @@ const LogoLeft = ({getHooks}) => {
       </ContainerDiv>
     );
   }
-  
+
 };
 
 const Brain = styled(SvgBrainPic)`

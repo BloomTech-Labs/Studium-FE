@@ -26,6 +26,10 @@ export default function App ({getHooks}) {
 
   useAuthStateChange(getHooks);
 
+  const deleteClick = (e) => {
+
+  };
+
   useEffect(() => {
     if (usersState.registerError && !alertMessage) {
       setAlert('Error logging in. Please try again later.');
@@ -79,7 +83,7 @@ export default function App ({getHooks}) {
       )}
       <NavBar getHooks={getHooks}/>
       <RouteContainer getHooks={getHooks}/>
-      <Footer getHooks={getHooks}/>
+      <Footer deleteClick={deleteClick} getHooks={getHooks}/>
     </StyledApp>
   );
 }
@@ -90,9 +94,7 @@ App.propTypes = {
 
 const backgroundColor = theming(THEMING_VARIABLES.BACKGROUND, {
   [THEMING_VALUES.DARK]: THEME.PRIMARY_COLOR,
-  [THEMING_VALUES.LIGHT]: THEME.NAV_BAR_LIGHT,
-  [THEMING_VALUES.DARK]: THEME.primaryColor,
-  [THEMING_VALUES.LIGHT]: THEME.navBarLight
+  [THEMING_VALUES.LIGHT]: THEME.NAV_BAR_LIGHT
 });
 
 const StyledApp = styled.div`

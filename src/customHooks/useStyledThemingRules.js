@@ -11,15 +11,15 @@ export const THEMING_DEBUG_NAME = 'Styled Theming';
  *
  */
 export const useStyledThemingRules = () => {
-  
+
   const [rules, setRules] = useState();
-  
+
   useEffect(() => {
-    
+
     const themeRules = getThemingRules();
     setRules(themeRules);
   }, []);
-  
+
   /**
    *  Check all rules.
    *  @typedef {function} CheckAllRules
@@ -33,21 +33,21 @@ export const useStyledThemingRules = () => {
    * @param {function} changeTheme
    */
   const checkAllRules = (theme, appView, currentPath, changeTheme) => {
-    
+
     const themeRules = getThemingRules();
     const themeChanges = [];
     themeRules.forEach(rule => {
       const change = checkRule(rule, currentPath, theme, appView);
-      if(change){
+      if (change) {
         themeChanges.push(change);
       }
     });
-    if(themeChanges.length > 0){
-  
+    if (themeChanges.length > 0) {
+
       changeTheme(themeChanges);
     }
   };
-  
+
   /**
    * Check Rule
    *
@@ -63,22 +63,22 @@ export const useStyledThemingRules = () => {
   const checkRule = (rule, currentPath, theme, appView) => {
     const appViewResult = checkView(rule, appView);
     const pathResult = checkPath(rule, currentPath);
-    
+
     /**
      * if the rule requirements have been met then check if the value is set
      * or if needs to be set.
      */
-    if(appViewResult && pathResult){
+    if (appViewResult && pathResult) {
       const valueSet = theme[rule.themeVariable] === rule.themeValue;
-      
+
       // if value is not set. Set the variable to the correct value
-      if(!valueSet){
+      if (!valueSet) {
         return rule;
       }
       return false;
     }
   };
-  
+
   return checkAllRules;
 };
 

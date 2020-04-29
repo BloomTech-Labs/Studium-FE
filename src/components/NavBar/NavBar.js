@@ -4,19 +4,10 @@ import {ContainerDiv, NavBarAvatar} from '../index.js';
 import {signOut} from '../../actions';
 import theming from 'styled-theming';
 import LogoLeft from './LogoLeft.js';
+import {APP_PATHS, THEME} from '../../utilities/constants.js';
 import {
-  THEMING_VALUES,
-  THEMING_VARIABLES,
+  THEMING_VALUES, THEMING_VARIABLES,
 } from '../../customHooks/themingRules.js';
-import {useComparPrevContext} from '../../customHooks/useComparPrevContext.js';
-import {
-  APP_PATHS,
-  APP_VIEW_DESKTOP,
-  MEDIA_QUERIES,
-  SIZES,
-  THEME,
-} from '../../utilities/constants.js';
-export const NAV_BAR_DEBUG_NAME = 'Nav Bar';
 
 /**
  * Nav Bar
@@ -26,42 +17,19 @@ export const NAV_BAR_DEBUG_NAME = 'Nav Bar';
  *  return (<NavBar />)
  */
 export const NavBar = ({getHooks}) => {
-  const {
-    usersState,
-    theme,
-    getLogger,
-    dispatch,
-    changePath,
-    path,
-    appView,
-  } = getHooks('Nav Bar');
-  const [menuOpen, setMenuOpen] = useState(false);
+  const {usersState, dispatch, changePath, path} = getHooks(
+    'Nav Bar');
+  const [setMenuOpen] = useState(false);
   const [avatarUrl, setAvatarUrl] = useState('');
-  //const logger = getLogger(NAV_BAR_DEBUG_NAME);
-  const {compareContext, printPrevContext} = useComparPrevContext(
-    NAV_BAR_DEBUG_NAME,
-    {
-      usersState,
-      theme,
-      getLogger,
-      dispatch,
-      changePath,
-      path,
-      appView,
-    }
-  );
-
-  //logger.logVerbose('Nav Bar rendered');
 
   useEffect(() => {
-    compareContext({usersState, theme, path, appView});
-  }, [usersState, theme, path, appView]);
 
-  useEffect(() => {
     if (usersState.user && usersState.user.photoURL) {
       setAvatarUrl(usersState.user.photoURL);
+
     } else {
       setAvatarUrl('');
+
     }
   }, [usersState]);
 
@@ -71,18 +39,13 @@ export const NavBar = ({getHooks}) => {
   };
 
   const navBarRightContent = () => {
+
     if (path === APP_PATHS.SIGN_UP_PATH || path === APP_PATHS.LANDING_PAGE) {
-      return (
-        <Styledh2 onClick={() => changePath(APP_PATHS.SIGN_IN_PATH)}>
-          Sign In
-        </Styledh2>
-      );
+      return <Styledh2 onClick={() => changePath(APP_PATHS.SIGN_IN_PATH)}>Sign
+        In</Styledh2>;
     } else if (path === APP_PATHS.SIGN_IN_PATH) {
-      return (
-        <Styledh2 onClick={() => changePath(APP_PATHS.SIGN_UP_PATH)}>
-          Sign Up
-        </Styledh2>
-      );
+      return <Styledh2 onClick={() => changePath(APP_PATHS.SIGN_UP_PATH)}>Sign
+        Up</Styledh2>;
     }
 
     return (
@@ -93,6 +56,7 @@ export const NavBar = ({getHooks}) => {
         className={'ant-dropdown-link'}
       />
     );
+
   };
 
   return (
@@ -107,7 +71,7 @@ export const NavBar = ({getHooks}) => {
         overFlowY={'hidden'}
         backgroundColor={'transparent'}
       >
-        <LogoLeft getHooks={getHooks} />
+        <LogoLeft getHooks={getHooks}/>
         {navBarRightContent()}
       </ContainerDiv>
     </StyledBar>
@@ -120,7 +84,7 @@ const backgroundColor = theming(THEMING_VARIABLES.NAV_STYLE, {
   [THEMING_VALUES.DARK]: THEME.NAV_BAR_DARK,
   [THEMING_VALUES.LIGHT]: THEME.NAV_BAR_LIGHT,
   [THEMING_VALUES.HIDDEN]: 'transparent',
-  
+
 });
 
 const top = theming(THEMING_VARIABLES.NAV_STYLE, {

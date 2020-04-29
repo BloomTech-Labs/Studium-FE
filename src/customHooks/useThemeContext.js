@@ -18,13 +18,15 @@ import {
  */
 export const useThemeRules = () => {
   let baseConfig = DEFAULT_THEME_RULE_VALUES;
-  if(localStorage.getItem(SYNAPS_CONFIG.localStorageBasePath + '/themeRules')){
+  if (localStorage.getItem(
+    SYNAPS_CONFIG.localStorageBasePath + '/themeRules')) {
+
     let storedRules = JSON.parse(
       localStorage.getItem(
         SYNAPS_CONFIG.localStorageBasePath + '/themeRules'));
-    if(typeof storedRules === 'object'){
+    if (typeof storedRules === 'object') {
       Object.keys(storedRules).forEach(key => {
-        if(baseConfig[key]){
+        if (baseConfig[key]) {
           baseConfig[key] = storedRules[key];
         }
       });
@@ -33,24 +35,24 @@ export const useThemeRules = () => {
   baseConfig['appView'] = window.innerWidth < SIZES.tablet ? APP_VIEW_MOBILE :
     APP_VIEW_DESKTOP;
   const [themeRules, setThemeRules] = useState(baseConfig);
-  
+
   const changeTheme = (value) => {
     setThemeRules(value);
   };
-  
+
   useEffect(() => {
     localStorage.setItem(SYNAPS_CONFIG.localStorageBasePath + '/themeRules',
       JSON.stringify(themeRules),
     );
   }, [themeRules]);
-  
+
   /**
    * @typedef {object} UseThemeRulesReturn
    * @property {ThemeRuleValues} themeRules
    * @property {ThemeRuleValues} themeRules
    */
   return {themeRules, changeTheme, themeState: THEME};
-  
+
 };
 
 export const useThemeContext = () => {
@@ -58,24 +60,24 @@ export const useThemeContext = () => {
   const {hooks} = useContext(AppHooksContext);
   const history = useHistory();
   const checkAllRules = useStyledThemingRules();
-  
+
   const changeRules = (changes) => {
-  
+
     const newRules = {...themeRules};
     changes.forEach(rule => {
       newRules[rule.themeVariable] = rule.themeValue;
     });
-    if(hooks.appView){
+    if (hooks.appView) {
       newRules['appView'] = hooks.appView;
     }
     changeTheme(newRules);
   };
-  
+
   useEffect(() => {
-    
+
     checkAllRules(themeRules, hooks.appView, history.location.pathname,
       changeRules,
     );
   }, [hooks.appView, history.location.pathname]);
-  
+
 };

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import theming from 'styled-theming';
-import {getAllCardsForDeck, deleteCard} from '../actions/cardActions.js';
+import {deleteCard, getAllCardsForDeck} from '../actions/cardActions.js';
 import {
   PreviewDeckCards, SearchBar, SynapsButton, TitleText,
 } from '../components';
@@ -12,7 +12,7 @@ import {Alert, Icon} from 'antd';
 import {
   THEMING_VALUES, THEMING_VARIABLES,
 } from '../customHooks/themingRules.js';
-import { ReactComponent as Delete} from "../svgs/delete.svg"
+import {ReactComponent as Delete} from '../svgs/delete.svg';
 
 /**
  * Preview Deck
@@ -30,11 +30,27 @@ export const PreviewDeck = ({getHooks}) => {
     usersState,
     changePath,
     height,
-    appView
+    appView,
+    setSelectingCards, deleteClicked, setDeleteClicked
   } = getHooks('PreviewDeck');
 
   const [cardsSelected, setCardsSelected] = useState({});
   const [selectMode, setSelectMode] = useState(false);
+
+  useEffect(() => {
+
+    if (!selectMode) {
+      setDeleteClicked(false);
+      return;
+
+    }
+    if (Object.values(cardsSelected).length > 0) {
+      Object.values(cardsSelected).forEach(card => {
+        dispatch(deleteCard(card, usersState.user.uid));
+      });
+    }
+    setDeleteClicked(false);
+  }, [deleteClicked]);
 
   useEffect(() => {
     if (pathPushedState === undefined) {
@@ -56,24 +72,14 @@ export const PreviewDeck = ({getHooks}) => {
       setCardsSelected({...cardsSelected, [card.card_id]: card});
     }
   };
-  const deleteButton = (cardIds) => {
-    if(!selectMode){
-      return;
-    } if(cardsSelected.length > 0) {
-      cardsSelected.forEach(cardId => {
-        const cardToDelete = cardsState.cards.filter(card => {
-          return card.card_id === cardId ? true : false;
-        })[0];
-        dispatch(deleteCard(cardToDelete, usersState.user.uid))
-      })
-    }
-  }
 
   const unSelected = () => {
     if (selectMode) {
       setCardsSelected([]);
     }
     setSelectMode(!selectMode);
+    setSelectingCards(!selectMode);
+
   };
 
   const getAlert = () => {
@@ -83,68 +89,78 @@ export const PreviewDeck = ({getHooks}) => {
       );
     }
   };
-  debugger;
+
   return (
     <StyledPreviewDeck data-testid={'preview-deck-container'} heigth={height}>
       {getAlert()}
-      <Container className={'container'}>
-        <TopContainer className={'top-container'}>
-          <StyledIconLeft type="left"/>
-          <p onClick={() => changePath(APP_PATHS.DASHBOARD_PATH)}>Back</p>
-          <SearchContainer className={'search-container'}>
-            <SearchBar
-              height={'23px'}
-              borderRadius={'14px'}
-              onSearch={() => {
-              }}
-            />
-          </SearchContainer>
-          <Selected selected={selectMode} onClick={unSelected}>
-            {selectMode === false ? 'Select' : 'Cancel'}
-          </Selected>
-        </TopContainer>
-        <LeftContainer>
-          <TitleText
-            text={(pathPushedState && pathPushedState.deck_name) || 'Preview'}
-          />
-          {appView === APP_VIEW_DESKTOP && <StudyButton
-            onClick={() => changePath(APP_PATHS.QUIZ_MODE, pathPushedState)}
-            height={'54px'}
-            width={'264px'} text={'Study Deck'}
-            type={'secondary'}/>}
-        </LeftContainer>
+      <DeckDisplayContainer>
+        <Container className={'container'}>
+          <TopContainer className={'top-container'}>
+            <BackArrow>
+              <StyledIconLeft type="left"/>
+              <p onClick={() => changePath(APP_PATHS.DASHBOARD_PATH)}>Back</p>
+            </BackArrow>
 
-      </Container>
-      <StyledPreviewDeckHolder class={'deck-holder'}>
-        <PreviewDeckCards cardType={'card'} key={0}
-                          getHooks={getHooks}
-        />
-        {Object.values(cardsState.cards).filter(card =>
-          card.deck_id === pathPushedState.deck_id).map(
-          card => {
-            return <PreviewDeckCards onClick={() => cardClicked(card)}
-                                     getHooks={getHooks} cardType={'card'}
-                                     key={card.card_id}
-                                     selected={!!cardsSelected[card.card_id]}
-                                     card={card}/>;
-          })}
-      </StyledPreviewDeckHolder>
+            <SearchContainer className={'search-container'}>
+              <SearchBar
+                height={'23px'}
+                borderRadius={'14px'}
+                onSearch={() => {
+                }}
+              />
+            </SearchContainer>
+            <Selected selected={selectMode} onClick={unSelected}>
+              {selectMode === false ? 'Select' : 'Cancel'}
+            </Selected>
+          </TopContainer>
+          <LeftContainer>
+            <TitleText
+              text={(pathPushedState && pathPushedState.deck_name) || 'Preview'}
+            />
+            {appView === APP_VIEW_DESKTOP && <StudyButton
+              onClick={() => changePath(APP_PATHS.QUIZ_MODE, pathPushedState)}
+              height={'54px'}
+              width={'264px'} text={'Study Deck'}
+              type={'secondary'}/>}
+          </LeftContainer>
+
+        </Container>
+        <StyledPreviewDeckHolder class={'deck-holder'}>
+          <PreviewDeckCards cardType={'card'} key={0}
+                            getHooks={getHooks}
+          />
+          {Object.values(cardsState.cards).filter(card =>
+            card.deck_id === pathPushedState.deck_id).map(
+            card => {
+              return <PreviewDeckCards onClick={() => cardClicked(card)}
+                                       getHooks={getHooks} cardType={'card'}
+                                       key={card.card_id}
+                                       selected={!!cardsSelected[card.card_id]}
+                                       card={card}/>;
+            })}
+        </StyledPreviewDeckHolder>
+      </DeckDisplayContainer>
       {appView === APP_VIEW_MOBILE && <StudyButton
         onClick={() => changePath(APP_PATHS.QUIZ_MODE, pathPushedState)}
         height={'73px'} width={'90%'} text={'Study Deck'}
         type={'secondary'}/>}
-
-
-        type={'secondary'}/>
-        <DeleteIcon/>
     </StyledPreviewDeck>
   );
 };
+
+const DeckDisplayContainer = styled.div`
+overflow-y: scroll;
+`;
+
+const BackArrow = styled.div`
+display: flex;
+`;
 
 const LeftContainer = styled.div`
 display: flex;
 flex-direction: column;
 width: ${props => props.theme.appView === APP_VIEW_DESKTOP ? '50%' : '100%'};
+order: ${props => props.theme.appView === APP_VIEW_DESKTOP ? '1' : '2'};
 `;
 
 const Container = styled.div`
@@ -160,12 +176,14 @@ const Selected = styled.p`
 `;
 
 const DeleteIcon = styled(Delete)`
-  ${props => props.theme.appView === APP_VIEW_MOBILE ? "position:absolute" : ""};
+  ${props => props.theme.appView === APP_VIEW_MOBILE ? 'position:absolute' : ''};
   ${props => {
-    if (props.theme.appView === APP_VIEW_MOBILE){
-      return "bottom: 5px; right: 5px;"
-  }}}
-`
+  if (props.theme.appView === APP_VIEW_MOBILE) {
+    return 'top: 80%; right: 5px;';
+  }
+}};
+  z-index: 100;
+`;
 
 const Blur = styled.div`
 position: absolute;
@@ -184,7 +202,7 @@ border-radius: ${props => props.theme.appView === APP_VIEW_DESKTOP ? '33px' :
 margin-top: 20px;
 margin-bottom: 20px;
 margin-left: ${props => props.theme.appView === APP_VIEW_DESKTOP ? '9%;' :
-  'auto'};
+  '0'};
   > span {
   margin-bottom: 20px;
   margin-top:15px;
@@ -199,7 +217,7 @@ margin-left: ${props => props.theme.appView === APP_VIEW_DESKTOP ? '9%;' :
 const TopContainer = styled.div`
 display: flex;
 flex-direction: ${props => props.theme.appView === APP_VIEW_DESKTOP ? 'row' :
-  'column'};
+  'row'};
 font-size: 12px;
 width: ${props => props.theme.appView === APP_VIEW_DESKTOP ? '50%' : '100%'};
 justify-content: center;
@@ -234,22 +252,23 @@ const StyledPreviewDeck = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 1140px;
-  max-height: ${previewDeckHeight};
+  height: ${previewDeckHeight};
   width: 100%;
-  border-radius: 10px;
+  border-radius: ${props => props.theme.appView === APP_VIEW_DESKTOP ? '10px' :
+  '0px'};
   padding-bottom: ${marginBottom};
   background: ${props => props.theme.themeState.navBarLight};
-  margin: 50px auto 0 auto;
+  margin:  ${props => props.theme.appView === APP_VIEW_DESKTOP ?
+  '50px auto 0 auto' :
+  '0 auto'};
 `;
 
 const StyledPreviewDeckHolder = styled.div`
-  overflow-y: scroll;
   max-height: 100%;
   min-height: 100%;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  overflow: scroll;
   padding-bottom: 150px;
 
 `;

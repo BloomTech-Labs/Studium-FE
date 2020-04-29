@@ -84,7 +84,7 @@ const AfterStoreTheme = props => {
       <AppHooksContext.Provider
         value={{setHookVariable, hooks}}>
 
-      <AfterHooks{...props}/>
+        <AfterHooks{...props}/>
       </AppHooksContext.Provider>
     </>
   );

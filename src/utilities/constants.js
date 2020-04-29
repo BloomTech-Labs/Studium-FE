@@ -51,26 +51,67 @@ export const DEBUG_LOG_SIZES = {
  *   SYNAPS_LIGHT: string}}
  */
 export const THEME = {
+  primaryColor: '#0d2545',
+  primaryColorB98C4: '#b9b8c4',
+  primaryColor86869A: '#86869a',
+  primaryColor5C5F78: '#5C5F78',
+  primaryColor36405C: '#36405c',
+  primaryColor293046: '#293046',
+  primaryColor353544: '#353544',
+  primaryColor122543: '#122543',
+
+  secondaryColor: '#A2D8C7',
+  secondary4CB69F: '#4CB69F',
+  secondaryColorEAF5F1: '#EAF5F1',
+  secondaryColorD8EEE6: '#D8EEE6',
+  secondaryColorC6E6DB: '#C6E6DB',
+  secondaryColorB5DFD1: '#B5DFD1',
+  secondaryColor92B2AA: '#92B2AA',
+  secondaryColor798A87: '#798A87',
+
+  white: '#FFFFFF',
+  grayF1F2F2: '#F1F2F2',
+  grayE6E7E8: '#E6E7E8',
+  grayD1D3D4: '#D1D3D4',
+  grayBCBEC0: '#BEBEC0',
+  grayA7A9AC: '#A7A9AC',
+  gray939598: '#939598',
+
+  lightNavBarColor: '#E5E5E5',
+
+  largeRadius: 14,
+  smallRadius: 6,
+  navBarTopHeight: 75,
+  footerHeight: 70,
+
+  navBarDark: '#0C2545',
+  navBarLight: '#F6F5F3',
+
+  synapsDark: '#36405C',
+  synapsLight: '#FFFFFF',
+
+  brainPicDark: '#164167',
+  brainPicLight: '#e1ded7',
   PRIMARY_COLOR: '#0d2545',
   PRIMARY_COLOR_LIGHTER1: '#36405c',
-  
-  COLOR_WHITE: "#f0ede6",
-  
+
+  COLOR_WHITE: '#f0ede6',
+
   SECONDARY_COLOR: '#A2D8C7',
   SECONDARY_DARKER1: '#4CB69F',
-  
+
   NAV_BAR_HEIGHT: 75,
   FOOTER_HEIGHT: 70,
-  
+
   NAV_BAR_DARK: '#0C2545',
   NAV_BAR_LIGHT: '#F6F5F3',
-  
+
   SYNAPS_DARK: '#36405C',
   SYNAPS_LIGHT: '#FFFFFF',
-  
+
   BRAIN_PIC_DARK: '#164167',
   BRAIN_PIC_LIGHT: '#e1ded7',
-  
+
   MAX_DASHBOARD_CONTAINER_WIDTH: 1140,
 };
 

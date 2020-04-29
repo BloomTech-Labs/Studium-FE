@@ -9,6 +9,7 @@ import {
 } from '../../customHooks/themingRules.js';
 import SvgPlusIcon from '../../svgComponents/SvgPlusIcon.js';
 import {Icon} from 'antd';
+import {ReactComponent as Delete} from '../../svgs/delete.svg';
 
 /**
  * Footer
@@ -17,9 +18,9 @@ import {Icon} from 'antd';
  *
  */
 export const Footer = (props) => {
-  
-  const {changePath, path} = props.getHooks();
-  
+
+  const {changePath, path, setDeleteClicked, selectingCards} = props.getHooks();
+
   /**
    * Add Deck
    * @description Function called to add a deck to the users decks.
@@ -29,17 +30,22 @@ export const Footer = (props) => {
   const addDeck = () => {
     changePath('/create/deck');
   };
-  
+
   const getFooterIcons = () => {
     
-    if(path === APP_PATHS.QUIZ_MODE){
+    if (path === APP_PATHS.QUIZ_MODE) {
       return <Icons onClick={() => changePath(APP_PATHS.DASHBOARD_PATH)}
                     type={'home'}/>;
-    }else{
+    } else if (path === APP_PATHS.PREVIEW_DECK_PATH) {
+
+      if (selectingCards) {
+        return <Delete onClick={() => setDeleteClicked(true)}></Delete>;
+      }
+    } else {
       return <SvgPlusIcon onClick={() => addDeck()}/>;
     }
   };
-  
+
   return (<StyledFooter {...props} className={'footer'}
                         pathname={path}>
     {path === './preview' && <Blur/>}
@@ -52,10 +58,10 @@ export const Footer = (props) => {
       position={'relative'}
       overFlowY={'visible'}
       flexDirection={'row'}
-    
+
     >
       {getFooterIcons()}
-    
+
     </ContainerDiv>
   </StyledFooter>);
 };

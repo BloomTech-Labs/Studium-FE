@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {Card} from 'antd';
 import {CreateButton} from '../Button/CreateButton.js';
 import {APP_VIEW_DESKTOP} from '../../utilities/constants.js';
-import {ReactComponent as Check} from  '../../images/Vector.svg';
+import {ReactComponent as Check} from '../../images/Vector.svg';
 
 /**
  * Preview Deck Cards
@@ -53,7 +53,7 @@ export const PreviewDeckCards = ({
 
     str = str.map(word => {
       if (word.length > 40) {
-        debugger;
+
         word = word.slice(0, 40);
       }
       return word;
@@ -81,9 +81,7 @@ export const PreviewDeckCards = ({
       <p className={'deck-text'}>{cardType === 'deck' ? deck.deck_name :
         card.question}</p>}
       {selected && <StyledCheck> </StyledCheck>}
-    
-        removeExtraLetters(card.question)}</p>}
-      {selected && <h1>This card is selected.</h1>}
+
 
     </StyledAntdCard>
   );
@@ -91,12 +89,12 @@ export const PreviewDeckCards = ({
 
 const StyledCheck = styled(Check)`
   align-self: flex-end;
-  align-text: right;
+  text-align: right;
   position: absolute;
   bottom: 7px;
   right: 10px;
 
-`
+`;
 
 const StyledAntdCard = styled(Card)`
 
@@ -110,15 +108,19 @@ const StyledAntdCard = styled(Card)`
     height: 153px;
     margin-top: 20px;
     border-radius: 13px;
-    border: ${props => props.selected === (true) ? "4px solid D7EEE7" : "3px solid #d7eee7"};
+    border: ${props => props.selected === true ? '4px solid D7EEE7' :
+  '3px solid #d7eee7'};
     background: #eeece8;
     box-sizing: border-box;
     font-size: 13px;
-    margin-left: 9px;
-    margin-right: 9px;
+    margin-left: ${props => props.theme.appView === APP_VIEW_DESKTOP ? '30px' :
+  '3px'};
+    margin-right: ${props => props.theme.appView === APP_VIEW_DESKTOP ? '30px' :
+  '3px'};
 
     &.ant-card.ant-card-bordered.ant-card-type-inner {
-      background-color: ${props => props.selected === (true) ?  "#8CB1AA" : "#EEECE8"};
+      background-color: ${props => props.selected === true ? '#8CB1AA' :
+  '#EEECE8'};
     }
 
 
