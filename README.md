@@ -61,7 +61,8 @@ To create the best Life Science flashcard application, that has excellent UI, wh
 
 ![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-
+[![Maintainability](https://api.codeclimate.com/v1/badges/26cd86e13210109747d9/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/pt-synaps-fe/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/26cd86e13210109747d9/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/pt-synaps-fe/test_coverage)
 
 # React <br> Styled Components <br> Ant Design <br> Cloudinary(picture storage) <br> Redux <br> 
 ".
