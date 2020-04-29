@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {PreviewDeckCards, SearchBar, TitleText,} from '../components';
 import PropTypes from 'prop-types';
@@ -7,6 +7,23 @@ import {
 } from '../utilities/constants.js';
 import {getUserDecks} from '../actions';
 import {Alert} from 'antd';
+import Fuse from 'fuse.js';
+
+const options = {
+  // isCaseSensitive: false,
+  // includeScore: false,
+  // shouldSort: true,
+  // includeMatches: false,
+  // findAllMatches: false,
+  // minMatchCharLength: 1,
+  // location: 0,
+  // threshold: 0.6,
+  // distance: 100,
+  // useExtendedSearch: false,
+  keys: [
+    'deck_name',
+  ]
+};
 
 /**
  * Dashboard
@@ -16,6 +33,7 @@ import {Alert} from 'antd';
  */
 export const Dashboard = ({getHooks}) => {
 
+  const [searchTerm, setSearchTerm] = useState('');
   const {
     appView,
     changePath,
@@ -25,7 +43,7 @@ export const Dashboard = ({getHooks}) => {
     theme
   } = getHooks();
   const search = e => {
-
+    setSearchTerm(e.target.value);
   };
 
   useEffect(() => {
@@ -52,6 +70,24 @@ export const Dashboard = ({getHooks}) => {
     return '';
   };
 
+  const getDecks = () => {
+
+    if (decksState && decksState.decks) {
+      const fuse = new Fuse(decksState.decks, options);
+      if (searchTerm !== '') {
+        debugger;
+        const decks = fuse.search(searchTerm);
+        console.log(decks);
+        return decks;
+
+      } else {
+        return decksState.decks;
+      }
+    }
+    return [];
+
+  };
+
   return (
     <StyledDashboard className={'dashboard'}>
       {getAlert()}
@@ -62,7 +98,7 @@ export const Dashboard = ({getHooks}) => {
 
         <SearchBar
           theme={theme}
-          onSearch={search}
+          onChange={search}
           style={{
             marginTop: '8px',
             marginBottom: '33px',
@@ -81,7 +117,11 @@ export const Dashboard = ({getHooks}) => {
           onClick={e => deckClicked()}
 
         />
-        {decksState.decks && decksState.decks.map(deck => {
+        {getDecks().map(deck => {
+          if (deck['item']) {
+            deck = deck['item'];
+          }
+          debugger;
           return (
             <PreviewDeckCards
               key={deck.deck_id}
