@@ -4,13 +4,10 @@ import {ContainerDiv, NavBarAvatar} from '../index.js';
 import {signOut} from '../../actions';
 import theming from 'styled-theming';
 import LogoLeft from './LogoLeft.js';
-import {THEME} from '../../utilities/constants.js';
+import {APP_PATHS, THEME} from '../../utilities/constants.js';
 import {
   THEMING_VALUES, THEMING_VARIABLES,
 } from '../../customHooks/themingRules.js';
-import {
-  APP_PATHS,
-} from '../../utilities/constants.js';
 
 /**
  * Nav Bar
@@ -24,33 +21,33 @@ export const NavBar = ({getHooks}) => {
     'Nav Bar');
   const [setMenuOpen] = useState(false);
   const [avatarUrl, setAvatarUrl] = useState('');
-  
+
   useEffect(() => {
-    
-    if(usersState.user && usersState.user.photoURL){
+
+    if (usersState.user && usersState.user.photoURL) {
       setAvatarUrl(usersState.user.photoURL);
-      
-    }else{
+
+    } else {
       setAvatarUrl('');
-      
+
     }
   }, [usersState]);
-  
+
   const logout = () => {
     setMenuOpen(false);
     signOut(dispatch);
   };
-  
+
   const navBarRightContent = () => {
-    
-    if(path === APP_PATHS.SIGN_UP_PATH || path === APP_PATHS.LANDING_PAGE){
+
+    if (path === APP_PATHS.SIGN_UP_PATH || path === APP_PATHS.LANDING_PAGE) {
       return <Styledh2 onClick={() => changePath(APP_PATHS.SIGN_IN_PATH)}>Sign
         In</Styledh2>;
-    }else if(path === APP_PATHS.SIGN_IN_PATH){
+    } else if (path === APP_PATHS.SIGN_IN_PATH) {
       return <Styledh2 onClick={() => changePath(APP_PATHS.SIGN_UP_PATH)}>Sign
         Up</Styledh2>;
     }
-    
+
     return (
       <NavBarAvatar
         getHooks={getHooks}
@@ -59,9 +56,9 @@ export const NavBar = ({getHooks}) => {
         className={'ant-dropdown-link'}
       />
     );
-    
+
   };
-  
+
   return (
     <StyledBar className={'nav-bar'}>
       <ContainerDiv
@@ -84,10 +81,10 @@ export const NavBar = ({getHooks}) => {
 NavBar.propTypes = {};
 
 const backgroundColor = theming(THEMING_VARIABLES.NAV_STYLE, {
-  [THEMING_VALUES.DARK]: THEME.navBarDark,
-  [THEMING_VALUES.LIGHT]: THEME.navBarLight,
+  [THEMING_VALUES.DARK]: THEME.NAV_BAR_DARK,
+  [THEMING_VALUES.LIGHT]: THEME.NAV_BAR_LIGHT,
   [THEMING_VALUES.HIDDEN]: 'transparent',
-  
+
 });
 
 const top = theming(THEMING_VARIABLES.NAV_STYLE, {
@@ -104,15 +101,15 @@ const StyledBar = styled.div`
   position: absolute;
   top: ${top};
   width: 100%;
-  height: ${props => props.theme.navBarTopHeight + 'px'};
+  height: ${THEME.NAV_BAR_HEIGHT + 'px'};
 
  
 `;
 
 const color = theming(THEMING_VARIABLES.NAV_STYLE, {
   [THEMING_VALUES.DARK]: 'white',
-  [THEMING_VALUES.LIGHT]: props => props.theme.themeState.synapsDark,
-  [THEMING_VALUES.HIDDEN]: props => props.theme.themeState.synapsDark,
+  [THEMING_VALUES.LIGHT]: THEME.SYNAPS_DARK,
+  [THEMING_VALUES.HIDDEN]: THEME.SYNAPS_DARK,
 });
 
 const Styledh2 = styled.h2`

@@ -44,7 +44,11 @@ export const DEBUG_LOG_SIZES = {
  */
 
 /**
- * @type {ThemeState}
+ * @type {{NAV_BAR_HEIGHT: number, MAX_DASHBOARD_CONTAINER_WIDTH: number,
+ *   NAV_BAR_DARK: string, FOOTER_HEIGHT: number, BRAIN_PIC_DARK: string,
+ *   NAV_BAR_LIGHT: string, BRAIN_PIC_LIGHT: string, PRIMARY_COLOR: string,
+ *   SYNAPS_DARK: string, SECONDARY_DARKER1: string, SECONDARY_COLOR: string,
+ *   SYNAPS_LIGHT: string}}
  */
 export const THEME = {
   primaryColor: '#0d2545',
@@ -55,7 +59,7 @@ export const THEME = {
   primaryColor293046: '#293046',
   primaryColor353544: '#353544',
   primaryColor122543: '#122543',
-  
+
   secondaryColor: '#A2D8C7',
   secondary4CB69F: '#4CB69F',
   secondaryColorEAF5F1: '#EAF5F1',
@@ -64,7 +68,7 @@ export const THEME = {
   secondaryColorB5DFD1: '#B5DFD1',
   secondaryColor92B2AA: '#92B2AA',
   secondaryColor798A87: '#798A87',
-  
+
   white: '#FFFFFF',
   grayF1F2F2: '#F1F2F2',
   grayE6E7E8: '#E6E7E8',
@@ -72,27 +76,48 @@ export const THEME = {
   grayBCBEC0: '#BEBEC0',
   grayA7A9AC: '#A7A9AC',
   gray939598: '#939598',
-  
+
   lightNavBarColor: '#E5E5E5',
-  
+
   largeRadius: 14,
   smallRadius: 6,
   navBarTopHeight: 75,
   footerHeight: 70,
-  
+
   navBarDark: '#0C2545',
   navBarLight: '#F6F5F3',
-  
+
   synapsDark: '#36405C',
   synapsLight: '#FFFFFF',
-  
+
   brainPicDark: '#164167',
   brainPicLight: '#e1ded7',
+  PRIMARY_COLOR: '#0d2545',
+  PRIMARY_COLOR_LIGHTER1: '#36405c',
+
+  COLOR_WHITE: '#f0ede6',
+
+  SECONDARY_COLOR: '#A2D8C7',
+  SECONDARY_DARKER1: '#4CB69F',
+
+  NAV_BAR_HEIGHT: 75,
+  FOOTER_HEIGHT: 70,
+
+  NAV_BAR_DARK: '#0C2545',
+  NAV_BAR_LIGHT: '#F6F5F3',
+
+  SYNAPS_DARK: '#36405C',
+  SYNAPS_LIGHT: '#FFFFFF',
+
+  BRAIN_PIC_DARK: '#164167',
+  BRAIN_PIC_LIGHT: '#e1ded7',
+
+  MAX_DASHBOARD_CONTAINER_WIDTH: 1140,
 };
 
 /**
  * @typedef {Object} ThemeState
- * @property {Color} primaryColor
+ * @property {Color} PRIMARY_COLOR
  * @property {Color} primaryColorB98C4
  * @property {Color} primaryColor86869A
  * @property {Color} primaryColor5C5F78
@@ -100,7 +125,7 @@ export const THEME = {
  * @property {Color} primaryColor293046
  * @property {Color} primaryColor353544
  *
- * @property {Color} secondaryColor
+ * @property {Color} SECONDARY_COLOR
  * @property {Color} secondaryColorEAF5F1
  * @property {Color} secondaryColorD8EEE6
  * @property {Color} secondaryColorC6E6DB
@@ -118,16 +143,16 @@ export const THEME = {
  *
  * @property {number} largeRadius
  * @property {number} smallRadius
- * @property {number} navBarTopHeight
- * @property {number} footerHeight
+ * @property {number} NAV_BAR_HEIGHT
+ * @property {number} FOOTER_HEIGHT
  *
- * @property {string} navBarLight
- * @property {string} navBarDark
+ * @property {string} NAV_BAR_LIGHT
+ * @property {string} NAV_BAR_DARK
  *
  * @property {THEMING_VALUES} NAV_STYLE
  *
- * @property {Color} brainPicDark
- * @property {Color} brainPicLight
+ * @property {Color} BRAIN_PIC_DARK
+ * @property {Color} BRAIN_PIC_LIGHT
  *
  */
 
@@ -147,7 +172,6 @@ export const APP_PATHS = {
   DASHBOARD_PATH: '/dashboard',
   CREATE_DECK_PATH: '/create/deck',
   PREVIEW_DECK_PATH: '/preview',
-  GAME_PATH: '/game',
   TESTING: '/test',
   LANDING_PAGE: '/',
   QUIZ_MODE: '/quiz-mode',

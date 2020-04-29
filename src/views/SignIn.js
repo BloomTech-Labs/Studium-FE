@@ -2,37 +2,42 @@ import React, {useState} from 'react';
 import {FormInput, SynapsButton} from '../components';
 import SvgSynapsLogoText from '../svgComponents/SvgSynapsLogoText.js';
 import styled from 'styled-components';
-import {signIn, GOOGLE_PROVIDER, EMAIL_PROVIDER} from '../actions';
+import {EMAIL_PROVIDER, GOOGLE_PROVIDER, signIn} from '../actions';
 import theming from 'styled-theming';
 import {useTheming} from '../customHooks/useTheming.js';
 import {
-  THEMING_VALUES,
-  THEMING_VARIABLES,
+  THEMING_VALUES, THEMING_VARIABLES,
 } from '../customHooks/themingRules.js';
-import {THEME, MEDIA_QUERIES, SIZES} from '../utilities/constants.js';
+import {APP_PATHS, MEDIA_QUERIES, THEME} from '../utilities/constants.js';
 
-export function SignIn({getHooks}){
-  const {dispatch, theme, path} = getHooks(
-    'SignIn',
+/**
+ * Sign In
+ * @category Views
+ * @component
+ * @example return (<SignIn />);
+ */
+export function SignIn (props) {
+  const {dispatch, theme, path, appView, height,} = props.getHooks(
+    'SignIn'
   );
   const [info, setInfo] = useState({email: '', password: '', error: {}});
-  const getValue = useTheming('App.js');
-  
+  const getValue = useTheming();
+
   const handleChange = e => {
     setInfo({...info, [e.target.name]: e.target.value});
   };
-  
+
   const handleSignInClick = type => {
-    if(type === EMAIL_PROVIDER){
-      if(info.email !== '' && info.password !== ''){
+    if (type === EMAIL_PROVIDER) {
+      if (info.email !== '' && info.password !== '') {
         dispatch(signIn(EMAIL_PROVIDER, info.email, info.password));
-      }else{
-        if(info.email === ''){
+      } else {
+        if (info.email === '') {
           setInfo({
             ...info,
             error: {email: 'You must enter a email address.'},
           });
-        }else{
+        } else {
           setInfo({
             ...info,
             error: {
@@ -41,15 +46,15 @@ export function SignIn({getHooks}){
           });
         }
       }
-    }else{
+    } else {
       dispatch(signIn(GOOGLE_PROVIDER));
     }
   };
-  
+
   const switchWelcomeTitle = () => {
-    if(path === '/signin'){
+    if (path === APP_PATHS.SIGN_IN_PATH) {
       return <StyledH2>Hey! Welcome Back.</StyledH2>;
-    }else{
+    } else {
       return (
         <StyledH2
           style={{
@@ -59,7 +64,7 @@ export function SignIn({getHooks}){
       );
     }
   };
-  
+
   return (
     <StyledSignIn data-testid={'sign-in-container'}>
       <SvgSynapsLogoText
@@ -68,8 +73,8 @@ export function SignIn({getHooks}){
         margin={'10px 0 0 0'}
         fill={
           theme.BACKGROUND === THEMING_VALUES.DARK
-            ? theme.themeState.navBarLight
-            : theme.themeState.secondary4CB69F
+            ? theme.themeState.NAV_BAR_LIGHT
+            : theme.themeState.SECONDARY_DARKER1
         }
         height={getValue(THEMING_VARIABLES.BRAIN_SVG, {
           [THEMING_VALUES.BOTTOM]: '176px',
@@ -82,17 +87,10 @@ export function SignIn({getHooks}){
           [THEMING_VALUES.MOBILE]: '300px',
         })}
       />
+
       {switchWelcomeTitle()}
       <div>
         <StyledBtn
-          style={{
-            color: '#fff',
-            backgroundColor: '#36405C',
-            margin: '0 0 1.5em',
-            padding: '0 2em 0',
-            width: '260px',
-            height: '60px',
-          }}
           icon={'google'}
           text={'Log In with Google'}
           shape={'round'}
@@ -100,11 +98,12 @@ export function SignIn({getHooks}){
           onClick={e => handleSignInClick(GOOGLE_PROVIDER)}
         />
       </div>
-      
+
       <StyledBorder/>
-      
+
       <StyledFormInput>
         <FormInput
+          className={'email-form-input'}
           name={'email'}
           onChange={handleChange}
           value={info.email}
@@ -113,6 +112,7 @@ export function SignIn({getHooks}){
           bordered={false}
         />
         <FormInput
+          className={'email-form-input'}
           name={'password'}
           onChange={handleChange}
           value={info.password}
@@ -121,16 +121,8 @@ export function SignIn({getHooks}){
           bordered={false}
         />
       </StyledFormInput>
-      
+
       <StyledBtn2
-        style={{
-          width: '260px',
-          height: '72px',
-          backgroundColor: '#0C2545',
-          margin: '0 0 1.5em',
-          padding: '0 2em 0',
-          border: '2px solid #fff',
-        }}
         text={'Continue with Email'}
         shape={'round'}
         size={'large'}
@@ -142,9 +134,7 @@ export function SignIn({getHooks}){
 }
 
 const switchText = theming(THEMING_VARIABLES.BACKGROUND, {
-  [THEMING_VALUES.DARK]: ({theme}) => {
-    return theme.themeState.white;
-  },
+  [THEMING_VALUES.DARK]: 'white',
   [THEMING_VALUES.LIGHT]: ({theme}) => {
     return theme.themeState.primaryColor36405C;
   },
@@ -182,8 +172,8 @@ const StyledBtn = styled(SynapsButton)`
   && {
     display: flex;
     justify-content: space-evenly;
-    color: ${THEME.white};
-    background-color: ${THEME.primaryColor36405C};
+    color: white;
+    background-color: ${THEME.PRIMARY_COLOR_LIGHTER1};
     margin: 0 0 1.5em;
     padding: 0 2em 0;
     width: 260px;
@@ -211,8 +201,14 @@ const StyledFormInput = styled.div`
   width: 255px;
   margin: 10px;
   background-color: transparent;
+  
   .ant-input.sc-fzplWN.hgfzoL {
     background: transparent;
+    
+  }
+  
+  .email-form-input {
+      border-bottom: 1px solid #36405c;
   }
   & label {
     color: ${switchText};
@@ -227,7 +223,8 @@ const StyledFormInput = styled.div`
       line-height: 24px;
     }
     & input {
-      background-color: ${THEME.primaryColor};
+      background-color: transparent;
+    
     }
   }
 `;

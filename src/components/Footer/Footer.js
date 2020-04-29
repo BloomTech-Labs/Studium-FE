@@ -3,11 +3,13 @@ import styled from 'styled-components';
 import theming from 'styled-theming';
 import {ContainerDiv} from '../Container/ContainerDiv.js';
 import PropTypes from 'prop-types';
-import {THEME} from '../../utilities/constants.js';
+import {APP_PATHS, THEME} from '../../utilities/constants.js';
 import {
   THEMING_VALUES, THEMING_VARIABLES,
 } from '../../customHooks/themingRules.js';
 import SvgPlusIcon from '../../svgComponents/SvgPlusIcon.js';
+import {Icon} from 'antd';
+import {ReactComponent as Delete} from '../../svgs/delete.svg';
 
 /**
  * Footer
@@ -16,9 +18,9 @@ import SvgPlusIcon from '../../svgComponents/SvgPlusIcon.js';
  *
  */
 export const Footer = (props) => {
-  
-  const {changePath, pathname} = props.getHooks();
-  
+
+  const {changePath, path, setDeleteClicked, selectingCards} = props.getHooks();
+
   /**
    * Add Deck
    * @description Function called to add a deck to the users decks.
@@ -26,14 +28,27 @@ export const Footer = (props) => {
    * @name addDeck
    */
   const addDeck = () => {
-    
     changePath('/create/deck');
-    
   };
-  
+
+  const getFooterIcons = () => {
+    
+    if (path === APP_PATHS.QUIZ_MODE) {
+      return <Icons onClick={() => changePath(APP_PATHS.DASHBOARD_PATH)}
+                    type={'home'}/>;
+    } else if (path === APP_PATHS.PREVIEW_DECK_PATH) {
+
+      if (selectingCards) {
+        return <Delete onClick={() => setDeleteClicked(true)}></Delete>;
+      }
+    } else {
+      return <SvgPlusIcon onClick={() => addDeck()}/>;
+    }
+  };
+
   return (<StyledFooter {...props} className={'footer'}
-                        pathname={pathname}>
-    {pathname === './preview' && <Blur/>}
+                        pathname={path}>
+    {path === './preview' && <Blur/>}
     <ContainerDiv
       className={'footer-container'}
       maxHeight={THEME.footerHeight + 'px'}
@@ -43,11 +58,17 @@ export const Footer = (props) => {
       position={'relative'}
       overFlowY={'visible'}
       flexDirection={'row'}
+
     >
-      <SvgPlusIcon onClick={() => addDeck()}/>
+      {getFooterIcons()}
+
     </ContainerDiv>
   </StyledFooter>);
 };
+
+const Icons = styled(Icon)`
+font-size: 40px;
+`;
 
 Footer.prototypes = {
   getHooks: PropTypes.func.isRequired,

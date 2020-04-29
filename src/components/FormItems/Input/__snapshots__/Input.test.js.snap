@@ -3,7 +3,31 @@
 exports[`StyledInput render correctly 1`] = `
 .c0.c0 {
   text-align: left;
+  background-color: transparent;
+}
+
+.c0.c0 .ant-form-item-label {
+  padding: 0 0 0;
+}
+
+.c0.c0 .ant-form-item-label {
+  padding: 0 0 0 0;
+  line-height: 1;
+}
+
+.c1.c1 {
+  border-radius: 0px;
   width: 90%;
+  height: 58px;
+  background-color: transparent;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 19px;
+  line-height: 24px;
+}
+
+.c1.c1 .ant-form-item-label {
+  padding: 0 0 0;
 }
 
 .c1.c1:focus {
@@ -26,10 +50,13 @@ exports[`StyledInput render correctly 1`] = `
       >
         <input
           className="ant-input c1"
+          fontWeight={600}
+          height="38px"
           onChange={[Function]}
           onKeyDown={[Function]}
           type="text"
           value=""
+          width="90%"
         />
       </span>
     </div>

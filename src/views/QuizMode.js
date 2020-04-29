@@ -1,19 +1,23 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {TitleText} from '../components/Text/TitleText/TitleText.js';
 import BigFlashCard from '../components/BigFlashCard/BigFlashCard.js';
 import {ReactComponent as SvgBack} from '../svgs/BackButton.svg';
 import {ReactComponent as SvgNext} from '../svgs/NextButton.svg';
+import {ReactComponent as Nope} from '../svgs/Nope.svg';
+import {ReactComponent as KindOf} from '../svgs/KindOf.svg';
+import {ReactComponent as Absolutely} from '../svgs/Absolutley.svg';
 import {updateCard} from '../actions/cardActions.js';
 import moment from 'moment';
+import {APP_VIEW_DESKTOP} from '../utilities/constants.js';
 
-export default function QuizMode({getHooks}) {
-  const {cardsState, pathPushedState, dispatch, usersState} = getHooks();
+export default function QuizMode ({getHooks}) {
+  const {cardsState, pathPushedState, dispatch, usersState, appView} = getHooks();
   const [quizCards, setQuizCards] = useState({});
   const [filteredQuizCards, setFilteredQuizCards] = useState({});
   const [displayedCard, setDisplayedCard] = useState({});
   const [cardIndex, setCardIndex] = useState(0);
-  const [quizComplete, setQuizComplete] = useState(true);
+  const [quizComplete, setQuizComplete] = useState(false);
   const [completeAlert, setCompleteAlert] = useState(false);
   const deck = pathPushedState;
 
@@ -28,7 +32,7 @@ export default function QuizMode({getHooks}) {
   useEffect(() => {
     const displayCards = {};
     let arrNums = [];
-    for (let i = 0; i < cardsState.cards.length; i++) {
+    for(let i = 0; i < cardsState.cards.length; i++) {
       arrNums.push(i);
     }
     cardsState.cards.forEach(card => {
@@ -51,18 +55,18 @@ export default function QuizMode({getHooks}) {
       let if2 = moment().diff(moment.unix(currentCard.last_viewed), 'hours');
 
       if (!currentCard.quiz_results) {
-        return;
+
       } else if (currentCard.quiz_results === 2) {
         if (
           moment().diff(moment.unix(currentCard.last_viewed), 'minutes') > 10
         ) {
-          return;
+
         } else {
           delete filteredCards[key];
         }
       } else if (currentCard.quiz_results === 3) {
         if (moment().diff(moment.unix(currentCard.last_viewed), 'hours') > 4) {
-          return;
+
         } else {
           delete filteredCards[key];
         }
@@ -112,7 +116,7 @@ export default function QuizMode({getHooks}) {
     }
   }, [cardsState.cards]);
 
-  function back() {
+  function back () {
     let keys = Object.keys(filteredQuizCards);
     let arrKeysCurrentIndex = keys.indexOf(cardIndex.toString());
     let arrKeysPrevIndex = arrKeysCurrentIndex - 1;
@@ -122,10 +126,10 @@ export default function QuizMode({getHooks}) {
       setCardIndex(prevCardKey);
       setDisplayedCard(filteredQuizCards[prevCardKey]);
     }
-    debugger;
+
   }
 
-  function next() {
+  function next () {
     let keys = Object.keys(filteredQuizCards);
     let arrKeysCurrentIndex = keys.indexOf(cardIndex.toString());
     let arrKeysNextIndex = arrKeysCurrentIndex + 1;
@@ -135,12 +139,12 @@ export default function QuizMode({getHooks}) {
       setCardIndex(nextCardKey);
       setDisplayedCard(filteredQuizCards[nextCardKey]);
     }
-    debugger;
+
   }
 
-  function updateQuizResults(name) {
+  function updateQuizResults (name) {
     let quiz_results;
-    switch (name) {
+    switch(name) {
       case 'Nope':
         quiz_results = 1;
         break;
@@ -162,57 +166,68 @@ export default function QuizMode({getHooks}) {
 
   return (
     <Container data-testid={'quiz-mode-container'}>
-      <TitleText text={deck.deck_name} color={'#2A685B'} />
-      <TitleText text={`All cards have been memorized!`} color={'#0C2545'} />
+      <TitleText text={deck.deck_name} color={'#2A685B'}/>
       {Object.keys(filteredQuizCards).length > 0 &&
-        Object.keys(filteredQuizCards)[0] && (
-          <>
-            {completeAlert && <SynapsH1>Quiz Complete!</SynapsH1>}
-            <FlashCardContainer data-testid={'flash-card-container'}>
-              <BigFlashCard flashCard={displayedCard}> </BigFlashCard>
-            </FlashCardContainer>
-          </>
-        )}
+      Object.keys(filteredQuizCards)[0] && (
+        <>
+          {completeAlert && <SynapsH1>Quiz Complete!</SynapsH1>}
+          <FlashCardContainer data-testid={'flash-card-container'}>
+            <BigFlashCard appView={appView}
+                          flashCard={displayedCard}> </BigFlashCard>
+          </FlashCardContainer>
+        </>
+      )}
 
       <ButtonContainer data-testid={'button-card-container'}>
         <Button>
-          <SvgBack onClick={() => back()} />
+          <SvgBack onClick={() => back()}/>
         </Button>
         {!quizComplete && (
-          <div>
-            <Button onClick={() => updateQuizResults('Nope')}>Nope</Button>
-            <Button onClick={() => updateQuizResults('Sort of')}>
-              Sort of
-            </Button>
-            <Button onClick={() => updateQuizResults('100%')}>100%</Button>
-          </div>
+          <CardAnswerButton>
+            <Nope onClick={() => updateQuizResults('Nope')}></Nope>
+            <KindOf onClick={() => updateQuizResults('Sort of')}>
+
+            </KindOf>
+            <Absolutely
+              onClick={() => updateQuizResults('100%')}></Absolutely>
+          </CardAnswerButton>
         )}
         <Button>
-          <SvgNext onClick={() => next()} />
+          <SvgNext onClick={() => next()}/>
         </Button>
       </ButtonContainer>
     </Container>
   );
 }
 
+const CardAnswerButton = styled.div`
+display: flex;
+margin: 20px 0;
+`;
+
 const Button = styled.div``;
 
 const FlashCardContainer = styled.div`
+margin-top: ${props => props.theme.appView === APP_VIEW_DESKTOP ?
+  '-4rem' : '0'};
   margin-bottom: 2rem;
-  border: 1px solid red;
 `;
 
 const ButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
-  border: 1px solid blue;
-  width: 200px;
+  width: 400px;
   justify-content: space-between;
   align-items: center;
+  padding-top: ${props => props.theme.appView === APP_VIEW_DESKTOP ?
+  '7rem' : '30px'};
 `;
 
 const Container = styled.div`
   width: 100%;
+  max-width: 1140px;
+  border-radius: ${props => props.theme.appView === APP_VIEW_DESKTOP ?
+  '10px' : '0'};
   height: 100%;
   background-color: white;
   display: flex;

@@ -1,12 +1,10 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useChangePath} from './useHistoryAndPath.js';
 import {useHistory} from 'react-router-dom';
 import {useTheme} from 'styled-components';
 import {
-  APP_VIEW_DESKTOP,
-  APP_VIEW_MOBILE,
-  SIZES,
+  APP_VIEW_DESKTOP, APP_VIEW_MOBILE, SIZES,
 } from '../utilities/constants.js';
 
 /**
@@ -34,13 +32,35 @@ export const useAppHooks = () => {
   const dispatch = useDispatch();
   const changePath = useChangePath();
   const history = useHistory();
-
+  const [deleteClicked, setDeleteClicked] = useState(false);
+  const [selectingCards, setSelectingCards] = useState(false);
   const {usersState, photosState, cardsState, decksState} = useSelector(
     reducerState => reducerState
   );
 
   const getHooks = () => {
-    //
+    /**
+     * @typedef {object} UseAppHooksReturn
+     * @property {function} setHookVariable
+     * @property {Dispatch}  dispatch
+     * @property {UsersReducerState} usersState
+     * @property {CardsState} cardsState
+     * @property {PhotoReducerState} photosState
+     * @property {{}} deckState
+     * @property {Theme} theme
+     * @property {ThemeRuleValues} themeRules
+     * @property {AppView} appView
+     * @property {APP_PATH} path,
+     * @property {number} height
+     * @property {ChangePath} changePath
+     * @property {{any}} pushedState
+     * @property {number} width
+     * @property {number} height
+     * @property {bool} selectingCards
+     * @property {bool} deleteClicked
+     * @property {function} setSelectingCards
+     * @property {function} setDeleteClicked
+     */
     return {
       theme: theme,
       path: history.location.pathname,
@@ -52,6 +72,7 @@ export const useAppHooks = () => {
       photosState,
       decksState,
       changePath,
+      deleteClicked, setDeleteClicked, selectingCards, setSelectingCards,
       ...hooks,
     };
   };
@@ -73,6 +94,8 @@ export const useAppHooks = () => {
    * @property {{any}} pushedState
    * @property {number} width
    * @property {number} height
+   * @property {bool} deleteClicked
+   * @property {function} setDeleteClicked
    */
   return {
     path: history.location.pathname,
@@ -86,6 +109,7 @@ export const useAppHooks = () => {
     decksState,
     changePath,
     getHooks,
+    deleteClicked, setDeleteClicked,
     ...hooks,
   };
 };
