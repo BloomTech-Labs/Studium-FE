@@ -75,7 +75,7 @@ export const Dashboard = ({getHooks}) => {
     if (decksState && decksState.decks) {
       const fuse = new Fuse(decksState.decks, options);
       if (searchTerm !== '') {
-        debugger;
+
         const decks = fuse.search(searchTerm);
         console.log(decks);
         return decks;
@@ -87,7 +87,9 @@ export const Dashboard = ({getHooks}) => {
     return [];
 
   };
-
+  const paddingBottom = window;
+  console.log(paddingBottom);
+  debugger;
   return (
     <StyledDashboard className={'dashboard'}>
       {getAlert()}
@@ -121,7 +123,7 @@ export const Dashboard = ({getHooks}) => {
           if (deck['item']) {
             deck = deck['item'];
           }
-          debugger;
+
           return (
             <PreviewDeckCards
               key={deck.deck_id}
@@ -162,7 +164,7 @@ const StyledDeckHolder = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
   background: white;
-  height: 100%;
+  height: min-content;
   left: 10%;
 `;
 const StyledDashboard = styled.div`

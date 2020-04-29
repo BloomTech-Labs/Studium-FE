@@ -12,6 +12,24 @@ import {Alert, Icon} from 'antd';
 import {
   THEMING_VALUES, THEMING_VARIABLES,
 } from '../customHooks/themingRules.js';
+import Fuse from 'fuse.js';
+
+const options = {
+  // isCaseSensitive: false,
+  // includeScore: false,
+  // shouldSort: true,
+  // includeMatches: false,
+  // findAllMatches: false,
+  // minMatchCharLength: 1,
+  // location: 0,
+  // threshold: 0.6,
+  // distance: 100,
+  // useExtendedSearch: false,
+  keys: [
+    'question',
+    'answer'
+  ]
+};
 
 /**
  * Preview Deck
@@ -21,6 +39,8 @@ import {
  */
 export const PreviewDeck = ({getHooks}) => {
   // @type CardState
+
+  const [searchTerm, setSearchTerm] = useState('');
 
   const {
     cardsState,
@@ -32,6 +52,7 @@ export const PreviewDeck = ({getHooks}) => {
     appView,
     setSelectingCards, deleteClicked, setDeleteClicked
   } = getHooks('PreviewDeck');
+  const deck = pathPushedState;
 
   const [cardsSelected, setCardsSelected] = useState({});
   const [selectMode, setSelectMode] = useState(false);
@@ -89,6 +110,31 @@ export const PreviewDeck = ({getHooks}) => {
     }
   };
 
+  const search = e => {
+    setSearchTerm(e.target.value);
+  };
+
+  const getCards = () => {
+    if (cardsState && cardsState.cards) {
+      const cards = cardsState.cards.filter(
+        card => card.deck_id === deck.deck_id);
+
+      if (searchTerm !== '') {
+        const fuse = new Fuse(
+          cards,
+          options
+        );
+        const decks = fuse.search(searchTerm);
+        console.log(cards);
+        return decks;
+
+      } else {
+        return cards;
+      }
+    }
+    return [];
+  };
+
   return (
     <StyledPreviewDeck data-testid={'preview-deck-container'} heigth={height}>
       {getAlert()}
@@ -104,8 +150,7 @@ export const PreviewDeck = ({getHooks}) => {
               <SearchBar
                 height={'23px'}
                 borderRadius={'14px'}
-                onSearch={() => {
-                }}
+                onChange={search}
               />
             </SearchContainer>
             <Selected selected={selectMode} onClick={unSelected}>
@@ -128,9 +173,11 @@ export const PreviewDeck = ({getHooks}) => {
           <PreviewDeckCards cardType={'card'} key={0}
                             getHooks={getHooks}
           />
-          {Object.values(cardsState.cards).filter(card =>
-            card.deck_id === pathPushedState.deck_id).map(
+          {getCards().map(
             card => {
+              if (card['item']) {
+                card = card['item'];
+              }
               return <PreviewDeckCards onClick={() => cardClicked(card)}
                                        getHooks={getHooks} cardType={'card'}
                                        key={card.card_id}
@@ -173,7 +220,6 @@ const Selected = styled.p`
   color: ${props => (props.selected === true ? '#14E59E' : '#000')};
   margin-right: 9%;
 `;
-
 
 const Blur = styled.div`
   position: absolute;
@@ -229,7 +275,7 @@ const SearchContainer = styled.div`
 const previewDeckHeight = theming(THEMING_VARIABLES.FOOTER, {
   [THEMING_VALUES.VISIBLE]: window.innerHeight - THEME.navBarTopHeight + 'px',
   [THEMING_VALUES.HIDDEN]:
-    window.innerHeight - THEME.navBarTopHeight - 95 + 'px',
+  window.innerHeight - THEME.navBarTopHeight - 95 + 'px',
   [THEMING_VALUES.HIDDEN]:
   (window.innerHeight - THEME.navBarTopHeight - 50) + 'px',
 });

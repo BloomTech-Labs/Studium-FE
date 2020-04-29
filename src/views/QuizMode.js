@@ -126,7 +126,7 @@ export default function QuizMode ({getHooks}) {
       setCardIndex(prevCardKey);
       setDisplayedCard(filteredQuizCards[prevCardKey]);
     }
-    debugger;
+
   }
 
   function next () {
@@ -139,7 +139,7 @@ export default function QuizMode ({getHooks}) {
       setCardIndex(nextCardKey);
       setDisplayedCard(filteredQuizCards[nextCardKey]);
     }
-    debugger;
+
   }
 
   function updateQuizResults (name) {
