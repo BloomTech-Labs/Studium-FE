@@ -156,6 +156,11 @@ flex-direction: ${props => {
 }
 };
 
+  /* width */
+::-webkit-scrollbar {
+display: none;
+}
+
 `;
 
 const StyledDeckHolder = styled.div`
@@ -182,6 +187,8 @@ const StyledDashboard = styled.div`
     top: 11%;
     right: 13%;
   }
+  
+
   
   > svg {
     height: 33px;
