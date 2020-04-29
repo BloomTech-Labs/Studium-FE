@@ -12,6 +12,7 @@ import {Alert, Icon} from 'antd';
 import {
   THEMING_VALUES, THEMING_VARIABLES,
 } from '../customHooks/themingRules.js';
+import { ReactComponent as Delete} from "../svgs/delete.svg"
 
 /**
  * Preview Deck
@@ -134,6 +135,8 @@ export const PreviewDeck = ({getHooks}) => {
         type={'secondary'}/>}
 
 
+        type={'secondary'}/>
+        <DeleteIcon/>
     </StyledPreviewDeck>
   );
 };
@@ -155,6 +158,14 @@ const Selected = styled.p`
   color: ${props => props.selected === (true) ? '#14E59E' : '#000'};
   margin-right: 9%;
 `;
+
+const DeleteIcon = styled(Delete)`
+  ${props => props.theme.appView === APP_VIEW_MOBILE ? "position:absolute" : ""};
+  ${props => {
+    if (props.theme.appView === APP_VIEW_MOBILE){
+      return "bottom: 5px; right: 5px;"
+  }}}
+`
 
 const Blur = styled.div`
 position: absolute;
@@ -240,5 +251,6 @@ const StyledPreviewDeckHolder = styled.div`
   flex-wrap: wrap;
   overflow: scroll;
   padding-bottom: 150px;
+
 `;
 
