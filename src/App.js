@@ -15,6 +15,8 @@ import {useTheming} from './customHooks/useTheming.js';
  * @category Views
  * @component
  * @example return (<App />);
+ * @param getHooks
+ * @return {*}
  */
 export default function App ({getHooks}) {
 
@@ -57,8 +59,8 @@ export default function App ({getHooks}) {
             [THEMING_VALUES.MOBILE]: '624px',
           })}
           fill={getValue(THEMING_VARIABLES.BACKGROUND, {
-            [THEMING_VALUES.DARK]: THEME.brainPicDark,
-            [THEMING_VALUES.LIGHT]: THEME.brainPicLight,
+            [THEMING_VALUES.DARK]: THEME.BRAIN_PIC_DARK,
+            [THEMING_VALUES.LIGHT]: THEME.BRAIN_PIC_LIGHT,
           })}
         />
       )}
@@ -83,11 +85,12 @@ export default function App ({getHooks}) {
 }
 
 App.propTypes = {
-  theme: PropTypes.object,
-  history: PropTypes.object,
+  getHooks: PropTypes.func,
 };
 
 const backgroundColor = theming(THEMING_VARIABLES.BACKGROUND, {
+  [THEMING_VALUES.DARK]: THEME.PRIMARY_COLOR,
+  [THEMING_VALUES.LIGHT]: THEME.NAV_BAR_LIGHT,
   [THEMING_VALUES.DARK]: THEME.primaryColor,
   [THEMING_VALUES.LIGHT]: THEME.navBarLight
 });
@@ -96,7 +99,7 @@ const StyledApp = styled.div`
   background: ${backgroundColor};
   box-sizing: border-box;
   position: relative;
-  color: ${props => props.theme.color};
+  color: black;
   text-align: center;
   flex-direction: column;
   display: flex;

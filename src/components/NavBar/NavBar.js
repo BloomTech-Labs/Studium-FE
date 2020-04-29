@@ -1,6 +1,4 @@
 import React, {useEffect, useState} from 'react';
-//import {ReactComponent as SmallWhiteLogo} from '../../images/SmallWhiteLogo.svg';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import {ContainerDiv, NavBarAvatar} from '../index.js';
 import {signOut} from '../../actions';
@@ -118,30 +116,17 @@ export const NavBar = ({getHooks}) => {
 
 NavBar.propTypes = {};
 
-//const WhiteLogo = styled(SmallWhiteLogo)``;
-
 const backgroundColor = theming(THEMING_VARIABLES.NAV_STYLE, {
-  [THEMING_VALUES.DARK]: props => {
-    return props.theme.themeState.navBarDark;
-  },
-  [THEMING_VALUES.LIGHT]: props => {
-    return props.theme.themeState.navBarLight;
-  },
-  [THEMING_VALUES.HIDDEN]: props => {
-    return 'transparent';
-  },
+  [THEMING_VALUES.DARK]: THEME.NAV_BAR_DARK,
+  [THEMING_VALUES.LIGHT]: THEME.NAV_BAR_LIGHT,
+  [THEMING_VALUES.HIDDEN]: 'transparent',
+  
 });
 
 const top = theming(THEMING_VARIABLES.NAV_STYLE, {
-  [THEMING_VALUES.DARK]: props => {
-    return 0;
-  },
-  [THEMING_VALUES.LIGHT]: props => {
-    return 0;
-  },
-  [THEMING_VALUES.HIDDEN]: props => {
-    return '-75px';
-  },
+  [THEMING_VALUES.DARK]: 0,
+  [THEMING_VALUES.LIGHT]: 0,
+  [THEMING_VALUES.HIDDEN]: '-75px',
 });
 
 const StyledBar = styled.div`
@@ -152,13 +137,15 @@ const StyledBar = styled.div`
   position: absolute;
   top: ${top};
   width: 100%;
-  height: ${props => props.theme.navBarTopHeight + 'px'};
+  height: ${THEME.NAV_BAR_HEIGHT + 'px'};
+
+ 
 `;
 
 const color = theming(THEMING_VARIABLES.NAV_STYLE, {
   [THEMING_VALUES.DARK]: 'white',
-  [THEMING_VALUES.LIGHT]: props => props.theme.themeState.synapsDark,
-  [THEMING_VALUES.HIDDEN]: props => props.theme.themeState.synapsDark,
+  [THEMING_VALUES.LIGHT]: THEME.SYNAPS_DARK,
+  [THEMING_VALUES.HIDDEN]: THEME.SYNAPS_DARK,
 });
 
 const Styledh2 = styled.h2`
@@ -170,8 +157,5 @@ const Styledh2 = styled.h2`
   font-weight: bold;
   font-size: 28px;
   line-height: 24px;
-
-  @media screen and ${MEDIA_QUERIES.desktop} {
-    background: #eeece8;
-  }
 `;
+

@@ -9,14 +9,13 @@ import {
   THEMING_VALUES,
   THEMING_VARIABLES,
 } from '../customHooks/themingRules.js';
-import {THEME, MEDIA_QUERIES, SIZES} from '../utilities/constants.js';
+import {THEME, MEDIA_QUERIES, APP_PATHS} from '../utilities/constants.js';
+import EmailButton from '../svgComponents/EmailButton.js';
 
 export function SignIn({getHooks}){
-  const {dispatch, theme, path} = getHooks(
-    'SignIn',
-  );
+  const {dispatch, theme, path} = getHooks();
   const [info, setInfo] = useState({email: '', password: '', error: {}});
-  const getValue = useTheming('App.js');
+  const getValue = useTheming();
   
   const handleChange = e => {
     setInfo({...info, [e.target.name]: e.target.value});
@@ -47,7 +46,7 @@ export function SignIn({getHooks}){
   };
   
   const switchWelcomeTitle = () => {
-    if(path === '/signin'){
+    if(path === APP_PATHS.SIGN_IN_PATH){
       return <StyledH2>Hey! Welcome Back.</StyledH2>;
     }else{
       return (
@@ -68,8 +67,8 @@ export function SignIn({getHooks}){
         margin={'10px 0 0 0'}
         fill={
           theme.BACKGROUND === THEMING_VALUES.DARK
-            ? theme.themeState.navBarLight
-            : theme.themeState.secondary4CB69F
+            ? theme.themeState.NAV_BAR_LIGHT
+            : theme.themeState.SECONDARY_DARKER1
         }
         height={getValue(THEMING_VARIABLES.BRAIN_SVG, {
           [THEMING_VALUES.BOTTOM]: '176px',
@@ -122,29 +121,13 @@ export function SignIn({getHooks}){
         />
       </StyledFormInput>
       
-      <StyledBtn2
-        style={{
-          width: '260px',
-          height: '72px',
-          backgroundColor: '#0C2545',
-          margin: '0 0 1.5em',
-          padding: '0 2em 0',
-          border: '2px solid #fff',
-        }}
-        text={'Continue with Email'}
-        shape={'round'}
-        size={'large'}
-        type={'darkgray'}
-        onClick={e => handleSignInClick(EMAIL_PROVIDER)}
-      />
+      <EmailButton/>
     </StyledSignIn>
   );
 }
 
 const switchText = theming(THEMING_VARIABLES.BACKGROUND, {
-  [THEMING_VALUES.DARK]: ({theme}) => {
-    return theme.themeState.white;
-  },
+  [THEMING_VALUES.DARK]: 'white',
   [THEMING_VALUES.LIGHT]: ({theme}) => {
     return theme.themeState.primaryColor36405C;
   },
@@ -182,8 +165,8 @@ const StyledBtn = styled(SynapsButton)`
   && {
     display: flex;
     justify-content: space-evenly;
-    color: ${THEME.white};
-    background-color: ${THEME.primaryColor36405C};
+    color: white;
+    background-color: ${THEME.PRIMARY_COLOR_LIGHTER1};
     margin: 0 0 1.5em;
     padding: 0 2em 0;
     width: 260px;
@@ -227,7 +210,7 @@ const StyledFormInput = styled.div`
       line-height: 24px;
     }
     & input {
-      background-color: ${THEME.primaryColor};
+      background-color: ${THEME.PRIMARY_COLOR};
     }
   }
 `;

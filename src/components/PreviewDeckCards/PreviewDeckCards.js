@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import {Card, Icon} from 'antd';
+import {Card} from 'antd';
 import {CreateButton} from '../Button/CreateButton.js';
 import {APP_VIEW_DESKTOP} from '../../utilities/constants.js';
 import {ReactComponent as Check} from  '../../images/Vector.svg';
@@ -45,8 +45,22 @@ export const PreviewDeckCards = ({
   card,
   ...props
 }) => {
-  
+
   const {appView} = getHooks();
+
+  const removeExtraLetters = (str) => {
+    str = str.split(' ');
+
+    str = str.map(word => {
+      if (word.length > 40) {
+        debugger;
+        word = word.slice(0, 40);
+      }
+      return word;
+    });
+    return str.join(' ');
+  };
+
   return (
     <StyledAntdCard
       type={type}
@@ -68,6 +82,9 @@ export const PreviewDeckCards = ({
         card.question}</p>}
       {selected && <StyledCheck> </StyledCheck>}
     
+        removeExtraLetters(card.question)}</p>}
+      {selected && <h1>This card is selected.</h1>}
+
     </StyledAntdCard>
   );
 };
@@ -78,7 +95,7 @@ const StyledCheck = styled(Check)`
   position: absolute;
   bottom: 7px;
   right: 10px;
-  
+
 `
 
 const StyledAntdCard = styled(Card)`
@@ -99,11 +116,11 @@ const StyledAntdCard = styled(Card)`
     font-size: 13px;
     margin-left: 9px;
     margin-right: 9px;
-    
+
     &.ant-card.ant-card-bordered.ant-card-type-inner {
       background-color: ${props => props.selected === (true) ?  "#8CB1AA" : "#EEECE8"};
     }
-    
+
 
     > .ant-card-body {
       padding: 10px;

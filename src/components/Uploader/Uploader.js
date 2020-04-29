@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import {Upload, message} from 'antd';
+import {message, Upload} from 'antd';
 import {uploadImage} from '../../actions/photo';
 import {UploadIcon} from './UploadIcon.js';
 import * as PropTypes from 'prop-types';
@@ -37,6 +37,12 @@ export const Uploader = props => {
   const getUrl = () => {
     if (photoObject) {
       if (photoObject.file.uid) {
+        if (photoObject.file.type && photoObject.file.type.includes('png')) {
+          photoObject.file.uid += '.png';
+        } else if (photoObject.file.type &&
+          photoObject.file.type.includes('jpg')) {
+          photoObject.file.uid += '.jpg';
+        }
         return (
           'https://res.cloudinary.com/www-synapsapp-com/image/upload/v1582468332/' +
           photoObject.file.uid
@@ -59,12 +65,12 @@ export const Uploader = props => {
         {loadImage ? (
           <img
             src={getUrl()}
-            alt="avatar"
+            alt="card-image"
             style={{width: '100%'}}
             data-testid="upload-image"
           />
         ) : (
-          <UploadIcon />
+          <UploadIcon/>
         )}
       </StyledUpload>
     </div>
@@ -86,7 +92,7 @@ const StyledUpload = styled(Upload)`
   }
 `;
 
-function beforeUpload(file) {
+function beforeUpload (file) {
   const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
   if (!isJpgOrPng) {
     message.error('You can only upload JPG/PNG file!');
