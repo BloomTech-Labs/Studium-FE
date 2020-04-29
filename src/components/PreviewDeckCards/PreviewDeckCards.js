@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {Card, Icon} from 'antd';
 import {CreateButton} from '../Button/CreateButton.js';
 import {APP_VIEW_DESKTOP} from '../../utilities/constants.js';
+import {ReactComponent as Check} from  '../../images/Vector.svg';
 
 /**
  * Preview Deck Cards
@@ -51,6 +52,7 @@ export const PreviewDeckCards = ({
       type={type}
       size={size}
       block={block && 'block'}
+      selected={selected}
       {...props}
     >
       {(!deck && cardType === 'deck' || !card && cardType === 'card') && (
@@ -64,13 +66,24 @@ export const PreviewDeckCards = ({
       {(deck || card) &&
       <p className={'deck-text'}>{cardType === 'deck' ? deck.deck_name :
         card.question}</p>}
-      {selected && <h1>This card is selected.</h1>}
+      {selected && <StyledCheck> </StyledCheck>}
     
     </StyledAntdCard>
   );
 };
 
+const StyledCheck = styled(Check)`
+  align-self: flex-end;
+  align-text: right;
+  position: absolute;
+  bottom: 7px;
+  right: 10px;
+  
+`
+
 const StyledAntdCard = styled(Card)`
+
+
   && {
     position: relative;
     display: flex;
@@ -80,12 +93,17 @@ const StyledAntdCard = styled(Card)`
     height: 153px;
     margin-top: 20px;
     border-radius: 13px;
-    border: 3px solid #d7eee7;
+    border: ${props => props.selected === (true) ? "4px solid D7EEE7" : "3px solid #d7eee7"};
     background: #eeece8;
     box-sizing: border-box;
     font-size: 13px;
     margin-left: 9px;
     margin-right: 9px;
+    
+    &.ant-card.ant-card-bordered.ant-card-type-inner {
+      background-color: ${props => props.selected === (true) ?  "#8CB1AA" : "#EEECE8"};
+    }
+    
 
     > .ant-card-body {
       padding: 10px;
