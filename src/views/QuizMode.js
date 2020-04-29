@@ -72,7 +72,7 @@ export default function QuizMode({getHooks}) {
     setFilteredQuizCards(filteredCards);
 
     let keys = Object.keys(filteredCards);
-    let arrKeysCurrentIndex = keys.indexOf(displayedCard);
+    let arrKeysCurrentIndex = keys.indexOf(cardIndex.toString());
     let arrKeysNextIndex = arrKeysCurrentIndex + 1;
     let arrKeysPrevIndex = arrKeysCurrentIndex - 1;
     let currentCardKey = keys[arrKeysCurrentIndex];
@@ -114,7 +114,7 @@ export default function QuizMode({getHooks}) {
 
   function back() {
     let keys = Object.keys(filteredQuizCards);
-    let arrKeysCurrentIndex = keys.indexOf(displayedCard);
+    let arrKeysCurrentIndex = keys.indexOf(cardIndex.toString());
     let arrKeysPrevIndex = arrKeysCurrentIndex - 1;
     let prevCardKey = keys[arrKeysPrevIndex];
 
@@ -122,13 +122,12 @@ export default function QuizMode({getHooks}) {
       setCardIndex(prevCardKey);
       setDisplayedCard(filteredQuizCards[prevCardKey]);
     }
-
     debugger;
   }
 
   function next() {
     let keys = Object.keys(filteredQuizCards);
-    let arrKeysCurrentIndex = keys.indexOf(displayedCard);
+    let arrKeysCurrentIndex = keys.indexOf(cardIndex.toString());
     let arrKeysNextIndex = arrKeysCurrentIndex + 1;
     let nextCardKey = keys[arrKeysNextIndex];
 
