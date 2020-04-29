@@ -196,6 +196,11 @@ export const PreviewDeck = ({getHooks}) => {
 
 const DeckDisplayContainer = styled.div`
 overflow-y: scroll;
+
+  /* width */
+::-webkit-scrollbar {
+display: none;
+}
 `;
 
 const BackArrow = styled.div`
@@ -214,6 +219,11 @@ display: flex;
 flex-direction: ${props => props.theme.appView === APP_VIEW_DESKTOP ? 'row' :
   'column'
 };
+
+  /* width */
+::-webkit-scrollbar {
+display: none;
+}
 `;
 
 const Selected = styled.p`
@@ -299,6 +309,11 @@ const StyledPreviewDeck = styled.div`
   margin:  ${props => props.theme.appView === APP_VIEW_DESKTOP ?
   '50px auto 0 auto' :
   '0 auto'};
+  
+    /* width */
+::-webkit-scrollbar {
+display: none;
+}
 `;
 
 const StyledPreviewDeckHolder = styled.div`
@@ -309,6 +324,11 @@ const StyledPreviewDeckHolder = styled.div`
   justify-content: space-around;
   flex-wrap: wrap;
   padding-bottom: 150px;
+  
+    /* width */
+::-webkit-scrollbar {
+display: none;
+}
 
 `;
 
