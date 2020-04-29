@@ -195,7 +195,6 @@ export const CreateDeck = props => {
             <CancelButton onClick={doneSubmit}>Cancel</CancelButton>
           </CancelButtonContainer>
         )}
-
         <CardHeaderContainer appView={appView}>
           <CreateCardTitleText
             appView={appView}
@@ -256,21 +255,23 @@ export const CreateDeck = props => {
         />
       </CreateCardContainer>
       <Bottom appView={appView}>
-        <SynapsButton
-          appView={appView}
-          onClick={submitForm}
-          text={'Add Another Card'}
-          type={'primaryCreateCard'}
-          allFieldsValidated={allFieldsValidated}
-        />
-        <BottomButton appView={appView}>
+        <ButtonContainer>
+          <SynapsButton
+            appView={appView}
+            onClick={submitForm}
+            text={'Add Another Card'}
+            type={'primaryCreateCard'}
+            allFieldsValidated={allFieldsValidated}
+          />
+        </ButtonContainer>
+        <ButtonContainer appView={appView}>
           <SynapsButton
             appView={appView}
             text={appView === APP_VIEW_MOBILE ? 'Done' : 'Done Adding Cards'}
             type={'defaultCreateCard'}
             onClick={doneSubmit}
           />
-        </BottomButton>
+        </ButtonContainer>
       </Bottom>
     </StyledCreateDeck>
   );
@@ -282,10 +283,7 @@ const StyledCreateDeck = styled.div`
   width: ${props => (props.appView === APP_VIEW_MOBILE ? '375px' : '100%')};
   max-width: ${props =>
     props.appView === APP_VIEW_MOBILE ? '100%' : '1140px'};
-  height: ${props =>
-    props.appView === APP_VIEW_MOBILE
-      ? '812px'
-      : (props.height - 75).toString() + 'px'};
+  height: ${props => (props.height - 75).toString() + 'px'};
   display: flex;
   padding: ${props =>
     props.appView === APP_VIEW_MOBILE ? '0 36px' : '63px 67px 15px 67px'};
@@ -300,7 +298,7 @@ const StyledCreateDeck = styled.div`
 
 const CreateCardContainer = styled.div`
   width: 100%;
-  height: ${props => (props.appView === APP_VIEW_MOBILE ? '425px' : '40%')};
+  height: ${props => (props.appView === APP_VIEW_MOBILE ? '60%' : '40%')};
   display: flex;
   flex-direction: ${props =>
     props.appView === APP_VIEW_MOBILE ? 'column' : 'row'};
@@ -312,23 +310,26 @@ const CreateCardContainer = styled.div`
 
 const CardHeaderContainer = styled.div`
   width: 100%;
-  ${props => (props.appView === APP_VIEW_DESKTOP ? 'height: 50%;' : '')}
+  ${props => (props.appView === APP_VIEW_DESKTOP ? 'height: 30%;' : '')}
   padding: 0 2px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: ${props =>
+    props.appView === APP_VIEW_MOBILE ? '30px' : '30px'};
+  margin-top: ${props => (props.appView === APP_VIEW_MOBILE ? '30px' : '0px')};
 `;
 
 const CardNameContainer = styled.div`
-  ${props => (props.appView === APP_VIEW_DESKTOP ? 'height: 25%;' : '')}
+  height: 30%;
   width: 100%;
-  margin-bottom: 15px;
-  ${props => (props.appView === APP_VIEW_DESKTOP ? 'margin-bottom: 35px;' : '')}
+  margin-bottom: ${props =>
+    props.appView === APP_VIEW_MOBILE ? '30px' : '0px'};
 `;
 
 const Bottom = styled.div`
   width: 100%;
-  height: ${props => (props.appView === APP_VIEW_MOBILE ? '70px' : '25%')};
+  height: ${props => (props.appView === APP_VIEW_MOBILE ? '10%' : '20%')};
   display: flex;
   ${props =>
     props.appView === APP_VIEW_DESKTOP ? 'flex-direction: column;' : ''}
@@ -341,7 +342,7 @@ const Bottom = styled.div`
       props.appView === APP_VIEW_DESKTOP ? '20px 0 0 0' : '0 0 40px 0'}
 `;
 
-const BottomButton = styled.div`
+const ButtonContainer = styled.div`
   ${props => (props.appView === APP_VIEW_DESKTOP ? 'margin-top: 10px;' : '')}
 `;
 

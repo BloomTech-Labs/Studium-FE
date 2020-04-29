@@ -4,92 +4,224 @@ import {TitleText} from '../components/Text/TitleText/TitleText.js';
 import BigFlashCard from '../components/BigFlashCard/BigFlashCard.js';
 import {ReactComponent as SvgBack} from '../svgs/BackButton.svg';
 import {ReactComponent as SvgNext} from '../svgs/NextButton.svg';
+import {updateCard} from '../actions/cardActions.js';
+import moment from 'moment';
 
-export default function QuizMode({getHooks}){
-  const {cardsState, pathPushedState} = getHooks();
-  const [notViewed, setNotViewed] = useState([]);
-  const [viewed, setViewed] = useState([]);
+export default function QuizMode({getHooks}) {
+  const {cardsState, pathPushedState, dispatch, usersState} = getHooks();
+  const [quizCards, setQuizCards] = useState({});
+  const [filteredQuizCards, setFilteredQuizCards] = useState({});
+  const [displayedCard, setDisplayedCard] = useState({});
+  const [cardIndex, setCardIndex] = useState(0);
+  const [quizComplete, setQuizComplete] = useState(true);
+  const [completeAlert, setCompleteAlert] = useState(false);
   const deck = pathPushedState;
-  
+
   useEffect(() => {
-    
-    let arrayii = cardsState.cards.filter(card => {
-      return card.deck_id === deck.deck_id && !viewed.includes(card) &&
-        !notViewed.includes(card);
+    if (quizComplete) {
+      setTimeout(() => {
+        setCompleteAlert(false);
+      }, 5000);
+    }
+  }, [quizComplete]);
+
+  useEffect(() => {
+    const displayCards = {};
+    let arrNums = [];
+    for (let i = 0; i < cardsState.cards.length; i++) {
+      arrNums.push(i);
+    }
+    cardsState.cards.forEach(card => {
+      let randomIndex = Math.floor(Math.random() * arrNums.length);
+      let displayIndex = arrNums[randomIndex];
+      let firstHalf = arrNums.slice(0, randomIndex);
+      let secondHalf = arrNums.slice(randomIndex + 1, arrNums.length);
+      arrNums = [...firstHalf, ...secondHalf];
+
+      displayCards[displayIndex] = card;
     });
-    setNotViewed([...arrayii, ...notViewed]);
+
+    //BELOW REPLACES PREVIOUS GETFILTEREDCARDS() FUNCTION
+    let filteredCards = {...displayCards};
+
+    Object.keys(filteredCards).map(key => {
+      let currentCard = filteredCards[key];
+
+      let if1 = moment().diff(moment.unix(currentCard.last_viewed), 'minutes');
+      let if2 = moment().diff(moment.unix(currentCard.last_viewed), 'hours');
+
+      if (!currentCard.quiz_results) {
+        return;
+      } else if (currentCard.quiz_results === 2) {
+        if (
+          moment().diff(moment.unix(currentCard.last_viewed), 'minutes') > 10
+        ) {
+          return;
+        } else {
+          delete filteredCards[key];
+        }
+      } else if (currentCard.quiz_results === 3) {
+        if (moment().diff(moment.unix(currentCard.last_viewed), 'hours') > 4) {
+          return;
+        } else {
+          delete filteredCards[key];
+        }
+      }
+    });
+
+    setFilteredQuizCards(filteredCards);
+
+    let keys = Object.keys(filteredCards);
+    let arrKeysCurrentIndex = keys.indexOf(cardIndex.toString());
+    let arrKeysNextIndex = arrKeysCurrentIndex + 1;
+    let arrKeysPrevIndex = arrKeysCurrentIndex - 1;
+    let currentCardKey = keys[arrKeysCurrentIndex];
+    let nextCardKey = keys[arrKeysNextIndex];
+    let prevCardKey = keys[arrKeysPrevIndex];
+
+    if (
+      Object.keys(displayedCard).length === 0 &&
+      Object.keys(filteredCards).length > 0
+    ) {
+      setCardIndex(keys[0]);
+      setDisplayedCard(filteredCards[keys[0]]);
+    } else if (
+      Object.keys(displayedCard).length > 0 &&
+      Object.keys(filteredCards).length > 0
+    ) {
+      if (currentCardKey === undefined) {
+        if (nextCardKey === undefined) {
+          setCardIndex(prevCardKey);
+          setDisplayedCard(filteredCards[prevCardKey]);
+        } else {
+          setCardIndex(nextCardKey);
+          setDisplayedCard(filteredCards[nextCardKey]);
+        }
+      }
+    } else if (
+      currentCardKey === undefined &&
+      Object.keys(filteredCards).length === 0
+    ) {
+      let QuizCardsKeys = Object.keys(displayCards);
+      setFilteredQuizCards(displayCards);
+      setDisplayedCard(displayCards[QuizCardsKeys[0]]);
+      setQuizComplete(true);
+    } else if (currentCardKey !== undefined) {
+      setCardIndex(currentCardKey);
+      setDisplayedCard(filteredCards[currentCardKey]);
+    }
   }, [cardsState.cards]);
-  
-  //  useEffect(() => {
-  //
-  //    let newArray = cardsState.cards.filter(card => {
-  //      return card.deck_id === deck.deck_id && !notViewed.includes(card);
-  //    });
-  //    setNotViewed([...newArray, ...notViewed]);
-  //  }, [cardsState.cards]);
-  
-  function back(){
-    debugger;
-    if(viewed.length > 0){
-      let lastCard = viewed.pop();
-      setNotViewed([lastCard, ...notViewed]);
-      setViewed([...viewed]);
+
+  function back() {
+    let keys = Object.keys(filteredQuizCards);
+    let arrKeysCurrentIndex = keys.indexOf(cardIndex.toString());
+    let arrKeysPrevIndex = arrKeysCurrentIndex - 1;
+    let prevCardKey = keys[arrKeysPrevIndex];
+
+    if (prevCardKey !== undefined) {
+      setCardIndex(prevCardKey);
+      setDisplayedCard(filteredQuizCards[prevCardKey]);
     }
-  }
-  
-  function next(){
     debugger;
-    if(notViewed.length > 1){
-      let firstCard = notViewed.shift();
-      setNotViewed([...notViewed]);
-      setViewed([...viewed, firstCard]);
-    }
   }
-  
+
+  function next() {
+    let keys = Object.keys(filteredQuizCards);
+    let arrKeysCurrentIndex = keys.indexOf(cardIndex.toString());
+    let arrKeysNextIndex = arrKeysCurrentIndex + 1;
+    let nextCardKey = keys[arrKeysNextIndex];
+
+    if (nextCardKey !== undefined) {
+      setCardIndex(nextCardKey);
+      setDisplayedCard(filteredQuizCards[nextCardKey]);
+    }
+    debugger;
+  }
+
+  function updateQuizResults(name) {
+    let quiz_results;
+    switch (name) {
+      case 'Nope':
+        quiz_results = 1;
+        break;
+      case 'Sort of':
+        quiz_results = 2;
+        break;
+      case '100%':
+        quiz_results = 3;
+    }
+
+    let currentCard = filteredQuizCards[cardIndex];
+    currentCard.quiz_results = quiz_results;
+    currentCard.last_viewed = moment()
+      .unix()
+      .toString();
+
+    dispatch(updateCard(currentCard, usersState.user.uid));
+  }
+
   return (
     <Container data-testid={'quiz-mode-container'}>
-      <TitleText text={deck.deck_name} color={'#2A685B'}/>
-      {notViewed.length > 0 &&
-      <FlashCardContainer data-testid={'flash-card-container'}>
-        <BigFlashCard flashCard={notViewed[0]}> </BigFlashCard>}
-      </FlashCardContainer>}
+      <TitleText text={deck.deck_name} color={'#2A685B'} />
+      <TitleText text={`All cards have been memorized!`} color={'#0C2545'} />
+      {Object.keys(filteredQuizCards).length > 0 &&
+        Object.keys(filteredQuizCards)[0] && (
+          <>
+            {completeAlert && <SynapsH1>Quiz Complete!</SynapsH1>}
+            <FlashCardContainer data-testid={'flash-card-container'}>
+              <BigFlashCard flashCard={displayedCard}> </BigFlashCard>
+            </FlashCardContainer>
+          </>
+        )}
+
       <ButtonContainer data-testid={'button-card-container'}>
         <Button>
-          <SvgBack onClick={() => back()}/>
+          <SvgBack onClick={() => back()} />
         </Button>
+        {!quizComplete && (
+          <div>
+            <Button onClick={() => updateQuizResults('Nope')}>Nope</Button>
+            <Button onClick={() => updateQuizResults('Sort of')}>
+              Sort of
+            </Button>
+            <Button onClick={() => updateQuizResults('100%')}>100%</Button>
+          </div>
+        )}
         <Button>
-          <SvgNext onClick={() => next()}/>
+          <SvgNext onClick={() => next()} />
         </Button>
-      
       </ButtonContainer>
     </Container>
   );
 }
-const Button = styled.div`
 
-`;
+const Button = styled.div``;
 
 const FlashCardContainer = styled.div`
-margin-bottom: 2rem;
-border: 1px solid red;
+  margin-bottom: 2rem;
+  border: 1px solid red;
 `;
 
 const ButtonContainer = styled.div`
-display: flex;
-flex-direction: row;
-border: 1px solid blue;
-width: 200px;
-justify-content: space-between;
-
+  display: flex;
+  flex-direction: row;
+  border: 1px solid blue;
+  width: 200px;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const Container = styled.div`
-    width: 100%;
-    height: 100%;
-    background-color: white;
-    display: flex;
-    justify-content: flex-start;
-    align-items:  center;
-    flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
 `;
 
+const SynapsH1 = styled.h1`
+  font-size: 24px;
+  font-weight: 600;
+`;
