@@ -6,7 +6,6 @@ import {
   APP_VIEW_DESKTOP, APP_VIEW_MOBILE, MEDIA_QUERIES, THEME
 } from '../utilities/constants.js';
 import {getUserDecks} from '../actions';
-import {Alert} from 'antd';
 import Fuse from 'fuse.js';
 
 const options = {
@@ -61,15 +60,6 @@ export const Dashboard = ({getHooks}) => {
 
   };
 
-  const getAlert = () => {
-    if (decksState.errorDecksMessage) {
-      return (
-        <Alert message={decksState.errorDecksMessage} type="warning" closable/>
-      );
-    }
-    return '';
-  };
-
   const getDecks = () => {
 
     if (decksState && decksState.decks) {
@@ -92,7 +82,7 @@ export const Dashboard = ({getHooks}) => {
   debugger;
   return (
     <StyledDashboard className={'dashboard'}>
-      {getAlert()}
+
       <Container>
         <TitleText color={'#36405C'}
                    text={appView === APP_VIEW_MOBILE ? 'Dashboard' : 'My' +

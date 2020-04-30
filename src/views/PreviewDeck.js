@@ -8,7 +8,7 @@ import {
 import {
   APP_PATHS, APP_VIEW_DESKTOP, APP_VIEW_MOBILE, THEME
 } from '../utilities/constants.js';
-import {Alert, Icon} from 'antd';
+import {Icon} from 'antd';
 import {
   THEMING_VALUES, THEMING_VARIABLES,
 } from '../customHooks/themingRules.js';
@@ -102,14 +102,6 @@ export const PreviewDeck = ({getHooks}) => {
 
   };
 
-  const getAlert = () => {
-    if (cardsState.error) {
-      return (
-        <Alert message={cardsState.error.message} type="warning" closable/>
-      );
-    }
-  };
-
   const search = e => {
     setSearchTerm(e.target.value);
   };
@@ -137,7 +129,7 @@ export const PreviewDeck = ({getHooks}) => {
 
   return (
     <StyledPreviewDeck data-testid={'preview-deck-container'} heigth={height}>
-      {getAlert()}
+
       <DeckDisplayContainer>
         <Container className={'container'}>
           <TopContainer className={'top-container'}>

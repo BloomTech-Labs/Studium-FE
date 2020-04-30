@@ -166,7 +166,8 @@ export default function QuizMode ({getHooks}) {
 
   return (
     <Container data-testid={'quiz-mode-container'}>
-      <TitleText text={deck.deck_name} color={'#2A685B'}/>
+      {quizComplete && <TitleText text={deck.deck_name} color={'#2A685B'}/>}
+      <TitleText text={`All cards have been memorized!`} color={'#0C2545'}/>
       {Object.keys(filteredQuizCards).length > 0 &&
       Object.keys(filteredQuizCards)[0] && (
         <>
