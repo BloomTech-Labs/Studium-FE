@@ -24,6 +24,7 @@ To create the best Life Science flashcard application, that has excellent UI, wh
 <h3 align="center"> Share Decks With Friends </h3>
 <h3 align="center"> Take Quizzes </h3>
 <h3 align="center"> Spaced Repetition </h3>
+<h3 align="center"> User Friendly Features </h3>
 
 <br/>
 <br/>
