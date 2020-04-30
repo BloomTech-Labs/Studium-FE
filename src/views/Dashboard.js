@@ -79,7 +79,7 @@ export const Dashboard = ({getHooks}) => {
   };
   const paddingBottom = window;
   console.log(paddingBottom);
-  debugger;
+
   return (
     <StyledDashboard className={'dashboard'}>
 
