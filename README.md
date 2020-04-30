@@ -50,12 +50,6 @@ To create the best Life Science flashcard application, that has excellent UI, wh
 
 To create the best Life Science flashcard application, that has excellent UI, which has minimal distractions to make the learning process more efficient. To be the best user friendly flashcard application for life sciences students.
 
-### Key Features
-
-- Mobile First Design
-- Share Decks With Friends
-- Take Quizzes 
-- Spaced Repetition 
 
 ## Tech Stack
 
