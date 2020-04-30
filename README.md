@@ -26,6 +26,7 @@ To create the best Life Science flashcard application, that has excellent UI, wh
 <h3 align="center"> Share Decks With Friends </h3>
 <h3 align="center"> Take Quizzes </h3>
 <h3 align="center"> Spaced Repetition </h3>
+<h3 align="center"> User Friendly Features </h3>
 
 <br/>
 <br/>
@@ -52,18 +53,13 @@ To create the best Life Science flashcard application, that has excellent UI, wh
 
 To create the best Life Science flashcard application, that has excellent UI, which has minimal distractions to make the learning process more efficient. To be the best user friendly flashcard application for life sciences students.
 
-### Key Features
-
-- Mobile First Design
-- Share Decks With Friends
-- Take Quizzes 
-- Spaced Repetition 
 
 ## Tech Stack
 
 ![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-
+[![Maintainability](https://api.codeclimate.com/v1/badges/26cd86e13210109747d9/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/pt-synaps-fe/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/26cd86e13210109747d9/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/pt-synaps-fe/test_coverage)
 
 # React <br> Styled Components <br> Ant Design <br> Cloudinary(picture storage) <br> Redux <br> 
 ".
