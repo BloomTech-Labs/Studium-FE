@@ -1,14 +1,12 @@
 {
   "name": "synaps",
   "version": "0.1.0",
-  "engines": {
-    "node": "13.x.x"
-  },
   "private": true,
   "dependencies": {
     "antd": "^3.26.9",
     "axios": "^0.19.2",
     "firebase": "^7.14.0",
+    "fuse.js": "^5.2.3",
     "moment": "^2.24.0",
     "polished": "^3.5.1",
     "pretty-format": "^25.1.0",

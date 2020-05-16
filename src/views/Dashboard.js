@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {PreviewDeckCards, SearchBar, TitleText} from '../components';
 import PropTypes from 'prop-types';
+
 import {useAppHooks} from '../customHooks/useAppHooks.js';
 import myPic from '../images/Group.png';
 import {MEDIA_QUERIES, THEME} from '../utilities/constants.js';
@@ -44,69 +45,82 @@ const decks = [
     deck_id: 6,
   },
 ];
+
 /**
  * Dashboard
  * @category Views
  * @component
  * @example return (<Dashboard />);
  */
-export const Dashboard = props => {
-  const [selected, setSelected] = useState(0);
+export const Dashboard = ({getHooks}) => {
+
+  const [searchTerm, setSearchTerm] = useState('');
   const {
-    pathname,
+    appView,
     changePath,
     dispatch,
-    theme,
-    path,
-    appView,
-    height,
-    getHooks,
-  } = useAppHooks('Dashboard');
-  const getValue = useTheming('App.js');
+    usersState,
+    decksState,
+    theme
+  } = getHooks();
   const search = e => {
-    console.log(e.target.value);
+    setSearchTerm(e.target.value);
   };
-  const changeDeckSelected = deck => {
-    setSelected(deck);
-  };
+
+  useEffect(() => {
+
+    dispatch(getUserDecks(usersState.user.uid));
+  }, []);
+
   const deckClicked = (deck = undefined) => {
+
     if (!deck) {
       changePath('/create/deck');
       return;
     }
-    changePath('/preview', {...deck});
+    changePath('/preview', deck);
+
   };
+
+  const getDecks = () => {
+
+    if (decksState && decksState.decks) {
+      const fuse = new Fuse(decksState.decks, options);
+      if (searchTerm !== '') {
+
+        const decks = fuse.search(searchTerm);
+        console.log(decks);
+        return decks;
+
+      } else {
+        return decksState.decks;
+      }
+    }
+    return [];
+
+  };
+  const paddingBottom = window;
+  console.log(paddingBottom);
   return (
     <StyledDashboard className={'dashboard'}>
-      <StyledTitleText>
-        <TitleText
-          text={'My Flashcards'}
-          style={{
-            left: '-20%',
-            background: '#EEECE8',
-            fontFamily: 'Source Sans Pro',
-            fontStyle: 'normal',
-            fontWeight: '900',
-          }}
-        />
-      </StyledTitleText>
-      <StyledSearchBar text={'search all cards'}>
+
+      <Container>
+        <TitleText color={'#36405C'}
+                   text={appView === APP_VIEW_MOBILE ? 'Dashboard' : 'My' +
+                     ' Flash Cards'}/>
+
         <SearchBar
-          onSearch={search}
-          text={'search all cards'}
+          theme={theme}
+          onChange={search}
           style={{
-            position: 'absolute',
-            width: '23%',
-            height: '5%',
-            left: '65%',
-            top: '24px',
-            border: '2px solid #343D58',
-            boxSizing: 'border-box',
-            borderRadius: '8px',
             marginTop: '8px',
             marginBottom: '33px',
+            width: '80%',
+            marginLeft: '10%',
+            height: '37px',
           }}
         />
+
       </StyledSearchBar>
       <StyledDeckHolder>
         <PreviewDeckCards
@@ -117,10 +131,15 @@ export const Dashboard = props => {
             width: '167px',
             height: '221px',
           }}
-        />
 
-        {decks.map(deck => {
+        />
+        {getDecks().map(deck => {
+          if (deck['item']) {
+            deck = deck['item'];
+          }
+
           return (
+
             <StyledCard
               key={deck.deck_id}
               deck={deck}
@@ -130,6 +149,7 @@ export const Dashboard = props => {
                 width: '167px',
                 height: '221px',
               }}
+
             />
           );
         })}
@@ -137,42 +157,58 @@ export const Dashboard = props => {
     </StyledDashboard>
   );
 };
+
 Dashboard.propTypes = {
   history: PropTypes.object,
 };
+
+const Selected = styled.p`
+  color: ${props => props.selected === (true) ? '#14E59E' : '#000'};
+  margin-right: 9%;
+`;
+const Container = styled.div`
+display: flex;
+flex-direction: ${props => {
+
+  return props.theme.appView === APP_VIEW_DESKTOP ? 'row' :
+    'column';
+}
+};
+
+  /* width */
+::-webkit-scrollbar {
+display: none;
+}
+
+`;
+
 const StyledDeckHolder = styled.div`
   max-width: 100%;
   display: flex;
   flex-wrap: wrap;
-  margin: -5% 15% 12%;
-  margin: -5% 11% 12%;
   justify-content: space-around;
   background: white;
-  height: 100%;
+  height: min-content;
   left: 10%;
 `;
 const StyledDashboard = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 100%;
+  max-width: 1140px;
+  width: 100%;
   height: 100%;
   overflow-y: scroll;
+  padding-bottom: 250px;
   background: ${THEME.white};
   @media screen and ${MEDIA_QUERIES.tablet} {
-    height: 100vh;
-    position: absolute;
-    left: 17%;
+    margin-top: 50px;
+    border-radius: 10px;
     top: 11%;
     right: 13%;
   }
-  @media screen and ${MEDIA_QUERIES.desktop} {
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    left: 200px;
-    background-image: url(../images/Group.svg);
-    background-color: ${THEME.primaryColor36405C};
-  }
+  
+
+  
   > svg {
     height: 33px;
     width: 33px;
@@ -181,45 +217,11 @@ const StyledDashboard = styled.div`
     transform: translate(-50%, -50%);
     position: absolute;
   }
-`;
-const StyledSearchBar = styled.div`
-  min-width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  margin: 65px 13%;
-  background: white;
-`;
-const StyledTitleText = styled.div`
-left: -20%;
-fontFamily: Source Sans Pro,
-fontStyle: normal,
-fontWeight: 900,
-fontSize: 47px,
-lineHeight: 24px,
-margin-top: 53px; 
-text-color: #36405C;
-`;
-const Wrap = styled.div`
-  background: ${myPic};
-  max-width: 1140px;
-  height: 100%;
-  width: 100%;
-  @media screen and ${MEDIA_QUERIES.tablet} {
-    background: #ffffff;
-    margin-top: 65px;
-    border-radius: 10px;
-  }
+  
+  /* width */
+::-webkit-scrollbar {
+display: none;
+}
+
 `;
 
-const StyledCard = styled(PreviewDeckCards)`
-  @media screen and ${MEDIA_QUERIES.tablet} {
-    height: 231px;
-    width: 177px;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 28px;
-    line-height: 28px;
-    text-align: center;
-    color: #5c6078;
-  }
-`;

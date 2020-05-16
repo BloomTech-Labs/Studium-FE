@@ -1,4 +1,4 @@
-import React, {useEffect}  from 'react';
+import React, {useEffect} from 'react';
 import {FormInput} from '../FormItems/Input/FormInput.js';
 import styled from 'styled-components';
 import {CardEditDeleteIcons} from '../Icon/CardEditDeleteIcons.js';
@@ -23,7 +23,7 @@ export const DeckName = ({
         <DeckTitlePrompt appView={appView} highlighted={highlighted}>
           {appView === APP_VIEW_MOBILE ? 'Title of Deck' : 'Name of Deck'}
         </DeckTitlePrompt>
-        {props.appView === APP_VIEW_MOBILE && (
+        {appView === APP_VIEW_MOBILE && (
           <CardEditDeleteIcons
             setNewDeck={setNewDeck}
             newDeck={newDeck}
@@ -38,6 +38,7 @@ export const DeckName = ({
         placeholder={
           appView === APP_VIEW_MOBILE ? 'Start typing...' : 'Name of Deck'
         }
+        fontWeight={'normal'}
         appView={appView}
         className="formClassSynaps"
         onChange={changeHandler}
@@ -52,13 +53,12 @@ export const DeckName = ({
   );
 };
 
-
 const DeckNameContainer = styled.div`
   width: 100%;
-  ${props => (props.appView === APP_VIEW_DESKTOP ? 'height: 50%;' : '')}
+  height: ${props => (props.appView === APP_VIEW_DESKTOP ? '50%' : '60%')};
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
 `;
 
 const DeckTitlePrompt = styled.h1`
@@ -72,7 +72,6 @@ const DeckTitlePrompt = styled.h1`
   font-size: ${props => (props.appView === APP_VIEW_MOBILE ? '26px' : '24px')};
   text-align: left;
   line-height: 33px;
-  margin-bottom: 12px;
 `;
 
 const DeckNameIconContainer = styled.div`

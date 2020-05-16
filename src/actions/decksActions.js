@@ -26,7 +26,8 @@ export const POSTING_DECK_SUCCESS = 'POSTING_DECK_SUCCESS';
 export const POSTING_DECK_FAILURE = 'POSTING_DECK_FAILURE';
 
 export const postDeck = (uid, newDeck) => dispatch => {
-  debugger;
+
+
   dispatch({type: POSTING_DECK_START});
   createAxiosAuth(uid)
     .post('/api/decks', newDeck)
@@ -91,9 +92,11 @@ export const getUserDecks = uid => dispatch => {
   createAxiosAuth(uid)
     .get('/api/decks/user')
     .then(res => {
+
       dispatch({type: RETRIEVE_USER_DECKS_SUCCESS, payload: res.data});
     })
     .catch(error => {
+
       dispatch({
         type: RETRIEVE_USER_DECKS_FAILURE,
         error: 'Failed to retrieve all your decks.',

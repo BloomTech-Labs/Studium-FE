@@ -84,7 +84,7 @@ const AfterStoreTheme = props => {
       <AppHooksContext.Provider
         value={{setHookVariable, hooks}}>
 
-      <AfterHooks{...props}/>
+        <AfterHooks{...props}/>
       </AppHooksContext.Provider>
     </>
   );
@@ -97,7 +97,7 @@ const AfterHooks = props => {
   useAppView();
   const {getHooks} = useAppHooks();
   const {children, ...rest} = props;
-  debugger;
+
   const newChildren = React.cloneElement(props.children, {getHooks, ...rest});
   return (
     <>

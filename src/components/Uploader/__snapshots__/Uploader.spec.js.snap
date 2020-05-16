@@ -5,8 +5,8 @@ exports[`Styled Uploader snapshot renders 1`] = `
   display: block;
   z-index: 25;
   position: relative;
-  width: 67px;
-  height: 59px;
+  width: 95px;
+  height: 107px;
   background-color: transparent;
 }
 
@@ -37,6 +37,7 @@ exports[`Styled Uploader snapshot renders 1`] = `
           type="file"
         />
         <svg
+          appView="APP_VIEW_DESKTOP"
           class="c1"
           data-testid="upload-icon"
         >

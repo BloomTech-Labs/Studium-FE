@@ -1,4 +1,4 @@
-import {createAxios} from '../utilities/createAxios';
+import {createAxiosAuth} from '../utilities/createAxios';
 
 export const UPLOADING_PHOTO_INIT = 'UPLOADING_PHOTO_INIT';
 export const UPLOADING_PHOTO_PROGRESS = 'UPLOADING_PHOTO_PROGRESS';
@@ -20,7 +20,7 @@ export const uploadImage = (file, uid) => dispatch => {
   // data.append('file', file.file);
   const data = {file: file.file};
 
-  return createAxios(uid)
+  return createAxiosAuth(uid)
     .post('api/photo/upload', data, {
       onUploadProgress: ProgressEvent => {
         file.progress = ProgressEvent.loaded / ProgressEvent.total;

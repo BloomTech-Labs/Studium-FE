@@ -23,12 +23,14 @@ export const FormInput = ({
   appView,
   value,
   width = '90%',
+  height = '38px',
   bordered = 'false',
   borderRadius = 'small',
   borderStyle,
   label,
   error,
   placeholder,
+  fontWeight = 600,
   ...props
 }) => {
   if (bordered) {
@@ -39,9 +41,11 @@ export const FormInput = ({
           <StyledAntdInputLargeRadius
             appView={appView}
             width={width}
+            height={height}
             borderStyle={borderStyle}
             value={value}
             placeholder={placeholder}
+            fontWeight={fontWeight}
             {...props}
           />
         </StyledFormItem>
@@ -53,9 +57,11 @@ export const FormInput = ({
           <StyledAntdInputSmallRadius
             appView={appView}
             width={width}
+            height={height}
             borderStyle={borderStyle}
             value={value}
             placeholder={placeholder}
+            fontWeight={fontWeight}
             {...props}
           />
         </StyledFormItem>
@@ -69,9 +75,11 @@ export const FormInput = ({
           <StyledNoBorderAntdInput
             appView={appView}
             width={width}
+            height={height}
             borderStyle={borderStyle}
             value={value}
             placeholder={placeholder}
+            fontWeight={fontWeight}
             {...props}
           />
         </StyledBorderBottom>
@@ -110,17 +118,15 @@ const StyledNoBorderAntdInput = styled(Input)`
     }
     .ant-input {
       width: ${props => props.width};
-      ${props => (props.appView === APP_VIEW_DESKTOP ? 'height: 38px;' : '')}
       ${props =>
-        props.appView === APP_VIEW_DESKTOP
-          ? 'border: 1px solid #36405C;'
-          : ''}
+        props.appView === APP_VIEW_DESKTOP ? 'border: 1px solid #36405C;' : ''}
       background-color: transparent;
       font-style: normal;
-      font-weight: 600;
+      font-weight: ${props => props.fontWeight};
       font-size: 19px;
       line-height: 24px;
     }
+    height: ${props => (props.appView === APP_VIEW_DESKTOP ? '38px' : '58px')};
   }
 `;
 
@@ -134,13 +140,13 @@ const StyledAntdInputLargeRadius = styled(Input)`
       box-shadow: none;
     }
     width: ${props => props.width};
-    ${props => (props.appView === APP_VIEW_DESKTOP ? 'height: 38px;' : '')}
+    height: ${props => (props.appView === APP_VIEW_DESKTOP ? '38px' : '58px')};
     background-color: transparent;
     border: ${props => props.borderStyle};
     ${props =>
       props.appView === APP_VIEW_DESKTOP ? 'border: 1px solid #36405C;' : ''}
     font-style: normal;
-    font-weight: 600;
+    font-weight: ${props => props.fontWeight};
     font-size: 19px;
     line-height: 24px;
   }
@@ -158,13 +164,13 @@ const StyledAntdInputSmallRadius = styled(Input)`
       box-shadow: none;
     }
     width: ${props => props.width};
-    ${props => (props.appView === APP_VIEW_DESKTOP ? 'height: 38px;' : '')}
+    height: ${props => (props.appView === APP_VIEW_DESKTOP ? '38px' : '58px')};
     background-color: transparent;
     border: ${props => props.borderStyle};
     ${props =>
       props.appView === APP_VIEW_DESKTOP ? 'border: 1px solid #36405C;' : ''}
     font-style: normal;
-    font-weight: 600;
+    font-weight: ${props => props.fontWeight};
     font-size: 19px;
     line-height: 24px;
   }

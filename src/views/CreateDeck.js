@@ -1,15 +1,14 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {CreateCardTitleText} from '../components/Text/TitleText/CreateCardTitleText.js';
 import {CreateCard} from '../components/CreateCard/CreateCard.js';
 import {DeckName} from '../components/CreateDeck/DeckName.js';
 import {SmallDeckSvg} from '../components/SmallDeckSvg/SmallDeckSvg.js';
 import {SynapsButton} from '../components/Button/SynapsButton.js';
-import {postDeck} from '../actions/decksActions.js';
-import {updateDeck} from '../actions/decksActions.js';
+import {postDeck, updateDeck} from '../actions/decksActions.js';
 import {createCard} from '../actions/cardActions.js';
 import {useAppHooks} from '../customHooks/useAppHooks.js';
-import {APP_VIEW_MOBILE, APP_VIEW_DESKTOP} from '../utilities/constants.js';
+import {APP_VIEW_DESKTOP, APP_VIEW_MOBILE} from '../utilities/constants.js';
 
 /**
  * Create Deck View
@@ -167,6 +166,9 @@ export const CreateDeck = props => {
   const doneSubmit = e => {
     e.preventDefault();
     updateDeckNameIfChange();
+    if (allFieldsValidated) {
+      dispatch(createCard(newCard, uid));
+    }
     changePath('/dashboard');
   };
 
@@ -188,14 +190,13 @@ export const CreateDeck = props => {
   };
 
   return (
-    <StyledCreateDeck height={height} appView={appView}>
+    <StyledCreateDeck height={height}>
       <CardNameContainer appView={appView}>
         {appView === APP_VIEW_MOBILE && (
           <CancelButtonContainer>
             <CancelButton onClick={doneSubmit}>Cancel</CancelButton>
           </CancelButtonContainer>
         )}
-
         <CardHeaderContainer appView={appView}>
           <CreateCardTitleText
             appView={appView}
@@ -256,21 +257,23 @@ export const CreateDeck = props => {
         />
       </CreateCardContainer>
       <Bottom appView={appView}>
-        <SynapsButton
-          appView={appView}
-          onClick={submitForm}
-          text={'Add Another Card'}
-          type={'primaryCreateCard'}
-          allFieldsValidated={allFieldsValidated}
-        />
-        <BottomButton appView={appView}>
+        <ButtonContainer>
+          <SynapsButton
+            appView={appView}
+            onClick={submitForm}
+            text={'Add Another Card'}
+            type={'primaryCreateCard'}
+            allFieldsValidated={allFieldsValidated}
+          />
+        </ButtonContainer>
+        <ButtonContainer appView={appView}>
           <SynapsButton
             appView={appView}
             text={appView === APP_VIEW_MOBILE ? 'Done' : 'Done Adding Cards'}
             type={'defaultCreateCard'}
             onClick={doneSubmit}
           />
-        </BottomButton>
+        </ButtonContainer>
       </Bottom>
     </StyledCreateDeck>
   );
@@ -278,71 +281,86 @@ export const CreateDeck = props => {
 
 CreateDeck.propTypes = {};
 
+const ButtonContainer = styled.div``;
+
 const StyledCreateDeck = styled.div`
   width: ${props => (props.appView === APP_VIEW_MOBILE ? '375px' : '100%')};
   max-width: ${props =>
     props.appView === APP_VIEW_MOBILE ? '100%' : '1140px'};
-  height: ${props =>
-    props.appView === APP_VIEW_MOBILE
-      ? '812px'
-      : (props.height - 75).toString() + 'px'};
+  height: ${props => (props.height - 75).toString() + 'px'};
   display: flex;
-  padding: ${props =>
-    props.appView === APP_VIEW_MOBILE ? '0 36px' : '63px 67px 15px 67px'};
+  padding: ${({theme}) =>
+    theme.appView === APP_VIEW_MOBILE ? '0 36px' : '63px 67px 15px 67px'};
   ${props =>
-    props.appView === APP_VIEW_DESKTOP ? 'padding: 63px 67px 0 67px;' : ''}
+    props.theme.appView === APP_VIEW_DESKTOP
+      ? 'padding: 63px 67px 0 67px;'
+      : ''};
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   background-color: #f6f5f3;
-  ${props => (props.appView === APP_VIEW_DESKTOP ? 'margin-top: 50px;' : '')}
+  ${props =>
+    props.theme.appView === APP_VIEW_DESKTOP ? 'margin-top: 50px;' : ''};
 `;
 
 const CreateCardContainer = styled.div`
   width: 100%;
-  height: ${props => (props.appView === APP_VIEW_MOBILE ? '425px' : '40%')};
+  height: ${props => (props.appView === APP_VIEW_MOBILE ? '60%' : '40%')};
+  height: ${props =>
+    props.theme.appView === APP_VIEW_MOBILE ? '425px' : '40%'};
   display: flex;
   flex-direction: ${props =>
-    props.appView === APP_VIEW_MOBILE ? 'column' : 'row'};
+    props.theme.appView === APP_VIEW_MOBILE ? 'column' : 'row'};
   ${props =>
-    props.appView === APP_VIEW_DESKTOP
+    props.theme.appView === APP_VIEW_DESKTOP
       ? 'justify-content: space-between;'
       : ''};
 `;
 
 const CardHeaderContainer = styled.div`
   width: 100%;
-  ${props => (props.appView === APP_VIEW_DESKTOP ? 'height: 50%;' : '')}
+  ${props => (props.theme.appView === APP_VIEW_DESKTOP ? 'height: 50%;' : '')};
   padding: 0 2px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: ${props =>
+    props.appView === APP_VIEW_MOBILE ? '30px' : '30px'};
+  margin-top: ${props => (props.appView === APP_VIEW_MOBILE ? '30px' : '0px')};
 `;
 
 const CardNameContainer = styled.div`
-  ${props => (props.appView === APP_VIEW_DESKTOP ? 'height: 25%;' : '')}
+  height: 30%;
+  ${props => (props.theme.appView === APP_VIEW_DESKTOP ? 'height: 25%;' : '')};
   width: 100%;
+  margin-bottom: ${props =>
+    props.appView === APP_VIEW_MOBILE ? '30px' : '0px'};
   margin-bottom: 15px;
-  ${props => (props.appView === APP_VIEW_DESKTOP ? 'margin-bottom: 35px;' : '')}
+  ${props =>
+    props.theme.appView === APP_VIEW_DESKTOP ? 'margin-bottom: 35px;' : ''}
 `;
 
 const Bottom = styled.div`
   width: 100%;
-  height: ${props => (props.appView === APP_VIEW_MOBILE ? '70px' : '25%')};
+  height: ${props => (props.appView === APP_VIEW_MOBILE ? '10%' : '20%')};
+  height: ${props =>
+    props.theme.appView === APP_VIEW_MOBILE ? '70px' : '25%'};
   display: flex;
   ${props =>
-    props.appView === APP_VIEW_DESKTOP ? 'flex-direction: column;' : ''}
-  ${props => (props.appView === APP_VIEW_DESKTOP ? 'align-items: center;' : '')}
-  justify-content:  ${props =>
-    props.appView === APP_VIEW_DESKTOP ? 'center;' : 'space-around'};
-   ${props =>
-     props.appView === APP_VIEW_MOBILE ? 'padding-bottom: 20px;' : ''}
-    padding: ${props =>
-      props.appView === APP_VIEW_DESKTOP ? '20px 0 0 0' : '0 0 40px 0'}
+    props.theme.appView === APP_VIEW_DESKTOP ? 'flex-direction: column;' : ''};
+  ${props =>
+    props.theme.appView === APP_VIEW_DESKTOP ? 'align-items: center;' : ''};
+  justify-content: ${props =>
+    props.theme.appView === APP_VIEW_DESKTOP ? 'center;' : 'space-around'};
+  ${props =>
+    props.theme.appView === APP_VIEW_MOBILE ? 'padding-bottom: 20px;' : ''};
+  padding: ${props =>
+    props.theme.appView === APP_VIEW_DESKTOP ? '20px 0 0 0' : '0 0 40px 0'};
 `;
 
 const BottomButton = styled.div`
-  ${props => (props.appView === APP_VIEW_DESKTOP ? 'margin-top: 10px;' : '')}
+  ${props =>
+    props.theme.appView === APP_VIEW_DESKTOP ? 'margin-top: 10px;' : ''}
 `;
 
 const CancelButtonContainer = styled.div`

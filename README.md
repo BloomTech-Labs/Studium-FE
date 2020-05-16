@@ -1,7 +1,9 @@
 <h1 align="center">
     <a href="https://production-lambda-synaps-fe.herokuapp.com/">Synaps</a>
 </h1>
-<h3 align="center">Up you testing game with the best flash card app.</h3>
+
+
+<h3 align="center">Up you testing game with the best flash card app</h3>
 <h3 align="center">Average testing score increase 20%.</h3>
 
 
@@ -24,6 +26,7 @@ To create the best Life Science flashcard application, that has excellent UI, wh
 <h3 align="center"> Share Decks With Friends </h3>
 <h3 align="center"> Take Quizzes </h3>
 <h3 align="center"> Spaced Repetition </h3>
+<h3 align="center"> User Friendly Features </h3>
 
 <br/>
 <br/>
@@ -50,18 +53,13 @@ To create the best Life Science flashcard application, that has excellent UI, wh
 
 To create the best Life Science flashcard application, that has excellent UI, which has minimal distractions to make the learning process more efficient. To be the best user friendly flashcard application for life sciences students.
 
-### Key Features
-
-- Mobile First Design
-- Share Decks With Friends
-- Take Quizzes 
-- Spaced Repetition 
 
 ## Tech Stack
 
 ![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-
+[![Maintainability](https://api.codeclimate.com/v1/badges/26cd86e13210109747d9/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/pt-synaps-fe/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/26cd86e13210109747d9/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/pt-synaps-fe/test_coverage)
 
 # React <br> Styled Components <br> Ant Design <br> Cloudinary(picture storage) <br> Redux <br> 
 ".
@@ -90,70 +88,41 @@ To create the best Life Science flashcard application, that has excellent UI, wh
 
 # APIs
 
-## 2️⃣ Authentication API here
+## Authentication API here
 
-🚫Replace text below with a description of the API
+OAuth - Google Library key. 
 
-Water's like me. It's laaazy ... Boy, it always looks for the easiest way to do things A little happy sunlight shining through there. Let all these little things happen. Don't fight them. Learn to use them. Even the worst thing we can do here is good.
+When you log in you can either login with your Google account connected to your gmail or you can create a new account with just the email and password.
 
-## 2️⃣ Payment API here
 
-🚫Replace text below with a description of the API
-
-This is the way you take out your flustrations. Get away from those little Christmas tree things we used to make in school. Isn't it fantastic that you can change your mind and create all these happy things? Everything's not great in life, but we can still find beauty in it.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-You can do anything your heart can imagine. In life you need colors. This is where you take out all your hostilities and frustrations. It's better than kicking the puppy dog around and all that so. I'm sort of a softy, I couldn't shoot Bambi except with a camera. Trees get lonely too, so we'll give him a little friend. We'll lay all these little funky little things in there.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-When you do it your way you can go anywhere you choose. Let your heart take you to wherever you want to be. If I paint something, I don't want to have to explain what it is. A tree needs to be your friend if you're going to paint him. That's a son of a gun of a cloud. Even the worst thing we can do here is good.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-Volunteering your time; it pays you and your whole community fantastic dividends. Maybe there's a happy little waterfall happening over here. You can spend all day playing with mountains. We don't have to be committed. We are just playing here. You have freedom here. The only guide is your heart. It's cold, but it's beautiful.
-
-# 3️⃣ Environment Variables
+#  Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
 
-🚫These are just examples, replace them with the specifics for your app
 
-    *  REACT_APP_apiKey - this is your Google API key, which can be generated in the Google Cloud Console
-    *  REACT_APP_authDomain - when you set up your Firebase project, this information will be in the dashboard
-    *  REACT_APP_databaseURL - in the Firebase dashboard
-    *  REACT_APP_projectID - in the Firebase dashboard
-    *  REACT_APP_storageBucket - in the Firebase dashboard
-    *  REACT_APP_messagingSenderId - in the Firebase dashboard
-    *  REACT_APP_stripe_API - this is your public Stripe API key, generated in the Stripe dashboard
-    *  REACT_APP_backendURL - optional for your local development server
-    *  REACT_APP_clientid - this is the Stripe_connect clientID, generated in Stripe_connect settings
-    *  REACT_APP_stripe_plan - this is the ID for a second Stripe subscription plan, generated under Stripe products
+    REACT_APP_apiKey= ""
+    REACT_APP_authDomain=synaps-5ce5c.firebaseapp.com
+    REACT_APP_databaseURL=https://synaps-5ce5c.firebaseio.com
+    REACT_APP_projectId=synaps-5ce5c
+    REACT_APP_storageBucket=synaps-5ce5c.appspot.com
+    REACT_APP_messagingSenderId= ""
+    REACT_APP_appId=1:""
+    REACT_APP_ipinfoKey=""
 
-# 5️⃣ Content Licenses
+    REACT_APP_BASE_URL=https://staging-lambda-synaps-be.herokuapp.com/
 
-🚫For all content - images, icons, etc, use this table to document permission of use. Remove the two placeholders and add you content to this table
+                            |
 
-| Image Filename | Source / Creator | License                                                                      |
-| -------------- | ---------------- | ---------------------------------------------------------------------------- |
-| doodles.png    | Nicole Bennett   | [Creative Commons](https://www.toptal.com/designers/subtlepatterns/doodles/) |
-| rings.svg      | Sam Herbert      | [MIT](https://github.com/SamHerbert/SVG-Loaders)                             |
+# Testing
 
-# 4️⃣ Testing
+- Supertest
+- React Library
+- Jest-DOM
 
-🚫Document what you used for testing and why
-
-# 4️⃣ Installation Instructions
+#  Installation Instructions
 
 FrontEnd
-Npm install should install all dependences
+Npm install should install all dependencies
 npx create-react-app
 
 BackEnd
@@ -161,9 +130,6 @@ node install
 
 ## Other Scripts
 
-🚫replace these examples with your own
-
-    * typecheck - runs the TypeScript compiler
     * build - creates a build of the application
     * start - starts the production server after a build is created
     * test - runs tests in **tests** directory \* eject - copy the configuration files and dependencies into the project so you have full control over them

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {SynapsButton} from '../components';
 import SvgSynapsLogoText from '../svgComponents/SvgSynapsLogoText.js';
 import {SvgBrainPaths} from '../svgComponents';
-import {MEDIA_QUERIES} from '../utilities/constants.js';
+import {MEDIA_QUERIES, THEME} from '../utilities/constants.js';
 
 /**
  * Landing Page
@@ -29,7 +29,8 @@ export const LandingPage = ({getHooks}) => {
   return (
     <StyledLandingPage data-testid={'landing-page'}>
       <Mobile data-testid={'landing-page-mobile'}>
-        <SvgBrainPaths svgFill={'white'} strokeWidth={'1'} stroke={'white'}
+        <SvgBrainPaths svgFill={THEME.COLOR_WHITE} strokeWidth={'1'}
+                       stroke={THEME.COLOR_WHITE}
                        svgWidth={'100%'}
                        height={'100%'}/>
         <MobileHeader>
