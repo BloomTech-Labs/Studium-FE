@@ -22,6 +22,22 @@ export const NavBar = ({getHooks}) => {
   const [setMenuOpen] = useState(false);
   const [avatarUrl, setAvatarUrl] = useState('');
 
+  // const logger = getLogger(NAV_BAR_DEBUG_NAME);
+  const {compareContext, printPrevContext} = useComparPrevContext(
+    NAV_BAR_DEBUG_NAME,
+    {
+      usersState,
+      theme,
+      getLogger,
+      dispatch,
+      changePath,
+      path,
+      appView,
+    }
+  );
+
+
+
   useEffect(() => {
 
     if (usersState.user && usersState.user.photoURL) {

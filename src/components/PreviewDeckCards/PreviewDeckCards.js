@@ -62,6 +62,7 @@ export const PreviewDeckCards = ({
   };
 
   return (
+
     <StyledAntdCard
       type={type}
       size={size}
@@ -70,10 +71,12 @@ export const PreviewDeckCards = ({
       {...props}
     >
       {(!deck && cardType === 'deck' || !card && cardType === 'card') && (
+
         <p className={'deck-text'}>
           Add {cardType === 'deck' ? 'Deck' : 'Card'}
         </p>
       )}
+
       {(!deck && cardType === 'deck' || !card && cardType === 'card') &&
       <CreateButton width={appView === APP_VIEW_DESKTOP ? '55px' : '49PX'}
                     height={appView === APP_VIEW_DESKTOP ? '55px' : '49PX'}/>}
@@ -81,6 +84,7 @@ export const PreviewDeckCards = ({
       <p className={'deck-text'}>{cardType === 'deck' ? deck.deck_name :
         card.question}</p>}
       {selected && <StyledCheck> </StyledCheck>}
+
 
 
     </StyledAntdCard>
@@ -132,7 +136,7 @@ const StyledAntdCard = styled(Card)`
       justify-content: center;
 
       > p.deck-text {
-      word-break: break-word;
+        word-break: break-word;
         text-overflow: hidden;
         overflow-x: hidden;
         font-weight: bold;

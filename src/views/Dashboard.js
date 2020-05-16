@@ -1,28 +1,50 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import {PreviewDeckCards, SearchBar, TitleText,} from '../components';
+import {PreviewDeckCards, SearchBar, TitleText} from '../components';
 import PropTypes from 'prop-types';
-import {
-  APP_VIEW_DESKTOP, APP_VIEW_MOBILE, MEDIA_QUERIES, THEME
-} from '../utilities/constants.js';
-import {getUserDecks} from '../actions';
-import Fuse from 'fuse.js';
 
-const options = {
-  // isCaseSensitive: false,
-  // includeScore: false,
-  // shouldSort: true,
-  // includeMatches: false,
-  // findAllMatches: false,
-  // minMatchCharLength: 1,
-  // location: 0,
-  // threshold: 0.6,
-  // distance: 100,
-  // useExtendedSearch: false,
-  keys: [
-    'deck_name',
-  ]
-};
+import {useAppHooks} from '../customHooks/useAppHooks.js';
+import myPic from '../images/Group.png';
+import {MEDIA_QUERIES, THEME} from '../utilities/constants.js';
+import {useTheming} from '../customHooks/useTheming.js';
+
+const decks = [
+  {deck_name: 'Some Name', deck_id: 1},
+  {deck_name: 'Another Name', deck_id: 2},
+  {deck_name: 'Anatomy', deck_id: 3},
+  {deck_name: 'Some Name', deck_id: 4},
+  {
+    deck_name: 'Another' + ' Name',
+    deck_id: 5,
+  },
+  {
+    deck_name:
+      'Anatomy this is a really long deck name lets just keep' + ' this name',
+    deck_id: 6,
+  },
+  {
+    deck_name: 'Another one',
+    deck_id: 6,
+  },
+  {
+    deck_name: 'One more',
+    deck_id: 6,
+  },
+  {
+    deck_name:
+      'Anatomy this is a really long deck name lets just keep' + ' this name',
+    deck_id: 6,
+  },
+  {
+    deck_name: 'Testing Another One',
+    deck_id: 6,
+  },
+  {
+    deck_name:
+      'Anatomy this is a really long deck name lets just keep' + ' this name',
+    deck_id: 6,
+  },
+];
 
 /**
  * Dashboard
@@ -98,14 +120,17 @@ export const Dashboard = ({getHooks}) => {
             height: '37px',
           }}
         />
-      </Container>
 
-
-      <StyledDeckHolder className={'deck-container'}>
+      </StyledSearchBar>
+      <StyledDeckHolder>
         <PreviewDeckCards
-          border={'dashed'}
-          getHooks={getHooks}
-          onClick={e => deckClicked()}
+          text={'Create Deck'}
+          getHooks={props.getHooks}
+          onClick={() => deckClicked()}
+          style={{
+            width: '167px',
+            height: '221px',
+          }}
 
         />
         {getDecks().map(deck => {
@@ -114,12 +139,17 @@ export const Dashboard = ({getHooks}) => {
           }
 
           return (
-            <PreviewDeckCards
+
+            <StyledCard
               key={deck.deck_id}
-              getHooks={getHooks}
               deck={deck}
-              border={'solid'}
+              getHooks={getHooks}
               onClick={e => deckClicked(deck)}
+              style={{
+                width: '167px',
+                height: '221px',
+              }}
+
             />
           );
         })}
