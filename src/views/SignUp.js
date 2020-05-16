@@ -39,8 +39,7 @@ export function SignUp(){
           },
         });
       }
-    }
-    
+    }    
   };
   
   return (<StyledSignUp>
