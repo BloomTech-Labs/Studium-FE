@@ -1,9 +1,0 @@
-exclude_patterns:
-  - 'tests/'
-  - 'spec/'
-  - '**/node_modules/'
-  - '*.md'
-  - '**/docs/'
-  - 'coverage/'
-  - '*.test.js'
-  - '*.spec.js'
