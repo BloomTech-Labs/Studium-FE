@@ -1,68 +1,95 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/t3dGfPL/circle-cropped.png" alt="StudiumGitHub"><a>
 
-## Available Scripts
+# Studium 
 
-In the project directory, you can run:
+>Easy and enjoyable application to study Life Sciences with a gamification feature you can use to track your progress!
 
-### `npm start`
+# Badges
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## License
+[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `npm test`
+## Dependencies
+ 
+[![Dependency Status](https://david-dm.org/kayladailey/Studium-FE.svg)](https://david-dm.org/kayladaileyStudium-FE) [![devDependency Status](https://david-dm.org/kayladaileyStudium-FE/dev-status.svg)](https://david-dm.org/yourGitHubName/YourRepoName?type=dev)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Code Climate
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Table of Contents
+- [Getting Started](#gettingstarted)
+- [Features & Usage](#features)
+- [Contributing](#contributing)
+- [Team](#team)
+- [License](#license)
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+--
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Getting Started
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Code
+- Images of what it looks like
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+---
 
-## Learn More
+## Features & Usage
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1.)Clear, enjoyable user on-boarding process to showcase features of app and how to use them 
+2.) Simple card creation with a low level of distraction & deck management, with freedom of creativity & customization
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+*Make finding "that one flashcard" faster & easier than flipping through the deck/search function
+*Help students keep flashcards organized and available on the go
 
-### Code Splitting
+3.)  Gamification and metrics to allow users to have tangible data to measure and manage
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+* Study 'x' new cards and review 'x' cards to 'Level Up'
+* Detailed metrics for how much studying has been done (cards per day/week/month/year)
+* Personal bests
+* Community leader boards
+*Streaks that break/end when no studying has been done for a day
 
-### Analyzing the Bundle Size
+4.) Tracking metrics for users to be able to see what and how much they've studied
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+*Rating decks for difficulty by users in a community poo
 
-### Making a Progressive Web App
+5.) Seamless sharing of user-made decks between users and from a deck-hub
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## Documentation
+- TBD
 
-### Advanced Configuration
+## Tests 
+- TBD
+---
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+# The Studium Team
 
-### Deployment
+>  The Individuals that made this app possible
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+## Web 
 
-### `npm run build` fails to minify
+ [![WEBteam](https://avatars2.githubusercontent.com/u/49841571?s=180&u=0d8cd25cab84255c5b5d699083f828cd3785a04f&v=4?)](https://github.com/kayladailey)[![WEBteam](https://avatars2.githubusercontent.com/u/54679236?s=180&u=41478c1e229be136bd7c139c259d53f03673b935&v=4)](https://github.com/Adrian-Guadalupe) [![WEBteam](https://avatars0.githubusercontent.com/u/22096240?s=180&u=d3c4d61115a40d5c34d01c9b381a80a3778ed46c&v=4)](https://github.com/sicklesium)[![WEBteam](https://avatars2.githubusercontent.com/u/52601501?s=180&u=2e69a5cbb6093b9eb4cbe45d8ffea013a93ca147&v=4)](https://github.com/emster7013)[![WEBteam](https://avatars1.githubusercontent.com/u/24613193?s=180&u=59264acdf4bd76e4d9d143893ef4c5592c9d2321&v=4)](https://github.com/juniordugue)  
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Data Science
+[![DSteam](img src="https://ca.slack-edge.com/ESZCHB482-W012JQ0JDDZ-c45d031dd395-512'" height="200" width="200")](https://github.com/b-whitman)[![DSteam](https://avatars0.githubusercontent.com/u/53185634?s=200&v=4)](https://github.com/dunkelweizen) [![DSteam](https://avatars0.githubusercontent.com/u/18502421?s=200&u=0968b250d7df526da558e489c8b6a3bcca492a0b&v=4)](https://github.com/ameralhomdy) 
+
+
+## UX Design
+[![UXteam](Regina)](https://github.com) [![UXteam](Chad)](https://github.com)
+
+
+## Project Manager
+
+ [![TeamLead](https://avatars0.githubusercontent.com/u/53539912?s=200&u=2f676643c6a84e8feb7608a375c3c5ca3217e99f&v=4)](https://github.com/AnthonyLopez1120) 
+---
+
+
+## License
+
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
+
+- **[MIT license](http://opensource.org/licenses/mit-license.php)**
