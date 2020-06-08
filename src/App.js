@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUsers } from '../src/redux/actions';
+import Decks from './decks/Decks';
 import './App.css';
 
 
@@ -37,6 +38,7 @@ function App() {
 
             : null
         }
+        <Decks/>
       
     </div>
   );
