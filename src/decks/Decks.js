@@ -4,30 +4,21 @@ import {connect} from 'react-redux';
 
 //just some possible code
 
-class Decks extends Component {
-    componentDidMount () {
-      const { decks, dispatch } = this.props
-      dispatch(handleInitialData())
-    }
+const Decks = props => {
+//     constructor(props){
+//       super(props)
+//       this.state = {
+//         decks: [
+//           {deck_name: '', category: '', description: '', public: false, deck_img: '', created_at: Date.now, updated_at: Date.now  }
+//         ]
+//       }
+//     }
   
-    clear = () => {
-      this.props.dispatch(clearCustomDecks())
-      clearDecks()
-      this.props.dispatch(handleInitialData())
-    }
-  
-    render () {
-  
-  
-      return (
-          <h1>This is a deck</h1>
-      )
-  
-  function mapStateToProps ({ decks }) {
-    return {
-      decks,
-      isInitialData: decks && Object.keys(decks).length === 2,
-    }
+//     render () {
+//       const {decks} = this.state;
+//       return(
+//         <h1>Hello</h1>
+//       )
+// }
 }
-}}
     export default Decks;

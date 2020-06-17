@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUsers } from '../src/redux/actions';
 import Decks from './decks/Decks';
+import Login from './login';
 import './App.css';
 
 
@@ -22,8 +23,7 @@ function App() {
 
   return (
     <div className="App">
-      <h2>Studium Front-End</h2>
-      <button onClick={handleClick}>Get Users</button>
+      {/* <button onClick={handleClick}>Get Users</button>
       
         {
           userList.length > 0
@@ -37,9 +37,8 @@ function App() {
               })
 
             : null
-        }
-        <Decks/>
-      
+        } */}
+      <Login/>
     </div>
   );
 }
