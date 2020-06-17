@@ -27,12 +27,10 @@ const handleSubmit = e => {
         }
     )
 }
-    return(
-        <LoginScreen>
-            
+    return( 
               <form
             onSubmit={handleSubmit}>
-            <TextBox
+            <input
               type="text"
               name="username"
               placeholder= 'Type your username'
@@ -41,7 +39,7 @@ const handleSubmit = e => {
               />
 
               {/* Need to go through and fix */}
-              <TextBox2
+              <input
               type="password"
               name="password"
               placeholder="Type your password"
@@ -49,10 +47,10 @@ const handleSubmit = e => {
               onChange={handleChange}
               />
               <H>Forgot?</H>
-            <Button type="submit">Log In</Button>
+            <button type="submit">Log In</button>
             </form>
     
-         </LoginScreen>
+        
     )
 }
 export default Login;
