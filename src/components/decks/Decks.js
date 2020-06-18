@@ -1,10 +1,14 @@
 import React from 'react';
-import {connect} from 'react-redux';
 
+const Decks = props => {
+    return (
+        <div>
+            Decks
+        </div>
+    )
 
 //just some possible code
 
-const Decks = props => {
 //     constructor(props){
 //       super(props)
 //       this.state = {
@@ -21,4 +25,5 @@ const Decks = props => {
 //       )
 // }
 }
-    export default Decks;
+
+export default Decks;
