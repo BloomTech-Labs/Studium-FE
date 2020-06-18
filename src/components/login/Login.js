@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import { axiosWithAuth } from './utils/axiosWithAuth';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 
 const Login = props => {
