@@ -28,31 +28,25 @@ const handleSubmit = e => {
     )
 }
     return(
-        <LoginScreen>
             
               <form
             onSubmit={handleSubmit}>
-            <TextBox
+            <input
               type="text"
               name="username"
               placeholder= 'Type your username'
               value={login.username}
               onChange={handleChange}
               />
-
-              {/* Need to go through and fix */}
-              <TextBox2
+              <input
               type="password"
               name="password"
               placeholder="Type your password"
               value={login.password}
               onChange={handleChange}
               />
-              <H>Forgot?</H>
-            <Button type="submit">Log In</Button>
+            <button type="submit">Log In</button>
             </form>
-    
-         </LoginScreen>
     )
 }
 
