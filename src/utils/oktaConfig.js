@@ -9,8 +9,8 @@ const SCOPES = 'openid profile email';
 
 export const config = {
    issuer: ISSUER,
-   clientId: '0oaekug1e6udJlXUA4x6',
+   clientId: CLIENT_ID,
    redirectUri: REDIRECT_URI,
    scope: SCOPES.split(/\s+/),
 };
- 
+
