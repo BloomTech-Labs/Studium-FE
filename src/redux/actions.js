@@ -1,10 +1,10 @@
-import { axiosWithAuth } from '../utils/axiosWithAuth'
+import AxiosWithAuth from '../utils/axiosWithAuth'
 
 export const GET_USERS = 'GET_USERS'
 export const SET_ERROR = 'SET_ERROR'
 
 export const getUsers = () => dispatch => {
-   axiosWithAuth()
+   AxiosWithAuth()
       .get('/users')
       .then(res => {
          dispatch({ type: GET_USERS, payload: res.data })

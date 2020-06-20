@@ -1,8 +1,9 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
+import { LoginCallback, SecureRoute } from '@okta/okta-react';
 import SplashPage from './components/splash page/SplashPage';
 import Register from './components/register/Register'
-import Login from './components/login/Login';
+import OktaLogin from './components/login/OktaLogin';
 import DashBoard from './components/dashboard/DashBoard';
 import CreateDeckForm from './components/decks/CreateDeckForm';
 import CreateCardForm from './components/cards/CreateCardForm';
@@ -11,19 +12,21 @@ import EditDeck from './components/decks/EditDeck';
 import StudyView from './components/decks/StudyView';
 import './App.css';
 
+const CALLBACK_PATH = '/implicit/callback';
 
 function App() {
   return (
     <div className="App">
       <Route exact path='/' component={SplashPage} />
+      <Route path={CALLBACK_PATH} component={LoginCallback} />
       <Route path='/register' component={Register} />
-      <Route path='/login' component={Login} />
-      <Route path='/dashboard' component={DashBoard} />
-      <Route path='/create-deck' component={CreateDeckForm} />
-      <Route path='/deck/:id/create-card' component={CreateCardForm} />
-      <Route path='/deck/:id' component={DeckView} />
-      <Route path='/deck/:id/edit-deck' component={EditDeck} />
-      <Route path='/deck/:id/study' component={StudyView} />
+      <Route path='/login' component={OktaLogin} />
+      <SecureRoute path='/dashboard' component={DashBoard} />
+      <SecureRoute path='/create-deck' component={CreateDeckForm} />
+      <SecureRoute path='/deck/:id/create-card' component={CreateCardForm} />
+      <SecureRoute path='/deck/:id' component={DeckView} />
+      <SecureRoute path='/deck/:id/edit-deck' component={EditDeck} />
+      <SecureRoute path='/deck/:id/study' component={StudyView} />
     </div>
   );
 }
