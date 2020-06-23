@@ -22,7 +22,6 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "build:local": "env-cmd -f ./.env.production.local npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
