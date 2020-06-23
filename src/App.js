@@ -2,8 +2,9 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import { LoginCallback, SecureRoute } from '@okta/okta-react';
 import SplashPage from './components/splash page/SplashPage';
-import Register from './components/register/Register'
+import Register from './components/register/Register';
 import OktaLogin from './components/login/OktaLogin';
+import Login from './components/login/Login';
 import DashBoard from './components/dashboard/DashBoard';
 import CreateDeckForm from './components/decks/CreateDeckForm';
 import CreateCardForm from './components/cards/CreateCardForm';
@@ -20,7 +21,8 @@ function App() {
       <Route exact path='/' component={SplashPage} />
       <Route path={CALLBACK_PATH} component={LoginCallback} />
       <Route path='/register' component={Register} />
-      <Route path='/login' component={OktaLogin} />
+      <Route path='/okta-login' component={OktaLogin} />
+      <Route path='/login' component={Login} />
       <SecureRoute path='/dashboard' component={DashBoard} />
       <SecureRoute path='/create-deck' component={CreateDeckForm} />
       <SecureRoute path='/deck/:id/create-card' component={CreateCardForm} />
