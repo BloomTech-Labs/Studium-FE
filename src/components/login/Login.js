@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {LoginScreen, TextBox, TextBox2, Button, Nav, H3, GoogButton} from "./loginstyles"
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import GoogleButton from 'react-google-button'
 
 
 
@@ -28,12 +29,17 @@ const handleSubmit = e => {
         }
     )
 }
+//Will somehow have to send the google login button to the okta login
     return(
             <LoginScreen>
                 <Nav>
                 <H3>Studium</H3>
                 </Nav>
-                <GoogButton type='submit'>Continue with Google</GoogButton>
+                <GoogButton>
+            <GoogleButton
+                type="light"
+                onClick={() => { console.log('This button can be clicked') }}
+            /></GoogButton>
               <form
             onSubmit={handleSubmit}>
                 <TextBox

@@ -1,16 +1,12 @@
 import styled from 'styled-components';
 
 
-export const GoogButton = styled.button `
+export const GoogButton = styled.div `
 position: absolute;
 width: 309px;
 height: 42px;
-left: 33px;
+left: 63px;
 top: 127px;
-border: 1px solid #C4C4C4;
-box-sizing: border-box;
-border-radius: 6px;
-
 `
 export const Nav = styled.div`
 position: absolute;
@@ -42,7 +38,7 @@ export const TextBox = styled.input`
 position: absolute;
 width: 311px;
 height: 35px;
-font-size: 18px;
+
 line-height: 24px;
 border: 1px solid #C4C4C4;
 box-sizing: border-box;
