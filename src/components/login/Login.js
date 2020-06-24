@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import styled from 'styled-components';
+import {LoginScreen, TextBox, TextBox2, Button, Nav, H3, GoogButton} from "./loginstyles"
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
+
 
 
 const Login = props => {
@@ -28,25 +29,30 @@ const handleSubmit = e => {
     )
 }
     return(
-            
+            <LoginScreen>
+                <Nav>
+                <H3>Studium</H3>
+                </Nav>
+                <GoogButton type='submit'>Continue with Google</GoogButton>
               <form
             onSubmit={handleSubmit}>
-            <input
+                <TextBox
               type="text"
               name="username"
               placeholder= 'Type your username'
               value={login.username}
               onChange={handleChange}
               />
-              <input
+              <TextBox2
               type="password"
               name="password"
               placeholder="Type your password"
               value={login.password}
               onChange={handleChange}
               />
-            <button type="submit">Log In</button>
+            <Button type="submit">Log In</Button>
             </form>
+            </LoginScreen>
     )
 }
 
