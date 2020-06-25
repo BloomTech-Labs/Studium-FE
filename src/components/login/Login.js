@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import AxiosWithAuth from '../../utils/axiosWithAuth';
 
 
 const Login = props => {
@@ -18,7 +18,7 @@ const handleChange = e => {
 
 const handleSubmit = e => {
     e.preventDefault();
-    axiosWithAuth()
+    AxiosWithAuth()
        .post('/auth/login', login) 
     .then(
         res =>{
