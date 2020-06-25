@@ -11,9 +11,9 @@ import App from './App'
 ReactDOM.render(
   <Provider store={store}>
 		<Router>
-			<Security { ...config }>
+			{/* <Security { ...config }> */}
 				<App />
-			</Security>
+			{/* </Security> */}
 		</Router>
 	</Provider>,
   document.getElementById('root')
