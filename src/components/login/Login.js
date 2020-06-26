@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
+
 import {LoginScreen, TextBox, TextBox2, Button, Nav, H3, GoogButton, H4, HRline, HRline2} from "./loginstyles"
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import GoogleButton from 'react-google-button'
-
 
 
 const Login = props => {
@@ -20,7 +20,7 @@ const handleChange = e => {
 
 const handleSubmit = e => {
     e.preventDefault();
-    axiosWithAuth()
+    AxiosWithAuth()
        .post('/auth/login', login) 
     .then(
         res =>{
