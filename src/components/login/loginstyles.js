@@ -26,12 +26,48 @@ font-weight: normal;
 font-size: 17px;
 line-height: 25px;
 color: #2E71FD;
+
+`
+export const H4 = styled.h4 `
+position: absolute;
+width: 51px;
+height: 24px;
+left: 162px;
+top: 189px;
+font-family: Source Sans Pro;
+font-style: normal;
+font-weight: bold;
+font-size: 12px;
+line-height: 24px;
+/* identical to box height, or 200% */
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #010101;
+`
+export const HRline = styled.hr `
+position: absolute;
+width: 115px;
+height: 0px;
+left: 33px;
+top: 201px;
+
+border: 1px solid #C4C4C4;
+`
+export const HRline2 = styled.hr `
+position: absolute;
+width: 116px;
+height: 0px;
+left: 226px;
+top: 201px;
+
+border: 1px solid #C4C4C4;
 `
 export const LoginScreen = styled.div `
 display: flex;
 position: relative;
 width: 375px;
-height: 812px;
 background: #ffffff;
 `
 export const TextBox = styled.input`
