@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
-import styled from 'styled-components';
-import AxiosWithAuth from '../../utils/axiosWithAuth';
+
+import {LoginScreen, TextBox, TextBox2, Button, Nav, H3, GoogButton, H4, HRline, HRline2} from "./loginstyles"
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import GoogleButton from 'react-google-button'
 
 
 const Login = props => {
@@ -27,26 +29,39 @@ const handleSubmit = e => {
         }
     )
 }
+
     return(
-            
+            <LoginScreen>
+                <Nav>
+                <H3>Studium</H3>
+                </Nav>
+                <GoogButton>
+            <GoogleButton
+                type="dark"
+                onClick={() => { console.log('This button can be clicked') }}
+            /></GoogButton>
+            <HRline></HRline>
+            <H4>Or Email</H4>
+            <HRline2></HRline2>
               <form
             onSubmit={handleSubmit}>
-            <input
+                <TextBox
               type="text"
               name="username"
               placeholder= 'Type your username'
               value={login.username}
               onChange={handleChange}
               />
-              <input
+              <TextBox2
               type="password"
               name="password"
               placeholder="Type your password"
               value={login.password}
               onChange={handleChange}
               />
-            <button type="submit">Log In</button>
+            <Button type="submit">Log In</Button>
             </form>
+            </LoginScreen>
     )
 }
 
