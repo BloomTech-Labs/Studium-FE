@@ -9,9 +9,11 @@ const DashBoard = () => {
       if (!authState.isAuthenticated) {
         // When user isn't authenticated, forget any user info
         setUserInfo(null);
+        console.log('no user info')
       } else {
         authService.getUser().then((info) => {
           setUserInfo(info);
+          console.log(info)
         });
       }
     }, [authState, authService]); // Update if authState changes

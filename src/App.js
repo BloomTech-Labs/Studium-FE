@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="App">
       <Route exact path='/' component={SplashPage} />
-      <Route path={CALLBACK_PATH} component={LoginCallback} />
+      <Route path='/implicit/callback' component={LoginCallback} />
       <Route path='/register' component={Register} />
       <Route path='/okta-login' component={OktaLogin} />
       <Route path='/login' component={Login} />

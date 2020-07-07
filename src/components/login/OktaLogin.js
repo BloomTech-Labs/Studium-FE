@@ -3,7 +3,7 @@ import { useOktaAuth } from '@okta/okta-react'
 
 const OktaLogin = () => { 
    const { authState, authService } = useOktaAuth();
-   const login = () => authService.login('/profile');
+   const login = () => authService.login('/dashboard');
 
   return (
     <div>
