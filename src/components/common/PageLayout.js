@@ -4,8 +4,7 @@ import styled from 'styled-components';
 
 const Content = styled.main`
     max-width: 800px;
-    margin: 60px auto 0 auto;
-    /* padding: 0 16px; */
+    margin: 0 auto 0 auto;
     box-sizing: border-box;
     font-family: '';
 
@@ -29,6 +28,11 @@ const Content = styled.main`
     .pTags{
         text-align: center;
         font-size: 1.4em;
+    }
+
+
+    .centeredOr{
+        margin: 0 auto;
     }
     @media(min-width: 370px){
 

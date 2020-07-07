@@ -14,12 +14,11 @@ const NavWrapper = styled.header`
   align-content: center;
   /* padding-top: 30px; */
   padding: 20px 20px 0 20px;
-  /* position: fixed; */
+  position: sticky;
   top: 0;
   width: 100%;
-  cursor: pointer;
   /* border: 1px solid #c4c4c4; */
-  /* box-shadow: 0px 5px 5px #c4c4c4; */
+  box-shadow: 0px 5px 5px #c4c4c4;
 `;
 
 const Logo = styled.a`
