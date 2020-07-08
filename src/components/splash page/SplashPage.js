@@ -78,13 +78,12 @@ const SplashPage = () => {
         }
         </Form>
 
-        <div style={{ display: "flex" }}>
-          <p>OR</p>
-        </div>
+          <p className="centeredOr">OR</p>
+
         <img
           src={require("../common/sprinting.svg")}
           style={{ width: "100%" }}
-          alt=""
+          alt="character sprintinging"
         />
         <h2 className="h2Tags">You aren’t here to waste time, we know</h2>
         <p className="pTags">
@@ -95,7 +94,7 @@ const SplashPage = () => {
         <img
           src={require("../common/reading.svg")}
           style={{ width: "100%" }}
-          alt=""
+          alt="character reading"
         />
         <h2 className="h2Tags">
           Share the important info from your massive textbooks
@@ -108,7 +107,7 @@ const SplashPage = () => {
         <img
           src={require("../common/sitting.svg")}
           style={{ width: "100%" }}
-          alt=""
+          alt="character sitting"
         />
         <h2 className="h2Tags">Your textbooks are massive</h2>
         <p className="pTags">
