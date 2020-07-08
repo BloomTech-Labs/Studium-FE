@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import { LoginScreen, TextBox, TextBox2, Button, Nav, H3, GoogButton, H4, HRline, HRline2, AnchorButton } from "./loginstyles"
 import AxiosWithAuth from '../../utils/axiosWithAuth.js'
 import GoogleButton from 'react-google-button'
@@ -26,9 +25,8 @@ const Login = props => {
                 res => {
                     localStorage.setItem('token', res.data.token);
 
-                }
-            )
-    }
+                })
+    };
 
     return (
         <LoginScreen>
