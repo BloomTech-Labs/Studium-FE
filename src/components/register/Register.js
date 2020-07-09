@@ -9,7 +9,7 @@ const Register = (props) => {
        email: '',
        password: ''
    });
- 
+ //try to get this object showing up as I'm updating.
    const handleChange = e => {
      setSignUpData({
        ...signUpData,
@@ -17,10 +17,12 @@ const Register = (props) => {
      });
    };
  
+
+
    const handleSubmit = (e) => {
      e.preventDefault();
      AxiosWithAuth()
-       .post('/auth/register', signUpData)
+       .post('/users', signUpData)
        .then((res) => {
          localStorage.setItem('token', res.data.token);
        })
@@ -38,7 +40,7 @@ const Register = (props) => {
                    <FnText>First Name</FnText>
                      <FirstName
                     type="text"
-                    name="First Name"
+                    name="firstname"
                   //   placeholder='First Name'
                     value={signUpData.first_name}
                     onChange={handleChange}
@@ -46,7 +48,7 @@ const Register = (props) => {
                 <LnText>Last Name</LnText>
                   <LastName
                     type="text"
-                    name="Last Name"
+                    name="lastname"
                   //   placeholder='Last Name'
                     value={signUpData.last_name}
                     onChange={handleChange}
