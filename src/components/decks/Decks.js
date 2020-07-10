@@ -1,29 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'
+import { Labels, DeckTitle, CardCount, Deck } from '../dashboard/dashboardStyles.js'
+import AxiosWithAuth from '../../utils/axiosWithAuth.js'
+import { Link } from 'react-router-dom';
 
-const Decks = props => {
+const DeckDetails = ({ deck }) => {
+    const { deck_name, deck_img } = deck;
+
     return (
-        <div>
-            Decks
-        </div>
-    )
+        <Link to={`/decks/${deck.id}`} style={{ textDecoration: 'none' }}>
+            <Deck>
+                <Labels>
+                    <DeckTitle>{deck_name}</DeckTitle>
+                    <CardCount>2 cards</CardCount>
+                </Labels>
+            </Deck>
+        </Link>
 
-//just some possible code
-
-//     constructor(props){
-//       super(props)
-//       this.state = {
-//         decks: [
-//           {deck_name: '', category: '', description: '', public: false, deck_img: '', created_at: Date.now, updated_at: Date.now  }
-//         ]
-//       }
-//     }
-  
-//     render () {
-//       const {decks} = this.state;
-//       return(
-//         <h1>Hello</h1>
-//       )
-// }
+    );
 }
 
-export default Decks;
+export default DeckDetails;
