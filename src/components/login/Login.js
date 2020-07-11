@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { NavLink } from 'react-router-dom'
 import { LoginScreen, TextBox, TextBox2, Button, Nav, H3, GoogButton, H4, HRline, HRline2 } from "./loginstyles"
 import AxiosWithAuth from '../../utils/axiosWithAuth.js'
 import GoogleButton from 'react-google-button'
@@ -35,11 +35,15 @@ const Login = props => {
             <Nav>
                 <H3>Studium</H3>
             </Nav>
-            <GoogButton>
-                <GoogleButton
-                    type="dark"
-                    onClick={() => { console.log('This button can be clicked') }}
-                /></GoogButton>
+                <GoogButton>
+                    <a href='https://dev-360882.okta.com/oauth2/v1/authorize?idp=0oael0y3cwL5zx7Tn4x6&client_id=0oaekug1e6udJlXUA4x6&response_type=id_token&response_mode=fragment&scope=openid profile email&redirect_uri=https://studium-app.net/dashboard&state=4Oycg4JA0a
+&nonce=55QzavEtgu'>
+                    <GoogleButton
+                        type="dark"
+                        onClick={() => { console.log('This button can be clicked') }}
+                    />
+                    </a>
+                </GoogButton>
             <HRline></HRline>
             <H4>Or Email</H4>
             <HRline2></HRline2>
