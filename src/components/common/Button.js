@@ -1,4 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components'
+// import React from 'react'
+// import renderer from 'react-test-renderer'
+// import 'jest-styled-components'
 
 const Button = styled.button`
   background: #2e71fd;
@@ -18,6 +21,13 @@ const Button = styled.button`
   background: white;
   }
 `;
+
+// test('Button works', () => {
+//   const tree = renderer.create(<Button />).toJSON()
+//   expect(tree).toMatchSnapshot()
+//   expect(tree).toHaveStyleRule('color', 'white')
+//   expect(tree).toHaveStyleRule('background', '#2e71fd')
+// })
 
 // export { Button };
 export default Button;

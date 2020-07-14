@@ -49,7 +49,7 @@ const SplashPage = () => {
 
   return (
     <>
-      <PageLayout>
+      <PageLayout data-testid="successMessage">
         <NavBar />
         <img
           src={require("../common/header.svg")}
@@ -70,6 +70,7 @@ const SplashPage = () => {
           type="text"
           name="email"
           onChange={handleInputChange}
+          id="email"
            />
           <Button type="submit" small>
             Get Started
