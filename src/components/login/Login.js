@@ -20,7 +20,7 @@ const Login = props => {
     const handleSubmit = e => {
         e.preventDefault();
         AxiosWithAuth()
-            .post('/login', login)
+            .post('/auth/login', login)
             .then(
                 res => {
                     localStorage.setItem('token', res.data.token);
