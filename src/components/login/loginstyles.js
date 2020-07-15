@@ -8,6 +8,10 @@ height: 42px;
 left: 63px;
 top: 127px;
 `
+export const AnchorButton = styled.a `
+text-decoration: none;
+`//takes off the underline on sign in with Google button
+
 export const Nav = styled.div`
 position: absolute;
 width: 387px;

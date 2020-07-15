@@ -30,6 +30,7 @@ box-sizing: border-box;
 border-radius: 12.7186px;
 width: 158.98px;
 height: 187px;
+margin-bottom: 10px;
 `
 
 export const Labels = styled.div`
@@ -56,6 +57,7 @@ font-style: normal;
 font-weight: 600;
 font-size: 16px;
 line-height: 141%;
+text-decoration: none;
 
 display: flex;
 align-items: center;

@@ -2,14 +2,13 @@ import { useOktaAuth } from '@okta/okta-react'
 import axios from 'axios'
 
 const AxiosWithAuth = () => {
-   const { authState } = useOktaAuth()
-   const token = authState.accessToken
+   const token = localStorage.getItem("token");
 
+   console.log(token);
    return axios.create({
-      headers: {
-         'Content-Type': 'application/json',
-         Authorization: `Bearer ${token}`,
-      },
+     headers: {
+       Authorization: token,
+     },
       baseURL: 'https://studium-be.herokuapp.com/api'
    })
 }
