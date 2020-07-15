@@ -22,7 +22,7 @@ const Register = (props) => {
    const handleSubmit = (e) => {
      e.preventDefault();
      AxiosWithAuth()
-       .post('/users', signUpData)
+       .post('/register', signUpData)
        .then((res) => {
          localStorage.setItem('token', res.data.token);
        })
