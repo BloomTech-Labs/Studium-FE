@@ -26,6 +26,7 @@ const Login = props => {
                     localStorage.setItem('token', res.data.token);
 
                 })
+                .catch((err) => console.log ({err}));
     };
 
     return (
