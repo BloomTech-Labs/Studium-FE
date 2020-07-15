@@ -3,8 +3,8 @@ import {OutLine, Nav, H3, FirstName, LastName, UserName, Email, Password, SignUp
 import AxiosWithAuth from '../../utils/axiosWithAuth.js'
 const Register = (props) => {
    const [signUpData, setSignUpData] = useState({
-      firstname: '',
-      lastname:'',
+      first_name: '',
+      last_name:'',
        username: '',
        email: '',
        password: ''
@@ -22,7 +22,7 @@ const Register = (props) => {
    const handleSubmit = (e) => {
      e.preventDefault();
      AxiosWithAuth()
-       .post('/users', signUpData)
+       .post('/register', signUpData)
        .then((res) => {
          localStorage.setItem('token', res.data.token);
        })
@@ -40,7 +40,7 @@ const Register = (props) => {
                    <FnText>First Name</FnText>
                      <FirstName
                     type="text"
-                    name="firstname"
+                    name="first_name"
                   //   placeholder='First Name'
                     value={signUpData.first_name}
                     onChange={handleChange}
@@ -48,7 +48,7 @@ const Register = (props) => {
                 <LnText>Last Name</LnText>
                   <LastName
                     type="text"
-                    name="lastname"
+                    name="last_name"
                   //   placeholder='Last Name'
                     value={signUpData.last_name}
                     onChange={handleChange}
