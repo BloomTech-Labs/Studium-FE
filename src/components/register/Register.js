@@ -25,7 +25,11 @@ const Register = (props) => {
        .post('/auth/register', signUpData)
        .then((res) => {
          localStorage.setItem('token', res.data.token);
-       })
+         console.log(res)
+         if (res.data.newUser){ props.history.push(`/dashboard/${res.data.newUser}`);
+        }
+         else {props.history.push('/register')}
+        })
        .catch((err) => console.log({ err }));
    };
  
