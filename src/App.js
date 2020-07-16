@@ -31,7 +31,7 @@ function App() {
       <Route path='/register' component={Register} />
       <Route path='/okta-login' component={OktaLogin} />
       <Route path='/login' component={Login} />
-      <Route path='/dashboard' component={DashBoard} />
+      <Route path='/dashboard/:id' component={DashBoard} />
       <SecureRoute path='/create-deck' component={CreateDeckForm} />
       <SecureRoute path='/deck/:id/create-card' component={CreateCardForm} />
       <SecureRoute path='/deck/:id' component={DeckView} />
