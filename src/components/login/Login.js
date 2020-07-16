@@ -16,7 +16,6 @@ const Login = props => {
             [e.target.name]: e.target.value
         });
     };
-
     const handleSubmit = e => {
         e.preventDefault();
         AxiosWithAuth()
@@ -24,11 +23,10 @@ const Login = props => {
             .then(
                 res => {
                     localStorage.setItem('token', res.data.token);
-                    if (res.data.user !== true){ props.history.push('/dashboard');
-                } else if (res.data.user === true) {props.history.push('/register')}
-                  //make an if else statement here to redirect to the protected dashboard route
-                  //if (res.data.user === true) props.history.push('/dashboard');
-                  //else if (res.data.user !== true){ props.history.push('/splashpage);}
+                    if (res.data.user){ props.history.push(`/dashboard/${res.data.user.id}`);
+                    // console.log(res.data.user)
+                }
+                else {props.history.push('/register')}
                 })
                 .catch((err) => console.log ({err}));
     };
