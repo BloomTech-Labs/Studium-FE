@@ -24,7 +24,11 @@ const Login = props => {
             .then(
                 res => {
                     localStorage.setItem('token', res.data.token);
-
+                    if (res.data.user !== true){ props.history.push('/dashboard');
+                } else if (res.data.user === true) {props.history.push('/register')}
+                  //make an if else statement here to redirect to the protected dashboard route
+                  //if (res.data.user === true) props.history.push('/dashboard');
+                  //else if (res.data.user !== true){ props.history.push('/splashpage);}
                 })
                 .catch((err) => console.log ({err}));
     };
