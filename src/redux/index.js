@@ -1,11 +1,11 @@
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-import { GET_USERS, SET_ERROR, SET_ACTIVE_USER } from './actions';
+import { GET_USERS, SET_ERROR, SET_USER_DECKS } from './actions';
 
 const initialState = {
    user: [],
    error: '',
-   activeUser: {},
+   userDecks: [],
 }
 
 const reducer = (state = initialState, action) => {
@@ -20,10 +20,10 @@ const reducer = (state = initialState, action) => {
             ...state,
             error: action.payload
          }
-      case SET_ACTIVE_USER:
+      case SET_USER_DECKS:
          return {
             ...state,
-            activeUser: action.payload
+            userDecks: action.payload
          }
       default:
          return state;
