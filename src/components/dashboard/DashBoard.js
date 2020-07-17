@@ -28,9 +28,10 @@ const DashBoard = (props) => {
   useEffect(() => {
     const getDecks = () => {
       AxiosWithAuth()
-        .get('https://studium-be.herokuapp.com/api/decks')
+        .get(`/users/${id}/decks`)
         .then(res => {
-          setDecks(res.data);
+          console.log(res)
+          // setDecks(res.data);
         })
         .catch(error => {
           console.error('Server Error', error);
