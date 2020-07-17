@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import { LoginScreen, TextBox, TextBox2, Button, Nav, H3, GoogButton, H4, HRline, HRline2, AnchorButton } from "./loginstyles"
 import AxiosWithAuth from '../../utils/axiosWithAuth.js'
 import GoogleButton from 'react-google-button'
+import { useDispatch } from 'react-redux'
 
 
 const Login = props => {
+    const dispatch = useDispatch()
+
     const [login, setLogin] = useState({
         username: '',
         password: ''
@@ -16,19 +19,19 @@ const Login = props => {
             [e.target.name]: e.target.value
         });
     };
-
     const handleSubmit = e => {
         e.preventDefault();
         AxiosWithAuth()
-            .post('/login', login)
+            .post('/auth/login', login)
             .then(
                 res => {
                     localStorage.setItem('token', res.data.token);
-                    if (res.data.user !== true){ props.history.push('/dashboard');
-                } else if (res.data.user === true) {props.history.push('/register')}
-                  //make an if else statement here to redirect to the protected dashboard route
-                  //if (res.data.user === true) props.history.push('/dashboard');
-                  //else if (res.data.user !== true){ props.history.push('/splashpage);}
+                    if (res.data.user){ 
+                        props.history.push(`/dashboard/${res.data.user.id}`);
+                        dispatch(getUserDecks());
+                    // console.log(res.data.user)
+                }
+                else {props.history.push('/register')}
                 })
                 .catch((err) => console.log ({err}));
     };

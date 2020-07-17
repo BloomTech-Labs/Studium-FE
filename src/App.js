@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
+import ProtectedRoute from './utils/ProtectedRoute'
 import { LoginCallback, SecureRoute } from '@okta/okta-react';
 import SplashPage from './components/splash page/SplashPage';
 import Register from './components/register/Register';
@@ -31,7 +32,7 @@ function App() {
       <Route path='/register' component={Register} />
       <Route path='/okta-login' component={OktaLogin} />
       <Route path='/login' component={Login} />
-      <Route path='/dashboard/:id' component={DashBoard} />
+      <ProtectedRoute path='/dashboard/:id' component={DashBoard} />
       <SecureRoute path='/create-deck' component={CreateDeckForm} />
       <SecureRoute path='/deck/:id/create-card' component={CreateCardForm} />
       <SecureRoute path='/deck/:id' component={DeckView} />
