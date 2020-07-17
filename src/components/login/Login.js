@@ -27,14 +27,14 @@ const Login = props => {
             .then(
                 res => {
                     localStorage.setItem('token', res.data.token);
-                    if (res.data.user){ 
+                    if (res.data.user) {
                         props.history.push(`/dashboard/${res.data.user.id}`);
                         dispatch(getUserDecks(res.data.user));
-                    // console.log(res.data.user)
-                }
-                else {props.history.push('/register')}
+                        // console.log(res.data.user)
+                    }
+                    else { props.history.push('/register') }
                 })
-                .catch((err) => console.log ({err}));
+            .catch((err) => console.log({ err }));
     };
 
     return (
@@ -45,12 +45,12 @@ const Login = props => {
             <GoogButton>
                 <AnchorButton href='https://dev-360882.okta.com/oauth2/v1/authorize?idp=0oael0y3cwL5zx7Tn4x6&client_id=0oaekug1e6udJlXUA4x6&response_type=id_token&response_mode=fragment&scope=openid profile email&redirect_uri=https://studium-app.net/dashboard&state=4Oycg4JA0a
 &nonce=55QzavEtgu'>
-                <GoogleButton
-                    type="dark"
-                    onClick={() => { console.log('This button can be clicked') }}
-                />
+                    <GoogleButton
+                        type="dark"
+                        onClick={() => { console.log('This button can be clicked') }}
+                    />
                 </AnchorButton> {/* This <a> is being used to help redirect our google button to okta*/}
-                </GoogButton>
+            </GoogButton>
             <HRline></HRline>
             <H4>Or Email</H4>
             <HRline2></HRline2>

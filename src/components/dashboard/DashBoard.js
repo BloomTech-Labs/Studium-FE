@@ -3,12 +3,18 @@ import { useOktaAuth } from '@okta/okta-react'
 import { Deck, Labels, Decks, Title, DeckTitle, CardCount, CreateDeck, LabelsTwo } from './dashboardStyles.js'
 import { H1, NavBar } from '../navigation/NavBarDash.js'
 import AxiosWithAuth from '../../utils/axiosWithAuth.js'
+import { getUserDecks } from '../../redux/actions'
+import { useSelector, useDispatch } from 'react-redux'
 
 import DeckDetails from '../decks/Decks.js'
 
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const DashBoard = (props) => {
+  const { id } = useParams()
+
+  const userDecks = useSelector(state => state.userDecks)
+
   const { authState, authService } = useOktaAuth();
   const [userInfo, setUserInfo] = useState(null);
 
@@ -25,13 +31,14 @@ const DashBoard = (props) => {
     }
   }, [authState, authService]); // Update if authState changes
 
+
   useEffect(() => {
     const getDecks = () => {
       AxiosWithAuth()
         .get(`/users/${id}/decks`)
         .then(res => {
           console.log(res)
-          // setDecks(res.data);
+          setDecks(res.data);
         })
         .catch(error => {
           console.error('Server Error', error);
