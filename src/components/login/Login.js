@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import { LoginScreen, TextBox, TextBox2, Button, Nav, H3, GoogButton, H4, HRline, HRline2, AnchorButton } from "./loginstyles"
 import AxiosWithAuth from '../../utils/axiosWithAuth.js'
 import GoogleButton from 'react-google-button'
+import { useDispatch } from 'react-redux'
+import { getUserDecks } from '../../redux/actions'
 
 
 const Login = props => {
+    const dispatch = useDispatch()
+
     const [login, setLogin] = useState({
         username: '',
         password: ''
@@ -23,7 +27,9 @@ const Login = props => {
             .then(
                 res => {
                     localStorage.setItem('token', res.data.token);
-                    if (res.data.user){ props.history.push(`/dashboard/${res.data.user.id}`);
+                    if (res.data.user){ 
+                        props.history.push(`/dashboard/${res.data.user.id}`);
+                        dispatch(getUserDecks(res.data.user));
                     // console.log(res.data.user)
                 }
                 else {props.history.push('/register')}
