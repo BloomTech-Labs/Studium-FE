@@ -16,7 +16,7 @@ export const getUsers = () => dispatch => {
       })
 }
 
-export const getUserDecks = () => dispatch => {
+export const getUserDecks = (user) => dispatch => {
    AxiosWithAuth()
       .get(`/users/${user.id}/decks`)
       .then(res => {
