@@ -42,8 +42,9 @@ const DashBoard = (props) => {
         })
     }
     getId();
-    console.log('user id:', userId)
   }, [])
+
+  console.log('user id:', userId)
 
 
   useEffect(() => {
