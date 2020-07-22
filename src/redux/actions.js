@@ -13,7 +13,7 @@ export const getUser = () => dispatch => {
             .get(`/users/${res.data.id}/decks`)
             .then(res => {
                console.log(res)
-               dispatch({ type: SET_USER_DECKS, payload: res })
+               dispatch({ type: SET_USER_DECKS, payload: res.data })
             })
             .catch(err => {
                console.log('NOOOOO!!!!', err)
