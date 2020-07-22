@@ -11,6 +11,9 @@ import DeckDetails from '../decks/Decks.js'
 import { Link, useParams } from 'react-router-dom';
 
 const DashBoard = (props) => {
+  const dispatch = useDispatch()
+  const user = useSelector(state => state.user)
+  const userDecks = useSelector(state => state.userDecks)
 
   const { authState, authService } = useOktaAuth();
   const [userInfo, setUserInfo] = useState(null);
@@ -18,18 +21,19 @@ const DashBoard = (props) => {
   const [decks, setDecks] = useState([]);
   const [userId, setUserId] = useState();
 
-  useEffect(() => {
-    if (!authState.isAuthenticated) {
-      // When user isn't authenticated, forget any user info
-      setUserInfo(null);
-    } else {
-      authService.getUser().then((info) => {
-        setUserInfo(info);
-      });
-    }
-  }, [authState, authService]); // Update if authState changes
+  // useEffect(() => {
+  //   if (!authState.isAuthenticated) {
+  //     // When user isn't authenticated, forget any user info
+  //     setUserInfo(null);
+  //   } else {
+  //     authService.getUser().then((info) => {
+  //       setUserInfo(info);
+  //     });
+  //   }
+  // }, [authState, authService]); // Update if authState changes
 
   useEffect(() => {
+<<<<<<< HEAD
     const getId = () => {
       AxiosWithAuth()
         .get(`/users/me`)
@@ -42,25 +46,42 @@ const DashBoard = (props) => {
         })
     }
     getId();
+=======
+    dispatch(getUserDecks(user))
+    setDecks(userDecks)
+    // const getId = () => {
+    //   AxiosWithAuth()
+    //     .get(`/users/me`)
+    //     .then(res => {
+    //       console.log(res.data)
+    //       setUserId(res.data.id);
+    //     })
+    //     .catch(err => {
+    //       console.error('Server Error with /me', err)
+    //     })
+    // }
+    // getId();
+    // console.log('user id:', userId)
+>>>>>>> ee9b1a4e1d04532262328a2a173e6e6725334525
   }, [])
 
   console.log('user id:', userId)
 
 
-  useEffect(() => {
-    const getDecks = () => {
-      AxiosWithAuth()
-        .get(`/users/${userId}/decks`)
-        .then(res => {
-          console.log(res)
-          setDecks(res.data);
-        })
-        .catch(error => {
-          console.error('Server Error', error);
-        });
-    }
-    getDecks();
-  }, []);
+  // useEffect(() => {
+  //   const getDecks = () => {
+  //     AxiosWithAuth()
+  //       .get(`/users/${userId}/decks`)
+  //       .then(res => {
+  //         console.log(res)
+  //         setDecks(res.data);
+  //       })
+  //       .catch(error => {
+  //         console.error('Server Error', error);
+  //       });
+  //   }
+  //   getDecks();
+  // }, []);
 
   return (
     <div>
