@@ -9,6 +9,16 @@ export const getUser = () => dispatch => {
       .get('/users/me')
       .then(res => {
          dispatch({ type: GET_USER, payload: res.data })
+         AxiosWithAuth()
+            .get(`/users/${res.data.id}/decks`)
+            .then(res => {
+               console.log(res)
+               dispatch({ type: SET_USER_DECKS, payload: res.data })
+            })
+            .catch(err => {
+               console.log('NOOOOO!!!!', err)
+               dispatch({ type: SET_ERROR, payload: 'There was an error retrieving the user decks' })
+            })
       })
       .catch(err => {
          console.log('NOOOOO!!!!', err)
