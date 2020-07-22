@@ -13,7 +13,7 @@ import DeckView from './components/decks/DeckView';
 import EditDeck from './components/decks/EditDeck';
 import StudyView from './components/decks/StudyView';
 import './App.css';
-import {createGlobalStyle} from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   body{
@@ -26,13 +26,13 @@ const CALLBACK_PATH = '/implicit/callback';
 function App() {
   return (
     <div className="App">
-    <GlobalStyle/>
+      <GlobalStyle />
       <Route exact path='/' component={SplashPage} />
       <Route path={CALLBACK_PATH} component={LoginCallback} />
       <Route path='/register' component={Register} />
       <Route path='/okta-login' component={OktaLogin} />
       <Route path='/login' component={Login} />
-      <ProtectedRoute path='/dashboard/:id' component={DashBoard} />
+      <ProtectedRoute path='/dashboard' component={DashBoard} />
       <SecureRoute path='/create-deck' component={CreateDeckForm} />
       <SecureRoute path='/deck/:id/create-card' component={CreateCardForm} />
       <SecureRoute path='/deck/:id' component={DeckView} />

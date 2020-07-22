@@ -14,11 +14,6 @@ const DashBoard = (props) => {
   // const [decks, setDecks] = useState(userDecks)
 
   // useEffect(() => {
-  //   setDecks(userDecks)
-  //   console.log('THIS IS THE STORE -->', store.getState())
-  // }, [])
-
-  // useEffect(() => {
   //   if (!authState.isAuthenticated) {
   //     // When user isn't authenticated, forget any user info
   //     setUserInfo(null);

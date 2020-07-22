@@ -6,12 +6,28 @@ import { Link } from 'react-router-dom';
 const DeckDetails = ({ deck }) => {
     const { deck_name, deck_img } = deck;
 
+    const [cards, setCards] = useState([]);
+
+    useEffect(() => {
+        const getCards = () => {
+            AxiosWithAuth()
+                .get(`/decks/${deck.id}/cards`)
+                .then(res => {
+                    setCards(res.data)
+                })
+                .catch(err => {
+                    console.log('Error with getting cards', err)
+                })
+        }
+        getCards();
+    }, [])
+
     return (
         <Link to={`/decks/${deck.id}`} style={{ textDecoration: 'none' }}>
             <Deck>
                 <Labels>
                     <DeckTitle>{deck_name}</DeckTitle>
-                    <CardCount>2 cards</CardCount>
+                    <CardCount>{cards.length} cards</CardCount>
                 </Labels>
             </Deck>
         </Link>
