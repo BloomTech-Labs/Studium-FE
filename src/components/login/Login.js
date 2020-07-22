@@ -28,8 +28,8 @@ const Login = props => {
                 res => {
                     localStorage.setItem('token', res.data.token);
                     if (res.data.user) {
-                        props.history.push(`/dashboard/${res.data.user.id}`);
                         dispatch(getUserDecks(res.data.user));
+                        props.history.push(`/dashboard/${res.data.user.id}`);
                         // console.log(res.data.user)
                     }
                     else { props.history.push('/register') }
