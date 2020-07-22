@@ -11,14 +11,12 @@ import DeckDetails from '../decks/Decks.js'
 import { Link, useParams } from 'react-router-dom';
 
 const DashBoard = (props) => {
-  const { id } = useParams()
-
-  const userDecks = useSelector(state => state.userDecks)
 
   const { authState, authService } = useOktaAuth();
   const [userInfo, setUserInfo] = useState(null);
 
   const [decks, setDecks] = useState([]);
+  const [userId, setUserId] = useState();
 
   useEffect(() => {
     if (!authState.isAuthenticated) {
@@ -31,11 +29,27 @@ const DashBoard = (props) => {
     }
   }, [authState, authService]); // Update if authState changes
 
+  useEffect(() => {
+    const getId = () => {
+      AxiosWithAuth()
+        .get(`/users/me`)
+        .then(res => {
+          console.log(res.data)
+          setUserId(res.data.id);
+        })
+        .catch(err => {
+          console.error('Server Error with /me', err)
+        })
+    }
+    getId();
+    console.log('user id:', userId)
+  }, [])
+
 
   useEffect(() => {
     const getDecks = () => {
       AxiosWithAuth()
-        .get(`/users/${id}/decks`)
+        .get(`/users/${userId}/decks`)
         .then(res => {
           console.log(res)
           setDecks(res.data);
