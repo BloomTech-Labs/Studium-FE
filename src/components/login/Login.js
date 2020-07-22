@@ -3,7 +3,7 @@ import { LoginScreen, TextBox, TextBox2, Button, Nav, H3, GoogButton, H4, HRline
 import AxiosWithAuth from '../../utils/axiosWithAuth.js'
 import GoogleButton from 'react-google-button'
 import { useDispatch } from 'react-redux'
-import { getUserDecks } from '../../redux/actions'
+import { getUser } from '../../redux/actions'
 
 
 const Login = props => {
@@ -28,7 +28,7 @@ const Login = props => {
                 res => {
                     localStorage.setItem('token', res.data.token);
                     if (res.data.user) {
-                        dispatch(getUserDecks(res.data.user));
+                        dispatch(getUser());
                         props.history.push(`/dashboard/${res.data.user.id}`);
                         // console.log(res.data.user)
                     }
