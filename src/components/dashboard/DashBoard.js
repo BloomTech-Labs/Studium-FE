@@ -3,7 +3,6 @@ import { useOktaAuth } from '@okta/okta-react'
 import { Deck, Labels, Decks, Title, DeckTitle, CardCount, CreateDeck, LabelsTwo } from './dashboardStyles.js'
 import { H1, NavBar } from '../navigation/NavBarDash.js'
 import AxiosWithAuth from '../../utils/axiosWithAuth.js'
-import { getUserDecks } from '../../redux/actions'
 import { useSelector, useDispatch } from 'react-redux'
 
 import DeckDetails from '../decks/Decks.js'
@@ -33,22 +32,8 @@ const DashBoard = (props) => {
   // }, [authState, authService]); // Update if authState changes
 
   useEffect(() => {
-<<<<<<< HEAD
-    const getId = () => {
-      AxiosWithAuth()
-        .get(`/users/me`)
-        .then(res => {
-          console.log(res.data)
-          setUserId(res.data.id);
-        })
-        .catch(err => {
-          console.error('Server Error with /me', err)
-        })
-    }
-    getId();
-=======
     dispatch(getUserDecks(user))
-    setDecks(userDecks)
+
     // const getId = () => {
     //   AxiosWithAuth()
     //     .get(`/users/me`)
@@ -62,13 +47,10 @@ const DashBoard = (props) => {
     // }
     // getId();
     // console.log('user id:', userId)
->>>>>>> ee9b1a4e1d04532262328a2a173e6e6725334525
   }, [])
 
-  console.log('user id:', userId)
-
-
   // useEffect(() => {
+  setDecks(userDecks)
   //   const getDecks = () => {
   //     AxiosWithAuth()
   //       .get(`/users/${userId}/decks`)
