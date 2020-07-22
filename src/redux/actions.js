@@ -1,18 +1,18 @@
 import AxiosWithAuth from '../utils/axiosWithAuth'
 
-export const GET_USERS = 'GET_USERS'
+export const GET_USER = 'GET_USERS'
 export const SET_ERROR = 'SET_ERROR'
 export const SET_USER_DECKS = "SET_USER_DECKS"
 
-export const getUsers = () => dispatch => {
+export const getUser = () => dispatch => {
    AxiosWithAuth()
-      .get('/users')
+      .get('/users/me')
       .then(res => {
-         dispatch({ type: GET_USERS, payload: res.data })
+         dispatch({ type: GET_USER, payload: res.data })
       })
       .catch(err => {
          console.log('NOOOOO!!!!', err)
-         dispatch({ type: SET_ERROR, payload: 'There was an error retrieving the users' })
+         dispatch({ type: SET_ERROR, payload: 'There was an error retrieving the user' })
       })
 }
 
