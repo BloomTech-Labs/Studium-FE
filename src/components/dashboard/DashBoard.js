@@ -7,8 +7,6 @@ import store from '../../redux/index'
 
 import DeckDetails from '../decks/Decks.js'
 
-import { Link, useParams } from 'react-router-dom';
-
 const DashBoard = (props) => {
   const userDecks = useSelector(state => state.userDecks)
   // const [decks, setDecks] = useState(userDecks)

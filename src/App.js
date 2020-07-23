@@ -35,7 +35,7 @@ function App() {
       <ProtectedRoute path='/dashboard' component={DashBoard} />
       <SecureRoute path='/create-deck' component={CreateDeckForm} />
       <SecureRoute path='/deck/:id/create-card' component={CreateCardForm} />
-      <SecureRoute path='/deck/:id' component={DeckView} />
+      <ProtectedRoute path='/deck/:id' component={DeckView} />
       <SecureRoute path='/deck/:id/edit-deck' component={EditDeck} />
       <SecureRoute path='/deck/:id/study' component={StudyView} />
     </div>
