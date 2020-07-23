@@ -1,5 +1,7 @@
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 import { GET_USER, SET_ERROR, SET_USER_DECKS } from './actions';
 
 const initialState = {
@@ -8,7 +10,7 @@ const initialState = {
    userDecks: [],
 }
 
-const reducer = (state = initialState, action) => {
+const rootReducer = (state = initialState, action) => {
    switch (action.type) {
       case GET_USER:
          return {
@@ -30,6 +32,17 @@ const reducer = (state = initialState, action) => {
    }
 }
 
-const store = createStore(reducer, applyMiddleware(thunk))
+const persistConfig = {
+   key: 'rootReducer',
+   storage,
+}
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+
+const store = createStore(persistedReducer, applyMiddleware(thunk))
+const persistor = persistStore(store)
 store.subscribe(() => console.log('THIS IS THE STORE -->', store.getState()))
-export default store
+export { store, persistor } 
+
+
+// export default store
