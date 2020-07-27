@@ -26,15 +26,15 @@ export const getUser = () => dispatch => {
       })
 }
 
-export const getUserDecks = (user) => dispatch => {
-   AxiosWithAuth()
-      .get(`/users/${user.id}/decks`)
-      .then(res => {
-         console.log(res)
-         dispatch({ type: SET_USER_DECKS, payload: res.data })
-      })
-      .catch(err => {
-         console.log('NOOOOO!!!!', err)
-         dispatch({ type: SET_ERROR, payload: 'There was an error retrieving the user decks' })
-      })
-}
+// export const getUserDecks = (user) => dispatch => {
+//    AxiosWithAuth()
+//       .get(`/users/${user.id}/decks`)
+//       .then(res => {
+//          console.log(res)
+//          dispatch({ type: SET_USER_DECKS, payload: res.data })
+//       })
+//       .catch(err => {
+//          console.log('NOOOOO!!!!', err)
+//          dispatch({ type: SET_ERROR, payload: 'There was an error retrieving the user decks' })
+//       })
+// }
