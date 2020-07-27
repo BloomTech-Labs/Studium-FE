@@ -56,12 +56,48 @@ align-items: center;
 margin-bottom: 2vh;
 `
 
+export const BigCard = styled.div`
+background: #fff;
+border: 1px solid #c4c4c4;
+border-radius: 20px;
+width: 75%;
+height: 75%;
+display: flex;
+justify-content: space-around;
+align-items: space-around;
+flex-direction: column;
+margin: auto;
+`
+
+export const Ruler = styled.hr`
+width: 50%;
+border: 1px solid #c4c4c4;
+`
+
 export const CardFront = styled.div` 
 font-family: Source Sans Pro;
 font-size: 20px;
 line-height: 25px;
 color: #333333;
 padding: 20px;
+`
+
+export const CardTop = styled.div`
+font-family: Source Sans Pro;
+font-size: 20px;
+line-height: 25px;
+color: #333333;
+padding: 20px;
+margin: auto;
+`
+
+export const CardBottom = styled.div`
+font-family: Source Sans Pro;
+font-size: 20px;
+line-height: 25px;
+color: #333333;
+padding: 20px;
+margin: auto;
 `
 
 export const FooterWrapper = styled.div`

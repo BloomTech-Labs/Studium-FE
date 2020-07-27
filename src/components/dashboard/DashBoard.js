@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { Deck, Labels, Decks, Title, DeckTitle, CardCount, CreateDeck, LabelsTwo } from './dashboardStyles.js'
+import { Deck, Decks, Title, CreateDeck, LabelsTwo } from './dashboardStyles.js'
 import NavbarDash from '../navigation/NavBarDash.js'
 import AxiosWithAuth from '../../utils/axiosWithAuth.js'
 import { useSelector, useDispatch } from 'react-redux'
 import store from '../../redux/index'
+import { Link } from 'react-router-dom'
 
 import DeckDetails from '../decks/Decks.js'
 
@@ -27,11 +28,11 @@ const DashBoard = ({ match, location }) => {
       <NavbarDash />
       <Title>Card Collection</Title>
       <Decks>
-        <Deck>
+        <Link to="/create-deck" style={{ textDecoration: 'none' }}><Deck>
           <LabelsTwo>
             <CreateDeck>Create a Deck</CreateDeck>
           </LabelsTwo>
-        </Deck>
+        </Deck></Link>
         {userDecks.map(deck => (
           <DeckDetails key={deck.id} deck={deck} />
         ))}

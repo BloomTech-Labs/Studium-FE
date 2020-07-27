@@ -35,9 +35,9 @@ function App() {
       <Route path='/login' component={Login} />
       <Route path='/study' component={CardCarousel} />
       <ProtectedRoute path='/dashboard' component={DashBoard} />
-      <SecureRoute path='/create-deck' component={CreateDeckForm} />
+      <ProtectedRoute path='/create-deck' component={CreateDeckForm} />
       <SecureRoute path='/deck/:id/create-card' component={CreateCardForm} />
-      <ProtectedRoute path='/deck/:id' component={DeckView} />
+      <ProtectedRoute exact path='/deck/:id' component={DeckView} />
       <ProtectedRoute path='/deck/:id/card/:cardId' component={IndCardView} />
       <SecureRoute path='/deck/:id/edit-deck' component={EditDeck} />
       {/* <SecureRoute path='/deck/:id/study' component={StudyView} /> */}

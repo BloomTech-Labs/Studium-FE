@@ -26,10 +26,10 @@ const DeckCardView = ({ card }) => {
     console.log("deckId on DeckCardView ->", deckId)
 
     return (
-        <CardItself>
-            <CardFront onClick={() => {
-                history.push(`/deck/${deckId}/card/${card.id}`)
-            }}>{card_front}</CardFront>
+        <CardItself onClick={() => {
+            history.push(`/deck/${deckId}/card/${card.id}`)
+        }}>
+            <CardFront>{card_front}</CardFront>
         </CardItself>
     )
 }
