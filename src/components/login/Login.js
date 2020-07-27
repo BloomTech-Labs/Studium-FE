@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { LoginScreen, TextBox, TextBox2, Button, Nav, H3, GoogButton, H4, HRline, HRline2, AnchorButton } from "./loginstyles"
+import {LoginScreen, TextBox, TextBox2, Button, Nav, H3, GoogButton, H4, HRline, HRline2, AnchorButton, Form , HRStyle} from "./loginstyles"
+import styled from 'styled-components'
 import AxiosWithAuth from '../../utils/axiosWithAuth.js'
 import GoogleButton from 'react-google-button'
 import { useDispatch } from 'react-redux'
@@ -7,6 +8,8 @@ import { getUser } from '../../redux/actions'
 
 
 const Login = props => {
+
+
     const dispatch = useDispatch()
 
     const [login, setLogin] = useState({
@@ -42,19 +45,20 @@ const Login = props => {
             <Nav>
                 <H3>Studium</H3>
             </Nav>
-            <GoogButton>
+           
                 <AnchorButton href='https://dev-360882.okta.com/oauth2/v1/authorize?idp=0oael0y3cwL5zx7Tn4x6&client_id=0oaekug1e6udJlXUA4x6&response_type=id_token&response_mode=fragment&scope=openid profile email&redirect_uri=https://studium-app.net/dashboard&state=4Oycg4JA0a
-&nonce=55QzavEtgu'>
+                &nonce=55QzavEtgu'>
                     <GoogleButton
                         type="dark"
                         onClick={() => { console.log('This button can be clicked') }}
                     />
-                </AnchorButton> {/* This <a> is being used to help redirect our google button to okta*/}
-            </GoogButton>
+                </AnchorButton>
+           <HRStyle>
             <HRline></HRline>
             <H4>Or Email</H4>
             <HRline2></HRline2>
-            <form
+            </HRStyle>
+            <Form
                 onSubmit={handleSubmit}>
                 <TextBox
                     type="text"
@@ -71,7 +75,7 @@ const Login = props => {
                     onChange={handleChange}
                 />
                 <Button type="submit">Log In</Button>
-            </form>
+            </Form>
         </LoginScreen>
     )
 }
