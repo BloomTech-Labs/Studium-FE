@@ -1,6 +1,6 @@
 import AxiosWithAuth from '../utils/axiosWithAuth'
 
-export const GET_USER = 'GET_USERS'
+export const GET_USER = 'GET_USER'
 export const SET_ERROR = 'SET_ERROR'
 export const SET_USER_DECKS = "SET_USER_DECKS"
 

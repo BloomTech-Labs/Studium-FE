@@ -11,7 +11,7 @@ import CreateDeckForm from './components/decks/CreateDeckForm';
 import CreateCardForm from './components/cards/CreateCardForm';
 import DeckView from './components/decks/DeckView';
 import EditDeck from './components/decks/EditDeck';
-import StudyView from './components/decks/StudyView';
+import CardCarousel from './components/cards/CardCarousel';
 import './App.css';
 import { createGlobalStyle } from "styled-components";
 
@@ -32,12 +32,13 @@ function App() {
       <Route path='/register' component={Register} />
       <Route path='/okta-login' component={OktaLogin} />
       <Route path='/login' component={Login} />
-      <ProtectedRoute path='/dashboard' component={DashBoard} />
+      <Route path='/study' component={CardCarousel} />
+      <ProtectedRoute path='/dashboard/:id' component={DashBoard} />
       <SecureRoute path='/create-deck' component={CreateDeckForm} />
       <SecureRoute path='/deck/:id/create-card' component={CreateCardForm} />
       <ProtectedRoute path='/deck/:id' component={DeckView} />
       <SecureRoute path='/deck/:id/edit-deck' component={EditDeck} />
-      <SecureRoute path='/deck/:id/study' component={StudyView} />
+      {/* <SecureRoute path='/deck/:id/study' component={StudyView} /> */}
     </div>
   );
 }

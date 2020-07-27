@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+.card-wrapper {
+  border: 1px solid black;
+  width: 50%;
+  background-color: red;
+}
+
+.flippy-front {
+  padding: 0
+}
+
+.flippy-back {
+  padding: 0
+}
