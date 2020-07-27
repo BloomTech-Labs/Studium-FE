@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Deck, Labels, Decks, Title, DeckTitle, CardCount, CreateDeck, LabelsTwo } from './dashboardStyles.js'
-import { H1, NavBar } from '../navigation/NavBarDash.js'
+import NavbarDash from '../navigation/NavBarDash.js'
 import AxiosWithAuth from '../../utils/axiosWithAuth.js'
 import { useSelector, useDispatch } from 'react-redux'
 import store from '../../redux/index'
@@ -24,9 +24,7 @@ const DashBoard = (props) => {
 
   return (
     <div>
-      <NavBar>
-        <H1>Studium</H1>
-      </NavBar>
+      <NavbarDash />
       <Title>Card Collection</Title>
       <Decks>
         <Deck>

@@ -1,33 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import AxiosWithAuth from '../../utils/axiosWithAuth.js';
-import Card from '../cards/Card.js';
+import NavbarDash from '../navigation/NavBarDash.js'
+import DeckViewCards from './DeckViewCards.js'
 
-const DeckView = ({ deck2 }) => {
+const DeckView = (props) => {
 
-   const [cards, setCards] = useState([])
+   const userDecks = useSelector(state => state.userDecks)
+   const [deckName, setDeckName] = useState();
 
 
    useEffect(() => {
-      const getCards = () => {
-         AxiosWithAuth()
-            .get(`/decks/${deck2}/cards`)
-            .then(res => {
-               setCards(res.data)
-            })
-            .catch(err => {
-               console.log('Error with getting cards', err)
-            })
+      const getDeckName = () => {
+         userDecks.forEach(function (res) {
+            console.log("this is the deck name ->", res.deck_name)
+            setDeckName(res.deck_name)
+         })
       }
-      getCards();
+      getDeckName();
    }, [])
 
 
    return (
       <div>
-         {cards.map(card => (
-            <Card key={card.id} deck={card} />
-         ))}
+         <NavbarDash />
+         <h1>{deckName}</h1>
+         <DeckViewCards />
+
       </div>
    )
 }

@@ -7,10 +7,10 @@ import { useSelector } from 'react-redux'
 const DeckDetails = ({ deck }) => {
     const { deck_name, deck_img } = deck;
 
-    const userDecks = useSelector(state => state.userDecks)
+
 
     const [cards, setCards] = useState([]);
-    const [deck2, setDeck2] = useState();
+
 
     useEffect(() => {
         const getCards = () => {
@@ -24,16 +24,6 @@ const DeckDetails = ({ deck }) => {
                 })
         }
         getCards();
-    }, [])
-
-    useEffect(() => {
-        const getDeck2 = () => {
-            userDecks.forEach(function (res) {
-                console.log("this is the deck2 ->", res)
-                setDeck2(res.id)
-            })
-        }
-        getDeck2();
     }, [])
 
     return (
