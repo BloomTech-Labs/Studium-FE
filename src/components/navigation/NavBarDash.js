@@ -1,29 +1,50 @@
+import React, { useEffect, useState, Component } from 'react';
+import { useSelector } from 'react-redux'
 import styled from "styled-components";
+import ProfileButton from './ProfileButton.js'
+import Menu from './Menu.js'
 
-export const NavBar = styled.div`
-box-sizing: border-box;
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-align-content: center;
-padding: 20px 20px 0 20px;
-top: 0;
-width: 100%;
-cursor: pointer;
-border-bottom: 1.07966px solid #C4C4C4;
-height: 64px;
-`
+import './NavBarDashStyles.css'
 
-export const H1 = styled.div`
-position: absolute;
-width: 71px;
-height: 26px;
-left: 21px;
-top: 32px;
-font-family: Poppins;
-font-style: normal;
-font-weight: normal;
-font-size: 17px;
-line-height: 25px;
-color: #2E71FD;
-`
+class NavbarDash extends Component {
+    constructor(props, context) {
+        super(props, context);
+
+        this.state = {
+            visible: false
+        };
+
+        this.handleMouseDown = this.handleMouseDown.bind(this);
+        this.toggleMenu = this.toggleMenu.bind(this);
+    }
+
+    handleMouseDown(e) {
+        this.toggleMenu();
+        e.stopPropagation();
+    }
+
+    toggleMenu() {
+        this.setState(
+            {
+                visible: !this.state.visible
+            }
+        );
+    }
+
+    render() {
+        return (
+            <div className="navBar">
+                <h1 className="title"
+                    onClick={(e) => {
+                        e.preventDefault();
+                        window.location.href = "/dashboard";
+                    }}>Studium</h1>
+                <ProfileButton handleMouseDown={this.handleMouseDown} />
+                <Menu handleMouseDown={this.handleMouseDown}
+                    menuVisibility={this.state.visible} />
+            </div>
+        );
+    }
+}
+
+export default NavbarDash 

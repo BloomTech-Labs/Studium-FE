@@ -32,7 +32,7 @@ const Login = props => {
                     localStorage.setItem('token', res.data.token);
                     if (res.data.user) {
                         dispatch(getUser());
-                        props.history.push(`/dashboard/${res.data.user.id}`);
+                        props.history.push(`/dashboard`);
                         // console.log(res.data.user)
                     }
                     else { props.history.push('/register') }
