@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import AxiosWithAuth from '../../utils/axiosWithAuth.js'
-import DeckCardView from './DeckCardView.js';
+import { MainWrapper, CardItself, CardFront } from '../decks/styles-decks/DeckViewStyles.js'
+import NavbarDash from '../navigation/NavBarDash.js'
 
-import { useHistory } from 'react-router-dom'
 
-import { CardWrapper, CardItself, CardFront } from './styles-decks/DeckViewStyles.js'
+const IndCardView = () => {
 
-const DeckViewCards = ({ match, location }) => {
+    console.log("Hello from IndCardView!")
 
     const userDecks = useSelector(state => state.userDecks)
     const [deckId, setDeckId] = useState();
     const [cards, setCards] = useState([])
     const [cardId, setCardId] = useState();
-
-    const history = useHistory()
 
     useEffect(() => {
         const getDeckId = () => {
@@ -42,19 +40,13 @@ const DeckViewCards = ({ match, location }) => {
         getCards();
     }, [deckId])
 
-    console.log("deckId ->", deckId)
-
     return (
+        <MainWrapper>
+            <NavbarDash />
+            <h1>Hello from IndCardView!</h1>
+        </MainWrapper>
 
-        <>
-            <CardWrapper>
-                {cards.map(card => (
-                    <DeckCardView key={card.id} card={card} />
-                ))}
-                <CardItself><CardFront>Add Card</CardFront></CardItself>
-            </CardWrapper>
-        </>
     )
 }
 
-export default DeckViewCards
+export default IndCardView

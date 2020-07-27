@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from "styled-components";
-import { useHistory } from 'react-router-dom';
 
 const NavBar = styled.div`
 box-sizing: border-box;
@@ -14,12 +13,14 @@ width: 100%;
 cursor: pointer;
 border-bottom: 1.07966px solid #C4C4C4;
 height: 64px;
+background: #FFF;
 `
 
-const H1 = styled.div`
+const H1 = styled.h1`
 position: absolute;
 left: 21px;
 top: 32px;
+margin: 0;
 font-family: Poppins;
 font-style: normal;
 font-weight: normal;
@@ -29,12 +30,12 @@ color: #2E71FD;
 `
 
 const NavbarDash = (props) => {
-    const history = useHistory()
 
     return (
         <NavBar>
-            <H1 onClick={() => {
-                history.push('/dashboard')
+            <H1 onClick={(e) => {
+                e.preventDefault();
+                window.location.href = "/dashboard";
             }}>Studium</H1>
         </NavBar>
     )

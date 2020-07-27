@@ -12,6 +12,7 @@ import CreateCardForm from './components/cards/CreateCardForm';
 import DeckView from './components/decks/DeckView';
 import EditDeck from './components/decks/EditDeck';
 import CardCarousel from './components/cards/CardCarousel';
+import IndCardView from './components/cards/IndCardView.js';
 import './App.css';
 import { createGlobalStyle } from "styled-components";
 
@@ -37,6 +38,7 @@ function App() {
       <SecureRoute path='/create-deck' component={CreateDeckForm} />
       <SecureRoute path='/deck/:id/create-card' component={CreateCardForm} />
       <ProtectedRoute path='/deck/:id' component={DeckView} />
+      <ProtectedRoute path='/deck/:id/card/:cardId' component={IndCardView} />
       <SecureRoute path='/deck/:id/edit-deck' component={EditDeck} />
       {/* <SecureRoute path='/deck/:id/study' component={StudyView} /> */}
     </div>

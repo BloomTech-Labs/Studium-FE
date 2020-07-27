@@ -4,7 +4,9 @@ import AxiosWithAuth from '../../utils/axiosWithAuth.js';
 import NavbarDash from '../navigation/NavBarDash.js'
 import DeckViewCards from './DeckViewCards.js'
 
-const DeckView = (props) => {
+import { MainWrapper, H1, H2, NamesWrapper, CardWrapper, FooterWrapper, EditButton, StudyButton } from './styles-decks/DeckViewStyles.js'
+
+const DeckView = ({ match, location }) => {
 
    const userDecks = useSelector(state => state.userDecks)
    const [deckName, setDeckName] = useState();
@@ -22,12 +24,18 @@ const DeckView = (props) => {
 
 
    return (
-      <div>
+      <MainWrapper>
          <NavbarDash />
-         <h1>{deckName}</h1>
+         <NamesWrapper>
+            <H1>{deckName}</H1>
+            <H2>Cards</H2>
+         </NamesWrapper>
          <DeckViewCards />
-
-      </div>
+         <FooterWrapper>
+            <EditButton>Edit Deck</EditButton>
+            <StudyButton>Study</StudyButton>
+         </FooterWrapper>
+      </MainWrapper>
    )
 }
 

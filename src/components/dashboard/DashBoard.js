@@ -7,7 +7,7 @@ import store from '../../redux/index'
 
 import DeckDetails from '../decks/Decks.js'
 
-const DashBoard = (props) => {
+const DashBoard = ({ match, location }) => {
   const userDecks = useSelector(state => state.userDecks)
   // const [decks, setDecks] = useState(userDecks)
 

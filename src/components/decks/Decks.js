@@ -4,7 +4,7 @@ import AxiosWithAuth from '../../utils/axiosWithAuth.js'
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 
-const DeckDetails = ({ deck }) => {
+const DeckDetails = ({ deck, match, location }) => {
     const { deck_name, deck_img } = deck;
 
 

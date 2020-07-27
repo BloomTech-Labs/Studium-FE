@@ -1,17 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { CardItself, CardFront } from './styles-decks/DeckViewStyles.js'
+import { useHistory } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+
 
 
 const DeckCardView = ({ card }) => {
 
-    console.log("cards in deckcardview", card)
+    const userDecks = useSelector(state => state.userDecks)
+    const [deckId, setDeckId] = useState();
 
     const { card_front, card_back } = card
+    const history = useHistory()
+
+    useEffect(() => {
+        const getDeckId = () => {
+            userDecks.forEach(function (res) {
+                console.log("this is the deck id ->", res.id)
+                setDeckId(res.id)
+            })
+        }
+        getDeckId();
+    }, [])
+
+    console.log("deckId on DeckCardView ->", deckId)
 
     return (
-        <>
-            <h2>{card_front}</h2>
-            <h3>{card_back}</h3>
-        </>
+        <CardItself>
+            <CardFront onClick={() => {
+                history.push(`/deck/${deckId}/card/${card.id}`)
+            }}>{card_front}</CardFront>
+        </CardItself>
     )
 }
 
