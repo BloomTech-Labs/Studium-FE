@@ -40,7 +40,7 @@ const CreateDeckForm = () => {
 
   return (
     <div style={{ backgroundColor: `${colors}` }}>
-      <form action="" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         CreateDeckForm
         <h3>Title</h3>
         <input placeholder="What are you studying?" onChange={handleChange} />
@@ -48,7 +48,6 @@ const CreateDeckForm = () => {
         <p>X</p>
         <h3>or choose a color</h3>
         <CirclePicker colors={colors} onChangeComplete={(handleChange) => setColor(handleChange)} />
-        <h2>Default backgroundcolor is {color}</h2>
       </form>
     </div>
   );
