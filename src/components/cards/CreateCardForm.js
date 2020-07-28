@@ -1,13 +1,17 @@
 import React, { useState } from 'react'
 import { AvForm, AvField } from 'availity-reactstrap-validation'
 import { useDispatch } from 'react-redux'
+import { postNewCard } from '../../redux/actions'
+import { useParams } from 'react-router-dom'
 
 const CreateCardForm = () => {
    const dispatch = useDispatch()
+   const { deckId } = useParams()
 
    const [cardToPost, setCardToPost] = useState({
       card_front: '',
-      card_back: ''
+      card_back: '',
+      deck_id: deckId
    })
 
    const handleChange = e => {
@@ -19,10 +23,11 @@ const CreateCardForm = () => {
    
    const handleSubmit = e => {
 		e.preventDefault();
-		dispatch(postNewCard(cardToPost, props));
-		setSCardToPost({
+		dispatch(postNewCard(cardToPost));
+		setCardToPost({
 			card_front: '',
-         card_back: ''
+         card_back: '',
+         deck_id: deckId
 		});
 	};
 

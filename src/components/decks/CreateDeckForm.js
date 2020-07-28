@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import { useSelector } from 'react-redux'
-import { postNewDeck } from '../../redux/actions';
-import AxiosWithAuth from "../../utils/axiosWithAuth";
-import { CirclePicker } from "react-color";
+import React, { useState } from "react"
+import { useSelector, useDispatch } from 'react-redux'
+import { postNewDeck } from '../../redux/actions'
+import { CirclePicker } from "react-color"
 
 const CreateDeckForm = () => {
   const user = useSelector(state => state.user)
