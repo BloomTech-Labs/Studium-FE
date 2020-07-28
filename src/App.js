@@ -35,7 +35,7 @@ function App() {
       <Route path='/study' component={CardCarousel} />
       <ProtectedRoute path='/dashboard/:id' component={DashBoard} />
       <SecureRoute path='/create-deck' component={CreateDeckForm} />
-      <SecureRoute path='/deck/:id/create-card' component={CreateCardForm} />
+      <Route path='/create-card' component={CreateCardForm} />
       <SecureRoute path='/deck/:id' component={DeckView} />
       <SecureRoute path='/deck/:id/edit-deck' component={EditDeck} />
       {/* <SecureRoute path='/deck/:id/study' component={StudyView} /> */}
