@@ -155,7 +155,6 @@ width: 309px;
 height: 50px;
 margin-top: 20px;
 background: #2E71FD;
-color: #FFFFFF
 border-radius: 6px;
 `
 export const H6 = styled.h6 `

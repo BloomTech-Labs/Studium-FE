@@ -95,6 +95,7 @@ const Register = (props) => {
                   //   placeholder="Type your password"
                     value={signUpData.password}
                     onChange={handleChange}
+                    required
                 />
            <SignUp type="submit" style= {{color: '#FFFFFF'}}>SIGN UP</SignUp>
            </form>
