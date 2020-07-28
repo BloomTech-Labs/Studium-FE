@@ -8,6 +8,7 @@ const CardCarousel = () => {
          <Card/>
          <Card/>
          <Card/>
+         <Card/>
        </ReactCardCarousel>
      );
  }

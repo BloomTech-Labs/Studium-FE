@@ -26,15 +26,28 @@ export const getUser = () => dispatch => {
       })
 }
 
-export const getUserDecks = (user) => dispatch => {
+export const postNewDeck = (deckToPost) => dispatch => {
    AxiosWithAuth()
-      .get(`/users/${user.id}/decks`)
+      .post('/decks', deckToPost)
       .then(res => {
          console.log(res)
-         dispatch({ type: SET_USER_DECKS, payload: res.data })
+         dispatch({ type: SET_USER_DECKS, payload: deckToPost })
       })
       .catch(err => {
-         console.log('NOOOOO!!!!', err)
-         dispatch({ type: SET_ERROR, payload: 'There was an error retrieving the user decks' })
-      })
+			console.log('NOOOOO!!!!', err);
+			dispatch({ type: SET_ERROR, payload: 'error creating deck' });
+		});
 }
+
+// export const getUserDecks = (user) => dispatch => {
+//    AxiosWithAuth()
+//       .get(`/users/${user.id}/decks`)
+//       .then(res => {
+//          console.log(res)
+//          dispatch({ type: SET_USER_DECKS, payload: res.data })
+//       })
+//       .catch(err => {
+//          console.log('NOOOOO!!!!', err)
+//          dispatch({ type: SET_ERROR, payload: 'There was an error retrieving the user decks' })
+//       })
+// }

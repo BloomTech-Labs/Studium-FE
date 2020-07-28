@@ -12,8 +12,9 @@ import CreateCardForm from './components/cards/CreateCardForm';
 import DeckView from './components/decks/DeckView';
 import EditDeck from './components/decks/EditDeck';
 import CardCarousel from './components/cards/CardCarousel';
+import IndCardView from './components/cards/IndCardView.js';
 import './App.css';
-import {createGlobalStyle} from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   body{
@@ -26,17 +27,18 @@ const CALLBACK_PATH = '/implicit/callback';
 function App() {
   return (
     <div className="App">
-    <GlobalStyle/>
+      <GlobalStyle />
       <Route exact path='/' component={SplashPage} />
       <Route path={CALLBACK_PATH} component={LoginCallback} />
       <Route path='/register' component={Register} />
       <Route path='/okta-login' component={OktaLogin} />
       <Route path='/login' component={Login} />
       <Route path='/study' component={CardCarousel} />
-      <ProtectedRoute path='/dashboard/:id' component={DashBoard} />
-      <SecureRoute path='/create-deck' component={CreateDeckForm} />
+      <ProtectedRoute path='/dashboard' component={DashBoard} />
+      <Route path='/create-deck' component={CreateDeckForm} />
       <Route path='/create-card' component={CreateCardForm} />
-      <SecureRoute path='/deck/:id' component={DeckView} />
+      <ProtectedRoute exact path='/deck/:id' component={DeckView} />
+      <ProtectedRoute path='/deck/:id/card/:cardId' component={IndCardView} />
       <SecureRoute path='/deck/:id/edit-deck' component={EditDeck} />
       {/* <SecureRoute path='/deck/:id/study' component={StudyView} /> */}
     </div>
