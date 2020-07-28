@@ -1,5 +1,5 @@
 import React, { useState }  from 'react'
-import {OutLine, Nav, H3, FirstName, LastName, UserName, Email, Password, SignUp, FnText, LnText, EmailText, UserText, PassText, AnchorButton} from './Registerstyles';
+import {OutLine, Nav, H3, FirstName, LastName, UserName, Email, Password, SignUp, FnText, LnText, EmailText, UserText, PassText, AnchorButton, H4, HRline, HRline2, HRStyle} from './Registerstyles';
 import GoogleButton from 'react-google-button'
 import AxiosWithAuth from '../../utils/axiosWithAuth.js'
 const Register = (props) => {
@@ -46,10 +46,17 @@ const Register = (props) => {
                         onClick={() => { console.log('This button can be clicked') }}
                     />
                 </AnchorButton>
+
+                <HRStyle>
+            <HRline></HRline>
+            <H4>OR EMAIL</H4>
+            <HRline2></HRline2>
+            </HRStyle>
+                
  
            <form
                 onSubmit={handleSubmit}>
-                   <FnText>First Name</FnText>
+                   <FnText>FIRST NAME</FnText>
                      <FirstName
                     type="text"
                     name="first_name"
@@ -57,7 +64,7 @@ const Register = (props) => {
                     value={signUpData.first_name}
                     onChange={handleChange}
                 />
-                <LnText>Last Name</LnText>
+                <LnText>LAST NAME</LnText>
                   <LastName
                     type="text"
                     name="last_name"
@@ -65,7 +72,7 @@ const Register = (props) => {
                     value={signUpData.last_name}
                     onChange={handleChange}
                 />
-                <UserText>Username</UserText>
+                <UserText>USERNAME</UserText>
                 <UserName
                     type="text"
                     name="username"
@@ -73,7 +80,7 @@ const Register = (props) => {
                     value={signUpData.username}
                     onChange={handleChange}
                 />
-                 <EmailText>Email</EmailText>
+                 <EmailText>EMAIL</EmailText>
                   <Email
                     type="email"
                     name="email"
@@ -81,7 +88,7 @@ const Register = (props) => {
                     value={signUpData.email}
                     onChange={handleChange}
                 />
-                <PassText>Password</PassText>
+                <PassText>PASSWORD</PassText>
                 <Password
                     type="password"
                     name="password"
@@ -89,7 +96,7 @@ const Register = (props) => {
                     value={signUpData.password}
                     onChange={handleChange}
                 />
-           <SignUp type="submit">Sign up</SignUp>
+           <SignUp type="submit" style= {{color: '#FFFFFF'}}>SIGN UP</SignUp>
            </form>
            <h6>By clicking sign up, you accept Studium’s Terms of Service and Privacy Policy </h6>
            </OutLine>

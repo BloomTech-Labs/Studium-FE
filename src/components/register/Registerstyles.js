@@ -29,10 +29,38 @@ font-size: 17px;
 line-height: 25px;
 color: #2E71FD;
 `
-export const FirstName = styled.input `
+export const HRStyle = styled.div `
+display: flex;
+margin-bottom: 30px;
+flex-direction: row;
+width: 100%;
+justify-content: space-evenly;
+`
+export const HRline = styled.hr `
+width: 115px;
+height: 0px;
+margin-top: 20px;
+border: 1px solid #C4C4C4;
+`
 
+export const H4 = styled.h4 `
+font-family: Source Sans Pro;
+font-style: normal;
+font-weight: bold;
+font-size: 12px;
+color: #010101;
+`
+export const HRline2 = styled.hr `
+width: 116px;
+height: 0px;
+margin-top: 20px;
+border: 1px solid #C4C4C4;
+`
+
+export const FirstName = styled.input `
 width: 311px;
 height: 35px;
+
 border: 1px solid #C4C4C4;
 box-sizing: border-box;
 border-radius: 6px;
@@ -69,6 +97,7 @@ border-radius: 6px;
 export const FnText = styled.h5 `
 width: 64px;
 height: 24px;
+margin-left: 30px;
 font-family: Source Sans Pro;
 font-style: normal;
 font-weight: bold;
@@ -79,6 +108,7 @@ color: #010101;
 export const LnText = styled.h5 `
 width: 60px;
 height: 24px;
+margin-left: 30px;
 font-family: Source Sans Pro;
 font-style: normal;
 font-weight: bold;
@@ -89,6 +119,7 @@ color: #010101;
 export const UserText = styled.h5 `
 width: 62px;
 height: 24px;
+margin-left: 30px;
 font-family: Source Sans Pro;
 font-style: normal;
 font-weight: bold;
@@ -99,6 +130,7 @@ color: #010101;
 export const EmailText = styled.h5 `
 width: 60px;
 height: 24px;
+margin-left: 20px;
 font-family: Source Sans Pro;
 font-style: normal;
 font-weight: bold;
@@ -109,6 +141,7 @@ color: #010101;
 export const PassText = styled.h5 `
 width: 60px;
 height: 24px;
+margin-left: 30px;
 font-family: Source Sans Pro;
 font-style: normal;
 font-weight: bold;
@@ -122,6 +155,7 @@ width: 309px;
 height: 50px;
 margin-top: 20px;
 background: #2E71FD;
+color: #FFFFFF
 border-radius: 6px;
 `
 export const H6 = styled.h6 `

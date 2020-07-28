@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {LoginScreen, TextBox, TextBox2, Button, Nav, H3, GoogButton, H4, HRline, HRline2, AnchorButton, Form , HRStyle} from "./loginstyles"
+import {LoginScreen, TextBox, TextBox2, Button, Nav, H3, H4, HRline, HRline2, AnchorButton, Form , HRStyle} from "./loginstyles"
 import styled from 'styled-components'
 import AxiosWithAuth from '../../utils/axiosWithAuth.js'
 import GoogleButton from 'react-google-button'
@@ -55,9 +55,10 @@ const Login = props => {
                 </AnchorButton>
            <HRStyle>
             <HRline></HRline>
-            <H4>Or Email</H4>
+            <H4>OR LOG IN</H4>
             <HRline2></HRline2>
             </HRStyle>
+            
             <Form
                 onSubmit={handleSubmit}>
                 <TextBox
@@ -74,7 +75,7 @@ const Login = props => {
                     value={login.password}
                     onChange={handleChange}
                 />
-                <Button type="submit">Log In</Button>
+                <Button type="submit" style= {{color: '#FFFFFF'}}>Log In</Button>
             </Form>
         </LoginScreen>
     )
