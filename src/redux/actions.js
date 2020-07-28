@@ -26,6 +26,19 @@ export const getUser = () => dispatch => {
       })
 }
 
+export const postNewDeck = (deckToPost) => dispatch => {
+   AxiosWithAuth()
+      .post('/decks', deckToPost)
+      .then(res => {
+         console.log(res)
+         dispatch({ type: SET_USER_DECKS, payload: deckToPost })
+      })
+      .catch(err => {
+			console.log('NOOOOO!!!!', err);
+			dispatch({ type: SET_ERROR, payload: 'error creating deck' });
+		});
+}
+
 // export const getUserDecks = (user) => dispatch => {
 //    AxiosWithAuth()
 //       .get(`/users/${user.id}/decks`)
