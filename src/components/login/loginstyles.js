@@ -61,6 +61,16 @@ display: flex;
 flex-direction: column;
 margin: 0 auto;
 `
+export const UserText = styled.h5 `
+width: 62px;
+height: 24px;
+font-family: Source Sans Pro;
+font-style: normal;
+font-weight: bold;
+font-size: 12px;
+line-height: 24px;
+color: #010101;
+`
 
 export const TextBox = styled.input`
 width: 311px;
@@ -70,6 +80,17 @@ line-height: 24px;
 border: 1px solid #C4C4C4;
 box-sizing: border-box;
 border-radius: 6px;
+`
+
+export const PassText = styled.h5 `
+width: 60px;
+height: 24px;
+font-family: Source Sans Pro;
+font-style: normal;
+font-weight: bold;
+font-size: 12px;
+line-height: 24px;
+color: #010101;
 `
 export const TextBox2 = styled.input 
 `
@@ -86,5 +107,4 @@ height: 50px;
 margin: auto;
 background: #2E71FD;
 border-radius: 6px;
-
 `
