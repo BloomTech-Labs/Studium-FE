@@ -5,12 +5,9 @@ export const LoginScreen = styled.div `
 display: flex;
 flex-direction: column;
 margin: 0 auto;
-
 width: 375px;
 height: 95vh;
 `
-
-
 export const AnchorButton = styled.a `
 margin: 0 auto;
 margin-top: 30px;
@@ -31,7 +28,6 @@ font-weight: normal;
 font-size: 17px;
 line-height: 25px;
 color: #2E71FD;
-
 `
 export const HRStyle = styled.div `
 display: flex;

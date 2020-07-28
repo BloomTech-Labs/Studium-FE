@@ -1,5 +1,6 @@
 import React, { useState }  from 'react'
-import {OutLine, Nav, H3, FirstName, LastName, UserName, Email, Password, SignUp, FnText, LnText, EmailText, UserText, PassText} from './Registerstyles';
+import {OutLine, Nav, H3, FirstName, LastName, UserName, Email, Password, SignUp, FnText, LnText, EmailText, UserText, PassText, AnchorButton} from './Registerstyles';
+import GoogleButton from 'react-google-button'
 import AxiosWithAuth from '../../utils/axiosWithAuth.js'
 const Register = (props) => {
    const [signUpData, setSignUpData] = useState({
@@ -38,6 +39,13 @@ const Register = (props) => {
             <Nav>
                 <H3>Studium</H3>
             </Nav>
+             <AnchorButton href='https://dev-360882.okta.com/oauth2/v1/authorize?idp=0oael0y3cwL5zx7Tn4x6&client_id=0oaekug1e6udJlXUA4x6&response_type=id_token&response_mode=fragment&scope=openid profile email&redirect_uri=https://studium-app.net/dashboard&state=4Oycg4JA0a
+                &nonce=55QzavEtgu'>
+                    <GoogleButton
+                        type="dark"
+                        onClick={() => { console.log('This button can be clicked') }}
+                    />
+                </AnchorButton>
  
            <form
                 onSubmit={handleSubmit}>
@@ -83,6 +91,7 @@ const Register = (props) => {
                 />
            <SignUp type="submit">Sign up</SignUp>
            </form>
+           <h6>By clicking sign up, you accept Studium’s Terms of Service and Privacy Policy </h6>
            </OutLine>
    );
  };
