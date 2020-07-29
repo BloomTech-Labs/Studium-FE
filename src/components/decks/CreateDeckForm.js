@@ -42,7 +42,7 @@ const CreateDeckForm = () => {
       <form onSubmit={handleSubmit}>
         CreateDeckForm
         <h3>Title</h3>
-        <input placeholder="What are you studying?" onChange={handleChange} />
+        <input value={deckToPost.deck_name} name='deck_name' placeholder="What are you studying?" onChange={handleChange} />
         <h3>Photo</h3>
         <p>X</p>
         <h3>or choose a color</h3>
