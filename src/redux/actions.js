@@ -2,7 +2,9 @@ import AxiosWithAuth from '../utils/axiosWithAuth'
 
 export const GET_USER = 'GET_USER'
 export const SET_ERROR = 'SET_ERROR'
-export const SET_USER_DECKS = "SET_USER_DECKS"
+export const SET_USER_DECKS = 'SET_USER_DECKS'
+export const LOGOUT = 'LOGOUT'
+export const POST_NEW_DECK = 'POST_NEW_DECK'
 
 export const getUser = () => dispatch => {
    AxiosWithAuth()
@@ -30,8 +32,8 @@ export const postNewDeck = (deckToPost) => dispatch => {
    AxiosWithAuth()
       .post('/decks', deckToPost)
       .then(res => {
-         console.log(res)
-         dispatch({ type: SET_USER_DECKS, payload: deckToPost })
+         console.log('from postNewDeck-->', res)
+         dispatch({ type: POST_NEW_DECK, payload: deckToPost })
       })
       .catch(err => {
 			console.log('NOOOOO!!!!', err);
@@ -49,6 +51,10 @@ export const postNewCard = cardToPost => dispatch => {
 			console.log('NOOOOO!!!!', err);
 			dispatch({ type: SET_ERROR, payload: 'error creating card' });
 		});
+}
+
+export const logout = () => dispatch => {
+   dispatch({ type: LOGOUT })
 }
 
 // export const getUserDecks = (user) => dispatch => {
