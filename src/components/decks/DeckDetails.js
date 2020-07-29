@@ -13,7 +13,6 @@ const DeckDetails = ({ deck, match, location, props }) => {
     const [cards, setCards] = useState([]);
 
     const handleClick = e => {
-        // e.preventDefault()
         dispatch(getAllCardsInDeck(deck.id))
     }
 

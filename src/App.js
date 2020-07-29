@@ -13,6 +13,7 @@ import DeckView from './components/decks/DeckView';
 import EditDeck from './components/decks/EditDeck';
 import CardCarousel from './components/cards/CardCarousel';
 import IndCardView from './components/cards/IndCardView.js';
+import StudyView from './components/decks/StudyView';
 import './App.css';
 import { createGlobalStyle } from "styled-components";
 
@@ -33,7 +34,7 @@ function App() {
       <Route path='/register' component={Register} />
       <Route path='/okta-login' component={OktaLogin} />
       <Route path='/login' component={Login} />
-      <Route path='/study' component={CardCarousel} />
+      <Route path='/study' component={StudyView} />
       <ProtectedRoute path='/dashboard' component={DashBoard} />
       <Route path='/create-deck' component={CreateDeckForm} />
       <Route path='/decks/id/create-card' component={CreateCardForm} />
