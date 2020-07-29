@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import Flippy, { FrontSide, BackSide } from 'react-flippy'
+import { useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const cardStyle = {
    height: '397px',
@@ -15,7 +17,7 @@ const cardStyle = {
    display: 'flex',
    flexDirection: 'column',
    justifyContent: 'space-between',
-   // border: '1px solid #C4C4C4'
+   border: '1px solid #C4C4C4',
 }
 
 const divStyle = {
@@ -32,12 +34,14 @@ const divStyle = {
    alignItems: 'center'
 }
 
+const StudyCard = ({ displayedCard }) => {
+   const cards = useSelector(state => state.deckCards)
 
-
-const Card = () => {
    const [flipped, setflipped] = useState(false)
 
-   const toggleFlip = e => {
+   const { id } = useParams()
+
+   const toggleFlip = () => {
       setflipped(!flipped)
    }
 
@@ -48,20 +52,20 @@ const Card = () => {
          isFlipped={flipped}
       >
          <FrontSide style={cardStyle} className='flippy-front'>
-            George Washington
+            displayedCard FRONT
             <div style={divStyle} onClick={toggleFlip}>
-               Click to flip card
+               Click to see answer
             </div>
         </FrontSide>
 
         <BackSide style={cardStyle} className='flippy-back'>
-            1st president of the US!
+            displayedCard BACK
             <div style={divStyle} onClick={toggleFlip}>
-               Click to flip card
+               Click to see term
             </div>
         </BackSide>
       </Flippy>
    )
 }
 
-export default Card
+export default StudyCard
