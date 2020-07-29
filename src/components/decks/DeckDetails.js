@@ -2,19 +2,26 @@ import React, { useState, useEffect } from 'react'
 import { Labels, DeckTitle, CardCount, Deck } from '../dashboard/styles-dashboard/dashboardStyles.js'
 import AxiosWithAuth from '../../utils/axiosWithAuth.js'
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { getAllCardsInDeck } from '../../redux/actions'
 
-const DeckDetails = ({ deck, match, location }) => {
+const DeckDetails = ({ deck, match, location, props }) => {
+    const dispatch = useDispatch()
+
     const { deck_name, deck_img, id } = deck;
 
     const [cards, setCards] = useState([]);
+
+    const handleClick = e => {
+        // e.preventDefault()
+        dispatch(getAllCardsInDeck(deck.id))
+    }
 
     useEffect(() => {
         const getCards = () => {
             AxiosWithAuth()
                 .get(`/decks/${id}/cards`)
                 .then(res => {
-                    console.log('CARDS-->', res)
                     setCards(res.data)
                 })
                 .catch(err => {
@@ -25,7 +32,7 @@ const DeckDetails = ({ deck, match, location }) => {
     }, [])
 
     return (
-        <Link to={`/deck/${id}`} style={{ textDecoration: 'none' }}>
+        <Link to={`/deck/${id}`} style={{ textDecoration: 'none' }} onClick={handleClick}>
             <Deck>
                 <Labels>
                     <DeckTitle>{deck_name}</DeckTitle>
@@ -33,7 +40,6 @@ const DeckDetails = ({ deck, match, location }) => {
                 </Labels>
             </Deck>
         </Link>
-
     );
 }
 
