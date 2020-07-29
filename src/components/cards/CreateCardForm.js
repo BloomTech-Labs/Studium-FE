@@ -35,7 +35,7 @@ const CreateCardForm = () => {
       <AvForm onSubmit={handleSubmit}>
          <AvField
             label='Card Front'
-            type='text'
+            type='text-area'
             name='cardFront'
             value={cardToPost.card_front}
             onChange={handleChange}
@@ -47,7 +47,7 @@ const CreateCardForm = () => {
             }} />
          <AvField
             label='Card Back'
-            type='text'
+            type='text-area'
             name='cardBack'
             value={cardToPost.card_back}
             onChange={handleChange}
