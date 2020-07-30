@@ -19,7 +19,7 @@ const StudyView = () => {
 
    const [deckName, setDeckName] = useState('')
    const [displayedCard, setDisplayedCard] = useState(0)
-   const i = 0
+   const [i, setI] = useState(0)
 
    useEffect(() => {
       setDisplayedCard(
@@ -34,17 +34,30 @@ const StudyView = () => {
    }, [])
 
    const nextCard = () => {
-      setDisplayedCard(
-         cards[i + 1]
-      )
-      console.log('from nextCard', displayedCard)
+      console.log(cards.length - 1)
+      if(i === (cards.length - 1)){
+         setI(0)
+         setDisplayedCard(
+            cards[i]
+         )
+      }else{
+         setI(i+1)
+         setDisplayedCard(
+            cards[i])
+      }
+
+      console.log('from nextCard', displayedCard, i)
    }
 
    const prevCard = () => {
-      setDisplayedCard(
-         cards[i - 1]
-      )
-      console.log('from prevCard', displayedCard)
+      
+      
+         setI(i-1)
+         setDisplayedCard(
+            cards[i]
+            )
+            console.log('from prevCard', displayedCard, i)
+      
    }
 
    // const nextCard = () => {
@@ -67,7 +80,7 @@ const StudyView = () => {
    //     });
    //  }
 
-   return (
+   return ( 
       <div>
          <NavBarDash />
          <DeckName>{deckName}</DeckName>
