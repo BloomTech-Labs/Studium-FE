@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import ButtonTop from "../common/ButtonTop";
 
@@ -26,13 +27,22 @@ const Logo = styled.a`
   color: #2e71fd;
 `;
 
-export function NavBar() {
+function NavBar(props) {
+  const history = useHistory();
+
+  const routeToLogin = () => {
+    let path = `/login`;
+    history.push(path);
+  };
+
   return (
     <NavWrapper>
-        <Logo>Studium</Logo>
+      <Logo>Studium</Logo>
       {}
       <>
-      <ButtonTop type="button">Log In</ButtonTop>
+        <ButtonTop type="button" onClick={routeToLogin}>
+          Log In
+        </ButtonTop>
       </>
     </NavWrapper>
   );
