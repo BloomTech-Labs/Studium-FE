@@ -1,63 +1,108 @@
-import React, { useState } from 'react'
-import { AvForm, AvField } from 'availity-reactstrap-validation'
-import { useDispatch } from 'react-redux'
+import React, { useState, useEffect } from 'react'
+import { useForm } from 'react-hook-form'
+import { useDispatch, useSelector } from 'react-redux'
 import { postNewCard } from '../../redux/actions'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
+import { MainWrapper } from '../decks/styles-decks/DeckViewStyles'
+import { InputWrapper, TextArea, AutoGen, Heading, ErrorMessage, TitleDisplay } from './styles-cards/CardFormStyles'
+import AddCardNav from '../navigation/AddCardNav'
+import AddCardFooter from './AddCardFooter'
 
-const CreateCardForm = () => {
+const CreateCardForm = (props) => {
    const dispatch = useDispatch()
-   const { deckId } = useParams()
+   const history = useHistory()
+   const userDecks = useSelector(state => state.userDecks)
+   const { id } = useParams()
+   const { register, handleSubmit, errors } = useForm()
 
+   const [deckName, setDeckName] = useState();
    const [cardToPost, setCardToPost] = useState({
-      card_front: '',
-      card_back: '',
-      deck_id: deckId
+      card_front: null,
+      card_back: null,
+      deck_id: id
    })
+
+   useEffect(() => {
+      userDecks.map(deck => {
+         if (parseInt(deck.id) === parseInt(id)) {
+            setDeckName(deck.deck_name)
+         }
+      })
+   }, [])
 
    const handleChange = e => {
 		setCardToPost({
-			...cardToPost,
+         ...cardToPost,
 			[e.target.name]: e.target.value,
 		});
    };
-   
-   const handleSubmit = e => {
-		e.preventDefault();
-		dispatch(postNewCard(cardToPost));
-		setCardToPost({
-			card_front: '',
-         card_back: '',
-         deck_id: deckId
-		});
-	};
+
+   const formSubmit = () => {
+      console.log('wtf',cardToPost)
+      dispatch(postNewCard(cardToPost))
+      setCardToPost({
+         card_front: null,
+         card_back: null,
+         deck_id: id
+      })
+      if (cardToPost.card_front !== null && cardToPost.card_back !== null) {
+         props.history.push(`/deck/${id}`)
+      }
+   }
 
    return (
-      <AvForm onSubmit={handleSubmit}>
-         <AvField
-            label='Card Front'
-            type='text'
-            name='cardFront'
-            value={cardToPost.card_front}
-            onChange={handleChange}
-            validate={{
-               required : {
-                  value: true,
-                  errorMessage: 'This input is required'
-               }
-            }} />
-         <AvField
-            label='Card Back'
-            type='text'
-            name='cardBack'
-            value={cardToPost.card_back}
-            onChange={handleChange}
-            validate={{
-               required : {
-                  value: true,
-                  errorMessage: 'This input is required'
-               }
-            }} />
-      </AvForm>
+      <MainWrapper>
+         <AddCardNav />
+         <form 
+            onSubmit={handleSubmit(formSubmit)} 
+            style={{ 
+               margin: 'auto', 
+               marginTop: '0',
+               width: '335px'
+            }}>
+            <InputWrapper>
+               <Heading style={{ marginTop: '34px', marginBottom: '8px' }}>Title</Heading>
+               <TitleDisplay
+                  value={deckName}
+               />
+            </InputWrapper>
+            <Heading style={{ marginTop: '25px' }}>
+               Card
+            </Heading>
+            <div style={{ textAlign: 'right'}}>
+               <AutoGen>Auto generate</AutoGen>
+               <input
+                  type='checkbox' 
+                  name='auto-generate'
+               />
+            </div>
+            <InputWrapper>
+               <label style={{ marginBottom: '6px'}}>Term</label>
+               <TextArea
+                  name='card_front' 
+                  value={cardToPost.card_front}
+                  onChange={handleChange}
+                  ref={register({ required: true })} 
+               />
+               {errors.card_front && errors.card_front.type === 'required' && (
+                  <ErrorMessage>* This field is required</ErrorMessage>
+               )}
+            </InputWrapper>
+            <InputWrapper style={{ marginBottom: '61px' }}>
+               <label style={{ marginBottom: '6px', marginTop: '12px'}}>Answer</label>
+               <TextArea
+                  name='card_back' 
+                  value={cardToPost.card_back}
+                  onChange={handleChange}
+                  ref={register({ required: true })} 
+               />
+               {errors.card_back && errors.card_back.type === 'required' && (
+                  <ErrorMessage>* This field is required</ErrorMessage>
+               )}
+            </InputWrapper>
+            <AddCardFooter id={id}/>
+         </form>
+      </MainWrapper>
    )
 }
 
