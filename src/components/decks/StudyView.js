@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
 import NavBarDash from '../navigation/NavBarDash'
 import CardCarousel from '../cards/CardCarousel'
 import StudyCard from '../cards/StudyCard'
@@ -12,39 +13,64 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 const StudyView = () => {
    const cards = useSelector(state => state.deckCards)
+   const userDecks = useSelector(state => state.userDecks)
 
+   const { id } = useParams()
+
+   const [deckName, setDeckName] = useState('')
    const [displayedCard, setDisplayedCard] = useState(0)
+   const i = 0
 
    useEffect(() => {
       setDisplayedCard(
-         cards[0]
+         cards[i]
       )
+      console.log('from useEffect', displayedCard)
+      userDecks.map(deck => {
+         if (parseInt(deck.id) === parseInt(id)) {
+            setDeckName(deck.deck_name)
+         }
+      })
    }, [])
 
    const nextCard = () => {
-      setDisplayedCard(prev => {
-        if (prev === cards.length - 1) {
-          return 0;
-        } else {
-          return prev + 1;
-        }
-      });
-    };
+      setDisplayedCard(
+         cards[i + 1]
+      )
+      console.log('from nextCard', displayedCard)
+   }
 
-    const prevCard = () => {
-      setDisplayedCard(prev => {
-         if (prev === 0) {
-           return cards.length - 1;
-         } else {
-           return prev + 1;
-         }
-       });
-    }
+   const prevCard = () => {
+      setDisplayedCard(
+         cards[i - 1]
+      )
+      console.log('from prevCard', displayedCard)
+   }
+
+   // const nextCard = () => {
+   //    setDisplayedCard(prev => {
+   //      if (prev === cards.length - 1) {
+   //        return 0;
+   //      } else {
+   //        return prev + 1;
+   //      }
+   //    });
+   //  };
+
+   //  const prevCard = () => {
+   //    setDisplayedCard(prev => {
+   //       if (prev === 0) {
+   //         return cards.length - 1;
+   //       } else {
+   //         return prev + 1;
+   //       }
+   //     });
+   //  }
 
    return (
       <div>
          <NavBarDash />
-         <DeckName>DeckName</DeckName>
+         <DeckName>{deckName}</DeckName>
          <ToolBarWrapper>
             <Term>Term</Term>
             <div style={{ 

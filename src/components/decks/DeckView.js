@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import NavbarDash from '../navigation/NavBarDash.js'
 import DeckViewCards from './DeckViewCards.js'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 
 import { MainWrapper, H1, H2, NamesWrapper, CardWrapper, FooterWrapper, EditButton, StudyButton } from './styles-decks/DeckViewStyles.js'
 
@@ -31,7 +31,10 @@ const DeckView = ({ match, location }) => {
          <DeckViewCards />
          <FooterWrapper>
             <EditButton>Edit Deck</EditButton>
-            <StudyButton>Study</StudyButton>
+            <Link to={`/deck/${id}/study`}>
+               <StudyButton>Study</StudyButton>
+            </Link>
+            
          </FooterWrapper>
       </MainWrapper>
    )
