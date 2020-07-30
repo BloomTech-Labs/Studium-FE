@@ -34,14 +34,14 @@ function App() {
       <Route path='/register' component={Register} />
       <Route path='/okta-login' component={OktaLogin} />
       <Route path='/login' component={Login} />
-      <Route path='/study' component={StudyView} />
+      {/* <Route path='/study' component={StudyView} /> */}
       <ProtectedRoute path='/dashboard' component={DashBoard} />
       <Route path='/create-deck' component={CreateDeckForm} />
       <Route path='/decks/id/create-card' component={CreateCardForm} />
       <ProtectedRoute exact path='/deck/:id' component={DeckView} />
       <ProtectedRoute path='/deck/:id/card/:cardId' component={IndCardView} />
       <SecureRoute path='/deck/:id/edit-deck' component={EditDeck} />
-      {/* <SecureRoute path='/deck/:id/study' component={StudyView} /> */}
+      <ProtectedRoute path='/deck/:id/study' component={StudyView} />
     </div>
   );
 }

@@ -52,18 +52,18 @@ const StudyCard = ({ displayedCard }) => {
          isFlipped={flipped}
       >
          <FrontSide style={cardStyle} className='flippy-front'>
-            displayedCard FRONT
+            {displayedCard.card_front}
             <div style={divStyle} onClick={toggleFlip}>
                Click to see answer
             </div>
         </FrontSide>
 
-        <BackSide style={cardStyle} className='flippy-back'>
-            displayedCard BACK
+         <BackSide style={cardStyle} className='flippy-back'>
+            {displayedCard.card_back}
             <div style={divStyle} onClick={toggleFlip}>
                Click to see term
             </div>
-        </BackSide>
+         </BackSide>
       </Flippy>
    )
 }
