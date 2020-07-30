@@ -5,6 +5,8 @@ export const SET_ERROR = 'SET_ERROR'
 export const SET_USER_DECKS = 'SET_USER_DECKS'
 export const LOGOUT = 'LOGOUT'
 export const POST_NEW_DECK = 'POST_NEW_DECK'
+export const SET_CARDS = 'SET_CARDS'
+export const POST_NEW_CARD = 'POST_NEW_CARD'
 
 export const getUser = () => dispatch => {
    AxiosWithAuth()
@@ -46,6 +48,7 @@ export const postNewCard = cardToPost => dispatch => {
       .post('/cards', cardToPost) 
       .then(res => {
          console.log(res)
+         dispatch({ type: POST_NEW_CARD, payload: cardToPost})
       })
       .catch(err => {
 			console.log('NOOOOO!!!!', err);
@@ -55,6 +58,19 @@ export const postNewCard = cardToPost => dispatch => {
 
 export const logout = () => dispatch => {
    dispatch({ type: LOGOUT })
+}
+
+export const getAllCardsInDeck = (id) => dispatch => {
+   AxiosWithAuth()
+      .get(`/decks/${id}/cards`)
+      .then(res => {
+         console.log('CARDS-->', res)
+         dispatch({ type: SET_CARDS, payload: res.data })
+      })
+      .catch(err => {
+			console.log('NOOOOO!!!!', err);
+			dispatch({ type: SET_ERROR, payload: 'error getting cards' });
+		});
 }
 
 // export const getUserDecks = (user) => dispatch => {

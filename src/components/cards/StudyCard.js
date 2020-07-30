@@ -45,7 +45,6 @@ const StudyCard = ({ displayedCard }) => {
       setflipped(!flipped)
    }
 
-
    return (
       <Flippy
          flipOnClick={true}
