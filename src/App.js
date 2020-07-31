@@ -11,6 +11,7 @@ import CreateDeckForm from './components/decks/CreateDeckForm';
 import CreateCardForm from './components/cards/CreateCardForm';
 import DeckView from './components/decks/DeckView';
 import EditDeck from './components/decks/EditDeck';
+import EditCard from './components/cards/EditCard';
 import CardCarousel from './components/cards/CardCarousel';
 import IndCardView from './components/cards/IndCardView.js';
 import StudyView from './components/decks/StudyView';
@@ -34,13 +35,13 @@ function App() {
       <Route path='/register' component={Register} />
       <Route path='/okta-login' component={OktaLogin} />
       <Route path='/login' component={Login} />
-      {/* <Route path='/study' component={StudyView} /> */}
       <ProtectedRoute path='/dashboard' component={DashBoard} />
       <Route path='/create-deck' component={CreateDeckForm} />
       <ProtectedRoute path='/deck/:id/create-card' component={CreateCardForm} />
       <ProtectedRoute exact path='/deck/:id' component={DeckView} />
       <ProtectedRoute path='/deck/:id/card/:cardId' component={IndCardView} />
-      <SecureRoute path='/deck/:id/edit-deck' component={EditDeck} />
+      <Route path='/deck/:id/edit-deck' component={EditDeck} />
+      <ProtectedRoute path='/deck/:id/edit-card/:cardId' component={EditCard} />
       <ProtectedRoute path='/deck/:id/study' component={StudyView} />
     </div>
   );

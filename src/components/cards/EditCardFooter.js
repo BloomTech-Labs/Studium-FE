@@ -1,7 +1,7 @@
 import React from 'react'
 import { AddCardFoot, NextButton } from './styles-cards/CardFormStyles'
 
-const AddCardFooter = ({ id }) => {
+const EditCardFooter = ({ id }) => {
 
    return(
       <AddCardFoot>
@@ -13,10 +13,10 @@ const AddCardFooter = ({ id }) => {
             aligItems: 'center',
             textAlign: 'center',  
          }}>
-            <NextButton>Next</NextButton>
+            <NextButton>Done</NextButton>
          </div>
       </AddCardFoot>
    )
 }
 
-export default AddCardFooter
+export default EditCardFooter
