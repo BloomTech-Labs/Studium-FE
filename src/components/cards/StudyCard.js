@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Flippy, { FrontSide, BackSide } from 'react-flippy'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -39,7 +39,7 @@ const StudyCard = ({ displayedCard }) => {
 
    const [flipped, setflipped] = useState(false)
 
-   const { id } = useParams()
+   let i = 0
 
    const toggleFlip = () => {
       setflipped(!flipped)

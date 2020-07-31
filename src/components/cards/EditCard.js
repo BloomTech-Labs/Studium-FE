@@ -1,25 +1,29 @@
 import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
-import { postNewCard } from '../../redux/actions'
+import { editCard } from '../../redux/actions'
 import { useParams, useHistory } from 'react-router-dom'
 import { MainWrapper } from '../decks/styles-decks/DeckViewStyles'
 import { InputWrapper, TextArea, AutoGen, Heading, ErrorMessage, TitleDisplay } from './styles-cards/CardFormStyles'
-import AddCardNav from '../navigation/AddCardNav'
-import AddCardFooter from './AddCardFooter'
+import NavBarDash from '../navigation/NavBarDash'
+import EditCardFooter from './EditCardFooter'
 
 const CreateCardForm = (props) => {
    const dispatch = useDispatch()
-   const history = useHistory()
    const userDecks = useSelector(state => state.userDecks)
-   const { id } = useParams()
+   const card = useSelector(state => state.cardBeingEdited)
+
+   const history = useHistory()
+   const { id, cardId } = useParams()
+
    const { register, handleSubmit, errors } = useForm()
 
    const [deckName, setDeckName] = useState();
-   const [cardToPost, setCardToPost] = useState({
-      card_front: null,
-      card_back: null,
-      deck_id: id
+   const [cardToEdit, setCardToEdit] = useState({
+      card_front: card.card_front,
+      card_back: card.card_back,
+      deck_id: card.deck_id,
+      id: cardId
    })
 
    useEffect(() => {
@@ -31,28 +35,28 @@ const CreateCardForm = (props) => {
    }, [])
 
    const handleChange = e => {
-		setCardToPost({
-         ...cardToPost,
+		setCardToEdit({
+         ...cardToEdit,
 			[e.target.name]: e.target.value,
 		});
    };
 
    const formSubmit = () => {
-      console.log('wtf',cardToPost)
-      dispatch(postNewCard(cardToPost))
-      setCardToPost({
+      console.log('wtf',cardToEdit)
+      dispatch(editCard(cardToEdit))
+      setCardToEdit({
          card_front: null,
          card_back: null,
          deck_id: id
       })
-      if (cardToPost.card_front !== null && cardToPost.card_back !== null) {
+      if (cardToEdit.card_front !== null && cardToEdit.card_back !== null) {
          props.history.push(`/deck/${id}`)
       }
    }
 
    return (
       <MainWrapper>
-         <AddCardNav />
+         <NavBarDash />
          <form 
             onSubmit={handleSubmit(formSubmit)} 
             style={{ 
@@ -60,27 +64,21 @@ const CreateCardForm = (props) => {
                marginTop: '0',
                width: '335px'
             }}>
-            <InputWrapper>
-               <Heading style={{ marginTop: '34px', marginBottom: '8px' }}>Title</Heading>
-               <TitleDisplay
-                  value={deckName}
-               />
-            </InputWrapper>
-            <Heading style={{ marginTop: '25px' }}>
+            <Heading style={{ marginTop: '30px' }}>
                Card
             </Heading>
-            <div style={{ textAlign: 'right'}}>
+            {/* <div style={{ textAlign: 'right'}}>
                <AutoGen>Auto generate</AutoGen>
                <input
                   type='checkbox' 
                   name='auto-generate'
                />
-            </div>
+            </div> */}
             <InputWrapper>
-               <label style={{ marginBottom: '6px'}}>Term</label>
+               <label style={{ marginBottom: '6px', marginTop: '12px' }}>Term</label>
                <TextArea
                   name='card_front' 
-                  value={cardToPost.card_front}
+                  value={cardToEdit.card_front}
                   onChange={handleChange}
                   ref={register({ required: true })} 
                />
@@ -88,11 +86,11 @@ const CreateCardForm = (props) => {
                   <ErrorMessage>* This field is required</ErrorMessage>
                )}
             </InputWrapper>
-            <InputWrapper style={{ marginBottom: '61px' }}>
+            <InputWrapper style={{ marginBottom: '163px' }}>
                <label style={{ marginBottom: '6px', marginTop: '12px'}}>Answer</label>
                <TextArea
                   name='card_back' 
-                  value={cardToPost.card_back}
+                  value={cardToEdit.card_back}
                   onChange={handleChange}
                   ref={register({ required: true })} 
                />
@@ -100,7 +98,7 @@ const CreateCardForm = (props) => {
                   <ErrorMessage>* This field is required</ErrorMessage>
                )}
             </InputWrapper>
-            <AddCardFooter id={id}/>
+            <EditCardFooter id={id}/>
          </form>
       </MainWrapper>
    )

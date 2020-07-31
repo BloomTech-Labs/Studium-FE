@@ -6,6 +6,9 @@ export const SET_USER_DECKS = 'SET_USER_DECKS'
 export const LOGOUT = 'LOGOUT'
 export const POST_NEW_DECK = 'POST_NEW_DECK'
 export const SET_CARDS = 'SET_CARDS'
+export const POST_NEW_CARD = 'POST_NEW_CARD'
+export const EDIT_CARD = 'EDIT_CARD'
+export const SET_EDITED_CARD = 'SET_EDITED_CARD'
 
 export const getUser = () => dispatch => {
    AxiosWithAuth()
@@ -47,11 +50,30 @@ export const postNewCard = cardToPost => dispatch => {
       .post('/cards', cardToPost) 
       .then(res => {
          console.log(res)
+         dispatch({ type: POST_NEW_CARD, payload: cardToPost})
       })
       .catch(err => {
 			console.log('NOOOOO!!!!', err);
 			dispatch({ type: SET_ERROR, payload: 'error creating card' });
 		});
+}
+
+export const editCard = (cardToEdit) => dispatch => {
+   AxiosWithAuth()
+      .put(`/cards/${cardToEdit.id}`, cardToEdit)
+      .then(res => {
+         console.log(res)
+         dispatch({ type: EDIT_CARD, payload: cardToEdit})
+      })
+      .catch(err => {
+         console.log('NOOOOO!!!!', err);
+         console.log('cardToEdit', cardToEdit);
+			dispatch({ type: SET_ERROR, payload: 'error editing card' });
+		});
+}
+
+export const setCardBeingEdited = (cardToEdit) => dispatch => {
+   dispatch({ type: SET_EDITED_CARD, payload: cardToEdit })
 }
 
 export const logout = () => dispatch => {

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import NavBar from "../navigation/NavBar";
 import Button from "../common/Button";
@@ -20,16 +21,28 @@ const Form = styled.form`
 `;
 
 const SplashPage = () => {
-  const [email, setEmail] = useState({email: ''})
+  const [email, setEmail] = useState({ email: "" });
   const [loading, setLoading] = useState(false);
 
-  function handleInputChange(e){
+  const history = useHistory();
+
+  const routeToLogin = () => {
+    let path = `/login`;
+    history.push(path);
+  };
+
+  const routeToRegister = () => {
+    let path = `/register`;
+    history.push(path);
+  };
+
+  function handleInputChange(e) {
     e.persist();
-    setEmail(state => ({
-        ...state,
-        [e.target.name]: e.target.value
+    setEmail((state) => ({
+      ...state,
+      [e.target.name]: e.target.value,
     }));
-}
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -51,72 +64,40 @@ const SplashPage = () => {
     <>
       <PageLayout data-testid="successMessage">
         <NavBar />
-        <img
-          src={require("../common/header.svg")}
-          style={{ width: "100%" }}
-          alt="headerimage"
-        />
-        <h2 className="h2Tags">
-          A place for students to create flashcards, share, and learn{" "}
-        </h2>
+        <img src={require("../common/header.svg")} style={{ width: "100%" }} alt="headerimage" />
+        <h2 className="h2Tags">A place for students to create flashcards, share, and learn </h2>
         <p className="pTags">Master any subject, one success at a time.</p>
 
         <Form onSubmit={handleSubmit} className="getStarted">
-        {loading ? <Spinner /> : 
-        <>
-          <Input 
-          value={email.email}
-          placeholder="Enter your email"
-          type="text"
-          name="email"
-          onChange={handleInputChange}
-          id="email"
-           />
-          <Button type="submit" small>
-            Get Started
-          </Button>
-          </>
-        }
+          {loading ? (
+            <Spinner />
+          ) : (
+            <>
+              <Input value={email.email} placeholder="Enter your email" type="text" name="email" onChange={handleInputChange} id="email" />
+              <Button type="submit" small>
+                Get Started
+              </Button>
+            </>
+          )}
         </Form>
 
-          <p className="centeredOr">OR</p>
+        <p className="centeredOr">OR</p>
 
-        <img
-          src={require("../common/sprinting.svg")}
-          style={{ width: "100%" }}
-          alt="character sprintinging"
-        />
+        <img src={require("../common/sprinting.svg")} style={{ width: "100%" }} alt="character sprintinging" />
         <h2 className="h2Tags">You aren’t here to waste time, we know</h2>
-        <p className="pTags">
-          Studium uses spaced repitition to help you spend your time studying
-          only the things you don’t know. This is the most effiicent and useful
-          way to study.
-        </p>
-        <img
-          src={require("../common/reading.svg")}
-          style={{ width: "100%" }}
-          alt="character reading"
-        />
-        <h2 className="h2Tags">
-          Share the important info from your massive textbooks
-        </h2>
-        <p className="pTags">
-          Share the info you’ve pulled from your massive textbooks. Let friends
-          share with you the info they’ve pulled. Together you can conquer this
-          class.
-        </p>
-        <img
-          src={require("../common/sitting.svg")}
-          style={{ width: "100%" }}
-          alt="character sitting"
-        />
+        <p className="pTags">Studium uses spaced repitition to help you spend your time studying only the things you don’t know. This is the most effiicent and useful way to study.</p>
+        <img src={require("../common/reading.svg")} style={{ width: "100%" }} alt="character reading" />
+        <h2 className="h2Tags">Share the important info from your massive textbooks</h2>
+        <p className="pTags">Share the info you’ve pulled from your massive textbooks. Let friends share with you the info they’ve pulled. Together you can conquer this class.</p>
+        <img src={require("../common/sitting.svg")} style={{ width: "100%" }} alt="character sitting" />
         <h2 className="h2Tags">Your textbooks are massive</h2>
-        <p className="pTags">
-          We know your textbook is over 1000 pages. Let’s help you get the most
-          important info into online flashcards and start studying.
-        </p>
-        <ButtonBottom loginCTA>Log In</ButtonBottom>
-        <ButtonBottom signupCTA>Sign Up</ButtonBottom>
+        <p className="pTags">We know your textbook is over 1000 pages. Let’s help you get the most important info into online flashcards and start studying.</p>
+        <ButtonBottom loginCTA onClick={routeToLogin}>
+          Log In
+        </ButtonBottom>
+        <ButtonBottom signupCTA onClick={routeToRegister}>
+          Sign Up
+        </ButtonBottom>
       </PageLayout>
     </>
   );
