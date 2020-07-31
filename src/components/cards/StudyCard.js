@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Flippy, { FrontSide, BackSide } from 'react-flippy'
-import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 const cardStyle = {
@@ -12,7 +11,6 @@ const cardStyle = {
    fontSize: '12px',
    textTransform: 'uppercase',
    borderRadius: '10px',
-   paddingLeft: 0,
    paddingLeft: 0,
    display: 'flex',
    flexDirection: 'column',
@@ -35,8 +33,6 @@ const divStyle = {
 }
 
 const StudyCard = ({ displayedCard }) => {
-   const cards = useSelector(state => state.deckCards)
-
    const [flipped, setflipped] = useState(false)
 
    let i = 0

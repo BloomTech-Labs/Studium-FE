@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import AxiosWithAuth from '../../utils/axiosWithAuth.js'
 import { useParams, useHistory } from 'react-router-dom'
 import { MainWrapper, BigCard, CardTop, CardBottom, Ruler, FooterWrapper, EditButton } from '../decks/styles-decks/DeckViewStyles.js'
@@ -13,7 +13,6 @@ const IndCardView = (props) => {
     const history = useHistory()
     const dispatch = useDispatch()
     const [card, setCard] = useState({})
-    const [cardToEdit, setCardToEdit] = useState({})
 
     useEffect(() => {
         const getCard = () => {
@@ -29,7 +28,7 @@ const IndCardView = (props) => {
         getCard()
     }, [cardId])
 
-    const { card_front, card_back, card_img, notes } = card;
+    const { card_front, card_back } = card;
 
     const handleClick = () => {
         console.log('cradToEdit', card)
