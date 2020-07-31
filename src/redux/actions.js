@@ -66,7 +66,8 @@ export const editCard = cardToEdit => dispatch => {
          dispatch({ type: EDIT_CARD, payload: cardToEdit})
       })
       .catch(err => {
-			console.log('NOOOOO!!!!', err);
+         console.log('NOOOOO!!!!', err);
+         console.log('cardToEdit', cardToEdit);
 			dispatch({ type: SET_ERROR, payload: 'error editing card' });
 		});
 }

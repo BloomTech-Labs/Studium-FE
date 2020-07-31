@@ -22,7 +22,8 @@ const CreateCardForm = (props) => {
    const [cardToEdit, setCardToEdit] = useState({
       card_front: card.card_front,
       card_back: card.card_back,
-      deck_id: card.deck_id
+      deck_id: card.deck_id,
+      id: cardId
    })
 
    useEffect(() => {
