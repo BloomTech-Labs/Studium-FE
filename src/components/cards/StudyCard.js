@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import Flippy, { FrontSide, BackSide } from 'react-flippy'
-import { useSelector } from 'react-redux'
 
 const cardStyle = {
    height: '397px',
