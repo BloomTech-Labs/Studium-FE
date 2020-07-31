@@ -25,7 +25,7 @@ const EditDeckCard = ({ displayedCard, editInput }) => {
    return (
       <form>
          <Flippy
-            flipOnClick={false}
+            flipOnClick={true}
             flipDirection="vertical"
          >
             <FrontSide style={cardStyle} className='flippy-front'>
