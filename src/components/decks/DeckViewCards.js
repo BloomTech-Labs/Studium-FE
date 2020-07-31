@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import AxiosWithAuth from '../../utils/axiosWithAuth.js'
 import DeckCardView from './DeckCardView.js';
 
-import { useHistory } from 'react-router-dom'
+import { useParams, useHistory, Link } from 'react-router-dom'
 
 import { CardWrapper, CardItself, CardFront } from './styles-decks/DeckViewStyles.js'
 
@@ -16,6 +16,7 @@ const DeckViewCards = ({ match, location }) => {
     const [cardId, setCardId] = useState();
 
     const history = useHistory()
+    const { id } = useParams()
 
     // useEffect(() => {
     //     const getDeckId = () => {
@@ -52,7 +53,9 @@ const DeckViewCards = ({ match, location }) => {
                 {deckCards.map(card => (
                     <DeckCardView key={card.id} card={card} />
                 ))}
-                <CardItself><CardFront>Add Card</CardFront></CardItself>
+                <Link to={`/deck/${id}/create-card`} style={{ textDecoration: 'none'}}>
+                    <CardItself><CardFront>Add Card</CardFront></CardItself>
+                </Link>
             </CardWrapper>
         </>
     )

@@ -37,7 +37,7 @@ function App() {
       {/* <Route path='/study' component={StudyView} /> */}
       <ProtectedRoute path='/dashboard' component={DashBoard} />
       <Route path='/create-deck' component={CreateDeckForm} />
-      <Route path='/decks/id/create-card' component={CreateCardForm} />
+      <ProtectedRoute path='/deck/:id/create-card' component={CreateCardForm} />
       <ProtectedRoute exact path='/deck/:id' component={DeckView} />
       <ProtectedRoute path='/deck/:id/card/:cardId' component={IndCardView} />
       <SecureRoute path='/deck/:id/edit-deck' component={EditDeck} />
