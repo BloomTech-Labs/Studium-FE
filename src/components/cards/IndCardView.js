@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import AxiosWithAuth from '../../utils/axiosWithAuth.js'
+import { useParams, useHistory } from 'react-router-dom'
 import { MainWrapper, BigCard, CardTop, CardBottom, Ruler, FooterWrapper, EditButton } from '../decks/styles-decks/DeckViewStyles.js'
 import NavbarDash from '../navigation/NavBarDash.js'
-import { useParams } from 'react-router-dom'
+import { setCardBeingEdited } from '../../redux/actions'
 
 
-const IndCardView = () => {
+const IndCardView = (props) => {
 
-    let { cardId } = useParams()
+    let { id, cardId } = useParams()
+    const history = useHistory()
+    const dispatch = useDispatch()
     const [card, setCard] = useState({})
+    const [cardToEdit, setCardToEdit] = useState({})
 
     useEffect(() => {
         const getCard = () => {
@@ -27,7 +31,11 @@ const IndCardView = () => {
 
     const { card_front, card_back, card_img, notes } = card;
 
-
+    const handleClick = () => {
+        console.log('cradToEdit', card)
+        dispatch(setCardBeingEdited(card))
+        props.history.push(`/deck/${id}/edit-card/${cardId}`)
+    }
 
     return (
         <MainWrapper>
@@ -38,7 +46,7 @@ const IndCardView = () => {
                 <CardBottom>{card_back}</CardBottom>
             </BigCard>
             <FooterWrapper>
-                <EditButton>Edit Card</EditButton>
+                <EditButton onClick={handleClick}>Edit Card</EditButton>
             </FooterWrapper>
         </MainWrapper>
 
