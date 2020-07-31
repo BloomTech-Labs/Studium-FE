@@ -12,16 +12,16 @@ class Menu extends Component {
         return (
             <div id="flyoutMenu"
                 className={visibility}>
-                <div id="close"><img src={require("../../images/close.svg")} onMouseDown={this.props.handleMouseDown} /></div>
+                <div id="close"><img alt='close menu' src={require("../../images/close.svg")} onMouseDown={this.props.handleMouseDown} /></div>
                 <div id="linkWrapper">
                     <div className="iconWrapper">
-                        <img src={require("../../images/home.svg")} className="icon" /><a href="/dashboard">Home</a>
+                        <img alt='home' src={require("../../images/home.svg")} className="icon" /><a href="/dashboard">Home</a>
                     </div>
                     <div className="iconWrapper">
-                        <img src={require("../../images/user.svg")} className="icon" /><a href="/account">Account</a>
+                        <img alt='user' src={require("../../images/user.svg")} className="icon" /><a href="/account">Account</a>
                     </div>
                     <div className="iconWrapper">
-                        <img src={require("../../images/logout.svg")} className="icon" /><a href="/logout">Logout</a>
+                        <img alt='logout' src={require("../../images/logout.svg")} className="icon" /><a href="/logout">Logout</a>
                     </div>
                 </div>
             </div>

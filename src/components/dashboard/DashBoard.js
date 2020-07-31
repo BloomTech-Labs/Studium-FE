@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Deck, Decks, Title, CreateDeck, LabelsTwo } from './styles-dashboard/dashboardStyles.js'
 import NavbarDash from '../navigation/NavBarDash.js'
 import { useSelector, useDispatch } from 'react-redux'
@@ -18,19 +18,6 @@ const DashBoard = ({ match, location }) => {
   useEffect(() => {
     console.log('USERDECKS-->', userDecks)
   }, [])
-
-  // const [decks, setDecks] = useState(userDecks)
-
-  // useEffect(() => {
-  //   if (!authState.isAuthenticated) {
-  //     // When user isn't authenticated, forget any user info
-  //     setUserInfo(null);
-  //   } else {
-  //     authService.getUser().then((info) => {
-  //       setUserInfo(info);
-  //     });
-  //   }
-  // }, [authState, authService]); // Update if authState changes
 
   return (
     <div>

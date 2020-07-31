@@ -8,7 +8,7 @@ import { getAllCardsInDeck } from '../../redux/actions'
 const DeckDetails = ({ deck, match, location, props }) => {
     const dispatch = useDispatch()
 
-    const { deck_name, deck_img, id } = deck;
+    const { deck_name, id } = deck;
 
     const [cards, setCards] = useState([]);
 
