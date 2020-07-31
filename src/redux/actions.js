@@ -58,9 +58,9 @@ export const postNewCard = cardToPost => dispatch => {
 		});
 }
 
-export const editCard = cardToEdit => dispatch => {
+export const editCard = (cardToEdit) => dispatch => {
    AxiosWithAuth()
-      .put(`/cards/${cardToEdit.id}`)
+      .put(`/cards/${cardToEdit.id}`, cardToEdit)
       .then(res => {
          console.log(res)
          dispatch({ type: EDIT_CARD, payload: cardToEdit})
@@ -72,7 +72,7 @@ export const editCard = cardToEdit => dispatch => {
 		});
 }
 
-export const setCardBeingEdited = cardToEdit => dispatch => {
+export const setCardBeingEdited = (cardToEdit) => dispatch => {
    dispatch({ type: SET_EDITED_CARD, payload: cardToEdit })
 }
 

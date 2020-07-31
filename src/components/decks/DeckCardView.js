@@ -16,7 +16,7 @@ const DeckCardView = ({ card }) => {
     useEffect(() => {
         const getDeckId = () => {
             userDecks.forEach(function (res) {
-                console.log("this is the deck id ->", res.id)
+                // console.log("this is the deck id ->", res.id)
                 setDeckId(res.id)
             })
         }
