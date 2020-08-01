@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-import { GET_USER, SET_ERROR, SET_USER_DECKS, LOGOUT, POST_NEW_DECK, SET_CARDS, POST_NEW_CARD, SET_EDITED_CARD, EDIT_CARD, SET_EDITED_DECK, EDIT_DECK } from './actions';
+import { GET_USER, SET_ERROR, SET_USER_DECKS, RESET_USER_DECKS, LOGOUT, POST_NEW_DECK, SET_CARDS, POST_NEW_CARD, SET_EDITED_CARD, EDIT_CARD, SET_EDITED_DECK, EDIT_DECK } from './actions';
 
 const initialState = {
    user: {},
@@ -29,6 +29,12 @@ const rootReducer = (state = initialState, action) => {
          return {
             ...state,
             userDecks: action.payload
+         }
+      case RESET_USER_DECKS:
+         const updatedUserDecks = state.userDecks.filter(deck => deck.id !== action.payload.id)
+         return {
+            ...state,
+            userDecks: [...updatedUserDecks, action.payload]
          }
       case SET_CARDS:
          return {

@@ -3,6 +3,7 @@ import AxiosWithAuth from '../utils/axiosWithAuth'
 export const GET_USER = 'GET_USER'
 export const SET_ERROR = 'SET_ERROR'
 export const SET_USER_DECKS = 'SET_USER_DECKS'
+export const RESET_USER_DECKS = 'RESET_USER_DECKS'
 export const LOGOUT = 'LOGOUT'
 export const POST_NEW_DECK = 'POST_NEW_DECK'
 export const SET_CARDS = 'SET_CARDS'
@@ -34,6 +35,18 @@ export const getUser = () => dispatch => {
       })
 }
 
+export const resetUserDecks = (id) => dispatch => {
+   AxiosWithAuth()
+      .get(`/users/${id}/decks`)
+      .then(res => {
+         dispatch({ type: RESET_USER_DECKS, payload: res.data })
+      })
+      .catch(err => {
+         console.log('NOOOOO!!!!', err)
+         dispatch({ type: SET_ERROR, payload: 'There was an error retrieving the user decks' })
+      })
+}
+
 export const postNewDeck = (deckToPost) => dispatch => {
    AxiosWithAuth()
       .post('/decks', deckToPost)
@@ -53,12 +66,17 @@ export const editDeck = (deckToEdit) => dispatch => {
       .then(res => {
          console.log(res)
          dispatch({ type: EDIT_DECK, payload: deckToEdit})
+         dispatch({ type: RESET_USER_DECKS, payload: deckToEdit})
       })
       .catch(err => {
          console.log('NOOOOO!!!!', err);
          console.log('deckToEdit', deckToEdit);
 			dispatch({ type: SET_ERROR, payload: 'error editing deck' });
 		});
+}
+
+export const setDeckBeingEdited = (deckToEdit) => dispatch => {
+   dispatch({ type: SET_EDITED_DECK, payload: deckToEdit })
 }
 
 export const postNewCard = cardToPost => dispatch => {
@@ -90,10 +108,6 @@ export const editCard = (cardToEdit) => dispatch => {
 
 export const setCardBeingEdited = (cardToEdit) => dispatch => {
    dispatch({ type: SET_EDITED_CARD, payload: cardToEdit })
-}
-
-export const setDeckBeingEdited = (deckToEdit) => dispatch => {
-   dispatch({ type: SET_EDITED_DECK, payload: deckToEdit })
 }
 
 export const logout = () => dispatch => {
