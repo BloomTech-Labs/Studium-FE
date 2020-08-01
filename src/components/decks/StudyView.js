@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import NavBarDash from '../navigation/NavBarDash'
 import CardCarousel from '../cards/CardCarousel'
 import StudyCard from '../cards/StudyCard'
@@ -92,7 +92,10 @@ const StudyView = () => {
             </div>
             <ArrowForwardIcon onClick={nextCard}/>
          </ArrowsWrapper>
-         <DoneButton>Done Studying</DoneButton>
+         <Link to={`/deck/${displayedCard.deck_id}`}>
+            <DoneButton>Done Studying</DoneButton>
+         </Link>
+         
       </div>
    )
 }

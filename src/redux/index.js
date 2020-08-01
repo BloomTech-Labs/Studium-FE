@@ -52,9 +52,11 @@ const rootReducer = (state = initialState, action) => {
             cardBeingEdited: action.payload
          }
       case EDIT_CARD:
+         const updatedDeckCards = state.deckCards.filter(card => card.id !== action.payload.id)
          return {
             ...state,
-            cardBeingEdited: {}
+            cardBeingEdited: {},
+            deckCards: [...updatedDeckCards, action.payload]
          }
       case POST_NEW_DECK:
          return {
