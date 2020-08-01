@@ -1,6 +1,4 @@
-import React, { useEffect, useState, Component } from 'react';
-import { useSelector } from 'react-redux'
-import styled from "styled-components";
+import React, { Component } from 'react'
 import ProfileButton from './ProfileButton.js'
 import Menu from './Menu.js'
 

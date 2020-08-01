@@ -2,14 +2,15 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-import { GET_USER, SET_ERROR, SET_USER_DECKS, LOGOUT, POST_NEW_DECK, SET_CARDS, POST_NEW_CARD, EDIT_CARD, SET_EDITED_CARD } from './actions';
+import { GET_USER, SET_ERROR, SET_USER_DECKS, LOGOUT, POST_NEW_DECK, SET_CARDS, POST_NEW_CARD, SET_EDITED_CARD, EDIT_CARD, SET_EDITED_DECK, EDIT_DECK } from './actions';
 
 const initialState = {
    user: {},
    error: '',
    userDecks: [],
    deckCards: [],
-   cardBeingEdited: {}
+   cardBeingEdited: {},
+   deckBeingEdited: {},
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -44,10 +45,25 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             cardBeingEdited: action.payload
          }
+      case EDIT_CARD:
+         return {
+            ...state,
+            cardBeingEdited: {}
+         }
       case POST_NEW_DECK:
          return {
             ...state,
             userDecks: [...state.userDecks, action.payload]
+         }
+      case SET_EDITED_DECK:
+         return {
+            ...state,
+            deckBeingEdited: action.payload
+         }
+      case EDIT_DECK:
+         return {
+            ...state,
+            deckBeingEdited: {}
          }
       case LOGOUT:
          return {
@@ -71,6 +87,3 @@ const store = createStore(persistedReducer, applyMiddleware(thunk))
 const persistor = persistStore(store)
 store.subscribe(() => console.log('THIS IS THE STORE -->', store.getState()))
 export { store, persistor }
-
-
-// export default store

@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import NavbarDash from '../navigation/NavBarDash.js'
 import DeckViewCards from './DeckViewCards.js'
 import { useParams, Link } from 'react-router-dom'
+import { setDeckBeingEdited } from '../../redux/actions'
 
-import { MainWrapper, H1, H2, NamesWrapper, CardWrapper, FooterWrapper, EditButton, StudyButton } from './styles-decks/DeckViewStyles.js'
+import { MainWrapper, H1, H2, NamesWrapper, FooterWrapper, EditButton, StudyButton } from './styles-decks/DeckViewStyles.js'
 
 const DeckView = ({ match, location }) => {
-
+   const dispatch = useDispatch()
    const userDecks = useSelector(state => state.userDecks)
-   const [deckName, setDeckName] = useState();
+   const [deckName, setDeckName] = useState()
+   const [deckToEdit, setDeckToEdit] = useState()
 
    const { id } = useParams()
 
@@ -17,9 +19,15 @@ const DeckView = ({ match, location }) => {
       userDecks.map(deck => {
          if (parseInt(deck.id) === parseInt(id)) {
             setDeckName(deck.deck_name)
+            setDeckToEdit(deck)
          }
       })
    }, [])
+
+   const handleClick = () => {
+      console.log('deckToEdit-->', deckToEdit)
+      dispatch(setDeckBeingEdited(deckToEdit))
+  }
 
    return (
       <MainWrapper>
@@ -30,7 +38,9 @@ const DeckView = ({ match, location }) => {
          </NamesWrapper>
          <DeckViewCards />
          <FooterWrapper>
-            <EditButton>Edit Deck</EditButton>
+            <Link to={`/deck/${id}/edit-deck`}>
+               <EditButton onClick={handleClick}>Edit Deck</EditButton>
+            </Link>
             <Link to={`/deck/${id}/study`}>
                <StudyButton>Study</StudyButton>
             </Link>

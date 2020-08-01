@@ -1,4 +1,3 @@
-import { useOktaAuth } from '@okta/okta-react'
 import axios from 'axios'
 
 const AxiosWithAuth = () => {
