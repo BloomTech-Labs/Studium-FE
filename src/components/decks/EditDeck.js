@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
-import { editDeck } from '../../redux/actions'
+import { editDeck, setCardBeingEdited, resetUserDecks } from '../../redux/actions'
 import { useParams, useHistory } from 'react-router-dom'
 import { MainWrapper } from '../decks/styles-decks/DeckViewStyles'
 import { InputWrapper, TextArea, AutoGen, Heading, ErrorMessage, TitleDisplay } from '../cards/styles-cards/CardFormStyles'
 import EditDeckCard from '../cards/EditDeckCard'
 import NavBarDash from '../navigation/NavBarDash'
-import EditCardFooter from '../cards/EditCardFooter'
+import EditDeckFooter from './EditDeckFooter'
 import { ImgIconWrapper } from '../cards/styles-cards/EditDeckCardStyles'
 import PanoramaOutlinedIcon from '@material-ui/icons/PanoramaOutlined'
 
@@ -22,9 +22,12 @@ const EditDeck = (props) => {
    const { register, handleSubmit, errors } = useForm()
 
    const [deckName, setDeckName] = useState();
-   const [deckToEdit, setDeckToEdit] = useState({
-      deck_name: deck.deck_name,
-      id: id,
+   const [deckToEdit, setDeckToEdit] = useState(deck)
+   const [cardToEdit, setCardToEdit] = useState({
+      card_front: '',
+      card_back: '',
+      deck_id: '',
+      id: ''
    })
 
    useEffect(() => {
@@ -41,10 +44,8 @@ const EditDeck = (props) => {
    const formSubmit = () => {
       console.log('wtf',deckToEdit)
       dispatch(editDeck(deckToEdit))
-      setDeckToEdit({
-         deck_name: null,
-         id: null
-      })
+      // dispatch(resetUserDecks(deckToEdit.user_id))
+      setDeckToEdit({})
       // if (cardToEdit.card_front !== null && cardToEdit.card_back !== null) {
       //    props.history.push(`/deck/${id}`)
       // }
@@ -72,19 +73,25 @@ const EditDeck = (props) => {
                </Heading>
                <TitleDisplay
                   style={{ boxSizing: 'boeder-box', paddingLeft: '11px'}}
+                  name='deck_name'
                   value={deckToEdit.deck_name}
                   onChange={handleChange}
                />
                <Heading style={{ marginTop: '30px' }}>
                   Cards
                </Heading>
-               {cards.map(card => {
-                  return (
-                     <EditDeckCard displayedCard={card} editInput={handleChange} />
-                  )
-               })}
+               <div style={{ marginBottom: '56px' }}>
+                  {cards.map(card => {
+                     return (
+                        <EditDeckCard 
+                           key={card.id} 
+                           displayedCard={card}
+                        />
+                     )
+                  })}
+               </div>
             </InputWrapper>
-            <EditCardFooter id={id}/>
+            <EditDeckFooter deckToEdit={deckToEdit}/>
          </form>
       </MainWrapper>
    )
