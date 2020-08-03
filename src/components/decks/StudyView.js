@@ -13,9 +13,7 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 const StudyView = () => {
    const cards = useSelector(state => state.deckCards)
    const userDecks = useSelector(state => state.userDecks)
-
    const { id } = useParams()
-
    const [deckName, setDeckName] = useState('')
    const [displayedCard, setDisplayedCard] = useState(0)
    const [i, setI] = useState(0)
@@ -24,7 +22,6 @@ const StudyView = () => {
       setDisplayedCard(
          cards[i]
       )
-      console.log('from useEffect', displayedCard)
       userDecks.map(deck => {
          if (parseInt(deck.id) === parseInt(id)) {
             setDeckName(deck.deck_name)
@@ -51,9 +48,6 @@ const StudyView = () => {
          setDisplayedCard(cards[i])
       }  
    }
-   console.log(displayedCard)
-   console.log(cards)
-
    return ( 
       <div>
          <NavBarDash />
