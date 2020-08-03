@@ -15,7 +15,7 @@ const DeckViewCards = ({ match, location }) => {
         <>
             <CardWrapper>
                 {deckCards.map(card => (
-                    <DeckCardView key={card.id} card={card} />
+                    <DeckCardView key={card.id} displayedCard={card} />
                 ))}
                 <Link to={`/deck/${id}/create-card`} style={{ textDecoration: 'none'}}>
                     <CardItself><CardFront>Add Card</CardFront></CardItself>
