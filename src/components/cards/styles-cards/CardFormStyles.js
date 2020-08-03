@@ -42,6 +42,14 @@ export const AddCardFoot = styled.div`
    border-top: 1.07966px solid #C4C4C4;
 `
 
+export const EditDeckFoot = styled.div`
+   height: 80px;
+   display: flex;
+   justify-content: space-between
+   background: #FFFFFF;
+   border-top: 1.07966px solid #C4C4C4;
+`
+
 export const NextButton = styled.button`
    width: 150px;
    height: 45.44px;
@@ -55,6 +63,21 @@ export const NextButton = styled.button`
    line-height: 18px;
    color: #FFFFFF;
    border: none;
+`
+
+export const AddCardBtn = styled.button`
+   width: 150px;
+   height: 45.44px;
+   margin-top: 16px;
+   background: #FFFFFF;
+   border-radius: 6px;
+   border: 1px solid #2E71FD;
+   font-family: Source Sans Pro;
+   font-style: normal;
+   font-weight: bold;
+   font-size: 22px;
+   line-height: 18px;
+   color: #2E71FD;
 `
 
 export const ErrorMessage = styled.p`

@@ -13,11 +13,14 @@ export const ImgIconWrapper = styled.div`
    justify-content: center;
 `
 
-export const CardInput = styled.input`
+export const CardInput = styled.textarea`
    fontFamily: Source Sans Pro;
    fontStyle: normal;
    fontWeight: normal;
    fontSize: 18px;
    lineHeight: 23px;
    border: none;
+   margin: 0;
+   width: 279px;
+   height: 60px;
 `

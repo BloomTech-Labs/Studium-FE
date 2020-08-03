@@ -34,8 +34,6 @@ const divStyle = {
 const StudyCard = ({ displayedCard }) => {
    const [flipped, setflipped] = useState(false)
 
-   let i = 0
-
    const toggleFlip = () => {
       setflipped(!flipped)
    }

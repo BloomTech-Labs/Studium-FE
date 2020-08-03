@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import NavBarDash from '../navigation/NavBarDash'
 import CardCarousel from '../cards/CardCarousel'
 import StudyCard from '../cards/StudyCard'
@@ -34,51 +34,25 @@ const StudyView = () => {
    }, [])
 
    const nextCard = () => {
-      console.log(cards.length - 1)
       if(i === (cards.length - 1)){
          setI(0)
-         setDisplayedCard(
-            cards[i]
-         )
+         setDisplayedCard(cards[i])
       }else{
          setI(i+1)
-         setDisplayedCard(
-            cards[i])
+         setDisplayedCard(cards[i])
       }
-
-      console.log('from nextCard', displayedCard, i)
    }
 
    const prevCard = () => {
-      
-      
-         setI(i-1)
-         setDisplayedCard(
-            cards[i]
-            )
-            console.log('from prevCard', displayedCard, i)
-      
+      if(i === (0)){
+         setI(cards.length - 1)
+         setDisplayedCard(cards[i])
+      }else{
+         setI(i - 1)
+         setDisplayedCard(cards[i])
+      }
+console.log('from prevCard', displayedCard, i)      
    }
-
-   // const nextCard = () => {
-   //    setDisplayedCard(prev => {
-   //      if (prev === cards.length - 1) {
-   //        return 0;
-   //      } else {
-   //        return prev + 1;
-   //      }
-   //    });
-   //  };
-
-   //  const prevCard = () => {
-   //    setDisplayedCard(prev => {
-   //       if (prev === 0) {
-   //         return cards.length - 1;
-   //       } else {
-   //         return prev + 1;
-   //       }
-   //     });
-   //  }
 
    return ( 
       <div>
@@ -105,7 +79,10 @@ const StudyView = () => {
             </div>
             <ArrowForwardIcon onClick={nextCard}/>
          </ArrowsWrapper>
-         <DoneButton>Done Studying</DoneButton>
+         <Link to={`/deck/${displayedCard.deck_id}`}>
+            <DoneButton>Done Studying</DoneButton>
+         </Link>
+         
       </div>
    )
 }
