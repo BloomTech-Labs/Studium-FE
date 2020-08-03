@@ -12,6 +12,8 @@ export const EDIT_CARD = 'EDIT_CARD'
 export const EDIT_DECK = 'EDIT_DECK'
 export const SET_EDITED_CARD = 'SET_EDITED_CARD'
 export const SET_EDITED_DECK = 'SET_EDITED_DECK'
+export const AUTOGEN_RES = 'AUTOGEN_RES'
+export const CLEAR_AUTOGEN_RES = 'CLEAR_AUTOGEN_RES'
 
 export const getUser = () => dispatch => {
    AxiosWithAuth()
@@ -108,6 +110,23 @@ export const editCard = (cardToEdit) => dispatch => {
 
 export const setCardBeingEdited = (cardToEdit) => dispatch => {
    dispatch({ type: SET_EDITED_CARD, payload: cardToEdit })
+}
+
+export const autoGenerate = (term) => dispatch => {
+   AxiosWithAuth()
+      .get(`http://studium-ds.herokuapp.com/autogenerate_deck?word=${term}`)
+      .then(res => {
+         console.log(res.data)
+         dispatch({ type: AUTOGEN_RES, payload: res.data })
+      })
+      .catch(err => {
+			console.log('NOOOOO!!!!', err);
+			dispatch({ type: SET_ERROR, payload: 'error auto-generating card' });
+		});
+}
+
+export const clearAutoGenRes = () => dispatch => {
+   dispatch({ type: CLEAR_AUTOGEN_RES })
 }
 
 export const logout = () => dispatch => {
