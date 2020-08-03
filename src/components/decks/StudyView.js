@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams, Link } from 'react-router-dom'
 import NavBarDash from '../navigation/NavBarDash'
-import CardCarousel from '../cards/CardCarousel'
 import StudyCard from '../cards/StudyCard'
 import { DeckName, Term, ToolBarWrapper, ArrowsWrapper } from './styles-decks/StudyViewStyles'
 import { DoneButton } from './styles-decks/StudyViewStyles'
@@ -38,7 +37,7 @@ const StudyView = () => {
          setI(0)
          setDisplayedCard(cards[i])
       }else{
-         setI(i+1)
+         setI(i + 1)
          setDisplayedCard(cards[i])
       }
    }
@@ -50,9 +49,10 @@ const StudyView = () => {
       }else{
          setI(i - 1)
          setDisplayedCard(cards[i])
-      }
-console.log('from prevCard', displayedCard, i)      
+      }  
    }
+   console.log(displayedCard)
+   console.log(cards)
 
    return ( 
       <div>
@@ -70,12 +70,11 @@ console.log('from prevCard', displayedCard, i)
          </ToolBarWrapper>
          <div style={{ width: '340px', margin: 'auto' }}>
             <StudyCard displayedCard={displayedCard}/>
-            {/* <CardCarousel /> */}
          </div>
          <ArrowsWrapper>
             <ArrowBackIcon onClick={prevCard}/>
             <div>
-               1/3
+               {i +1}/{cards.length}
             </div>
             <ArrowForwardIcon onClick={nextCard}/>
          </ArrowsWrapper>
