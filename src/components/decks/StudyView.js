@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams, Link } from 'react-router-dom'
 import NavBarDash from '../navigation/NavBarDash'
-import CardCarousel from '../cards/CardCarousel'
 import StudyCard from '../cards/StudyCard'
 import { DeckName, Term, ToolBarWrapper, ArrowsWrapper } from './styles-decks/StudyViewStyles'
 import { DoneButton } from './styles-decks/StudyViewStyles'
@@ -14,18 +13,15 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 const StudyView = () => {
    const cards = useSelector(state => state.deckCards)
    const userDecks = useSelector(state => state.userDecks)
-
    const { id } = useParams()
-
    const [deckName, setDeckName] = useState('')
    const [displayedCard, setDisplayedCard] = useState(0)
-   const i = 0
+   const [i, setI] = useState(0)
 
    useEffect(() => {
       setDisplayedCard(
          cards[i]
       )
-      console.log('from useEffect', displayedCard)
       userDecks.map(deck => {
          if (parseInt(deck.id) === parseInt(id)) {
             setDeckName(deck.deck_name)
@@ -34,40 +30,25 @@ const StudyView = () => {
    }, [])
 
    const nextCard = () => {
-      setDisplayedCard(
-         cards[i + 1]
-      )
-      console.log('from nextCard', displayedCard)
+      if(i === (cards.length - 1)){
+         setI(0)
+         setDisplayedCard(cards[i])
+      }else{
+         setI(i + 1)
+         setDisplayedCard(cards[i])
+      }
    }
 
    const prevCard = () => {
-      setDisplayedCard(
-         cards[i - 1]
-      )
-      console.log('from prevCard', displayedCard)
+      if(i === (0)){
+         setI(cards.length - 1)
+         setDisplayedCard(cards[i])
+      }else{
+         setI(i - 1)
+         setDisplayedCard(cards[i])
+      }  
    }
-
-   // const nextCard = () => {
-   //    setDisplayedCard(prev => {
-   //      if (prev === cards.length - 1) {
-   //        return 0;
-   //      } else {
-   //        return prev + 1;
-   //      }
-   //    });
-   //  };
-
-   //  const prevCard = () => {
-   //    setDisplayedCard(prev => {
-   //       if (prev === 0) {
-   //         return cards.length - 1;
-   //       } else {
-   //         return prev + 1;
-   //       }
-   //     });
-   //  }
-
-   return (
+   return ( 
       <div>
          <NavBarDash />
          <DeckName>{deckName}</DeckName>
@@ -83,12 +64,11 @@ const StudyView = () => {
          </ToolBarWrapper>
          <div style={{ width: '340px', margin: 'auto' }}>
             <StudyCard displayedCard={displayedCard}/>
-            {/* <CardCarousel /> */}
          </div>
          <ArrowsWrapper>
             <ArrowBackIcon onClick={prevCard}/>
             <div>
-               1/3
+               {i +1}/{cards.length}
             </div>
             <ArrowForwardIcon onClick={nextCard}/>
          </ArrowsWrapper>
