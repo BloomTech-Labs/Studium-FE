@@ -40,6 +40,7 @@ export const AddCardFoot = styled.div`
    display: flex;
    background: #FFFFFF;
    border-top: 1.07966px solid #C4C4C4;
+   width: 100%;
 `
 
 export const EditDeckFoot = styled.div`
@@ -55,6 +56,21 @@ export const NextButton = styled.button`
    height: 45.44px;
    margin-top: 16px;
    background: #2E71FD;
+   border-radius: 6px;
+   font-family: Source Sans Pro;
+   font-style: normal;
+   font-weight: bold;
+   font-size: 22px;
+   line-height: 18px;
+   color: #FFFFFF;
+   border: none;
+`
+
+export const DeleteButton = styled.button`
+   width: 150px;
+   height: 45.44px;
+   margin-top: 16px;
+   background: red;
    border-radius: 6px;
    font-family: Source Sans Pro;
    font-style: normal;
