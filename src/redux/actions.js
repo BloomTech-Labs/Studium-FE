@@ -114,7 +114,7 @@ export const setCardBeingEdited = (cardToEdit) => dispatch => {
 
 export const autoGenerate = (term) => dispatch => {
    AxiosWithAuth()
-      .get(`http://studium-ds.herokuapp.com/autogenerate_deck?word=${term}`)
+      .get(`https://studium-ds.herokuapp.com/search?word=${term}`)
       .then(res => {
          console.log(res.data)
          dispatch({ type: AUTOGEN_RES, payload: res.data })
