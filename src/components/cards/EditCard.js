@@ -98,7 +98,7 @@ const CreateCardForm = (props) => {
                   <ErrorMessage>* This field is required</ErrorMessage>
                )}
             </InputWrapper>
-            <EditCardFooter id={id}/>
+            <EditCardFooter id={cardId}/>
          </form>
       </MainWrapper>
    )

@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export const MainWrapper = styled.div`
 background: #F5F5F5;
-height: 99vh;
 display: flex;
 flex-direction: column;
 `

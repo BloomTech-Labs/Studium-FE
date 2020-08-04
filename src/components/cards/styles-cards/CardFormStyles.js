@@ -5,6 +5,7 @@ export const InputWrapper = styled.div`
    flex-direction: column; 
    margin: auto; 
    text-align: left;
+   width: 100%;
 `
 
 export const TextArea = styled.textarea`
@@ -23,6 +24,9 @@ export const AutoGen = styled.label`
    font-weight: normal;
    font-size: 18px;
    line-height: 23px;
+   width: 850%;
+   vertical-align: middle;
+   padding-top: 10px;
 `
 
 export const Heading = styled.div`
@@ -33,6 +37,7 @@ export const Heading = styled.div`
    font-weight: bold;
    font-size: 17px;
    line-height: 21px;
+   width: 100%;
 `
 
 export const AddCardFoot = styled.div`
@@ -106,11 +111,11 @@ export const TitleDisplay = styled.input`
    border: 1px solid #C4C4C4;
    border-radius: 6px;
    box-sizing: border-box;
-   padding-left:
    font-family: Source Sans Pro;
    font-style: normal;
    font-weight: normal;
    font-size: 18px;
    line-height: 23px;
+   width: 100%;
    
 `
