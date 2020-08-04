@@ -78,7 +78,9 @@ const CreateCardForm = (props) => {
                width: '335px'
             }}>
             <InputWrapper>
-               <Heading style={{ marginTop: '34px', marginBottom: '8px' }}>Title</Heading>
+               <Heading style={{ marginTop: '34px', marginBottom: '8px' }}>
+                  Title
+               </Heading>
                <TitleDisplay
                   value={deckName}
                />
@@ -86,8 +88,8 @@ const CreateCardForm = (props) => {
             <Heading style={{ marginTop: '25px' }}>
                Card
             </Heading>
-            <div style={{ textAlign: 'right'}}>
-               <AutoGen>Auto generate</AutoGen>
+            <div style={{ textAlign: 'right', display: 'flex', width: '100%' }}>
+               <AutoGen>Auto generate:</AutoGen>
                <input
                   type='checkbox' 
                   name='auto-generate'
