@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {LoginScreen, TextBox, TextBox2, Button, Nav, H3, H4, HRline, HRline2, AnchorButton, Form , HRStyle, UserText, PassText} from "./loginstyles"
-import styled from 'styled-components'
 import AxiosWithAuth from '../../utils/axiosWithAuth.js'
 import GoogleButton from 'react-google-button'
 import { useDispatch } from 'react-redux'
