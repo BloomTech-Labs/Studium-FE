@@ -48,12 +48,12 @@ const CreateCardForm = (props) => {
       dispatch(autoGenerate(cardToPost.card_front))
       setCardToPost({
          ...cardToPost,
-         card_back: `${autoGenRes[Object.keys(autoGenRes)[0]]}`
+         card_back: `${autoGenRes.msg}`
       })
    }
 
    const formSubmit = () => {
-      console.log('wtf', autoGenRes[Object.keys(autoGenRes)[0]])
+      console.log('wtf', cardToPost)
       dispatch(postNewCard(cardToPost))
       setCardToPost({
          card_front: null,
@@ -64,6 +64,8 @@ const CreateCardForm = (props) => {
          props.history.push(`/deck/${id}`)
       }
    }
+
+   console.log(cardToPost.card_back)
 
    return (
       <MainWrapper>
@@ -131,11 +133,7 @@ const CreateCardForm = (props) => {
 
                   : <TextArea
                         name='card_back' 
-                        value={
-                           Object.keys(autoGenRes)
-                              ?  autoGenRes[Object.keys(autoGenRes)[0]]
-                              :  `${autoGenRes}`
-                        }
+                        value={autoGenRes.msg}
                         onChange={handleChange}
                         ref={register({ required: true })} 
                      />
