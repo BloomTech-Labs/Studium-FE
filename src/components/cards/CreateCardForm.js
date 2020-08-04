@@ -128,8 +128,8 @@ const CreateCardForm = (props) => {
                   : <TextArea
                         name='card_back' 
                         value={
-                           Object.keys(autoGenRes).length > 0
-                              ?  `${Object.keys(autoGenRes)[0]}`
+                           Object.keys(autoGenRes)
+                              ?  autoGenRes[Object.keys(autoGenRes)[0]]
                               :  `${autoGenRes}`
                         }
                         onChange={handleChange}
