@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {LoginScreen, TextBox, TextBox2, Button, Nav, H3, H4, HRline, HRline2, AnchorButton, Form , HRStyle, UserText, PassText} from "./loginstyles"
-import styled from 'styled-components'
 import AxiosWithAuth from '../../utils/axiosWithAuth.js'
 import GoogleButton from 'react-google-button'
 import { useDispatch } from 'react-redux'
@@ -8,8 +7,6 @@ import { getUser } from '../../redux/actions'
 
 
 const Login = props => {
-
-
     const dispatch = useDispatch()
 
     const [login, setLogin] = useState({
@@ -29,7 +26,7 @@ const Login = props => {
             .post('/auth/login', login)
             .then(
                 res => {
-                    localStorage.setItem('token', res.data.token);
+                    setLogin('token', res.data.token);
                     if (res.data.user) {
                         dispatch(getUser());
                         props.history.push(`/dashboard`);
