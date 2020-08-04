@@ -46,10 +46,14 @@ const CreateCardForm = (props) => {
 
    const handleAutoGen = e => {
       dispatch(autoGenerate(cardToPost.card_front))
+      setCardToPost({
+         ...cardToPost,
+         card_back: `${autoGenRes[Object.keys(autoGenRes)[0]]}`
+      })
    }
 
    const formSubmit = () => {
-      console.log('wtf',cardToPost)
+      console.log('wtf', autoGenRes[Object.keys(autoGenRes)[0]])
       dispatch(postNewCard(cardToPost))
       setCardToPost({
          card_front: null,
@@ -104,7 +108,7 @@ const CreateCardForm = (props) => {
                         name='card_front' 
                         value={cardToPost.card_front}
                         onChange={handleChange}
-                        onKeyDown={handleAutoGen}
+                        onBlur={handleAutoGen}
                         ref={register({ required: true })} 
                      />
                }

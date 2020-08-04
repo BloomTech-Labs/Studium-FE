@@ -8,8 +8,6 @@ import { getUser } from '../../redux/actions'
 
 
 const Login = props => {
-
-
     const dispatch = useDispatch()
 
     const [login, setLogin] = useState({
@@ -23,6 +21,7 @@ const Login = props => {
             [e.target.name]: e.target.value
         });
     };
+
     const handleSubmit = e => {
         e.preventDefault();
         AxiosWithAuth()
