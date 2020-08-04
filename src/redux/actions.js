@@ -11,6 +11,7 @@ export const POST_NEW_CARD = 'POST_NEW_CARD'
 export const EDIT_CARD = 'EDIT_CARD'
 export const EDIT_DECK = 'EDIT_DECK'
 export const SET_EDITED_CARD = 'SET_EDITED_CARD'
+export const DELETE_CARD = 'DELETE_CARD'
 export const SET_EDITED_DECK = 'SET_EDITED_DECK'
 export const AUTOGEN_RES = 'AUTOGEN_RES'
 export const CLEAR_AUTOGEN_RES = 'CLEAR_AUTOGEN_RES'
@@ -143,6 +144,21 @@ export const getAllCardsInDeck = (id) => dispatch => {
       .catch(err => {
 			console.log('NOOOOO!!!!', err);
 			dispatch({ type: SET_ERROR, payload: 'error getting cards' });
+		});
+}
+
+export const deleteCard = id => dispatch => {
+   console.log('id of deleted Card', parseInt(id))
+   AxiosWithAuth()
+      .delete(`/cards/${id}`)
+      .then(res => {
+         console.log('deleted card:', res)
+         console.log('id of deleted Card', id)
+         dispatch({ type: DELETE_CARD, payload: parseInt(id)})
+      })
+      .catch(err => {
+			console.log('NOOOOO!!!!', err);
+			dispatch({ type: SET_ERROR, payload: 'error deleting card' });
 		});
 }
 

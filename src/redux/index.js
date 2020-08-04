@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-import { GET_USER, SET_ERROR, SET_USER_DECKS, RESET_USER_DECKS, LOGOUT, POST_NEW_DECK, SET_CARDS, POST_NEW_CARD, SET_EDITED_CARD, EDIT_CARD, SET_EDITED_DECK, EDIT_DECK, AUTOGEN_RES, CLEAR_AUTOGEN_RES } from './actions';
+import { GET_USER, SET_ERROR, SET_USER_DECKS, RESET_USER_DECKS, LOGOUT, POST_NEW_DECK, SET_CARDS, POST_NEW_CARD, SET_EDITED_CARD, EDIT_CARD, DELETE_CARD, SET_EDITED_DECK, EDIT_DECK, AUTOGEN_RES, CLEAR_AUTOGEN_RES } from './actions';
 
 const initialState = {
    user: {},
@@ -58,6 +58,12 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             cardBeingEdited: {},
             deckCards: [...updatedDeckCards, action.payload]
+         }
+      case DELETE_CARD:
+         const DeckCardsMinusDeleted = state.deckCards.filter(card => card.id !== action.payload)
+         return {
+            ...state,
+            deckCards: DeckCardsMinusDeleted
          }
       case AUTOGEN_RES:
          return {

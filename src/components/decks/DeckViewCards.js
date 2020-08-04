@@ -1,12 +1,12 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import DeckCardView from './DeckCardView.js';
-
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { getUser } from '../../redux/actions'
+import DeckCardView from './DeckCardView.js'
 import { useParams, Link } from 'react-router-dom'
-
 import { CardWrapper, CardItself, CardFront } from './styles-decks/DeckViewStyles.js'
 
 const DeckViewCards = ({ match, location }) => {
+    const dispatch = useDispatch()
     const deckCards = useSelector(state => state.deckCards)
     const { id } = useParams()
 
