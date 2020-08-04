@@ -2,15 +2,17 @@ import React from 'react'
 import { AddCardFoot, NextButton, DeleteButton } from './styles-cards/CardFormStyles'
 import { useDispatch } from 'react-redux'
 import { deleteCard } from '../../redux/actions'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 
-const EditCardFooter = ({ id }) => {
+const EditCardFooter = ({ id, deckId }) => {
    const dispatch = useDispatch()
+   const history = useHistory()
 
    const handleDelete = e => {
       e.preventDefault()
       dispatch(deleteCard(id))
+      history.push(`/deck/${deckId}`)
    }
 
    return(
