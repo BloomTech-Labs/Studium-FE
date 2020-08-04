@@ -135,6 +135,7 @@ const CreateCardForm = (props) => {
                         name='card_back' 
                         value={autoGenRes.msg}
                         onChange={handleChange}
+                        onBlur={handleAutoGen}
                         ref={register({ required: true })} 
                      />
                }
