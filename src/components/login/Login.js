@@ -26,7 +26,7 @@ const Login = props => {
             .post('/auth/login', login)
             .then(
                 res => {
-                    setLogin('token', res.data.token);
+                    localStorage.setItem('token', res.data.token);
                     if (res.data.user) {
                         dispatch(getUser());
                         props.history.push(`/dashboard`);
