@@ -15,6 +15,7 @@ export const DELETE_CARD = 'DELETE_CARD'
 export const SET_EDITED_DECK = 'SET_EDITED_DECK'
 export const AUTOGEN_RES = 'AUTOGEN_RES'
 export const CLEAR_AUTOGEN_RES = 'CLEAR_AUTOGEN_RES'
+export const SET_CURRENT_SESSION = 'SET_CURRENT_SESSION'
 
 export const getUser = () => dispatch => {
    AxiosWithAuth()
@@ -159,6 +160,19 @@ export const deleteCard = id => dispatch => {
       .catch(err => {
 			console.log('NOOOOO!!!!', err);
 			dispatch({ type: SET_ERROR, payload: 'error deleting card' });
+		});
+}
+
+export const setCurrentSession = sessionToPost => dispatch => {
+   AxiosWithAuth()
+      .post('/sessions')
+      .then(res => {
+         console.log(res)
+         dispatch({ type: SET_CURRENT_SESSION, payload: sessionToPost})
+      })
+      .catch(err => {
+			console.log('NOOOOO!!!!', err);
+			dispatch({ type: SET_ERROR, payload: 'error posting session' });
 		});
 }
 

@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-import { GET_USER, SET_ERROR, SET_USER_DECKS, RESET_USER_DECKS, LOGOUT, POST_NEW_DECK, SET_CARDS, POST_NEW_CARD, SET_EDITED_CARD, EDIT_CARD, DELETE_CARD, SET_EDITED_DECK, EDIT_DECK, AUTOGEN_RES, CLEAR_AUTOGEN_RES } from './actions';
+import { GET_USER, SET_ERROR, SET_USER_DECKS, RESET_USER_DECKS, LOGOUT, POST_NEW_DECK, SET_CARDS, POST_NEW_CARD, SET_EDITED_CARD, EDIT_CARD, DELETE_CARD, SET_EDITED_DECK, EDIT_DECK, AUTOGEN_RES, CLEAR_AUTOGEN_RES, SET_CURRENT_SESSION } from './actions';
 
 const initialState = {
    user: {},
@@ -11,7 +11,14 @@ const initialState = {
    deckCards: [],
    cardBeingEdited: {},
    deckBeingEdited: {},
-   autoGenRes: {}
+   autoGenRes: {},
+   currentSession: {
+      deck_id: '',
+      session_end: '',
+      session_start: '',
+      total_looked_at: [],
+      user_id: ''
+   }
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -96,6 +103,16 @@ const rootReducer = (state = initialState, action) => {
             error:'',
             userDecks: [],
          }
+      case SET_CURRENT_SESSION:
+         return {
+            ...state,
+            currentSession: action.payload
+         }  
+      // case UPDATE_CURRENT_SESSION: 
+      //    return {
+      //       ...state,
+      //       currentSession: [...state.currentSession, totalLookedAt: action.payload]
+      //    }
       default:
          return state;
    }

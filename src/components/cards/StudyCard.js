@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Flippy, { FrontSide, BackSide } from 'react-flippy'
+import { useSelector, useDispatch } from 'react-redux'
 
 const cardStyle = {
    height: '397px',
@@ -31,12 +32,24 @@ const divStyle = {
    alignItems: 'center'
 }
 
-const StudyCard = ({ displayedCard }) => {
+const StudyCard = ({ displayedCard, setTotalLookedAt, totalLookedAt }) => {
+   const session = useSelector(state => state.currentSession)
+   const dispatch = useDispatch()
+
    const [flipped, setflipped] = useState(false)
 
    const toggleFlip = () => {
       setflipped(!flipped)
    }
+
+   useEffect(() => {
+      console.log('totalLookedAt:', totalLookedAt)
+      const lookedAtArray = totalLookedAt.filter(card => card.id !== displayedCard.id)
+      setTotalLookedAt([
+         ...lookedAtArray,
+         displayedCard
+      ])
+   }, [])
 
    return (
       <Flippy
