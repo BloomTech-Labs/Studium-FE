@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import NavbarDash from '../navigation/NavBarDash.js'
 import DeckViewCards from './DeckViewCards.js'
 import { useParams, Link } from 'react-router-dom'
-import { setDeckBeingEdited } from '../../redux/actions'
+import { setDeckBeingEdited, setCurrentSession } from '../../redux/actions'
 
 import { MainWrapper, H1, H2, NamesWrapper, FooterWrapper, EditButton, StudyButton } from './styles-decks/DeckViewStyles.js'
 
@@ -12,6 +12,13 @@ const DeckView = ({ match, location }) => {
    const userDecks = useSelector(state => state.userDecks)
    const [deckName, setDeckName] = useState()
    const [deckToEdit, setDeckToEdit] = useState()
+   const [sessionToPost, setSessionToPost] = useState({
+      deck_id: '',
+      user_id: '',
+      total_looked_at: '',
+      session_start: '',
+      session_end: ''
+   })
 
    const { id } = useParams()
 
@@ -20,14 +27,32 @@ const DeckView = ({ match, location }) => {
          if (parseInt(deck.id) === parseInt(id)) {
             setDeckName(deck.deck_name)
             setDeckToEdit(deck)
+            setSessionToPost({
+               ...sessionToPost,
+               deck_id: deck.id,
+               user_id: deck.user_id,
+            })
          }
       })
    }, [])
 
-   const handleClick = () => {
+   const handleEditClick = () => {
       console.log('deckToEdit-->', deckToEdit)
       dispatch(setDeckBeingEdited(deckToEdit))
   }
+
+   const handleStudyMousedown = () => {
+      setSessionToPost({
+         ...sessionToPost,
+         total_looked_at: '',
+         session_start: Date.now(),
+         session_end: ''
+      })
+   }
+
+   const handleStudyMouseUp = () => {
+      dispatch(setCurrentSession(sessionToPost))
+   }
 
    return (
       <MainWrapper>
@@ -39,10 +64,15 @@ const DeckView = ({ match, location }) => {
          <DeckViewCards />
          <FooterWrapper>
             <Link to={`/deck/${id}/edit-deck`}>
-               <EditButton onClick={handleClick}>Edit Deck</EditButton>
+               <EditButton onClick={handleEditClick}>Edit Deck</EditButton>
             </Link>
             <Link to={`/deck/${id}/study`}>
-               <StudyButton>Study</StudyButton>
+               <StudyButton 
+                  onMouseDown={handleStudyMousedown}
+                  onMouseUp={handleStudyMouseUp}
+               >
+                     Study
+               </StudyButton>
             </Link>
             
          </FooterWrapper>

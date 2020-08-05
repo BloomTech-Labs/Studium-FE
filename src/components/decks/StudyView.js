@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useParams, Link } from 'react-router-dom'
 import NavBarDash from '../navigation/NavBarDash'
 import StudyCard from '../cards/StudyCard'
@@ -9,14 +9,21 @@ import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import { setCurrentSession } from '../../redux/actions'
 
 const StudyView = () => {
+   const dispatch = useDispatch()
+
    const cards = useSelector(state => state.deckCards)
    const userDecks = useSelector(state => state.userDecks)
+   const currentSession = useSelector(state => state.currentSession)
+
    const { id } = useParams()
    const [deckName, setDeckName] = useState('')
    const [displayedCard, setDisplayedCard] = useState(0)
    const [i, setI] = useState(0)
+   const [totalLookedAt, setTotalLookedAt] = useState([])
+   const [session, setSession] = useState(currentSession)
 
    useEffect(() => {
       setDisplayedCard(
@@ -27,7 +34,15 @@ const StudyView = () => {
             setDeckName(deck.deck_name)
          }
       })
+      
    }, [])
+
+   useEffect (() => {
+      setTotalLookedAt([
+         ...totalLookedAt,
+         displayedCard
+      ])
+   }, [displayedCard])
 
    const nextCard = () => {
       if(i === (cards.length - 1)){
@@ -37,6 +52,11 @@ const StudyView = () => {
          setI(i + 1)
          setDisplayedCard(cards[i])
       }
+      const lookedAtArray = totalLookedAt.filter(card => card.id !== displayedCard.id)
+      setTotalLookedAt([
+         ...lookedAtArray,
+         displayedCard
+      ])
    }
 
    const prevCard = () => {
@@ -46,8 +66,25 @@ const StudyView = () => {
       }else{
          setI(i - 1)
          setDisplayedCard(cards[i])
-      }  
+      }
+      const lookedAtArray = totalLookedAt.filter(card => card.id !== displayedCard.id)
+      setTotalLookedAt([
+         ...lookedAtArray,
+         displayedCard
+      ])  
    }
+
+   const doneStudying = () => {
+      const updatedSesh = {
+         ...session,
+         total_looked_at: parseInt(totalLookedAt.length - 1),
+         session_end: Date.now()
+      }
+      dispatch(setCurrentSession(updatedSesh))
+   }
+
+   console.log('totalLookedAt:', totalLookedAt)
+
    return ( 
       <div>
          <NavBarDash />
@@ -63,7 +100,10 @@ const StudyView = () => {
             </div>
          </ToolBarWrapper>
          <div style={{ width: '340px', margin: 'auto' }}>
-            <StudyCard displayedCard={displayedCard}/>
+            <StudyCard 
+               displayedCard={displayedCard}
+               totalLookedAt={totalLookedAt}
+               setTotalLookedAt={setTotalLookedAt} />
          </div>
          <ArrowsWrapper>
             <ArrowBackIcon onClick={prevCard}/>
@@ -73,7 +113,7 @@ const StudyView = () => {
             <ArrowForwardIcon onClick={nextCard}/>
          </ArrowsWrapper>
          <Link to={`/deck/${displayedCard.deck_id}`}>
-            <DoneButton>Done Studying</DoneButton>
+            <DoneButton onClick={doneStudying}>Done Studying</DoneButton>
          </Link>
          
       </div>
