@@ -164,18 +164,21 @@ export const deleteCard = id => dispatch => {
 }
 
 export const setCurrentSession = sessionToPost => dispatch => {
+   dispatch({ type: SET_CURRENT_SESSION, payload: sessionToPost})
+}
+
+export const postNewSession = sessionToPost => dispatch => {
+   dispatch({ type: SET_CURRENT_SESSION, payload: sessionToPost})
    AxiosWithAuth()
       .post('/sessions')
       .then(res => {
          console.log(res)
-         dispatch({ type: SET_CURRENT_SESSION, payload: sessionToPost})
       })
       .catch(err => {
 			console.log('NOOOOO!!!!', err);
 			dispatch({ type: SET_ERROR, payload: 'error posting session' });
 		});
-}
-
+} 
 // export const getUserDecks = (user) => dispatch => {
 //    AxiosWithAuth()
 //       .get(`/users/${user.id}/decks`)
