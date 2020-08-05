@@ -9,7 +9,7 @@ import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-import { setCurrentSession } from '../../redux/actions'
+import { setCurrentSession, postNewSession } from '../../redux/actions'
 
 const StudyView = () => {
    const dispatch = useDispatch()
@@ -80,7 +80,7 @@ const StudyView = () => {
          total_looked_at: parseInt(totalLookedAt.length - 1),
          session_end: Date.now()
       }
-      dispatch(setCurrentSession(updatedSesh))
+      dispatch(postNewSession(updatedSesh))
    }
 
    console.log('totalLookedAt:', totalLookedAt)
