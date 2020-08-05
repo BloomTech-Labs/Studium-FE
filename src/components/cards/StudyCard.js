@@ -32,15 +32,18 @@ const divStyle = {
    alignItems: 'center'
 }
 
-const StudyCard = ({ displayedCard, setTotalLookedAt, totalLookedAt }) => {
+const StudyCard = ({ 
+   displayedCard, 
+   setTotalLookedAt, 
+   totalLookedAt,
+   isStarred,
+   setIsStarred 
+}) => {
+
    const session = useSelector(state => state.currentSession)
    const dispatch = useDispatch()
 
    const [flipped, setflipped] = useState(false)
-
-   const toggleFlip = () => {
-      setflipped(!flipped)
-   }
 
    useEffect(() => {
       console.log('totalLookedAt:', totalLookedAt)
@@ -50,6 +53,10 @@ const StudyCard = ({ displayedCard, setTotalLookedAt, totalLookedAt }) => {
          displayedCard
       ])
    }, [])
+
+   const toggleFlip = () => {
+      setflipped(!flipped)
+   }
 
    return (
       <Flippy

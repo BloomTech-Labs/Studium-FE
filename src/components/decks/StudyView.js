@@ -5,10 +5,11 @@ import NavBarDash from '../navigation/NavBarDash'
 import StudyCard from '../cards/StudyCard'
 import { DeckName, Term, ToolBarWrapper, ArrowsWrapper } from './styles-decks/StudyViewStyles'
 import { DoneButton } from './styles-decks/StudyViewStyles'
-import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
-import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
+import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined'
+import StarIcon from '@material-ui/icons/Star'
+import ArrowBackIcon from '@material-ui/icons/ArrowBack'
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import { setCurrentSession, postNewSession } from '../../redux/actions'
 
 const StudyView = () => {
@@ -24,6 +25,7 @@ const StudyView = () => {
    const [i, setI] = useState(0)
    const [totalLookedAt, setTotalLookedAt] = useState([])
    const [session, setSession] = useState(currentSession)
+   const [isStarred, setIsStarred] = useState(false)
 
    useEffect(() => {
       setDisplayedCard(
@@ -83,27 +85,39 @@ const StudyView = () => {
       dispatch(postNewSession(updatedSesh))
    }
 
+   const toggelStarred = () => {
+      setIsStarred(!isStarred)
+   }
+
    console.log('totalLookedAt:', totalLookedAt)
 
    return ( 
       <div>
          <NavBarDash />
          <DeckName>{deckName}</DeckName>
-         <ToolBarWrapper>
+         <ToolBarWrapper style={{ width: '340px', margin: 'auto', marginBottom: '6px' }}>
             <Term>Term</Term>
             <div style={{ 
                width: '60px', 
                display: 'flex', 
                justifyContent: 'space-between'}}>
                <EditOutlinedIcon />
-               <StarBorderOutlinedIcon />
+               <div onClick={toggelStarred}>
+                  {isStarred === false
+                     ?  <StarBorderOutlinedIcon />
+                     :  <StarIcon color='secondary' />
+                  }
+               </div>
             </div>
          </ToolBarWrapper>
          <div style={{ width: '340px', margin: 'auto' }}>
             <StudyCard 
                displayedCard={displayedCard}
                totalLookedAt={totalLookedAt}
-               setTotalLookedAt={setTotalLookedAt} />
+               setTotalLookedAt={setTotalLookedAt}
+               isStarred={isStarred}
+               seetIsStarred={setIsStarred} 
+            />
          </div>
          <ArrowsWrapper>
             <ArrowBackIcon onClick={prevCard}/>
