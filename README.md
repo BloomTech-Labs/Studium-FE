@@ -5,6 +5,9 @@
 >Easy and enjoyable application to study Life Sciences with a gamification feature you can use to track your progress!
 
 # Badges
+<a href="https://codeclimate.com/github/Lambda-School-Labs/Studium-FE/maintainability"><img src="https://api.codeclimate.com/v1/badges/0c4cc883ef576dd9275c/maintainability" /></a>
+
+<a href="https://codeclimate.com/github/Lambda-School-Labs/Studium-FE/test_coverage"><img src="https://api.codeclimate.com/v1/badges/0c4cc883ef576dd9275c/test_coverage" /></a>
 
 ## License
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
