@@ -42,7 +42,7 @@ const CreateDeckForm = () => {
   return (
     <MainWrapper style={{ backgroundColor: `${colors}` }}>
       <NavbarDash />
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} data-testid="form">
         <LabelWrapper>
           <H2>Title</H2>
           <input value={deckToPost.deck_name} name="deck_name" placeholder="What are you studying?" onChange={handleChange} />

@@ -1,7 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[` 1`] = `
-.c0 {
+exports[`matches snapshot 1`] = `
+.c3 {
+  background: white;
+  color: #2E71FD;
+  border: 1px solid #2E71FD;
+  border-radius: 4px;
+  display: block;
+  width: 67px;
+  height: 22px;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: 'Source Sans Pro';
+}
+
+.c3:hover {
+  background: #2e71fd;
+  color: white;
+}
+
+.c1 {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  padding: 20px 20px 0 20px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  box-shadow: 0px 5px 5px #c4c4c4;
+}
+
+.c2 {
+  width: 72px;
+  height: 26px;
+  font-family: "Poppins",sans-serif;
+  font-style: bold;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 25px;
+  color: #2e71fd;
+}
+
+.c6 {
   background: #2e71fd;
   color: white;
   border: 1px solid #2e71fd;
@@ -15,62 +69,290 @@ exports[` 1`] = `
   font-family: "Source Sans Pro";
 }
 
-.c0:hover {
+.c6:hover {
   color: #2e71fd;
   background: white;
 }
 
-<button
-  className="c0"
-/>
-`;
-
-exports[`Button works 1`] = `
-.c0 {
-  background: #2e71fd;
-  color: white;
-  border: 1px solid #2e71fd;
+.c7 {
+  background: white;
+  color: #2E71FD;
+  border: 1px solid #2E71FD;
   border-radius: 4px;
   padding: 12px;
-  margin-left: 6px;
+  margin: 0 auto 1em auto;
   display: block;
-  width: 100px;
-  height: 40px;
+  width: 80%;
   cursor: pointer;
-  font-family: "Source Sans Pro";
+  font-family: 'Source Sans Pro';
 }
 
-.c0:hover {
-  color: #2e71fd;
-  background: white;
-}
-
-<button
-  className="c0"
-/>
-`;
-
-exports[`it works 1`] = `
-.c0 {
-  background: #2e71fd;
+.c7:hover {
+  background: #2E71FD;
   color: white;
-  border: 1px solid #2e71fd;
+  border: none;
+}
+
+.c8 {
+  background: #2E71FD;
+  color: white;
+  border: none;
   border-radius: 4px;
   padding: 12px;
-  margin-left: 6px;
+  margin: 0 auto 1em auto;
   display: block;
-  width: 100px;
-  height: 40px;
+  width: 80%;
   cursor: pointer;
-  font-family: "Source Sans Pro";
+  font-family: 'Source Sans Pro';
 }
 
-.c0:hover {
-  color: #2e71fd;
+.c8:hover {
   background: white;
+  color: #2E71FD;
+  border: 1px solid #2E71FD;
 }
 
-<button
+.c0 {
+  max-width: 800px;
+  margin: 0 auto 0 auto;
+  box-sizing: border-box;
+  font-family: '';
+}
+
+.c0 h1,
+.c0 h2,
+.c0 h3,
+.c0 h4,
+.c0 h5,
+.c0 h6 {
+  font-family: '';
+}
+
+.c0 .getStarted {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.c0 .h2Tags {
+  text-align: center;
+  font-size: 2em;
+  line-height: 24px;
+  font-family: 'Monstserrat';
+  color: #010101;
+}
+
+.c0 .pTags {
+  text-align: center;
+  font-size: 1.4em;
+}
+
+.c0 .centeredOr {
+  margin: 0 auto;
+}
+
+.c5 {
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+  font-family: '';
+  margin-bottom: 8px;
+  width: 50%;
+  box-sizing: border-box;
+  height: 40px;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+
+.c4 {
+  width: 100%;
+  max-width: 800px;
+  background: white;
+  padding: 16px;
+  box-sizing: border-box;
+  color: black;
+  border-radius: 4px;
+}
+
+@media (min-width:370px) {
+
+}
+
+<main
   className="c0"
-/>
+>
+  <header
+    className="c1"
+  >
+    <a
+      className="c2"
+    >
+      Studium
+    </a>
+    <button
+      className="c3"
+      onClick={[Function]}
+      type="button"
+    >
+      Log In
+    </button>
+  </header>
+  <img
+    alt="headerimage"
+    src={
+      Object {
+        "ReactComponent": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        },
+        "__esModule": true,
+        "default": "header.svg",
+      }
+    }
+    style={
+      Object {
+        "width": "100%",
+      }
+    }
+  />
+  <h2
+    className="h2Tags"
+  >
+    A place for students to create flashcards, share, and learn 
+  </h2>
+  <p
+    className="pTags"
+  >
+    Master any subject, one success at a time.
+  </p>
+  <form
+    className="c4 getStarted"
+    data-testid="form"
+    onSubmit={[Function]}
+  >
+    <input
+      className="c5"
+      id="email"
+      name="email"
+      onChange={[Function]}
+      placeholder="Enter your email"
+      type="text"
+      value=""
+    />
+    <button
+      className="c6"
+      type="submit"
+    >
+      Get Started
+    </button>
+  </form>
+  <p
+    className="centeredOr"
+  >
+    OR
+  </p>
+  <img
+    alt="character sprintinging"
+    src={
+      Object {
+        "ReactComponent": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        },
+        "__esModule": true,
+        "default": "sprinting.svg",
+      }
+    }
+    style={
+      Object {
+        "width": "100%",
+      }
+    }
+  />
+  <h2
+    className="h2Tags"
+  >
+    You aren’t here to waste time, we know
+  </h2>
+  <p
+    className="pTags"
+  >
+    Studium uses spaced repitition to help you spend your time studying only the things you don’t know. This is the most effiicent and useful way to study.
+  </p>
+  <img
+    alt="character reading"
+    src={
+      Object {
+        "ReactComponent": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        },
+        "__esModule": true,
+        "default": "reading.svg",
+      }
+    }
+    style={
+      Object {
+        "width": "100%",
+      }
+    }
+  />
+  <h2
+    className="h2Tags"
+  >
+    Share the important info from your massive textbooks
+  </h2>
+  <p
+    className="pTags"
+  >
+    Share the info you’ve pulled from your massive textbooks. Let friends share with you the info they’ve pulled. Together you can conquer this class.
+  </p>
+  <img
+    alt="character sitting"
+    src={
+      Object {
+        "ReactComponent": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        },
+        "__esModule": true,
+        "default": "sitting.svg",
+      }
+    }
+    style={
+      Object {
+        "width": "100%",
+      }
+    }
+  />
+  <h2
+    className="h2Tags"
+  >
+    Your textbooks are massive
+  </h2>
+  <p
+    className="pTags"
+  >
+    We know your textbook is over 1000 pages. Let’s help you get the most important info into online flashcards and start studying.
+  </p>
+  <button
+    className="c7"
+    data-testid="loginButton"
+    onClick={[Function]}
+  >
+    Log In
+  </button>
+  <button
+    className="c8"
+    data-testid="signupButton"
+    onClick={[Function]}
+  >
+    Sign Up
+  </button>
+</main>
 `;
