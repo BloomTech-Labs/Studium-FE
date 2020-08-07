@@ -29,7 +29,7 @@ function App() {
   return (
     <div className="App">
       <GlobalStyle />
-      <Route exact path='/' component={SplashPage} />
+      <Route exact path='/' component={SplashPage} data-test-id='route'/>
       <Route path={CALLBACK_PATH} component={LoginCallback} />
       <Route path='/register' component={Register} />
       <Route path='/okta-login' component={OktaLogin} />

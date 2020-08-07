@@ -62,13 +62,13 @@ const SplashPage = () => {
 
   return (
     <>
-      <PageLayout data-testid="successMessage">
+      <PageLayout data-testid="landingpage">
         <NavBar />
         <img src={require("../common/header.svg")} style={{ width: "100%" }} alt="headerimage" />
         <h2 className="h2Tags">A place for students to create flashcards, share, and learn </h2>
         <p className="pTags">Master any subject, one success at a time.</p>
 
-        <Form onSubmit={handleSubmit} className="getStarted">
+        <Form onSubmit={handleSubmit} className="getStarted" data-testid="form">
           {loading ? (
             <Spinner />
           ) : (
@@ -92,10 +92,10 @@ const SplashPage = () => {
         <img src={require("../common/sitting.svg")} style={{ width: "100%" }} alt="character sitting" />
         <h2 className="h2Tags">Your textbooks are massive</h2>
         <p className="pTags">We know your textbook is over 1000 pages. Let’s help you get the most important info into online flashcards and start studying.</p>
-        <ButtonBottom loginCTA onClick={routeToLogin}>
+        <ButtonBottom loginCTA onClick={routeToLogin} data-testid="loginButton">
           Log In
         </ButtonBottom>
-        <ButtonBottom signupCTA onClick={routeToRegister}>
+        <ButtonBottom signupCTA onClick={routeToRegister} data-testid="signupButton">
           Sign Up
         </ButtonBottom>
       </PageLayout>
