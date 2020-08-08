@@ -223,7 +223,7 @@ exports[`matches snapshot 1`] = `
   <h2
     className="h2Tags"
   >
-    A place for students to create flashcards, share, and learn 
+    A place for students to create flashcards, share, and learn
   </h2>
   <p
     className="pTags"

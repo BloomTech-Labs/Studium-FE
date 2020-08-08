@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { OutLine, Nav, H3, FirstName, LastName, UserName, Email, Password, SignUp, FnText, LnText, EmailText, UserText, PassText, AnchorButton, H4, HRline, HRline2, HRStyle } from "./Registerstyles";
-import GoogleButton from "react-google-button";
+// import GoogleButton from "react-google-button";
+import GoogleButton from "react-google-button/dist/react-google-button";
 import AxiosWithAuth from "../../utils/axiosWithAuth.js";
 const Register = (props) => {
   const [signUpData, setSignUpData] = useState({
@@ -62,7 +63,7 @@ const Register = (props) => {
         <FirstName
           type="text"
           name="first_name"
-          //   placeholder='First Name'
+            placeholder='First Name'
           value={signUpData.first_name}
           onChange={handleChange}
         />
@@ -70,7 +71,7 @@ const Register = (props) => {
         <LastName
           type="text"
           name="last_name"
-          //   placeholder='Last Name'
+            placeholder='Last Name'
           value={signUpData.last_name}
           onChange={handleChange}
         />

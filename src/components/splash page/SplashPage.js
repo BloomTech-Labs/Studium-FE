@@ -65,7 +65,7 @@ const SplashPage = () => {
       <PageLayout data-testid="landingpage">
         <NavBar />
         <img src={require("../common/header.svg")} style={{ width: "100%" }} alt="headerimage" />
-        <h2 className="h2Tags">A place for students to create flashcards, share, and learn </h2>
+        <h2 className="h2Tags">A place for students to create flashcards, share, and learn</h2>
         <p className="pTags">Master any subject, one success at a time.</p>
 
         <Form onSubmit={handleSubmit} className="getStarted" data-testid="form">
