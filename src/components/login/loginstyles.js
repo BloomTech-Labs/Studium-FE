@@ -64,6 +64,7 @@ margin: 0 auto;
 export const UserText = styled.h5 `
 width: 62px;
 height: 24px;
+margin-right: 240px;
 font-family: Source Sans Pro;
 font-style: normal;
 font-weight: bold;
@@ -85,6 +86,7 @@ border-radius: 6px;
 export const PassText = styled.h5 `
 width: 60px;
 height: 24px;
+margin-right: 240px;
 font-family: Source Sans Pro;
 font-style: normal;
 font-weight: bold;
