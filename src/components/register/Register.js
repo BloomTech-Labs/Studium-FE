@@ -79,7 +79,7 @@ const Register = (props) => {
         <UserName
           type="text"
           name="username"
-          //   placeholder='Type your username'
+            placeholder='Type your username'
           value={signUpData.username}
           onChange={handleChange}
         />
@@ -87,7 +87,7 @@ const Register = (props) => {
         <Email
           type="email"
           name="email"
-          //   placeholder='Email'
+            placeholder='Email'
           value={signUpData.email}
           onChange={handleChange}
         />
@@ -95,7 +95,7 @@ const Register = (props) => {
         <Password
           type="password"
           name="password"
-          //   placeholder="Type your password"
+            placeholder="Type your password"
           value={signUpData.password}
           onChange={handleChange}
           required

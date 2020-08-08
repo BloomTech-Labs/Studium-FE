@@ -1,20 +1,10 @@
 import React from "react";
-import { render, fireEvent, getByPlaceholderText } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Register from "../Register";
-// import OutLine from "../Register";
-
-// test("register page", () => {
-//   const { getAllByText, debug } = render(<Register />);
-//   const h6 = getAllByText('By clicking sign up');
-//   expect(h6).toBeInTheDocument();
-//   // debug();
-// });
 
 test("form shows success message on submit with form details", async () => {
-  const { getByText, getAllByText, getByTestId, debug, getByPlaceholderText } = render(
-    <Register />
-  );
+  const { getByText, getByPlaceholderText } = render(<Register />);
 
   // Testing first name field
   const first_name = getByPlaceholderText(/First Name/i);
@@ -25,13 +15,17 @@ test("form shows success message on submit with form details", async () => {
   await userEvent.type(last_name, "Dugue");
   expect(last_name).toHaveValue("Dugue");
   // Testing username field
-  // const username = getByText(/address/i);
-  // await userEvent.type(username, "123 test way");
-  // expect(username).toHaveValue("123 test way");
+  const username = getByPlaceholderText(/Type your username/i);
+  await userEvent.type(username, "123testway");
+  expect(username).toHaveValue("123testway");
+  // Testing email field
+  const email = getByPlaceholderText(/Email/i);
+  await userEvent.type(email, "123testway@studium.com");
+  expect(email).toHaveValue("123testway@studium.com");
   // Testing password field
-  // const password = getByText(/city/i);
-  // await userEvent.type(password, "Tampa");
-  // expect(password).toHaveValue("Tampa");
+  const password = getByPlaceholderText(/Type your password/i);
+  await userEvent.type(password, "Tampa");
+  expect(password).toHaveValue("Tampa");
   // Testing state field
   const SignUp = getByText("SIGN UP");
   await userEvent.type(SignUp, "SIGN UP");
