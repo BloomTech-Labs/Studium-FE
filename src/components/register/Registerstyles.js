@@ -97,7 +97,7 @@ border-radius: 6px;
 export const FnText = styled.h5 `
 width: 64px;
 height: 24px;
-margin-left: 30px;
+margin-right: 240px;
 font-family: Source Sans Pro;
 font-style: normal;
 font-weight: bold;
@@ -108,7 +108,7 @@ color: #010101;
 export const LnText = styled.h5 `
 width: 60px;
 height: 24px;
-margin-left: 30px;
+margin-right: 240px;
 font-family: Source Sans Pro;
 font-style: normal;
 font-weight: bold;
@@ -119,7 +119,7 @@ color: #010101;
 export const UserText = styled.h5 `
 width: 62px;
 height: 24px;
-margin-left: 30px;
+margin-right: 240px;
 font-family: Source Sans Pro;
 font-style: normal;
 font-weight: bold;
@@ -130,7 +130,7 @@ color: #010101;
 export const EmailText = styled.h5 `
 width: 60px;
 height: 24px;
-margin-left: 20px;
+margin-right: 270px;
 font-family: Source Sans Pro;
 font-style: normal;
 font-weight: bold;
@@ -141,7 +141,7 @@ color: #010101;
 export const PassText = styled.h5 `
 width: 60px;
 height: 24px;
-margin-left: 30px;
+margin-right: 240px;
 font-family: Source Sans Pro;
 font-style: normal;
 font-weight: bold;
