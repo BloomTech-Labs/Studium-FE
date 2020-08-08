@@ -28,6 +28,7 @@ const CALLBACK_PATH = '/implicit/callback';
 function App() {
   return (
     <div className="App">
+    <h2>A place for students to create flashcards, share, and learn</h2>
       <GlobalStyle />
       <Route exact path='/' component={SplashPage} data-test-id='route'/>
       <Route path={CALLBACK_PATH} component={LoginCallback} />

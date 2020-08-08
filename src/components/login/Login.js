@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import {LoginScreen, TextBox, TextBox2, Button, Nav, H3, H4, HRline, HRline2, AnchorButton, Form , HRStyle, UserText, PassText} from "./loginstyles"
 import AxiosWithAuth from '../../utils/axiosWithAuth.js'
-import GoogleButton from 'react-google-button'
+// import GoogleButton from 'react-google-button'
+import GoogleButton from 'react-google-button/dist/react-google-button'
 import { useDispatch } from 'react-redux'
 import { getUser } from '../../redux/actions'
 
@@ -63,7 +64,7 @@ const Login = props => {
                 <TextBox
                     type="text"
                     name="username"
-                    // placeholder='Type your username'
+                    placeholder='Type your username'
                     value={login.username}
                     onChange={handleChange}
                 />
@@ -71,7 +72,7 @@ const Login = props => {
                 <TextBox2
                     type="password"
                     name="password"
-                    // placeholder="Type your password"
+                    placeholder="Type your password"
                     value={login.password}
                     onChange={handleChange}
                 />
