@@ -3,11 +3,11 @@ import { LoginScreen, TextBox, TextBox2, Button, Nav, H3, H4, HRline, HRline2, A
 import AxiosWithAuth from "../../utils/axiosWithAuth.js";
 // import GoogleButton from 'react-google-button'
 import GoogleButton from "react-google-button/dist/react-google-button";
-// import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { getUser } from "../../redux/actions";
 
 const Login = (props) => {
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
   const [login, setLogin] = useState({
     username: "",
@@ -28,7 +28,7 @@ const Login = (props) => {
       .then((res) => {
         localStorage.setItem("token", res.data.token);
         if (res.data.user) {
-          // dispatch(getUser());
+          dispatch(getUser());
           setLogin(getUser());
           props.history.push(`/dashboard`);
           // console.log(res.data.user)

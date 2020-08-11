@@ -51,7 +51,7 @@ const CreateDeckForm = () => {
           <NamesWrapper>
             <H3>Photo</H3>
             {/* added fake image as placeholder for upload image feature */}
-            <img src={require("../../images/choosephoto.svg")} style={{ width: "700%" }} alt="choose your pic to upload" />
+            <img src={require("../../images/choosephoto.svg")} style={{ width: "100%" }} alt="choose your pic to upload" />
           </NamesWrapper>
           <H3>or choose a color</H3>
           <CirclePicker colors={colors} onChangeComplete={(handleChange) => setColor(handleChange)} />
