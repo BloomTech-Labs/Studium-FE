@@ -24,7 +24,7 @@ const DeckView = ({ match, location }) => {
 
    useEffect(() => {
       userDecks.map(deck => {
-         if (parseInt(deck.id) === parseInt(id)) {
+         if (deck.id === id) {
             setDeckName(deck.deck_name)
             setDeckToEdit(deck)
             setSessionToPost({
