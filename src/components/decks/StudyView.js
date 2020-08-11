@@ -32,7 +32,7 @@ const StudyView = () => {
          cards[i]
       )
       userDecks.map(deck => {
-         if (parseInt(deck.id) === parseInt(id)) {
+         if (deck.id === id) {
             setDeckName(deck.deck_name)
          }
       })
@@ -90,6 +90,7 @@ const StudyView = () => {
    }
 
    console.log('totalLookedAt:', totalLookedAt)
+   console.log('session:', session)
 
    return ( 
       <div>
