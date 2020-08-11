@@ -27,7 +27,7 @@ const Register = (props) => {
         localStorage.setItem("token", res.data.token);
         console.log(res);
         if (res.data.newUser) {
-          props.history.push(`/dashboard/${res.data.newUser}`);
+          props.history.push(`/dashboard`);
         } else {
           props.history.push("/register");
         }
@@ -63,7 +63,7 @@ const Register = (props) => {
         <FirstName
           type="text"
           name="first_name"
-            placeholder='First Name'
+          placeholder='First Name'
           value={signUpData.first_name}
           onChange={handleChange}
         />
@@ -71,7 +71,7 @@ const Register = (props) => {
         <LastName
           type="text"
           name="last_name"
-            placeholder='Last Name'
+          placeholder='Last Name'
           value={signUpData.last_name}
           onChange={handleChange}
         />
@@ -79,7 +79,7 @@ const Register = (props) => {
         <UserName
           type="text"
           name="username"
-            placeholder='Type your username'
+          placeholder='Type your username'
           value={signUpData.username}
           onChange={handleChange}
         />
@@ -87,7 +87,7 @@ const Register = (props) => {
         <Email
           type="email"
           name="email"
-            placeholder='Email'
+          placeholder='Email'
           value={signUpData.email}
           onChange={handleChange}
         />
@@ -95,7 +95,7 @@ const Register = (props) => {
         <Password
           type="password"
           name="password"
-            placeholder="Type your password"
+          placeholder="Type your password"
           value={signUpData.password}
           onChange={handleChange}
           required
