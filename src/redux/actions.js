@@ -170,7 +170,7 @@ export const setCurrentSession = sessionToPost => dispatch => {
 export const postNewSession = sessionToPost => dispatch => {
    dispatch({ type: SET_CURRENT_SESSION, payload: sessionToPost})
    AxiosWithAuth()
-      .post('/sessions')
+      .post('/sessions', sessionToPost)
       .then(res => {
          console.log(res)
       })

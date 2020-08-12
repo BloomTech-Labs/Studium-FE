@@ -10,7 +10,9 @@ import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined'
 import StarIcon from '@material-ui/icons/Star'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
-import { setCurrentSession, postNewSession } from '../../redux/actions'
+import AxiosWithAuth from '../../utils/axiosWithAuth'
+import axios from 'axios'
+import { setCurrentSession, postNewSession, editCard } from '../../redux/actions'
 
 const StudyView = () => {
    const dispatch = useDispatch()
@@ -76,21 +78,48 @@ const StudyView = () => {
       ])  
    }
 
+   const fireLeitner = () => {
+      const fixedLookedAtArr = totalLookedAt.slice(1)
+      const leitnerArr = fixedLookedAtArr.map(card => {
+         return {
+            card_id: card.id,
+            isStarred: card.is_starred,
+            comfortLevel: card.comfort_level
+         }
+      })
+      console.log('leitnerArr:', leitnerArr)
+      axios
+         .post('https://studium-ds.herokuapp.com/leitner', leitnerArr)
+         .then(res => {
+            console.log('res:', res)
+         })
+         .catch(err => console.log('leitnerErr:', err))
+   }
+
    const doneStudying = () => {
       const updatedSesh = {
          ...session,
          total_looked_at: parseInt(totalLookedAt.length - 1),
          session_end: Date.now()
       }
+      fireLeitner()
       dispatch(postNewSession(updatedSesh))
+      console.log('updatedSesh:', updatedSesh)
    }
 
    const toggelStarred = () => {
-      setIsStarred(!isStarred)
+      // setIsStarred(!isStarred)
+      const cardToEdit = {
+         ...displayedCard,
+         is_starred: !displayedCard.is_starred
+      }
+      setDisplayedCard(cardToEdit)
+      dispatch(editCard(cardToEdit))
    }
 
    console.log('totalLookedAt:', totalLookedAt)
    console.log('session:', session)
+   console.log('displayedCard:', displayedCard)
 
    return ( 
       <div>
@@ -104,7 +133,7 @@ const StudyView = () => {
                justifyContent: 'space-between'}}>
                <EditOutlinedIcon />
                <div onClick={toggelStarred}>
-                  {isStarred === false
+                  {displayedCard.is_starred === false
                      ?  <StarBorderOutlinedIcon />
                      :  <StarIcon color='secondary' />
                   }
