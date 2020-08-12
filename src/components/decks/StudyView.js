@@ -12,6 +12,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import AxiosWithAuth from '../../utils/axiosWithAuth'
 import axios from 'axios'
+import moment from 'moment';
 import { setCurrentSession, postNewSession, editCard } from '../../redux/actions'
 
 const StudyView = () => {
@@ -92,12 +93,16 @@ const StudyView = () => {
          .post('https://studium-ds.herokuapp.com/leitner', leitnerArr)
          .then(res => {
             console.log('res.data:', res.data)
+            res.data.map(card => {
+               card.nextDue = moment(card.nextDue, "MM-DD-YYYY hh:mm").unix()
+               console.log(card.nextDue)
+               dispatch(editCard(card))
+            })
          })
          .catch(err => console.log('leitnerErr:', err))
    }
 
    const doneStudying = () => {
-      // const seshEnd = BigInt(Date.now())
       const updatedSesh = {
          ...session,
          total_looked_at: parseInt(totalLookedAt.length - 1),
@@ -109,7 +114,6 @@ const StudyView = () => {
    }
 
    const toggelStarred = () => {
-      // setIsStarred(!isStarred)
       const cardToEdit = {
          ...displayedCard,
          is_starred: !displayedCard.is_starred
