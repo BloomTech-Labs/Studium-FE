@@ -98,17 +98,31 @@ export const postNewCard = cardToPost => dispatch => {
 }
 
 export const editCard = (cardToEdit) => dispatch => {
-   AxiosWithAuth()
-      .put(`/cards/${cardToEdit.id}`, cardToEdit)
-      .then(res => {
-         console.log(res)
-         dispatch({ type: EDIT_CARD, payload: cardToEdit})
-      })
-      .catch(err => {
-         console.log('NOOOOO!!!!', err);
-         console.log('cardToEdit', cardToEdit);
-			dispatch({ type: SET_ERROR, payload: 'error editing card' });
-		});
+   if (cardToEdit.id) {
+      AxiosWithAuth()
+         .put(`/cards/${cardToEdit.id}`, cardToEdit)
+         .then(res => {
+            console.log(res)
+            dispatch({ type: EDIT_CARD, payload: cardToEdit})
+         })
+         .catch(err => {
+            console.log('NOOOOO!!!!', err);
+            console.log('cardToEdit', cardToEdit);
+		   	dispatch({ type: SET_ERROR, payload: 'error editing card' });
+		   });
+   } else if (cardToEdit.card_id) {
+      AxiosWithAuth()
+         .put(`/cards/${cardToEdit.card_id}`, cardToEdit)
+         .then(res => {
+            console.log(res)
+            dispatch({ type: EDIT_CARD, payload: cardToEdit})
+         })
+         .catch(err => {
+            console.log('NOOOOO!!!!', err);
+            console.log('cardToEdit', cardToEdit);
+		   	dispatch({ type: SET_ERROR, payload: 'error editing card' });
+		   });
+   }
 }
 
 export const setCardBeingEdited = (cardToEdit) => dispatch => {

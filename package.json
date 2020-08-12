@@ -16,6 +16,7 @@
     "dotenv": "^8.2.0",
     "env-cmd": "^10.1.0",
     "jest-styled-components": "^7.0.2",
+    "moment": "^2.27.0",
     "prop-types": "^15.7.2",
     "pure-react-carousel": "^1.27.1",
     "react": "^16.13.1",
