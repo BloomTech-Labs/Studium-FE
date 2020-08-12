@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getUser } from '../../redux/actions'
+import { getUser, getAllCardsInDeck } from '../../redux/actions'
 import DeckCardView from './DeckCardView.js'
 import { useParams, Link } from 'react-router-dom'
 import { CardWrapper, CardItself, CardFront } from './styles-decks/DeckViewStyles.js'
@@ -9,6 +9,10 @@ const DeckViewCards = ({ match, location }) => {
     const dispatch = useDispatch()
     const deckCards = useSelector(state => state.deckCards)
     const { id } = useParams()
+
+    useEffect(() => {
+        dispatch(getAllCardsInDeck(id))
+    }, [])
 
     return (
 

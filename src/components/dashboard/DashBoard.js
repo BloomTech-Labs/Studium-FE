@@ -4,10 +4,11 @@ import NavbarDash from '../navigation/NavBarDash.js'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import DeckDetails from '../decks/DeckDetails.js'
-import { logout } from '../../redux/actions'
+import { logout, resetUserDecks, getUser } from '../../redux/actions'
 
 const DashBoard = ({ match, location }) => {
   const userDecks = useSelector(state => state.userDecks)
+  const user = useSelector(state => state.user)
   const dispatch = useDispatch()
 
   const handleClick = e => {
@@ -16,6 +17,7 @@ const DashBoard = ({ match, location }) => {
   }
 
   useEffect(() => {
+    dispatch(getUser())
     console.log('USERDECKS-->', userDecks)
   }, [])
 

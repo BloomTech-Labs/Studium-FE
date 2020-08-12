@@ -44,11 +44,7 @@ const EditDeck = (props) => {
    const formSubmit = () => {
       console.log('wtf',deckToEdit)
       dispatch(editDeck(deckToEdit))
-      // dispatch(resetUserDecks(deckToEdit.user_id))
       setDeckToEdit({})
-      // if (cardToEdit.card_front !== null && cardToEdit.card_back !== null) {
-      //    props.history.push(`/deck/${id}`)
-      // }
    }
 
    return (
