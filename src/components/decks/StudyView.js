@@ -91,20 +91,21 @@ const StudyView = () => {
       axios
          .post('https://studium-ds.herokuapp.com/leitner', leitnerArr)
          .then(res => {
-            console.log('res:', res)
+            console.log('res.data:', res.data)
          })
          .catch(err => console.log('leitnerErr:', err))
    }
 
    const doneStudying = () => {
+      // const seshEnd = BigInt(Date.now())
       const updatedSesh = {
          ...session,
          total_looked_at: parseInt(totalLookedAt.length - 1),
          session_end: Date.now()
       }
       fireLeitner()
-      dispatch(postNewSession(updatedSesh))
       console.log('updatedSesh:', updatedSesh)
+      dispatch(postNewSession(updatedSesh))
    }
 
    const toggelStarred = () => {
@@ -159,7 +160,6 @@ const StudyView = () => {
          <Link to={`/deck/${displayedCard.deck_id}`}>
             <DoneButton onClick={doneStudying}>Done Studying</DoneButton>
          </Link>
-         
       </div>
    )
 }

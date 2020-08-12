@@ -57,6 +57,7 @@ export const postNewDeck = (deckToPost) => dispatch => {
       .then(res => {
          console.log('from postNewDeck-->', res)
          dispatch({ type: POST_NEW_DECK, payload: deckToPost })
+
       })
       .catch(err => {
 			console.log('NOOOOO!!!!', err);
@@ -168,6 +169,7 @@ export const setCurrentSession = sessionToPost => dispatch => {
 }
 
 export const postNewSession = sessionToPost => dispatch => {
+   console.log('sessionToPost(from actions):', sessionToPost)
    dispatch({ type: SET_CURRENT_SESSION, payload: sessionToPost})
    AxiosWithAuth()
       .post('/sessions', sessionToPost)

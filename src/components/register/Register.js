@@ -3,7 +3,12 @@ import { OutLine, Nav, H3, FirstName, LastName, UserName, Email, Password, SignU
 // import GoogleButton from "react-google-button";
 import GoogleButton from "react-google-button/dist/react-google-button";
 import AxiosWithAuth from "../../utils/axiosWithAuth.js";
+import { getUser } from '../../redux/actions'
+import { useDispatch } from 'react-redux'
+
 const Register = (props) => {
+  const dispatch = useDispatch()
+
   const [signUpData, setSignUpData] = useState({
     first_name: "",
     last_name: "",
@@ -26,6 +31,7 @@ const Register = (props) => {
       .then((res) => {
         localStorage.setItem("token", res.data.token);
         console.log(res);
+        dispatch(getUser())
         if (res.data.newUser) {
           props.history.push(`/dashboard`);
         } else {
