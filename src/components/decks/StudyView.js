@@ -30,7 +30,7 @@ const StudyView = () => {
    const [session, setSession] = useState(currentSession)
    const [isStarred, setIsStarred] = useState(false)
 
-   const studyArr = cards.filter(card => parseInt(card.next_due) <= Date.now())
+   const studyArr = cards.filter(card => (parseInt(card.next_due) <= Date.now()) || (card.next_due === null))
    
    console.log('TIME:', Date.now())
    console.log('studyArr-->', studyArr)
@@ -99,7 +99,7 @@ const StudyView = () => {
          .then(res => {
             console.log('res.data:', res.data)
             res.data.map(card => {
-               card.next_due = moment(card.next_due, "MM-DD-YYYY hh:mm").unix()
+               card.next_due = moment(card.next_due, "MM-DD-YYYY hh:mm").valueOf()
                console.log(card.next_due)
                dispatch(editCard(card))
             })
@@ -131,44 +131,51 @@ const StudyView = () => {
    console.log('session:', session)
    console.log('displayedCard:', displayedCard)
 
+   
    return ( 
       <div>
          <NavBarDash />
          <DeckName>{deckName}</DeckName>
-         <ToolBarWrapper style={{ width: '340px', margin: 'auto', marginBottom: '6px' }}>
-            <Term>Term</Term>
-            <div style={{ 
-               width: '60px', 
-               display: 'flex', 
-               justifyContent: 'space-between'}}>
-               <EditOutlinedIcon />
-               <div onClick={toggelStarred}>
-                  {displayedCard.is_starred === false
-                     ?  <StarBorderOutlinedIcon />
-                     :  <StarIcon color='secondary' />
-                  }
+         {studyArr.length > 0
+            ?  <div>
+                  <ToolBarWrapper style={{ width: '340px', margin: 'auto', marginBottom: '6px' }}>
+                     <Term>Term</Term>
+                     <div style={{ 
+                        width: '60px', 
+                        display: 'flex', 
+                        justifyContent: 'space-between'
+                     }}>
+                        <EditOutlinedIcon />
+                        <div onClick={toggelStarred}>
+                           {displayedCard.is_starred === false
+                              ?  <StarBorderOutlinedIcon />
+                              :  <StarIcon color='secondary' />
+                           }
+                        </div>
+                     </div>
+                  </ToolBarWrapper>
+                  <div style={{ width: '340px', margin: 'auto' }}>
+                     <StudyCard 
+                        displayedCard={displayedCard}
+                        totalLookedAt={totalLookedAt}
+                        setTotalLookedAt={setTotalLookedAt}
+                        isStarred={isStarred}
+                        seetIsStarred={setIsStarred} 
+                     />
+                  </div>
+                  <ArrowsWrapper>
+                     <ArrowBackIcon onClick={prevCard}/>
+                     <div>
+                        {i +1}/{studyArr.length}
+                     </div>
+                     <ArrowForwardIcon onClick={nextCard}/>
+                  </ArrowsWrapper>
+                  <Link to={`/deck/${displayedCard.deck_id}`}>
+                     <DoneButton onClick={doneStudying}>Done Studying</DoneButton>
+                  </Link>
                </div>
-            </div>
-         </ToolBarWrapper>
-         <div style={{ width: '340px', margin: 'auto' }}>
-            <StudyCard 
-               displayedCard={displayedCard}
-               totalLookedAt={totalLookedAt}
-               setTotalLookedAt={setTotalLookedAt}
-               isStarred={isStarred}
-               seetIsStarred={setIsStarred} 
-            />
-         </div>
-         <ArrowsWrapper>
-            <ArrowBackIcon onClick={prevCard}/>
-            <div>
-               {i +1}/{studyArr.length}
-            </div>
-            <ArrowForwardIcon onClick={nextCard}/>
-         </ArrowsWrapper>
-         <Link to={`/deck/${displayedCard.deck_id}`}>
-            <DoneButton onClick={doneStudying}>Done Studying</DoneButton>
-         </Link>
+            :  <div>There are no cards due for study in this deck.</div>
+         }
       </div>
    )
 }
