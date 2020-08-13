@@ -30,9 +30,14 @@ const StudyView = () => {
    const [session, setSession] = useState(currentSession)
    const [isStarred, setIsStarred] = useState(false)
 
+   const studyArr = cards.filter(card => parseInt(card.next_due) <= Date.now())
+   
+   console.log('TIME:', Date.now())
+   console.log('studyArr-->', studyArr)
+
    useEffect(() => {
       setDisplayedCard(
-         cards[i]
+         studyArr[i]
       )
       userDecks.map(deck => {
          if (deck.id === id) {
@@ -50,12 +55,12 @@ const StudyView = () => {
    }, [displayedCard])
 
    const nextCard = () => {
-      if(i === (cards.length - 1)){
+      if(i === (studyArr.length - 1)){
          setI(0)
-         setDisplayedCard(cards[i])
+         setDisplayedCard(studyArr[i])
       }else{
          setI(i + 1)
-         setDisplayedCard(cards[i])
+         setDisplayedCard(studyArr[i])
       }
       const lookedAtArray = totalLookedAt.filter(card => card.id !== displayedCard.id)
       setTotalLookedAt([
@@ -66,11 +71,11 @@ const StudyView = () => {
 
    const prevCard = () => {
       if(i === (0)){
-         setI(cards.length - 1)
-         setDisplayedCard(cards[i])
+         setI(studyArr.length - 1)
+         setDisplayedCard(studyArr[i])
       }else{
          setI(i - 1)
-         setDisplayedCard(cards[i])
+         setDisplayedCard(studyArr[i])
       }
       const lookedAtArray = totalLookedAt.filter(card => card.id !== displayedCard.id)
       setTotalLookedAt([
@@ -83,9 +88,9 @@ const StudyView = () => {
       const fixedLookedAtArr = totalLookedAt.slice(1)
       const leitnerArr = fixedLookedAtArr.map(card => {
          return {
-            card_id: card.id,
-            isStarred: card.is_starred,
-            comfortLevel: card.comfort_level
+            id: card.id,
+            is_starred: card.is_starred,
+            comfort_level: card.comfort_level
          }
       })
       console.log('leitnerArr:', leitnerArr)
@@ -94,8 +99,8 @@ const StudyView = () => {
          .then(res => {
             console.log('res.data:', res.data)
             res.data.map(card => {
-               card.nextDue = moment(card.nextDue, "MM-DD-YYYY hh:mm").unix()
-               console.log(card.nextDue)
+               card.next_due = moment(card.next_due, "MM-DD-YYYY hh:mm").unix()
+               console.log(card.next_due)
                dispatch(editCard(card))
             })
          })
@@ -157,7 +162,7 @@ const StudyView = () => {
          <ArrowsWrapper>
             <ArrowBackIcon onClick={prevCard}/>
             <div>
-               {i +1}/{cards.length}
+               {i +1}/{studyArr.length}
             </div>
             <ArrowForwardIcon onClick={nextCard}/>
          </ArrowsWrapper>
