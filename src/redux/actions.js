@@ -111,6 +111,7 @@ export const editCard = (cardToEdit) => dispatch => {
 		   	dispatch({ type: SET_ERROR, payload: 'error editing card' });
 		   });
    } else if (cardToEdit.card_id) {
+      console.log(cardToEdit.card_id)
       AxiosWithAuth()
          .put(`/cards/${cardToEdit.card_id}`, cardToEdit)
          .then(res => {
