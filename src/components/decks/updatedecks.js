@@ -1,14 +1,10 @@
-import React, {useState} from 'react';
-// import axiosWithAuth from '../utils/axiosWithAut';
-import axiosWithAuth from '../../utils/axiosWithAuth';
+import React, {useState} from 'react'
+import axiosWithAuth from '../../utils/axiosWithAuth'
 
-
-//update decks starting
 const UpdateClasses = props =>{
     const [update, setUpdate] = useState({
         deckName:''
     })
-   
 
     const handleUpdate = id =>{
         console.log(props.updateInfo)
@@ -26,7 +22,7 @@ const UpdateClasses = props =>{
         <div className='update'>
             <button onClick={()=> handleUpdate(props.id)}>Update</button>
         </div>
-
     )
-};
+}
+
 export default UpdateClasses;

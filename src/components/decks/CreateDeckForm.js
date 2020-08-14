@@ -1,43 +1,40 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { postNewDeck } from "../../redux/actions";
-import { CirclePicker } from "react-color";
-import NavbarDash from "../navigation/NavBarDash";
-import { MainWrapper, FormGroup, Input, NamesWrapper, H3, H2, LabelWrapper, CustomWrapper } from "./styles-decks/CreateDeckFormStyles";
-import "./styles-decks/createdeckform.css";
-const CreateDeckForm = () => {
-  const user = useSelector((state) => state.user);
-  const dispatch = useDispatch();
+import React, { useState } from "react"
+import { useSelector, useDispatch } from "react-redux"
+import { postNewDeck } from "../../redux/actions"
+import { CirclePicker } from "react-color"
+import NavbarDash from "../navigation/NavBarDash"
+import { MainWrapper, FormGroup, Input, NamesWrapper, H3, H2, LabelWrapper, CustomWrapper } from "./styles-decks/CreateDeckFormStyles"
+import "./styles-decks/createdeckform.css"
 
-  const [title, setTitle] = useState();
-  const [color, setColor] = useState("#fff");
+const CreateDeckForm = () => {
+  const user = useSelector((state) => state.user)
+  const dispatch = useDispatch()
+
+  const [title, setTitle] = useState()
+  const [color, setColor] = useState("#fff")
 
   const [deckToPost, setDeckToPost] = useState({
     deck_name: "",
     user_id: user.id,
-  });
+  })
 
   const handleChange = (e) => {
     setDeckToPost({
       ...deckToPost,
       [e.target.name]: e.target.value,
-    });
-  };
+    })
+  }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(postNewDeck(deckToPost));
+    e.preventDefault()
+    dispatch(postNewDeck(deckToPost))
     setDeckToPost({
       deck_name: "",
       user_id: user.id,
-    });
-  };
+    })
+  }
 
-  const colors = ["#61F1D2", "#FF50CE", "#009DF6", "#FFD037", "#FF2323", "#0047D9"];
-
-  //   handleChange(colors, e){
-  //    backgroundColor:
-  //   }
+  const colors = ["#61F1D2", "#FF50CE", "#009DF6", "#FFD037", "#FF2323", "#0047D9"]
 
   return (
     <MainWrapper style={{ backgroundColor: `${colors}` }}>
@@ -58,7 +55,7 @@ const CreateDeckForm = () => {
         </CustomWrapper>
       </form>
     </MainWrapper>
-  );
-};
+  )
+}
 
 export default CreateDeckForm;

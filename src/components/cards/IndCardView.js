@@ -6,7 +6,6 @@ import { MainWrapper, BigCard, CardTop, CardBottom, Ruler, FooterWrapper, EditBu
 import NavbarDash from '../navigation/NavBarDash.js'
 import { setCardBeingEdited } from '../../redux/actions'
 
-
 const IndCardView = (props) => {
 
     let { id, cardId } = useParams()
@@ -28,7 +27,7 @@ const IndCardView = (props) => {
         getCard()
     }, [cardId])
 
-    const { card_front, card_back } = card;
+    const { card_front, card_back } = card
 
     const handleClick = () => {
         console.log('cradToEdit', card)

@@ -1,10 +1,24 @@
-import React, { useState } from "react";
-import { LoginScreen, TextBox, TextBox2, Button, Nav, H3, H4, HRline, HRline2, AnchorButton, Form, HRStyle, UserText, PassText } from "./loginstyles";
-import AxiosWithAuth from "../../utils/axiosWithAuth.js";
-// import GoogleButton from 'react-google-button'
-import GoogleButton from "react-google-button/dist/react-google-button";
+import React, { useState } from "react"
+import { 
+  LoginScreen, 
+  TextBox, 
+  TextBox2, 
+  Button, 
+  Nav, 
+  H3, 
+  H4, 
+  HRline, 
+  HRline2, 
+  AnchorButton, 
+  Form, 
+  HRStyle, 
+  UserText, 
+  PassText 
+} from "./loginstyles"
 import { useDispatch } from 'react-redux'
-import { getUser } from "../../redux/actions";
+import { getUser } from "../../redux/actions"
+import GoogleButton from "react-google-button/dist/react-google-button"
+import AxiosWithAuth from "../../utils/axiosWithAuth.js"
 
 const Login = (props) => {
   const dispatch = useDispatch()

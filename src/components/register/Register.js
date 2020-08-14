@@ -1,6 +1,25 @@
-import React, { useState } from "react";
-import { OutLine, Nav, H3, FirstName, LastName, UserName, Email, Password, SignUp, FnText, LnText, EmailText, UserText, PassText, AnchorButton, H4, HRline, HRline2, HRStyle } from "./Registerstyles";
-// import GoogleButton from "react-google-button";
+import React, { useState } from "react"
+import { 
+  OutLine, 
+  Nav, 
+  H3, 
+  FirstName, 
+  LastName, 
+  UserName, 
+  Email, 
+  Password, 
+  SignUp, 
+  FnText, 
+  LnText, 
+  EmailText, 
+  UserText, 
+  PassText, 
+  AnchorButton, 
+  H4, 
+  HRline, 
+  HRline2, 
+  HRStyle 
+} from "./Registerstyles"
 import GoogleButton from "react-google-button/dist/react-google-button";
 import AxiosWithAuth from "../../utils/axiosWithAuth.js";
 import { getUser } from '../../redux/actions'
@@ -115,4 +134,4 @@ const Register = (props) => {
   );
 };
 
-export default Register;
+export default Register

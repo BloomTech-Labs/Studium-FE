@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams, Link } from 'react-router-dom'
-import NavBarDash from '../navigation/NavBarDash'
-import StudyCard from '../cards/StudyCard'
+import { postNewSession, editCard } from '../../redux/actions'
 import { DeckName, Term, ToolBarWrapper, ArrowsWrapper } from './styles-decks/StudyViewStyles'
 import { DoneButton } from './styles-decks/StudyViewStyles'
+import NavBarDash from '../navigation/NavBarDash'
+import StudyCard from '../cards/StudyCard'
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined'
 import StarIcon from '@material-ui/icons/Star'
@@ -12,8 +13,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import AxiosWithAuth from '../../utils/axiosWithAuth'
 import axios from 'axios'
-import moment from 'moment';
-import { setCurrentSession, postNewSession, editCard } from '../../redux/actions'
+import moment from 'moment'
 
 const StudyView = () => {
    const dispatch = useDispatch()
@@ -127,10 +127,9 @@ const StudyView = () => {
       dispatch(editCard(cardToEdit))
    }
 
-   console.log('totalLookedAt:', totalLookedAt)
-   console.log('session:', session)
-   console.log('displayedCard:', displayedCard)
-
+   // console.log('totalLookedAt:', totalLookedAt)
+   // console.log('session:', session)
+   // console.log('displayedCard:', displayedCard)
    
    return ( 
       <div>

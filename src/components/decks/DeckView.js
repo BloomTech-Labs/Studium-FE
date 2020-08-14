@@ -42,7 +42,6 @@ const DeckView = ({ match, location }) => {
   }
 
    const handleStudyMousedown = () => {
-      // const seshStart = BigInt(Date.now())
       setSessionToPost({
          ...sessionToPost,
          total_looked_at: '',

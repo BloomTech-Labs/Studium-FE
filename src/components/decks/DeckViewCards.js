@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getUser, getAllCardsInDeck } from '../../redux/actions'
+import { getAllCardsInDeck } from '../../redux/actions'
 import DeckCardView from './DeckCardView.js'
 import { useParams, Link } from 'react-router-dom'
 import { CardWrapper, CardItself, CardFront } from './styles-decks/DeckViewStyles.js'
@@ -15,7 +15,6 @@ const DeckViewCards = ({ match, location }) => {
     }, [])
 
     return (
-
         <>
             <CardWrapper>
                 {deckCards.map(card => (

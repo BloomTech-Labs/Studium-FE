@@ -117,5 +117,4 @@ export const TitleDisplay = styled.input`
    font-size: 18px;
    line-height: 23px;
    width: 100%;
-   
 `

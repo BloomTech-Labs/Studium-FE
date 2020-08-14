@@ -32,52 +32,46 @@ const EditDeckCard = ({ displayedCard }) => {
    const handleClick = () => {
       console.log('cardToEdit from the Flipper: ', displayedCard)
       dispatch(setCardBeingEdited(displayedCard))
-      // props.history.push(`/deck/${displayedCard.deck_id}/edit-card/${displayedCard.id}`)
    }
    
    return (
-         <Flippy
-            flipOnClick={true}
-            flipDirection="vertical"
-         >
-            
-               <FrontSide style={cardStyle} className='flippy-front'>
-               <div style={{ 
-                  height: '75px',
-                  width: '278px'
-               }}>
-                  {displayedCard.card_front}
+      <Flippy
+         flipOnClick={true}
+         flipDirection="vertical"
+      >
+         <FrontSide style={cardStyle} className='flippy-front'>
+            <div style={{ 
+               height: '75px',
+               width: '278px'
+            }}>
+               {displayedCard.card_front}
+            </div>
+            <Link 
+               to={`/deck/${displayedCard.deck_id}/edit-card/${displayedCard.id}`}
+               style={{ textDecoration: 'none', color: 'grey' }}
+            >
+               <div onClick={handleClick}>
+                  <EditOutlinedIcon color='inherit'/>
                </div>
-               <Link 
-                  to={`/deck/${displayedCard.deck_id}/edit-card/${displayedCard.id}`}
-                  style={{ textDecoration: 'none', color: 'grey' }}
-               >
-                  <div onClick={handleClick}>
-                     <EditOutlinedIcon color='inherit'/>
-                  </div>
-               </Link>
-               </FrontSide>
-            
-            
-            
-               <BackSide style={cardStyle} className='flippy-back'>
-               <div style={{ 
-                     height: '75px',
-                     width: '278px'
-                  }}>
-                     {displayedCard.card_back}
-                  </div>
-                  <Link 
-                     to={`/deck/${displayedCard.deck_id}/edit-card/${displayedCard.id}`}
-                     style={{ textDecoration: 'none', color: 'grey' }}
-                  >
-                     <div onClick={handleClick}>
-                        <EditOutlinedIcon />
-                     </div>
-                  </Link>
-               </BackSide>
-            
-         </Flippy>
+            </Link>
+         </FrontSide>
+         <BackSide style={cardStyle} className='flippy-back'>
+            <div style={{ 
+               height: '75px',
+               width: '278px'
+            }}>
+               {displayedCard.card_back}
+            </div>
+            <Link 
+               to={`/deck/${displayedCard.deck_id}/edit-card/${displayedCard.id}`}
+               style={{ textDecoration: 'none', color: 'grey' }}
+            >
+               <div onClick={handleClick}>
+                  <EditOutlinedIcon />
+               </div>
+            </Link>
+         </BackSide>
+      </Flippy>
    )
 }
 
