@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Flippy, { FrontSide, BackSide } from 'react-flippy'
 import { useDispatch } from 'react-redux'
 import { setCardBeingEdited } from '../../redux/actions'
@@ -16,7 +16,6 @@ const cardStyle = {
    border: '1px solid #C4C4C4',
    boxSizing: 'border-box',
    borderRadius: '6px',
-   border: '1px solid #C4C4C4',
    fontFamily: 'Source Sans Pro',
    fontStyle: 'normal',
    fontWeight: 'normal',

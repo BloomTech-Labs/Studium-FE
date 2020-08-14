@@ -11,7 +11,6 @@ import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined'
 import StarIcon from '@material-ui/icons/Star'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
-import AxiosWithAuth from '../../utils/axiosWithAuth'
 import axios from 'axios'
 import moment from 'moment'
 
