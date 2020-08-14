@@ -4,7 +4,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { postNewCard, autoGenerate, clearAutoGenRes } from '../../redux/actions'
 import { useParams, useHistory } from 'react-router-dom'
 import { MainWrapper } from '../decks/styles-decks/DeckViewStyles'
-import { InputWrapper, TextArea, AutoGen, Heading, ErrorMessage, TitleDisplay } from './styles-cards/CardFormStyles'
+import { InputWrapper, 
+   TextArea, 
+   AutoGen, 
+   Heading, 
+   ErrorMessage, 
+   TitleDisplay 
+} from './styles-cards/CardFormStyles'
 import AddCardNav from '../navigation/AddCardNav'
 import AddCardFooter from './AddCardFooter'
 
@@ -116,7 +122,6 @@ const CreateCardForm = (props) => {
                         ref={register({ required: true })} 
                      />
                }
-               
                {errors.card_front && errors.card_front.type === 'required' && (
                   <ErrorMessage>* This field is required</ErrorMessage>
                )}

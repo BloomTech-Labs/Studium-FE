@@ -6,19 +6,19 @@ import './NavBarDashStyles.css'
 
 class NavbarDash extends Component {
     constructor(props, context) {
-        super(props, context);
+        super(props, context)
 
         this.state = {
             visible: false
         };
 
-        this.handleMouseDown = this.handleMouseDown.bind(this);
-        this.toggleMenu = this.toggleMenu.bind(this);
+        this.handleMouseDown = this.handleMouseDown.bind(this)
+        this.toggleMenu = this.toggleMenu.bind(this)
     }
 
     handleMouseDown(e) {
-        this.toggleMenu();
-        e.stopPropagation();
+        this.toggleMenu()
+        e.stopPropagation()
     }
 
     toggleMenu() {
@@ -26,7 +26,7 @@ class NavbarDash extends Component {
             {
                 visible: !this.state.visible
             }
-        );
+        )
     }
 
     render() {
@@ -41,7 +41,7 @@ class NavbarDash extends Component {
                 <Menu handleMouseDown={this.handleMouseDown}
                     menuVisibility={this.state.visible} />
             </div>
-        );
+        )
     }
 }
 

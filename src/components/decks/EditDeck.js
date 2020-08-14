@@ -4,11 +4,18 @@ import { useDispatch, useSelector } from 'react-redux'
 import { editDeck, setCardBeingEdited, resetUserDecks } from '../../redux/actions'
 import { useParams, useHistory } from 'react-router-dom'
 import { MainWrapper } from '../decks/styles-decks/DeckViewStyles'
-import { InputWrapper, TextArea, AutoGen, Heading, ErrorMessage, TitleDisplay } from '../cards/styles-cards/CardFormStyles'
+import { ImgIconWrapper } from '../cards/styles-cards/EditDeckCardStyles'
+import { 
+   InputWrapper, 
+   TextArea, 
+   AutoGen, 
+   Heading, 
+   ErrorMessage, 
+   TitleDisplay 
+} from '../cards/styles-cards/CardFormStyles'
 import EditDeckCard from '../cards/EditDeckCard'
 import NavBarDash from '../navigation/NavBarDash'
 import EditDeckFooter from './EditDeckFooter'
-import { ImgIconWrapper } from '../cards/styles-cards/EditDeckCardStyles'
 import PanoramaOutlinedIcon from '@material-ui/icons/PanoramaOutlined'
 
 const EditDeck = (props) => {

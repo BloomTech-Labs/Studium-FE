@@ -27,7 +27,6 @@ const AddCardNav = () => {
             }}>
                Add a card
             </div>
-            
          </div>
          <div style={{
             fontFamily: 'Source Sans Pro',

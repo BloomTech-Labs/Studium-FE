@@ -11,19 +11,6 @@ const OktaLogin = () => {
 &nonce=55QzavEtgu">LOGIN</a>
     </div>
   )
-   
- 
-  //  if( authState.isPending ) { 
-  //    return (
-  //      <div>Loading authentication...</div>
-  //    );
-  //  } else if( !authState.isAuthenticated ) { 
-  //    return (
-  //      <div>
-  //        <a onClick={login}>Login- ClickME</a>
-  //      </div>
-  //    );
-  //  }
  };
 
  export default OktaLogin;

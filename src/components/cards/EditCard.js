@@ -15,7 +15,6 @@ const CreateCardForm = (props) => {
 
    const history = useHistory()
    const { id, cardId } = useParams()
-
    const { register, handleSubmit, errors } = useForm()
 
    const [deckName, setDeckName] = useState();

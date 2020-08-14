@@ -4,7 +4,7 @@ import { CardItself, CardFront } from './styles-decks/DeckViewStyles.js'
 import { Link, useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { setCardBeingEdited } from '../../redux/actions'
-import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
+import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 
 const cardStyle = {
     background: '#FFFFFF',
@@ -41,16 +41,10 @@ const DeckCardView = ({ displayedCard }) => {
      }
 
     return (
-        // <CardItself onClick={() => {
-        //     history.push(`/deck/${deckId}/card/${card.id}`)
-        // }}>
-        //     <CardFront>{card_front}</CardFront>
-        // </CardItself>
-
         <Flippy
             flipOnClick={true}
             flipDirection="horizontal"
-         >
+        >
             <FrontSide style={cardStyle} className='flippy-front'>
                 <Link 
                     to={`/deck/${displayedCard.deck_id}/edit-card/${displayedCard.id}`}
@@ -78,7 +72,7 @@ const DeckCardView = ({ displayedCard }) => {
                     {displayedCard.card_back}
                 </div>
             </BackSide>
-         </Flippy>
+        </Flippy>
     )
 }
 
