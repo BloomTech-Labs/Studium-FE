@@ -1,7 +1,8 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-import ProtectedRoute from './utils/ProtectedRoute'
 import { LoginCallback, SecureRoute } from '@okta/okta-react'
+import { createGlobalStyle } from "styled-components"
+import ProtectedRoute from './utils/ProtectedRoute'
 import SplashPage from './components/splash page/SplashPage'
 import Register from './components/register/Register'
 import OktaLogin from './components/login/OktaLogin'
@@ -14,8 +15,9 @@ import EditDeck from './components/decks/EditDeck'
 import EditCard from './components/cards/EditCard'
 import IndCardView from './components/cards/IndCardView.js'
 import StudyView from './components/decks/StudyView'
+import VisTest from './components/visualizations/VisTest'
 import './App.css';
-import { createGlobalStyle } from "styled-components"
+
 
 const GlobalStyle = createGlobalStyle`
   body{
@@ -34,6 +36,7 @@ function App() {
       <Route path='/register' component={Register} />
       <Route path='/okta-login' component={OktaLogin} />
       <Route path='/login' component={Login} />
+      <Route path='/vistest' component={VisTest} />
       <ProtectedRoute path='/dashboard' component={DashBoard} />
       <ProtectedRoute path='/create-deck' component={CreateDeckForm} />
       <ProtectedRoute path='/deck/:id/create-card' component={CreateCardForm} />
