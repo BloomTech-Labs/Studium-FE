@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Labels, DeckTitle, CardCount, Deck } from '../dashboard/styles-dashboard/dashboardStyles.js'
-import AxiosWithAuth from '../../utils/axiosWithAuth.js'
+import AxiosWithAuth from '../../utils/axiosWithAuth'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { getAllCardsInDeck } from '../../redux/actions'

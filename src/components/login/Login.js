@@ -18,7 +18,7 @@ import {
 import { useDispatch } from 'react-redux'
 import { getUser } from "../../redux/actions"
 import GoogleButton from "react-google-button/dist/react-google-button"
-import AxiosWithAuth from "../../utils/axiosWithAuth.js"
+import AxiosWithAuth from "../../utils/axiosWithAuth"
 
 const Login = (props) => {
   const dispatch = useDispatch()

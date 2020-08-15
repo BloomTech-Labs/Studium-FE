@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import AxiosWithAuth from '../../utils/axiosWithAuth.js'
+import AxiosWithAuth from '../../utils/axiosWithAuth'
 import { useParams, useHistory } from 'react-router-dom'
 import { MainWrapper, BigCard, CardTop, CardBottom, Ruler, FooterWrapper, EditButton } from '../decks/styles-decks/DeckViewStyles.js'
 import NavbarDash from '../navigation/NavBarDash.js'
