@@ -7,7 +7,7 @@ const UpdateClasses = props =>{
     })
 
     const handleUpdate = id =>{
-        console.log(props.updateInfo)
+        
         axiosWithAuth()
         .put(`/decks`, props.updateInfo)
         .then(res =>{

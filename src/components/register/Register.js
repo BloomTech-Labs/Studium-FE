@@ -30,7 +30,6 @@ const Register = (props) => {
       .post("/auth/register", signUpData)
       .then((res) => {
         localStorage.setItem("token", res.data.token);
-        console.log(res);
         dispatch(getUser())
         if (res.data.newUser) {
           props.history.push(`/dashboard`);
@@ -52,9 +51,7 @@ const Register = (props) => {
       >
         <GoogleButton
           type="dark"
-          onClick={() => {
-            console.log("This button can be clicked");
-          }}
+          onClick={() => {}}
         />
       </AnchorButton>
 

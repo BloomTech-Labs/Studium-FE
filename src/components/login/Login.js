@@ -45,7 +45,6 @@ const Login = (props) => {
           dispatch(getUser());
           setLogin(res.data.user);
           props.history.push(`/dashboard`);
-          // console.log(res.data.user)
         } else {
           props.history.push("/register");
         }
@@ -65,10 +64,7 @@ const Login = (props) => {
       >
         <GoogleButton
           type="dark"
-          onClick={() => {
-            console.log("This button can be clicked");
-          }}
-        />
+          onClick={() => {}}/>
       </AnchorButton>
       <HRStyle>
         <HRline></HRline>

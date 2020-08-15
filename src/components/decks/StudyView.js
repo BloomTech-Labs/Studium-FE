@@ -125,10 +125,6 @@ const StudyView = () => {
       setDisplayedCard(cardToEdit)
       dispatch(editCard(cardToEdit))
    }
-
-   // console.log('totalLookedAt:', totalLookedAt)
-   // console.log('session:', session)
-   // console.log('displayedCard:', displayedCard)
    
    return ( 
       <div>
