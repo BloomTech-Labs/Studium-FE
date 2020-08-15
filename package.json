@@ -53,7 +53,8 @@
       "**/*.js",
       "!**/node_modules/**",
       "!**/vendor/**",
-      "!**/coverage/**"
+      "!**/coverage/**",
+      "!**/*.test.**"
     ]
   },
   "eslintConfig": {

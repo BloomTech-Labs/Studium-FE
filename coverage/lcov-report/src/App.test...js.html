@@ -3,14 +3,14 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/components/decks/EditDeckFooter.js</title>
+    <title>Code coverage report for src/App.test...js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../prettify.css" />
-    <link rel="stylesheet" href="../../../base.css" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../sort-arrow-sprite.png);
+            background-image: url(../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -18,13 +18,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">src/components/decks</a> EditDeckFooter.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">src</a> App.test...js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>0/10</span>
             </div>
         
             
@@ -38,14 +38,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>0/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>0/10</span>
             </div>
         
             
@@ -89,7 +89,16 @@
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a>
 <a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -99,80 +108,77 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react'
-import { AddCardFoot, NextButton, AddCardBtn } from '../cards/styles-cards/CardFormStyles'
-import { useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { editDeck } from '../../redux/actions'
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from "react";
+import ReactDOM from "react-dom";
+import { render, screen } from "@testing-library/react";
+// import "jest-dom/extend-expect";
+import App from "./App";
+import Route from "./App";
 &nbsp;
-const EditCardFooter = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span> deckToEdit }) =&gt; {</span>
-   const dispatch = <span class="cstat-no" title="statement not covered" >useDispatch()</span>
+// test('renders our app component', () =&gt; {
+//   const { getByText } = render(&lt;App /&gt;);
+//   const linkElement = getByText(/className/i);
+//   expect(linkElement).toBeInTheDocument();
+// });
 &nbsp;
-   const handleClick = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >e </span>=&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      dispatch(editDeck(deckToEdit))</span>
-   }
+<span class="cstat-no" title="statement not covered" >it("renders without crashing", <span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+  const div = <span class="cstat-no" title="statement not covered" >document.createElement("div");</span>
+  // ReactDOM.render(&lt;App /&gt;, div);
+<span class="cstat-no" title="statement not covered" >  ReactDOM.unmountComponentAtNode(div);</span>
+});
 &nbsp;
-<span class="cstat-no" title="statement not covered" >   return(</span>
-      &lt;AddCardFoot&gt;
-         &lt;div style={{ width: '50%' }}&gt;
-            &lt;Link to={`/deck/${deckToEdit.id}/create-card`}&gt;
-               &lt;AddCardBtn onClick={handleClick}&gt;
-                  Add Card
-               &lt;/AddCardBtn&gt;
-            &lt;/Link&gt;
-         &lt;/div&gt;
-         &lt;div style={{ width: '50%' }}&gt;
-            &lt;Link to={`/deck/${deckToEdit.id}/study`}&gt;
-               &lt;NextButton onClick={handleClick}&gt;
-                  Study
-               &lt;/NextButton&gt;
-            &lt;/Link&gt;
-         &lt;/div&gt;
-      &lt;/AddCardFoot&gt;
-   )
-}
+<span class="cstat-no" title="statement not covered" >it("renders Routes correctly", <span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+  const { getByTestId } = <span class="cstat-no" title="statement not covered" >render(&lt;Route /&gt;);</span>
+<span class="cstat-no" title="statement not covered" >  expect(getByTestId("route")).toHaveTextContent("");</span>
+});
 &nbsp;
-export default EditCardFooter</pre></td></tr></table></pre>
+<span class="cstat-no" title="statement not covered" >test('Tests for the SplashPage', <span class="fstat-no" title="function not covered" >as</span>ync() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  render(&lt;App /&gt;);</span>
+&nbsp;
+  const h2Tag = <span class="cstat-no" title="statement not covered" >screen.getByText(/A place for students to create flashcards, share, and learn/i);</span>
+<span class="cstat-no" title="statement not covered" >  expect(h2Tag).toBeInTheDocument();</span>
+&nbsp;
+   // const email = screen.getByLabelText(/email/i);
+   // fireEvent.change(email, { target: { value: 'jr@junior.com' } });
+ 
+   // const startedButton = screen.getByRole('button');
+   // fireEvent.click(startedButton);    
+ })</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sat Aug 15 2020 12:08:13 GMT-0500 (Central Daylight Time)
+                at Sat Aug 15 2020 12:06:18 GMT-0500 (Central Daylight Time)
             </div>
         </div>
-        <script src="../../../prettify.js"></script>
+        <script src="../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../sorter.js"></script>
-        <script src="../../../block-navigation.js"></script>
+        <script src="../sorter.js"></script>
+        <script src="../block-navigation.js"></script>
     </body>
 </html>
     

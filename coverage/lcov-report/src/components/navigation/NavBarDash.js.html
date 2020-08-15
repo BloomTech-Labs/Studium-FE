@@ -22,9 +22,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/10</span>
+                <span class='fraction'>5/10</span>
             </div>
         
             
@@ -36,16 +36,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">40% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>2/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/10</span>
+                <span class='fraction'>5/10</span>
             </div>
         
             
@@ -54,7 +54,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -111,31 +111,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -157,20 +157,20 @@ import Menu from './Menu.js'
 import './NavBarDashStyles.css'
 &nbsp;
 class NavbarDash extends Component {
-<span class="fstat-no" title="function not covered" >    co</span>nstructor(props, context) {
-<span class="cstat-no" title="statement not covered" >        super(props, context);</span>
+    constructor(props, context) {
+        super(props, context)
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        this.state = {</span>
+        this.state = {
             visible: false
         };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        this.handleMouseDown = this.handleMouseDown.bind(this);</span>
-<span class="cstat-no" title="statement not covered" >        this.toggleMenu = this.toggleMenu.bind(this);</span>
+        this.handleMouseDown = this.handleMouseDown.bind(this)
+        this.toggleMenu = this.toggleMenu.bind(this)
     }
 &nbsp;
 <span class="fstat-no" title="function not covered" >    ha</span>ndleMouseDown(e) {
-<span class="cstat-no" title="statement not covered" >        this.toggleMenu();</span>
-<span class="cstat-no" title="statement not covered" >        e.stopPropagation();</span>
+<span class="cstat-no" title="statement not covered" >        this.toggleMenu()</span>
+<span class="cstat-no" title="statement not covered" >        e.stopPropagation()</span>
     }
 &nbsp;
 <span class="fstat-no" title="function not covered" >    to</span>ggleMenu() {
@@ -178,11 +178,11 @@ class NavbarDash extends Component {
             {
                 visible: !this.state.visible
             }
-        );
+        )
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    re</span>nder() {
-<span class="cstat-no" title="statement not covered" >        return (</span>
+    render() {
+        return (
             &lt;div className="navBar"&gt;
                 &lt;h1 className="title"
                     onClick={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; {
@@ -193,7 +193,7 @@ class NavbarDash extends Component {
                 &lt;Menu handleMouseDown={this.handleMouseDown}
                     menuVisibility={this.state.visible} /&gt;
             &lt;/div&gt;
-        );
+        )
     }
 }
 &nbsp;
@@ -204,7 +204,7 @@ export default NavbarDash </pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Aug 05 2020 12:56:42 GMT-0500 (Central Daylight Time)
+                at Sat Aug 15 2020 12:08:13 GMT-0500 (Central Daylight Time)
             </div>
         </div>
         <script src="../../../prettify.js"></script>
