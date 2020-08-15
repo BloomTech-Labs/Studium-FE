@@ -22,30 +22,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/7</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/12</span>
+                <span class='fraction'>12/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/7</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
@@ -54,7 +54,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -80,10 +80,10 @@
 <a name='L22'></a><a href='#L22'>22</a>
 <a name='L23'></a><a href='#L23'>23</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -93,19 +93,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import styled from "styled-components";
 &nbsp;
-const ButtonButtom = <span class="cstat-no" title="statement not covered" >styled.button`</span>
- background: ${<span class="fstat-no" title="function not covered" >pr</span>ops =&gt; <span class="cstat-no" title="statement not covered" >props.loginCTA ? 'white' : '#2E71FD'}</span>;
- color: ${<span class="fstat-no" title="function not covered" >pr</span>ops =&gt; <span class="cstat-no" title="statement not covered" >props.signupCTA ? 'white' : '#2E71FD'}</span>;
- border: ${<span class="fstat-no" title="function not covered" >pr</span>ops =&gt; <span class="cstat-no" title="statement not covered" >props.loginCTA ? '1px solid #2E71FD' : 'none'}</span>;
+const ButtonButtom = styled.button`
+ background: ${props =&gt; props.loginCTA ? 'white' : '#2E71FD'};
+ color: ${props =&gt; props.signupCTA ? 'white' : '#2E71FD'};
+ border: ${props =&gt; props.loginCTA ? '1px solid #2E71FD' : 'none'};
  border-radius: 4px;
  padding: 12px;
  margin: 0 auto 1em auto;
@@ -115,9 +115,9 @@ const ButtonButtom = <span class="cstat-no" title="statement not covered" >style
  font-family: 'Source Sans Pro';
 &nbsp;
  &amp;:hover{
- background: ${<span class="fstat-no" title="function not covered" >pr</span>ops =&gt; <span class="cstat-no" title="statement not covered" >props.loginCTA ? '#2E71FD' : 'white'}</span>;
- color: ${<span class="fstat-no" title="function not covered" >pr</span>ops =&gt; <span class="cstat-no" title="statement not covered" >props.signupCTA ? '#2E71FD' : 'white'}</span>;
- border: ${<span class="fstat-no" title="function not covered" >pr</span>ops =&gt; <span class="cstat-no" title="statement not covered" >props.loginCTA ? 'none' : '1px solid #2E71FD' </span>};  
+ background: ${props =&gt; props.loginCTA ? '#2E71FD' : 'white'};
+ color: ${props =&gt; props.signupCTA ? '#2E71FD' : 'white'};
+ border: ${props =&gt; props.loginCTA ? 'none' : '1px solid #2E71FD' };  
 }
 `;
 &nbsp;
@@ -129,7 +129,7 @@ export default ButtonButtom;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri Aug 07 2020 22:59:39 GMT-0400 (Eastern Daylight Time)
+                at Sat Aug 15 2020 12:59:18 GMT-0500 (Central Daylight Time)
             </div>
         </div>
         <script src="../../../prettify.js"></script>

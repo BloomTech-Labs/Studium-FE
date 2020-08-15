@@ -139,7 +139,26 @@
 <a name='L81'></a><a href='#L81'>81</a>
 <a name='L82'></a><a href='#L82'>82</a>
 <a name='L83'></a><a href='#L83'>83</a>
-<a name='L84'></a><a href='#L84'>84</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -167,26 +186,16 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -222,97 +231,103 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState } from 'react';
-import {LoginScreen, TextBox, TextBox2, Button, Nav, H3, H4, HRline, HRline2, AnchorButton, Form , HRStyle, UserText, PassText} from "./loginstyles"
-import AxiosWithAuth from '../../utils/axiosWithAuth.js'
-import GoogleButton from 'react-google-button'
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState } from "react"
+import { 
+  LoginScreen, 
+  TextBox, 
+  TextBox2, 
+  Button, 
+  Nav, 
+  H3, 
+  H4, 
+  HRline, 
+  HRline2, 
+  AnchorButton, 
+  Form, 
+  HRStyle, 
+  UserText, 
+  PassText 
+} from "./loginstyles"
 import { useDispatch } from 'react-redux'
-import { getUser } from '../../redux/actions'
+import { getUser } from "../../redux/actions"
+import GoogleButton from "react-google-button/dist/react-google-button"
+import AxiosWithAuth from "../../utils/axiosWithAuth"
 &nbsp;
+const Login = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(p</span>rops) =&gt; {</span>
+  const dispatch = <span class="cstat-no" title="statement not covered" >useDispatch()</span>
 &nbsp;
-const Login = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >pr</span>ops =&gt; {</span>
-    const dispatch = <span class="cstat-no" title="statement not covered" >useDispatch()</span>
+  const [login, setLogin] = <span class="cstat-no" title="statement not covered" >useState({</span>
+    username: "",
+    password: "",
+  });
 &nbsp;
-    const [login, setLogin] = <span class="cstat-no" title="statement not covered" >useState({</span>
-        username: '',
-        password: ''
-    })
+  const handleChange = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(e</span>) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    setLogin({</span>
+      ...login,
+      [e.target.name]: e.target.value,
+    });
+  };
 &nbsp;
-    const handleChange = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >e </span>=&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        setLogin({</span>
-            ...login,
-            [e.target.name]: e.target.value
-        });
-    };
+  const handleSubmit = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(e</span>) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    e.preventDefault();</span>
+<span class="cstat-no" title="statement not covered" >    AxiosWithAuth()</span>
+      .post("/auth/login", login)
+      .then(<span class="fstat-no" title="function not covered" >(r</span>es) =&gt; {
+<span class="cstat-no" title="statement not covered" >        localStorage.setItem("token", res.data.token);</span>
+<span class="cstat-no" title="statement not covered" >        if (res.data.user) {</span>
+<span class="cstat-no" title="statement not covered" >          dispatch(getUser());</span>
+<span class="cstat-no" title="statement not covered" >          setLogin(res.data.user);</span>
+<span class="cstat-no" title="statement not covered" >          props.history.push(`/dashboard`);</span>
+        } else {
+<span class="cstat-no" title="statement not covered" >          props.history.push("/register");</span>
+        }
+      })
+      .catch(<span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; <span class="cstat-no" title="statement not covered" >console.log({ err }))</span>;
+  };
 &nbsp;
-    const handleSubmit = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >e </span>=&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        e.preventDefault();</span>
-<span class="cstat-no" title="statement not covered" >        AxiosWithAuth()</span>
-            .post('/auth/login', login)
-            .then(
-<span class="fstat-no" title="function not covered" >                re</span>s =&gt; {
-<span class="cstat-no" title="statement not covered" >                    localStorage.setItem('token', res.data.token);</span>
-<span class="cstat-no" title="statement not covered" >                    if (res.data.user) {</span>
-<span class="cstat-no" title="statement not covered" >                        dispatch(getUser());</span>
-<span class="cstat-no" title="statement not covered" >                        props.history.push(`/dashboard`);</span>
-                        // console.log(res.data.user)
-                    }
-                    else { <span class="cstat-no" title="statement not covered" >props.history.push('/register') </span>}
-                })
-            .catch(<span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; <span class="cstat-no" title="statement not covered" >console.log({ err }))</span>;
-    };
+<span class="cstat-no" title="statement not covered" >  return (</span>
+    &lt;LoginScreen&gt;
+      &lt;Nav&gt;
+        &lt;H3&gt;Studium&lt;/H3&gt;
+      &lt;/Nav&gt;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return (</span>
-        &lt;LoginScreen&gt;
-            &lt;Nav&gt;
-                &lt;H3&gt;Studium&lt;/H3&gt;
-            &lt;/Nav&gt;
-           
-                &lt;AnchorButton href='https://dev-360882.okta.com/oauth2/v1/authorize?idp=0oael0y3cwL5zx7Tn4x6&amp;client_id=0oaekug1e6udJlXUA4x6&amp;response_type=id_token&amp;response_mode=fragment&amp;scope=openid profile email&amp;redirect_uri=https://studium-app.net/dashboard&amp;state=4Oycg4JA0a
-                &amp;nonce=55QzavEtgu'&gt;
-                    &lt;GoogleButton
-                        type="dark"
-                        onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; { <span class="cstat-no" title="statement not covered" >console.log('This button can be clicked') </span>}}
-                    /&gt;
-                &lt;/AnchorButton&gt;
-           &lt;HRStyle&gt;
-            &lt;HRline&gt;&lt;/HRline&gt;
-            &lt;H4&gt;OR LOG IN&lt;/H4&gt;
-            &lt;HRline2&gt;&lt;/HRline2&gt;
-            &lt;/HRStyle&gt;
-            
-            &lt;Form
-                onSubmit={handleSubmit}&gt;
-                    &lt;UserText&gt;USERNAME&lt;/UserText&gt;
-                &lt;TextBox
-                    type="text"
-                    name="username"
-                    // placeholder='Type your username'
-                    value={login.username}
-                    onChange={handleChange}
-                /&gt;
-                &lt;PassText&gt;PASSWORD&lt;/PassText&gt;
-                &lt;TextBox2
-                    type="password"
-                    name="password"
-                    // placeholder="Type your password"
-                    value={login.password}
-                    onChange={handleChange}
-                /&gt;
-                &lt;Button type="submit" style= {{color: '#FFFFFF'}}&gt;Log In&lt;/Button&gt;
-            &lt;/Form&gt;
-        &lt;/LoginScreen&gt;
-    )
-}
+      &lt;AnchorButton
+        href="https://dev-360882.okta.com/oauth2/v1/authorize?idp=0oael0y3cwL5zx7Tn4x6&amp;client_id=0oaekug1e6udJlXUA4x6&amp;response_type=id_token&amp;response_mode=fragment&amp;scope=openid profile email&amp;redirect_uri=https://studium-app.net/dashboard&amp;state=4Oycg4JA0a
+                &amp;nonce=55QzavEtgu"
+      &gt;
+        &lt;GoogleButton
+          type="dark"
+          onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; {}}/&gt;
+      &lt;/AnchorButton&gt;
+      &lt;HRStyle&gt;
+        &lt;HRline&gt;&lt;/HRline&gt;
+        &lt;H4&gt;OR LOG IN&lt;/H4&gt;
+        &lt;HRline2&gt;&lt;/HRline2&gt;
+      &lt;/HRStyle&gt;
 &nbsp;
-export default Login;</pre></td></tr></table></pre>
+      &lt;Form onSubmit={handleSubmit}&gt;
+        &lt;UserText&gt;USERNAME&lt;/UserText&gt;
+        &lt;TextBox type="text" name="username" placeholder="Type your username" value={login.username} onChange={handleChange} /&gt;
+        &lt;PassText&gt;PASSWORD&lt;/PassText&gt;
+        &lt;TextBox2 type="password" name="password" placeholder="Type your password" value={login.password} onChange={handleChange} /&gt;
+        &lt;Button type="submit" style={{ color: "#FFFFFF" }}&gt;
+          Log In
+        &lt;/Button&gt;
+      &lt;/Form&gt;
+    &lt;/LoginScreen&gt;
+  );
+};
+&nbsp;
+export default Login;
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Aug 05 2020 12:56:42 GMT-0500 (Central Daylight Time)
+                at Sat Aug 15 2020 12:59:18 GMT-0500 (Central Daylight Time)
             </div>
         </div>
         <script src="../../../prettify.js"></script>

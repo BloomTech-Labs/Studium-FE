@@ -104,7 +104,10 @@
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
 <a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -118,6 +121,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -126,12 +137,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -152,24 +157,27 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
-import { Route } from 'react-router-dom';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react'
+import { Route } from 'react-router-dom'
+import { LoginCallback, SecureRoute } from '@okta/okta-react'
+import { createGlobalStyle } from "styled-components"
 import ProtectedRoute from './utils/ProtectedRoute'
-import { LoginCallback, SecureRoute } from '@okta/okta-react';
-import SplashPage from './components/splash page/SplashPage';
-import Register from './components/register/Register';
-import OktaLogin from './components/login/OktaLogin';
-import Login from './components/login/Login';
-import DashBoard from './components/dashboard/DashBoard';
-import CreateDeckForm from './components/decks/CreateDeckForm';
-import CreateCardForm from './components/cards/CreateCardForm';
-import DeckView from './components/decks/DeckView';
-import EditDeck from './components/decks/EditDeck';
-import EditCard from './components/cards/EditCard';
-import IndCardView from './components/cards/IndCardView.js';
-import StudyView from './components/decks/StudyView';
+import SplashPage from './components/splash page/SplashPage'
+import Register from './components/register/Register'
+import OktaLogin from './components/login/OktaLogin'
+import Login from './components/login/Login'
+import DashBoard from './components/dashboard/DashBoard'
+import CreateDeckForm from './components/decks/CreateDeckForm'
+import CreateCardForm from './components/cards/CreateCardForm'
+import DeckView from './components/decks/DeckView'
+import EditDeck from './components/decks/EditDeck'
+import EditCard from './components/cards/EditCard'
+import IndCardView from './components/cards/IndCardView.js'
+import StudyView from './components/decks/StudyView'
+import VisTest from './components/visualizations/VisTest'
 import './App.css';
-import { createGlobalStyle } from "styled-components";
+&nbsp;
 &nbsp;
 const GlobalStyle = <span class="cstat-no" title="statement not covered" >createGlobalStyle`</span>
   body{
@@ -183,13 +191,14 @@ function <span class="fstat-no" title="function not covered" >App(</span>) {
 <span class="cstat-no" title="statement not covered" >  return (</span>
     &lt;div className="App"&gt;
       &lt;GlobalStyle /&gt;
-      &lt;Route exact path='/' component={SplashPage} /&gt;
+      &lt;Route exact path='/' component={SplashPage} data-test-id='route'/&gt;
       &lt;Route path={CALLBACK_PATH} component={LoginCallback} /&gt;
       &lt;Route path='/register' component={Register} /&gt;
       &lt;Route path='/okta-login' component={OktaLogin} /&gt;
       &lt;Route path='/login' component={Login} /&gt;
+      &lt;Route path='/vistest' component={VisTest} /&gt;
       &lt;ProtectedRoute path='/dashboard' component={DashBoard} /&gt;
-      &lt;Route path='/create-deck' component={CreateDeckForm} /&gt;
+      &lt;ProtectedRoute path='/create-deck' component={CreateDeckForm} /&gt;
       &lt;ProtectedRoute path='/deck/:id/create-card' component={CreateCardForm} /&gt;
       &lt;ProtectedRoute exact path='/deck/:id' component={DeckView} /&gt;
       &lt;ProtectedRoute path='/deck/:id/card/:cardId' component={IndCardView} /&gt;
@@ -207,7 +216,7 @@ export default App;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Aug 05 2020 12:56:42 GMT-0500 (Central Daylight Time)
+                at Sat Aug 15 2020 12:59:18 GMT-0500 (Central Daylight Time)
             </div>
         </div>
         <script src="../prettify.js"></script>

@@ -117,10 +117,8 @@
 <a name='L59'></a><a href='#L59'>59</a>
 <a name='L60'></a><a href='#L60'>60</a>
 <a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L62'></a><a href='#L62'>62</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -157,10 +155,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -184,51 +178,48 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { postNewDeck } from "../../redux/actions";
-import { CirclePicker } from "react-color";
-import NavbarDash from "../navigation/NavBarDash";
-import { MainWrapper, FormGroup, Input, NamesWrapper, H3, H2, LabelWrapper, CustomWrapper } from "./styles-decks/CreateDeckFormStyles";
-import "./styles-decks/createdeckform.css";
-const CreateDeckForm = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-  const user = <span class="cstat-no" title="statement not covered" >useSelector(<span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; <span class="cstat-no" title="statement not covered" >state.user)</span>;</span>
-  const dispatch = <span class="cstat-no" title="statement not covered" >useDispatch();</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState } from "react"
+import { useSelector, useDispatch } from "react-redux"
+import { postNewDeck } from "../../redux/actions"
+import { CirclePicker } from "react-color"
+import NavbarDash from "../navigation/NavBarDash"
+import { MainWrapper, FormGroup, Input, NamesWrapper, H3, H2, LabelWrapper, CustomWrapper } from "./styles-decks/CreateDeckFormStyles"
+import "./styles-decks/createdeckform.css"
 &nbsp;
-  const [title, setTitle] = <span class="cstat-no" title="statement not covered" >useState();</span>
-  const [color, setColor] = <span class="cstat-no" title="statement not covered" >useState("#fff");</span>
+const CreateDeckForm = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+  const user = <span class="cstat-no" title="statement not covered" >useSelector(<span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; <span class="cstat-no" title="statement not covered" >state.user)</span></span>
+  const dispatch = <span class="cstat-no" title="statement not covered" >useDispatch()</span>
+&nbsp;
+  const [title, setTitle] = <span class="cstat-no" title="statement not covered" >useState()</span>
+  const [color, setColor] = <span class="cstat-no" title="statement not covered" >useState("#fff")</span>
 &nbsp;
   const [deckToPost, setDeckToPost] = <span class="cstat-no" title="statement not covered" >useState({</span>
     deck_name: "",
     user_id: user.id,
-  });
+  })
 &nbsp;
   const handleChange = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(e</span>) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    setDeckToPost({</span>
       ...deckToPost,
       [e.target.name]: e.target.value,
-    });
-  };
+    })
+  }
 &nbsp;
   const handleSubmit = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(e</span>) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    e.preventDefault();</span>
-<span class="cstat-no" title="statement not covered" >    dispatch(postNewDeck(deckToPost));</span>
+<span class="cstat-no" title="statement not covered" >    e.preventDefault()</span>
+<span class="cstat-no" title="statement not covered" >    dispatch(postNewDeck(deckToPost))</span>
 <span class="cstat-no" title="statement not covered" >    setDeckToPost({</span>
       deck_name: "",
       user_id: user.id,
-    });
-  };
+    })
+  }
 &nbsp;
-  const colors = <span class="cstat-no" title="statement not covered" >["#61F1D2", "#FF50CE", "#009DF6", "#FFD037", "#FF2323", "#0047D9"];</span>
-&nbsp;
-  //   handleChange(colors, e){
-  //    backgroundColor:
-  //   }
+  const colors = <span class="cstat-no" title="statement not covered" >["#61F1D2", "#FF50CE", "#009DF6", "#FFD037", "#FF2323", "#0047D9"]</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  return (</span>
     &lt;MainWrapper style={{ backgroundColor: `${colors}` }}&gt;
       &lt;NavbarDash /&gt;
-      &lt;form onSubmit={handleSubmit}&gt;
+      &lt;form onSubmit={handleSubmit} data-testid="form"&gt;
         &lt;LabelWrapper&gt;
           &lt;H2&gt;Title&lt;/H2&gt;
           &lt;input value={deckToPost.deck_name} name="deck_name" placeholder="What are you studying?" onChange={handleChange} /&gt;
@@ -237,15 +228,15 @@ const CreateDeckForm = <span class="cstat-no" title="statement not covered" ><sp
           &lt;NamesWrapper&gt;
             &lt;H3&gt;Photo&lt;/H3&gt;
             {/* added fake image as placeholder for upload image feature */}
-            &lt;img src={require("../../images/choosephoto.svg")} style={{ width: "700%" }} alt="choose your pic to upload" /&gt;
+            &lt;img src={require("../../images/choosephoto.svg")} style={{ width: "100%" }} alt="choose your pic to upload" /&gt;
           &lt;/NamesWrapper&gt;
           &lt;H3&gt;or choose a color&lt;/H3&gt;
           &lt;CirclePicker colors={colors} onChangeComplete={<span class="fstat-no" title="function not covered" >(h</span>andleChange) =&gt; <span class="cstat-no" title="statement not covered" >setColor(handleChange)}</span> /&gt;
         &lt;/CustomWrapper&gt;
       &lt;/form&gt;
     &lt;/MainWrapper&gt;
-  );
-};
+  )
+}
 &nbsp;
 export default CreateDeckForm;
 &nbsp;</pre></td></tr></table></pre>
@@ -255,7 +246,7 @@ export default CreateDeckForm;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Aug 05 2020 12:56:42 GMT-0500 (Central Daylight Time)
+                at Sat Aug 15 2020 12:59:18 GMT-0500 (Central Daylight Time)
             </div>
         </div>
         <script src="../../../prettify.js"></script>

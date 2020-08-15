@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/components/cards/styles-cards/EditDeckCardStyles.js</title>
+    <title>Code coverage report for src/components/login/__test__/Login.test..js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -18,13 +18,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">src/components/cards/styles-cards</a> EditDeckCardStyles.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">src/components/login/__test__</a> Login.test..js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>0/11</span>
             </div>
         
             
@@ -36,16 +36,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>0/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>0/11</span>
             </div>
         
             
@@ -78,67 +78,58 @@
 <a name='L20'></a><a href='#L20'>20</a>
 <a name='L21'></a><a href='#L21'>21</a>
 <a name='L22'></a><a href='#L22'>22</a>
-<a name='L23'></a><a href='#L23'>23</a>
-<a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L23'></a><a href='#L23'>23</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import styled from 'styled-components'
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from "react";
+import { render } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import Login from "../Login";
 &nbsp;
-export const ImgIconWrapper = <span class="cstat-no" title="statement not covered" >styled.div`</span>
-   width: 335px;
-   height: 75px;
-   background: #FFFFFF;
-   border: 1px solid #C4C4C4;
-   box-sizing: border-box;
-   border-radius: 6px;
-   margin-top: 10px;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-`
+<span class="cstat-no" title="statement not covered" >test("form shows success message on submit with form details", <span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {</span>
+  const { getByText, getByPlaceholderText } = <span class="cstat-no" title="statement not covered" >render(&lt;Login /&gt;);</span>
+// this test will not work unless line 11 on login.js is commented out
 &nbsp;
-export const CardInput = <span class="cstat-no" title="statement not covered" >styled.textarea`</span>
-   fontFamily: Source Sans Pro;
-   fontStyle: normal;
-   fontWeight: normal;
-   fontSize: 18px;
-   lineHeight: 23px;
-   border: none;
-   margin: 0;
-   width: 279px;
-   height: 60px;
-`</pre></td></tr></table></pre>
+  // Testing username field
+  const username = <span class="cstat-no" title="statement not covered" >getByPlaceholderText(/Type your username/i);</span>
+<span class="cstat-no" title="statement not covered" >  await userEvent.type(username, "123testway");</span>
+<span class="cstat-no" title="statement not covered" >  expect(username).toHaveValue("123testway");</span>
+  // Testing password field
+  const password = <span class="cstat-no" title="statement not covered" >getByPlaceholderText(/Type your password/i);</span>
+<span class="cstat-no" title="statement not covered" >  await userEvent.type(password, "Tampa");</span>
+<span class="cstat-no" title="statement not covered" >  expect(password).toHaveValue("Tampa");</span>
+  // Testing log in button
+  const Button = <span class="cstat-no" title="statement not covered" >getByText("Log In");</span>
+<span class="cstat-no" title="statement not covered" >  await userEvent.type(Button, "Log In");</span>
+<span class="cstat-no" title="statement not covered" >  expect(Button).toHaveValue("Log In");</span>
+});
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sat Aug 15 2020 12:59:18 GMT-0500 (Central Daylight Time)
+                at Sat Aug 15 2020 11:59:49 GMT-0500 (Central Daylight Time)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>
