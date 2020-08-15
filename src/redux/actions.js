@@ -25,16 +25,13 @@ export const getUser = () => dispatch => {
          AxiosWithAuth()
             .get(`/users/${res.data.id}/decks`)
             .then(res => {
-               console.log(res)
                dispatch({ type: SET_USER_DECKS, payload: res.data })
             })
             .catch(err => {
-               console.log('NOOOOO!!!!', err)
                dispatch({ type: SET_ERROR, payload: 'There was an error retrieving the user decks' })
             })
       })
       .catch(err => {
-         console.log('NOOOOO!!!!', err)
          dispatch({ type: SET_ERROR, payload: 'There was an error retrieving the user' })
       })
 }
