@@ -16,6 +16,7 @@ export const SET_EDITED_DECK = 'SET_EDITED_DECK'
 export const AUTOGEN_RES = 'AUTOGEN_RES'
 export const CLEAR_AUTOGEN_RES = 'CLEAR_AUTOGEN_RES'
 export const SET_CURRENT_SESSION = 'SET_CURRENT_SESSION'
+export const GET_DECK_SESSIONS = 'GET_DECK_SESSIONS'
 
 export const getUser = () => dispatch => {
    AxiosWithAuth()
@@ -191,5 +192,18 @@ export const postNewSession = sessionToPost => dispatch => {
       .catch(err => {
 			console.log('NOOOOO!!!!', err);
 			dispatch({ type: SET_ERROR, payload: 'error posting session' });
+		});
+}
+
+export const getDeckSessions = deckId => dispatch => {
+   AxiosWithAuth()
+      .get(`/decks/${deckId}/sessions`)
+      .then(res => {
+         console.log('getSessions:',res)
+         dispatch({ type: GET_DECK_SESSIONS, payload: res.data})
+      })
+      .catch(err => {
+			console.log('NOOOOO!!!!', err);
+			dispatch({ type: SET_ERROR, payload: 'error getting sessions' });
 		});
 }
