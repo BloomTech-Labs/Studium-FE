@@ -2,9 +2,10 @@ import React from "react";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Register from "../Register";
+import { renderWithRedux } from "../../../../__mocks__/reduxMock";
 
 test("form shows success message on submit with form details", async () => {
-  const { getByText, getByPlaceholderText } = render(<Register />);
+  const { getByText, getByPlaceholderText } = renderWithRedux(<Register />);
 
   // Testing first name field
   const first_name = getByPlaceholderText(/First Name/i);
