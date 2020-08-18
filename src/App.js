@@ -15,6 +15,7 @@ import EditDeck from './components/decks/EditDeck'
 import EditCard from './components/cards/EditCard'
 import IndCardView from './components/cards/IndCardView.js'
 import StudyView from './components/decks/StudyView'
+import DeckMetrics from './components/decks/DeckMetrics'
 import VisTest from './components/visualizations/VisTest'
 import './App.css';
 
@@ -41,6 +42,7 @@ function App() {
       <ProtectedRoute path='/create-deck' component={CreateDeckForm} />
       <ProtectedRoute path='/deck/:id/create-card' component={CreateCardForm} />
       <ProtectedRoute exact path='/deck/:id' component={DeckView} />
+      <Route path='/deck/:id/stats' component={DeckMetrics} />
       <ProtectedRoute path='/deck/:id/card/:cardId' component={IndCardView} />
       <ProtectedRoute path='/deck/:id/edit-deck' component={EditDeck} />
       <ProtectedRoute path='/deck/:id/edit-card/:cardId' component={EditCard} />
