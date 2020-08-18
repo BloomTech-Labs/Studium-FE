@@ -68,7 +68,7 @@ const DeckView = ({ match, location }) => {
       })
       console.log('sessionData-->', sessionData)
       AxiosWithAuth()
-         .get('https://studium-ds.herokuapp.com/metrics', sessionData)
+         .post('https://studium-ds.herokuapp.com/metrics', sessionData)
          .then(res => console.log('metricsResponse-->', res))
          .catch(err => console.log('metricsError-->', err))
    }
