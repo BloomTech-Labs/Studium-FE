@@ -5,7 +5,6 @@ import StudyImg from '../../images/ink-layer.jpg'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { getDeckSessions } from '../../redux/actions'
-import AxiosWithAuth from '../../utils/axiosWithAuth'
 import { 
    StatsViewWrapper, 
    DeckTitle, 
@@ -60,11 +59,11 @@ const DeckMetrics = () => {
 
    const bestSesh = (metrics) => {
       if (selection === 'Daily') {
-         return <div>{metrics[3].best_session_daily}</div>
+         return <div>{((metrics[3].best_session_daily)*60).toFixed(2)} minutes</div>
       } else if (selection === 'Weekly') {
-         return <div>{metrics[4].best_session_weekly}</div>
+         return <div>{((metrics[4].best_session_weekly)*60).toFixed(2)} minutes</div>
       } else if (selection === 'Monthly') {
-         return <div>{metrics[5].best_session_monthly}</div>
+         return <div>{((metrics[5].best_session_monthly)*60).toFixed(2)} minutes</div>
       }
    }
 
@@ -103,33 +102,13 @@ const DeckMetrics = () => {
                   {`${metrics[4].difference.toFixed(2)}% ${metrics[4].unicode}`}
                </div>
             )
-         } else if (selection === 'Monthly') {
-            return (
-               <div style={{ color: `#${metrics[5].color_code}`}}>
-                  {`${metrics[5].difference.toFixed(2)}% ${metrics[5].unicode}`}
-               </div>
-            )
-         }
-   }
-
-   const cardsColorCode = metrics => {
-      if (selection === 'Daily') {
-         return <div>{metrics[0].color_code}</div>
-      } else if (selection === 'Weekly') {
-         return <div>{metrics[1].color_code}</div>
-      } else if (selection === 'Monthly') {
-         return <div>{metrics[2].color_code}</div>
-      }
-   }
-
-   const BestSeshColorCode = metrics => {
-      if (selection === 'Daily') {
-         return <div>{metrics[3].color_code}</div>
-      } else if (selection === 'Weekly') {
-         return <div>{metrics[4].color_code}</div>
-      } else if (selection === 'Monthly') {
-         return <div>{metrics[5].color_code}</div>
-      }
+         }  else if (selection === 'Monthly') {
+               return (
+                  <div style={{ color: `#${metrics[5].color_code}`}}>
+                     {`${metrics[5].difference.toFixed(2)}% ${metrics[5].unicode}`}
+                  </div>
+               )
+            }
    }
 
    console.log('selection:', selection)
@@ -189,14 +168,14 @@ const DeckMetrics = () => {
                   <div style={{ display: 'flex', flexDirection: 'row' }}>
                      <MetricSquare style={{ backgroundColor: '#EFC9ED' }} />
                      <MetricValues>
-                        <MVtop>Best Study Session</MVtop>
-                        <MVbottom>
+                        <MVtop>
                            {
                               (metrics.length > 0)
                                  ?  bestSesh(metrics)
                                  :  'Loading...'
                            }
-                        </MVbottom>
+                        </MVtop>
+                        <MVbottom>Best Study Session</MVbottom>
                      </MetricValues>
                   </div>
                   <MetricChanges>
