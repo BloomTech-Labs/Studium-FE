@@ -101,7 +101,6 @@ const DeckView = ({ match, location }) => {
             <Link to={`/deck/${id}/edit-deck`}>
                <EditButton onClick={handleEditClick}>Edit Deck</EditButton>
             </Link>
-            <button onClick={getMetrics}>Try Metrics GET</button>
             <Link to={`/deck/${id}/study`}>
                <StudyButton 
                   onMouseDown={handleStudyMousedown}
@@ -110,7 +109,6 @@ const DeckView = ({ match, location }) => {
                      Study
                </StudyButton>
             </Link>
-            
          </FooterWrapper>
       </MainWrapper>
    )

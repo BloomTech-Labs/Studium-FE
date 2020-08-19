@@ -72,19 +72,19 @@ const DeckMetrics = () => {
       if (selection === 'Daily') {
          return (
             <div style={{ color: `#${metrics[0].color_code}`}}>
-               {metrics[0].difference.toFixed(2)} {metrics[0].unicode}
+               {`${metrics[0].difference.toFixed(2)}% ${metrics[0].unicode}`}
             </div>
          )
       }  else if (selection === 'Weekly') {
             return (
                <div style={{ color: `#${metrics[1].color_code}`}}>
-                  {metrics[1].difference.toFixed(2)} {metrics[1].unicode}
+                  {`${metrics[1].difference.toFixed(2)}% ${metrics[1].unicode}`}
                </div>
             )
          } else if (selection === 'Monthly') {
             return (
                <div style={{ color: `#${metrics[2].color_code}`}}>
-                  {metrics[2].difference.toFixed(2)} {metrics[2].unicode}
+                  {`${metrics[2].difference.toFixed(2)}% ${metrics[2].unicode}`}
                </div>
             )
          }
@@ -94,19 +94,19 @@ const DeckMetrics = () => {
       if (selection === 'Daily') {
          return (
             <div style={{ color: `#${metrics[3].color_code}`}}>
-               {metrics[3].difference.toFixed(2)} {metrics[3].unicode}
+               {`${metrics[3].difference.toFixed(2)}% ${metrics[3].unicode}`}
             </div>
          )
       }  else if (selection === 'Weekly') {
             return (
                <div style={{ color: `#${metrics[4].color_code}`}}>
-                  {metrics[4].difference.toFixed(2)} {metrics[4].unicode}
+                  {`${metrics[4].difference.toFixed(2)}% ${metrics[4].unicode}`}
                </div>
             )
          } else if (selection === 'Monthly') {
             return (
                <div style={{ color: `#${metrics[5].color_code}`}}>
-                  {metrics[5].difference.toFixed(2)} {metrics[5].unicode}
+                  {`${metrics[5].difference.toFixed(2)}% ${metrics[5].unicode}`}
                </div>
             )
          }
