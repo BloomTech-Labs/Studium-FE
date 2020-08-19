@@ -42,7 +42,7 @@ function App() {
       <ProtectedRoute path='/create-deck' component={CreateDeckForm} />
       <ProtectedRoute path='/deck/:id/create-card' component={CreateCardForm} />
       <ProtectedRoute exact path='/deck/:id' component={DeckView} />
-      <Route path='/deck/:id/stats' component={DeckMetrics} />
+      <ProtectedRoute path='/deck/:id/stats' component={DeckMetrics} />
       <ProtectedRoute path='/deck/:id/card/:cardId' component={IndCardView} />
       <ProtectedRoute path='/deck/:id/edit-deck' component={EditDeck} />
       <ProtectedRoute path='/deck/:id/edit-card/:cardId' component={EditCard} />

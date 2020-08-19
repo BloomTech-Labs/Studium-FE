@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import "./NavBarDashStyles.css";
 
 class Menu extends Component {
@@ -20,9 +21,9 @@ class Menu extends Component {
                     <div className="iconWrapper">
                         <img alt='user' src={require("../../images/user.svg")} className="icon" /><a href="/account">Account</a>
                     </div>
-                    <div className="iconWrapper">
-                        <img alt='logout' src={require("../../images/logout.svg")} className="icon" /><a href="/logout">Logout</a>
-                    </div>
+                    <Link to='/' className="iconWrapper">
+                        <img alt='logout' src={require("../../images/logout.svg")} className="icon" /><p>Logout</p>
+                    </Link>
                 </div>
             </div>
         );
