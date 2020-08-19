@@ -17,8 +17,7 @@ import IndCardView from './components/cards/IndCardView.js'
 import StudyView from './components/decks/StudyView'
 import DeckMetrics from './components/decks/DeckMetrics'
 import VisTest from './components/visualizations/VisTest'
-import './App.css';
-
+import './App.css'
 
 const GlobalStyle = createGlobalStyle`
   body{

@@ -59,11 +59,21 @@ const DeckMetrics = () => {
 
    const bestSesh = (metrics) => {
       if (selection === 'Daily') {
-         return <div>{((metrics[3].best_session_daily)*60).toFixed(2)} minutes</div>
+         return <div>{((metrics[3].best_session_daily)).toFixed(2)} minutes</div>
       } else if (selection === 'Weekly') {
-         return <div>{((metrics[4].best_session_weekly)*60).toFixed(2)} minutes</div>
+         return <div>{((metrics[4].best_session_weekly)).toFixed(2)} minutes</div>
       } else if (selection === 'Monthly') {
-         return <div>{((metrics[5].best_session_monthly)*60).toFixed(2)} minutes</div>
+         return <div>{((metrics[5].best_session_monthly)).toFixed(2)} minutes</div>
+      }
+   }
+
+   const totalLookedAt = metrics => {
+      if (selection === 'Daily') {
+         return <div>{((metrics[6].total_viewed_daily)).toFixed(2)}</div>
+      } else if (selection === 'Weekly') {
+         return <div>{((metrics[7].total_viewed_weekly)).toFixed(2)}</div>
+      } else if (selection === 'Monthly') {
+         return <div>{((metrics[8].total_viewed_monthly)).toFixed(2)}</div>
       }
    }
 
@@ -106,6 +116,28 @@ const DeckMetrics = () => {
                return (
                   <div style={{ color: `#${metrics[5].color_code}`}}>
                      {`${metrics[5].difference.toFixed(2)}% ${metrics[5].unicode}`}
+                  </div>
+               )
+            }
+   }
+
+   const lookedAtDiff = metrics => {
+      if (selection === 'Daily') {
+         return (
+            <div style={{ color: `#${metrics[6].color_code_viewed}`}}>
+               {`${metrics[6].difference_viewed.toFixed(2)}% ${metrics[6].unicode_viewed}`}
+            </div>
+         )
+      }  else if (selection === 'Weekly') {
+            return (
+               <div style={{ color: `#${metrics[7].color_code_viewed}`}}>
+                  {`${metrics[7].difference_viewed.toFixed(2)}% ${metrics[7].unicode_viewed}`}
+               </div>
+            )
+         }  else if (selection === 'Monthly') {
+               return (
+                  <div style={{ color: `#${metrics[8].color_code_viewed}`}}>
+                     {`${metrics[8].difference_viewed.toFixed(2)}% ${metrics[8].unicode_viewed}`}
                   </div>
                )
             }
@@ -158,11 +190,23 @@ const DeckMetrics = () => {
                   <div style={{ display: 'flex', flexDirection: 'row' }}>
                      <MetricSquare style={{ backgroundColor: '#C8F5FF' }} />
                      <MetricValues>
-                        <MVtop>8/10</MVtop>
+                        <MVtop>
+                           {
+                              (metrics.length > 0)
+                                 ?  totalLookedAt(metrics)
+                                 :  'Loading...'
+                           }
+                        </MVtop>
                         <MVbottom>Cards viewed</MVbottom>
                      </MetricValues>
                   </div>
-                  <MetricChanges>33%++</MetricChanges>
+                  <MetricChanges>
+                     {
+                        (metrics.length > 0)
+                           ?  lookedAtDiff(metrics)
+                           :  'Loading...'
+                     }
+                  </MetricChanges>
                </StatsItem>
                <StatsItem>
                   <div style={{ display: 'flex', flexDirection: 'row' }}>
