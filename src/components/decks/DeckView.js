@@ -3,8 +3,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import NavbarDash from '../navigation/NavBarDash.js'
 import DeckViewCards from './DeckViewCards.js'
 import { useParams, Link } from 'react-router-dom'
-import { setDeckBeingEdited, setCurrentSession, getDeckSessions } from '../../redux/actions'
+import { setDeckBeingEdited, setCurrentSession, getDeckSessions, getMetrics } from '../../redux/actions'
 import AxiosWithAuth from '../../utils/axiosWithAuth'
+import AssessmentOutlinedIcon from '@material-ui/icons/AssessmentOutlined';
 
 import { MainWrapper, H1, H2, NamesWrapper, FooterWrapper, EditButton, StudyButton } from './styles-decks/DeckViewStyles.js'
 
@@ -57,7 +58,7 @@ const DeckView = ({ match, location }) => {
       dispatch(setCurrentSession(sessionToPost))
    }
 
-   const getMetrics = () => {
+   const handleMetricsClick = () => {
       const sessionData = deckSessions.map(session => {
          return {
             id: session.id,
@@ -67,17 +68,32 @@ const DeckView = ({ match, location }) => {
          }
       })
       console.log('sessionData-->', sessionData)
-      AxiosWithAuth()
-         .post('https://studium-ds.herokuapp.com/metrics', sessionData)
-         .then(res => console.log('metricsResponse-->', res))
-         .catch(err => console.log('metricsError-->', err))
+      dispatch(getMetrics(sessionData))
    }
 
    return (
       <MainWrapper>
          <NavbarDash />
          <NamesWrapper>
-            <H1>{deckName}</H1>
+            <div 
+               style={{ 
+                  width: '100%',
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between'
+               }}
+            >
+               <H1>{deckName}</H1>
+               <Link 
+                  to={`/deck/${id}/stats`}
+                  style={{ color: 'rgba(0, 0, 0, 0.54)' }}
+               >
+                  <AssessmentOutlinedIcon 
+                     fontSize="large" 
+                     onClick={handleMetricsClick}
+                  />
+               </Link>
+            </div>
             <H2>Cards</H2>
          </NamesWrapper>
          <DeckViewCards />

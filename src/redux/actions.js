@@ -17,6 +17,7 @@ export const AUTOGEN_RES = 'AUTOGEN_RES'
 export const CLEAR_AUTOGEN_RES = 'CLEAR_AUTOGEN_RES'
 export const SET_CURRENT_SESSION = 'SET_CURRENT_SESSION'
 export const GET_DECK_SESSIONS = 'GET_DECK_SESSIONS'
+export const GET_METRICS = 'GET_METRICS'
 
 export const getUser = () => dispatch => {
    AxiosWithAuth()
@@ -206,4 +207,14 @@ export const getDeckSessions = deckId => dispatch => {
 			console.log('NOOOOO!!!!', err);
 			dispatch({ type: SET_ERROR, payload: 'error getting sessions' });
 		});
+}
+
+export const getMetrics = sessionData => dispatch => {
+   AxiosWithAuth()
+      .post('https://studium-ds.herokuapp.com/metrics', sessionData)
+      .then(res => {
+         dispatch({ type: GET_METRICS, payload: res.data})
+         console.log('statsData:', res.data)
+      })
+      .catch(err => console.log('statsData-->', err))
 }
