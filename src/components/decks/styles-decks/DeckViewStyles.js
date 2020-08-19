@@ -12,6 +12,7 @@ flex-direction: column;
 align-items: flex-start;
 justify-content: space-around;
 margin-left: 20px;
+margin-right: 20px;
 margin-top: 32px;
 `
 

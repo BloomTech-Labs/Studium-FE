@@ -22,7 +22,6 @@ export const DeckTitle = styled.div`
 
 export const ImgDiv = styled.div`
    margin-top: 57.8px;
-   border: 1px solid black;
    width: 280.57;
    height: 173.52;
 `
