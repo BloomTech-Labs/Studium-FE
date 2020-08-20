@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { postNewCard, autoGenerate, clearAutoGenRes } from '../../redux/actions'
 import { useParams, useHistory } from 'react-router-dom'
 import { MainWrapper } from '../decks/styles-decks/DeckViewStyles'
+import { Tooltip } from '@material-ui/core'
 import { InputWrapper, 
    TextArea, 
    AutoGen, 
@@ -96,11 +97,16 @@ const CreateCardForm = (props) => {
             </Heading>
             <div style={{ textAlign: 'right', display: 'flex', width: '100%' }}>
                <AutoGen>Auto generate:</AutoGen>
-               <input
-                  type='checkbox' 
-                  name='auto-generate'
-                  onClick={handleCheckbox}
-               />
+               <Tooltip
+                  title='Works best with single terms, i.e. Photosynthesis'
+                  arrow
+               >
+                  <input
+                     type='checkbox' 
+                     name='auto-generate'
+                     onClick={handleCheckbox}
+                  />
+               </Tooltip>
             </div>
             <InputWrapper>
                <label style={{ marginBottom: '6px'}}>
