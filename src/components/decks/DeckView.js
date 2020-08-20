@@ -3,15 +3,18 @@ import { useSelector, useDispatch } from 'react-redux'
 import NavbarDash from '../navigation/NavBarDash.js'
 import DeckViewCards from './DeckViewCards.js'
 import { useParams, Link } from 'react-router-dom'
-import { setDeckBeingEdited, setCurrentSession, getDeckSessions, getMetrics } from '../../redux/actions'
-import AssessmentOutlinedIcon from '@material-ui/icons/AssessmentOutlined';
+import { setDeckBeingEdited, setCurrentSession, getDeckSessions, getMetrics, editCard } from '../../redux/actions'
+import AssessmentOutlinedIcon from '@material-ui/icons/AssessmentOutlined'
+import { Tooltip } from '@material-ui/core'
 
 import { MainWrapper, H1, H2, NamesWrapper, FooterWrapper, EditButton, StudyButton } from './styles-decks/DeckViewStyles.js'
+import AxiosWithAuth from '../../utils/axiosWithAuth.js'
 
 const DeckView = ({ match, location }) => {
    const dispatch = useDispatch()
    const userDecks = useSelector(state => state.userDecks)
    const deckSessions = useSelector(state => state.deckSessions)
+   const cards = useSelector(state => state.deckCards)
    const [deckName, setDeckName] = useState()
    const [deckToEdit, setDeckToEdit] = useState()
    const [sessionToPost, setSessionToPost] = useState({
@@ -70,6 +73,17 @@ const DeckView = ({ match, location }) => {
       dispatch(getMetrics(sessionData))
    }
 
+   const handlePUT = () => {
+      cards.map(card => {
+         const cardToEdit = {
+            ...card,
+            next_due: Date.now(),
+            is_starred: false
+         }
+         dispatch(editCard(cardToEdit))
+      })
+   }
+
    return (
       <MainWrapper>
          <NavbarDash />
@@ -87,10 +101,15 @@ const DeckView = ({ match, location }) => {
                   to={`/deck/${id}/stats`}
                   style={{ color: 'rgba(0, 0, 0, 0.54)' }}
                >
-                  <AssessmentOutlinedIcon 
-                     fontSize="large" 
-                     onClick={handleMetricsClick}
-                  />
+                  <Tooltip
+                     title='Click to see your stats for this deck'
+                     arrow
+                  >
+                     <AssessmentOutlinedIcon 
+                        fontSize="large" 
+                        onClick={handleMetricsClick}
+                     />
+                  </Tooltip>
                </Link>
             </div>
             <H2>Cards</H2>
@@ -109,6 +128,7 @@ const DeckView = ({ match, location }) => {
                </StudyButton>
             </Link>
          </FooterWrapper>
+         <button onClick={handlePUT}>PUT next_due</button>
       </MainWrapper>
    )
 }

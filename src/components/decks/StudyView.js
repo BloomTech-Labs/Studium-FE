@@ -11,12 +11,12 @@ import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined'
 import StarIcon from '@material-ui/icons/Star'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
+import { Tooltip } from '@material-ui/core'
 import axios from 'axios'
 import moment from 'moment'
 
 const StudyView = () => {
    const dispatch = useDispatch()
-
    const cards = useSelector(state => state.deckCards)
    const userDecks = useSelector(state => state.userDecks)
    const currentSession = useSelector(state => state.currentSession)
@@ -140,12 +140,22 @@ const StudyView = () => {
                         justifyContent: 'space-between'
                      }}>
                         <EditOutlinedIcon />
-                        <div onClick={toggelStarred}>
-                           {displayedCard.is_starred === false
-                              ?  <StarBorderOutlinedIcon />
-                              :  <StarIcon color='secondary' />
-                           }
-                        </div>
+                           <div onClick={toggelStarred}>
+                              {displayedCard.is_starred === false
+                                 ?  <Tooltip
+                                       title='Highlight card for review'
+                                       arrow
+                                    >
+                                       <StarBorderOutlinedIcon />
+                                    </Tooltip>
+                                 :  <Tooltip
+                                       title='If mastered, un-highlight card'
+                                       arrow
+                                    >
+                                       <StarIcon color='secondary' />
+                                    </Tooltip>
+                              }
+                           </div>
                      </div>
                   </ToolBarWrapper>
                   <div style={{ width: '340px', margin: 'auto' }}>
@@ -168,7 +178,7 @@ const StudyView = () => {
                      <DoneButton onClick={doneStudying}>Done Studying</DoneButton>
                   </Link>
                </div>
-            :  <div>There are no cards due for study in this deck.</div>
+            :  <div style={{ marginTop: '50px' }}>There are no cards due for study in this deck.</div>
          }
       </div>
    )
