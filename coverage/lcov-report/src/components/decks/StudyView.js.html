@@ -232,7 +232,18 @@
 <a name='L174'></a><a href='#L174'>174</a>
 <a name='L175'></a><a href='#L175'>175</a>
 <a name='L176'></a><a href='#L176'>176</a>
-<a name='L177'></a><a href='#L177'>177</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -250,7 +261,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
@@ -408,6 +418,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams, Link } from 'react-router-dom'
@@ -421,12 +441,12 @@ import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined'
 import StarIcon from '@material-ui/icons/Star'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
+import { Tooltip } from '@material-ui/core'
 import axios from 'axios'
 import moment from 'moment'
 &nbsp;
 const StudyView = () =&gt; {
    const dispatch = useDispatch()
-&nbsp;
    const cards = useSelector(state =&gt; state.deckCards)
    const userDecks = useSelector(state =&gt; state.userDecks)
    const currentSession = useSelector(state =&gt; state.currentSession)
@@ -550,12 +570,22 @@ const StudyView = () =&gt; {
                         justifyContent: 'space-between'
                      }}&gt;
                         &lt;EditOutlinedIcon /&gt;
-                        &lt;div onClick={toggelStarred}&gt;
-                           {displayedCard.is_starred === false
-                              ?  &lt;StarBorderOutlinedIcon /&gt;
-                              :  &lt;StarIcon color='secondary' /&gt;
-                           }
-                        &lt;/div&gt;
+                           &lt;div onClick={toggelStarred}&gt;
+                              {displayedCard.is_starred === false
+                                 ?  &lt;Tooltip
+                                       title='Highlight card for review'
+                                       arrow
+                                    &gt;
+                                       &lt;StarBorderOutlinedIcon /&gt;
+                                    &lt;/Tooltip&gt;
+                                 :  &lt;Tooltip
+                                       title='If mastered, un-highlight card'
+                                       arrow
+                                    &gt;
+                                       &lt;StarIcon color='secondary' /&gt;
+                                    &lt;/Tooltip&gt;
+                              }
+                           &lt;/div&gt;
                      &lt;/div&gt;
                   &lt;/ToolBarWrapper&gt;
                   &lt;div style={{ width: '340px', margin: 'auto' }}&gt;
@@ -578,7 +608,7 @@ const StudyView = () =&gt; {
                      &lt;DoneButton onClick={doneStudying}&gt;Done Studying&lt;/DoneButton&gt;
                   &lt;/Link&gt;
                &lt;/div&gt;
-            :  &lt;div&gt;There are no cards due for study in this deck.&lt;/div&gt;
+            :  &lt;div style={{ marginTop: '50px' }}&gt;There are no cards due for study in this deck.&lt;/div&gt;
          }
       &lt;/div&gt;
    )
@@ -591,7 +621,7 @@ export default StudyView</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sun Aug 16 2020 21:51:38 GMT-0500 (Central Daylight Time)
+                at Wed Aug 19 2020 23:06:01 GMT-0400 (Eastern Daylight Time)
             </div>
         </div>
         <script src="../../../prettify.js"></script>
