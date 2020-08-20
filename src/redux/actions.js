@@ -18,6 +18,7 @@ export const CLEAR_AUTOGEN_RES = 'CLEAR_AUTOGEN_RES'
 export const SET_CURRENT_SESSION = 'SET_CURRENT_SESSION'
 export const GET_DECK_SESSIONS = 'GET_DECK_SESSIONS'
 export const GET_METRICS = 'GET_METRICS'
+export const POST_LEITNER= 'POST_LEITNER'
 
 export const getUser = () => dispatch => {
    AxiosWithAuth()
@@ -217,4 +218,14 @@ export const getMetrics = sessionData => dispatch => {
          console.log('statsData:', res.data)
       })
       .catch(err => console.log('statsData-->', err))
+}
+
+export const postLeitnerBar = comfortData => dispatch => {
+   AxiosWithAuth()
+      .post('https://studium-ds.herokuapp.com/leitner_bar', comfortData)
+      .then(res => {
+         console.log('plotlyBar-->', res)
+         dispatch({ type: POST_LEITNER, payload: res})
+      })
+      .catch(err => console.log('plotlyBar-->', err))
 }

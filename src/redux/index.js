@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-import { GET_USER, SET_ERROR, SET_USER_DECKS, RESET_USER_DECKS, LOGOUT, POST_NEW_DECK, SET_CARDS, POST_NEW_CARD, SET_EDITED_CARD, EDIT_CARD, DELETE_CARD, SET_EDITED_DECK, EDIT_DECK, AUTOGEN_RES, CLEAR_AUTOGEN_RES, SET_CURRENT_SESSION, GET_DECK_SESSIONS, GET_METRICS } from './actions';
+import { GET_USER, SET_ERROR, SET_USER_DECKS, RESET_USER_DECKS, LOGOUT, POST_NEW_DECK, SET_CARDS, POST_NEW_CARD, SET_EDITED_CARD, EDIT_CARD, DELETE_CARD, SET_EDITED_DECK, EDIT_DECK, AUTOGEN_RES, CLEAR_AUTOGEN_RES, SET_CURRENT_SESSION, GET_DECK_SESSIONS, GET_METRICS, POST_LEITNER } from './actions';
 
 const initialState = {
    user: {},
@@ -20,7 +20,8 @@ const initialState = {
       user_id: ''
    },
    deckSessions: [],
-   metrics: []
+   metrics: [],
+   plotlyBar: ''
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -119,6 +120,11 @@ const rootReducer = (state = initialState, action) => {
             return {
                ...state,
                metrics: action.payload
+            } 
+         case POST_LEITNER:
+            return {
+               ...state,
+               plotlyBar: action.payload
             } 
       // case UPDATE_CURRENT_SESSION: 
       //    return {

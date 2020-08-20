@@ -3,12 +3,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import NavbarDash from '../navigation/NavBarDash.js'
 import DeckViewCards from './DeckViewCards.js'
 import { useParams, Link } from 'react-router-dom'
-import { setDeckBeingEdited, setCurrentSession, getDeckSessions, getMetrics, editCard } from '../../redux/actions'
+import { setDeckBeingEdited, setCurrentSession, getDeckSessions, getMetrics, editCard, postLeitnerBar } from '../../redux/actions'
 import AssessmentOutlinedIcon from '@material-ui/icons/AssessmentOutlined'
 import { Tooltip } from '@material-ui/core'
 
 import { MainWrapper, H1, H2, NamesWrapper, FooterWrapper, EditButton, StudyButton } from './styles-decks/DeckViewStyles.js'
-import AxiosWithAuth from '../../utils/axiosWithAuth.js'
 
 const DeckView = ({ match, location }) => {
    const dispatch = useDispatch()
@@ -71,6 +70,9 @@ const DeckView = ({ match, location }) => {
       })
       console.log('sessionData-->', sessionData)
       dispatch(getMetrics(sessionData))
+      const comfortData = cards.map(card => card.comfort_level)
+      console.log('comfortData-->', comfortData)
+      dispatch(postLeitnerBar(comfortData))
    }
 
    const handlePUT = () => {
