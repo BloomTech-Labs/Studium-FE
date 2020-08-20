@@ -74,7 +74,7 @@ const SplashPage = () => {
           ) : (
             <>
               <Input value={email.email} placeholder="Enter your email" type="text" name="email" onChange={handleInputChange} id="email" />
-              <Button type="submit" small>
+              <Button type="submit" onClick={routeToRegister} small>
                 Get Started
               </Button>
             </>
