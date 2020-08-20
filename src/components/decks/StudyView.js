@@ -29,7 +29,7 @@ const StudyView = () => {
    const [session, setSession] = useState(currentSession)
    const [isStarred, setIsStarred] = useState(false)
 
-   const studyArr = cards.filter(card => (parseInt(card.next_due) <= moment(Date.now()).utc()) || (card.next_due === null))
+   const studyArr = cards.filter(card => parseInt(card.next_due) <= moment(Date.now()) || (card.next_due === null))
    
    console.log('TIME:', Date.now())
    console.log('studyArr-->', studyArr)
